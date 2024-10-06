@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="question_1">Նշաններից ո՞րն է կոչվում «Արգելքի շրջանցումը ձախից»։</string>
+    <string name="question_1_answer_1">1.1</string>
+    <string name="question_1_answer_2">2.2</string>
+    <string name="question_1_answer_3">3.3</string>
+    <string name="question_1_answer_4">4.4</string>
+    <string name="question_1_answer_5">5.5</string>
+    <string name="question_1_true_answer">Պատ․՝3</string>
+
+    <string name="question_2">Թույլատրվու՞մ է արդյոք ավտոբուսի վարորդին մուտք գործել խաչմերուկ տվյալ իրադրությունում։</string>
+    <string name="question_2_answer_1">1.Թույլատրվում է</string>
+    <string name="question_2_answer_2">2.Արգելվում է։</string>
+    <string name="question_2_answer_3">3.Թույլատրվում է, եթե ավտոբուսը երթեւեկում է սահմանված երթուղով։</string>
+    <string name="question_2_true_answer">Պատ․՝2</string>
+
+    <string name="question_3">Նշված դեպքում ո՞ր գոտուց պետք է կատարվի աջ շրջադարձը։</string>
+    <string name="question_3_answer_1">1.Միայն երկրորդ գոտուց։</string>
+    <string name="question_3_answer_2">2.Միայն «A» գծանշումով նշված աջ եզրային գոտուց։</string>
+    <string name="question_3_true_answer">Պատ․՝2</string>
+
+    <string name="question_4">
+        Խաչմերուկում կազմակերպված է շրջանաձեւ երթեւեկություն։
+        Երթեւեկելի մասը, որով մոտենում եք խաչմերուկին, ունի
+        երթեւեկության երկու գոտի։ Խաչմերուկ մուտք գործելիս`
+        շրջադարձ կատարելու համար ո՞ր գոտին եք պարտավոր
+        զբաղեցնել՝</string>
+    <string name="question_4_answer_1">1.Աջ գոտին։</string>
+    <string name="question_4_answer_2">2.Ձախ գոտին։</string>
+    <string name="question_4_answer_3">3.Կա՛մ աջ, կա՛մ ձախ գոտին։</string>
+    <string name="question_4_true_answer">Պատ․՝3</string>
+
+    <string name="question_5">Թույլատրվու՞մ է արդյոք մուտք գործել բակ նշված տեղից։</string>
+    <string name="question_5_answer_1">1.Թույլատրվում է։</string>
+    <string name="question_5_answer_2">2.Արգելվում է։</string>
+    <string name="question_5_true_answer">Պատ․՝1</string>
+
+    <string name="question_6">
+        Երկկողմ երթեւեկությամբ գծանշված ճանապարհներին, երեք
+        գոտու առկայության դեպքում (բացառությամբ երթեւեկության
+        դարձափոխային կարգավորմամբ ճանապարհների), որոնցից
+        միջինն օգտագործվում է երկու ուղղություններով երթեւեկության
+        համար, ձախ եզրային գոտի մուտք գործելը՝</string>
+    <string name="question_6_answer_1">1.Թույլատրվում է։</string>
+    <string name="question_6_answer_2">2.Արգելվում է։</string>
+    <string name="question_6_answer_3">3.Թույլատրվում է՝ միայն վազանցի, շրջանցման, ձախշրջադարձի կամ հետադարձի համար։</string>
+    <string name="question_6_true_answer">Պատ․՝2</string>
+
+    <string name="question_7">Ո՞ր պատասխանում է ճիշտ նշված երթեւեկությանթույլատրելի ուղղությունը։</string>
+    <string name="question_7_answer_1">1.Միայն հետադարձ։</string>
+    <string name="question_7_answer_2">2.Ուղիղ եւ հետադարձ։</string>
+    <string name="question_7_answer_3">3.Միայն ուղիղ։</string>
+    <string name="question_7_true_answer">Պատ․՝3</string>
+
+    <string name="question_8">Ո՞ր ուղղությամբ է արգելվում երթեւեկությունը՝</string>
+    <string name="question_8_answer_1">1.Դեպի ձախ եւ դեպի աջ։</string>
+    <string name="question_8_answer_2">2.Ուղիղ եւ հակառակ ուղղությամբ։</string>
+    <string name="question_8_answer_3">3.Միայն ուղիղ։</string>
+    <string name="question_8_answer_4">4.Բոլոր ուղղություններով։</string>
+    <string name="question_8_true_answer">Պատ․՝1</string>
+
+    <string name="question_9">Հետադարձն արգելվում է՝</string>
+    <string name="question_9_answer_1">1.Հետիոտնային անցումների վրա։</string>
+    <string name="question_9_answer_2">2.Թունելներում։</string>
+    <string name="question_9_answer_3">3.Կամուրջների, ուղեկամուրջների, էստակադների վրա եւ դրանց տակ։</string>
+    <string name="question_9_answer_4">4.Երկաթուղային գծանցներում։</string>
+    <string name="question_9_answer_5">5.Թվարկած բոլոր դեպքերում։</string>
+    <string name="question_9_true_answer">Պատ․՝5</string>
+
+    <string name="question_10">Թույլատրվու՞մ է արդյոք դեղին ավտոբուսի վարորդին մուտքգործել խաչմերուկ։</string>
+    <string name="question_10_answer_1">1.Թույլատրվում է։</string>
+    <string name="question_10_answer_2">2.Արգելվում է։</string>
+    <string name="question_10_answer_3">3.Թույլատրվում է, եթե ավտոբուսը երթեւեկում է սահմանված երթուղով։</string>
+    <string name="question_10_true_answer">Պատ․՝2</string>
+
+    <string name="question_11">Ո՞ր պատասխանում է ճիշտ նշված երթեւեկության թույլատրելի ուղղությունը։</string>
+    <string name="question_11_answer_1">1.Ուղիղ եւ դեպի ձախ` մուտք գործելով բակ։</string>
+    <string name="question_11_answer_2">2.Միայն ուղիղ։</string>
+    <string name="question_11_answer_3">3.Միայն հետադարձ։</string>
+    <string name="question_11_answer_4">4.Ուղիղ եւ հետադարձ։</string>
+    <string name="question_11_true_answer">Պատ․՝2</string>
+
+    <string name="question_12">Հետադարձն արգելվում է, եթե ճանապարհի թեկուզ եւ մեկ ուղղությամբ տեսանելիությունը պակաս է՝</string>
+    <string name="question_12_answer_1">1.100 մ-ից։</string>
+    <string name="question_12_answer_2">2.150 մ-ից։</string>
+    <string name="question_12_answer_3">3.300 մ-ից։</string>
+    <string name="question_12_true_answer">3.300 մ-ից։</string>
+
+    <string name="question_13">
+        Դուք երթեւեկում եք երեք գոտի ունեցող երկկողմ երթեւեկությամբ
+        ճանապարհով։ Ո՞ր դեպքում է թույլատրվում մուտք գործել միջին
+        գոտի։</string>
+    <string name="question_13_answer_1">1.Միայն վազանցի դեպքում։</string>
+    <string name="question_13_answer_2">2.Միայն շրջանցման դեպքում։։</string>
+    <string name="question_13_answer_3">3.Միայն ձախ շրջադարձի կամ հետադարձի դեպքում։</string>
+    <string name="question_13_answer_4">4.Թվարկած բոլոր դեպքերում։</string>
+    <string name="question_13_true_answer">Պատ․՝4</string>
+
+    <string name="question_14">Ո՞ր ուղղությամբ է թույլատրվում բեռնատար ավտոմոբիլի երթեւեկությունը։</string>
+    <string name="question_14_answer_1">1.Միայն դեպի աջ։</string>
+    <string name="question_14_answer_2">2.Դեպի աջ, դեպի ձախ եւ հակառակ ուղղությամբ։</string>
+    <string name="question_14_answer_3">3.Միայն դեպի ձախ։</string>
+    <string name="question_14_true_answer">Պատ․՝2</string>
+
+    <string name="question_15">Ո՞ր նկարում է վարորդը ճիշտ կատարում մանեւրը։</string>
+    <string name="question_15_answer_1">1.1</string>
+    <string name="question_15_answer_2">2.2</string>
+    <string name="question_15_answer_3">3.3</string>
+    <string name="question_15_true_answer">Պատ․՝1</string>
+
+    <string name="question_16">Ո՞ր տրանսպորտային միջոցի վարորդն է ճիշտ կատարում հետադարձը։</string>
+    <string name="question_16_answer_1">1.Կապույտ ավտոմոբիլի վարորդը։</string>
+    <string name="question_16_answer_2">2.Կարմիր ավտոմոբիլի վարորդը։</string>
+    <string name="question_16_answer_3">3.Երկու վարորդներն էլ։</string>
+    <string name="question_16_true_answer">Պատ․՝2</string>
+
+    <string name="question_17">
+        Ճանապարհային նշանների, գծանշման եւ բաժանարար գոտու
+        բացակայության դեպքում վարորդները երկկողմ երթեւեկությամբ
+        ճանապարհների երթեւեկելի մասում գտնվող ճանապարհային
+        կառույցների տարրերը պետք է շրջանցեն՝
+    </string>
+    <string name="question_17_answer_1">1.Աջ կողմից։</string>
+    <string name="question_17_answer_2">2.Ձախ կողմից։</string>
+    <string name="question_17_true_answer">Պատ․՝1</string>
+
+    <string name="question_18">Ո՞ր ուղղությամբ է արգելվում երթեւեկությունը։</string>
+    <string name="question_18_answer_1">1.Միայն դեպի ձախ։</string>
+    <string name="question_18_answer_2">2.Միայն դեպի աջ։</string>
+    <string name="question_18_answer_3">3.Ուղիղ եւ դեպի ձախ։</string>
+    <string name="question_18_answer_4">4.Բոլոր ուղղություններով։</string>
+    <string name="question_18_true_answer">Պատ․՝2</string>
+
+    <string name="question_19">
+        Ո՞ր տրանսպորտային միջոցի վարորդն է խախտում
+        կանոնները շրջադարձ կատարելիս՝ արգելակման գոտի
+        ունեցող ճանապարհին։
+    </string>
+    <string name="question_19_answer_1">1.Երկու վարորդն էլ։</string>
+    <string name="question_19_answer_2">2.Դեղին ավտոմոբիլի վարորդը։</string>
+    <string name="question_19_answer_3">3.Երկու վարորդն էլ շրջադարձը կատարում են ճիշտ։</string>
+    <string name="question_19_true_answer">Պատ․՝2</string>
+
+    <string name="question_20">
+        Թույլատրվու՞մ է արդյոք տվյալ իրադրությունում կարմիր
+        ավտոմոբիլի վարորդին շարունակել երթեւեկությունը։
+    </string>
+    <string name="question_20_answer_1">1.Թույլատրվում է։</string>
+    <string name="question_20_answer_2">2.Արգելվում է։</string>
+    <string name="question_20_true_answer">Պատ․՝2</string>
+
+    <string name="question_21">
+        Երեք գոտի ունեցող երկկողմ երթեւեկությամբ ճանապարհի վրա
+        Ձեզ անհրաժեշտ է կատարել ձախ շրջադարձ։ Ո՞ր գոտուց
+        կկատարեք տվյալ մանեւրը։
+    </string>
+    <string name="question_21_answer_1">1.Աջ գոտուց։</string>
+    <string name="question_21_answer_2">2.Միջին գոտուց։</string>
+    <string name="question_21_answer_3">3.Աջ կամ միջին գոտուց։</string>
+    <string name="question_21_answer_4">4.Միջին գոտուց, եթե զբաղեցված է աջ գոտին։։</string>
+    <string name="question_21_true_answer">Պատ․՝2</string>
+
+    <string name="question_22">
+        Թույլատրվու՞մ է արդյոք կարմիր ավտոմոբիլի վարորդին
+        երթեւեկել տրամվայի գծերով։
+    </string>
+    <string name="question_22_answer_1">1.Թույլատրվում է</string>
+    <string name="question_22_answer_2">2.Արգելվում է</string>
+    <string name="question_22_true_answer">Պատ․՝1</string>
+
+    <string name="question_23">Հետադարձն արգելվում է՝</string>
+    <string name="question_23_answer_1">1.Հետիոտնային անցումների վրա եւ թունելներում։</string>
+    <string name="question_23_answer_2">
+        2.Կամուրջների, ուղեկամուրջների, էստակադների վրա եւ
+        դրանց տակ։
+    </string>
+    <string name="question_23_answer_3">3.Երկաթուղային գծանցներում։</string>
+    <string name="question_23_answer_4">
+        4.Ճանապարհի` թեկուզ եւ մեկ ուղղությամբ 100 մ-ից պակաս
+        տեսանելիության տեղերում։
+    </string>
+    <string name="question_23_answer_5">5.Բոլոր թվարկած դեպքերում։</string>
+    <string name="question_23_true_answer">Պատ․՝5</string>
+
+    <string name="question_24">Ո՞ր ուղղություններով է թույլատրվում երթեւեկությունը։</string>
+    <string name="question_24_answer_1">1.Միայն դեպի ձախ։</string>
+    <string name="question_24_answer_2">2.Ուղիղ, դեպի ձախ եւ հետադարձ։</string>
+    <string name="question_24_answer_3">3.Միայն ուղիղ։</string>
+    <string name="question_24_true_answer">Պատ․՝2</string>
+
+    <string name="question_25">
+        Ո՞ր տրանսպորտային միջոցների վարորդներն են խախտել
+        ճանապարհային նշանի պահանջները։
+    </string>
+    <string name="question_25_answer_1">1.Մոտոցիկլների վարորդները։</string>
+    <string name="question_25_answer_2">2.Ավտոմոբիլի եւ կողային կցորդով մոտոցիկլի վարորդները։</string>
+    <string name="question_25_answer_3">3.Միայն ավտոմոբիլի վարորդը։</string>
+    <string name="question_25_answer_4">4.Բոլոր տրանսպորտային միջոցների վարորդները։</string>
+    <string name="question_25_true_answer">Պատ․՝4</string>
+
+    <string name="question_26">
+        Համընթաց ուղղությամբ երթեւեկող տրանսպորտային միջոցների
+        միաժամանակյա վերադասավորման դեպքում ճանապարհը պետք
+        է զիջի՝
+    </string>
+    <string name="question_26_answer_1">1.Ձախից ընթացող տրանսպորտային միջոցի վարորդը։</string>
+    <string name="question_26_answer_2">2.Աջից ընթացող տրանսպորտային միջոցի վարորդը։</string>
+    <string name="question_26_true_answer">Պատ․՝1</string>
+
+    <string name="question_27">
+        Ո՞ր տրանսպորտային միջոցի վարորդն ունի առաջնահերթ
+        երթեւեկության իրավունք։
+    </string>
+    <string name="question_27_answer_1">1.Բեռնատար ավտոմոբիլի վարորդը։</string>
+    <string name="question_27_answer_2">2.Ավտոբուսի վարորդը։</string>
+    <string name="question_27_true_answer">Պատ․՝1</string>
+
+    <string name="question_28">
+        Պարտավո՞ր է արդյոք սահմանված երթուղով երթեւեկող
+        ավտոբուսի վարորդը նշված իրադրությունում զիջել
+        ճանապարհը։
+    </string>
+    <string name="question_28_answer_1">1.Պարտավոր է։</string>
+    <string name="question_28_answer_2">2.Պարտավոր չէ։</string>
+    <string name="question_28_answer_3">3.Պարտավոր չէ, քանի որ երթեւեկում է ուղիղ։</string>
+    <string name="question_28_true_answer">Պատ․՝1</string>
+
+    <string name="question_29">
+        Եթե համապատասխան նշաններով կահավորված երկայնական
+        թեքությամբ ճանապարհահատվածներում հանդիպակաց
+        երթեւեկությունը դժվարացած է, ապա ճանապարհը պետք է
+        զիջել՝
+    </string>
+    <string name="question_29_answer_1">1.Վայրէջքի ուղղությամբ ընթացող տրանսպորտային միջոցին։</string>
+    <string name="question_29_answer_2">2.Ընդհանուր օգտագործման տրանսպորտային միջոցին։</string>
+    <string name="question_29_answer_3">3.Վերելքի ուղղությամբ ընթացող տրանսպորտային միջոցին։</string>
+    <string name="question_29_true_answer">Պատ․՝3</string>
+
+    <string name="question_30">
+        Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի
+        ճանապարհը։
+    </string>
+    <string name="question_30_answer_1">1.Տրակտորի վարորդը։</string>
+    <string name="question_30_answer_2">2.Ավտոբուսի վարորդը։</string>
+    <string name="question_30_true_answer">Պատ․՝2</string>
+
+    <string name="question_31">Երթեւեկության առավելություն ունի՝</string>
+    <string name="question_31_answer_1">
+        1.Կապույտ ավտոմոբիլը, քանի որ կարմիրը փոխում է
+        երթեւեկության ուղղությունը դեպի ձախ։
+    </string>
+    <string name="question_31_answer_2">
+        2.Կարմիր ավտոմոբիլը, քանի որ միաժամանակյա
+        վերադասավորման դեպքում գտնվում է աջ կողմում։
+    </string>
+    <string name="question_31_answer_3">
+        3.Կապույտ ավտոմոբիլը, քանի որ միաժամանակյա
+        վերադասավորման դեպքում գտնվում է ձախ կողմում։
+    </string>
+    <string name="question_31_true_answer">Պատ․՝2</string>
+
+    <string name="question_32">
+        Պարտավո՞ր են արդյոք տրանսպորտային միջոցների
+        վարորդները բնակավայրերում ճանապարհը զիջել
+        կահավորված եւ նշված կանգառի կետերի տարածքից
+        երթեւեկությունը սկսող ընդհանուր օգտագործման
+        տրանսպորտային միջոցներին։
+    </string>
+    <string name="question_32_answer_1">1.Այո։</string>
+    <string name="question_32_answer_2">2.Ոչ։</string>
+    <string name="question_32_true_answer">Պատ․՝1</string>
+
+    <string name="question_33">
+        Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի
+        ճանապարհը։
+    </string>
+    <string name="question_33_answer_1">1.Թեթեւ մարդատար ավտոմոբիլի վարորդը։</string>
+    <string name="question_33_answer_2">2.Բեռնատար ավտոմոբիլի վարորդը։</string>
+    <string name="question_33_true_answer">Պատ․՝1</string>
+
+    <string name="question_34">
+        Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի
+        ճանապարհը։
+    </string>
+    <string name="question_34_answer_1">1.Ավտոբուսի վարորդը։</string>
+    <string name="question_34_answer_2">2.Ավտոմոբիլի վարորդը։</string>
+    <string name="question_34_true_answer">Պատ․՝2</string>
+
+    <string name="question_35">
+        Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի
+        ճանապարհը։
+    </string>
+    <string name="question_35_answer_1">1.Ավտոմոբիլի վարորդը։</string>
+    <string name="question_35_answer_2">2.Տրամվայի վարորդը։</string>
+    <string name="question_35_true_answer">Պատ․՝1</string>
+
+    <string name="question_36">Նշե՛ք խաչմերուկի անցման հերթականությունը`</string>
+    <string name="question_36_answer_1">1.Ավտոբուսը, բեռնատար ավտոմոբիլը, լծասայլը։</string>
+    <string name="question_36_answer_2">2.Ավտոբուսը եւ լծասայլը, բեռնատար ավտոմոբիլը։</string>
+    <string name="question_36_true_answer">Պատ․՝2</string>
+
+    <string name="question_37">
+        Հանդիպակաց երթեւեկության դեպքում կտրուկ վայրէջքի վրա
+        անհրաժեշտ է ճանապարհը զիջել՝
+    </string>
+    <string name="question_37_answer_1">1.Ընդհանուր օգտագործման տրանսպորտային միջոցին։</string>
+    <string name="question_37_answer_2">2.Վերեւ բարձրացող տրանսպորտային միջոցին։</string>
+    <string name="question_37_answer_3">3.Ներքեւ իջնող տրանսպորտային միջոցին։</string>
+    <string name="question_37_true_answer">Պատ․՝2</string>
+
+    <string name="question_38">
+        Բնակավայրերում միեւնույն ուղղությամբ երթեւեկության 3 եւ
+        ավելի գոտիների առկայության դեպքում ձախ եզրային գոտի
+        զբաղեցնել թույլատրվու՞մ է արդյոք ընդհանուր օգտագործման
+        տրանսպորտային միջոցներին։
+    </string>
+    <string name="question_38_answer_1">1.Թույլատրվում է վազանց կատարելիս։</string>
+    <string name="question_38_answer_2">2.Թույլատրվում է ձախ շրջադարձ կամ հետադարձ կատարելիս։</string>
+    <string name="question_38_answer_3">3.Թույլատրվում է բոլոր դեպքերում։</string>
+    <string name="question_38_true_answer">Պատ․՝2</string>
+
+    <string name="question_39">
+        Բոլոր ճանապարհներին միեւնույն ուղղությամբ երթեւեկության 3
+        եւ ավելի գոտիների առկայության դեպքում ձախ եզրային գոտի
+        զբաղեցնել թույլատրվու՞մ է արդյոք ընդհանուր օգտագործման
+        տրանսպորտային միջոցներին։
+    </string>
+    <string name="question_39_answer_1">1.Թույլատրվում է վազանց կատարելիս։</string>
+    <string name="question_39_answer_2">2.Թույլատրվում է ձախ շրջադարձ կամ հետադարձ կատարելիս։</string>
+    <string name="question_39_answer_3">3.Թույլատրվում է բոլոր դեպքերում։</string>
+    <string name="question_39_true_answer">Պատ․՝2</string>
+
+    <string name="question_40">Ինչպե՞ս պետք է վարվի երթուղային ավտոբուսի վարորդը տվյալ իրավիճակում։</string>
+    <string name="question_40_answer_1">1.Ճանապարհը զիջի թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_40_answer_2">2.Միացնի շրջադարձի ցուցիչը, տա ձայնային ազդանշան եւ սկսի երթեւեկությունը։</string>
+    <string name="question_40_answer_3">
+        3.Սկսի երթեւեկությունը` համոզված լինելով, որ թեթեւ
+        մարդատար ավտոմոբիլի վարորդը զիջում է ճանապարհը։
+    </string>
+    <string name="question_40_true_answer">Պատ․՝3</string>
+
+    <string name="question_41">Տվյալ իրադրությունում սպիտակ թեթեւ մարդատար ավտոմոբիլի վարորդը`</string>
+    <string name="question_41_answer_1">
+        1.Ճանապարհը պետք է զիջի երթուղային ավտոբուսին, որը
+        սկսում է երթեւեկությունը նշված կանգառի կետից։
+    </string>
+    <string name="question_41_answer_2">
+        2.Ունի առաջնահերթ երթեւեկության իրավունք, քանի որ
+        երթուղային ավտոբուսը վերադասավորվում է երկրորդ գոտի
+        անցնելով։
+    </string>
+    <string name="question_41_true_answer">Պատ․՝1</string>
+
+    <string name="question_42">Ո՞ր տրանսպորտային միջոցի վարորդն ունի առաջնահերթ երթեւեկության իրավունք։</string>
+    <string name="question_42_answer_1">1.Թեթեւ մարդատար ավտոմոբիլի վարորդը։</string>
+    <string name="question_42_answer_2">2.Երթուղային ավտոբուսի վարորդը։</string>
+    <string name="question_42_true_answer">Պատ․՝1</string>
+
+    <string name="question_43">Ո՞ր տրանսպորտային միջոցի վարորդն ունի առաջնահերթ երթեւեկության իրավունք տվյալ իրավիճակում։</string>
+    <string name="question_43_answer_1">1.Ավտոբուսի վարորդը։</string>
+    <string name="question_43_answer_2">2.Թեթեւ մարդատար ավտոմոբիլի վարորդը։</string>
+    <string name="question_43_answer_3">3.Թեթեւ մարդատար ավտոմոբիլի վարորդը իրավունք չունի անցնել աջ գոտի։</string>
+    <string name="question_43_true_answer">Պատ․՝1</string>
+
+    <string name="question_44">
+        Խաչմերուկում որտեղ կազմակերպված է շրջանաձեւ
+        երթեւեկություն, պարտավո՞ր է արդյոք ավտոբուսի վարորդը
+        զիջել ճանապարհը բեռնատար ավտոմոբիլին
+    </string>
+    <string name="question_44_answer_1">1.Պարտավոր է։</string>
+    <string name="question_44_answer_2">2.Պարտավոր չէ։</string>
+    <string name="question_44_true_answer">Պատ․՝2</string>
+
+    <string name="question_45">
+        Երթեւեկությունն ուղիղ շարունակող ավտոբուսի վարորդը
+        պարտավո՞ր է արդյոք զիջել ճանապարհը բեռնատար
+        ավտոմոբիլին։
+    </string>
+    <string name="question_45_answer_1">1.Պարտավոր է։</string>
+    <string name="question_45_answer_2">2.Պարտավոր չէ։</string>
+    <string name="question_45_true_answer">Պատ․՝1</string>
+
+    <string name="question_46">
+        Եթե մտադիր եք շարունակել երթեւեկությունն ուղիղ, ո՞ր
+        տրանսպորտային միջոցին պետք է զիջեք ճանապարհը։
+    </string>
+    <string name="question_46_answer_1">1.Երկու տրանսպորտային միջոցներին։</string>
+    <string name="question_46_answer_2">2.Միայն ավտոբուսին։</string>
+    <string name="question_46_answer_3">3.Միայն թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_46_answer_4">4.Ոչ մեկին։</string>
+    <string name="question_46_true_answer">Պատ․՝1</string>
+
+    <string name="question_47">Եթե մտադիր եք շարունակել երթեւեկությունն ուղիղ, ու՞մ պետք է զիջեք ճանապարհը։</string>
+    <string name="question_47_answer_1">1.Միայն թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_47_answer_2">2.Միայն ավտոբուսին եւ թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_47_answer_3">3.Բոլոր տրանսպորտային միջոցներին։</string>
+    <string name="question_47_answer_4">4.Միայն մոտոցիկլին։</string>
+    <string name="question_47_true_answer">Պատ․՝2</string>
+
+    <string name="question_48">Տվյալ իրադրությունում պարտավո՞ր է մոտոցիկլի վարորդը զիջել ճանապարհը։</string>
+    <string name="question_48_answer_1">1.Պարտավոր չէ։</string>
+    <string name="question_48_answer_2">2.Պարտավոր է։</string>
+    <string name="question_48_true_answer">Պատ․՝2</string>
+
+    <string name="question_49">Տվյալ իրադրությունում ունե՞ք արդյոք նշված մանեւրի իրավունք։</string>
+    <string name="question_49_answer_1">1.Այո։</string>
+    <string name="question_49_answer_2">2.Ոչ։</string>
+    <string name="question_49_true_answer">Պատ․՝2</string>
+
+    <string name="question_50">Դուք շարունակում եք երթեւեկությունն ուղիղ, ո՞ր տրանսպորտային միջոցին պետք է զիջեք ճանապարհը։</string>
+    <string name="question_50_answer_1">1.Միայն թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_50_answer_2">2.Բեռնատար ավտոմոբիլին։</string>
+    <string name="question_50_answer_3">3.Երկու տրանսպորտային միջոցներին։</string>
+    <string name="question_50_answer_4">4.Ոչ մեկին։</string>
+    <string name="question_50_true_answer">Պատ․՝3</string>
+
+    <string name="question_51">Դուք շարունակում եք երթեւեկությունն ուղիղ, պարտավո՞ր եք արդյոք զիջել ճանապարհը թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_51_answer_1">1.Պարտավոր եք։</string>
+    <string name="question_51_answer_2">2.Պարտավոր չեք։</string>
+    <string name="question_51_true_answer">Պատ․՝2</string>
+
+    <string name="question_52">
+        Դուք սկսում եք երթեւեկել ճամփեզրից, պարտավո՞ր եք արդյոք
+        զիջել ճանապարհը թեթեւ մարդատար ավտոմոբիլին, որը
+        կատարում է հետադարձ։
+    </string>
+    <string name="question_52_answer_1">1.Պարտավոր եք։</string>
+    <string name="question_52_answer_2">2.Պարտավոր չեք։</string>
+    <string name="question_52_true_answer">Պատ․՝1</string>
+
+    <string name="question_53">Դուք շարունակում եք երթեւեկությունն ուղիղ, ո՞ր տրանսպորտային միջոցին պետք է զիջեք ճանապարհը։</string>
+    <string name="question_53_answer_1">1.Միայն թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_53_answer_2">2.Ոչ մեկին։</string>
+    <string name="question_53_answer_3">3.Միայն թեթեւ մարդատար ավտոմոբիլին եւ մոտոցիկլին։</string>
+    <string name="question_53_answer_4">4.Բոլոր տրանսպորտային միջոցներին։</string>
+    <string name="question_53_true_answer">Պատ․՝1</string>
+
+    <string name="question_54">Եթե մտադիր եք կատարել ձախ շրջադարձ, ո՞ր տրանսպորտային միջոցին պետք է զիջեք ճանապարհը։</string>
+    <string name="question_54_answer_1">1.Մոտոցիկլին։</string>
+    <string name="question_54_answer_2">2.Պարեկային ավտոմոբիլին։</string>
+    <string name="question_54_answer_3">3.Բոլոր տրանսպորտային միջոցներին։</string>
+    <string name="question_54_true_answer">Պատ․՝3</string>
+
+    <string name="question_55">Եթե մտադիր եք խաչմերուկում կատարել հետադարձ, ո՞ր տրանսպորտային միջոցին պետք է զիջեք ճանապարհը։</string>
+    <string name="question_55_answer_1">1.Թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_55_answer_2">2.Բոլոր տրանսպորտային միջոցներին։</string>
+    <string name="question_55_answer_3">3.Բեռնատար ավտոմոբիլին։</string>
+    <string name="question_55_true_answer">Պատ․՝2</string>
+
+    <string name="question_56">
+        Եթե մտադիր եք խաչմերուկում կատարել ձախ շրջադարձ, ո՞ր
+        տրանսպորտային միջոցին պետք է զիջեք ճանապարհը։
+    </string>
+    <string name="question_56_answer_1">1.Բեռնատար ավտոմոբիլին։</string>
+    <string name="question_56_answer_2">2.Բոլոր տրանսպորտային միջոցներին։</string>
+    <string name="question_56_answer_3">3.Ոչ մեկին։</string>
+    <string name="question_56_true_answer">Պատ․՝2</string>
+
+    <string name="question_57">
+        Եթե մտադիր եք խաչմերուկում կատարել ձախ շրջադարձ, ո՞ր
+        տրանսպորտային միջոցին պետք է զիջեք ճանապարհը։
+    </string>
+    <string name="question_57_answer_1">1.Ոչ մեկին։</string>
+    <string name="question_57_answer_2">2.Միայն ավտոբուսին։</string>
+    <string name="question_57_answer_3">3.Միայն միացված փարոսիկով բեռնատար ավտոմոբիլին։</string>
+    <string name="question_57_answer_4">4.Բոլոր տրանսպորտային միջոցներին։</string>
+    <string name="question_57_true_answer">Պատ․՝2</string>
+
+    <string name="question_58">
+        Եթե մտադիր եք խաչմերուկում կատարել հետադարձ, ո՞ր
+        տրանսպորտային միջոցին պետք է զիջեք ճանապարհը։
+    </string>
+    <string name="question_58_answer_1">1.Բեռնատար ավտոմոբիլին։</string>
+    <string name="question_58_answer_2">2.Թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_58_answer_3">3.Բոլոր տրանսպորտային միջոցներին։</string>
+    <string name="question_58_answer_4">4.Ոչ մեկին։</string>
+    <string name="question_58_true_answer">Պատ․՝1</string>
+
+    <string name="question_59">Եթե մտադիր եք կատարել ձախ շրջադարձ, ո՞ր տրանսպորտային միջոցին պետք է զիջեք ճանապարհը։</string>
+    <string name="question_59_answer_1">1.Ավտոբուսին։</string>
+    <string name="question_59_answer_2">2.Ավտոբուսին եւ թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_59_answer_3">3.Թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_59_answer_4">4.Ոչ մեկին։</string>
+    <string name="question_59_true_answer">Պատ․՝4</string>
+
+    <string name="question_60">
+        Եթե մտադիր եք կատարել աջ շրջադարձ, պարտավո՞ր եք արդյոք
+        զիջել ճանապարհը թեթեւ մարդատար ավտոմոբիլին։
+    </string>
+    <string name="question_60_answer_1">1.Պարտավոր եք։</string>
+    <string name="question_60_answer_2">2.Պարտավոր չեք։</string>
+    <string name="question_60_true_answer">Պատ․՝2</string>
+
+    <string name="question_61">Եթե մտադիր եք կատարել աջ շրջադարձ, ո՞ր տրանսպորտային միջոցին պետք է զիջեք ճանապարհը։</string>
+    <string name="question_61_answer_1">1.Ոչ մեկին։</string>
+    <string name="question_61_answer_2">2.Թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_61_answer_3">3.Մոտոցիկլին եւ թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_61_true_answer">Պատ․՝1</string>
+
+    <string name="question_62">Պարտավոր ենք արդյո՞ք այս իրավիճակում զիջել հանդիպակացից մոտեցող ավտոմոբիլի վարորդին:</string>
+    <string name="question_62_answer_1">1.Այո</string>
+    <string name="question_62_answer_2">2.ՈՉ</string>
+    <string name="question_62_true_answer">Պատ․՝1</string>
+
+    <string name="question_63">Այս իրավիճակում պարտավոր եք</string>
+    <string name="question_63_answer_1">1.Զիջել ճանապարհը</string>
+    <string name="question_63_answer_2">2.Անցնել առաջինը</string>
+    <string name="question_63_true_answer">Պատ․՝1</string>
+
+    <string name="question_64">Տվյալ իրավիճակում</string>
+    <string name="question_64_answer_1">1.Կարող ենք շրջանցել բեռնատարին աջ կողմից՝ կողնակով:</string>
+    <string name="question_64_answer_2">2.Շարունակել երթևեկությունը միայն բեռնատարի անցումից հետո:</string>
+    <string name="question_64_answer_3">3.Թույլատրվում են երկու գործողությունները</string>
+    <string name="question_64_true_answer">Պատ․՝2</string>
+
+    <string name="question_65">Այս իրավիճակում</string>
+    <string name="question_65_answer_1">1.Պետք է զիջեք ճանապարհը</string>
+    <string name="question_65_answer_2">2.Կարող եք առաջինն անցնել</string>
+    <string name="question_65_true_answer">Պատ․՝2</string>
+
+    <string name="question_66">Տվյալ իրավիճակում ուղիղ երթևեկելու դեպքում թույլատրվում է</string>
+    <string name="question_66_answer_1">1.Շրջանցել բեռնատարն աջ կողմից:</string>
+    <string name="question_66_answer_2">2.Շարունակել երթևեկությունը միայն բեռնատարի անցումից հետո</string>
+    <string name="question_66_answer_3">3.Նշված երկու դեպքերն էլ թույլատրելի են</string>
+    <string name="question_66_true_answer">Պատ․՝3</string>
+
+    <string name="question_67">Ո՞ր հետագծով է թույլատրվում մոտենալ մայթեզրում սպասող հետիոտնին</string>
+    <string name="question_67_answer_1">1.Միայն Ա</string>
+    <string name="question_67_answer_2">2.Միայն Բ</string>
+    <string name="question_67_answer_3">3.Թույլատրվում է երկու հետագծերով</string>
+    <string name="question_67_true_answer">Պատ․՝2</string>
+
+    <string name="question_68">Դուրս գալով ճանապարհ այս իրավիճակում պարտավոր ենք զիջել</string>
+    <string name="question_68_answer_1">1.Աջ կողմից մոտեցող վարորդներին</string>
+    <string name="question_68_answer_2">2.Բոլոր վարոդներին</string>
+    <string name="question_68_answer_3">3.Վարորդներին և հետիոտներին</string>
+    <string name="question_68_true_answer">Պատ․՝3</string>
+
+    <string name="question_69">Այս իրավիճակում զիջել ճանապարհը պարտավոր է</string>
+    <string name="question_69_answer_1">1.Թեթև մարդատարի վարորդը</string>
+    <string name="question_69_answer_2">2.Մոտոցիկլի վարորդը</string>
+    <string name="question_69_true_answer">Պատ․՝1</string>
+
+    <string name="question_70">Ո՞ր հետագծով է թույլատրված հետադարձը</string>
+    <string name="question_70_answer_1">1.Միայն Ա</string>
+    <string name="question_70_answer_2">2.Միայն Բ</string>
+    <string name="question_70_answer_3">3.Երկու հետագծերով</string>
+    <string name="question_70_true_answer">Պատ․՝1</string>
+
+    <string name="question_71">
+        Կապույտ ավտոմոբիլի վարորդը ո՞ր նկարում ներկայացված
+        իրավիճակում ունի առաջնահերթ երթևեկության իրավունք մյուս
+        վարորդի նկատմամբ
+    </string>
+    <string name="question_71_answer_1">1.Ձախ</string>
+    <string name="question_71_answer_2">2.Աջ</string>
+    <string name="question_71_answer_3">3.Երկու</string>
+    <string name="question_71_true_answer">Պատ․՝3</string>
+
+    <string name="question_72">Հետադարձը նշված տեղում</string>
+    <string name="question_72_answer_1">1.Թույլատրվում է, եթե մոտեցող գնացք չկա</string>
+    <string name="question_72_answer_2">2.Թույլատրվում է</string>
+    <string name="question_72_answer_3">3.Արգելվում է</string>
+    <string name="question_72_true_answer">Պատ․՝2</string>
+
+    <string name="question_73">Ո՞ր հետագծով է թույլատրված աջ շրջադարձը</string>
+    <string name="question_73_answer_1">1.Միայն Ա</string>
+    <string name="question_73_answer_2">2.Միայն Բ</string>
+    <string name="question_73_answer_3">3.Երկու հետագծերով</string>
+    <string name="question_73_true_answer">Պատ․՝1</string>
+
+    <string name="question_74">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը</string>
+    <string name="question_74_answer_1">1.Բեռնատարի</string>
+    <string name="question_74_answer_2">2.Թեթև մարդատարի</string>
+    <string name="question_74_true_answer">Պատ․՝2</string>
+
+    <string name="question_75">Ո՞ր հետագծով է թույլատրվում հետադարձը վարորդին</string>
+    <string name="question_75_answer_1">1.Միայն Ա</string>
+    <string name="question_75_answer_2">2.Միայն Բ</string>
+    <string name="question_75_answer_3">3.Ցանկացած</string>
+    <string name="question_75_true_answer">Պատ․՝2</string>
+
+    <string name="question_76">Այս գոտուց ո՞ր ուղղությամբ կարող է թեթև մարդատարի վարորդը շարունակել երթևեկությունը</string>
+    <string name="question_76_answer_1">1.Միայն ուղիղ</string>
+    <string name="question_76_answer_2">2.Ուղիղ և աջ</string>
+    <string name="question_76_answer_3">3.Ցանկացած</string>
+    <string name="question_76_answer_4">4.Ուղիղ, ձախ և հակառակ</string>
+    <string name="question_76_true_answer">Պատ․՝4</string>
+
+    <string name="question_77">Դեպի աջից հարող ճանապարհ աջ շրջադարձ կատարելիս անհրաժեշտ է</string>
+    <string name="question_77_answer_1">1.Շարունակել երթևեկությունն այս գոտով և շրջադարձը կատարել միայն այդ գոտուց</string>
+    <string name="question_77_answer_2">2.Վերադասավորվել արգելակման գոտի և շրջադարձը կատարել միայն այդ գոտուց</string>
+    <string name="question_77_answer_3">3.Երկու տարբերակներն էլ ճիշտ են:</string>
+    <string name="question_77_true_answer">Պատ․՝2</string>
+
+    <string name="question_78">Ձախ բակ մուտք գործելիս ո՞ւմ պետք է զիջել ճանապարհը</string>
+    <string name="question_78_answer_1">1.Միայն հանդիպակացից մոտեցող վարորդին</string>
+    <string name="question_78_answer_2">2.Վարորդին և հետիոտներին</string>
+    <string name="question_78_answer_3">3.Ոչ ոքի</string>
+    <string name="question_78_true_answer">Պատ․՝2</string>
+
+    <string name="question_79">Հետադարձը այս խաչմերուկում</string>
+    <string name="question_79_answer_1">1.Թույլատրված է</string>
+    <string name="question_79_answer_2">2.Արգելված է</string>
+    <string name="question_79_true_answer">Պատ․՝1</string>
+
+    <string name="question_80">Պարտավոր է՞ թեթև մարդատարի վարորդը զիջել ճանապարհն իր գոտի վերադասավորվող ավտոկռունկի վարորդին</string>
+    <string name="question_80_answer_1">1.Այո, եթե ավտոկռունկը նարնջագույն փարոսիկներով է կահավորված</string>
+    <string name="question_80_answer_2">2.Այո</string>
+    <string name="question_80_answer_3">3.Ոչ</string>
+    <string name="question_80_true_answer">Պատ․՝3</string>
+
+    <string name="question_81">Թույլատրված է՞ հետադարձն այս վայրում</string>
+    <string name="question_81_answer_1">1.Այո</string>
+    <string name="question_81_answer_2">2.Թույլատրված է, եթե տեսանելիությունը 100 մետր և ավելի է</string>
+    <string name="question_81_answer_3">3.Ոչ</string>
+    <string name="question_81_true_answer">Պատ․՝2</string>
+
+    <string name="question_82">
+        Պարտավոր է արդյո՞ք թեթև մարդատարի վարորդը
+        վերադասավորվել աջ եզրային գոտի վազանց ավարտելուց հետո
+    </string>
+    <string name="question_82_answer_1">1.Ոչ, եթե գործում են բնակավայրով երթևեկության կանոնները</string>
+    <string name="question_82_answer_2">2.Այո</string>
+    <string name="question_82_answer_3">3.Ոչ</string>
+    <string name="question_82_true_answer">Պատ․՝1</string>
+
+    <string name="question_83">Ո՞ր հետագծով է թույլատրված ձախ շրջադարձը</string>
+    <string name="question_83_answer_1">1.Միայն Ա</string>
+    <string name="question_83_answer_2">2.Միայն Բ</string>
+    <string name="question_83_answer_3">3.Ցանկացած</string>
+    <string name="question_83_true_answer">Պատ․՝2</string>
+
+    <string name="question_84">
+        Այն դեպքերում, երբ տրանսպորտային միջոցների երթևեկության
+        ուղիները հատվում են, իսկ անցման հերթականությունը
+        կանոններով սահմանված չէ, ճանապարհը պետք է զիջի այն
+        վարորդը
+    </string>
+    <string name="question_84_answer_1">1.Որին տրանսպորտային միջոց է մոտենում աջից</string>
+    <string name="question_84_answer_2">2.Որին տրանսպորտային միջոց է մոտենում ձախից:</string>
+    <string name="question_84_true_answer">Պատ․՝1</string>
+
+    <string name="question_85">Ո՞ր վարորդը պետք է զիջի ճանապարհը</string>
+    <string name="question_85_answer_1">1.Շարժումը սկսող վարորդը</string>
+    <string name="question_85_answer_2">2.Կանգնել պատրստվող վարորդը</string>
+    <string name="question_85_true_answer">Պատ․՝1</string>
+
+    <string name="question_86">Հետադարձը նշված վայրում</string>
+    <string name="question_86_answer_1">1.Թույլատրվում է</string>
+    <string name="question_86_answer_2">2.Թույլատրվում է, եթե չի խոչընդոտում ընդհանուր օգտագործման տրանսպորտային միջոցների վարորդներին</string>
+    <string name="question_86_answer_3">3.Արգելվում է</string>
+    <string name="question_86_true_answer">Պատ․՝3</string>
+
+    <string name="question_87">Ո՞ր հետագծով է թույլատրված ձախ շրջադարձը</string>
+    <string name="question_87_answer_1">1.Միայն Ա</string>
+    <string name="question_87_answer_2">2.Միայն Բ</string>
+    <string name="question_87_answer_3">3.Ցանկացած</string>
+    <string name="question_87_true_answer">Պատ․՝2</string>
+
+    <string name="question_88">Թեթև մարդատարի վարորդը</string>
+    <string name="question_88_answer_1">1.Պետք է զիջի ճանապարհը</string>
+    <string name="question_88_answer_2">2.Ունի առավելություն, քանի որ մոտեցել է աջ կողմից</string>
+    <string name="question_88_true_answer">Պատ․՝1</string>
+
+    <string name="question_89">Ո՞ր հետագծով է թույլատրված աջ շրջադարձը</string>
+    <string name="question_89_answer_1">1.Միայն Ա</string>
+    <string name="question_89_answer_2">2.Միայն Բ</string>
+    <string name="question_89_answer_3">3.Ցանկացած</string>
+    <string name="question_89_true_answer">Պատ․՝1</string>
+
+    <string name="question_90">Ո՞ր հետագծով է թույլատրված հետադարձը</string>
+    <string name="question_90_answer_1">1.Միայն Ա</string>
+    <string name="question_90_answer_2">2.Ա կամ Գ</string>
+    <string name="question_90_answer_3">3.Բոլոր</string>
+    <string name="question_90_true_answer">Պատ․՝2</string>
+
+    <string name="question_91">Պարտավոր է՞ վարորդը վերադասավորվել աջ գոտի և նոր միայն կատարել աջ շրջադարձն այս իրավիճակում</string>
+    <string name="question_91_answer_1">1.Այո</string>
+    <string name="question_91_answer_2">2.Ոչ</string>
+    <string name="question_91_true_answer">Պատ․՝2</string>
+
+    <string name="question_92">Գտնվելով կամրջի սահմաններում թույլատրվո՞ւմ է հետադարձը</string>
+    <string name="question_92_answer_1">1.Թույլատրվում է, եթե տեսանելիությունը 100 մետր և ավելի է</string>
+    <string name="question_92_answer_2">2.Արգելվում է</string>
+    <string name="question_92_true_answer">Պատ․՝2</string>
+
+    <string name="question_93">Մուտք գործել խաչմերուկ նշված գոտուց</string>
+    <string name="question_93_answer_1">1.Թույլատրվում է միայն հետադարձ կատարելիս</string>
+    <string name="question_93_answer_2">2.Թույլատրվում է ցանկացած դեպքում</string>
+    <string name="question_93_true_answer">Պատ․՝2</string>
+
+    <string name="question_94">Թույլատրված է՞ հետադարձն այս վայրում</string>
+    <string name="question_94_answer_1">1.Այո</string>
+    <string name="question_94_answer_2">2.Թույլատրված է, եթե տեսանելիությունը 100 մետր և ավելի է</string>
+    <string name="question_94_answer_3">3.Ոչ</string>
+    <string name="question_94_true_answer">Պատ․՝2</string>
+
+    <string name="question_95">Առանց վերադասավորման երթևեկող վարորդը զիջել աջից վերադասավորվող վարորդին</string>
+    <string name="question_95_answer_1">1.Պարտավոր չէ</string>
+    <string name="question_95_answer_2">2.Պարտավոր է</string>
+    <string name="question_95_true_answer">Պատ․՝1</string>
+
+    <string name="question_96">Հետադարձն այս վայրում</string>
+    <string name="question_96_answer_1">1.Թույլատրվում է</string>
+    <string name="question_96_answer_2">2.Արգելվում է</string>
+    <string name="question_96_true_answer">Պատ․՝1</string>
+
+    <string name="question_97">Ձախ շրջադարձը թույլատրվում է</string>
+    <string name="question_97_answer_1">1.Միայն Ա հետագծով</string>
+    <string name="question_97_answer_2">2.Միայն Բ հետագծով</string>
+    <string name="question_97_answer_3">3.Ցանկացած հետագծով</string>
+    <string name="question_97_true_answer">Պատ․՝3</string>
+
+    <string name="question_98">
+        Կայանատեղիից միաժամանակ շարժումը սկսելու դեպքում
+        պարտավոր եք արդյո՞ք զիջել ճանապարհը առջևում գտնվող
+        վարորդին
+    </string>
+    <string name="question_98_answer_1">1.Այո</string>
+    <string name="question_98_answer_2">2.Ոչ</string>
+    <string name="question_98_true_answer">Պատ․՝1</string>
+
+    <string name="question_99">Ո՞ր հետագծով իրավունք ունի վարորդը կատարել ձախ շրջադարձն այս իրավիճակում</string>
+    <string name="question_99_answer_1">1.Միայն Ա</string>
+    <string name="question_99_answer_2">2.Միայն Բ</string>
+    <string name="question_99_answer_3">3.Ցանկացած</string>
+    <string name="question_99_true_answer">Պատ․՝3</string>
+
+    <string name="question_100">Խաչմերուկում թույլատրվում է արդյո՞ք հետընթաց կատարումով հետադարձ կատարել</string>
+    <string name="question_100_answer_1">1.Այո</string>
+    <string name="question_100_answer_2">2.Այո, եթե խոչընդոտ չի ստեղծի խաչմերուկով երթևեկողներին</string>
+    <string name="question_100_answer_3">3.Ոչ</string>
+    <string name="question_100_true_answer">Պատ․՝3</string>
+
+    <string name="question_101">Թույլատրվո՞ւմ է վարորդին այս իրավիճակում աջ շրջադարձ կատարել</string>
+    <string name="question_101_answer_1">1.Այո</string>
+    <string name="question_101_answer_2">2.Ոչ</string>
+    <string name="question_101_true_answer">Պատ․՝2</string>
+
+    <string name="question_102">Այս իրավիճակում կանգառ կատարելիս ո՞ր ազդանշանի լուսային ցուցիչը պետք է միացնի վարորդը</string>
+    <string name="question_102_answer_1">1.Աջ</string>
+    <string name="question_102_answer_2">2.Աջ, վերադասավորումից հետո ձախ</string>
+    <string name="question_102_answer_3">3.Ձախ</string>
+    <string name="question_102_true_answer">Պատ․՝3</string>
+
+    <string name="question_103">Ո՞ր հետագծերով է թույլատրված երթևեկությունը</string>
+    <string name="question_103_answer_1">1.Բոլոր</string>
+    <string name="question_103_answer_2">2.Միայն Ա</string>
+    <string name="question_103_answer_3">3.Միայն Ա կամ Գ</string>
+    <string name="question_103_true_answer">Պատ․՝3</string>
+
+    <string name="question_104">Տեսանելիության բացակայության պատճառով հետընթաց կատարելիս վարորդը պետք է</string>
+    <string name="question_104_answer_1">1.Ձայնային ազդանշան տա</string>
+    <string name="question_104_answer_2">2.Միացնի վթարային լուսային ազդանշանը</string>
+    <string name="question_104_answer_3">3.Դիմի այլ անձանց օգնությանը</string>
+    <string name="question_104_true_answer">Պատ․՝3</string>
+
+    <string name="question_105">Հետընթաց վարմամբ բակի մուտքն օգտագործելով հետադարձ կատարելն այս իրավիճակում</string>
+    <string name="question_105_answer_1">1.Թույլատրվում է, եթե չի խոչընդոտի այլ երթևեկողներին</string>
+    <string name="question_105_answer_2">2.Արգելվում է</string>
+    <string name="question_105_true_answer">Պատ․՝1</string>
+
+    <string name="question_106">Թույլատրվո՞ւմ է թեթև մարդատարի վարորդին սկսել շարժումը</string>
+    <string name="question_106_answer_1">1.Այո</string>
+    <string name="question_106_answer_2">2.Այո, եթե չի խոչընդոտի բեռնատարի վարորդին</string>
+    <string name="question_106_answer_3">3.Ոչ</string>
+    <string name="question_106_true_answer">Պատ․՝2</string>
+
+    <string name="question_107">Ո՞ր տարբերակում է թույլատրված հետընթացը</string>
+    <string name="question_107_answer_1">1.Խաչմերուկներում</string>
+    <string name="question_107_answer_2">2.Աջ եզրային չհանդիսացող գոտիներում</string>
+    <string name="question_107_answer_3">3.Հետիոտնային անցումներում</string>
+    <string name="question_107_true_answer">Պատ․՝2</string>
+
+    <string name="question_108">Տվյալ իրավիճակում թու՞յլատրվում է վարորոդին երթևեկությունը տրամվայի գծերով</string>
+    <string name="question_108_answer_1">1.Այո</string>
+    <string name="question_108_answer_2">2.Թույլատրվում է միայն հետադարձ կամ ձախ շրջադարձ կատարելու դեպքում</string>
+    <string name="question_108_answer_3">3.Ոչ</string>
+    <string name="question_108_true_answer">Պատ․՝3</string>
+
+    <string name="question_109">Պարտավոր է արդյո՞ք վարորդն այս իրավիճակում ձախ շրջադարձ կատարելիս լուսային ցուցիչով ազդանշան տալ</string>
+    <string name="question_109_answer_1">1.Այո</string>
+    <string name="question_109_answer_2">2.Այո, երբ առկա է հանդիպակաց երթևեկող</string>
+    <string name="question_109_answer_3">3.Պարտավոր չէ</string>
+    <string name="question_109_true_answer">Պատ․՝1</string>
+
+    <string name="question_110">Ձախ շրջադարձ թույլատրվում է</string>
+    <string name="question_110_answer_1">1.Միայն Ա հետագծով</string>
+    <string name="question_110_answer_2">2.Միայն Բ հետագծով</string>
+    <string name="question_110_answer_3">3.Երկու հետագծերով</string>
+    <string name="question_110_true_answer">Պատ․՝2</string>
+
+    <string name="question_111">Թույլատրվո՞ւմ է թեթև մարդատարի վարորդին հետընթաց վարմամբ մոտենալ ուղևորին կամուրջի վրա</string>
+    <string name="question_111_answer_1">1.Այո</string>
+    <string name="question_111_answer_2">2.Այո, եթե չի ստեղծի խոչընդոտ այլ մասնակիցներին</string>
+    <string name="question_111_answer_3">3.Ոչ</string>
+    <string name="question_111_true_answer">Պատ․՝3</string>
+
+    <string name="question_112">Թո՞ւյլատրվում է հետադարձ կատարել այս իրավիճակում</string>
+    <string name="question_112_answer_1">1.Թույլատրում է, եթե հետևից երթևեկողների համար 100 մետր և ավելից մենք տեսանելի ենք</string>
+    <string name="question_112_answer_2">2.Արգելվում է</string>
+    <string name="question_112_true_answer">Պատ․՝1</string>
+
+    <string name="question_113">Ի՞նչ կանոն է խախտում վարորդը մուտք գործելով բակ</string>
+    <string name="question_113_answer_1">1.Աջ շրջադարձ է կատարում միայն ուղիղ նշանի ազդման գոտում</string>
+    <string name="question_113_answer_2">2.Լուսային ցուցիչով ազդանշան չի տալիս</string>
+    <string name="question_113_answer_3">3.Երկու խախտումները միաժամանակ</string>
+    <string name="question_113_true_answer">Պատ․՝2</string>
+
+    <string name="question_114">Զիջել ճանապարհը բեռնատարի վարորդին</string>
+    <string name="question_114_answer_1">1.Պարտավոր ենք</string>
+    <string name="question_114_answer_2">2.Պարտավոր ենք, եթե նա այդ մասին ձեռքով ազդանշան է տվել</string>
+    <string name="question_114_answer_3">3.Պարտավոր չենք</string>
+    <string name="question_114_true_answer">Պատ․՝3</string>
+
+    <string name="question_115">Ո՞ր հետագծով է թույլատրված հետադարձը</string>
+    <string name="question_115_answer_1">1.Միայն Ա</string>
+    <string name="question_115_answer_2">2.Միայն Բ</string>
+    <string name="question_115_answer_3">3.Ցանկացած</string>
+    <string name="question_115_true_answer">Պատ․՝1</string>
+
+    <string name="question_116">Ո՞ր հետագծով է թույլատրված հետադարձը</string>
+    <string name="question_116_answer_1">1.Ցանկացած</string>
+    <string name="question_116_answer_2">2.Միայն Բ</string>
+    <string name="question_116_answer_3">3.Միայն Ա</string>
+    <string name="question_116_true_answer">Պատ․՝1</string>
+
+    <string name="question_117">Ճանապարհը պետք է զիջի</string>
+    <string name="question_117_answer_1">1.Թեթև մարդատարի վարորդը</string>
+    <string name="question_117_answer_2">2.Բեռնատարի վարորդը</string>
+    <string name="question_117_true_answer">Պատ․՝2</string>
+
+    <string name="question_118">
+        Թույլատրվո՞ւմ է պատահմամբ անցած խաչմերուկում հետընթաց
+        վարմամբ շտկել և շարունակել երթևեկությունը մեզ անհրաժեշտ
+        ուղղությամբ
+    </string>
+    <string name="question_118_answer_1">1.Այո</string>
+    <string name="question_118_answer_2">2.Ոչ</string>
+    <string name="question_118_true_answer">Պատ․՝2</string>
+
+    <string name="question_119">Այս գոտուց երթևեկությունը շարունակել թույլատրվում է</string>
+    <string name="question_119_answer_1">1.Միայն ձախ ուղղությամբ</string>
+    <string name="question_119_answer_2">2.Ձախ և հակառակ ուղղություններով</string>
+    <string name="question_119_answer_3">3.Աջ, ձախ և հակառակ ուղղություններով</string>
+    <string name="question_119_true_answer">Պատ․՝2</string>
+
+    <string name="question_120">Թույլատրվո՞ւմ է աջ բակը մտնել հետընթաց կատարելով նշված իրադրությունում</string>
+    <string name="question_120_answer_1">1.Այո, եթե չենք խոչընդոտի ընդհանուր օգտագործման տրանսպորտային միջոցներին</string>
+    <string name="question_120_answer_2">2.Ոչ</string>
+    <string name="question_120_true_answer">Պատ․՝2</string>
+
+    <string name="question_121">Վերադասավորվելով հարևան գոտի այս իրավիճակում</string>
+    <string name="question_121_answer_1">1.Պարտավոր եք զիջել նշված գոտով ընթացող վարորդներին</string>
+    <string name="question_121_answer_2">2.Ունեք երթևեկության առավելություն</string>
+    <string name="question_121_true_answer">Պատ․՝1</string>
+
+    <string name="question_122">Ո՞ր հետագծով է թույլատրված հետադարձը</string>
+    <string name="question_122_answer_1">1.Միայն Ա</string>
+    <string name="question_122_answer_2">2.Միայն Բ</string>
+    <string name="question_122_answer_3">3.Ցանկացած</string>
+    <string name="question_122_true_answer">Պատ․՝3</string>
+
+    <string name="question_123">Ո՞ր հետագծով է թույլատրված ձախ շրջադարձը</string>
+    <string name="question_123_answer_1">1.Միայն Ա</string>
+    <string name="question_123_answer_2">2.Միայն Գ</string>
+    <string name="question_123_answer_3">3.Ցանկացած</string>
+    <string name="question_123_true_answer">Պատ․՝3</string>
+
+    <string name="question_124">Այս իրավիճակում թո՞ւյլատրվում է հետընթացով մոտենալ ուղևորին</string>
+    <string name="question_124_answer_1">1.Այո</string>
+    <string name="question_124_answer_2">2.Ոչ</string>
+    <string name="question_124_true_answer">Պատ․՝1</string>
+
+    <string name="question_125">Ինչպե՞ս պետք է վարվեք խաչմերուկից դուրս ձախ շրջադարձի և հետադարձի ժամանակ</string>
+    <string name="question_125_answer_1">1.Պետք է ճանապարհը զիջել հանդիպակաց տրանսպորտային միջոցներին</string>
+    <string name="question_125_answer_2">2.Պետք է ճանապարհը զիջել հանդիպակաց տրանսպորտային միջոցներին և համընթաց երթևեկող տրամվայներին</string>
+    <string name="question_125_true_answer">Պատ․՝2</string>
+
+    <string name="question_126">Թույլատրվա՞ծ է հետընթացն այս իրավիճակում</string>
+    <string name="question_126_answer_1">1.Արգելվում է</string>
+    <string name="question_126_answer_2">2.Թույլատրվում է մինչև հետիոտնային անցումը</string>
+    <string name="question_126_true_answer">Պատ․՝1</string>
+
+    <string name="question_127">Շարժումն սկսելիս պարտավոր եք արդյո՞ք զիջել ճանապարհը հետադարձ կատարող վարորդին</string>
+    <string name="question_127_answer_1">1.Այո</string>
+    <string name="question_127_answer_2">2.Ոչ</string>
+    <string name="question_127_true_answer">Պատ․՝1</string>
+
+    <string name="question_128">Հետընթացով մոտենալ ուղևորին այս իրավիճակում</string>
+    <string name="question_128_answer_1">1.Թույլատրվում է</string>
+    <string name="question_128_answer_2">2.Թույլատրվում է, եթե չի խոչընդոտում այլ վարորդների երթևեկությանը</string>
+    <string name="question_128_answer_3">3.Արգելվում է</string>
+    <string name="question_128_true_answer">Պատ․՝3</string>
+
+    <string name="question_129">Ո՞ր վարորդն է խախտում երթևեկության կանոնները դուրս գալով շրջանաձև երթևեկությամբ խաչմերուկից</string>
+    <string name="question_129_answer_1">1.Թեթև մարդատարի</string>
+    <string name="question_129_answer_2">2.Երկու վարորդները</string>
+    <string name="question_129_answer_3">3.Ոչ ոք</string>
+    <string name="question_129_true_answer">Պատ․՝1</string>
+
+    <string name="question_130">Հետադարձն այս խաչմերուկում</string>
+    <string name="question_130_answer_1">1.Թույլատրվում է</string>
+    <string name="question_130_answer_2">2.Արգելվում է</string>
+    <string name="question_130_true_answer">Պատ․՝1</string>
+
+    <string name="question_131">Ո՞ր ուղղությամբ է թույլատրված երթևեկությունը</string>
+    <string name="question_131_answer_1">1.Միայն ձախ</string>
+    <string name="question_131_answer_2">2.Ուղիղ և ձախ</string>
+    <string name="question_131_answer_3">3.Ձախ և հետադարձ</string>
+    <string name="question_131_true_answer">Պատ․՝1</string>
+
+    <string name="question_132">Պարտավոր եք արդյո՞ք միացնել աջ շրջադարձի ցուցիչ այս խաչմերուկում</string>
+    <string name="question_132_answer_1">1.Այո</string>
+    <string name="question_132_answer_2">2.Ոչ</string>
+    <string name="question_132_answer_3">3.Այո, բացառությամբ հետադարձ կատարելիս:</string>
+    <string name="question_132_true_answer">Պատ․՝1</string>
+
+    <string name="question_133">Մերձակա տարածք մուտք գործելիս վարորդը պետք է ճանապարհը զիջի</string>
+    <string name="question_133_answer_1">1.Միայն հետիոտներին</string>
+    <string name="question_133_answer_2">2.Միայն հեծանվորդներին</string>
+    <string name="question_133_answer_3">3.Հեծանվորդներին և չստեղծի խոչընդոտ հետիոտների համար</string>
+    <string name="question_133_true_answer">Պատ․՝3</string>
+
+    <string name="question_134">Մերձակա տարածքից ճանապարհ դուրս գալիս՝ վարորդը պետք է</string>
+    <string name="question_134_answer_1">1. Ճանապարհը զիջի միայն հետիոտներին</string>
+    <string name="question_134_answer_2">2.Ճանապարհը զիջի դրանով երթևեկող տրանսպորտային միջոցներին</string>
+    <string name="question_134_answer_3">3.Զիջի ճանապարհը երթևեկող տրանսպորտային միջոցների վարորդներին և չստեղծի խոչընդոտ հետիոտների համար</string>
+    <string name="question_134_true_answer">Պատ․՝3</string>
+
+    <string name="question_135">Հետադարձ կատարել նշանից հետո թույլատրվում է</string>
+    <string name="question_135_answer_1">1.Միայն երկու կողմից 100 մետր տեսանելիության դեպքում</string>
+    <string name="question_135_answer_2">2.Խոչընդոտ չստեղծելու դեպքում</string>
+    <string name="question_135_answer_3">3.Ոչ մի դեպքում</string>
+    <string name="question_135_true_answer">Պատ․՝3</string>
+
+    <string name="question_136">Ազդանշան տալը երթևեկության մյուս մասնակիցների նկատմամբ առավելություն</string>
+    <string name="question_136_answer_1">1.Տալիս է</string>
+    <string name="question_136_answer_2">2.Տալիս է միայն վերադասավորվելիս</string>
+    <string name="question_136_answer_3">3.Չի տալիս</string>
+    <string name="question_136_true_answer">Պատ․՝3</string>
+
+    <string name="question_137">Նշված հետագծով աջ շրջադարձը</string>
+    <string name="question_137_answer_1">1.Թույլատրված է</string>
+    <string name="question_137_answer_2">2.Արգելված է</string>
+    <string name="question_137_true_answer">Պատ․՝1</string>
+
+    <string name="question_138">Բեռնատարից առաջ անցնելուց հետո ո՞ր գոտով կարող եք շարունակել երթևեկությունը</string>
+    <string name="question_138_answer_1">1.Միայն աջ</string>
+    <string name="question_138_answer_2">2.Երկու համընթաց գոտիներով էլ թույլատրվում է</string>
+    <string name="question_138_true_answer">Պատ․՝1</string>
+
+    <string name="question_139">Հետադարձը նշված վայրում</string>
+    <string name="question_139_answer_1">1.Թույլատրվում է</string>
+    <string name="question_139_answer_2">2.Թույլատրվում է, եթե առկա չեն ընդհանուր օգտագործման տրանսպորտային միջոցներ</string>
+    <string name="question_139_answer_3">3.Արգելվում է</string>
+    <string name="question_139_true_answer">Պատ․՝3</string>
+
+    <string name="question_140">Առաջնահերթ երթևեկության իրավունք ունի</string>
+    <string name="question_140_answer_1">1.Թեթև մարդատարի վարորդը</string>
+    <string name="question_140_answer_2">2.Բեռնատարի վարորդը</string>
+    <string name="question_140_true_answer">Պատ․՝2</string>
+
+    <string name="question_141">
+        Միաժամանակ վերադասավորվելիս ո՞ր տրանսպորտային միջոցի
+        վարորդը ունի առաջնահերթ երթևեկության իրավունք
+    </string>
+    <string name="question_141_answer_1">1.Բեռնատարի</string>
+    <string name="question_141_answer_2">2.Թեթև մարդատարի</string>
+    <string name="question_141_true_answer">Պատ․՝2</string>
+
+    <string name="question_142">Թույլատրվո՞ւմ է հետընթացով մոտենալ ուղևորին</string>
+    <string name="question_142_answer_1">1.Այո</string>
+    <string name="question_142_answer_2">2.Ոչ</string>
+    <string name="question_142_true_answer">Պատ․՝2</string>
+
+    <string name="question_143">Աջ բակ մուտք գոծելու դեպքում պարտավոր ենք զիջել</string>
+    <string name="question_143_answer_1">1.Միայն հետիոտներին</string>
+    <string name="question_143_answer_2">2.Միայն հեծանվորդին</string>
+    <string name="question_143_answer_3">3.Ոչ մեկին</string>
+    <string name="question_143_answer_4">4.Հեծանվորդին և հետիոտներին</string>
+    <string name="question_143_true_answer">Պատ․՝4</string>
+
+    <string name="question_144">Այս վերելքի ուղղությամբ շարժվելիս հետադարձ թույլատրվում է, եթե</string>
+    <string name="question_144_answer_1">1.Հնարավոր լինի այն կատարել մեկ գործողությամբ</string>
+    <string name="question_144_answer_2">2.Ապահովված է 100 մետր տեսանելիությունը երկու կողմից</string>
+    <string name="question_144_answer_3">3.Արգելված է</string>
+    <string name="question_144_true_answer">Պատ․՝2</string>
+
+    <string name="question_145">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը</string>
+    <string name="question_145_answer_1">1.Ավտոբուսի վարորդը</string>
+    <string name="question_145_answer_2">2.Թեթև մարդատարի վարորդը</string>
+    <string name="question_145_true_answer">Պատ․՝1</string>
+
+    <string name="question_146">Թույլատրվում է հետադարձն այս վայրում</string>
+    <string name="question_146_answer_1">1.Թույլատրվում է երկու կողմից 100մ տեսանելիության պայմաններում</string>
+    <string name="question_146_answer_2">2.Արգելվում է</string>
+    <string name="question_146_true_answer">Պատ․՝1</string>
+
+    <string name="question_147">Թույլատրվո՞ւմ է անցնել կամուրջը, եթե դա չի խոչընդոտում մոտոցիկլի վարորդին</string>
+    <string name="question_147_answer_1">1.Այո</string>
+    <string name="question_147_answer_2">2.Ոչ</string>
+    <string name="question_147_true_answer">Պատ․՝1</string>
+
+</resources>
