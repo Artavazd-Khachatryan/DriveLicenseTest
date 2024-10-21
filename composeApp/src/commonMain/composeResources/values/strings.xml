@@ -1804,6 +1804,13 @@
     <string name="question_256_answer_3">Երկու դեպքում էլ։</string>
     <string name="question_256_true_answer">@string/question_256_answer_3</string>
 
+    <string name="question_257">Տրանսպորտային միջոցների շահագործումն արգելվում է, եթե՝</string>
+    <string name="question_257_answer_1">Չի աշխատում ձայնային ազդանշանի սարքը։</string>
+    <string name="question_257_answer_2">Հովացման համակարգը չի ապահովում շարժիչի աշխատանքի կայուն ջերմային ռեժիմը։</string>
+    <string name="question_257_answer_3">Երկու դեպքում էլ։</string>
+    <string name="question_257_true_answer">@string/question_257_answer_1</string>
+
+
     <string name="question_258">Տրանսպորտային միջոցների շահագործումն արգելվում է, եթե՝</string>
     <string name="question_258_answer_1">Ղեկային կառավարման պարուրակային միացումները ձգված կամ սահմանված ձեւով սեւեռված չեն։</string>
     <string name="question_258_answer_2">Ավտոբուսում բացակայում են կրակմարիչները։</string>
