@@ -4495,237 +4495,259 @@
     <string name="question_703_true_answer">@string/question_703_answer_2</string>
 
     <!--Խումբ 7-->
-    <string name="question_702">Ո՞ր տրանսպորտային միջոցներին է թույլատրվում կայանումը։</string>
-    <string name="question_702_answer_1">Միայն մոտոցիկլին։</string>
-    <string name="question_702_answer_2">Միայն բեռնատար ավտոմոբիլին։</string>
-    <string name="question_702_answer_3">Միայն թեթեւ մարդատար ավտոմոբիլին։</string>
-    <string name="question_702_answer_4">Թեթեւ մարդատար ավտոմոբիլին եւ մոտոցիկլին։</string>
-    <string name="question_702_answer_5">Բոլոր տրանսպորտային միջոցներին։</string>
-    <string name="question_702_true_answer">@string/question_702_answer_4</string>
+    <string name="question_704">Ո՞ր տրանսպորտային միջոցներին է թույլատրվում կայանումը։</string>
+    <string name="question_704_answer_1">Միայն մոտոցիկլին։</string>
+    <string name="question_704_answer_2">Միայն բեռնատար ավտոմոբիլին։</string>
+    <string name="question_704_answer_3">Միայն թեթեւ մարդատար ավտոմոբիլին։</string>
+    <string name="question_704_answer_4">Թեթեւ մարդատար ավտոմոբիլին եւ մոտոցիկլին։</string>
+    <string name="question_704_answer_5">Բոլոր տրանսպորտային միջոցներին։</string>
+    <string name="question_704_true_answer">@string/question_704_answer_4</string>
 
-    <string name="question_703">Կայանումն արգելվում է՝</string>
-    <string name="question_703_answer_1">Կամուրջների, էստակադների եւ ուղեկամուրջների վրա։</string>
-    <string name="question_703_answer_2">Կամուրջների, էստակադների եւ ուղեկամուրջների տակ։</string>
-    <string name="question_703_answer_3">Թվարկած բոլոր դեպքերում։</string>
-    <string name="question_703_true_answer">@string/question_703_answer_3</string>
+    <string name="question_705">Կայանումն արգելվում է՝</string>
+    <string name="question_705_answer_1">Կամուրջների, էստակադների եւ ուղեկամուրջների վրա։</string>
+    <string name="question_705_answer_2">Կամուրջների, էստակադների եւ ուղեկամուրջների տակ։</string>
+    <string name="question_705_answer_3">Թվարկած բոլոր դեպքերում։</string>
+    <string name="question_705_true_answer">@string/question_705_answer_3</string>
 
-    <string name="question_704">Թույլատրվու՞մ է արդյոք ուղեւոր իջեցնել ճանապարհի այն տեղում, որտեղ եզրաքարի վերին մակերեսին գծված է դեղին հոծ գիծ եւ տեղադրված է «Կանգառն արգելվում է» նշանը։</string>
-    <string name="question_704_answer_1">Թույլատրվում է։</string>
-    <string name="question_704_answer_2">Արգելվում է։</string>
-    <string name="question_704_answer_3">Թույլատրվում է՝ ընդհանուր օգտագործման տրանսպորտային միջոցների բացակայության դեպքում։</string>
-    <string name="question_704_answer_4">Թույլատրվում է միայն ընդհանուր օգտագործման տրանսպորտային միջոցներին։</string>
-    <string name="question_704_true_answer">@string/question_704_answer_2</string>
-
-    <string name="question_705">Ազդու՞մ է արդյոք արգելող նշանը ճանապարհի այն հատվածի վերա, որտեղ կանգառ է կատարել վարորդը։</string>
-    <string name="question_705_answer_1">Ազդում է։</string>
-    <string name="question_705_answer_2">Չի ազդում։</string>
-    <string name="question_705_true_answer">@string/question_705_answer_1</string>
-
-    <string name="question_706">Թույլատրվու՞մ է արդյոք ավտոմոբիլի կայանումը նշված տեղում։</string>
+    <string name="question_706">Թույլատրվու՞մ է արդյոք ուղեւոր իջեցնել ճանապարհի այն տեղում, որտեղ եզրաքարի վերին մակերեսին գծված է դեղին հոծ գիծ եւ տեղադրված է «Կանգառն արգելվում է» նշանը։</string>
     <string name="question_706_answer_1">Թույլատրվում է։</string>
     <string name="question_706_answer_2">Արգելվում է։</string>
-    <string name="question_706_true_answer">@string/question_706_answer_1</string>
+    <string name="question_706_answer_3">Թույլատրվում է՝ ընդհանուր օգտագործման տրանսպորտային միջոցների բացակայության դեպքում։</string>
+    <string name="question_706_answer_4">Թույլատրվում է միայն ընդհանուր օգտագործման տրանսպորտային միջոցներին։</string>
+    <string name="question_706_true_answer">@string/question_706_answer_2</string>
 
-    <string name="question_707">Երկաթուղային գծանցներից ի՞նչ հեռավորության վրա է արգելվում տրանսպորտային միջոցների կայանումը։</string>
-    <string name="question_707_answer_1">300 մ։</string>
-    <string name="question_707_answer_2">150 մ։</string>
-    <string name="question_707_answer_3">100 մ։</string>
-    <string name="question_707_answer_4">50 մ։</string>
-    <string name="question_707_answer_5">25 մ։</string>
-    <string name="question_707_true_answer">@string/question_707_answer_5</string>
+    <string name="question_707">Ազդու՞մ է արդյո՞ք արգելող նշանը ճանապարհի այն հատվածի վերա, որտեղ կանգառ է կատարել վարորդը։</string>
+    <string name="question_707_answer_1">Ազդում է։</string>
+    <string name="question_707_answer_2">Չի ազդում։</string>
+    <string name="question_707_true_answer">@string/question_707_answer_1</string>
 
-    <string name="question_708">Թույլատրվու՞մ է արդյո՞ք տվյալ դեպքում կանգ առնել ուղեւոր իջեցնելու համար։</string>
-    <string name="question_708_answer_1">Թույլատրվում է, եթե դա խոչընդոտ չի ստեղծի ընդհանուր օգտագործման տրանսպորտային միջոցների երթեւեկությանը։</string>
+    <string name="question_708">Թույլատրվու՞մ է արդյո՞ք ավտոմոբիլի կայանումը նշված տեղում։</string>
+    <string name="question_708_answer_1">Թույլատրվում է։</string>
     <string name="question_708_answer_2">Արգելվում է։</string>
     <string name="question_708_true_answer">@string/question_708_answer_1</string>
 
-    <string name="question_709">Վարորդներից ո՞րն է պարտավոր կանգ առնել։</string>
-    <string name="question_709_answer_1">Թեթեւ մարդատար ավտոմոբիլի վարորդը։</string>
-    <string name="question_709_answer_2">Ավտոբուսի վարորդը։</string>
-    <string name="question_709_answer_3">Երկու վարորդն էլ։</string>
-    <string name="question_709_true_answer">@string/question_709_answer_1</string>
+    <string name="question_709">Երկաթուղային գծանցներից ի՞նչ հեռավորության վրա է արգելվում տրանսպորտային միջոցների կայանումը։</string>
+    <string name="question_709_answer_1">300 մ։</string>
+    <string name="question_709_answer_2">150 մ։</string>
+    <string name="question_709_answer_3">100 մ։</string>
+    <string name="question_709_answer_4">50 մ։</string>
+    <string name="question_709_answer_5">25 մ։</string>
+    <string name="question_709_true_answer">@string/question_709_answer_5</string>
 
-    <string name="question_710">Տվյալ ճանապարհային գծանշումը թույլատրում է երթեւեկել`</string>
-    <string name="question_710_answer_1">Միայն դեպի ձախ։</string>
-    <string name="question_710_answer_2">Դեպի ձախ եւ հակառակ ուղղությամբ։</string>
-    <string name="question_710_answer_3">Միայն հակառակ ուղղությամբ։</string>
-    <string name="question_710_answer_4">Ուղիղ, ձախ եւ հակառակ ուղղությամբ։</string>
-    <string name="question_710_true_answer">@string/question_710_answer_2</string>
+    <string name="question_710">Թույլատրվու՞մ է արդյո՞ք տվյալ դեպքում կանգ առնել ուղեւոր իջեցնելու համար։</string>
+    <string name="question_710_answer_1">Թույլատրվում է, եթե դա խոչընդոտ չի ստեղծի ընդհանուր օգտագործման տրանսպորտային միջոցների երթեւեկությանը։</string>
+    <string name="question_710_answer_2">Արգելվում է։</string>
+    <string name="question_710_true_answer">@string/question_710_answer_1</string>
 
-    <string name="question_711">Ո՞ր տրանսպորտային միջոցներին է թույլատրվում կայանել տվյալ ճանապարհային նշանի ազդեցության գոտում։</string>
-    <string name="question_711_answer_1">Միայն ընդհանուր օգտագործման տրանսպորտային միջոցներին։</string>
-    <string name="question_711_answer_2">Տրանսպորտային միջոցներին, որոնք վարում են հաշմանդամները եւ միացված հաշվիչով տաքսիներին։</string>
-    <string name="question_711_true_answer">@string/question_711_answer_2</string>
+    <string name="question_711">Վարորդներից ո՞րն է պարտավոր կանգ առնել։</string>
+    <string name="question_711_answer_1">Թեթեւ մարդատար ավտոմոբիլի վարորդը։</string>
+    <string name="question_711_answer_2">Ավտոբուսի վարորդը։</string>
+    <string name="question_711_answer_3">Երկու վարորդն էլ։</string>
+    <string name="question_711_true_answer">@string/question_711_answer_1</string>
 
-    <string name="question_712">Ի՞նչ է նշանակում տվյալ ճանապարհային գծանշումը։</string>
-    <string name="question_712_answer_1">Ուղեւորներ նստեցնելու-իջեցնելու տեղ։</string>
-    <string name="question_712_answer_2">Ընդհանուր օգտագործման տրանսպորտային միջոցների կանգառի կետ։</string>
-    <string name="question_712_answer_3">Ընդհանուր օգտագործման տրանսպորտային միջոցների կանգառի եւ տաքսիների կայանման տեղ։</string>
+    <string name="question_712">Տվյալ ճանապարհային գծանշումը թույլատրում է երթեւեկել`</string>
+    <string name="question_712_answer_1">Միայն դեպի ձախ։</string>
+    <string name="question_712_answer_2">Դեպի ձախ եւ հակառակ ուղղությամբ։</string>
+    <string name="question_712_answer_3">Միայն հակառակ ուղղությամբ։</string>
+    <string name="question_712_answer_4">Ուղիղ, ձախ եւ հակառակ ուղղությամբ։</string>
     <string name="question_712_true_answer">@string/question_712_answer_2</string>
 
-    <string name="question_713">Ի՞նչ է ցույց տալիս հորիզոնական գծանշման դեղին հոծ գիծը։</string>
-    <string name="question_713_answer_1">Այն տեղը, որտեղ արգելվում է տրանսպորտային միջոցների կանգառը եւ կայանումը։</string>
-    <string name="question_713_answer_2">Այն տեղը, որտեղ թույլատրվում է կանգառ կատարել՝ ուղեւորներ իջեցնելու կամ տրանսպորտային միջոցը բեռնաթափելու համար։</string>
-    <string name="question_713_answer_3">Այն տեղը, որտեղ արգելվում է տրանսպորտային միջոցների կայանումը։</string>
-    <string name="question_713_true_answer">@string/question_713_answer_1</string>
+    <string name="question_713">Ո՞ր տրանսպորտային միջոցներին է թույլատրվում կայանել տվյալ ճանապարհային նշանի ազդեցության գոտում։</string>
+    <string name="question_713_answer_1">Միայն ընդհանուր օգտագործման տրանսպորտային միջոցներին։</string>
+    <string name="question_713_answer_2">Տրանսպորտային միջոցներին, որոնք վարում են հաշմանդամները եւ միացված հաշվիչով տաքսիներին։</string>
+    <string name="question_713_true_answer">@string/question_713_answer_2</string>
 
-    <string name="question_714">Թույլատրվու՞մ է արդյո՞ք վարորդին հատել տրանսպորտային միջոցների կայանման տեղերի սահմանները նշող գծանշման հոծ գիծը։</string>
-    <string name="question_714_answer_1">Արգելվում է։</string>
-    <string name="question_714_answer_2">Թույլատրվում է։</string>
+    <string name="question_714">Ի՞նչ է նշանակում տվյալ ճանապարհային գծանշումը։</string>
+    <string name="question_714_answer_1">Ուղեւորներ նստեցնելու-իջեցնելու տեղ։</string>
+    <string name="question_714_answer_2">Ընդհանուր օգտագործման տրանսպորտային միջոցների կանգառի կետ։</string>
+    <string name="question_714_answer_3">Ընդհանուր օգտագործման տրանսպորտային միջոցների կանգառի եւ տաքսիների կայանման տեղ։</string>
     <string name="question_714_true_answer">@string/question_714_answer_2</string>
 
-    <string name="question_715">Սլաքներով նշված ո՞ր ուղղություններով է թույլատրվում երթեւեկությունը։</string>
-    <string name="question_715_answer_1">Միայն ուղիղ։</string>
-    <string name="question_715_answer_2">Դեպի ձախ եւ հակառակ ուղղությամբ։</string>
-    <string name="question_715_answer_3">Ուղիղ, դեպի ձախ եւ հակառակ ուղղությամբ։</string>
+    <string name="question_715">Ի՞նչ է ցույց տալիս հորիզոնական գծանշման դեղին հոծ գիծը։</string>
+    <string name="question_715_answer_1">Այն տեղը, որտեղ արգելվում է տրանսպորտային միջոցների կանգառը եւ կայանումը։</string>
+    <string name="question_715_answer_2">Այն տեղը, որտեղ թույլատրվում է կանգառ կատարել՝ ուղեւորներ իջեցնելու կամ տրանսպորտային միջոցը բեռնաթափելու համար։</string>
+    <string name="question_715_answer_3">Այն տեղը, որտեղ արգելվում է տրանսպորտային միջոցների կայանումը։</string>
     <string name="question_715_true_answer">@string/question_715_answer_1</string>
 
-    <string name="question_716">Ի՞նչ է ցույց տալիս այս գծանշումը։</string>
-    <string name="question_716_answer_1">Հետիոտնային անցում, որտեղ երթեւեկությունը կարգավորվում է լուսացույցով։</string>
-    <string name="question_716_answer_2">Այն տեղը, որտեղ հեծանվային արահետը հատում է ճանապարհի երթեւեկելի մասը։</string>
-    <string name="question_716_answer_3">Այն տեղը, որտեղ հետիոտնային արահետը հատում է ճանապարհի երթեւեկելի մասը։</string>
+    <string name="question_716">Թույլատրվու՞մ է արդյո՞ք վարորդին հատել տրանսպորտային միջոցների կայանման տեղերի սահմանները նշող գծանշման հոծ գիծը։</string>
+    <string name="question_716_answer_1">Արգելվում է։</string>
+    <string name="question_716_answer_2">Թույլատրվում է։</string>
     <string name="question_716_true_answer">@string/question_716_answer_2</string>
 
-    <string name="question_717">Քանի՞ գոտի ունի ճանապարհը, որտեղ հանդիպակաց ուղղությունների տրանսպորտային հոսքերը բաժանվում են կրկնակի հոծ գծերով։</string>
-    <string name="question_717_answer_1">Երկու գոտի։</string>
-    <string name="question_717_answer_2">Երկու կամ երեք գոտի։</string>
-    <string name="question_717_answer_3">Երեք գոտի։</string>
-    <string name="question_717_answer_4">Չորս եւ ավելի գոտիներ։</string>
-    <string name="question_717_true_answer">@string/question_717_answer_4</string>
+    <string name="question_717">Սլաքներով նշված ո՞ր ուղղություններով է թույլատրվում երթեւեկությունը։</string>
+    <string name="question_717_answer_1">Միայն ուղիղ։</string>
+    <string name="question_717_answer_2">Դեպի ձախ եւ հակառակ ուղղությամբ։</string>
+    <string name="question_717_answer_3">Ուղիղ, դեպի ձախ եւ հակառակ ուղղությամբ։</string>
+    <string name="question_717_true_answer">@string/question_717_answer_1</string>
 
-    <string name="question_718">Ի՞նչ են նախազգուշացնում երթեւեկելի մասի վրա գծանշված սլաքները։</string>
-    <string name="question_718_answer_1">Նախազգուշացնում են վարորդին ճանապարհի վտանգավոր հատվածին մոտենալու մասին։</string>
-    <string name="question_718_answer_2">Նախազգուշացնում են երթեւեկության գոտու վերջին մոտենալու մասին։</string>
-    <string name="question_718_answer_3">Ցույց են տալիս ճանապարհի վտանգավոր շրջադարձի ուղղությունը։</string>
+    <string name="question_718">Ի՞նչ է ցույց տալիս այս գծանշումը։</string>
+    <string name="question_718_answer_1">Հետիոտնային անցում, որտեղ երթեւեկությունը կարգավորվում է լուսացույցով։</string>
+    <string name="question_718_answer_2">Այն տեղը, որտեղ հեծանվային արահետը հատում է ճանապարհի երթեւեկելի մասը։</string>
+    <string name="question_718_answer_3">Այն տեղը, որտեղ հետիոտնային արահետը հատում է ճանապարհի երթեւեկելի մասը։</string>
     <string name="question_718_true_answer">@string/question_718_answer_2</string>
 
-    <string name="question_719">Գծանշման այս գծերից ո՞րն է օգտագործվում դարձափոխային երթեւեկությամբ գոտիները նշելու համար։</string>
-    <string name="question_719_answer_1">1-ին գիծը։</string>
-    <string name="question_719_answer_2">2-րդ գիծը։</string>
-    <string name="question_719_answer_3">3-րդ գիծը։</string>
-    <string name="question_719_answer_4">2-րդ եւ 3 -րդ գծերը։</string>
-    <string name="question_719_answer_5">3-րդ եւ 4 -րդ գծերը։</string>
-    <string name="question_719_true_answer">@string/question_719_answer_2</string>
+    <string name="question_719">Քանի՞ գոտի ունի ճանապարհը, որտեղ հանդիպակաց ուղղությունների տրանսպորտային հոսքերը բաժանվում են կրկնակի հոծ գծերով։</string>
+    <string name="question_719_answer_1">Երկու գոտի։</string>
+    <string name="question_719_answer_2">Երկու կամ երեք գոտի։</string>
+    <string name="question_719_answer_3">Երեք գոտի։</string>
+    <string name="question_719_answer_4">Չորս եւ ավելի գոտիներ։</string>
+    <string name="question_719_true_answer">@string/question_719_answer_4</string>
 
-    <string name="question_720">Որտե՞ղ է գծվում կանգառը եւ կայանումն արգելող տեղերը նշող դեղին հոծ գիծը։</string>
-    <string name="question_720_answer_1">Երթեւեկելի մասի վրա։</string>
-    <string name="question_720_answer_2">Երթեւեկելի մասի եզրի մոտ։</string>
-    <string name="question_720_answer_3">Երթեւեկելի մասի եզրի մոտ կամ եզրաքարի վերին մակերեսին։</string>
-    <string name="question_720_answer_4">Միայն եզրաքարի վերին մակերեսին։</string>
-    <string name="question_720_true_answer">@string/question_720_answer_3</string>
+    <string name="question_720">Ի՞նչ են նախազգուշացնում երթեւեկելի մասի վրա գծանշված սլաքները։</string>
+    <string name="question_720_answer_1">Նախազգուշացնում են վարորդին ճանապարհի վտանգավոր հատվածին մոտենալու մասին։</string>
+    <string name="question_720_answer_2">Նախազգուշացնում են երթեւեկության գոտու վերջին մոտենալու մասին։</string>
+    <string name="question_720_answer_3">Ցույց են տալիս ճանապարհի վտանգավոր շրջադարձի ուղղությունը։</string>
+    <string name="question_720_true_answer">@string/question_720_answer_2</string>
 
-    <string name="question_721">Ճանապարհային նշաններից որի՞ հետ կարող է կիրառվել դեղին գույնի ընդհատվող գծանշումը։</string>
-    <string name="question_721_answer_1">«Կանգառն արգելվում է»։</string>
-    <string name="question_721_answer_2">«Կայանելն արգելվում է»։</string>
-    <string name="question_721_answer_3">«Կայանելն արգելվում է ամսվա կենտ օրերին»։</string>
+    <string name="question_721">Գծանշման այս գծերից ո՞րն է օգտագործվում դարձափոխային երթեւեկությամբ գոտիները նշելու համար։</string>
+    <string name="question_721_answer_1">1-ին գիծը։</string>
+    <string name="question_721_answer_2">2-րդ գիծը։</string>
+    <string name="question_721_answer_3">3-րդ գիծը։</string>
+    <string name="question_721_answer_4">2-րդ եւ 3 -րդ գծերը։</string>
+    <string name="question_721_answer_5">3-րդ եւ 4 -րդ գծերը։</string>
     <string name="question_721_true_answer">@string/question_721_answer_2</string>
 
-    <string name="question_722">Ո՞ր տրանսպորտային միջոցներին է թույլատրվում երթեւեկել երթեւեկելի մասի աջ գոտիով։</string>
-    <string name="question_722_answer_1">Բոլոր մեխանիկական տրանսպորտային միջոցներին։</string>
-    <string name="question_722_answer_2">Ընդհանուր օգտագործման տրանսպորտային միջոցներին եւ տաքսիներին։</string>
-    <string name="question_722_answer_3">Միայն հեծանիվներին։</string>
-    <string name="question_722_answer_4">Միայն ընդհանուր օգտագործման տրանսպորտային միջոցներին։</string>
-    <string name="question_722_true_answer">@string/question_722_answer_4</string>
+    <string name="question_722">Որտե՞ղ է գծվում կանգառը եւ կայանումն արգելող տեղերը նշող դեղին հոծ գիծը։</string>
+    <string name="question_722_answer_1">Երթեւեկելի մասի վրա։</string>
+    <string name="question_722_answer_2">Երթեւեկելի մասի եզրի մոտ։</string>
+    <string name="question_722_answer_3">Երթեւեկելի մասի եզրի մոտ կամ եզրաքարի վերին մակերեսին։</string>
+    <string name="question_722_answer_4">Միայն եզրաքարի վերին մակերեսին։</string>
+    <string name="question_722_true_answer">@string/question_722_answer_3</string>
 
-    <string name="question_723">Այս ճանապարհային գծանշումն ունի հետեւյալ նշանակությունը։</string>
-    <string name="question_723_answer_1">Ցույց է տալիս մայթամերձ կայանման տեղերը, որտեղ նշված են մեխանիկական տրանսպորտային միջոցների կանգնեցման ձեւերը։</string>
-    <string name="question_723_answer_2">Ցույց է տալիս այն տեղերը, որտեղ արգելվում է մեխանիկական տրանսպորտային միջոցների կանգառը։</string>
-    <string name="question_723_answer_3">Ցույց է տալիս ընդհանուր օգտագործման տրանսպորտային միջոցների կանգառի կետերը եւ տաքսիների կայանման վայրերը։</string>
-    <string name="question_723_true_answer">@string/question_723_answer_3</string>
+    <string name="question_723">Ճանապարհային նշաններից որի՞ հետ կարող է կիրառվել դեղին գույնի ընդհատվող գծանշումը։</string>
+    <string name="question_723_answer_1">«Կանգառն արգելվում է»։</string>
+    <string name="question_723_answer_2">«Կայանելն արգելվում է»։</string>
+    <string name="question_723_answer_3">«Կայանելն արգելվում է ամսվա կենտ օրերին»։</string>
+    <string name="question_723_true_answer">@string/question_723_answer_2</string>
 
-    <string name="question_724">Այս հորիզոնական ճանապարհային գծանշումը ցույց է տալիս՝</string>
-    <string name="question_724_answer_1">Երթեւեկելի մասի նեղացում, որտեղ նվազում է երթեւեկության գոտիների քանակը տվյալ ուղղությամբ։</string>
-    <string name="question_724_answer_2">Այն տեղը, որտեղ վարորդը պետք է անհրաժեշտության դեպքում կանգ առնի` հատվող ճանապարհով երթեւեկող տրանսպորտային միջոցներին ճանապարհը զիջելու համար։</string>
-    <string name="question_724_answer_3">Մոտեցում կանգառն արգելված տեղին։</string>
-    <string name="question_724_true_answer">@string/question_724_answer_2</string>
+    <string name="question_724">Ո՞ր տրանսպորտային միջոցներին է թույլատրվում երթեւեկել երթեւեկելի մասի աջ գոտիով։</string>
+    <string name="question_724_answer_1">Բոլոր մեխանիկական տրանսպորտային միջոցներին։</string>
+    <string name="question_724_answer_2">Ընդհանուր օգտագործման տրանսպորտային միջոցներին եւ տաքսիներին։</string>
+    <string name="question_724_answer_3">Միայն հեծանիվներին։</string>
+    <string name="question_724_answer_4">Միայն ընդհանուր օգտագործման տրանսպորտային միջոցներին։</string>
+    <string name="question_724_true_answer">@string/question_724_answer_4</string>
 
-    <string name="question_725">Թույլատրվու՞մ է արդյոք մուտք գործել սպիտակ լայն գծերով գծանշված ուղղորդ կղզյակ։</string>
-    <string name="question_725_answer_1">Թույլատրվում է միայն կանգառ կատարելու համար։</string>
-    <string name="question_725_answer_2">Թույլատրվում է հետընթացի ժամանակ։</string>
-    <string name="question_725_answer_3">Արգելվում է։</string>
+    <string name="question_725">Այս ճանապարհային գծանշումն ունի հետեւյալ նշանակությունը։</string>
+    <string name="question_725_answer_1">Ցույց է տալիս մայթամերձ կայանման տեղերը, որտեղ նշված են մեխանիկական տրանսպորտային միջոցների կանգնեցման ձեւերը։</string>
+    <string name="question_725_answer_2">Ցույց է տալիս այն տեղերը, որտեղ արգելվում է մեխանիկական տրանսպորտային միջոցների կանգառը։</string>
+    <string name="question_725_answer_3">Ցույց է տալիս ընդհանուր օգտագործման տրանսպորտային միջոցների կանգառի կետերը եւ տաքսիների կայանման վայրերը։</string>
     <string name="question_725_true_answer">@string/question_725_answer_3</string>
 
-    <string name="question_726">Ինչպե՞ս պետք է վարվի վարորդը՝ մոտենալով խաչմերուկին՝ «Կանգ - գիծ» գծանշման եւ լուսացույցի կանաչ ազդանշանի պայմաններում։</string>
-    <string name="question_726_answer_1">Կանգ առնի «Կանգ-գծի» մոտ, որից հետո վերսկսի երթեւեկությունը։</string>
-    <string name="question_726_answer_2">Շարունակի երթեւեկությունը խաչմերուկով` առանց կանգառի։</string>
+    <string name="question_726">Այս հորիզոնական ճանապարհային գծանշումը ցույց է տալիս՝</string>
+    <string name="question_726_answer_1">Երթեւեկելի մասի նեղացում, որտեղ նվազում է երթեւեկության գոտիների քանակը տվյալ ուղղությամբ։</string>
+    <string name="question_726_answer_2">Այն տեղը, որտեղ վարորդը պետք է անհրաժեշտության դեպքում կանգ առնի` հատվող ճանապարհով երթեւեկող տրանսպորտային միջոցներին ճանապարհը զիջելու համար։</string>
+    <string name="question_726_answer_3">Մոտեցում կանգառն արգելված տեղին։</string>
     <string name="question_726_true_answer">@string/question_726_answer_2</string>
 
-    <string name="question_727">Ի՞նչ է ցույց տալիս այս գծանշումը։</string>
-    <string name="question_727_answer_1">Հետիոտնային անցում։</string>
-    <string name="question_727_answer_2">Այն տեղը, որտեղ հեծանվային արահետը հատում է ճանապարհի երթեւեկելի մասը։</string>
-    <string name="question_727_answer_3">Անասուններ քշելու համար նախատեսված տեղը։</string>
-    <string name="question_727_true_answer">@string/question_727_answer_2</string>
+    <string name="question_727">Թույլատրվու՞մ է արդյոք մուտք գործել սպիտակ լայն գծերով գծանշված ուղղորդ կղզյակ։</string>
+    <string name="question_727_answer_1">Թույլատրվում է միայն կանգառ կատարելու համար։</string>
+    <string name="question_727_answer_2">Թույլատրվում է հետընթացի ժամանակ։</string>
+    <string name="question_727_answer_3">Արգելվում է։</string>
+    <string name="question_727_true_answer">@string/question_727_answer_3</string>
 
-    <string name="question_728">Վարորդը որտե՞ղ պետք է կանգնեցնի տրանսպորտային միջոցն այս գծանշման առկայության դեպքում։</string>
-    <string name="question_728_answer_1">Գծանշման մոտ։</string>
-    <string name="question_728_answer_2">Գծանշման վրա։</string>
-    <string name="question_728_answer_3">Գծանշումից ոչ պակաս, քան 5 մ հեռավորության վրա։</string>
-    <string name="question_728_true_answer">@string/question_728_answer_1</string>
+    <string name="question_728">Ինչպե՞ս պետք է վարվի վարորդը՝ մոտենալով խաչմերուկին՝ «Կանգ - գիծ» գծանշման եւ լուսացույցի կանաչ ազդանշանի պայմաններում։</string>
+    <string name="question_728_answer_1">Կանգ առնի «Կանգ-գծի» մոտ, որից հետո վերսկսի երթեւեկությունը։</string>
+    <string name="question_728_answer_2">Շարունակի երթեւեկությունը խաչմերուկով` առանց կանգառի։</string>
+    <string name="question_728_true_answer">@string/question_728_answer_2</string>
 
-    <string name="question_729">Ի՞նչ է նշանակում այս գծանշումը։</string>
-    <string name="question_729_answer_1">Ընդհանուր օգտագործման տրանսպորտային միջոցների համար նախատեսված երթեւեկության գոտի։</string>
-    <string name="question_729_answer_2">Հատուկ նշանակության ավտոմոբիլների համար նախատեսված երթեւեկության գոտի։</string>
-    <string name="question_729_answer_3">Ցույց է տալիս երթեւեկության այն գոտիների սահմանները, որտեղ իրականացվում է դարձափոխային կարգավորում։</string>
-    <string name="question_729_true_answer">@string/question_729_answer_3</string>
+    <string name="question_729">Ի՞նչ է ցույց տալիս այս գծանշումը։</string>
+    <string name="question_729_answer_1">Հետիոտնային անցում։</string>
+    <string name="question_729_answer_2">Այն տեղը, որտեղ հեծանվային արահետը հատում է ճանապարհի երթեւեկելի մասը։</string>
+    <string name="question_729_answer_3">Անասուններ քշելու համար նախատեսված տեղը։</string>
+    <string name="question_729_true_answer">@string/question_729_answer_2</string>
 
-    <string name="question_730">Թույլատրվու՞մ է արդյոք նշված վայրում հետադարձ կատարել։</string>
-    <string name="question_730_answer_1">Թույլատրվում է։</string>
-    <string name="question_730_answer_2">Արգելվում է։</string>
+    <string name="question_730">Վարորդը որտե՞ղ պետք է կանգնեցնի տրանսպորտային միջոցն այս գծանշման առկայության դեպքում։</string>
+    <string name="question_730_answer_1">Գծանշման մոտ։</string>
+    <string name="question_730_answer_2">Գծանշման վրա։</string>
+    <string name="question_730_answer_3">Գծանշումից ոչ պակաս, քան 5 մ հեռավորության վրա։</string>
     <string name="question_730_true_answer">@string/question_730_answer_1</string>
 
-    <string name="question_731">Թույլատրվու՞մ է արդյոք տվյալ գծանշման առկայության դեպքում զբոսաշրջության երթուղով երթեւեկող ավտոբուսի վարորդին մուտք գործել «A» գծանշումով գոտի։</string>
-    <string name="question_731_answer_1">Թույլատրվում է։</string>
-    <string name="question_731_answer_2">Արգելվում է։</string>
-    <string name="question_731_true_answer">@string/question_731_answer_1</string>
+    <string name="question_731">Ի՞նչ է նշանակում այս գծանշումը։</string>
+    <string name="question_731_answer_1">Ընդհանուր օգտագործման տրանսպորտային միջոցների համար նախատեսված երթեւեկության գոտի։</string>
+    <string name="question_731_answer_2">Հատուկ նշանակության ավտոմոբիլների համար նախատեսված երթեւեկության գոտի։</string>
+    <string name="question_731_answer_3">Ցույց է տալիս երթեւեկության այն գոտիների սահմանները, որտեղ իրականացվում է դարձափոխային կարգավորում։</string>
+    <string name="question_731_true_answer">@string/question_731_answer_3</string>
 
-    <string name="question_732">Ի՞նչ է ցույց տալիս ընդհատվող լայն գծի տեսքով գծանշումը։</string>
-    <string name="question_732_answer_1">Երթեւեկելի մասի եւ կողնակի միջեւ առկա սահմանը։</string>
-    <string name="question_732_answer_2">Երթեւեկելի մասի հիմնական գոտու եւ թափառքի գոտու միջեւ առկա սահմանը։</string>
-    <string name="question_732_answer_3">Երթեւեկելի մասի հիմնական գոտու եւ արգելակման գոտու միջեւ առկա սահմանը։</string>
-    <string name="question_732_true_answer">@string/question_732_answer_2</string>
+    <string name="question_732">Թույլատրվու՞մ է արդյոք նշված վայրում հետադարձ կատարել։</string>
+    <string name="question_732_answer_1">Թույլատրվում է։</string>
+    <string name="question_732_answer_2">Արգելվում է։</string>
+    <string name="question_732_true_answer">@string/question_732_answer_1</string>
 
-    <string name="question_733">Ո՞ր ավտոմոբիլին է թույլատրվում կանգառ կատարել այս նշանների ազդման գոտում։</string>
-    <string name="question_733_answer_1">Կարմիրին։</string>
-    <string name="question_733_answer_2">Երկու ավտոմոբիլներին էլ։</string>
-    <string name="question_733_answer_3">Ոչ մեկին։</string>
-    <string name="question_733_answer_4">Դեղինին՝ «Հաշմանդամ» ճանաչման նշանով կահավորված։</string>
-    <string name="question_733_true_answer">@string/question_733_answer_4</string>
+    <string name="question_733">Թույլատրվու՞մ է արդյոք տվյալ գծանշման առկայության դեպքում զբոսաշրջության երթուղով երթեւեկող ավտոբուսի վարորդին մուտք գործել «A» գծանշումով գոտի։</string>
+    <string name="question_733_answer_1">Թույլատրվում է։</string>
+    <string name="question_733_answer_2">Արգելվում է։</string>
+    <string name="question_733_true_answer">@string/question_733_answer_1</string>
 
-    <string name="question_734">Ո՞ր նկարում է վարորդը ճիշտ կատարել կանգառ` ուղեւորներ իջեցնելու համար։</string>
-    <string name="question_734_answer_1">Ձախ նկարում։</string>
-    <string name="question_734_answer_2">Երկու նկարներում էլ։</string>
-    <string name="question_734_answer_3">Աջ նկարում։</string>
-    <string name="question_734_true_answer">@string/question_734_answer_1</string>
+    <string name="question_734">Ի՞նչ է ցույց տալիս ընդհատվող լայն գծի տեսքով գծանշումը։</string>
+    <string name="question_734_answer_1">Երթեւեկելի մասի եւ կողնակի միջեւ առկա սահմանը։</string>
+    <string name="question_734_answer_2">Երթեւեկելի մասի հիմնական գոտու եւ թափառքի գոտու միջեւ առկա սահմանը։</string>
+    <string name="question_734_answer_3">Երթեւեկելի մասի հիմնական գոտու եւ արգելակման գոտու միջեւ առկա սահմանը։</string>
+    <string name="question_734_true_answer">@string/question_734_answer_2</string>
 
-    <string name="question_735">Որպես գնացքի կանգառի ազդանշան ծառայում է՝</string>
-    <string name="question_735_answer_1">Ձեռքի շրջանաձեւ շարժումը (ցերեկը` վառ գույնի լաթով կամ որեւէ լավ տեսանելի առարկայով, գիշերը` ջ Howell-ով կամ լապտերով)։</string>
-    <string name="question_735_answer_2">Սկավառակով կամ կարմիր դրոշակով գլխավերեւ բարձրացված ձեռքը։</string>
-    <string name="question_735_answer_3">Առաջ պարզած ձեռքը։</string>
-    <string name="question_735_answer_4">Վեր եւ վար ճոճվող` առաջ պարզած ձեռքը։</string>
-    <string name="question_735_true_answer">@string/question_735_answer_1</string>
+    <string name="question_735">Ո՞ր ավտոմոբիլին է թույլատրվում կանգառ կատարել այս նշանների ազդման գոտում։</string>
+    <string name="question_735_answer_1">Կարմիրին։</string>
+    <string name="question_735_answer_2">Երկու ավտոմոբիլներին էլ։</string>
+    <string name="question_735_answer_3">Ոչ մեկին։</string>
+    <string name="question_735_answer_4">Դեղինին՝ «Հաշմանդամ» ճանաչման նշանով կահավորված։</string>
+    <string name="question_735_true_answer">@string/question_735_answer_4</string>
 
-    <string name="question_736">Բնակավայրերում, յուրաքանչյուր ուղղությամբ մեկ երթեւեկելի գոտի ունեցող եւ մեջտեղում տրամվայի գծեր չունեցող ճանապարհների ձախ կողմում կանգառն ու կայանումը՝</string>
-    <string name="question_736_answer_1">Թույլատրվում է։</string>
-    <string name="question_736_answer_2">Արգելվում է։</string>
+    <string name="question_736">Ո՞ր նկարում է վարորդը ճիշտ կատարել կանգառ` ուղեւորներ իջեցնելու համար։</string>
+    <string name="question_736_answer_1">Ձախ նկարում։</string>
+    <string name="question_736_answer_2">Երկու նկարներում էլ։</string>
+    <string name="question_736_answer_3">Աջ նկարում։</string>
     <string name="question_736_true_answer">@string/question_736_answer_1</string>
 
-    <string name="question_737">«Կանգ-գծից» կամ «Երթեւեկությունն առանց կանգառի արգելվում է» նշանից ի՞նչ հեռավարության վրա պետք է կանգնեցվի տրանսպորտային միջոցը՝ մոտեցող գնացքին ճանապարհը զիջելու համար։</string>
-    <string name="question_737_answer_1">1,5 մ։</string>
-    <string name="question_737_answer_2">2,5 մ։</string>
-    <string name="question_737_answer_3">5 մ։</string>
-    <string name="question_737_answer_4">10 մ։</string>
-    <string name="question_737_answer_5">Անմիջապես «Կանգ-գծի» եւ (կամ) նշանի մոտ։</string>
-    <string name="question_737_true_answer">@string/question_737_answer_5</string>
+    <string name="question_737">Որպես գնացքի կանգառի ազդանշան ծառայում է՝</string>
+    <string name="question_737_answer_1">Ձեռքի շրջանաձեւ շարժումը (ցերեկը` վառ գույնի լաթով կամ որեւէ լավ տեսանելի առարկայով, գիշերը` ջ Howell-ով կամ լապտերով)։</string>
+    <string name="question_737_answer_2">Սկավառակով կամ կարմիր դրոշակով գլխավերեւ բարձրացված ձեռքը։</string>
+    <string name="question_737_answer_3">Առաջ պարզած ձեռքը։</string>
+    <string name="question_737_answer_4">Վեր եւ վար ճոճվող` առաջ պարզած ձեռքը։</string>
+    <string name="question_737_true_answer">@string/question_737_answer_1</string>
 
-    <string name="question_738">Թույլատրվու՞մ է արդյոք կանգառը նշված տեղում։</string>
+    <string name="question_738">Բնակավայրերում, յուրաքանչյուր ուղղությամբ մեկ երթեւեկելի գոտի ունեցող եւ մեջտեղում տրամվայի գծեր չունեցող ճանապարհների ձախ կողմում կանգառն ու կայանումը՝</string>
     <string name="question_738_answer_1">Թույլատրվում է։</string>
     <string name="question_738_answer_2">Արգելվում է։</string>
-    <string name="question_738_true_answer">@string/question_738_answer_2</string>
+    <string name="question_738_true_answer">@string/question_738_answer_1</string>
 
-    <string name="question_739">Թույլատրվու՞մ է արդյոք ավտոմոբիլի կանգառն այս վայրում։</string>
-    <string name="question_739_answer_1">Արգելվում է, քանի որ գծանշման ընդհատվող գծի եւ կանգառած տրանսպորտային միջոցի միջեւ հեռավորությունը պակաս է 3 մետրից։</string>
-    <string name="question_739_answer_2">Արգելվում է ամսվա զույգ օրերին։</string>
-    <string name="question_739_answer_3">Թույլատրվում է։</string>
-    <string name="question_739_true_answer">@string/question_739_answer_3</string>
+    <string name="question_739">«Կանգ-գծից» կամ «Երթեւեկությունն առանց կանգառի արգելվում է» նշանից ի՞նչ հեռավարության վրա պետք է կանգնեցվի տրանսպորտային միջոցը՝ մոտեցող գնացքին ճանապարհը զիջելու համար։</string>
+    <string name="question_739_answer_1">1,5 մ։</string>
+    <string name="question_739_answer_2">2,5 մ։</string>
+    <string name="question_739_answer_3">5 մ։</string>
+    <string name="question_739_answer_4">10 մ։</string>
+    <string name="question_739_answer_5">Անմիջապես «Կանգ-գծի» եւ (կամ) նշանի մոտ։</string>
+    <string name="question_739_true_answer">@string/question_739_answer_5</string>
+
+    <string name="question_740">Թույլատրվու՞մ է արդյոք կանգառը նշված տեղում։</string>
+    <string name="question_740_answer_1">Թույլատրվում է։</string>
+    <string name="question_740_answer_2">Արգելվում է։</string>
+    <string name="question_740_true_answer">@string/question_740_answer_2</string>
+
+    <string name="question_741">Թույլատրվու՞մ է արդյոք ավտոմոբիլի կանգառն այս վայրում։</string>
+    <string name="question_741_answer_1">Արգելվում է, քանի որ գծանշման ընդհատվող գծի եւ կանգառած տրանսպորտային միջոցի միջեւ հեռավորությունը պակաս է 3 մետրից։</string>
+    <string name="question_741_answer_2">Արգելվում է ամսվա զույգ օրերին։</string>
+    <string name="question_741_answer_3">Թույլատրվում է։</string>
+    <string name="question_741_true_answer">@string/question_741_answer_3</string>
+
+    <string name="question_743">Որտե՞ղ է թույլատրվում երկարատեւ հանգստի, գիշերակացի եւ այլ նպատակներով կայանելը բնակավայրերից դուրս։</string>
+    <string name="question_743_answer_1">Ճանապարհի կողնակներին։</string>
+    <string name="question_743_answer_2">Կայանման համար նախատեսված հրապարակներում կամ ճանապարհի սահմաններից դուրս։</string>
+    <string name="question_743_answer_3">Ճանապարհի երթեւեկելի մասի աջ SIDE-ով` չխոչընդոտելով այլ տրանսպորտային միջոցների երթեւեկությունը։</string>
+    <string name="question_743_answer_4">Ճանապարհի ձախ SIDE-ով` ապահովելով ճանապարհային երթեւեկության անվտանգությունը։</string>
+    <string name="question_743_true_answer">@string/question_743_answer_2</string>
+
+    <string name="question_744">Կանգառն արգելվում է, եթե հոծ գծի եւ կանգնած տրանսպորտային միջոցի միջեւ տարածությունը կազմում է`</string>
+    <string name="question_744_answer_1">6 մ։</string>
+    <string name="question_744_answer_2">5.5 մ։</string>
+    <string name="question_744_answer_3">4 մ։</string>
+    <string name="question_744_answer_4">3.5 մ։</string>
+    <string name="question_744_answer_5">2.5 մ։</string>
+    <string name="question_744_true_answer">@string/question_744_answer_5</string>
+
+    <string name="question_745">Եթե երկաթուղային գծանցով երթեւեկությունը արգելված է եւ բացակայում են լուսացույցը, ճանապարհային նշանները, գծանշումն ու ուղեփակոցը, ապա վարորդը պետք է կանգնի՝</string>
+    <string name="question_745_answer_1">Մոտակա ռելսից ոչ պակաս, քան 5 մ հեռավորության վրա։</string>
+    <string name="question_745_answer_2">Մոտակա ռելսից ոչ պակաս, քան 7 մ հեռավորության վրա։</string>
+    <string name="question_745_answer_3">Մոտակա ռելսից ոչ պակաս, քան 10 մ հեռավորության վրա։</string>
+    <string name="question_745_true_answer">@string/question_745_answer_3</string>
+
 
 </resources>
