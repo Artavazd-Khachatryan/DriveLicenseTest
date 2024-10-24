@@ -3145,202 +3145,223 @@
     <string name="question_473_true_answer">@string/question_473_answer_3</string>
 
     <!--Խումբ 5-->
-    <string name="question_478">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_478_answer_1">Թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը, տրոլեյբուսը։</string>
-    <string name="question_478_answer_2">Տրոլեյբուսը եւ ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը։</string>
-    <string name="question_478_answer_3">Տրոլեյբուսը, թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը։</string>
+    <string name="question_474">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
+    <string name="question_474_answer_1">Թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը, տրոլեյբուսը։</string>
+    <string name="question_474_answer_2">Տրոլեյբուսը եւ ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը։</string>
+    <string name="question_474_answer_3">Տրոլեյբուսը, թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը։</string>
+    <string name="question_474_true_answer">@string/question_474_answer_3</string>
+
+    <string name="question_475">Խաչմերուկն առաջինը կանցնի՝</string>
+    <string name="question_475_answer_1">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_475_answer_2">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_475_answer_3">Դեղին ավտոմոբիլը։</string>
+    <string name="question_475_answer_4">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_475_true_answer">@string/question_475_answer_4</string>
+
+    <string name="question_476">Խաչմերուկը վերջինը կանցնի՝</string>
+    <string name="question_476_answer_1">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_476_answer_2">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_476_answer_3">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_476_true_answer">@string/question_476_answer_1</string>
+
+    <string name="question_477">Կապույտ ավտոմոբիլը խաչմերուկը կանցնի՝</string>
+    <string name="question_477_answer_1">Առաջինը։</string>
+    <string name="question_477_answer_2">Երկրորդը։</string>
+    <string name="question_477_true_answer">@string/question_477_answer_1</string>
+
+    <string name="question_478">Ո՞ր պատասխանում է ճիշտ նշված խաչմերուկի անցման հերթականությունը։</string>
+    <string name="question_478_answer_1">Ավտոբուս, թեթեւ մարդատար ավտոմոբիլ, հեծանիվ։</string>
+    <string name="question_478_answer_2">Թեթեւ մարդատար ավտոմոբիլ, ավտոբուս, հեծանիվ։</string>
+    <string name="question_478_answer_3">Հեծանիվ, ավտոբուս, թեթեւ մարդատար ավտոմոբիլ։</string>
     <string name="question_478_true_answer">@string/question_478_answer_3</string>
 
-    <string name="question_479">Խաչմերուկն առաջինը կանցնի՝</string>
-    <string name="question_479_answer_1">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_479_answer_2">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_479_answer_3">Դեղին ավտոմոբիլը։</string>
-    <string name="question_479_answer_4">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_479_true_answer">@string/question_479_answer_4</string>
+    <string name="question_479">Խաչմերուկը երկրորդը կանցնի՝</string>
+    <string name="question_479_answer_1">Տրամվայը։</string>
+    <string name="question_479_answer_2">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_479_answer_3">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_479_true_answer">@string/question_479_answer_1</string>
 
-    <string name="question_480">Խաչմերուկը վերջինը կանցնի՝</string>
-    <string name="question_480_answer_1">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_480_answer_2">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_480_answer_3">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_480_true_answer">@string/question_480_answer_1</string>
+    <string name="question_480">Ո՞ր ուղղությամբ է արգելվում երթեւեկությունը։</string>
+    <string name="question_480_answer_1">Դեպի աջ՝ առաջին անցումով։</string>
+    <string name="question_480_answer_2">Դեպի աջ՝ երկրորդ անցումով։</string>
+    <string name="question_480_answer_3">Դեպի աջ՝ առաջին եւ երկրորդ անցումներով։</string>
+    <string name="question_480_true_answer">@string/question_480_answer_2</string>
 
-    <string name="question_481">Կապույտ ավտոմոբիլը խաչմերուկը կանցնի՝</string>
-    <string name="question_481_answer_1">Առաջինը։</string>
-    <string name="question_481_answer_2">Երկրորդը։</string>
-    <string name="question_481_true_answer">@string/question_481_answer_1</string>
+    <string name="question_481">Խաչմերուկը երկրորդը կանցնի՝</string>
+    <string name="question_481_answer_1">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_481_answer_2">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_481_answer_3">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_481_true_answer">@string/question_481_answer_2</string>
 
-    <string name="question_482">Ո՞ր պատասխանում է ճիշտ նշված խաչմերուկի անցման հերթականությունը։</string>
-    <string name="question_482_answer_1">Ավտոբուս, թեթեւ մարդատար ավտոմոբիլ, հեծանիվ։</string>
-    <string name="question_482_answer_2">Թեթեւ մարդատար ավտոմոբիլ, ավտոբուս, հեծանիվ։</string>
-    <string name="question_482_answer_3">Հեծանիվ, ավտոբուս, թեթեւ մարդատար ավտոմոբիլ։</string>
-    <string name="question_482_true_answer">@string/question_482_answer_3</string>
+    <string name="question_482">Խաչմերուկը երկրորդը կանցնի՝</string>
+    <string name="question_482_answer_1">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_482_answer_2">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_482_answer_3">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_482_true_answer">@string/question_482_answer_1</string>
 
     <string name="question_483">Խաչմերուկը երկրորդը կանցնի՝</string>
-    <string name="question_483_answer_1">Տրամվայը։</string>
+    <string name="question_483_answer_1">Սպիտակ ավտոմոբիլը՝ դեղինի հետ միաժամանակ։</string>
     <string name="question_483_answer_2">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_483_answer_3">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_483_true_answer">@string/question_483_answer_1</string>
+    <string name="question_483_answer_3">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_483_true_answer">@string/question_483_answer_2</string>
 
-    <string name="question_484">Ո՞ր ուղղությամբ է արգելվում երթեւեկությունը։</string>
-    <string name="question_484_answer_1">Դեպի աջ՝ առաջին անցումով։</string>
-    <string name="question_484_answer_2">Դեպի աջ՝ երկրորդ անցումով։</string>
-    <string name="question_484_answer_3">Դեպի աջ՝ առաջին եւ երկրորդ անցումներով։</string>
-    <string name="question_484_true_answer">@string/question_484_answer_2</string>
+    <string name="question_484">Խաչմերուկը վերջինը կանցնի՝</string>
+    <string name="question_484_answer_1">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_484_answer_2">Դեղին ավտոմոբիլը։</string>
+    <string name="question_484_answer_3">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_484_answer_4">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_484_true_answer">@string/question_484_answer_3</string>
 
-    <string name="question_485">Խաչմերուկը երկրորդը կանցնի՝</string>
-    <string name="question_485_answer_1">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_485_answer_2">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_485_answer_3">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_485">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը։</string>
+    <string name="question_485_answer_1">Հեծանվորդը։</string>
+    <string name="question_485_answer_2">Ավտոմոբիլի վարորդը։</string>
     <string name="question_485_true_answer">@string/question_485_answer_2</string>
 
-    <string name="question_486">Խաչմերուկը երկրորդը կանցնի՝</string>
-    <string name="question_486_answer_1">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_486_answer_2">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_486">Խաչմերուկն առաջինը կանցնի՝</string>
+    <string name="question_486_answer_1">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_486_answer_2">Կապույտ ավտոմոբիլը։</string>
     <string name="question_486_answer_3">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_486_true_answer">@string/question_486_answer_1</string>
+    <string name="question_486_answer_4">Դեղին ավտոմոբիլը։</string>
+    <string name="question_486_true_answer">@string/question_486_answer_3</string>
 
-    <string name="question_487">Խաչմերուկը երկրորդը կանցնի՝</string>
-    <string name="question_487_answer_1">Սպիտակ ավտոմոբիլը՝ դեղինի հետ միաժամանակ։</string>
-    <string name="question_487_answer_2">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_487_answer_3">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_487_true_answer">@string/question_487_answer_2</string>
+    <string name="question_487">Տրանսպորտային միջոցները ի՞նչ հերթականությամբ խաչմերուկը կանցնեն։</string>
+    <string name="question_487_answer_1">Մոտոցիկլը, ավտոմոբիլը, տրամվայը։</string>
+    <string name="question_487_answer_2">Տրամվայը, ավտոմոբիլը, մոտոցիկլը։</string>
+    <string name="question_487_answer_3">Տրամվայը, մոտոցիկլը, ավտոմոբիլը։</string>
+    <string name="question_487_true_answer">@string/question_487_answer_1</string>
 
-    <string name="question_488">Խաչմերուկը վերջինը կանցնի՝</string>
-    <string name="question_488_answer_1">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_488_answer_2">Դեղին ավտոմոբիլը։</string>
+    <string name="question_488">Խաչմերուկը երկրորդը կանցնի՝</string>
+    <string name="question_488_answer_1">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_488_answer_2">Կապույտ ավտոմոբիլը։</string>
     <string name="question_488_answer_3">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_488_answer_4">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_488_true_answer">@string/question_488_answer_3</string>
+    <string name="question_488_true_answer">@string/question_488_answer_2</string>
 
-    <string name="question_489">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը։</string>
-    <string name="question_489_answer_1">Հեծանվորդը։</string>
-    <string name="question_489_answer_2">Ավտոմոբիլի վարորդը։</string>
-    <string name="question_489_true_answer">@string/question_489_answer_2</string>
+    <string name="question_489">Խաչմերուկը վերջինը կանցնի՝</string>
+    <string name="question_489_answer_1">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_489_answer_2">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_489_answer_3">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_489_true_answer">@string/question_489_answer_3</string>
 
-    <string name="question_490">Խաչմերուկն առաջինը կանցնի՝</string>
-    <string name="question_490_answer_1">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_490_answer_2">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_490_answer_3">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_490_answer_4">Դեղին ավտոմոբիլը։</string>
-    <string name="question_490_true_answer">@string/question_490_answer_3</string>
+    <string name="question_490">Ո՞ր ավտոմոբիլը վերջինը կանցնի խաչմերուկը։</string>
+    <string name="question_490_answer_1">Կապույտը։</string>
+    <string name="question_490_answer_2">Կարմիրը։</string>
+    <string name="question_490_answer_3">Կանաչը։</string>
+    <string name="question_490_true_answer">@string/question_490_answer_2</string>
 
-    <string name="question_491">Տրանսպորտային միջոցները ի՞նչ հերթականությամբ խաչմերուկը կանցնեն։</string>
-    <string name="question_491_answer_1">Մոտոցիկլը, ավտոմոբիլը, տրամվայը։</string>
-    <string name="question_491_answer_2">Տրամվայը, ավտոմոբիլը, մոտոցիկլը։</string>
-    <string name="question_491_answer_3">Տրամվայը, մոտոցիկլը, ավտոմոբիլը։</string>
+    <string name="question_491">Խաչմերուկն առաջինը կանցնի՝</string>
+    <string name="question_491_answer_1">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_491_answer_2">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_491_answer_3">Կապույտ ավտոմոբիլը։</string>
     <string name="question_491_true_answer">@string/question_491_answer_1</string>
 
-    <string name="question_492">Խաչմերուկը երկրորդը կանցնի՝</string>
-    <string name="question_492_answer_1">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_492_answer_2">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_492_answer_3">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_492_true_answer">@string/question_492_answer_2</string>
+    <string name="question_492">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը։</string>
+    <string name="question_492_answer_1">Ավտոբուսի վարորդը։</string>
+    <string name="question_492_answer_2">Մոտոցիկլի վարորդը։</string>
+    <string name="question_492_true_answer">@string/question_492_answer_1</string>
 
-    <string name="question_493">Խաչմերուկը վերջինը կանցնի՝</string>
-    <string name="question_493_answer_1">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_493_answer_2">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_493_answer_3">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_493">Խաչմերուկն առաջինը կանցնի՝</string>
+    <string name="question_493_answer_1">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_493_answer_2">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_493_answer_3">Կապույտ ավտոմոբիլը։</string>
     <string name="question_493_true_answer">@string/question_493_answer_3</string>
 
-    <string name="question_494">Ո՞ր ավտոմոբիլը վերջինը կանցնի խաչմերուկը։</string>
-    <string name="question_494_answer_1">Կապույտը։</string>
-    <string name="question_494_answer_2">Կարմիրը։</string>
-    <string name="question_494_answer_3">Կանաչը։</string>
-    <string name="question_494_true_answer">@string/question_494_answer_2</string>
+    <string name="question_494">Խաչմերուկը երկրորդը կանցնի՝</string>
+    <string name="question_494_answer_1">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_494_answer_2">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_494_answer_3">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_494_true_answer">@string/question_494_answer_1</string>
 
-    <string name="question_495">Խաչմերուկն առաջինը կանցնի՝</string>
-    <string name="question_495_answer_1">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_495_answer_2">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_495_answer_3">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_495_true_answer">@string/question_495_answer_1</string>
+    <string name="question_495">Խաչմերուկը երրորդը կանցնի՝</string>
+    <string name="question_495_answer_1">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_495_answer_2">Դեղին ավտոմոբիլը։</string>
+    <string name="question_495_answer_3">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_495_answer_4">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_495_true_answer">@string/question_495_answer_2</string>
 
-    <string name="question_496">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը։</string>
-    <string name="question_496_answer_1">Ավտոբուսի վարորդը։</string>
-    <string name="question_496_answer_2">Մոտոցիկլի վարորդը։</string>
-    <string name="question_496_true_answer">@string/question_496_answer_1</string>
+    <string name="question_496">Կարմիր ավտոմոբիլը՝</string>
+    <string name="question_496_answer_1">Ունի երթեւեկության առավելություն, քանի որ շրջանաձեւ երթեւեկությամբ խաչմերուկին մոտեցել է կապույտ ավտոմոբիլի աջ կողմից։</string>
+    <string name="question_496_answer_2">Պետք է ճանապարհը զիջի շրջանաձեւ երթեւեկությամբ ճանապարհով երթեւեկող կապույտ ավտոմոբիլին։</string>
+    <string name="question_496_true_answer">@string/question_496_answer_2</string>
 
-    <string name="question_497">Խաչմերուկն առաջինը կանցնի՝</string>
-    <string name="question_497_answer_1">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_497_answer_2">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_497_answer_3">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_497_true_answer">@string/question_497_answer_3</string>
+    <string name="question_497">Ավտոմոբիլները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
+    <string name="question_497_answer_1">Դեղինը, կանաչը, կապույտը։</string>
+    <string name="question_497_answer_2">Կապույտը` կանաչի հետ միաժամանակ, դեղինը։</string>
+    <string name="question_497_true_answer">@string/question_497_answer_2</string>
 
-    <string name="question_498">Խաչմերուկը երկրորդը կանցնի՝</string>
-    <string name="question_498_answer_1">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_498_answer_2">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_498_answer_3">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_498_true_answer">@string/question_498_answer_1</string>
+    <string name="question_498">Խաչմերուկը երրորդը կանցնի՝</string>
+    <string name="question_498_answer_1">Դեղին ավտոմոբիլը։</string>
+    <string name="question_498_answer_2">Կարմիր ավտոմբիլը։</string>
+    <string name="question_498_answer_3">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_498_answer_4">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_498_true_answer">@string/question_498_answer_3</string>
 
-    <string name="question_499">Խաչմերուկը երրորդը կանցնի՝</string>
-    <string name="question_499_answer_1">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_499_answer_2">Դեղին ավտոմոբիլը։</string>
-    <string name="question_499_answer_3">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_499_answer_4">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_499_true_answer">@string/question_499_answer_2</string>
+    <string name="question_499">Խաչմերուկն առաջինը կանցնի՝</string>
+    <string name="question_499_answer_1">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_499_answer_2">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_499_answer_3">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_499_true_answer">@string/question_499_answer_3</string>
 
-    <string name="question_500">Կարմիր ավտոմոբիլը՝</string>
-    <string name="question_500_answer_1">Ունի երթեւեկության առավելություն, քանի որ շրջանաձեւ երթեւեկությամբ խաչմերուկին մոտեցել է կապույտ ավտոմոբիլի աջ կողմից։</string>
-    <string name="question_500_answer_2">Պետք է ճանապարհը զիջի շրջանաձեւ երթեւեկությամբ ճանապարհով երթեւեկող կապույտ ավտոմոբիլին։</string>
-    <string name="question_500_true_answer">@string/question_500_answer_2</string>
+    <string name="question_500">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
+    <string name="question_500_answer_1">Կարմիրը, կանաչը, կապույտը, սեւը։</string>
+    <string name="question_500_answer_2">Կանաչը, կարմիրը, սեւը, կապույտը։</string>
+    <string name="question_500_answer_3">Կանաչը, կարմիրը, կապույտը, սեւը։</string>
+    <string name="question_500_true_answer">@string/question_500_answer_1</string>
 
-    <string name="question_501">Ավտոմոբիլները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_501_answer_1">Դեղինը, կանաչը, կապույտը։</string>
-    <string name="question_501_answer_2">Կապույտը` կանաչի հետ միաժամանակ, դեղինը։</string>
+    <string name="question_501">Խաչմերուկը տրանսպորտային միջոցները կանցնեն հետեւյալ հերթականությամբ՝</string>
+    <string name="question_501_answer_1">Տրամվայը, դեղին ավտոմոբիլը, կանաչ ավտոմոբիլը։</string>
+    <string name="question_501_answer_2">Տրամվայը եւ կանաչ ավտոմոբիլը, դեղին ավտոմոբիլը։</string>
+    <string name="question_501_answer_3">Կանաչ ավտոմոբիլը, դեղին ավտոմոբիլը, տրամվայը։</string>
     <string name="question_501_true_answer">@string/question_501_answer_2</string>
 
-    <string name="question_502">Խաչմերուկը երրորդը կանցնի՝</string>
-    <string name="question_502_answer_1">Դեղին ավտոմոբիլը։</string>
-    <string name="question_502_answer_2">Կարմիր ավտոմբիլը։</string>
-    <string name="question_502_answer_3">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_502_answer_4">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_502_true_answer">@string/question_502_answer_3</string>
+    <string name="question_502">Վարորդներից ո՞րն ունի առաջնահերթ երթեւեկության իրավունք։</string>
+    <string name="question_502_answer_1">Մոտոցիկլի վարորդը։</string>
+    <string name="question_502_answer_2">Ավտոմոբիլի վարորդը։</string>
+    <string name="question_502_true_answer">@string/question_502_answer_2</string>
 
-    <string name="question_503">Խաչմերուկն առաջինը կանցնի՝</string>
-    <string name="question_503_answer_1">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_503">Խաչմերուկը երկրորդը կանցնի՝</string>
+    <string name="question_503_answer_1">Կարմիր ավտոմոբիլը։</string>
     <string name="question_503_answer_2">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_503_answer_3">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_503_answer_3">Կանաչ ավտոմոբիլը։</string>
     <string name="question_503_true_answer">@string/question_503_answer_3</string>
 
-    <string name="question_504">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_504_answer_1">Կարմիրը, կանաչը, կապույտը, սեւը։</string>
-    <string name="question_504_answer_2">Կանաչը, կարմիրը, սեւը, կապույտը։</string>
-    <string name="question_504_answer_3">Կանաչը, կարմիրը, կապույտը, սեւը։</string>
-    <string name="question_504_true_answer">@string/question_504_answer_1</string>
+    <string name="question_504">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը։</string>
+    <string name="question_504_answer_1">Տրամվայի վարորդը։</string>
+    <string name="question_504_answer_2">Բեռնատար ավտոմոբիլի վարորդը։</string>
+    <string name="question_504_answer_3">Ավտոմոբիլների վարորդները։</string>
+    <string name="question_504_true_answer">@string/question_504_answer_3</string>
 
-    <string name="question_505">Խաչմերուկը տրանսպորտային միջոցները կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_505_answer_1">Տրամվայը, դեղին ավտոմոբիլը, կանաչ ավտոմոբիլը։</string>
-    <string name="question_505_answer_2">Տրամվայը եւ կանաչ ավտոմոբիլը, դեղին ավտոմոբիլը։</string>
-    <string name="question_505_answer_3">Կանաչ ավտոմոբիլը, դեղին ավտոմոբիլը, տրամվայը։</string>
-    <string name="question_505_true_answer">@string/question_505_answer_2</string>
+    <string name="question_505">Կարմիր ավտոմոբիլը խաչմերուկը կանցնի՝</string>
+    <string name="question_505_answer_1">Առաջինը։</string>
+    <string name="question_505_answer_2">Երկրորդը։</string>
+    <string name="question_505_true_answer">@string/question_505_answer_1</string>
 
-    <string name="question_506">Վարորդներից ո՞րն ունի առաջնահերթ երթեւեկության իրավունք։</string>
-    <string name="question_506_answer_1">Մոտոցիկլի վարորդը։</string>
-    <string name="question_506_answer_2">Ավտոմոբիլի վարորդը։</string>
-    <string name="question_506_true_answer">@string/question_506_answer_2</string>
+    <string name="question_506">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
+    <string name="question_506_answer_1">Թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը, հեծանիվը։</string>
+    <string name="question_506_answer_2">Ավտոբուսը, հեծանիվը, թեթեւ մարդատար ավտոմոբիլը։</string>
+    <string name="question_506_answer_3">Ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը, հեծանիվը։</string>
+    <string name="question_506_answer_4">Հեծանիվը, ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը։</string>
+    <string name="question_506_true_answer">@string/question_506_answer_4</string>
 
-    <string name="question_507">Խաչմերուկը երկրորդը կանցնի՝</string>
-    <string name="question_507_answer_1">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_507_answer_2">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_507_answer_3">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_507_true_answer">@string/question_507_answer_3</string>
+    <string name="question_507">Ո՞ր տրանսպորտային միջոցի վարորդն ունի առաջնահերթ երթեւեկության իրավունք։</string>
+    <string name="question_507_answer_1">Ավտոմոբիլի վարորդը։</string>
+    <string name="question_507_answer_2">Հեծանվորդը։</string>
+    <string name="question_507_true_answer">@string/question_507_answer_2</string>
 
-    <string name="question_508">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը։</string>
-    <string name="question_508_answer_1">Տրամվայի վարորդը։</string>
-    <string name="question_508_answer_2">Բեռնատար ավտոմոբիլի վարորդը։</string>
-    <string name="question_508_answer_3">Ավտոմոբիլների վարորդները։</string>
-    <string name="question_508_true_answer">@string/question_508_answer_3</string>
+    <string name="question_508">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
+    <string name="question_508_answer_1">Տրամվայը, ավտոմոբիլը եւ ավտոբուսը միաժամանակ։</string>
+    <string name="question_508_answer_2">Տրամվայը, ավտոբուսը, ավտոմոբիլը։</string>
+    <string name="question_508_answer_3">Ավտոբուսը, տրամվայը, ավտոմոբիլը։</string>
+    <string name="question_508_true_answer">@string/question_508_answer_1</string>
 
-    <string name="question_509">Կարմիր ավտոմոբիլը խաչմերուկը կանցնի՝</string>
-    <string name="question_509_answer_1">Առաջինը։</string>
-    <string name="question_509_answer_2">Երկրորդը։</string>
+    <string name="question_509">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը։</string>
+    <string name="question_509_answer_1">Կապույտ ավտոմոբիլի վարորդը։</string>
+    <string name="question_509_answer_2">Կարմիր ավտոմոբիլի վարորդը։</string>
     <string name="question_509_true_answer">@string/question_509_answer_1</string>
 
-    <string name="question_510">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_510_answer_1">Թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը, հեծանիվը։</string>
-    <string name="question_510_answer_2">Ավտոբուսը, հեծանիվը, թեթեւ մարդատար ավտոմոբիլը։</string>
-    <string name="question_510_answer_3">Ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը, հեծանիվը։</string>
-    <string name="question_510_answer_4">Հեծանիվը, ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը։</string>
-    <string name="question_510_true_answer">@string/question_510_answer_4</string>
+    <string name="question_510">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը։</string>
+    <string name="question_510_answer_1">Ավտոմոբիլի վարորդը։</string>
+    <string name="question_510_answer_2">Մոտոցիկլի վարորդը։</string>
+    <string name="question_510_true_answer">@string/question_510_answer_2</string>
 
     <string name="question_511">Ո՞ր տրանսպորտային միջոցի վարորդն ունի առաջնահերթ երթեւեկության իրավունք։</string>
     <string name="question_511_answer_1">Ավտոմոբիլի վարորդը։</string>
@@ -3397,1049 +3418,1081 @@
     <string name="question_520_answer_3">Դեղին ավտոմոբիլը։</string>
     <string name="question_520_true_answer">@string/question_520_answer_2</string>
 
-    <string name="question_521">Ավտոմոբիլները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_521_answer_1">Կապույտը, կանաչը, կարմիրը։</string>
-    <string name="question_521_answer_2">Կարմիրը, կապույտը, կանաչը։</string>
-    <string name="question_521_answer_3">Կանաչը, կարմիրը, կապույտը։</string>
-    <string name="question_521_true_answer">@string/question_521_answer_2</string>
+    <string name="question_521">Ո՞ր պատասխանում է ճիշտ նշված անցման հերթականությունը։</string>
+    <string name="question_521_answer_1">Մոտոցիկլը, ավտոբուսը, բեռնատար ավտոմոբիլը։</string>
+    <string name="question_521_answer_2">Ավտոբուսը, մոտոցիկլը, բեռնատար ավտոմոբիլը։</string>
+    <string name="question_521_answer_3">Ավտոբուսը, բեռնատար ավտոմոբիլը, մոտոցիկլը։</string>
+    <string name="question_521_true_answer">@string/question_521_answer_1</string>
 
-    <string name="question_522">Խաչմերուկը երկրորդը կանցնի՝</string>
-    <string name="question_522_answer_1">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_522_answer_2">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_522_answer_3">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_522_true_answer">@string/question_522_answer_1</string>
+    <string name="question_522">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
+    <string name="question_522_answer_1">Թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը, տրամվայը։</string>
+    <string name="question_522_answer_2">Տրամվայը, ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը։</string>
+    <string name="question_522_answer_3">Տրամվայը, թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը։</string>
+    <string name="question_522_true_answer">@string/question_522_answer_3</string>
 
-    <string name="question_523">Կարմիր ավտոմոբիլը խաչմերուկը կանցնի՝</string>
-    <string name="question_523_answer_1">Երկրորդը` կապույտի հետ միաժամանակ։</string>
-    <string name="question_523_answer_2">Երկրորդը` դեղինից հետո։</string>
-    <string name="question_523_answer_3">Երրորդը` կանաչից եւ դեղինից հետո։</string>
-    <string name="question_523_true_answer">@string/question_523_answer_1</string>
+    <string name="question_523">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը։</string>
+    <string name="question_523_answer_1">Թեթեւ մարդատար ավտոմոբիլի վարորդը։</string>
+    <string name="question_523_answer_2">Ավտոբուսի վարորդը։</string>
+    <string name="question_523_true_answer">@string/question_523_answer_2</string>
 
-    <string name="question_524">Դեղին ավտոմոբիլը խաչմերուկը կանցնի՝</string>
-    <string name="question_524_answer_1">Առաջինը։</string>
-    <string name="question_524_answer_2">Երկրորդը։</string>
-    <string name="question_524_answer_3">Երրորդը</string>
-    <string name="question_524_answer_4">Վերջինը։</string>
-    <string name="question_524_true_answer">@string/question_524_answer_4</string>
+    <string name="question_524">Ո՞ր տրանսպորտային միջոցը պետք է զիջի ճանապարհը։</string>
+    <string name="question_524_answer_1">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_524_answer_2">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_524_true_answer">@string/question_524_answer_2</string>
 
-    <string name="question_525">Ո՞ր պատասխանում է ճիշտ նշված անցման հերթականությունը։</string>
-    <string name="question_525_answer_1">Մոտոցիկլը, ավտոբուսը, բեռնատար ավտոմոբիլը։</string>
-    <string name="question_525_answer_2">Ավտոբուսը, մոտոցիկլը, բեռնատար ավտոմոբիլը։</string>
-    <string name="question_525_answer_3">Ավտոբուսը, բեռնատար ավտոմոբիլը, մոտոցիկլը։</string>
-    <string name="question_525_true_answer">@string/question_525_answer_1</string>
+    <string name="question_525">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
+    <string name="question_525_answer_1">Դեղին ավտոբուսը, բեռնատար ավտոմոբիլը, կանաչ ավտոբուսը։</string>
+    <string name="question_525_answer_2">Բեռնատար ավտոմոբիլը, դեղին ավտոբուսը, կանաչ ավտոբուսը։</string>
+    <string name="question_525_answer_3">Դեղին ավտոբուսը, կանաչ ավտոբուսը, բեռնատար ավտոմոբիլը։</string>
+    <string name="question_525_true_answer">@string/question_525_answer_2</string>
 
     <string name="question_526">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_526_answer_1">Թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը, տրամվայը։</string>
-    <string name="question_526_answer_2">Տրամվայը, ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը։</string>
-    <string name="question_526_answer_3">Տրամվայը, թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը։</string>
-    <string name="question_526_true_answer">@string/question_526_answer_3</string>
+    <string name="question_526_answer_1">Ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը եւ բեռնատար ավտոմոբիլը միաժամանակ։</string>
+    <string name="question_526_answer_2">Թեթեւ մարդատար ավտոմոբիլը եւ բեռնատար ավտոմոբիլը միաժամանակ, ավտոբուսը։</string>
+    <string name="question_526_true_answer">@string/question_526_answer_1</string>
 
-    <string name="question_527">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը։</string>
-    <string name="question_527_answer_1">Թեթեւ մարդատար ավտոմոբիլի վարորդը։</string>
-    <string name="question_527_answer_2">Ավտոբուսի վարորդը։</string>
+    <string name="question_527">Ի՞նչ հերթականությամբ կանցնեն խաչմերուկը տրանսպորտային միջոցները, եթե լուսացույցերը չեն աշխատում՝</string>
+    <string name="question_527_answer_1">Տրոլեյբուսը եւ մոտոցիկլը, ավտոբուսը եւ թեթեւ մարդատար ավտոմոբիլը։</string>
+    <string name="question_527_answer_2">Մոտոցիկլը, ավտոբուսը եւ թեթեւ մարդատար ավտոմոբիլը, տրոլեյբուսը։</string>
+    <string name="question_527_answer_3">Ավտոբուսը եւ թեթեւ մարդատար ավտոմոբիլը, տրոլեյբուսը եւ մոտոցիկլը։</string>
     <string name="question_527_true_answer">@string/question_527_answer_2</string>
 
-    <string name="question_528">Ո՞ր տրանսպորտային միջոցը պետք է զիջի ճանապարհը։</string>
-    <string name="question_528_answer_1">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_528_answer_2">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_528_true_answer">@string/question_528_answer_2</string>
+    <string name="question_528">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
+    <string name="question_528_answer_1">Բեռնատար ավտոմոբիլը, տրամվայը եւ ավտոբուսը, մոտոցիկլը եւ թեթեւ մարդատար ավտոմոբիլը։</string>
+    <string name="question_528_answer_2">Տրամվայը եւ ավտոբուսը, մոտոցիկլը եւ թեթեւ մարդատար ավտոմոբիլը, բեռնատար ավտոմոբիլը։</string>
+    <string name="question_528_true_answer">@string/question_528_answer_1</string>
 
     <string name="question_529">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_529_answer_1">Դեղին ավտոբուսը, բեռնատար ավտոմոբիլը, կանաչ ավտոբուսը։</string>
-    <string name="question_529_answer_2">Բեռնատար ավտոմոբիլը, դեղին ավտոբուսը, կանաչ ավտոբուսը։</string>
-    <string name="question_529_answer_3">Դեղին ավտոբուսը, կանաչ ավտոբուսը, բեռնատար ավտոմոբիլը։</string>
+    <string name="question_529_answer_1">«Շտապ օգնության» ավտոմոբիլը, տրամվայը, մոտոցիկլը, ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը։</string>
+    <string name="question_529_answer_2">Մոտոցիկլը, ավտոբուսը, տրամվայը եւ «Շտապ օգնության» ավտոմոբիլը, թեթեւ մարդատար ավտոմոբիլը։</string>
     <string name="question_529_true_answer">@string/question_529_answer_2</string>
 
     <string name="question_530">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_530_answer_1">Ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը եւ բեռնատար ավտոմոբիլը միաժամանակ։</string>
-    <string name="question_530_answer_2">Թեթեւ մարդատար ավտոմոբիլը եւ բեռնատար ավտոմոբիլը միաժամանակ, ավտոբուսը։</string>
+    <string name="question_530_answer_1">Բեռնատար ավտոմոբիլը եւ մոտոցիկլը, ավտոբուսը, տրոլեյբուսը։</string>
+    <string name="question_530_answer_2">Բեռնատար ավտոմոբիլը եւ ավտոբուսը, մոտոցիկլը, տրոլեյբուսը։</string>
     <string name="question_530_true_answer">@string/question_530_answer_1</string>
 
-    <string name="question_531">Ի՞նչ հերթականությամբ կանցնեն խաչմերուկը տրանսպորտային միջոցները, եթե լուսացույցերը չեն աշխատում՝</string>
-    <string name="question_531_answer_1">Տրոլեյբուսը եւ մոտոցիկլը, ավտոբուսը եւ թեթեւ մարդատար ավտոմոբիլը։</string>
-    <string name="question_531_answer_2">Մոտոցիկլը, ավտոբուսը եւ թեթեւ մարդատար ավտոմոբիլը, տրոլեյբուսը։</string>
-    <string name="question_531_answer_3">Ավտոբուսը եւ թեթեւ մարդատար ավտոմոբիլը, տրոլեյբուսը եւ մոտոցիկլը։</string>
-    <string name="question_531_true_answer">@string/question_531_answer_2</string>
+    <string name="question_531">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
+    <string name="question_531_answer_1">Բեռնատար ավտոմոբիլը, թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը, ավտոցիստեռնը։</string>
+    <string name="question_531_answer_2">Բեռնատար ավտոմոբիլը, ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը, ավտոցիստեռնը։</string>
+    <string name="question_531_true_answer">@string/question_531_answer_1</string>
 
-    <string name="question_532">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_532_answer_1">Բեռնատար ավտոմոբիլը, տրամվայը եւ ավտոբուսը, մոտոցիկլը եւ թեթեւ մարդատար ավտոմոբիլը։</string>
-    <string name="question_532_answer_2">Տրամվայը եւ ավտոբուսը, մոտոցիկլը եւ թեթեւ մարդատար ավտոմոբիլը, բեռնատար ավտոմոբիլը։</string>
-    <string name="question_532_true_answer">@string/question_532_answer_1</string>
+    <string name="question_532">Թեթեւ մարդատար ավտոմոբիլը խաչմերուկը կանցնի`</string>
+    <string name="question_532_answer_1">Առաջինը։</string>
+    <string name="question_532_answer_2">Երկրորդը` ավտոբուսից հետո։</string>
+    <string name="question_532_answer_3">Երրորդը։</string>
+    <string name="question_532_true_answer">@string/question_532_answer_2</string>
 
     <string name="question_533">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_533_answer_1">«Շտապ օգնության» ավտոմոբիլը, տրամվայը, մոտոցիկլը, ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը։</string>
-    <string name="question_533_answer_2">Մոտոցիկլը, ավտոբուսը, տրամվայը եւ «Շտապ օգնության» ավտոմոբիլը, թեթեւ մարդատար ավտոմոբիլը։</string>
+    <string name="question_533_answer_1">Թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը, բեռնատար ավտոմոբիլը։</string>
+    <string name="question_533_answer_2">Ավտոբուսը, բեռնատար ավտոմոբիլը, թեթեւ մարդատար ավտոմոբիլը։</string>
+    <string name="question_533_answer_3">Ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը, բեռնատար ավտոմոբիլը։</string>
     <string name="question_533_true_answer">@string/question_533_answer_2</string>
 
     <string name="question_534">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_534_answer_1">Բեռնատար ավտոմոբիլը եւ մոտոցիկլը, ավտոբուսը, տրոլեյբուսը։</string>
-    <string name="question_534_answer_2">Բեռնատար ավտոմոբիլը եւ ավտոբուսը, մոտոցիկլը, տրոլեյբուսը։</string>
+    <string name="question_534_answer_1">Բեռնատար ավտոմոբիլը, թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը։</string>
+    <string name="question_534_answer_2">Ավտոբուսը, բեռնատար ավտոմոբիլը, թեթեւ մարդատար ավտոմոբիլը։</string>
+    <string name="question_534_answer_3">Ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը, բեռնատար ավտոմոբիլը։</string>
     <string name="question_534_true_answer">@string/question_534_answer_1</string>
 
-    <string name="question_535">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_535_answer_1">Բեռնատար ավտոմոբիլը, թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը, ավտոցիստեռնը։</string>
-    <string name="question_535_answer_2">Բեռնատար ավտոմոբիլը, ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը, ավտոցիստեռնը։</string>
+    <string name="question_535">Կարող են արդյո՞ք միաժամանակ կատարել ձախ շրջադարձն այս խաչմերուկում</string>
+    <string name="question_535_answer_1">Այո</string>
+    <string name="question_535_answer_2">Ոչ: Պետք է զիջի թեթև մարդատարի վարորդը</string>
+    <string name="question_535_answer_3">Ոչ: Պետք է զիջի բեռնատարի վարորդը</string>
     <string name="question_535_true_answer">@string/question_535_answer_1</string>
 
-    <string name="question_536">Թեթեւ մարդատար ավտոմոբիլը խաչմերուկը կանցնի`</string>
-    <string name="question_536_answer_1">Առաջինը։</string>
-    <string name="question_536_answer_2">Երկրորդը` ավտոբուսից հետո։</string>
-    <string name="question_536_answer_3">Երրորդը։</string>
-    <string name="question_536_true_answer">@string/question_536_answer_2</string>
+    <string name="question_536">Ո՞ւմ եք պարտավոր զիջել ճանապարհը տվյալ իրավիճակում</string>
+    <string name="question_536_answer_1">Միայն ավտոբուսին</string>
+    <string name="question_536_answer_2">Թեթև մարդատարին</string>
+    <string name="question_536_answer_3">Ոչ մեկին</string>
+    <string name="question_536_true_answer">@string/question_536_answer_3</string>
 
-    <string name="question_537">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_537_answer_1">Թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը, բեռնատար ավտոմոբիլը։</string>
-    <string name="question_537_answer_2">Ավտոբուսը, բեռնատար ավտոմոբիլը, թեթեւ մարդատար ավտոմոբիլը։</string>
-    <string name="question_537_answer_3">Ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը, բեռնատար ավտոմոբիլը։</string>
-    <string name="question_537_true_answer">@string/question_537_answer_2</string>
+    <string name="question_537">Այս իրավիճակում ձախ շրջադարձ կատարելիս</string>
+    <string name="question_537_answer_1">Կանցնեք խաչմերուկն առաջինը</string>
+    <string name="question_537_answer_2">Կզիջենք ճանապարհը բեռնատարի վարորդին</string>
+    <string name="question_537_true_answer">@string/question_537_answer_1</string>
 
-    <string name="question_538">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_538_answer_1">Բեռնատար ավտոմոբիլը, թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը։</string>
-    <string name="question_538_answer_2">Ավտոբուսը, բեռնատար ավտոմոբիլը, թեթեւ մարդատար ավտոմոբիլը։</string>
-    <string name="question_538_answer_3">Ավտոբուսը, թեթեւ մարդատար ավտոմոբիլը, բեռնատար ավտոմոբիլը։</string>
+    <string name="question_538">Այս իրավիճակում աջ շրջադարձ կատարելիս</string>
+    <string name="question_538_answer_1">Կանցնեք խաչմերուկն առաջինը</string>
+    <string name="question_538_answer_2">Կզիջենք ճանապարհը թեթև մարդատարի վարորդին</string>
     <string name="question_538_true_answer">@string/question_538_answer_1</string>
 
-    <string name="question_539">Կարող են արդյո՞ք միաժամանակ կատարել ձախ շրջադարձն այս խաչմերուկում</string>
-    <string name="question_539_answer_1">Այո</string>
-    <string name="question_539_answer_2">Ոչ: Պետք է զիջի թեթև մարդատարի վարորդը</string>
-    <string name="question_539_answer_3">Ոչ: Պետք է զիջի բեռնատարի վարորդը</string>
-    <string name="question_539_true_answer">@string/question_539_answer_1</string>
+    <string name="question_539">Ձախ շրջադարձ կատարելիս պարտավոր եք զիջել ճանապարհը</string>
+    <string name="question_539_answer_1">Թեթև մարդատարի և Ա տարամվայի վարորդներին</string>
+    <string name="question_539_answer_2">Միայն Ա տրամվայի վարորդին</string>
+    <string name="question_539_answer_3">Տրամվայների վարորդներին</string>
+    <string name="question_539_answer_4">Ոչ ոքի</string>
+    <string name="question_539_true_answer">@string/question_539_answer_2</string>
 
-    <string name="question_540">Ո՞ւմ եք պարտավոր զիջել ճանապարհը տվյալ իրավիճակում</string>
-    <string name="question_540_answer_1">Միայն ավտոբուսին</string>
-    <string name="question_540_answer_2">Թեթև մարդատարին</string>
-    <string name="question_540_answer_3">Ոչ մեկին</string>
-    <string name="question_540_true_answer">@string/question_540_answer_3</string>
+    <string name="question_540">Երթևեկությունն ուղիղ շարունակելու դեպքում</string>
+    <string name="question_540_answer_1">Խաչմերուկն առաջինը կանցնեք</string>
+    <string name="question_540_answer_2">Կանցնեք թեթև մարդատարի անցնելուց հետո</string>
+    <string name="question_540_true_answer">@string/question_540_answer_2</string>
 
-    <string name="question_541">Այս իրավիճակում ձախ շրջադարձ կատարելիս</string>
-    <string name="question_541_answer_1">Կանցնեք խաչմերուկն առաջինը</string>
-    <string name="question_541_answer_2">Կզիջենք ճանապարհը բեռնատարի վարորդին</string>
+    <string name="question_541">Այս իրավիճակում հետադարձ կատարելիս անհրաժեշտ է ճանապարհը զիջել</string>
+    <string name="question_541_answer_1">Թեթև մարդատարին</string>
+    <string name="question_541_answer_2">Երկու վարորդներին</string>
     <string name="question_541_true_answer">@string/question_541_answer_1</string>
 
-    <string name="question_542">Այս իրավիճակում աջ շրջադարձ կատարելիս</string>
-    <string name="question_542_answer_1">Կանցնեք խաչմերուկն առաջինը</string>
-    <string name="question_542_answer_2">Կզիջենք ճանապարհը թեթև մարդատարի վարորդին</string>
+    <string name="question_542">Այս իրավիճակում խաչմերուկն անցնելիս հետիոտներին խոչընդոտ չստեղծել</string>
+    <string name="question_542_answer_1">Պարտավոր ենք</string>
+    <string name="question_542_answer_2">Պարտավոր չենք</string>
     <string name="question_542_true_answer">@string/question_542_answer_1</string>
 
-    <string name="question_543">Ձախ շրջադարձ կատարելիս պարտավոր եք զիջել ճանապարհը</string>
-    <string name="question_543_answer_1">Թեթև մարդատարի և Ա տարամվայի վարորդներին</string>
-    <string name="question_543_answer_2">Միայն Ա տրամվայի վարորդին</string>
-    <string name="question_543_answer_3">Տրամվայների վարորդներին</string>
-    <string name="question_543_answer_4">Ոչ ոքի</string>
+    <string name="question_543">Խաչմերուկից անմիջապես հետո գոյացած խցանման պայմաններում մուտք գործելը խաչմերուկ թույլատրելի է միայն</string>
+    <string name="question_543_answer_1">Եթե երթևեկությունն ուղիղ ենք շարունակելու</string>
+    <string name="question_543_answer_2">Եթե շրջադարձ կամ հետադարձ ենք կատարելու</string>
+    <string name="question_543_answer_3">Թվարկված բոլոր դեպքերում:</string>
     <string name="question_543_true_answer">@string/question_543_answer_2</string>
 
-    <string name="question_544">Երթևեկությունն ուղիղ շարունակելու դեպքում</string>
-    <string name="question_544_answer_1">Խաչմերուկն առաջինը կանցնեք</string>
-    <string name="question_544_answer_2">Կանցնեք թեթև մարդատարի անցնելուց հետո</string>
-    <string name="question_544_true_answer">@string/question_544_answer_2</string>
+    <string name="question_544">Զիջել ճանապարհը պարտավոր ենք</string>
+    <string name="question_544_answer_1">Մոտոցիկլի վարորդին</string>
+    <string name="question_544_answer_2">Թեթև մարդատարին</string>
+    <string name="question_544_answer_3">Ոչ ոքի</string>
+    <string name="question_544_true_answer">@string/question_544_answer_3</string>
 
-    <string name="question_545">Այս իրավիճակում հետադարձ կատարելիս անհրաժեշտ է ճանապարհը զիջել</string>
-    <string name="question_545_answer_1">Թեթև մարդատարին</string>
-    <string name="question_545_answer_2">Երկու վարորդներին</string>
-    <string name="question_545_true_answer">@string/question_545_answer_1</string>
+    <string name="question_545">Խաչմերուկն անցնելիս վարորդը պարտավոր է զիջել ճանապարհը</string>
+    <string name="question_545_answer_1">Միայն տրամվայների վարորդներին</string>
+    <string name="question_545_answer_2">Թեթև մարդատարի և տրամվայ Բ-ի վարորդին</string>
+    <string name="question_545_answer_3">Ոչ ոքի</string>
+    <string name="question_545_answer_4">Բոլորին</string>
+    <string name="question_545_true_answer">@string/question_545_answer_2</string>
 
-    <string name="question_546">Այս իրավիճակում խաչմերուկն անցնելիս հետիոտներին խոչընդոտ չստեղծել</string>
-    <string name="question_546_answer_1">Պարտավոր ենք</string>
-    <string name="question_546_answer_2">Պարտավոր չենք</string>
-    <string name="question_546_true_answer">@string/question_546_answer_1</string>
+    <string name="question_546">Այս իրավիճակում ձախ շրջադարձ կատարելիս պարտավոր ենք զիջել ճանապարհը</string>
+    <string name="question_546_answer_1">Թեթև մարդատարի վարորդին</string>
+    <string name="question_546_answer_2">Ավտոբուսի վարորդին</string>
+    <string name="question_546_answer_3">Ոչ ոքի</string>
+    <string name="question_546_true_answer">@string/question_546_answer_3</string>
 
-    <string name="question_547">Խաչմերուկից անմիջապես հետո գոյացած խցանման պայմաններում մուտք գործելը խաչմերուկ թույլատրելի է միայն</string>
-    <string name="question_547_answer_1">Եթե երթևեկությունն ուղիղ ենք շարունակելու</string>
-    <string name="question_547_answer_2">Եթե շրջադարձ կամ հետադարձ ենք կատարելու</string>
-    <string name="question_547_answer_3">Թվարկված բոլոր դեպքերում:</string>
-    <string name="question_547_true_answer">@string/question_547_answer_2</string>
+    <string name="question_547">Պարտավոր ենք զիջել ճանապարհը</string>
+    <string name="question_547_answer_1">Միայն տրամվայի վարորդին</string>
+    <string name="question_547_answer_2">Բեռնատարի վարորդին</string>
+    <string name="question_547_answer_3">Երկու վարորդներին</string>
+    <string name="question_547_true_answer">@string/question_547_answer_3</string>
 
-    <string name="question_548">Զիջել ճանապարհը պարտավոր ենք</string>
-    <string name="question_548_answer_1">Մոտոցիկլի վարորդին</string>
-    <string name="question_548_answer_2">Թեթև մարդատարին</string>
+    <string name="question_548">Ճանապարհը պետք է զիջեք</string>
+    <string name="question_548_answer_1">Ավտոբուսի վարորդին</string>
+    <string name="question_548_answer_2">Երկու վարորդներին</string>
     <string name="question_548_answer_3">Ոչ ոքի</string>
     <string name="question_548_true_answer">@string/question_548_answer_3</string>
 
-    <string name="question_549">Խաչմերուկն անցնելիս վարորդը պարտավոր է զիջել ճանապարհը</string>
-    <string name="question_549_answer_1">Միայն տրամվայների վարորդներին</string>
-    <string name="question_549_answer_2">Թեթև մարդատարի և տրամվայ Բ-ի վարորդին</string>
-    <string name="question_549_answer_3">Ոչ ոքի</string>
-    <string name="question_549_answer_4">Բոլորին</string>
+    <string name="question_549">Այս իրավիճակում խաչմերուկն անցնելիս զիջել ճանապարհը</string>
+    <string name="question_549_answer_1">Պարտավոր եք</string>
+    <string name="question_549_answer_2">Պարտավոր չեք</string>
     <string name="question_549_true_answer">@string/question_549_answer_2</string>
 
-    <string name="question_550">Այս իրավիճակում ձախ շրջադարձ կատարելիս պարտավոր ենք զիջել ճանապարհը</string>
-    <string name="question_550_answer_1">Թեթև մարդատարի վարորդին</string>
-    <string name="question_550_answer_2">Ավտոբուսի վարորդին</string>
-    <string name="question_550_answer_3">Ոչ ոքի</string>
-    <string name="question_550_true_answer">@string/question_550_answer_3</string>
+    <string name="question_550">Խաչմերուկն անցնելիս այս իրավիճակում</string>
+    <string name="question_550_answer_1">Առաջինն անցնելու իրավունք ունենք</string>
+    <string name="question_550_answer_2">Պետք է զիջենք տրամվայի վարորդին</string>
+    <string name="question_550_answer_3">Պետք է զիջենք բեռնատարի վարորդին</string>
+    <string name="question_550_answer_4">Պետք է զիջենք բոլոր վարորդներին</string>
+    <string name="question_550_true_answer">@string/question_550_answer_1</string>
 
-    <string name="question_551">Պարտավոր ենք զիջել ճանապարհը</string>
-    <string name="question_551_answer_1">Միայն տրամվայի վարորդին</string>
-    <string name="question_551_answer_2">Բեռնատարի վարորդին</string>
-    <string name="question_551_answer_3">Երկու վարորդներին</string>
-    <string name="question_551_true_answer">@string/question_551_answer_3</string>
+    <string name="question_551">«Շրջանաձև երթևեկություն» նշանով կահավորված շրջանաձև երթևեկությամբ խաչմերուկ մուտք գործելիս տրանսպորտային միջոցի վարորդը</string>
+    <string name="question_551_answer_1">պարտավոր է ճանապարհը զիջել այդ խաչմերուկում երթևեկող տրանսպորտային միջոցներին</string>
+    <string name="question_551_answer_2">ունի երթևեկության առավելություն արդեն իսկ այդ խաչմերուկում երթևեկողների նկատմամբ:</string>
+    <string name="question_551_true_answer">@string/question_551_answer_1</string>
 
-    <string name="question_552">Ճանապարհը պետք է զիջեք</string>
-    <string name="question_552_answer_1">Ավտոբուսի վարորդին</string>
-    <string name="question_552_answer_2">Երկու վարորդներին</string>
-    <string name="question_552_answer_3">Ոչ ոքի</string>
+    <string name="question_552">Այս իրադրությունում ձախ շրջադարձի ժամանակ պարտավոր ենք զիջել ճանապարհը</string>
+    <string name="question_552_answer_1">Բոլոր վարորդներին</string>
+    <string name="question_552_answer_2">Միայն թեթև մարդատարի վարորդին</string>
+    <string name="question_552_answer_3">Ավտոբուսի և թեթև մարդատարի վարորդներին</string>
     <string name="question_552_true_answer">@string/question_552_answer_3</string>
 
-    <string name="question_553">Այս իրավիճակում խաչմերուկն անցնելիս զիջել ճանապարհը</string>
-    <string name="question_553_answer_1">Պարտավոր եք</string>
-    <string name="question_553_answer_2">Պարտավոր չեք</string>
-    <string name="question_553_true_answer">@string/question_553_answer_2</string>
+    <string name="question_553">Ո՞ր վարորդն է պարտավոր չխոչընդոտել հետիոտներին</string>
+    <string name="question_553_answer_1">Թեթև մարդատարի վարորդը</string>
+    <string name="question_553_answer_2">Բեռնատարի վարորդը</string>
+    <string name="question_553_answer_3">Երկու վարորդները</string>
+    <string name="question_553_true_answer">@string/question_553_answer_3</string>
 
-    <string name="question_554">Խաչմերուկն անցնելիս այս իրավիճակում</string>
-    <string name="question_554_answer_1">Առաջինն անցնելու իրավունք ունենք</string>
-    <string name="question_554_answer_2">Պետք է զիջենք տրամվայի վարորդին</string>
-    <string name="question_554_answer_3">Պետք է զիջենք բեռնատարի վարորդին</string>
-    <string name="question_554_answer_4">Պետք է զիջենք բոլոր վարորդներին</string>
-    <string name="question_554_true_answer">@string/question_554_answer_1</string>
+    <string name="question_554">Այս իրավիճակում վարորդը կարող է՞ կատարել ձախ շրջադարձը</string>
+    <string name="question_554_answer_1">Այո</string>
+    <string name="question_554_answer_2">Այո, եթե չի խոչընդոտի բեռնատարի վարորդին</string>
+    <string name="question_554_answer_3">Ոչ</string>
+    <string name="question_554_true_answer">@string/question_554_answer_2</string>
 
-    <string name="question_555">«Շրջանաձև երթևեկություն» նշանով կահավորված շրջանաձև երթևեկությամբ խաչմերուկ մուտք գործելիս տրանսպորտային միջոցի վարորդը</string>
-    <string name="question_555_answer_1">պարտավոր է ճանապարհը զիջել այդ խաչմերուկում երթևեկող տրանսպորտային միջոցներին</string>
-    <string name="question_555_answer_2">ունի երթևեկության առավելություն արդեն իսկ այդ խաչմերուկում երթևեկողների նկատմամբ:</string>
+    <string name="question_555">Այս իրադրությունում ձախ շրջադարձ կատարելիս վարորդը</string>
+    <string name="question_555_answer_1">Պետք է զիջի ճանապարհը</string>
+    <string name="question_555_answer_2">Կանցնի խաչմերուկն առաջինը</string>
     <string name="question_555_true_answer">@string/question_555_answer_1</string>
 
-    <string name="question_556">Այս իրադրությունում ձախ շրջադարձի ժամանակ պարտավոր ենք զիջել ճանապարհը</string>
-    <string name="question_556_answer_1">Բոլոր վարորդներին</string>
-    <string name="question_556_answer_2">Միայն թեթև մարդատարի վարորդին</string>
-    <string name="question_556_answer_3">Ավտոբուսի և թեթև մարդատարի վարորդներին</string>
-    <string name="question_556_true_answer">@string/question_556_answer_3</string>
+    <string name="question_556">Նշանները հայտնում են, որ</string>
+    <string name="question_556_answer_1">200 մետրից ճանապարհը հատվողին զիջելու անհրաժեշտություն է լինելու:</string>
+    <string name="question_556_answer_2">200 մետր հատվածում պետք է զիջենք բոլորին:</string>
+    <string name="question_556_true_answer">@string/question_556_answer_1</string>
 
-    <string name="question_557">Ո՞ր վարորդն է պարտավոր չխոչընդոտել հետիոտներին</string>
-    <string name="question_557_answer_1">Թեթև մարդատարի վարորդը</string>
-    <string name="question_557_answer_2">Բեռնատարի վարորդը</string>
-    <string name="question_557_answer_3">Երկու վարորդները</string>
+    <string name="question_557">Երկրորդ անցում ձախ շրջադարձ կատարելու դեպքում վարորդն</string>
+    <string name="question_557_answer_1">Ունի առավելություն</string>
+    <string name="question_557_answer_2">Պետք է զիջի մյուս վարորդներին</string>
+    <string name="question_557_answer_3">Պետք է զիջի ավտոբուսի վարորդին</string>
     <string name="question_557_true_answer">@string/question_557_answer_3</string>
 
-    <string name="question_558">Այս իրավիճակում վարորդը կարող է՞ կատարել ձախ շրջադարձը</string>
-    <string name="question_558_answer_1">Այո</string>
-    <string name="question_558_answer_2">Այո, եթե չի խոչընդոտի բեռնատարի վարորդին</string>
-    <string name="question_558_answer_3">Ոչ</string>
+    <string name="question_558">Խաչմերուկն ուղիղ անցնելիս վարորդը</string>
+    <string name="question_558_answer_1">Կարող է առաջինն անցնել</string>
+    <string name="question_558_answer_2">Պետք է զիջի տրամվային</string>
+    <string name="question_558_answer_3">Պետք է զիջի երկու վարորդներին</string>
     <string name="question_558_true_answer">@string/question_558_answer_2</string>
 
-    <string name="question_559">Այս իրադրությունում ձախ շրջադարձ կատարելիս վարորդը</string>
-    <string name="question_559_answer_1">Պետք է զիջի ճանապարհը</string>
-    <string name="question_559_answer_2">Կանցնի խաչմերուկն առաջինը</string>
+    <string name="question_559">Ձախ շրջադարձ կատարելիս վարորդն ո՞ւմ է պարտավոր զիջել</string>
+    <string name="question_559_answer_1">Ավտոբուսի վարորդին</string>
+    <string name="question_559_answer_2">Թեթև մարդատարի վարորդին</string>
+    <string name="question_559_answer_3">Ոչ ոքի</string>
     <string name="question_559_true_answer">@string/question_559_answer_1</string>
 
-    <string name="question_560">Նշանները հայտնում են, որ</string>
-    <string name="question_560_answer_1">200 մետրից ճանապարհը հատվողին զիջելու անհրաժեշտություն է լինելու:</string>
-    <string name="question_560_answer_2">200 մետր հատվածում պետք է զիջենք բոլորին:</string>
-    <string name="question_560_true_answer">@string/question_560_answer_1</string>
+    <string name="question_560">Այս խաչմերուկ մուտք գործելիս վարորդը</string>
+    <string name="question_560_answer_1">Ունի առաջնահերթ երթևեկության իրավունք</string>
+    <string name="question_560_answer_2">Պետք է զիջի բեռնատարին</string>
+    <string name="question_560_answer_3">Երկու վարորդներին պետք է զիջի</string>
+    <string name="question_560_true_answer">@string/question_560_answer_3</string>
 
-    <string name="question_561">Երկրորդ անցում ձախ շրջադարձ կատարելու դեպքում վարորդն</string>
-    <string name="question_561_answer_1">Ունի առավելություն</string>
-    <string name="question_561_answer_2">Պետք է զիջի մյուս վարորդներին</string>
-    <string name="question_561_answer_3">Պետք է զիջի ավտոբուսի վարորդին</string>
-    <string name="question_561_true_answer">@string/question_561_answer_3</string>
+    <string name="question_561">Ձախ շրջադարձ կատարելիս վարորդն ո՞ւմ է պարտավոր զիջել</string>
+    <string name="question_561_answer_1">Երկու վարորդներին</string>
+    <string name="question_561_answer_2">Թեթև մարդատարի վարորդին</string>
+    <string name="question_561_answer_3">Ավտոբուսի վարորդին</string>
+    <string name="question_561_true_answer">@string/question_561_answer_1</string>
 
-    <string name="question_562">Խաչմերուկն ուղիղ անցնելիս վարորդը</string>
-    <string name="question_562_answer_1">Կարող է առաջինն անցնել</string>
-    <string name="question_562_answer_2">Պետք է զիջի տրամվային</string>
-    <string name="question_562_answer_3">Պետք է զիջի երկու վարորդներին</string>
-    <string name="question_562_true_answer">@string/question_562_answer_2</string>
+    <string name="question_562">Այս իրադրությունում զիջել պարտավոր ենք</string>
+    <string name="question_562_answer_1">Երկու վարորդներին</string>
+    <string name="question_562_answer_2">Միայն հանդիպակացից մոտեցող բեռնատարին</string>
+    <string name="question_562_true_answer">@string/question_562_answer_1</string>
 
-    <string name="question_563">Ձախ շրջադարձ կատարելիս վարորդն ո՞ւմ է պարտավոր զիջել</string>
-    <string name="question_563_answer_1">Ավտոբուսի վարորդին</string>
-    <string name="question_563_answer_2">Թեթև մարդատարի վարորդին</string>
-    <string name="question_563_answer_3">Ոչ ոքի</string>
+    <string name="question_563">Ձախ շրջադարձ կատարելիս</string>
+    <string name="question_563_answer_1">Խաչմերուկն առաջինը կանցնեք</string>
+    <string name="question_563_answer_2">Կզիջեք ճանապարհը</string>
     <string name="question_563_true_answer">@string/question_563_answer_1</string>
 
-    <string name="question_564">Այս խաչմերուկ մուտք գործելիս վարորդը</string>
-    <string name="question_564_answer_1">Ունի առաջնահերթ երթևեկության իրավունք</string>
-    <string name="question_564_answer_2">Պետք է զիջի բեռնատարին</string>
-    <string name="question_564_answer_3">Երկու վարորդներին պետք է զիջի</string>
-    <string name="question_564_true_answer">@string/question_564_answer_3</string>
+    <string name="question_564">Աջ շրջադարձն այս իրադրությամբ կատարում ենք</string>
+    <string name="question_564_answer_1">Խաչմերուկն առաջինն անցնելով</string>
+    <string name="question_564_answer_2">Զիջում ենք ճանապարհը թեթև մարդատարի վարորդին</string>
+    <string name="question_564_answer_3">Զիջում ենք ճանապարհը երկու վարորդներին</string>
+    <string name="question_564_true_answer">@string/question_564_answer_1</string>
 
-    <string name="question_565">Ձախ շրջադարձ կատարելիս վարորդն ո՞ւմ է պարտավոր զիջել</string>
-    <string name="question_565_answer_1">Երկու վարորդներին</string>
-    <string name="question_565_answer_2">Թեթև մարդատարի վարորդին</string>
-    <string name="question_565_answer_3">Ավտոբուսի վարորդին</string>
-    <string name="question_565_true_answer">@string/question_565_answer_1</string>
+    <string name="question_565">Աջ շրջադարձ կատարելիս</string>
+    <string name="question_565_answer_1">Պետք է զիջեք ճանապարհը</string>
+    <string name="question_565_answer_2">Կարող եք անցնել առաջինը</string>
+    <string name="question_565_true_answer">@string/question_565_answer_2</string>
 
-    <string name="question_566">Այս իրադրությունում զիջել պարտավոր ենք</string>
-    <string name="question_566_answer_1">Երկու վարորդներին</string>
-    <string name="question_566_answer_2">Միայն հանդիպակացից մոտեցող բեռնատարին</string>
-    <string name="question_566_true_answer">@string/question_566_answer_1</string>
+    <string name="question_566">Ձախ շրջադարձ կատարելիս պետք է ճանապարհը զիջեք</string>
+    <string name="question_566_answer_1">Ավտոբուսի և մոտոցիկլի վարորդների</string>
+    <string name="question_566_answer_2">Ավտոբուսի վարորդին</string>
+    <string name="question_566_answer_3">Բոլորին</string>
+    <string name="question_566_true_answer">@string/question_566_answer_3</string>
 
     <string name="question_567">Ձախ շրջադարձ կատարելիս</string>
-    <string name="question_567_answer_1">Խաչմերուկն առաջինը կանցնեք</string>
-    <string name="question_567_answer_2">Կզիջեք ճանապարհը</string>
-    <string name="question_567_true_answer">@string/question_567_answer_1</string>
+    <string name="question_567_answer_1">Կանցնեք առաջինը թեթև մարդատարի հետ միաժամանակ</string>
+    <string name="question_567_answer_2">Կանցնեք մոտոցիկլից հետո</string>
+    <string name="question_567_true_answer">@string/question_567_answer_2</string>
 
-    <string name="question_568">Աջ շրջադարձն այս իրադրությամբ կատարում ենք</string>
-    <string name="question_568_answer_1">Խաչմերուկն առաջինն անցնելով</string>
-    <string name="question_568_answer_2">Զիջում ենք ճանապարհը թեթև մարդատարի վարորդին</string>
-    <string name="question_568_answer_3">Զիջում ենք ճանապարհը երկու վարորդներին</string>
+    <string name="question_568">Ուղիղ երթևեկելիս պարտավոր եք զիջել</string>
+    <string name="question_568_answer_1">Երկու վարորդներին</string>
+    <string name="question_568_answer_2">Միայն թեթև մարդատարին</string>
+    <string name="question_568_answer_3">Ոչ ոքի</string>
     <string name="question_568_true_answer">@string/question_568_answer_1</string>
 
-    <string name="question_569">Աջ շրջադարձ կատարելիս</string>
-    <string name="question_569_answer_1">Պետք է զիջեք ճանապարհը</string>
-    <string name="question_569_answer_2">Կարող եք անցնել առաջինը</string>
-    <string name="question_569_true_answer">@string/question_569_answer_2</string>
+    <string name="question_569">Տրամվային զիջել</string>
+    <string name="question_569_answer_1">Պարտավոր ենք</string>
+    <string name="question_569_answer_2">Պարտավոր չենք</string>
+    <string name="question_569_true_answer">@string/question_569_answer_1</string>
 
-    <string name="question_570">Ձախ շրջադարձ կատարելիս պետք է ճանապարհը զիջեք</string>
-    <string name="question_570_answer_1">Ավտոբուսի և մոտոցիկլի վարորդների</string>
-    <string name="question_570_answer_2">Ավտոբուսի վարորդին</string>
-    <string name="question_570_answer_3">Բոլորին</string>
-    <string name="question_570_true_answer">@string/question_570_answer_3</string>
+    <string name="question_570">Այս իրավիճակում ե՞րբ է թույլատրվում աջ շրջադարձը կատարել</string>
+    <string name="question_570_answer_1">Անմիջապես</string>
+    <string name="question_570_answer_2">Բեռնատարին չխոչընդոտելու դեպքում՝ նրա անցման հետ միաժամանակ</string>
+    <string name="question_570_answer_3">Բեռնատարի անցումից հետո</string>
+    <string name="question_570_true_answer">@string/question_570_answer_2</string>
 
-    <string name="question_571">Ձախ շրջադարձ կատարելիս</string>
-    <string name="question_571_answer_1">Կանցնեք առաջինը թեթև մարդատարի հետ միաժամանակ</string>
-    <string name="question_571_answer_2">Կանցնեք մոտոցիկլից հետո</string>
-    <string name="question_571_true_answer">@string/question_571_answer_2</string>
+    <string name="question_571">Խաչմերուկն ուղիղ անցնելիս պարտավոր եք զիջել ճանապարհը</string>
+    <string name="question_571_answer_1">Միայն Ա տրամվայի վարորդին</string>
+    <string name="question_571_answer_2">Միայն Բ տրամվայի վարորդին</string>
+    <string name="question_571_answer_3">Երկու վարորդներին</string>
+    <string name="question_571_answer_4">Ոչ ոքի</string>
+    <string name="question_571_true_answer">@string/question_571_answer_3</string>
 
-    <string name="question_572">Ուղիղ երթևեկելիս պարտավոր եք զիջել</string>
-    <string name="question_572_answer_1">Երկու վարորդներին</string>
-    <string name="question_572_answer_2">Միայն թեթև մարդատարին</string>
+    <string name="question_572">Ձախ շրջադարձ կատարելիս պարտավոր եք զիջել ճանապարհը</string>
+    <string name="question_572_answer_1">Միայն ավտոբուսի վարորդին</string>
+    <string name="question_572_answer_2">Երկու վարորդներին</string>
     <string name="question_572_answer_3">Ոչ ոքի</string>
     <string name="question_572_true_answer">@string/question_572_answer_1</string>
 
-    <string name="question_573">Տրամվային զիջել</string>
-    <string name="question_573_answer_1">Պարտավոր ենք</string>
-    <string name="question_573_answer_2">Պարտավոր չենք</string>
-    <string name="question_573_true_answer">@string/question_573_answer_1</string>
+    <string name="question_573">Ո՞վ առաջինը կանցնի խաչմերուկը</string>
+    <string name="question_573_answer_1">Բեռնատարի վարորդը</string>
+    <string name="question_573_answer_2">Տրոլեյբուսի վարորդը</string>
+    <string name="question_573_answer_3">Կանոններն այս դեպքը չեն կանոնակարգում: Վարորդները կանցնեն փոխադարձ հարգանք ցուցաբերելով:</string>
+    <string name="question_573_true_answer">@string/question_573_answer_3</string>
 
-    <string name="question_574">Այս իրավիճակում ե՞րբ է թույլատրվում աջ շրջադարձը կատարել</string>
-    <string name="question_574_answer_1">Անմիջապես</string>
-    <string name="question_574_answer_2">Բեռնատարին չխոչընդոտելու դեպքում՝ նրա անցման հետ միաժամանակ</string>
-    <string name="question_574_answer_3">Բեռնատարի անցումից հետո</string>
-    <string name="question_574_true_answer">@string/question_574_answer_2</string>
+    <string name="question_574">Հետիոտներին չխոչընդոտել վարորդը պարտավոր է</string>
+    <string name="question_574_answer_1">Միայն ձախ շրջադարձ կատարելիս</string>
+    <string name="question_574_answer_2">Միայն աջ շրջադարձ կատարելիս</string>
+    <string name="question_574_answer_3">Երկու դեպքերում նմանապես</string>
+    <string name="question_574_true_answer">@string/question_574_answer_3</string>
 
-    <string name="question_575">Խաչմերուկն ուղիղ անցնելիս պարտավոր եք զիջել ճանապարհը</string>
-    <string name="question_575_answer_1">Միայն Ա տրամվայի վարորդին</string>
-    <string name="question_575_answer_2">Միայն Բ տրամվայի վարորդին</string>
-    <string name="question_575_answer_3">Երկու վարորդներին</string>
-    <string name="question_575_answer_4">Ոչ ոքի</string>
-    <string name="question_575_true_answer">@string/question_575_answer_3</string>
+    <string name="question_575">Աջ շրջադարձի ժամանակ պարտավոր եք ճանապարհը զիջել</string>
+    <string name="question_575_answer_1">Հետիոտներին և հեծանվորդներին</string>
+    <string name="question_575_answer_2">Միայն հետիոտներին</string>
+    <string name="question_575_true_answer">@string/question_575_answer_1</string>
 
-    <string name="question_576">Ձախ շրջադարձ կատարելիս պարտավոր եք զիջել ճանապարհը</string>
-    <string name="question_576_answer_1">Միայն ավտոբուսի վարորդին</string>
-    <string name="question_576_answer_2">Երկու վարորդներին</string>
+    <string name="question_576">Ձախ շրջադարձ կատարելիս պարտավոր եք ճանապարհը զիջել</string>
+    <string name="question_576_answer_1">Միայն թեթև մարդատարի վարորդին</string>
+    <string name="question_576_answer_2">Թեթև մարդատարի և ավտոբուսի վարորդին</string>
     <string name="question_576_answer_3">Ոչ ոքի</string>
     <string name="question_576_true_answer">@string/question_576_answer_1</string>
 
-    <string name="question_577">Ո՞վ առաջինը կանցնի խաչմերուկը</string>
-    <string name="question_577_answer_1">Բեռնատարի վարորդը</string>
-    <string name="question_577_answer_2">Տրոլեյբուսի վարորդը</string>
-    <string name="question_577_answer_3">Կանոններն այս դեպքը չեն կանոնակարգում: Վարորդները կանցնեն փոխադարձ հարգանք ցուցաբերելով:</string>
-    <string name="question_577_true_answer">@string/question_577_answer_3</string>
+    <string name="question_577">Երբ վարորդը չի կարող որոշել ճանապարհի ծածկույթի առկայությունը (օրվա մութ ժամանակ, ցեխ, ձյուն և այլն), և բացակայում են առավելության նշանները, ապա</string>
+    <string name="question_577_answer_1">Նա պետք է համարի, որ գտնվում է երկրորդական ճանապարհի վրա</string>
+    <string name="question_577_answer_2">Նա պետք է առաջնորդվի հավասարազոր խաչմերուկի անցման կանոններով:</string>
+    <string name="question_577_true_answer">@string/question_577_answer_1</string>
 
-    <string name="question_578">Հետիոտներին չխոչընդոտել վարորդը պարտավոր է</string>
-    <string name="question_578_answer_1">Միայն ձախ շրջադարձ կատարելիս</string>
-    <string name="question_578_answer_2">Միայն աջ շրջադարձ կատարելիս</string>
-    <string name="question_578_answer_3">Երկու դեպքերում նմանապես</string>
-    <string name="question_578_true_answer">@string/question_578_answer_3</string>
+    <string name="question_578">Այս իրավիճակում զիջել ճանապարհը պարտավոր ենք</string>
+    <string name="question_578_answer_1">Բոլոր վարորդներին</string>
+    <string name="question_578_answer_2">Միայն բեռնատարի վարորդին</string>
+    <string name="question_578_answer_3">Միայն թեթև մարդատարի վարորդին</string>
+    <string name="question_578_true_answer">@string/question_578_answer_1</string>
 
-    <string name="question_579">Աջ շրջադարձի ժամանակ պարտավոր եք ճանապարհը զիջել</string>
-    <string name="question_579_answer_1">Հետիոտներին և հեծանվորդներին</string>
-    <string name="question_579_answer_2">Միայն հետիոտներին</string>
-    <string name="question_579_true_answer">@string/question_579_answer_1</string>
+    <string name="question_579">Զիջել ճանապարհը պարտավոր ենք</string>
+    <string name="question_579_answer_1">Թեթև մարդատարի վարորդին</string>
+    <string name="question_579_answer_2">Ավտոբուսի և թեթև մարդատարի վարորդներին</string>
+    <string name="question_579_answer_3">Բոլոր վարորդներին</string>
+    <string name="question_579_true_answer">@string/question_579_answer_2</string>
 
-    <string name="question_580">Ձախ շրջադարձ կատարելիս պարտավոր եք ճանապարհը զիջել</string>
-    <string name="question_580_answer_1">Միայն թեթև մարդատարի վարորդին</string>
-    <string name="question_580_answer_2">Թեթև մարդատարի և ավտոբուսի վարորդին</string>
-    <string name="question_580_answer_3">Ոչ ոքի</string>
-    <string name="question_580_true_answer">@string/question_580_answer_1</string>
+    <string name="question_580">Այս խաչմերուկում հետադարձ կատարելիս</string>
+    <string name="question_580_answer_1">Առաջինը կկատարեմ մանևրը</string>
+    <string name="question_580_answer_2">Պետք է զիջել ճանապարհը մյուս վարորդին</string>
+    <string name="question_580_true_answer">@string/question_580_answer_2</string>
 
-    <string name="question_581">Երբ վարորդը չի կարող որոշել ճանապարհի ծածկույթի առկայությունը (օրվա մութ ժամանակ, ցեխ, ձյուն և այլն), և բացակայում են առավելության նշանները, ապա</string>
-    <string name="question_581_answer_1">Նա պետք է համարի, որ գտնվում է երկրորդական ճանապարհի վրա</string>
-    <string name="question_581_answer_2">Նա պետք է առաջնորդվի հավասարազոր խաչմերուկի անցման կանոններով:</string>
-    <string name="question_581_true_answer">@string/question_581_answer_1</string>
 
-    <string name="question_582">Այս իրավիճակում զիջել ճանապարհը պարտավոր ենք</string>
-    <string name="question_582_answer_1">Բոլոր վարորդներին</string>
-    <string name="question_582_answer_2">Միայն բեռնատարի վարորդին</string>
-    <string name="question_582_answer_3">Միայն թեթև մարդատարի վարորդին</string>
-    <string name="question_582_true_answer">@string/question_582_answer_1</string>
+    <string name="question_581">Լուսացույցի դեղին թարթող ազդանշանի պայմաններում խաչմերուկն ուղիղ անցնելիս պարտավոր ենք</string>
+    <string name="question_581_answer_1">Կանգնել և սպասել կանաչ թույլատրող ազդանշանի միանալուն</string>
+    <string name="question_581_answer_2">Զիջել թեթև մարդատարի վարորդին</string>
+    <string name="question_581_answer_3">Զիջել տրամվայի վարորդին</string>
+    <string name="question_581_true_answer">@string/question_581_answer_2</string>
 
-    <string name="question_583">Զիջել ճանապարհը պարտավոր ենք</string>
-    <string name="question_583_answer_1">Թեթև մարդատարի վարորդին</string>
-    <string name="question_583_answer_2">Ավտոբուսի և թեթև մարդատարի վարորդներին</string>
-    <string name="question_583_answer_3">Բոլոր վարորդներին</string>
-    <string name="question_583_true_answer">@string/question_583_answer_2</string>
+    <string name="question_582">Ուղիղ երթևեկելու դեպքում</string>
+    <string name="question_582_answer_1">Կարող ենք խաչմերուկն առաջինն անցնել</string>
+    <string name="question_582_answer_2">Պետք է զիջել ճանապարհը</string>
+    <string name="question_582_true_answer">@string/question_582_answer_2</string>
 
-    <string name="question_584">Այս խաչմերուկում հետադարձ կատարելիս</string>
-    <string name="question_584_answer_1">Առաջինը կկատարեմ մանևրը</string>
-    <string name="question_584_answer_2">Պետք է զիջել ճանապարհը մյուս վարորդին</string>
-    <string name="question_584_true_answer">@string/question_584_answer_2</string>
+    <string name="question_583">Հետադարձ կատարելիս ո՞ւմ պետք է զիջեք ճանապարհը</string>
+    <string name="question_583_answer_1">Բեռնատարի վարորդին</string>
+    <string name="question_583_answer_2">Թեթև մարդատարի վարորդին</string>
+    <string name="question_583_answer_3">Երկու վարորդներին</string>
+    <string name="question_583_true_answer">@string/question_583_answer_1</string>
 
-    <string name="question_585">Լուսացույցի դեղին թարթող ազդանշանի պայմաններում խաչմերուկն ուղիղ անցնելիս պարտավոր ենք</string>
-    <string name="question_585_answer_1">Կանգնել և սպասել կանաչ թույլատրող ազդանշանի միանալուն</string>
-    <string name="question_585_answer_2">Զիջել թեթև մարդատարի վարորդին</string>
-    <string name="question_585_answer_3">Զիջել տրամվայի վարորդին</string>
+    <string name="question_584">Ձախ շրջադարձ կատարելիս տրամվային զիջել</string>
+    <string name="question_584_answer_1">Պարտավոր ենք</string>
+    <string name="question_584_answer_2">Պարտավոր չենք</string>
+    <string name="question_584_true_answer">@string/question_584_answer_1</string>
+
+    <string name="question_585">Այս խաչմերուկում ծածկույթ չունեցող ճանապարհից մոտեցող բեռնատարին զիջել</string>
+    <string name="question_585_answer_1">Պարտավոր ենք, քանի որ մոտեցել է մեզ աջ կողմից</string>
+    <string name="question_585_answer_2">Պարտավոր չենք, քանի որ կոշտ ծածկույթով ճանապարհը գլխավոր է հանդիսանում ծածկույթ չունեցողի նկատմամբ</string>
     <string name="question_585_true_answer">@string/question_585_answer_2</string>
 
-    <string name="question_586">Ուղիղ երթևեկելու դեպքում</string>
-    <string name="question_586_answer_1">Կարող ենք խաչմերուկն առաջինն անցնել</string>
-    <string name="question_586_answer_2">Պետք է զիջել ճանապարհը</string>
+    <string name="question_586">Լուսացույցի դեղին թարթող ազդանշանի պարագայում</string>
+    <string name="question_586_answer_1">Պետք է սպասենք կանաչ ազդանշանի միանալուն</string>
+    <string name="question_586_answer_2">Կանցնենք խաչմերուկը զիջելով լծասայլի վարորդին</string>
+    <string name="question_586_answer_3">Թեթև մարդատարի հետ միաժամանակ կանցնեք խաչմերուկը</string>
     <string name="question_586_true_answer">@string/question_586_answer_2</string>
 
-    <string name="question_587">Հետադարձ կատարելիս ո՞ւմ պետք է զիջեք ճանապարհը</string>
-    <string name="question_587_answer_1">Բեռնատարի վարորդին</string>
-    <string name="question_587_answer_2">Թեթև մարդատարի վարորդին</string>
-    <string name="question_587_answer_3">Երկու վարորդներին</string>
-    <string name="question_587_true_answer">@string/question_587_answer_1</string>
+    <string name="question_587">Ձախ շրջվելիս պարտավոր ենք զիջել ճանապարհը</string>
+    <string name="question_587_answer_1">Թեթև մարդատարի վարորդին</string>
+    <string name="question_587_answer_2">Ավտոբուսի վարորդին</string>
+    <string name="question_587_answer_3">Մոտոցիկլի վարորդին</string>
+    <string name="question_587_answer_4">Ոչ ոքի</string>
+    <string name="question_587_true_answer">@string/question_587_answer_4</string>
 
-    <string name="question_588">Ձախ շրջադարձ կատարելիս տրամվային զիջել</string>
-    <string name="question_588_answer_1">Պարտավոր ենք</string>
-    <string name="question_588_answer_2">Պարտավոր չենք</string>
+    <string name="question_588">Այս իրավիճակում</string>
+    <string name="question_588_answer_1">Զիջել ճանապարհը բեռնատարի վարորդին պարտավոր ենք</string>
+    <string name="question_588_answer_2">Կարող ենք տրամվայի հետ միաժամանակ անցնել խաչմերուկը:</string>
     <string name="question_588_true_answer">@string/question_588_answer_1</string>
 
-    <string name="question_589">Այս խաչմերուկում ծածկույթ չունեցող ճանապարհից մոտեցող բեռնատարին զիջել</string>
-    <string name="question_589_answer_1">Պարտավոր ենք, քանի որ մոտեցել է մեզ աջ կողմից</string>
-    <string name="question_589_answer_2">Պարտավոր չենք, քանի որ կոշտ ծածկույթով ճանապարհը գլխավոր է հանդիսանում ծածկույթ չունեցողի նկատմամբ</string>
-    <string name="question_589_true_answer">@string/question_589_answer_2</string>
+    <string name="question_589">Խաչմերուկն անցնելիս զիջել պարտավոր ենք</string>
+    <string name="question_589_answer_1">Մոտոցիկլի վարորդին</string>
+    <string name="question_589_answer_2">Մոտոցիկլի և ավտոբուսի վարորդներին</string>
+    <string name="question_589_answer_3">Ավտոբուսի և թեթև մարդատարի վարորդներին</string>
+    <string name="question_589_answer_4">Բոլոր վարորդներին</string>
+    <string name="question_589_true_answer">@string/question_589_answer_4</string>
 
-    <string name="question_590">Լուսացույցի դեղին թարթող ազդանշանի պարագայում</string>
-    <string name="question_590_answer_1">Պետք է սպասենք կանաչ ազդանշանի միանալուն</string>
-    <string name="question_590_answer_2">Կանցնենք խաչմերուկը զիջելով լծասայլի վարորդին</string>
-    <string name="question_590_answer_3">Թեթև մարդատարի հետ միաժամանակ կանցնեք խաչմերուկը</string>
-    <string name="question_590_true_answer">@string/question_590_answer_2</string>
+    <string name="question_590">Այս իրադրությունում ճանապարհը պետք է զիջեք</string>
+    <string name="question_590_answer_1">Միայն տրամվայի վարորդին</string>
+    <string name="question_590_answer_2">Թեթև մարդատարի վարորդին</string>
+    <string name="question_590_answer_3">Թեթև մարդատարի և տրամվայի վարորդներին</string>
+    <string name="question_590_answer_4">Բոլոր վարորդներին</string>
+    <string name="question_590_true_answer">@string/question_590_answer_3</string>
 
-    <string name="question_591">Ձախ շրջվելիս պարտավոր ենք զիջել ճանապարհը</string>
-    <string name="question_591_answer_1">Թեթև մարդատարի վարորդին</string>
-    <string name="question_591_answer_2">Ավտոբուսի վարորդին</string>
-    <string name="question_591_answer_3">Մոտոցիկլի վարորդին</string>
-    <string name="question_591_answer_4">Ոչ ոքի</string>
-    <string name="question_591_true_answer">@string/question_591_answer_4</string>
+    <string name="question_591">Այս իրավիճակում ձախ շրջադարձ կատարելիս</string>
+    <string name="question_591_answer_1">Խաչմերուկը կանցնեք առաջինը</string>
+    <string name="question_591_answer_2">Մուտք գործելով խաչմերուկ կզիջեք ճանապարհը մոտոցիկլի վարորդին և հետո կավարտեք մանևրը</string>
+    <string name="question_591_true_answer">@string/question_591_answer_2</string>
 
-    <string name="question_592">Այս իրավիճակում</string>
-    <string name="question_592_answer_1">Զիջել ճանապարհը բեռնատարի վարորդին պարտավոր ենք</string>
-    <string name="question_592_answer_2">Կարող ենք տրամվայի հետ միաժամանակ անցնել խաչմերուկը:</string>
-    <string name="question_592_true_answer">@string/question_592_answer_1</string>
+    <string name="question_592">Խաչմերուկն ուղիղ անցնելիս անհրաժեշտ է ճանապարհը զիջել</string>
+    <string name="question_592_answer_1">Բեռնատարի վարորդին</string>
+    <string name="question_592_answer_2">Թեթև մարդատարի վարորդին</string>
+    <string name="question_592_answer_3">Երկու վարորդներին</string>
+    <string name="question_592_true_answer">@string/question_592_answer_3</string>
 
-    <string name="question_593">Խաչմերուկն անցնելիս զիջել պարտավոր ենք</string>
-    <string name="question_593_answer_1">Մոտոցիկլի վարորդին</string>
-    <string name="question_593_answer_2">Մոտոցիկլի և ավտոբուսի վարորդներին</string>
-    <string name="question_593_answer_3">Ավտոբուսի և թեթև մարդատարի վարորդներին</string>
-    <string name="question_593_answer_4">Բոլոր վարորդներին</string>
-    <string name="question_593_true_answer">@string/question_593_answer_4</string>
+    <string name="question_593">Այս իրադրությունում</string>
+    <string name="question_593_answer_1">Խաչմերուկը կանցնեք առաջինը</string>
+    <string name="question_593_answer_2">Կզիջեք ճանապարհը թեթև մարդատարի վարորդին</string>
+    <string name="question_593_answer_3">Կզիջեք ճանապարհը երկու վարորդներին</string>
+    <string name="question_593_true_answer">@string/question_593_answer_2</string>
 
-    <string name="question_594">Այս իրադրությունում ճանապարհը պետք է զիջեք</string>
-    <string name="question_594_answer_1">Միայն տրամվայի վարորդին</string>
+    <string name="question_594">Զիջել պարտավոր ենք</string>
+    <string name="question_594_answer_1">Երկու վարորդներին</string>
     <string name="question_594_answer_2">Թեթև մարդատարի վարորդին</string>
-    <string name="question_594_answer_3">Թեթև մարդատարի և տրամվայի վարորդներին</string>
-    <string name="question_594_answer_4">Բոլոր վարորդներին</string>
-    <string name="question_594_true_answer">@string/question_594_answer_3</string>
+    <string name="question_594_answer_3">Ավտոբուսի վարորդին</string>
+    <string name="question_594_true_answer">@string/question_594_answer_1</string>
 
-    <string name="question_595">Այս իրավիճակում ձախ շրջադարձ կատարելիս</string>
-    <string name="question_595_answer_1">Խաչմերուկը կանցնեք առաջինը</string>
-    <string name="question_595_answer_2">Մուտք գործելով խաչմերուկ կզիջեք ճանապարհը մոտոցիկլի վարորդին և հետո կավարտեք մանևրը</string>
+    <string name="question_595">Այստեղ խաչմերուկը</string>
+    <string name="question_595_answer_1">Առաջինը կանցնեք</string>
+    <string name="question_595_answer_2">Կզիջեք ճանապարհը բեռնատարին</string>
     <string name="question_595_true_answer">@string/question_595_answer_2</string>
 
-    <string name="question_596">Խաչմերուկն ուղիղ անցնելիս անհրաժեշտ է ճանապարհը զիջել</string>
-    <string name="question_596_answer_1">Բեռնատարի վարորդին</string>
-    <string name="question_596_answer_2">Թեթև մարդատարի վարորդին</string>
-    <string name="question_596_answer_3">Երկու վարորդներին</string>
-    <string name="question_596_true_answer">@string/question_596_answer_3</string>
+    <string name="question_596">Զիջել ճանապարհը տրամվայի վարորդին</string>
+    <string name="question_596_answer_1">Պարտավոր ենք</string>
+    <string name="question_596_answer_2">Պարտավոր չենք</string>
+    <string name="question_596_true_answer">@string/question_596_answer_1</string>
 
-    <string name="question_597">Այս իրադրությունում</string>
-    <string name="question_597_answer_1">Խաչմերուկը կանցնեք առաջինը</string>
-    <string name="question_597_answer_2">Կզիջեք ճանապարհը թեթև մարդատարի վարորդին</string>
-    <string name="question_597_answer_3">Կզիջեք ճանապարհը երկու վարորդներին</string>
-    <string name="question_597_true_answer">@string/question_597_answer_2</string>
+    <string name="question_597">Ձախ շրջադարձ կատարելիս պետք է զիջել</string>
+    <string name="question_597_answer_1">Բեռնատարի վարորդին</string>
+    <string name="question_597_answer_2">Երկու վարորդներին</string>
+    <string name="question_597_answer_3">Ոչ ոքի</string>
+    <string name="question_597_true_answer">@string/question_597_answer_1</string>
 
-    <string name="question_598">Զիջել պարտավոր ենք</string>
-    <string name="question_598_answer_1">Երկու վարորդներին</string>
-    <string name="question_598_answer_2">Թեթև մարդատարի վարորդին</string>
-    <string name="question_598_answer_3">Ավտոբուսի վարորդին</string>
-    <string name="question_598_true_answer">@string/question_598_answer_1</string>
+    <string name="question_598">Այս խաչմերուկում</string>
+    <string name="question_598_answer_1">Կզիջեք ճանապարհը</string>
+    <string name="question_598_answer_2">Կանցնեք առաջինը</string>
+    <string name="question_598_true_answer">@string/question_598_answer_2</string>
 
-    <string name="question_599">Այստեղ խաչմերուկը</string>
-    <string name="question_599_answer_1">Առաջինը կանցնեք</string>
-    <string name="question_599_answer_2">Կզիջեք ճանապարհը բեռնատարին</string>
-    <string name="question_599_true_answer">@string/question_599_answer_2</string>
+    <string name="question_599">Տրամվային զիջել</string>
+    <string name="question_599_answer_1">Պարտավոր ենք</string>
+    <string name="question_599_answer_2">Պարտավոր չենք</string>
+    <string name="question_599_true_answer">@string/question_599_answer_1</string>
 
-    <string name="question_600">Զիջել ճանապարհը տրամվայի վարորդին</string>
-    <string name="question_600_answer_1">Պարտավոր ենք</string>
-    <string name="question_600_answer_2">Պարտավոր չենք</string>
-    <string name="question_600_true_answer">@string/question_600_answer_1</string>
+    <string name="question_600">Այս իրավիճակում աջ շրջադարձը թույլատրվում է</string>
+    <string name="question_600_answer_1">Միայն բեռնատարից հետո</string>
+    <string name="question_600_answer_2">Բեռնատարի հետ միաժամանակ, եթե դա չի խոչընդոտի բեռնատարի վարորդին</string>
+    <string name="question_600_true_answer">@string/question_600_answer_2</string>
 
-    <string name="question_601">Ձախ շրջադարձ կատարելիս պետք է զիջել</string>
-    <string name="question_601_answer_1">Բեռնատարի վարորդին</string>
-    <string name="question_601_answer_2">Երկու վարորդներին</string>
-    <string name="question_601_answer_3">Ոչ ոքի</string>
-    <string name="question_601_true_answer">@string/question_601_answer_1</string>
+    <string name="question_601">Ո՞ր տրամվայի վարորդին ենք պարտավոր զիջել ճանապարհը</string>
+    <string name="question_601_answer_1">Միայն Ա</string>
+    <string name="question_601_answer_2">Միայն Բ</string>
+    <string name="question_601_answer_3">Երկու տրամվայների</string>
+    <string name="question_601_true_answer">@string/question_601_answer_3</string>
 
-    <string name="question_602">Այս խաչմերուկում</string>
-    <string name="question_602_answer_1">Կզիջեք ճանապարհը</string>
-    <string name="question_602_answer_2">Կանցնեք առաջինը</string>
-    <string name="question_602_true_answer">@string/question_602_answer_2</string>
+    <string name="question_602">Ուղիղ երթևեկելիս պետք է զիջել</string>
+    <string name="question_602_answer_1">Թեթև մարդատարի վարորդին</string>
+    <string name="question_602_answer_2">Բոլորին</string>
+    <string name="question_602_answer_3">Ոչ մեկին</string>
+    <string name="question_602_true_answer">@string/question_602_answer_1</string>
 
-    <string name="question_603">Տրամվային զիջել</string>
-    <string name="question_603_answer_1">Պարտավոր ենք</string>
-    <string name="question_603_answer_2">Պարտավոր չենք</string>
-    <string name="question_603_true_answer">@string/question_603_answer_1</string>
+    <string name="question_603">Այս իրադրությունում զիջել անհրաժեշտ է</string>
+    <string name="question_603_answer_1">Ավտոբուսի վարորդին</string>
+    <string name="question_603_answer_2">Բեռնատարի վարորդին</string>
+    <string name="question_603_answer_3">Երկու վարորդներին</string>
+    <string name="question_603_true_answer">@string/question_603_answer_3</string>
 
-    <string name="question_604">Այս իրավիճակում աջ շրջադարձը թույլատրվում է</string>
-    <string name="question_604_answer_1">Միայն բեռնատարից հետո</string>
-    <string name="question_604_answer_2">Բեռնատարի հետ միաժամանակ, եթե դա չի խոչընդոտի բեռնատարի վարորդին</string>
+    <string name="question_604">Ո՞ր նշանի դեպքում խաչմերուկում պետք է զիջեք ձախից մոտեցող վարորդներին</string>
+    <string name="question_604_answer_1">Միայն Ա</string>
+    <string name="question_604_answer_2">Միայն Բ</string>
+    <string name="question_604_answer_3">Ա և Բ</string>
+    <string name="question_604_answer_4">Բոլոր</string>
     <string name="question_604_true_answer">@string/question_604_answer_2</string>
 
-    <string name="question_605">Ո՞ր տրամվայի վարորդին ենք պարտավոր զիջել ճանապարհը</string>
-    <string name="question_605_answer_1">Միայն Ա</string>
-    <string name="question_605_answer_2">Միայն Բ</string>
-    <string name="question_605_answer_3">Երկու տրամվայների</string>
-    <string name="question_605_true_answer">@string/question_605_answer_3</string>
+    <string name="question_605">Ո՞ր նկարում է պատկերված գլխավոր ճանապարհ</string>
+    <string name="question_605_answer_1">Միայն ձախ</string>
+    <string name="question_605_answer_2">Նեքևի և ձախ</string>
+    <string name="question_605_answer_3">Բոլոր</string>
+    <string name="question_605_true_answer">@string/question_605_answer_2</string>
 
-    <string name="question_606">Ուղիղ երթևեկելիս պետք է զիջել</string>
-    <string name="question_606_answer_1">Թեթև մարդատարի վարորդին</string>
-    <string name="question_606_answer_2">Բոլորին</string>
-    <string name="question_606_answer_3">Ոչ մեկին</string>
-    <string name="question_606_true_answer">@string/question_606_answer_1</string>
+    <string name="question_606">Ո՞ր նկարում է պատկերված գլխավոր ճանապարհ</string>
+    <string name="question_606_answer_1">Միայն աջ</string>
+    <string name="question_606_answer_2">Աջ և ներքևի</string>
+    <string name="question_606_answer_3">Բոլոր</string>
+    <string name="question_606_true_answer">@string/question_606_answer_2</string>
 
-    <string name="question_607">Այս իրադրությունում զիջել անհրաժեշտ է</string>
-    <string name="question_607_answer_1">Ավտոբուսի վարորդին</string>
-    <string name="question_607_answer_2">Բեռնատարի վարորդին</string>
-    <string name="question_607_answer_3">Երկու վարորդներին</string>
+    <string name="question_607">Ո՞ր նկարում է պատկերված գլխավոր ճանապարհ</string>
+    <string name="question_607_answer_1">Վերին ձախ</string>
+    <string name="question_607_answer_2">Վերին աջ</string>
+    <string name="question_607_answer_3">Վերևի նկարներում</string>
+    <string name="question_607_answer_4">Բոլոր</string>
     <string name="question_607_true_answer">@string/question_607_answer_3</string>
 
-    <string name="question_608">Ո՞ր նշանի դեպքում խաչմերուկում պետք է զիջեք ձախից մոտեցող վարորդներին</string>
-    <string name="question_608_answer_1">Միայն Ա</string>
-    <string name="question_608_answer_2">Միայն Բ</string>
-    <string name="question_608_answer_3">Ա և Բ</string>
-    <string name="question_608_answer_4">Բոլոր</string>
-    <string name="question_608_true_answer">@string/question_608_answer_2</string>
-
-    <string name="question_609">Ո՞ր նկարում է պատկերված գլխավոր ճանապարհ</string>
-    <string name="question_609_answer_1">Միայն ձախ</string>
-    <string name="question_609_answer_2">Նեքևի և ձախ</string>
-    <string name="question_609_answer_3">Բոլոր</string>
-    <string name="question_609_true_answer">@string/question_609_answer_2</string>
-
-    <string name="question_610">Ո՞ր նկարում է պատկերված գլխավոր ճանապարհ</string>
-    <string name="question_610_answer_1">Միայն աջ</string>
-    <string name="question_610_answer_2">Աջ և ներքևի</string>
-    <string name="question_610_answer_3">Բոլոր</string>
-    <string name="question_610_true_answer">@string/question_610_answer_2</string>
-
-    <string name="question_611">Ո՞ր նկարում է պատկերված գլխավոր ճանապարհ</string>
-    <string name="question_611_answer_1">Վերին ձախ</string>
-    <string name="question_611_answer_2">Վերին աջ</string>
-    <string name="question_611_answer_3">Վերևի նկարներում</string>
-    <string name="question_611_answer_4">Բոլոր</string>
-    <string name="question_611_true_answer">@string/question_611_answer_3</string>
-
-    <string name="question_612">Խաչմերուկում ո՞ր ճանապարհն է համարվում գլխավոր</string>
-    <string name="question_612_answer_1">Կոշտ ծածկույթով (ասֆալտբետոն, ցեմենտբետոն, քարե նյութեր և այլն) ճանապարհը հողային ծածկույթ ունեցողի նկատմամբ</string>
-    <string name="question_612_answer_2">Եռագոտի ճանապարհը ամեն ուղղությամբ մեկ գոտի ունեցողի նկատմամբ</string>
-    <string name="question_612_answer_3">Ասֆալտբետոնե ճանապարհը սալիկապատ ճանապարհի նկատմամբ</string>
-    <string name="question_612_true_answer">@string/question_612_answer_1</string>
+    <string name="question_608">Խաչմերուկում ո՞ր ճանապարհն է համարվում գլխավոր</string>
+    <string name="question_608_answer_1">Կոշտ ծածկույթով (ասֆալտբետոն, ցեմենտբետոն, քարե նյութեր և այլն) ճանապարհը հողային ծածկույթ ունեցողի նկատմամբ</string>
+    <string name="question_608_answer_2">Եռագոտի ճանապարհը ամեն ուղղությամբ մեկ գոտի ունեցողի նկատմամբ</string>
+    <string name="question_608_answer_3">Ասֆալտբետոնե ճանապարհը սալիկապատ ճանապարհի նկատմամբ</string>
+    <string name="question_608_true_answer">@string/question_608_answer_1</string>
 
     <!--Խումբ 6-->
-    <string name="question_613">Երթեւեկությունն արգելվում է՝</string>
-    <string name="question_613_answer_1">Կարմիր եւ սպիտակ ավտոմոբիլներին։</string>
-    <string name="question_613_answer_2">Կապույտ, կանաչ եւ սպիտակ ավտոմոբիլներին։</string>
-    <string name="question_613_answer_3">Սպիտակ, կապույտ եւ դեղին ավտոմոբիլներին։</string>
-    <string name="question_613_true_answer">@string/question_613_answer_2</string>
+    <string name="question_609">Երթեւեկությունն արգելվում է՝</string>
+    <string name="question_609_answer_1">Կարմիր եւ սպիտակ ավտոմոբիլներին։</string>
+    <string name="question_609_answer_2">Կապույտ, կանաչ եւ սպիտակ ավտոմոբիլներին։</string>
+    <string name="question_609_answer_3">Սպիտակ, կապույտ եւ դեղին ավտոմոբիլներին։</string>
+    <string name="question_609_true_answer">@string/question_609_answer_2</string>
 
-    <string name="question_614">Վարորդներից ո՞վ իրավունք ունի երթեւեկել ուղիղ։</string>
-    <string name="question_614_answer_1">Ավտոբուսի եւ մոտոցիկլի վարորդները։</string>
-    <string name="question_614_answer_2">Թեթեւ մարդատար եւ բեռնատար ավտոմոբիլների վարորդները։</string>
-    <string name="question_614_answer_3">Թեթեւ մարդատար ավտոմոբիլի վարորդը։</string>
-    <string name="question_614_true_answer">@string/question_614_answer_3</string>
+    <string name="question_610">Վարորդներից ո՞վ իրավունք ունի երթեւեկել ուղիղ։</string>
+    <string name="question_610_answer_1">Ավտոբուսի եւ մոտոցիկլի վարորդները։</string>
+    <string name="question_610_answer_2">Թեթեւ մարդատար եւ բեռնատար ավտոմոբիլների վարորդները։</string>
+    <string name="question_610_answer_3">Թեթեւ մարդատար ավտոմոբիլի վարորդը։</string>
+    <string name="question_610_true_answer">@string/question_610_answer_3</string>
 
-    <string name="question_615">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը։</string>
-    <string name="question_615_answer_1">Ավտոմոբիլի վարորդը։</string>
-    <string name="question_615_answer_2">Տրամվայի վարորդը։</string>
+    <string name="question_611">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը։</string>
+    <string name="question_611_answer_1">Ավտոմոբիլի վարորդը։</string>
+    <string name="question_611_answer_2">Տրամվայի վարորդը։</string>
+    <string name="question_611_true_answer">@string/question_611_answer_2</string>
+
+    <string name="question_612">Եթե կարգավորողի աջ ձեռքը պարզված է առաջ, ապա ոչ ռելսագնաց տրանսպորտային միջոցների երթեւեկությունը թույլատրվում է՝</string>
+    <string name="question_612_answer_1">Ձախ կողմից` դեպի ձախ եւ հակառակ ուղղությամբ։</string>
+    <string name="question_612_answer_2">Աջ կողմից` միայն դեպի աջ։</string>
+    <string name="question_612_answer_3">Ձախ կողմից` բոլոր ուղղություններով։</string>
+    <string name="question_612_answer_4">Թիկունքից` միայն դեպի աջ։</string>
+    <string name="question_612_true_answer">@string/question_612_answer_3</string>
+
+    <string name="question_613">Ո՞ր պատասխանում են ճիշտ նշված այն տրանսպորտային միջոցները, որոնց թույլատրվում է երթեւեկությունը։</string>
+    <string name="question_613_answer_1">Մոտոցիկլը։</string>
+    <string name="question_613_answer_2">Բեռնատար ավտոմոբիլը։</string>
+    <string name="question_613_answer_3">Ավտոբուսը։</string>
+    <string name="question_613_answer_4">Թեթեւ մարդատար ավտոմոբիլը։</string>
+    <string name="question_613_answer_5">Թեթեւ մարդատար եւ բեռնատար ավտոմոբիլները։</string>
+    <string name="question_613_true_answer">@string/question_613_answer_4</string>
+
+    <string name="question_614">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը՝</string>
+    <string name="question_614_answer_1">Մոտոցիկլի վարորդը։</string>
+    <string name="question_614_answer_2">Ավտոմոբիլի վարորդը։</string>
+    <string name="question_614_true_answer">@string/question_614_answer_2</string>
+
+    <string name="question_615">Կարգավորողի այս ազդանշանը նշանակում է, որ երթեւեկությունը թույլատրվում է՝</string>
+    <string name="question_615_answer_1">Կապույտ եւ կանաչ ավտոմոբիլներին։ Արգելվում է կարմիրին, դեղինին եւ սպիտակին։</string>
+    <string name="question_615_answer_2">Կապույտ, կարմիր եւ կանաչ ավտոմոբիլներին։ Արգելվում է դեղինին եւ սպիտակին։</string>
     <string name="question_615_true_answer">@string/question_615_answer_2</string>
 
-    <string name="question_616">Եթե կարգավորողի աջ ձեռքը պարզված է առաջ, ապա ոչ ռելսագնաց տրանսպորտային միջոցների երթեւեկությունը թույլատրվում է՝</string>
-    <string name="question_616_answer_1">Ձախ կողմից` դեպի ձախ եւ հակառակ ուղղությամբ։</string>
-    <string name="question_616_answer_2">Աջ կողմից` միայն դեպի աջ։</string>
-    <string name="question_616_answer_3">Ձախ կողմից` բոլոր ուղղություններով։</string>
-    <string name="question_616_answer_4">Թիկունքից` միայն դեպի աջ։</string>
+    <string name="question_616">Ո՞ր տրանսպորտային միջոցները կարող են կատարել աջ շրջադարձ։</string>
+    <string name="question_616_answer_1">Միայն կարմիր ավտոմոբիլը։</string>
+    <string name="question_616_answer_2">Բոլոր տրանսպորտային միջոցները։</string>
+    <string name="question_616_answer_3">Կարմիր եւ կանաչ ավտոմոբիլները։</string>
     <string name="question_616_true_answer">@string/question_616_answer_3</string>
 
-    <string name="question_617">Ո՞ր պատասխանում են ճիշտ նշված այն տրանսպորտային միջոցները, որոնց թույլատրվում է երթեւեկությունը։</string>
-    <string name="question_617_answer_1">Մոտոցիկլը։</string>
-    <string name="question_617_answer_2">Բեռնատար ավտոմոբիլը։</string>
-    <string name="question_617_answer_3">Ավտոբուսը։</string>
-    <string name="question_617_answer_4">Թեթեւ մարդատար ավտոմոբիլը։</string>
-    <string name="question_617_answer_5">Թեթեւ մարդատար եւ բեռնատար ավտոմոբիլները։</string>
-    <string name="question_617_true_answer">@string/question_617_answer_4</string>
+    <string name="question_617">Երթեւեկությունը թույլատրվում է՝</string>
+    <string name="question_617_answer_1">Ուղիղ։</string>
+    <string name="question_617_answer_2">Դեպի աջ՝ առաջին անցումով։</string>
+    <string name="question_617_answer_3">Դեպի աջ՝ երկրորդ անցումով։</string>
+    <string name="question_617_answer_4">Դեպի աջ՝ առաջին եւ երկրորդ անցումներով։</string>
+    <string name="question_617_true_answer">@string/question_617_answer_2</string>
 
-    <string name="question_618">Ո՞ր տրանսպորտային միջոցի վարորդը պետք է զիջի ճանապարհը՝</string>
-    <string name="question_618_answer_1">Մոտոցիկլի վարորդը։</string>
-    <string name="question_618_answer_2">Ավտոմոբիլի վարորդը։</string>
-    <string name="question_618_true_answer">@string/question_618_answer_2</string>
+    <string name="question_618">Երթեւեկությունը թույլատրվում է՝</string>
+    <string name="question_618_answer_1">Դեպի աջ՝ առաջին անցումով։</string>
+    <string name="question_618_answer_2">Ուղիղ եւ դեպի աջ՝ առաջին անցումով։</string>
+    <string name="question_618_true_answer">@string/question_618_answer_1</string>
 
-    <string name="question_619">Կարգավորողի այս ազդանշանը նշանակում է, որ երթեւեկությունը թույլատրվում է՝</string>
-    <string name="question_619_answer_1">Կապույտ եւ կանաչ ավտոմոբիլներին։ Արգելվում է կարմիրին, դեղինին եւ սպիտակին։</string>
-    <string name="question_619_answer_2">Կապույտ, կարմիր եւ կանաչ ավտոմոբիլներին։ Արգելվում է դեղինին եւ սպիտակին։</string>
-    <string name="question_619_true_answer">@string/question_619_answer_2</string>
+    <string name="question_619">Այս լուսացույցն արգելում է երթեւեկությունը՝</string>
+    <string name="question_619_answer_1">Միայն դեպի ձախ։</string>
+    <string name="question_619_answer_2">Ուղիղ եւ դեպի ձախ։</string>
+    <string name="question_619_answer_3">Ուղիղ եւ դեպի աջ։</string>
+    <string name="question_619_answer_4">Միայն դեպի աջ։</string>
+    <string name="question_619_true_answer">@string/question_619_answer_1</string>
 
-    <string name="question_620">Ո՞ր տրանսպորտային միջոցները կարող են կատարել աջ շրջադարձ։</string>
-    <string name="question_620_answer_1">Միայն կարմիր ավտոմոբիլը։</string>
-    <string name="question_620_answer_2">Բոլոր տրանսպորտային միջոցները։</string>
-    <string name="question_620_answer_3">Կարմիր եւ կանաչ ավտոմոբիլները։</string>
-    <string name="question_620_true_answer">@string/question_620_answer_3</string>
+    <string name="question_620">Եթե կարգավորողի ձեռքերը կողմ են պարզված կամ իջեցված են, ապա ոչ ռելսագնաց տրանսպորտային միջոցների երթեւեկությունը թույլատրվում է՝</string>
+    <string name="question_620_answer_1">Թիկունքի եւ կրծքի կողմից՝ միայն դեպի աջ։</string>
+    <string name="question_620_answer_2">Ձախ եւ աջ կողմերից՝ ուղիղ եւ դեպի աջ։</string>
+    <string name="question_620_answer_3">Ձախ եւ աջ կողմերից՝ միայն ուղիղ։</string>
+    <string name="question_620_true_answer">@string/question_620_answer_2</string>
 
-    <string name="question_621">Երթեւեկությունը թույլատրվում է՝</string>
-    <string name="question_621_answer_1">Ուղիղ։</string>
-    <string name="question_621_answer_2">Դեպի աջ՝ առաջին անցումով։</string>
-    <string name="question_621_answer_3">Դեպի աջ՝ երկրորդ անցումով։</string>
-    <string name="question_621_answer_4">Դեպի աջ՝ առաջին եւ երկրորդ անցումներով։</string>
-    <string name="question_621_true_answer">@string/question_621_answer_2</string>
+    <string name="question_621">Կարմիր ավտոմոբիլի վարորդը՝</string>
+    <string name="question_621_answer_1">Պետք է զիջի ճանապարհը։</string>
+    <string name="question_621_answer_2">Ունի առաջնահերթ երթեւեկության իրավունք։</string>
+    <string name="question_621_true_answer">@string/question_621_answer_1</string>
 
-    <string name="question_622">Երթեւեկությունը թույլատրվում է՝</string>
-    <string name="question_622_answer_1">Դեպի աջ՝ առաջին անցումով։</string>
-    <string name="question_622_answer_2">Ուղիղ եւ դեպի աջ՝ առաջին անցումով։</string>
+    <string name="question_622">Ո՞ր տրանսպորտային միջոցներին է թույլատրվում երթեւեկությունը։</string>
+    <string name="question_622_answer_1">Դեղին եւ կարմիր ավտոմոբիլներին։</string>
+    <string name="question_622_answer_2">Կանաչ, կարմիր եւ սպիտակ ավտոմոբիլներին։</string>
+    <string name="question_622_answer_3">Սպիտակ եւ կանաչ ավտոմոբիլներին։</string>
     <string name="question_622_true_answer">@string/question_622_answer_1</string>
 
-    <string name="question_623">Այս լուսացույցն արգելում է երթեւեկությունը՝</string>
-    <string name="question_623_answer_1">Միայն դեպի ձախ։</string>
-    <string name="question_623_answer_2">Ուղիղ եւ դեպի ձախ։</string>
-    <string name="question_623_answer_3">Ուղիղ եւ դեպի աջ։</string>
-    <string name="question_623_answer_4">Միայն դեպի աջ։</string>
-    <string name="question_623_true_answer">@string/question_623_answer_1</string>
+    <string name="question_623">Լուսացույցի ի՞նչ ազդանշանի դեպքում ավտոմոբիլի վարորդը կարող է ավարտել հետադարձը։</string>
+    <string name="question_623_answer_1">Կարմիր։</string>
+    <string name="question_623_answer_2">Կանաչ։</string>
+    <string name="question_623_answer_3">Ցանկացած։</string>
+    <string name="question_623_true_answer">@string/question_623_answer_2</string>
 
-    <string name="question_624">Եթե կարգավորողի ձեռքերը կողմ են պարզված կամ իջեցված են, ապա ոչ ռելսագնաց տրանսպորտային միջոցների երթեւեկությունը թույլատրվում է՝</string>
-    <string name="question_624_answer_1">Թիկունքի եւ կրծքի կողմից՝ միայն դեպի աջ։</string>
-    <string name="question_624_answer_2">Ձախ եւ աջ կողմերից՝ ուղիղ եւ դեպի աջ։</string>
-    <string name="question_624_answer_3">Ձախ եւ աջ կողմերից՝ միայն ուղիղ։</string>
+    <string name="question_624">Ի՞նչ է նշանակում լուսացույցի դեղին եւ կարմիր գույների ազդանշանների զուգակցումը։</string>
+    <string name="question_624_answer_1">Թույլատրվում է սկսել երթեւեկությունը։</string>
+    <string name="question_624_answer_2">Արգելվում է երթեւեկությունը եւ տեղեկացնում կանաչ ազդանշանի առաջիկայում միանալու մասին։</string>
+    <string name="question_624_answer_3">Խաչմերուկին մոտենում է հատուկ ձայնային ազդանշան եւ առկայծող փարոսիկներ միացրած տրանպորտային միջոց։</string>
     <string name="question_624_true_answer">@string/question_624_answer_2</string>
 
-    <string name="question_625">Այս լուսացույցը կիրառվում է երթեւեկությունը կարգավորելու համար՝</string>
-    <string name="question_625_answer_1">Երթեւեկելի մասի ամբողջ լայնությամբ։</string>
-    <string name="question_625_answer_2">Երթեւեկելի մասի այն գոտիներով, որտեղ երթեւեկության ուղղությունը կարող է փոխվել հանդիպակացի։</string>
-    <string name="question_625_answer_3">Միայն ընդհանուր օգտագործման տրանսպորտային միջոցների երթեւեկության համար նախատեսված գոտիներում։</string>
-    <string name="question_625_true_answer">@string/question_625_answer_2</string>
+    <string name="question_625">Ո՞ր նկարում է վարորդը ճիշտ կատարում շրջադարձը։</string>
+    <string name="question_625_answer_1">Ձախ նկարում։</string>
+    <string name="question_625_answer_2">Աջ նկարում։</string>
+    <string name="question_625_true_answer">@string/question_625_answer_1</string>
 
-    <string name="question_626">Եթե կարգավորողի աջ ձեռքը պարզված է առաջ, ապա նրա ձախ կողմից ոչ ռելսագնաց տրանսպորտային միջոցների երթեւեկությունը թույլատրվում է՝</string>
-    <string name="question_626_answer_1">Բոլոր ուղղություններով։</string>
-    <string name="question_626_answer_2">Միայն դեպի ձախ։</string>
+    <string name="question_626">Պարտավո՞ր է արդյոք տրամվայի վարորդը լուսացույցի կանաչ ազդանշանի դեպքում զիջել ճանապարհն այլ ուղղություններից մոտեցող տրանսպորտային միջոցներին։</string>
+    <string name="question_626_answer_1">Պարտավոր է։</string>
+    <string name="question_626_answer_2">Պարտավոր չէ։</string>
     <string name="question_626_true_answer">@string/question_626_answer_1</string>
 
-    <string name="question_627">Ո՞ր տրանսպորտային միջոցների երթեւեկությունն է թույլատրվում լուսացույցի տվյալ ազդանշանի դեպքում։</string>
-    <string name="question_627_answer_1">Տրամվայի, դեղին եւ կարմիր ավտոմոբիլների։</string>
-    <string name="question_627_answer_2">Դեղին եւ կարմիր ավտոմոբիլների։</string>
-    <string name="question_627_answer_3">Բոլոր տրանսպորտային միջոցների։</string>
+    <string name="question_627">Այս լուսացույցը կիրառվում է երթեւեկությունը կարգավորելու համար՝</string>
+    <string name="question_627_answer_1">Երթեւեկելի մասի ամբողջ լայնությամբ։</string>
+    <string name="question_627_answer_2">Երթեւեկելի մասի այն գոտիներով, որտեղ երթեւեկության ուղղությունը կարող է փոխվել հանդիպակացի։</string>
+    <string name="question_627_answer_3">Միայն ընդհանուր օգտագործման տրանսպորտային միջոցների երթեւեկության համար նախատեսված գոտիներում։</string>
     <string name="question_627_true_answer">@string/question_627_answer_2</string>
 
-    <string name="question_628">Երթեւեկությունը թույլատրվում է՝</string>
-    <string name="question_628_answer_1">Բոլոր տրանսպորտային միջոցներին։</string>
-    <string name="question_628_answer_2">Մոտոցիկլին։</string>
-    <string name="question_628_answer_3">Ավտոմոբիլին եւ մոտոցիկլին։</string>
-    <string name="question_628_true_answer">@string/question_628_answer_2</string>
+    <string name="question_628">Եթե կարգավորողի աջ ձեռքը պարզված է առաջ, ապա նրա ձախ կողմից ոչ ռելսագնաց տրանսպորտային միջոցների երթեւեկությունը թույլատրվում է՝</string>
+    <string name="question_628_answer_1">Բոլոր ուղղություններով։</string>
+    <string name="question_628_answer_2">Միայն դեպի ձախ։</string>
+    <string name="question_628_true_answer">@string/question_628_answer_1</string>
 
-    <string name="question_629">Եթե կարգավորողի ձեռքերը կողմ են պարզված կամ իջեցված են, ապա նրա ձախ եւ աջ կողմերից ոչ ռելսագնաց տրանսպորտային միջոցների երթեւեկությունը թույլատրվում է՝</string>
-    <string name="question_629_answer_1">Ուղիղ եւ դեպի աջ։</string>
-    <string name="question_629_answer_2">Միայն ուղիղ։</string>
-    <string name="question_629_true_answer">@string/question_629_answer_1</string>
+    <string name="question_629">Ո՞ր տրանսպորտային միջոցների երթեւեկությունն է թույլատրվում լուսացույցի տվյալ ազդանշանի դեպքում։</string>
+    <string name="question_629_answer_1">Տրամվայի, դեղին եւ կարմիր ավտոմոբիլների։</string>
+    <string name="question_629_answer_2">Դեղին եւ կարմիր ավտոմոբիլների։</string>
+    <string name="question_629_answer_3">Բոլոր տրանսպորտային միջոցների։</string>
+    <string name="question_629_true_answer">@string/question_629_answer_2</string>
 
-    <string name="question_630">Ո՞ր տրանսպորտային միջոցի վարորդն ունի երթեւեկության առավելություն։</string>
-    <string name="question_630_answer_1">Ավտոմոբիլի վարորդը։</string>
-    <string name="question_630_answer_2">Տրամվայի վարորդը։</string>
+    <string name="question_630">Երթեւեկությունը թույլատրվում է՝</string>
+    <string name="question_630_answer_1">Բոլոր տրանսպորտային միջոցներին։</string>
+    <string name="question_630_answer_2">Մոտոցիկլին։</string>
+    <string name="question_630_answer_3">Ավտոմոբիլին եւ մոտոցիկլին։</string>
     <string name="question_630_true_answer">@string/question_630_answer_2</string>
 
-    <string name="question_631">Երթեւեկությունն արգելվում է՝</string>
-    <string name="question_631_answer_1">Կանաչ եւ սպիտակ ավտոմոբիլներին։</string>
-    <string name="question_631_answer_2">Սպիտակ, կապույտ եւ կանաչ ավտոմոբիլներին։</string>
-    <string name="question_631_answer_3">Սպիտակ եւ դեղին ավտոմոբիլներին։</string>
-    <string name="question_631_answer_4">Կանաչ եւ դեղին ավտոմոբիլներին։</string>
-    <string name="question_631_true_answer">@string/question_631_answer_2</string>
+    <string name="question_627">Այս լուսացույցը կիրառվում է երթեւեկությունը կարգավորելու համար՝</string>
+    <string name="question_627_answer_1">Երթեւեկելի մասի ամբողջ լայնությամբ։</string>
+    <string name="question_627_answer_2">Երթեւեկելի մասի այն գոտիներով, որտեղ երթեւեկության ուղղությունը կարող է փոխվել հանդիպակացի։</string>
+    <string name="question_627_answer_3">Միայն ընդհանուր օգտագործման տրանսպորտային միջոցների երթեւեկության համար նախատեսված գոտիներում։</string>
+    <string name="question_627_true_answer">@string/question_627_answer_2</string>
 
-    <string name="question_632">Այս լուսացույցի կարմիր ազդանշանի դեպքում երթեւեկությունն արգելվում է՝</string>
-    <string name="question_632_answer_1">Երթեւեկելի մասի ամբողջ լայնությամբ։</string>
-    <string name="question_632_answer_2">50 կմ/ժ ոչ ավելի արագությամբ։</string>
-    <string name="question_632_answer_3">Այն գոտիով, որի վերեւում տեղակայված է։</string>
-    <string name="question_632_true_answer">@string/question_632_answer_3</string>
+    <string name="question_628">Եթե կարգավորողի աջ ձեռքը պարզված է առաջ, ապա նրա ձախ կողմից ոչ ռելսագնաց տրանսպորտային միջոցների երթեւեկությունը թույլատրվում է՝</string>
+    <string name="question_628_answer_1">Բոլոր ուղղություններով։</string>
+    <string name="question_628_answer_2">Միայն դեպի ձախ։</string>
+    <string name="question_628_true_answer">@string/question_628_answer_1</string>
 
-    <string name="question_633">Ի՞նչ նշանակություն ունի լուսացույցի կլոր կանաչ թարթող ազդանշանը։</string>
-    <string name="question_633_answer_1">Տեղեկացնում է, որ մուտքը խաչմերուկ արգելվում է։</string>
-    <string name="question_633_answer_2">Թույլատրում է երթեւեկությունը եւ տեղեկացնում, որ դրա գործողության ժամկետը լրանում է եւ շուտով կմիանա արգելող ազդանշանը։</string>
+    <string name="question_629">Ո՞ր տրանսպորտային միջոցների երթեւեկությունն է թույլատրվում լուսացույցի տվյալ ազդանշանի դեպքում։</string>
+    <string name="question_629_answer_1">Տրամվայի, դեղին եւ կարմիր ավտոմոբիլների։</string>
+    <string name="question_629_answer_2">Դեղին եւ կարմիր ավտոմոբիլների։</string>
+    <string name="question_629_answer_3">Բոլոր տրանսպորտային միջոցների։</string>
+    <string name="question_629_true_answer">@string/question_629_answer_2</string>
+
+    <string name="question_630">Երթեւեկությունը թույլատրվում է՝</string>
+    <string name="question_630_answer_1">Բոլոր տրանսպորտային միջոցներին։</string>
+    <string name="question_630_answer_2">Մոտոցիկլին։</string>
+    <string name="question_630_answer_3">Ավտոմոբիլին եւ մոտոցիկլին։</string>
+    <string name="question_630_true_answer">@string/question_630_answer_2</string>
+
+    <string name="question_631">Եթե կարգավորողի ձեռքերը կողմ են պարզված կամ իջեցված են, ապա նրա ձախ եւ աջ կողմերից ոչ ռելսագնաց տրանսպորտային միջոցների երթեւեկությունը թույլատրվում է՝</string>
+    <string name="question_631_answer_1">Ուղիղ եւ դեպի աջ։</string>
+    <string name="question_631_answer_2">Միայն ուղիղ։</string>
+    <string name="question_631_true_answer">@string/question_631_answer_1</string>
+
+    <string name="question_632">Ո՞ր տրանսպորտային միջոցի վարորդն ունի երթեւեկության առավելություն։</string>
+    <string name="question_632_answer_1">Ավտոմոբիլի վարորդը։</string>
+    <string name="question_632_answer_2">Տրամվայի վարորդը։</string>
+    <string name="question_632_true_answer">@string/question_632_answer_2</string>
+
+    <string name="question_633">Երթեւեկությունն արգելվում է՝</string>
+    <string name="question_633_answer_1">Կանաչ եւ սպիտակ ավտոմոբիլներին։</string>
+    <string name="question_633_answer_2">Սպիտակ, կապույտ եւ կանաչ ավտոմոբիլներին։</string>
+    <string name="question_633_answer_3">Սպիտակ եւ դեղին ավտոմոբիլներին։</string>
+    <string name="question_633_answer_4">Կանաչ եւ դեղին ավտոմոբիլներին։</string>
     <string name="question_633_true_answer">@string/question_633_answer_2</string>
 
-    <string name="question_634">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
-    <string name="question_634_answer_1">Տրամվայը, կարմիր ավտոմոբիլը, կանաչ ավտոմոբիլը։</string>
-    <string name="question_634_answer_2">Կարմիր ավտոմոբիլը, տրամվայը` կանաչ ավտոմոբիլի հետ միաժամանակ։</string>
-    <string name="question_634_answer_3">Տրամվայը` կանաչ ավտոմոբիլի հետ միաժամանակ, կարմիր ավտոմոբիլը։</string>
-    <string name="question_634_true_answer">@string/question_634_answer_2</string>
+    <string name="question_634">Այս լուսացույցի կարմիր ազդանշանի դեպքում երթեւեկությունն արգելվում է՝</string>
+    <string name="question_634_answer_1">Երթեւեկելի մասի ամբողջ լայնությամբ։</string>
+    <string name="question_634_answer_2">50 կմ/ժ ոչ ավելի արագությամբ։</string>
+    <string name="question_634_answer_3">Այն գոտիով, որի վերեւում տեղակայված է։</string>
+    <string name="question_634_true_answer">@string/question_634_answer_3</string>
 
-    <string name="question_635">Ո՞ր պատասխանում են ճիշտ նշված այն տրանսպորտային միջոցները, որոնց երթեւեկությունը թույլատրվում է։</string>
-    <string name="question_635_answer_1">Ավտոմոբիլները եւ մոտոցիկլը։</string>
-    <string name="question_635_answer_2">Բոլոր տրանսպորտային միջոցները։</string>
-    <string name="question_635_answer_3">Ավտոմոբիլները եւ տրամվայը։</string>
-    <string name="question_635_true_answer">@string/question_635_answer_1</string>
+    <string name="question_635">Ի՞նչ նշանակություն ունի լուսացույցի կլոր կանաչ թարթող ազդանշանը։</string>
+    <string name="question_635_answer_1">Տեղեկացնում է, որ մուտքը խաչմերուկ արգելվում է։</string>
+    <string name="question_635_answer_2">Թույլատրում է երթեւեկությունը եւ տեղեկացնում, որ դրա գործողության ժամկետը լրանում է եւ շուտով կմիանա արգելող ազդանշանը։</string>
+    <string name="question_635_true_answer">@string/question_635_answer_2</string>
 
-    <string name="question_636">Եթե կարգավորողի աջ ձեռքը պարզված է առաջ, ապա նրա ձախ կողմից ոչ ռելսագնաց տրանսպորտային միջոցների երթեւեկությունը թույլատրվում է՝</string>
-    <string name="question_636_answer_1">Ուղիղ եւ դեպի ձախ։</string>
-    <string name="question_636_answer_2">Բոլոր ուղղություններով։</string>
+    <string name="question_636">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</string>
+    <string name="question_636_answer_1">Տրամվայը, կարմիր ավտոմոբիլը, կանաչ ավտոմոբիլը։</string>
+    <string name="question_636_answer_2">Կարմիր ավտոմոբիլը, տրամվայը` կանաչ ավտոմոբիլի հետ միաժամանակ։</string>
+    <string name="question_636_answer_3">Տրամվայը` կանաչ ավտոմոբիլի հետ միաժամանակ, կարմիր ավտոմոբիլը։</string>
     <string name="question_636_true_answer">@string/question_636_answer_2</string>
 
-    <string name="question_637">Երթեւեկությունն արգելվում է՝</string>
-    <string name="question_637_answer_1">Կապտադեղին ավտոմոբիլին` դեպի ձախ։</string>
-    <string name="question_637_answer_2">Կապտադեղին ավտոմոբիլին` ուղիղ, կարմիր ավտոմոբիլին` ուղիղ եւ դեպի աջ։</string>
-    <string name="question_637_answer_3">Կարմիր ավտոմոբիլին։</string>
+    <string name="question_637">Ո՞ր պատասխանում են ճիշտ նշված այն տրանսպորտային միջոցները, որոնց երթեւեկությունը թույլատրվում է։</string>
+    <string name="question_637_answer_1">Ավտոմոբիլները եւ մոտոցիկլը։</string>
+    <string name="question_637_answer_2">Բոլոր տրանսպորտային միջոցները։</string>
+    <string name="question_637_answer_3">Ավտոմոբիլները եւ տրամվայը։</string>
     <string name="question_637_true_answer">@string/question_637_answer_1</string>
 
-    <string name="question_638">Ո՞ր ուղղությամբ է թույլատրվում երթեւեկությունը։</string>
-    <string name="question_638_answer_1">Ուղիղ եւ դեպի աջ` առաջին անցումով։</string>
-    <string name="question_638_answer_2">Դեպի աջ` առաջին անցումով։</string>
-    <string name="question_638_answer_3">Դեպի աջ` երկրորդ անցումով։</string>
-    <string name="question_638_answer_4">Դեպի աջ` առաջին եւ երկրորդ անցումներով։</string>
+    <string name="question_638">Եթե կարգավորողի աջ ձեռքը պարզված է առաջ, ապա նրա ձախ կողմից ոչ ռելսագնաց տրանսպորտային միջոցների երթեւեկությունը թույլատրվում է՝</string>
+    <string name="question_638_answer_1">Ուղիղ եւ դեպի ձախ։</string>
+    <string name="question_638_answer_2">Բոլոր ուղղություններով։</string>
     <string name="question_638_true_answer">@string/question_638_answer_2</string>
 
-    <string name="question_639">Խաչմերուկն առաջինը կանցնի՝</string>
-    <string name="question_639_answer_1">Կարմիր ավտոմոբիլը։</string>
-    <string name="question_639_answer_2">Կապույտ ավտոմոբիլը։</string>
-    <string name="question_639_answer_3">Կանաչ ավտոմոբիլը։</string>
-    <string name="question_639_true_answer">@string/question_639_answer_3</string>
+    <string name="question_639">Երթեւեկությունն արգելվում է՝</string>
+    <string name="question_639_answer_1">Կապտադեղին ավտոմոբիլին` դեպի ձախ։</string>
+    <string name="question_639_answer_2">Կապտադեղին ավտոմոբիլին` ուղիղ, կարմիր ավտոմոբիլին` ուղիղ եւ դեպի աջ։</string>
+    <string name="question_639_answer_3">Կարմիր ավտոմոբիլին։</string>
+    <string name="question_639_true_answer">@string/question_639_answer_1</string>
 
-    <string name="question_640">Ո՞ր նկարում է վարորդը ճիշտ կատարում շրջադարձը։</string>
-    <string name="question_640_answer_1">Ձախ նկարում։</string>
-    <string name="question_640_answer_2">Աջ նկարում։</string>
-    <string name="question_640_answer_3">Երկու նկարներում էլ։</string>
-    <string name="question_640_true_answer">@string/question_640_answer_1</string>
+    <string name="question_640">Ո՞ր ուղղությամբ է թույլատրվում երթեւեկությունը։</string>
+    <string name="question_640_answer_1">Ուղիղ եւ դեպի աջ` առաջին անցումով։</string>
+    <string name="question_640_answer_2">Դեպի աջ` առաջին անցումով։</string>
+    <string name="question_640_answer_3">Դեպի աջ` երկրորդ անցումով։</string>
+    <string name="question_640_answer_4">Դեպի աջ` առաջին եւ երկրորդ անցումներով։</string>
+    <string name="question_640_true_answer">@string/question_640_answer_2</string>
 
-    <string name="question_641">Կարմիր ավտոմոբիլը խաչմերուկը կանցնի՝</string>
-    <string name="question_641_answer_1">Առաջինը։</string>
-    <string name="question_641_answer_2">Երկրորդը։</string>
-    <string name="question_641_answer_3">Երրորդը։</string>
-    <string name="question_641_answer_4">Վերջինը։</string>
-    <string name="question_641_true_answer">@string/question_641_answer_4</string>
+    <string name="question_641">Խաչմերուկն առաջինը կանցնի՝</string>
+    <string name="question_641_answer_1">Կարմիր ավտոմոբիլը։</string>
+    <string name="question_641_answer_2">Կապույտ ավտոմոբիլը։</string>
+    <string name="question_641_answer_3">Կանաչ ավտոմոբիլը։</string>
+    <string name="question_641_true_answer">@string/question_641_answer_3</string>
 
-    <string name="question_642">Այս լուսացույցը կիրառվում է՝</string>
-    <string name="question_642_answer_1">Տրամվայների եւ տրոլեյբուսների երթեւեկությունը կարգավորելու համար։</string>
-    <string name="question_642_answer_2">Միայն տրամվայների երթեւեկությունը կարգավորելու համար։</string>
-    <string name="question_642_answer_3">Տրամվայների, ինչպես նաեւ առանձնացված գոտիներով երթեւեկող ընդհանուր օգտագործման այլ տրանսպորտային միջոցների երթեւեկությունը կարգավորելու համար։</string>
-    <string name="question_642_true_answer">@string/question_642_answer_3</string>
+    <string name="question_642">Ո՞ր նկարում է վարորդը ճիշտ կատարում շրջադարձը։</string>
+    <string name="question_642_answer_1">Ձախ նկարում։</string>
+    <string name="question_642_answer_2">Աջ նկարում։</string>
+    <string name="question_642_answer_3">Երկու նկարներում էլ։</string>
+    <string name="question_642_true_answer">@string/question_642_answer_1</string>
 
-    <string name="question_643">Ավտոմոբիլը խաչմերուկը կանցնի՝</string>
+    <string name="question_643">Կարմիր ավտոմոբիլը խաչմերուկը կանցնի՝</string>
     <string name="question_643_answer_1">Առաջինը։</string>
     <string name="question_643_answer_2">Երկրորդը։</string>
-    <string name="question_643_true_answer">@string/question_643_answer_1</string>
+    <string name="question_643_answer_3">Երրորդը։</string>
+    <string name="question_643_answer_4">Վերջինը։</string>
+    <string name="question_643_true_answer">@string/question_643_answer_4</string>
 
-    <string name="question_644">Երթեւեկությունը թույլատրվում է՝</string>
-    <string name="question_644_answer_1">Կապտադեղին ավտոմոբիլին` ուղիղ, կարմիրին` դեպի աջ։</string>
-    <string name="question_644_answer_2">Կարմիր ավտոմոբիլին` ուղիղ եւ դեպի աջ, կապտադեղինին` ուղիղ։</string>
-    <string name="question_644_answer_3">Երկու ավտոմոբիլներին` միայն ուղիղ։</string>
-    <string name="question_644_true_answer">@string/question_644_answer_2</string>
+    <string name="question_644">Այս լուսացույցը կիրառվում է՝</string>
+    <string name="question_644_answer_1">Տրամվայների եւ տրոլեյբուսների երթեւեկությունը կարգավորելու համար։</string>
+    <string name="question_644_answer_2">Միայն տրամվայների երթեւեկությունը կարգավորելու համար։</string>
+    <string name="question_644_answer_3">Տրամվայների, ինչպես նաեւ առանձնացված գոտիներով երթեւեկող ընդհանուր օգտագործման այլ տրանսպորտային միջոցների երթեւեկությունը կարգավորելու համար։</string>
+    <string name="question_644_true_answer">@string/question_644_answer_3</string>
 
-    <string name="question_645">Երթեւեկությունը թույլատրվում է՝</string>
-    <string name="question_645_answer_1">Կարմիր ավտոմոբիլին։</string>
-    <string name="question_645_answer_2">Մոտոցիկլին։</string>
-    <string name="question_645_answer_3">Տրամվային եւ կարմիր ավտոմոբիլին։</string>
-    <string name="question_645_answer_4">Տրամվային։</string>
-    <string name="question_645_answer_5">Կապույտ ավտոմոբիլին։</string>
+    <string name="question_645">Ավտոմոբիլը խաչմերուկը կանցնի՝</string>
+    <string name="question_645_answer_1">Առաջինը։</string>
+    <string name="question_645_answer_2">Երկրորդը։</string>
     <string name="question_645_true_answer">@string/question_645_answer_1</string>
 
-    <string name="question_646">Թույլատրվու՞մ է երթեւեկել նշված հետագծով, երբ դարձափոխային լուսացույցերն անջատված են։</string>
-    <string name="question_646_answer_1">Թույլատրվում է։</string>
-    <string name="question_646_answer_2">Թույլատրվում է վազանցելու նպատակով։</string>
-    <string name="question_646_answer_3">Արգելվում է։</string>
-    <string name="question_646_answer_4">Թույլատրվում է հանդիպակաց երթեւեկող տրանսպորտային միջոցների բացակայության դեպքում։</string>
-    <string name="question_646_true_answer">@string/question_646_answer_3</string>
+    <string name="question_646">Երթեւեկությունը թույլատրվում է՝</string>
+    <string name="question_646_answer_1">Կապտադեղին ավտոմոբիլին` ուղիղ, կարմիրին` դեպի աջ։</string>
+    <string name="question_646_answer_2">Կարմիր ավտոմոբիլին` ուղիղ եւ դեպի աջ, կապտադեղինին` ուղիղ։</string>
+    <string name="question_646_answer_3">Երկու ավտոմոբիլներին` միայն ուղիղ։</string>
+    <string name="question_646_true_answer">@string/question_646_answer_2</string>
 
-    <string name="question_647">Տվյալ իրավիճակում ո՞ր տրանսպորտային միջոցներն ունեն երթեւեկությունը շարունակելու իրավունք։</string>
-    <string name="question_647_answer_1">Թեթեւ մարդատար ավտոմոբիլը` ուղիղ, պարեկային ավտոմոբիլը` բոլոր ուղղություններով, ավտոբուսը` միայն աջ։</string>
-    <string name="question_647_answer_2">Միայն պարեկային ավտոմոբիլը` բոլոր ուղղություններով։</string>
-    <string name="question_647_answer_3">Պարեկային ավտոմոբիլը` բոլոր ուղղություններով, ավտոբուսը` միայն աջ։</string>
-    <string name="question_647_true_answer">@string/question_647_answer_3</string>
+    <string name="question_647">Երթեւեկությունը թույլատրվում է՝</string>
+    <string name="question_647_answer_1">Կարմիր ավտոմոբիլին։</string>
+    <string name="question_647_answer_2">Մոտոցիկլին։</string>
+    <string name="question_647_answer_3">Տրամվային եւ կարմիր ավտոմոբիլին։</string>
+    <string name="question_647_answer_4">Տրամվային։</string>
+    <string name="question_647_answer_5">Կապույտ ավտոմոբիլին։</string>
+    <string name="question_647_true_answer">@string/question_647_answer_1</string>
 
-    <string name="question_648">Ի՞նչ է տեղեկացնում լուսացույցի ազդանշանը։</string>
-    <string name="question_648_answer_1">Լուսացույցն անսարք է։</string>
-    <string name="question_648_answer_2">Խաչմերուկն անցնելիս վարորդները պետք է ղեկավարվեն ճանապարհային նշանի պահանջներով։</string>
-    <string name="question_648_answer_3">Վարորդները պետք է սպասեն լուսացույցի թույլատրող ազդանշանին։</string>
+    <string name="question_648">Թույլատրվու՞մ է երթեւեկել նշված հետագծով, երբ դարձափոխային լուսացույցերն անջատված են։</string>
+    <string name="question_648_answer_1">Թույլատրվում է։</string>
+    <string name="question_648_answer_2">Թույլատրվում է վազանցելու նպատակով։</string>
+    <string name="question_648_answer_3">Արգելվում է։</string>
+    <string name="question_648_answer_4">Թույլատրվում է հանդիպակաց երթեւեկող տրանսպորտային միջոցների բացակայության դեպքում։</string>
     <string name="question_648_true_answer">@string/question_648_answer_3</string>
 
-    <string name="question_649">Թույլատրվու՞մ է թեթեւ մարդատար ավտոմոբիլի վարորդին առաջ անցնել ավտոբուսից, երբ դարձափոխային լուսացույցն անջատված է։</string>
-    <string name="question_649_answer_1">Թույլատրվում է։</string>
-    <string name="question_649_answer_2">Թույլատրվում է, եթե ավտոբուսը շարժվում է 30 կմ/ժ արագությամբ։</string>
-    <string name="question_649_answer_3">Թույլատրվում է, եթե չկան հանդիպակաց երթեւեկող տրանսպորտային միջոցներ։</string>
-    <string name="question_649_answer_4">Արգելվում է։</string>
-    <string name="question_649_true_answer">@string/question_649_answer_4</string>
+    <string name="question_649">Տվյալ իրավիճակում ո՞ր տրանսպորտային միջոցներն ունեն երթեւեկությունը շարունակելու իրավունք։</string>
+    <string name="question_649_answer_1">Թեթեւ մարդատար ավտոմոբիլը` ուղիղ, պարեկային ավտոմոբիլը` բոլոր ուղղություններով, ավտոբուսը` միայն աջ։</string>
+    <string name="question_649_answer_2">Միայն պարեկային ավտոմոբիլը` բոլոր ուղղություններով։</string>
+    <string name="question_649_answer_3">Պարեկային ավտոմոբիլը` բոլոր ուղղություններով, ավտոբուսը` միայն աջ։</string>
+    <string name="question_649_true_answer">@string/question_649_answer_3</string>
 
-    <string name="question_650">Ո՞ր տրանսպորտային միջոցը պետք է զիջի ճանապարհը։</string>
-    <string name="question_650_answer_1">Ավտոբուսը։</string>
-    <string name="question_650_answer_2">Մոտոցիկլը եւ թեթեւ մարդատար ավտոմոբիլը։</string>
-    <string name="question_650_true_answer">@string/question_650_answer_1</string>
+    <string name="question_650">Ի՞նչ է տեղեկացնում լուսացույցի ազդանշանը։</string>
+    <string name="question_650_answer_1">Լուսացույցն անսարք է։</string>
+    <string name="question_650_answer_2">Խաչմերուկն անցնելիս վարորդները պետք է ղեկավարվեն ճանապարհային նշանի պահանջներով։</string>
+    <string name="question_650_answer_3">Վարորդները պետք է սպասեն լուսացույցի թույլատրող ազդանշանին։</string>
+    <string name="question_650_true_answer">@string/question_650_answer_3</string>
 
-    <string name="question_651">Նշված հետագծերով երթեւեկությունը շարունակելու իրավունք ունեն</string>
-    <string name="question_651_answer_1">Բեռնատար ավտոմոբիլի վարորդը։</string>
-    <string name="question_651_answer_2">Ավտոբուսի եւ բեռնատար ավտոմոբիլների վարորդները։</string>
-    <string name="question_651_answer_3">Թեթեւ մարդատար ավտոմոբիլի եւ ավտոբուսի վարորդները։</string>
-    <string name="question_651_answer_4">Ավտոբուսի վարորդը։</string>
+    <string name="question_651">Թույլատրվու՞մ է թեթեւ մարդատար ավտոմոբիլի վարորդին առաջ անցնել ավտոբուսից, երբ դարձափոխային լուսացույցն անջատված է։</string>
+    <string name="question_651_answer_1">Թույլատրվում է։</string>
+    <string name="question_651_answer_2">Թույլատրվում է, եթե ավտոբուսը շարժվում է 30 կմ/ժ արագությամբ։</string>
+    <string name="question_651_answer_3">Թույլատրվում է, եթե չկան հանդիպակաց երթեւեկող տրանսպորտային միջոցներ։</string>
+    <string name="question_651_answer_4">Արգելվում է։</string>
     <string name="question_651_true_answer">@string/question_651_answer_4</string>
 
-    <string name="question_652">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ։</string>
-    <string name="question_652_answer_1">Տրամվայը, թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը։</string>
-    <string name="question_652_answer_2">Թեթեւ մարդատար ավտոմոբիլը, տրամվայը, ավտոբուսը։</string>
-    <string name="question_652_answer_3">Թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը, տրամվայը։</string>
-    <string name="question_652_true_answer">@string/question_652_answer_2</string>
+    <string name="question_652">Ո՞ր տրանսպորտային միջոցը պետք է զիջի ճանապարհը։</string>
+    <string name="question_652_answer_1">Ավտոբուսը։</string>
+    <string name="question_652_answer_2">Մոտոցիկլը եւ թեթեւ մարդատար ավտոմոբիլը։</string>
+    <string name="question_652_true_answer">@string/question_652_answer_1</string>
 
-    <string name="question_653">Տվյալ իրադրությունում ավտոբուսի վարորդն ունի՞ ուղիղ երթեւեկելու իրավունք։</string>
-    <string name="question_653_answer_1">Այո։</string>
-    <string name="question_653_answer_2">Ոչ։</string>
-    <string name="question_653_answer_3">Այո, եթե նա երթեւեկում է սահմանված երթուղով։</string>
-    <string name="question_653_true_answer">@string/question_653_answer_2</string>
+    <string name="question_653">Նշված հետագծերով երթեւեկությունը շարունակելու իրավունք ունեն</string>
+    <string name="question_653_answer_1">Բեռնատար ավտոմոբիլի վարորդը։</string>
+    <string name="question_653_answer_2">Ավտոբուսի եւ բեռնատար ավտոմոբիլների վարորդները։</string>
+    <string name="question_653_answer_3">Թեթեւ մարդատար ավտոմոբիլի եւ ավտոբուսի վարորդները։</string>
+    <string name="question_653_answer_4">Ավտոբուսի վարորդը։</string>
+    <string name="question_653_true_answer">@string/question_653_answer_4</string>
 
-    <string name="question_654">Ո՞ր ուղղությամբ կարող է վարորդը շարունակել երթեւեկությունը։</string>
-    <string name="question_654_answer_1">Դեպի աջ` առաջին անցումով։</string>
-    <string name="question_654_answer_2">Դեպի աջ` առաջին եւ երկրորդ անցումներով։</string>
-    <string name="question_654_answer_3">Դեպի ձախ` առաջին անցումով։</string>
-    <string name="question_654_true_answer">@string/question_654_answer_1</string>
+    <string name="question_654">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ։</string>
+    <string name="question_654_answer_1">Տրամվայը, թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը։</string>
+    <string name="question_654_answer_2">Թեթեւ մարդատար ավտոմոբիլը, տրամվայը, ավտոբուսը։</string>
+    <string name="question_654_answer_3">Թեթեւ մարդատար ավտոմոբիլը, ավտոբուսը, տրամվայը։</string>
+    <string name="question_654_true_answer">@string/question_654_answer_2</string>
 
-    <string name="question_655">Աջ շրջադարձի դեպքում վարորդը պարտավոր է ճանապարհը զիջել</string>
-    <string name="question_655_answer_1">Միայն հեծանվորդին։</string>
-    <string name="question_655_answer_2">Միայն հետիոտներին։</string>
-    <string name="question_655_answer_3">Հետիոտներին եւ հեծանվորդին։</string>
-    <string name="question_655_answer_4">Կարող է շարունակել երթեւեկությունն առանց կանգ առնելու։</string>
-    <string name="question_655_true_answer">@string/question_655_answer_3</string>
+    <string name="question_655">Տվյալ իրադրությունում ավտոբուսի վարորդն ունի՞ ուղիղ երթեւեկելու իրավունք։</string>
+    <string name="question_655_answer_1">Այո։</string>
+    <string name="question_655_answer_2">Ոչ։</string>
+    <string name="question_655_answer_3">Այո, եթե նա երթեւեկում է սահմանված երթուղով։</string>
+    <string name="question_655_true_answer">@string/question_655_answer_2</string>
 
-    <string name="question_656">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ։</string>
-    <string name="question_656_answer_1">Տրամվայը, ավտոբուսը, բեռնատար ավտոմոբիլը, մոտոցիկլը։</string>
-    <string name="question_656_answer_2">Ավտոբուսը, բեռնատար ավտոմոբիլը, տրամվայը, մոտոցիկլը։</string>
-    <string name="question_656_answer_3">Ավտոբուսը, տրամվայը եւ մոտոցիկլը, բեռնատար ավտոմոբիլը։</string>
-    <string name="question_656_true_answer">@string/question_656_answer_3</string>
+    <string name="question_656">Ո՞ր ուղղությամբ կարող է վարորդը շարունակել երթեւեկությունը։</string>
+    <string name="question_656_answer_1">Դեպի աջ` առաջին անցումով։</string>
+    <string name="question_656_answer_2">Դեպի աջ` առաջին եւ երկրորդ անցումներով։</string>
+    <string name="question_656_answer_3">Դեպի ձախ` առաջին անցումով։</string>
+    <string name="question_656_true_answer">@string/question_656_answer_1</string>
 
-    <string name="question_657">Այս իրավիճակում ո՞ր տրամվայի վարորդին պետք է զիջել ճանապարհը</string>
-    <string name="question_657_answer_1">Ոչ մեկին</string>
-    <string name="question_657_answer_2">Երկու տրամվայների</string>
-    <string name="question_657_answer_3">Միայն Ա</string>
-    <string name="question_657_true_answer">@string/question_657_answer_2</string>
+    <string name="question_657">Աջ շրջադարձի դեպքում վարորդը պարտավոր է ճանապարհը զիջել</string>
+    <string name="question_657_answer_1">Միայն հեծանվորդին։</string>
+    <string name="question_657_answer_2">Միայն հետիոտներին։</string>
+    <string name="question_657_answer_3">Հետիոտներին եւ հեծանվորդին։</string>
+    <string name="question_657_answer_4">Կարող է շարունակել երթեւեկությունն առանց կանգ առնելու։</string>
+    <string name="question_657_true_answer">@string/question_657_answer_3</string>
 
-    <string name="question_658">Ո՞ր վարորդն ունի առաջնահերթ երթևեկության իրավունք</string>
-    <string name="question_658_answer_1">Ավտոբուսի վարորդը</string>
-    <string name="question_658_answer_2">Թեթև մարդատարի վարորդը</string>
-    <string name="question_658_true_answer">@string/question_658_answer_2</string>
+    <string name="question_658">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ։</string>
+    <string name="question_658_answer_1">Տրամվայը, ավտոբուսը, բեռնատար ավտոմոբիլը, մոտոցիկլը։</string>
+    <string name="question_658_answer_2">Ավտոբուսը, բեռնատար ավտոմոբիլը, տրամվայը, մոտոցիկլը։</string>
+    <string name="question_658_answer_3">Ավտոբուսը, տրամվայը եւ մոտոցիկլը, բեռնատար ավտոմոբիլը։</string>
+    <string name="question_658_true_answer">@string/question_658_answer_3</string>
 
-    <string name="question_659">Այս իրավիճակում ձախ շրջադարձ կատարելիս</string>
-    <string name="question_659_answer_1">Կզիջենք ճանապարհը տրամվային</string>
-    <string name="question_659_answer_2">Խաչմերուկն առաջինը կանցնեմ</string>
+    <string name="question_659">Այս իրավիճակում ո՞ր տրամվայի վարորդին պետք է զիջել ճանապարհը</string>
+    <string name="question_659_answer_1">Ոչ մեկին</string>
+    <string name="question_659_answer_2">Երկու տրամվայների</string>
+    <string name="question_659_answer_3">Միայն Ա</string>
     <string name="question_659_true_answer">@string/question_659_answer_2</string>
 
-    <string name="question_660">Ինչպե՞ս վարվել այս իրավիճակում</string>
-    <string name="question_660_answer_1">Մուտք գործել խաչմերուկ և զիջելով ճանապարհը թեթև մարդատարի վարորդին անցնել խաչմերուկը:</string>
-    <string name="question_660_answer_2">Սպասել «Կանգ-գծի»՛ առջև, մինչև թեթև մարդատարի վարորդը կանցնի խաչմերուկը</string>
-    <string name="question_660_answer_3">Անցնել առաջինը</string>
-    <string name="question_660_true_answer">@string/question_660_answer_1</string>
+    <string name="question_660">Ո՞ր վարորդն ունի առաջնահերթ երթևեկության իրավունք</string>
+    <string name="question_660_answer_1">Ավտոբուսի վարորդը</string>
+    <string name="question_660_answer_2">Թեթև մարդատարի վարորդը</string>
+    <string name="question_660_true_answer">@string/question_660_answer_2</string>
 
-    <string name="question_661">Ո՞ր վարորդն է խախտում երթևեկության կանոնները շրջադարձ կատարելիս</string>
-    <string name="question_661_answer_1">Թեթև մարդատարի</string>
-    <string name="question_661_answer_2">Մոտոցիկլի</string>
-    <string name="question_661_answer_3">Երկու վարորդները</string>
-    <string name="question_661_answer_4">Ոչ ոք</string>
-    <string name="question_661_true_answer">@string/question_661_answer_3</string>
+    <string name="question_661">Այս իրավիճակում ձախ շրջադարձ կատարելիս</string>
+    <string name="question_661_answer_1">Կզիջենք ճանապարհը տրամվային</string>
+    <string name="question_661_answer_2">Խաչմերուկն առաջինը կանցնեմ</string>
+    <string name="question_661_true_answer">@string/question_661_answer_2</string>
 
-    <string name="question_662">Աջ շրջադարձ կատարելիս այս իրավիճակում զիջել ճանապարհը</string>
-    <string name="question_662_answer_1">Պարտավոր եք</string>
-    <string name="question_662_answer_2">Պարտավոր չեք</string>
+    <string name="question_662">Ինչպե՞ս վարվել այս իրավիճակում</string>
+    <string name="question_662_answer_1">Մուտք գործել խաչմերուկ և զիջելով ճանապարհը թեթև մարդատարի վարորդին անցնել խաչմերուկը:</string>
+    <string name="question_662_answer_2">Սպասել «Կանգ-գծի»՛ առջև, մինչև թեթև մարդատարի վարորդը կանցնի խաչմերուկը</string>
+    <string name="question_662_answer_3">Անցնել առաջինը</string>
     <string name="question_662_true_answer">@string/question_662_answer_1</string>
 
-    <string name="question_663">Աջ շրջադարձ թույլատրելի է՞ այս իրավիճակում</string>
-    <string name="question_663_answer_1">Այո՝ չխոչընդոտելով հետիոտններին</string>
-    <string name="question_663_answer_2">Ոչ</string>
-    <string name="question_663_true_answer">@string/question_663_answer_1</string>
+    <string name="question_663">Ո՞ր վարորդն է խախտում երթևեկության կանոնները շրջադարձ կատարելիս</string>
+    <string name="question_663_answer_1">Թեթև մարդատարի</string>
+    <string name="question_663_answer_2">Մոտոցիկլի</string>
+    <string name="question_663_answer_3">Երկու վարորդները</string>
+    <string name="question_663_answer_4">Ոչ ոք</string>
+    <string name="question_663_true_answer">@string/question_663_answer_3</string>
 
-    <string name="question_664">Զիջել ճանապարհը տրամվայի վարորդին այս իրավիճակում</string>
-    <string name="question_664_answer_1">Պարտավոր չեք</string>
-    <string name="question_664_answer_2">Պարտավոր եք</string>
-    <string name="question_664_true_answer">@string/question_664_answer_2</string>
+    <string name="question_664">Աջ շրջադարձ կատարելիս այս իրավիճակում զիջել ճանապարհը</string>
+    <string name="question_664_answer_1">Պարտավոր եք</string>
+    <string name="question_664_answer_2">Պարտավոր չեք</string>
+    <string name="question_664_true_answer">@string/question_664_answer_1</string>
 
-    <string name="question_665">Կանաչ ազդանշանի միանալու դեպքում վարորդը</string>
-    <string name="question_665_answer_1">Պետք է զիջի բեռնատարի վարորդին</string>
-    <string name="question_665_answer_2">Ունի առաջնահերթ երթևեկելու իրավունք</string>
+    <string name="question_665">Աջ շրջադարձ թույլատրելի է՞ այս իրավիճակում</string>
+    <string name="question_665_answer_1">Այո՝ չխոչընդոտելով հետիոտններին</string>
+    <string name="question_665_answer_2">Ոչ</string>
     <string name="question_665_true_answer">@string/question_665_answer_1</string>
 
-    <string name="question_666">Այս խաչմերուկում վարորդը</string>
-    <string name="question_666_answer_1">Կանցնի առաջինը</string>
-    <string name="question_666_answer_2">Պետք է զիջի ճանապարհը տրամվային</string>
-    <string name="question_666_true_answer">@string/question_666_answer_1</string>
+    <string name="question_666">Զիջել ճանապարհը տրամվայի վարորդին այս իրավիճակում</string>
+    <string name="question_666_answer_1">Պարտավոր չեք</string>
+    <string name="question_666_answer_2">Պարտավոր եք</string>
+    <string name="question_666_true_answer">@string/question_666_answer_2</string>
 
-    <string name="question_667">Խաչմերուկն ուղիղ անցնելիս վարորդը</string>
-    <string name="question_667_answer_1">Կարող է առաջինն անցնել</string>
-    <string name="question_667_answer_2">Պետք է զիջի տրամվային</string>
-    <string name="question_667_answer_3">Պետք է զիջի երկու վարորդներին</string>
-    <string name="question_667_true_answer">@string/question_667_answer_2</string>
+    <string name="question_667">Կանաչ ազդանշանի միանալու դեպքում վարորդը</string>
+    <string name="question_667_answer_1">Պետք է զիջի բեռնատարի վարորդին</string>
+    <string name="question_667_answer_2">Ունի առաջնահերթ երթևեկելու իրավունք</string>
+    <string name="question_667_true_answer">@string/question_667_answer_1</string>
 
-    <string name="question_668">Շրջադարձը կատարելիս վարորդը պարտավոր է ճանապարհը զիջել</string>
-    <string name="question_668_answer_1">Միայն հետիոտներին</string>
-    <string name="question_668_answer_2">Հեծանվորդին</string>
-    <string name="question_668_answer_3">Հեծանվորդին և հետիոտներին</string>
-    <string name="question_668_true_answer">@string/question_668_answer_3</string>
+    <string name="question_668">Այս խաչմերուկում վարորդը</string>
+    <string name="question_668_answer_1">Կանցնի առաջինը</string>
+    <string name="question_668_answer_2">Պետք է զիջի ճանապարհը տրամվային</string>
+    <string name="question_668_true_answer">@string/question_668_answer_1</string>
 
-    <string name="question_669">Աջ շրջադարձ կատարելիս պարտավո՞ր եք զիջել ճանապարհը հանդիպակացից մոտեցող վարորդին</string>
-    <string name="question_669_answer_1">Այո</string>
-    <string name="question_669_answer_2">Ոչ</string>
+    <string name="question_669">Խաչմերուկն ուղիղ անցնելիս վարորդը</string>
+    <string name="question_669_answer_1">Կարող է առաջինն անցնել</string>
+    <string name="question_669_answer_2">Պետք է զիջի տրամվային</string>
+    <string name="question_669_answer_3">Պետք է զիջի երկու վարորդներին</string>
     <string name="question_669_true_answer">@string/question_669_answer_2</string>
 
-    <string name="question_670">Խաչմերուկն ուղիղ անցնելիս</string>
-    <string name="question_670_answer_1">Կարող ենք անցնել առաջինը</string>
-    <string name="question_670_answer_2">Պարտավոր ենք զիջել ճանապարհը թեթև մարդատարի վարորդին</string>
-    <string name="question_670_true_answer">@string/question_670_answer_2</string>
+    <string name="question_670">Շրջադարձը կատարելիս վարորդը պարտավոր է ճանապարհը զիջել</string>
+    <string name="question_670_answer_1">Միայն հետիոտներին</string>
+    <string name="question_670_answer_2">Հեծանվորդին</string>
+    <string name="question_670_answer_3">Հեծանվորդին և հետիոտներին</string>
+    <string name="question_670_true_answer">@string/question_670_answer_3</string>
 
-    <string name="question_671">Ձախ շրջադարձ կատարելիս պետք է զիջել</string>
-    <string name="question_671_answer_1">Միայն թեթև մարդատարի վարորդին</string>
-    <string name="question_671_answer_2">Միայն հետիոտներին</string>
-    <string name="question_671_answer_3">Թեթև մարդատարի վարորդին և հետիոտներին</string>
-    <string name="question_671_true_answer">@string/question_671_answer_3</string>
+    <string name="question_671">Աջ շրջադարձ կատարելիս պարտավո՞ր եք զիջել ճանապարհը հանդիպակացից մոտեցող վարորդին</string>
+    <string name="question_671_answer_1">Այո</string>
+    <string name="question_671_answer_2">Ոչ</string>
+    <string name="question_671_true_answer">@string/question_671_answer_2</string>
 
-    <string name="question_672">Այս իրավիճակում աջ շրջադարձ թույլատրվո՞ւմ է</string>
-    <string name="question_672_answer_1">Ոչ</string>
-    <string name="question_672_answer_2">Այո՝ չխոչընդոտելով հետիոտնին</string>
+    <string name="question_672">Խաչմերուկն ուղիղ անցնելիս</string>
+    <string name="question_672_answer_1">Կարող ենք անցնել առաջինը</string>
+    <string name="question_672_answer_2">Պարտավոր ենք զիջել ճանապարհը թեթև մարդատարի վարորդին</string>
     <string name="question_672_true_answer">@string/question_672_answer_2</string>
 
-    <string name="question_673">Ձախ շրջադարձը կատարելիս</string>
-    <string name="question_673_answer_1">Պարտավոր եք զիջել տրամվայի վարորդին</string>
-    <string name="question_673_answer_2">Խաչմերուն անցնել առաջինը</string>
-    <string name="question_673_true_answer">@string/question_673_answer_1</string>
+    <string name="question_673">Ձախ շրջադարձ կատարելիս պետք է զիջել</string>
+    <string name="question_673_answer_1">Միայն թեթև մարդատարի վարորդին</string>
+    <string name="question_673_answer_2">Միայն հետիոտներին</string>
+    <string name="question_673_answer_3">Թեթև մարդատարի վարորդին և հետիոտներին</string>
+    <string name="question_673_true_answer">@string/question_673_answer_3</string>
 
-    <string name="question_674">Ո՞ր ճանապարհային նշանները չեն գործում, երբ դրանց պահանջները հակասում է լուսացույցի ազդանշանների նշանակությանը?</string>
-    <string name="question_674_answer_1">Առավելության նշանները</string>
-    <string name="question_674_answer_2">Արգելող նշանները</string>
-    <string name="question_674_answer_3">Թելադրող նշանները</string>
-    <string name="question_674_answer_4">Բոլոր թվարկվածները</string>
-    <string name="question_674_true_answer">@string/question_674_answer_1</string>
+    <string name="question_674">Այս իրավիճակում աջ շրջադարձ թույլատրվո՞ւմ է</string>
+    <string name="question_674_answer_1">Ոչ</string>
+    <string name="question_674_answer_2">Այո՝ չխոչընդոտելով հետիոտնին</string>
+    <string name="question_674_true_answer">@string/question_674_answer_2</string>
 
-    <string name="question_675">Այս իրավիճակում ճանապարհը պարտավոր է զիջել</string>
-    <string name="question_675_answer_1">Թեթև մարդատարի վարորդը</string>
-    <string name="question_675_answer_2">Տրամվայի վարորդը</string>
-    <string name="question_675_true_answer">@string/question_675_answer_2</string>
+    <string name="question_675">Ձախ շրջադարձը կատարելիս</string>
+    <string name="question_675_answer_1">Պարտավոր եք զիջել տրամվայի վարորդին</string>
+    <string name="question_675_answer_2">Խաչմերուն անցնել առաջինը</string>
+    <string name="question_675_true_answer">@string/question_675_answer_1</string>
 
-    <string name="question_676">Աջ շրջադարձ կատարելիս</string>
-    <string name="question_676_answer_1">Պարտավոր ենք զիջել ճանապարհը տրամվայի վարորդին</string>
-    <string name="question_676_answer_2">Կանցնենք խաչմերուկն առաջինը</string>
-    <string name="question_676_true_answer">@string/question_676_answer_2</string>
+    <string name="question_676">Ո՞ր ճանապարհային նշանները չեն գործում, երբ դրանց պահանջները հակասում է լուսացույցի ազդանշանների նշանակությանը?</string>
+    <string name="question_676_answer_1">Առավելության նշանները</string>
+    <string name="question_676_answer_2">Արգելող նշանները</string>
+    <string name="question_676_answer_3">Թելադրող նշանները</string>
+    <string name="question_676_answer_4">Բոլոր թվարկվածները</string>
+    <string name="question_676_true_answer">@string/question_676_answer_1</string>
 
-    <string name="question_677">Մտադիր եք կատարել ձախ շրջադարձ: Ո՞ւմ եք պարտավոր զիջել ճանապարհը</string>
-    <string name="question_677_answer_1">Միայն տրամվայի վարորդին</string>
-    <string name="question_677_answer_2">Ոչ ոքի</string>
-    <string name="question_677_answer_3">Ավտոմոբիլի և տրամվայի վարորդներին</string>
-    <string name="question_677_true_answer">@string/question_677_answer_3</string>
+    <string name="question_677">Այս իրավիճակում ճանապարհը պարտավոր է զիջել</string>
+    <string name="question_677_answer_1">Թեթև մարդատարի վարորդը</string>
+    <string name="question_677_answer_2">Տրամվայի վարորդը</string>
+    <string name="question_677_true_answer">@string/question_677_answer_2</string>
 
-    <string name="question_678">Ձախ շրջադարձ կատարելիս</string>
-    <string name="question_678_answer_1">Մանևրը կկատարեմ առանց կանգ առնելու</string>
-    <string name="question_678_answer_2">Խաչմերուկ մուտք գործելուց հետո կկանգնեմ երկրորդ "Կանգ-գծի" առջև և կսպասեմ կանաչ ազդանշանի միանալուն</string>
+    <string name="question_678">Աջ շրջադարձ կատարելիս</string>
+    <string name="question_678_answer_1">Պարտավոր ենք զիջել ճանապարհը տրամվայի վարորդին</string>
+    <string name="question_678_answer_2">Կանցնենք խաչմերուկն առաջինը</string>
     <string name="question_678_true_answer">@string/question_678_answer_2</string>
 
-    <string name="question_679">Պարտավոր ենք արդյո՞ք այս իրավիճակում զիջել բեռնատարի վարորդին</string>
-    <string name="question_679_answer_1">Այո</string>
-    <string name="question_679_answer_2">Ոչ</string>
-    <string name="question_679_true_answer">@string/question_679_answer_1</string>
+    <string name="question_679">Մտադիր եք կատարել ձախ շրջադարձ: Ո՞ւմ եք պարտավոր զիջել ճանապարհը</string>
+    <string name="question_679_answer_1">Միայն տրամվայի վարորդին</string>
+    <string name="question_679_answer_2">Ոչ ոքի</string>
+    <string name="question_679_answer_3">Ավտոմոբիլի և տրամվայի վարորդներին</string>
+    <string name="question_679_true_answer">@string/question_679_answer_3</string>
 
-    <string name="question_680">Ձախ շրջադարձն այս իրադրությունում կատարելիս պետք է</string>
-    <string name="question_680_answer_1">Մուտք գործի խաչմերուկ և սպասի կարգավորողի ձախ շրջադարձ թույլատրող ազդանշանին</string>
-    <string name="question_680_answer_2">Կանգ առնի "Կանգ-գիծ" գծանշման առջև և սպասի կարգավորողի ձախ շրջադարձ թույլատրող ազդանշանին</string>
-    <string name="question_680_answer_3">Դուրս գա խաչմերուկ և հանդիպակացից մոտեցող վարորդին ճանապարհը զիջելուց հետո անցնի խաչմերուկը</string>
+    <string name="question_680">Ձախ շրջադարձ կատարելիս</string>
+    <string name="question_680_answer_1">Մանևրը կկատարեմ առանց կանգ առնելու</string>
+    <string name="question_680_answer_2">Խաչմերուկ մուտք գործելուց հետո կկանգնեմ երկրորդ "Կանգ-գծի" առջև և կսպասեմ կանաչ ազդանշանի միանալուն</string>
     <string name="question_680_true_answer">@string/question_680_answer_2</string>
 
-    <string name="question_681">Ո՞ր դեպքում կարող եք խաչմերուկն անցնել առանց ճանապարհն երթևեկության այլ մասնակցին զիջելու</string>
-    <string name="question_681_answer_1">Ուղիղ անցնելու դեպքում</string>
-    <string name="question_681_answer_2">Աջ շրջադարձ կատարելիս</string>
-    <string name="question_681_answer_3">Ձախ շրջադարձ կատարելիս</string>
+    <string name="question_681">Պարտավոր ենք արդյո՞ք այս իրավիճակում զիջել բեռնատարի վարորդին</string>
+    <string name="question_681_answer_1">Այո</string>
+    <string name="question_681_answer_2">Ոչ</string>
     <string name="question_681_true_answer">@string/question_681_answer_1</string>
 
-    <string name="question_682">Աջ շրջադարձ կատարելիս պետք է</string>
-    <string name="question_682_answer_1">Կանգ առնել "Կանգ-գծի" առջև հետիոտններին խոչընդոտ չստեղծելու նպատակով</string>
-    <string name="question_682_answer_2">Մտնելով խաչմերուկ կանգ առնի հետիոտններին խոչընդոտ չստեղծելու նպատակով</string>
-    <string name="question_682_answer_3">Առանց կանգ առնելու անցնել խաչմերուկը</string>
+    <string name="question_682">Ձախ շրջադարձն այս իրադրությունում կատարելիս պետք է</string>
+    <string name="question_682_answer_1">Մուտք գործի խաչմերուկ և սպասի կարգավորողի ձախ շրջադարձ թույլատրող ազդանշանին</string>
+    <string name="question_682_answer_2">Կանգ առնի "Կանգ-գիծ" գծանշման առջև և սպասի կարգավորողի ձախ շրջադարձ թույլատրող ազդանշանին</string>
+    <string name="question_682_answer_3">Դուրս գա խաչմերուկ և հանդիպակացից մոտեցող վարորդին ճանապարհը զիջելուց հետո անցնի խաչմերուկը</string>
     <string name="question_682_true_answer">@string/question_682_answer_2</string>
 
-    <string name="question_683">Աջ շրջադարձ կատարելիս</string>
-    <string name="question_683_answer_1">Պետք է զիջել ճանապարհը թեթև մարդատարի վարորդին</string>
-    <string name="question_683_answer_2">Խաչմերուկը կանցնեք առաջինը</string>
-    <string name="question_683_true_answer">@string/question_683_answer_2</string>
+    <string name="question_683">Ո՞ր դեպքում կարող եք խաչմերուկն անցնել առանց ճանապարհն երթևեկության այլ մասնակցին զիջելու</string>
+    <string name="question_683_answer_1">Ուղիղ անցնելու դեպքում</string>
+    <string name="question_683_answer_2">Աջ շրջադարձ կատարելիս</string>
+    <string name="question_683_answer_3">Ձախ շրջադարձ կատարելիս</string>
+    <string name="question_683_true_answer">@string/question_683_answer_1</string>
 
-    <string name="question_684">Լուսացույցի թույլատրող ազդանշանի միանալուց հետո մուտք գործել խաչմերուկ կարող ենք</string>
-    <string name="question_684_answer_1">Միայն հետադարձ կամ շրջադարձ կատարելու դեպքում</string>
-    <string name="question_684_answer_2">Բոլոր դեպքերում</string>
-    <string name="question_684_true_answer">@string/question_684_answer_1</string>
+    <string name="question_684">Աջ շրջադարձ կատարելիս պետք է</string>
+    <string name="question_684_answer_1">Կանգ առնել "Կանգ-գծի" առջև հետիոտններին խոչընդոտ չստեղծելու նպատակով</string>
+    <string name="question_684_answer_2">Մտնելով խաչմերուկ կանգ առնի հետիոտններին խոչընդոտ չստեղծելու նպատակով</string>
+    <string name="question_684_answer_3">Առանց կանգ առնելու անցնել խաչմերուկը</string>
+    <string name="question_684_true_answer">@string/question_684_answer_2</string>
 
-    <string name="question_685">Կանաչ ազդանշանի միանալուց հետո պարտավոր ենք</string>
-    <string name="question_685_answer_1">Համոզվել, որ հետիոտնային անցման չերևացող մասում չկան անցումը չավարտած հետիոտներ</string>
-    <string name="question_685_answer_2">Լուսացույցի ազդանշանի համաձայն անմիջապես սկսել շարժումը</string>
-    <string name="question_685_true_answer">@string/question_685_answer_1</string>
+    <string name="question_685">Աջ շրջադարձ կատարելիս</string>
+    <string name="question_685_answer_1">Պետք է զիջել ճանապարհը թեթև մարդատարի վարորդին</string>
+    <string name="question_685_answer_2">Խաչմերուկը կանցնեք առաջինը</string>
+    <string name="question_685_true_answer">@string/question_685_answer_2</string>
 
-    <string name="question_686">Պարտավոր եք արդյո՞ք զիջել ճանապարհը ավտոբուսին</string>
-    <string name="question_686_answer_1">Այո</string>
-    <string name="question_686_answer_2">Ոչ</string>
+    <string name="question_686">Լուսացույցի թույլատրող ազդանշանի միանալուց հետո մուտք գործել խաչմերուկ կարող ենք</string>
+    <string name="question_686_answer_1">Միայն հետադարձ կամ շրջադարձ կատարելու դեպքում</string>
+    <string name="question_686_answer_2">Բոլոր դեպքերում</string>
     <string name="question_686_true_answer">@string/question_686_answer_1</string>
 
-    <string name="question_687">Հետադարձ կատարելիս այս իրավիճակում զիջել ճանապարհը մյուս վարորդին</string>
-    <string name="question_687_answer_1">Պարտավոր չենք</string>
-    <string name="question_687_answer_2">Պարտավոր ենք</string>
-    <string name="question_687_true_answer">@string/question_687_answer_2</string>
+    <string name="question_687">Կանաչ ազդանշանի միանալուց հետո պարտավոր ենք</string>
+    <string name="question_687_answer_1">Համոզվել, որ հետիոտնային անցման չերևացող մասում չկան անցումը չավարտած հետիոտներ</string>
+    <string name="question_687_answer_2">Լուսացույցի ազդանշանի համաձայն անմիջապես սկսել շարժումը</string>
+    <string name="question_687_true_answer">@string/question_687_answer_1</string>
 
-    <string name="question_688">Այս դրությունից ո՞ր ուղղությամբ կարող է վարորդը շարունակել երթևեկությունը</string>
-    <string name="question_688_answer_1">Միայն ուղիղ</string>
-    <string name="question_688_answer_2">Ուղիղ և աջ</string>
-    <string name="question_688_answer_3">Ուղիղ և ձախ</string>
-    <string name="question_688_answer_4">Բոլոր</string>
+    <string name="question_688">Պարտավոր եք արդյո՞ք զիջել ճանապարհը ավտոբուսին</string>
+    <string name="question_688_answer_1">Այո</string>
+    <string name="question_688_answer_2">Ոչ</string>
     <string name="question_688_true_answer">@string/question_688_answer_1</string>
 
-    <string name="question_689">Ո՞ր վարորդը կարող է շարունակել երթևեկությունը</string>
-    <string name="question_689_answer_1">Ոչ ոք</string>
-    <string name="question_689_answer_2">Միայն ավտոբուսի վարորդը</string>
-    <string name="question_689_answer_3">Երկու վարորդները</string>
-    <string name="question_689_true_answer">@string/question_689_answer_3</string>
+    <string name="question_689">Հետադարձ կատարելիս այս իրավիճակում զիջել ճանապարհը մյուս վարորդին</string>
+    <string name="question_689_answer_1">Պարտավոր չենք</string>
+    <string name="question_689_answer_2">Պարտավոր ենք</string>
+    <string name="question_689_true_answer">@string/question_689_answer_2</string>
 
-    <string name="question_690">Գծանցն անցնելը</string>
-    <string name="question_690_answer_1">Թույլատրված է</string>
-    <string name="question_690_answer_2">Արգելված է</string>
+    <string name="question_690">Այս դրությունից ո՞ր ուղղությամբ կարող է վարորդը շարունակել երթևեկությունը</string>
+    <string name="question_690_answer_1">Միայն ուղիղ</string>
+    <string name="question_690_answer_2">Ուղիղ և աջ</string>
+    <string name="question_690_answer_3">Ուղիղ և ձախ</string>
+    <string name="question_690_answer_4">Բոլոր</string>
     <string name="question_690_true_answer">@string/question_690_answer_1</string>
 
-    <string name="question_691">Որտե՞ղ պետք է կանգնել լուսացույցի ազդանշանին ենթարկվելով</string>
-    <string name="question_691_answer_1">Լուսացույցի առջև</string>
-    <string name="question_691_answer_2">Հատվող երթևեկելի մասի առջև</string>
-    <string name="question_691_answer_3">Ցանկացած տեղում</string>
-    <string name="question_691_true_answer">@string/question_691_answer_1</string>
+    <string name="question_691">Ո՞ր վարորդը կարող է շարունակել երթևեկությունը</string>
+    <string name="question_691_answer_1">Ոչ ոք</string>
+    <string name="question_691_answer_2">Միայն ավտոբուսի վարորդը</string>
+    <string name="question_691_answer_3">Երկու վարորդները</string>
+    <string name="question_691_true_answer">@string/question_691_answer_3</string>
 
-    <string name="question_692">Ձախ շրջադարձ կատարելը թույլատրվում է</string>
-    <string name="question_692_answer_1">Դարձափոխային գոտուց</string>
-    <string name="question_692_answer_2">Նկարում նշված գոտուց</string>
-    <string name="question_692_true_answer">@string/question_692_answer_2</string>
+    <string name="question_692">Գծանցն անցնելը</string>
+    <string name="question_692_answer_1">Թույլատրված է</string>
+    <string name="question_692_answer_2">Արգելված է</string>
+    <string name="question_692_true_answer">@string/question_692_answer_1</string>
 
-    <string name="question_693">Երթևեկությունը թույլատրվում է</string>
-    <string name="question_693_answer_1">Միայն ուղիղ</string>
-    <string name="question_693_answer_2">Միայն աջ</string>
-    <string name="question_693_answer_3">Ուղիղ և աջ</string>
-    <string name="question_693_true_answer">@string/question_693_answer_3</string>
+    <string name="question_693">Որտե՞ղ պետք է կանգնել լուսացույցի ազդանշանին ենթարկվելով</string>
+    <string name="question_693_answer_1">Լուսացույցի առջև</string>
+    <string name="question_693_answer_2">Հատվող երթևեկելի մասի առջև</string>
+    <string name="question_693_answer_3">Ցանկացած տեղում</string>
+    <string name="question_693_true_answer">@string/question_693_answer_1</string>
 
-    <string name="question_694">Երթևեկությունը թույլատրվում է</string>
-    <string name="question_694_answer_1">Ուղիղ և աջ</string>
-    <string name="question_694_answer_2">Միայն ուղիղ</string>
-    <string name="question_694_answer_3">Միայն աջ</string>
-    <string name="question_694_true_answer">@string/question_694_answer_3</string>
+    <string name="question_694">Ձախ շրջադարձ կատարելը թույլատրվում է</string>
+    <string name="question_694_answer_1">Դարձափոխային գոտուց</string>
+    <string name="question_694_answer_2">Նկարում նշված գոտուց</string>
+    <string name="question_694_true_answer">@string/question_694_answer_2</string>
 
-    <string name="question_695">Լուսացույցի կանաչ ազդանշանին պատկերված սլաքները տեղեկացնում են</string>
-    <string name="question_695_answer_1">Աջ շրջադարձն արգելված է</string>
-    <string name="question_695_answer_2">Աջ ուղղությամբ երթևեկությունը կարգավորվում է լրացուցիչ սեկցիայով</string>
-    <string name="question_695_true_answer">@string/question_695_answer_2</string>
+    <string name="question_695">Երթևեկությունը թույլատրվում է</string>
+    <string name="question_695_answer_1">Միայն ուղիղ</string>
+    <string name="question_695_answer_2">Միայն աջ</string>
+    <string name="question_695_answer_3">Ուղիղ և աջ</string>
+    <string name="question_695_true_answer">@string/question_695_answer_3</string>
 
-    <string name="question_696">Վրածել բեռնատարին թույլատվա՞ծ է</string>
-    <string name="question_696_answer_1">Այո</string>
-    <string name="question_696_answer_2">Ոչ</string>
-    <string name="question_696_true_answer">@string/question_696_answer_2</string>
+    <string name="question_696">Երթևեկությունը թույլատրվում է</string>
+    <string name="question_696_answer_1">Ուղիղ և աջ</string>
+    <string name="question_696_answer_2">Միայն ուղիղ</string>
+    <string name="question_696_answer_3">Միայն աջ</string>
+    <string name="question_696_true_answer">@string/question_696_answer_3</string>
 
-    <string name="question_697">Ո՞ր ուղղությամբ կարող է շարունակել երթևեկությունը վարորդն այս իրավիճակում</string>
-    <string name="question_697_answer_1">Միայն ձախ</string>
-    <string name="question_697_answer_2">Պետք է սպասի թույլատրող ազդանշանի</string>
-    <string name="question_697_answer_3">Ձախ և հակառակ</string>
-    <string name="question_697_true_answer">@string/question_697_answer_3</string>
+    <string name="question_697">Լուսացույցի կանաչ ազդանշանին պատկերված սլաքները տեղեկացնում են</string>
+    <string name="question_697_answer_1">Աջ շրջադարձն արգելված է</string>
+    <string name="question_697_answer_2">Աջ ուղղությամբ երթևեկությունը կարգավորվում է լրացուցիչ սեկցիայով</string>
+    <string name="question_697_true_answer">@string/question_697_answer_2</string>
 
-    <string name="question_698">Մուտք գործել դարձափոխային երթևեկության գոտի այս իրավիճակում</string>
-    <string name="question_698_answer_1">Թույլատրված է</string>
-    <string name="question_698_answer_2">Թույլատրված է միայն վազանց կատարելու նպատակով</string>
-    <string name="question_698_answer_3">Արգելված է</string>
-    <string name="question_698_true_answer">@string/question_698_answer_1</string>
+    <string name="question_698">Վազանցել բեռնատարին թույլատվա՞ծ է</string>
+    <string name="question_698_answer_1">Այո</string>
+    <string name="question_698_answer_2">Ոչ</string>
+    <string name="question_698_true_answer">@string/question_698_answer_2</string>
 
-    <string name="question_699">Նշված գոտուց ուղիղ երթևեկությունը</string>
-    <string name="question_699_answer_1">Թույլատրված է</string>
-    <string name="question_699_answer_2">Թույլատրված է միայն հիմնական կանաչ ազդանշանի միանալուց հետո</string>
-    <string name="question_699_answer_3">Արգելված է</string>
+    <string name="question_699">Ո՞ր ուղղությամբ կարող է շարունակել երթևեկությունը վարորդն այս իրավիճակում</string>
+    <string name="question_699_answer_1">Միայն ձախ</string>
+    <string name="question_699_answer_2">Պետք է սպասի թույլատրող ազդանշանի</string>
+    <string name="question_699_answer_3">Ձախ և հակառակ</string>
     <string name="question_699_true_answer">@string/question_699_answer_3</string>
 
-    <string name="question_700">Երթևեկությունը թույլատրված է</string>
-    <string name="question_700_answer_1">Ուղիղ և աջ</string>
-    <string name="question_700_answer_2">Միայն աջ</string>
-    <string name="question_700_answer_3">Բոլոր ուղղություններով</string>
-    <string name="question_700_true_answer">@string/question_700_answer_3</string>
+    <string name="question_700">Մուտք գործել դարձափոխային երթևեկության գոտի այս իրավիճակում</string>
+    <string name="question_700_answer_1">Թույլատրված է</string>
+    <string name="question_700_answer_2">Թույլատրված է միայն վ另外 անցնողի նպատակով</string>
+    <string name="question_700_answer_3">Արգելված է</string>
+    <string name="question_700_true_answer">@string/question_700_answer_1</string>
 
-    <string name="question_701">Այս իրավիճակում երթևեկությունը</string>
+    <string name="question_701">Նշված գոտուց ուղիղ երթևեկությունը</string>
     <string name="question_701_answer_1">Թույլատրված է</string>
-    <string name="question_701_answer_2">Արգելված է</string>
-    <string name="question_701_true_answer">@string/question_701_answer_2</string>
+    <string name="question_701_answer_2">Թույլատրված է միայն հիմնական կանաչ ազդանշանի միանալուց հետո</string>
+    <string name="question_701_answer_3">Արգելված է</string>
+    <string name="question_701_true_answer">@string/question_701_answer_3</string>
+
+    <string name="question_702">Երթևեկությունը թույլատրված է</string>
+    <string name="question_702_answer_1">Ուղիղ և աջ</string>
+    <string name="question_702_answer_2">Միայն աջ</string>
+    <string name="question_702_answer_3">Բոլոր ուղղություններով</string>
+    <string name="question_702_true_answer">@string/question_702_answer_3</string>
+
+    <string name="question_703">Այս իրավիճակում երթևեկությունը</string>
+    <string name="question_703_answer_1">Թույլատրված է</string>
+    <string name="question_703_answer_2">Արգելված է</string>
+    <string name="question_703_true_answer">@string/question_703_answer_2</string>
 
     <!--Խումբ 7-->
     <string name="question_702">Ո՞ր տրանսպորտային միջոցներին է թույլատրվում կայանումը։</string>
