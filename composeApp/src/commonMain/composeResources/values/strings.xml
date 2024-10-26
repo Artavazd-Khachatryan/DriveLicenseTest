@@ -4059,29 +4059,6 @@
     <string name="question_630_answer_3">Ավտոմոբիլին եւ մոտոցիկլին։</string>
     <string name="question_630_true_answer">@string/question_630_answer_2</string>
 
-    <string name="question_627">Այս լուսացույցը կիրառվում է երթեւեկությունը կարգավորելու համար՝</string>
-    <string name="question_627_answer_1">Երթեւեկելի մասի ամբողջ լայնությամբ։</string>
-    <string name="question_627_answer_2">Երթեւեկելի մասի այն գոտիներով, որտեղ երթեւեկության ուղղությունը կարող է փոխվել հանդիպակացի։</string>
-    <string name="question_627_answer_3">Միայն ընդհանուր օգտագործման տրանսպորտային միջոցների երթեւեկության համար նախատեսված գոտիներում։</string>
-    <string name="question_627_true_answer">@string/question_627_answer_2</string>
-
-    <string name="question_628">Եթե կարգավորողի աջ ձեռքը պարզված է առաջ, ապա նրա ձախ կողմից ոչ ռելսագնաց տրանսպորտային միջոցների երթեւեկությունը թույլատրվում է՝</string>
-    <string name="question_628_answer_1">Բոլոր ուղղություններով։</string>
-    <string name="question_628_answer_2">Միայն դեպի ձախ։</string>
-    <string name="question_628_true_answer">@string/question_628_answer_1</string>
-
-    <string name="question_629">Ո՞ր տրանսպորտային միջոցների երթեւեկությունն է թույլատրվում լուսացույցի տվյալ ազդանշանի դեպքում։</string>
-    <string name="question_629_answer_1">Տրամվայի, դեղին եւ կարմիր ավտոմոբիլների։</string>
-    <string name="question_629_answer_2">Դեղին եւ կարմիր ավտոմոբիլների։</string>
-    <string name="question_629_answer_3">Բոլոր տրանսպորտային միջոցների։</string>
-    <string name="question_629_true_answer">@string/question_629_answer_2</string>
-
-    <string name="question_630">Երթեւեկությունը թույլատրվում է՝</string>
-    <string name="question_630_answer_1">Բոլոր տրանսպորտային միջոցներին։</string>
-    <string name="question_630_answer_2">Մոտոցիկլին։</string>
-    <string name="question_630_answer_3">Ավտոմոբիլին եւ մոտոցիկլին։</string>
-    <string name="question_630_true_answer">@string/question_630_answer_2</string>
-
     <string name="question_631">Եթե կարգավորողի ձեռքերը կողմ են պարզված կամ իջեցված են, ապա նրա ձախ եւ աջ կողմերից ոչ ռելսագնաց տրանսպորտային միջոցների երթեւեկությունը թույլատրվում է՝</string>
     <string name="question_631_answer_1">Ուղիղ եւ դեպի աջ։</string>
     <string name="question_631_answer_2">Միայն ուղիղ։</string>
