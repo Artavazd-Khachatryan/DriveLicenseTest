@@ -4712,6 +4712,13 @@
     <string name="question_741_answer_3">Թույլատրվում է։</string>
     <string name="question_741_true_answer">@string/question_741_answer_3</string>
 
+    <string name="question_742">Ո՞ր տրանսպորտային միջոցի վարորդն է խախտել կայանման կանոնները։</string>
+    <string name="question_742_answer_1">Կապույտ ավտոմոբիլի վարորդը։</string>
+    <string name="question_742_answer_2">Կարմիր ավտոմոբիլի վարորդը։</string>
+    <string name="question_742_answer_3">Երկու վարորդներն էլ խախտել են։</string>
+    <string name="question_742_answer_4">Երկու վարորդներն էլ չեն խախտել։</string>
+    <string name="question_742_true_answer">@string/question_742_answer_3</string>
+
     <string name="question_743">Որտե՞ղ է թույլատրվում երկարատեւ հանգստի, գիշերակացի եւ այլ նպատակներով կայանելը բնակավայրերից դուրս։</string>
     <string name="question_743_answer_1">Ճանապարհի կողնակներին։</string>
     <string name="question_743_answer_2">Կայանման համար նախատեսված հրապարակներում կամ ճանապարհի սահմաններից դուրս։</string>
