@@ -5427,8 +5427,7 @@ import drivelicensetest.composeapp.generated.resources.question_9_true_answer
 
 class Questions {
 
-    private var questions = listOf(
-
+    private val questionsGroup1 = listOf(
         Question(
             question = Res.string.question_1,
             image = "x",
@@ -6937,7 +6936,8 @@ class Questions {
             ),
             trueAnswer = Res.string.question_147_true_answer
         ),
-
+    )
+    private val questionsGroup2 = listOf(
         Question(
             question = Res.string.question_148,
             image = null,
@@ -7712,7 +7712,8 @@ class Questions {
             ),
             trueAnswer = Res.string.question_219_true_answer
         ),
-
+    )
+    private val questionsGroup3 = listOf(
         Question(
             question = Res.string.question_220,
             image = null,
@@ -8573,7 +8574,8 @@ class Questions {
             ),
             trueAnswer = Res.string.question_297_true_answer
         ),
-
+    )
+    private val questionsGroup4 = listOf(
         Question(
             question = Res.string.question_298,
             image = "x",
@@ -10552,7 +10554,8 @@ class Questions {
             ),
             trueAnswer = Res.string.question_473_true_answer
         ),
-
+    )
+    private val questionsGroup5 = listOf(
         Question(
             question = Res.string.question_474,
             image = "x",
@@ -12000,7 +12003,8 @@ class Questions {
             ),
             trueAnswer = Res.string.question_608_true_answer
         ),
-
+    )
+    private val questionsGroup6 = listOf(
         Question(
             question = Res.string.question_609,
             image = "x",
@@ -13017,7 +13021,8 @@ class Questions {
             ),
             trueAnswer = Res.string.question_703_true_answer
         ),
-
+    )
+    private val questionsGroup7 = listOf(
         Question(
             question = Res.string.question_704,
             image = "x",
@@ -14498,7 +14503,8 @@ class Questions {
             ),
             trueAnswer = Res.string.question_837_true_answer
         ),
-
+    )
+    private val questionsGroup8 = listOf(
         Question(
             question = Res.string.question_838,
             image = "x",
@@ -15528,17 +15534,17 @@ class Questions {
             ),
             trueAnswer = Res.string.question_917_true_answer
         ),
-
-        Question(
-            question = Res.string.question_918,
-            image = "x",
-            answers = listOf(
-                Res.string.question_918_answer_1,
-                Res.string.question_918_answer_2,
-                Res.string.question_918_answer_3
-            ),
-            trueAnswer = Res.string.question_918_true_answer
+    )
+    private val questionsGroup9 = listOf(Question(
+        question = Res.string.question_918,
+        image = "x",
+        answers = listOf(
+            Res.string.question_918_answer_1,
+            Res.string.question_918_answer_2,
+            Res.string.question_918_answer_3
         ),
+        trueAnswer = Res.string.question_918_true_answer
+    ),
 
         Question(
             question = Res.string.question_919,
@@ -17441,7 +17447,8 @@ class Questions {
             ),
             trueAnswer = Res.string.question_1043_true_answer
         ),
-
+        )
+    private var questionsGroup10 = listOf(
         Question(
             question = Res.string.question_1044,
             image = "x",
@@ -18096,4 +18103,17 @@ class Questions {
             trueAnswer = Res.string.question_1094_true_answer
         )
     )
+
+    private var questions = buildList {
+        addAll(questionsGroup1)
+        addAll(questionsGroup2)
+        addAll(questionsGroup3)
+        addAll(questionsGroup4)
+        addAll(questionsGroup5)
+        addAll(questionsGroup6)
+        addAll(questionsGroup7)
+        addAll(questionsGroup8)
+        addAll(questionsGroup9)
+        addAll(questionsGroup10)
+    }
 }
