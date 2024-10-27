@@ -6228,9 +6228,7 @@
     <string name="question_989_answer_3">Կապույտ գույնի առկայծող փարոսիկը եւ հատուկ ձայնային ազդանշանը։</string>
     <string name="question_989_true_answer">@string/question_989_answer_3</string>
 
-    <string name="question_990">Պարտավո՞ր է ավտոբուսի վարորդը ճանապարհը զիջել «Շտապ
-օգնության» ավտոմոբիլին, եթե միացրած չեն կապույտ գույնի
-առկայծող փարոսիկը եւ հատուկ ձայնային ազդանշանը։</string>
+    <string name="question_990">Պարտավո՞ր է ավտոբուսի վարորդը ճանապարհը զիջել «Շտապ օգնության» ավտոմոբիլին, եթե միացրած չեն կապույտ գույնի առկայծող փարոսիկը եւ հատուկ ձայնային ազդանշանը։</string>
     <string name="question_990_answer_1">Պարտավոր է։</string>
     <string name="question_990_answer_2">Պարտավոր չէ։</string>
     <string name="question_990_true_answer">@string/question_990_answer_2</string>
@@ -6241,8 +6239,7 @@
     <string name="question_991_answer_3">Երկաթուղային գծանցների վրա եւ մինչեւ 250մ դրանցից առաջ։</string>
     <string name="question_991_true_answer">@string/question_991_answer_1</string>
 
-    <string name="question_992">Ինչի՞ մասին է տեղեկացնում թեթեւ մարդատար ավտոմոբիլի
-վարորդի կողմից ձեռքով տրված ազդանշանը։</string>
+    <string name="question_992">Ինչի՞ մասին է տեղեկացնում թեթեւ մարդատար ավտոմոբիլի վարորդի կողմից ձեռքով տրված ազդանշանը։</string>
     <string name="question_992_answer_1">Շրջադարձ է կատարում դեպի աջ։</string>
     <string name="question_992_answer_2">Շարունակում է երթեւեկությունը ուղիղ։</string>
     <string name="question_992_answer_3">Արգելակում է։</string>
