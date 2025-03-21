@@ -777,6 +777,7 @@ import drivelicensetest.composeapp.generated.resources.question_444
 import drivelicensetest.composeapp.generated.resources.question_444_answer_1
 import drivelicensetest.composeapp.generated.resources.question_444_answer_2
 import drivelicensetest.composeapp.generated.resources.question_444_answer_3
+import drivelicensetest.composeapp.generated.resources.question_444_true_answer
 import drivelicensetest.composeapp.generated.resources.question_445
 import drivelicensetest.composeapp.generated.resources.question_445_answer_1
 import drivelicensetest.composeapp.generated.resources.question_445_answer_2
@@ -928,7 +929,7 @@ class QuestionGroup4 {
     private val questionsGroup4 = listOf(
         Question(
             question = Res.string.question_298,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_298_answer_1,
                 Res.string.question_298_answer_2,
@@ -939,7 +940,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_299,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_299_answer_1,
                 Res.string.question_299_answer_2,
@@ -950,7 +951,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_300,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_300_answer_1,
                 Res.string.question_300_answer_2,
@@ -963,7 +964,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_301,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_301_answer_1,
                 Res.string.question_301_answer_2,
@@ -976,7 +977,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_302,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_302_answer_1,
                 Res.string.question_302_answer_2,
@@ -987,7 +988,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_303,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_303_answer_1,
                 Res.string.question_303_answer_2,
@@ -999,8 +1000,8 @@ class QuestionGroup4 {
         ),
 
         Question(
-            Res.string.question_304,
-            image = "x",
+            question = Res.string.question_304,
+            image = null,
             answers = listOf(
                 Res.string.question_304_answer_1,
                 Res.string.question_304_answer_2,
@@ -1012,8 +1013,8 @@ class QuestionGroup4 {
         ),
 
         Question(
-            Res.string.question_305,
-            image = "x",
+            question = Res.string.question_305,
+            image = null,
             answers = listOf(
                 Res.string.question_305_answer_1,
                 Res.string.question_305_answer_2,
@@ -1026,7 +1027,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_306,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_306_answer_1,
                 Res.string.question_306_answer_2,
@@ -1038,7 +1039,7 @@ class QuestionGroup4 {
 
         Question(
             Res.string.question_307,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_307_answer_1,
                 Res.string.question_307_answer_2,
@@ -1051,7 +1052,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_308,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_308_answer_1,
                 Res.string.question_308_answer_2,
@@ -1062,7 +1063,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_309,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_309_answer_1,
                 Res.string.question_309_answer_2
@@ -1072,7 +1073,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_310,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_310_answer_1,
                 Res.string.question_310_answer_2,
@@ -1085,7 +1086,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_311,
-            image = "null",
+            image = null,
             answers = listOf(
                 Res.string.question_311_answer_1,
                 Res.string.question_311_answer_2,
@@ -1096,7 +1097,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_312,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_312_answer_1,
                 Res.string.question_312_answer_2,
@@ -1109,7 +1110,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_313,
-            image = "null",
+            image = null,
             answers = listOf(
                 Res.string.question_313_answer_1,
                 Res.string.question_313_answer_2,
@@ -1120,7 +1121,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_314,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_314_answer_1,
                 Res.string.question_314_answer_2,
@@ -1133,7 +1134,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_315,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_315_answer_1,
                 Res.string.question_315_answer_2,
@@ -1144,7 +1145,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_316,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_316_answer_1,
                 Res.string.question_316_answer_2,
@@ -1157,7 +1158,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_317,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_317_answer_1,
                 Res.string.question_317_answer_2,
@@ -1170,7 +1171,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_318,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_318_answer_1,
                 Res.string.question_318_answer_2,
@@ -1181,7 +1182,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_319,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_319_answer_1,
                 Res.string.question_319_answer_2,
@@ -1192,7 +1193,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_320,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_320_answer_1,
                 Res.string.question_320_answer_2,
@@ -1205,7 +1206,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_321,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_321_answer_1,
                 Res.string.question_321_answer_2,
@@ -1218,7 +1219,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_322,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_322_answer_1,
                 Res.string.question_322_answer_2,
@@ -1229,7 +1230,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_323,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_323_answer_1,
                 Res.string.question_323_answer_2,
@@ -1242,7 +1243,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_324,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_324_answer_1,
                 Res.string.question_324_answer_2,
@@ -1254,7 +1255,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_325,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_325_answer_1,
                 Res.string.question_325_answer_2,
@@ -1267,7 +1268,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_326,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_326_answer_1,
                 Res.string.question_326_answer_2,
@@ -1278,7 +1279,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_327,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_327_answer_1,
                 Res.string.question_327_answer_2,
@@ -1290,7 +1291,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_328,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_328_answer_1,
                 Res.string.question_328_answer_2,
@@ -1303,7 +1304,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_329,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_329_answer_1,
                 Res.string.question_329_answer_2
@@ -1313,7 +1314,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_330,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_330_answer_1,
                 Res.string.question_330_answer_2,
@@ -1337,7 +1338,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_332,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_332_answer_1,
                 Res.string.question_332_answer_2,
@@ -1350,7 +1351,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_333,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_333_answer_1,
                 Res.string.question_333_answer_2,
@@ -1361,7 +1362,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_334,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_334_answer_1,
                 Res.string.question_334_answer_2,
@@ -1372,7 +1373,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_335,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_335_answer_1,
                 Res.string.question_335_answer_2,
@@ -1385,7 +1386,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_336,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_336_answer_1,
                 Res.string.question_336_answer_2,
@@ -1398,7 +1399,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_337,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_337_answer_1,
                 Res.string.question_337_answer_2,
@@ -1409,7 +1410,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_338,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_338_answer_1,
                 Res.string.question_338_answer_2,
@@ -1422,7 +1423,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_339,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_339_answer_1,
                 Res.string.question_339_answer_2,
@@ -1434,7 +1435,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_340,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_340_answer_1,
                 Res.string.question_340_answer_2,
@@ -1447,7 +1448,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_341,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_341_answer_1,
                 Res.string.question_341_answer_2,
@@ -1458,7 +1459,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_342,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_342_answer_1,
                 Res.string.question_342_answer_2,
@@ -1471,7 +1472,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_343,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_343_answer_1,
                 Res.string.question_343_answer_2,
@@ -1484,7 +1485,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_344,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_344_answer_1,
                 Res.string.question_344_answer_2,
@@ -1495,7 +1496,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_345,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_345_answer_1,
                 Res.string.question_345_answer_2,
@@ -1506,7 +1507,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_346,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_346_answer_1,
                 Res.string.question_346_answer_2,
@@ -1517,7 +1518,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_347,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_347_answer_1,
                 Res.string.question_347_answer_2,
@@ -1530,7 +1531,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_348,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_348_answer_1,
                 Res.string.question_348_answer_2,
@@ -1542,7 +1543,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_349,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_349_answer_1,
                 Res.string.question_349_answer_2
@@ -1552,7 +1553,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_350,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_350_answer_1,
                 Res.string.question_350_answer_2
@@ -1562,7 +1563,7 @@ class QuestionGroup4 {
 
         Question(
             Res.string.question_351,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_351_answer_1,
                 Res.string.question_351_answer_2,
@@ -1574,7 +1575,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_352,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_352_answer_1,
                 Res.string.question_352_answer_2
@@ -1584,7 +1585,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_353,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_353_answer_1,
                 Res.string.question_353_answer_2
@@ -1594,7 +1595,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_354,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_354_answer_1,
                 Res.string.question_354_answer_2,
@@ -1605,7 +1606,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_355,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_355_answer_1,
                 Res.string.question_355_answer_2,
@@ -1617,7 +1618,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_356,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_356_answer_1,
                 Res.string.question_356_answer_2,
@@ -1628,7 +1629,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_357,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_357_answer_1,
                 Res.string.question_357_answer_2
@@ -1638,7 +1639,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_358,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_358_answer_1,
                 Res.string.question_358_answer_2,
@@ -1649,7 +1650,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_359,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_359_answer_1,
                 Res.string.question_359_answer_2,
@@ -1660,7 +1661,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_360,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_360_answer_1,
                 Res.string.question_360_answer_2,
@@ -1671,7 +1672,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_361,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_361_answer_1,
                 Res.string.question_361_answer_2
@@ -1681,7 +1682,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_362,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_362_answer_1,
                 Res.string.question_362_answer_2
@@ -1691,7 +1692,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_363,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_363_answer_1,
                 Res.string.question_363_answer_2,
@@ -1702,7 +1703,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_364,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_364_answer_1,
                 Res.string.question_364_answer_2,
@@ -1713,7 +1714,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_365,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_365_answer_1,
                 Res.string.question_365_answer_2,
@@ -1724,7 +1725,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_366,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_366_answer_1,
                 Res.string.question_366_answer_2
@@ -1734,7 +1735,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_367,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_367_answer_1,
                 Res.string.question_367_answer_2,
@@ -1745,7 +1746,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_368,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_368_answer_1,
                 Res.string.question_368_answer_2,
@@ -1756,7 +1757,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_369,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_369_answer_1,
                 Res.string.question_369_answer_2,
@@ -1767,7 +1768,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_370,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_370_answer_1,
                 Res.string.question_370_answer_2,
@@ -1778,7 +1779,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_371,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_371_answer_1,
                 Res.string.question_371_answer_2
@@ -1788,7 +1789,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_372,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_372_answer_1,
                 Res.string.question_372_answer_2
@@ -1798,7 +1799,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_373,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_373_answer_1,
                 Res.string.question_373_answer_2,
@@ -1809,7 +1810,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_374,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_374_answer_1,
                 Res.string.question_374_answer_2
@@ -1819,7 +1820,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_375,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_375_answer_1,
                 Res.string.question_375_answer_2,
@@ -1830,7 +1831,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_376,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_376_answer_1,
                 Res.string.question_376_answer_2
@@ -1840,7 +1841,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_377,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_377_answer_1,
                 Res.string.question_377_answer_2,
@@ -1852,7 +1853,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_378,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_378_answer_1,
                 Res.string.question_378_answer_2,
@@ -1863,7 +1864,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_379,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_379_answer_1,
                 Res.string.question_379_answer_2,
@@ -1874,7 +1875,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_380,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_380_answer_1,
                 Res.string.question_380_answer_2,
@@ -1886,7 +1887,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_381,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_381_answer_1,
                 Res.string.question_381_answer_2,
@@ -1897,7 +1898,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_382,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_382_answer_1,
                 Res.string.question_382_answer_2
@@ -1907,7 +1908,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_383,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_383_answer_1,
                 Res.string.question_383_answer_2,
@@ -1918,7 +1919,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_384,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_384_answer_1,
                 Res.string.question_384_answer_2,
@@ -1929,7 +1930,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_385,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_385_answer_1,
                 Res.string.question_385_answer_2,
@@ -1941,7 +1942,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_386,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_386_answer_1,
                 Res.string.question_386_answer_2
@@ -1951,7 +1952,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_387,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_387_answer_1,
                 Res.string.question_387_answer_2,
@@ -1962,7 +1963,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_388,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_388_answer_1,
                 Res.string.question_388_answer_2
@@ -1972,7 +1973,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_389,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_389_answer_1,
                 Res.string.question_389_answer_2,
@@ -1983,7 +1984,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_390,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_390_answer_1,
                 Res.string.question_390_answer_2,
@@ -1994,7 +1995,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_391,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_391_answer_1,
                 Res.string.question_391_answer_2,
@@ -2005,7 +2006,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_392,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_392_answer_1,
                 Res.string.question_392_answer_2,
@@ -2017,7 +2018,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_393,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_393_answer_1,
                 Res.string.question_393_answer_2,
@@ -2028,7 +2029,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_394,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_394_answer_1,
                 Res.string.question_394_answer_2,
@@ -2039,7 +2040,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_395,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_395_answer_1,
                 Res.string.question_395_answer_2,
@@ -2050,7 +2051,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_396,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_396_answer_1,
                 Res.string.question_396_answer_2,
@@ -2061,7 +2062,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_397,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_397_answer_1,
                 Res.string.question_397_answer_2,
@@ -2072,7 +2073,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_398,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_398_answer_1,
                 Res.string.question_398_answer_2
@@ -2082,7 +2083,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_399,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_399_answer_1,
                 Res.string.question_399_answer_2,
@@ -2093,7 +2094,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_400,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_400_answer_1,
                 Res.string.question_400_answer_2,
@@ -2104,7 +2105,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_401,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_401_answer_1,
                 Res.string.question_401_answer_2,
@@ -2116,7 +2117,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_402,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_402_answer_1,
                 Res.string.question_402_answer_2
@@ -2126,7 +2127,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_403,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_403_answer_1,
                 Res.string.question_403_answer_2
@@ -2136,7 +2137,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_404,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_404_answer_1,
                 Res.string.question_404_answer_2,
@@ -2147,7 +2148,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_405,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_405_answer_1,
                 Res.string.question_405_answer_2,
@@ -2158,7 +2159,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_406,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_406_answer_1,
                 Res.string.question_406_answer_2,
@@ -2169,7 +2170,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_407,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_407_answer_1,
                 Res.string.question_407_answer_2,
@@ -2180,7 +2181,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_408,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_408_answer_1,
                 Res.string.question_408_answer_2
@@ -2190,7 +2191,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_409,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_409_answer_1,
                 Res.string.question_409_answer_2
@@ -2200,7 +2201,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_410,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_410_answer_1,
                 Res.string.question_410_answer_2,
@@ -2211,7 +2212,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_411,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_411_answer_1,
                 Res.string.question_411_answer_2,
@@ -2222,7 +2223,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_412,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_412_answer_1,
                 Res.string.question_412_answer_2,
@@ -2233,7 +2234,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_413,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_413_answer_1,
                 Res.string.question_413_answer_2
@@ -2243,7 +2244,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_414,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_414_answer_1,
                 Res.string.question_414_answer_2,
@@ -2254,7 +2255,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_415,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_415_answer_1,
                 Res.string.question_415_answer_2,
@@ -2265,7 +2266,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_416,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_416_answer_1,
                 Res.string.question_416_answer_2,
@@ -2276,7 +2277,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_417,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_417_answer_1,
                 Res.string.question_417_answer_2,
@@ -2287,7 +2288,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_418,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_418_answer_1,
                 Res.string.question_418_answer_2,
@@ -2298,7 +2299,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_419,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_419_answer_1,
                 Res.string.question_419_answer_2,
@@ -2309,7 +2310,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_420,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_420_answer_1,
                 Res.string.question_420_answer_2,
@@ -2321,7 +2322,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_421,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_421_answer_1,
                 Res.string.question_421_answer_2,
@@ -2332,7 +2333,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_422,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_422_answer_1,
                 Res.string.question_422_answer_2,
@@ -2344,7 +2345,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_423,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_423_answer_1,
                 Res.string.question_423_answer_2,
@@ -2355,7 +2356,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_424,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_424_answer_1,
                 Res.string.question_424_answer_2,
@@ -2366,7 +2367,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_425,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_425_answer_1,
                 Res.string.question_425_answer_2,
@@ -2377,7 +2378,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_426,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_426_answer_1,
                 Res.string.question_426_answer_2,
@@ -2388,7 +2389,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_427,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_427_answer_1,
                 Res.string.question_427_answer_2,
@@ -2399,7 +2400,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_428,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_428_answer_1,
                 Res.string.question_428_answer_2
@@ -2409,7 +2410,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_429,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_429_answer_1,
                 Res.string.question_429_answer_2,
@@ -2420,7 +2421,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_430,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_430_answer_1,
                 Res.string.question_430_answer_2,
@@ -2432,7 +2433,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_431,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_431_answer_1,
                 Res.string.question_431_answer_2,
@@ -2443,7 +2444,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_432,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_432_answer_1,
                 Res.string.question_432_answer_2,
@@ -2465,7 +2466,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_434,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_434_answer_1,
                 Res.string.question_434_answer_2,
@@ -2476,7 +2477,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_435,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_435_answer_1,
                 Res.string.question_435_answer_2,
@@ -2487,7 +2488,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_436,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_436_answer_1,
                 Res.string.question_436_answer_2,
@@ -2498,7 +2499,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_437,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_437_answer_1,
                 Res.string.question_437_answer_2,
@@ -2509,7 +2510,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_438,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_438_answer_1,
                 Res.string.question_438_answer_2,
@@ -2520,7 +2521,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_439,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_439_answer_1,
                 Res.string.question_439_answer_2,
@@ -2532,7 +2533,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_440,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_440_answer_1,
                 Res.string.question_440_answer_2,
@@ -2543,7 +2544,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_441,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_441_answer_1,
                 Res.string.question_441_answer_2,
@@ -2554,7 +2555,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_442,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_442_answer_1,
                 Res.string.question_442_answer_2,
@@ -2565,7 +2566,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_443,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_443_answer_1,
                 Res.string.question_443_answer_2,
@@ -2576,18 +2577,18 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_444,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_444_answer_1,
                 Res.string.question_444_answer_2,
                 Res.string.question_444_answer_3
             ),
-            trueAnswer = Res.string.question_445_true_answer
+            trueAnswer = Res.string.question_444_true_answer
         ),
 
         Question(
             question = Res.string.question_445,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_445_answer_1,
                 Res.string.question_445_answer_2,
@@ -2598,7 +2599,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_446,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_446_answer_1,
                 Res.string.question_446_answer_2,
@@ -2609,7 +2610,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_447,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_447_answer_1,
                 Res.string.question_447_answer_2,
@@ -2620,7 +2621,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_448,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_448_answer_1,
                 Res.string.question_448_answer_2,
@@ -2631,7 +2632,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_449,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_449_answer_1,
                 Res.string.question_449_answer_2,
@@ -2642,7 +2643,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_450,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_450_answer_1,
                 Res.string.question_450_answer_2,
@@ -2654,7 +2655,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_451,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_451_answer_1,
                 Res.string.question_451_answer_2,
@@ -2665,7 +2666,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_452,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_452_answer_1,
                 Res.string.question_452_answer_2,
@@ -2677,7 +2678,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_453,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_453_answer_1,
                 Res.string.question_453_answer_2
@@ -2687,7 +2688,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_454,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_454_answer_1,
                 Res.string.question_454_answer_2,
@@ -2698,7 +2699,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_455,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_455_answer_1,
                 Res.string.question_455_answer_2,
@@ -2709,7 +2710,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_456,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_456_answer_1,
                 Res.string.question_456_answer_2,
@@ -2720,7 +2721,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_457,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_457_answer_1,
                 Res.string.question_457_answer_2,
@@ -2731,7 +2732,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_458,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_458_answer_1,
                 Res.string.question_458_answer_2,
@@ -2742,7 +2743,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_459,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_459_answer_1,
                 Res.string.question_459_answer_2,
@@ -2753,7 +2754,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_460,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_460_answer_1,
                 Res.string.question_460_answer_2,
@@ -2764,7 +2765,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_461,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_461_answer_1,
                 Res.string.question_461_answer_2,
@@ -2776,7 +2777,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_462,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_462_answer_1,
                 Res.string.question_462_answer_2,
@@ -2788,7 +2789,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_463,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_463_answer_1,
                 Res.string.question_463_answer_2
@@ -2798,7 +2799,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_464,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_464_answer_1,
                 Res.string.question_464_answer_2
@@ -2808,7 +2809,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_465,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_465_answer_1,
                 Res.string.question_465_answer_2,
@@ -2819,7 +2820,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_466,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_466_answer_1,
                 Res.string.question_466_answer_2,
@@ -2830,7 +2831,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_467,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_467_answer_1,
                 Res.string.question_467_answer_2,
@@ -2841,7 +2842,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_468,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_468_answer_1,
                 Res.string.question_468_answer_2
@@ -2851,7 +2852,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_469,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_469_answer_1,
                 Res.string.question_469_answer_2,
@@ -2862,7 +2863,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_470,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_470_answer_1,
                 Res.string.question_470_answer_2,
@@ -2873,7 +2874,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_471,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_471_answer_1,
                 Res.string.question_471_answer_2,
@@ -2884,7 +2885,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_472,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_472_answer_1,
                 Res.string.question_472_answer_2,
@@ -2895,7 +2896,7 @@ class QuestionGroup4 {
 
         Question(
             question = Res.string.question_473,
-            image = "x",
+            image = null,
             answers = listOf(
                 Res.string.question_473_answer_1,
                 Res.string.question_473_answer_2,
