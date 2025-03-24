@@ -702,7 +702,7 @@ import drivelicensetest.composeapp.generated.resources.question_9_true_answer
 
 class QuestionGroup1 {
 
-    private val questionsGroup1 = listOf(
+    val questionsGroup1 = listOf(
         Question(
             question = Res.string.question_1,
             image = "question1_image.png",
