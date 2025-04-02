@@ -438,7 +438,8 @@ class QuestionGroup8 {
                 Res.string.question_838_answer_4,
                 Res.string.question_838_answer_5
             ),
-            trueAnswer = Res.string.question_838_true_answer
+            trueAnswer = Res.string.question_838_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -449,7 +450,8 @@ class QuestionGroup8 {
                 Res.string.question_839_answer_2,
                 Res.string.question_839_answer_3
             ),
-            trueAnswer = Res.string.question_839_true_answer
+            trueAnswer = Res.string.question_839_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -460,7 +462,8 @@ class QuestionGroup8 {
                 Res.string.question_840_answer_2,
                 Res.string.question_840_answer_3
             ),
-            trueAnswer = Res.string.question_840_true_answer
+            trueAnswer = Res.string.question_840_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -471,7 +474,8 @@ class QuestionGroup8 {
                 Res.string.question_841_answer_2,
                 Res.string.question_841_answer_3
             ),
-            trueAnswer = Res.string.question_841_true_answer
+            trueAnswer = Res.string.question_841_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -482,7 +486,8 @@ class QuestionGroup8 {
                 Res.string.question_842_answer_2,
                 Res.string.question_842_answer_3
             ),
-            trueAnswer = Res.string.question_842_true_answer
+            trueAnswer = Res.string.question_842_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -494,7 +499,8 @@ class QuestionGroup8 {
                 Res.string.question_843_answer_3,
                 Res.string.question_843_answer_4
             ),
-            trueAnswer = Res.string.question_843_true_answer
+            trueAnswer = Res.string.question_843_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -505,7 +511,8 @@ class QuestionGroup8 {
                 Res.string.question_844_answer_2,
                 Res.string.question_844_answer_3
             ),
-            trueAnswer = Res.string.question_844_true_answer
+            trueAnswer = Res.string.question_844_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -516,7 +523,8 @@ class QuestionGroup8 {
                 Res.string.question_845_answer_2,
                 Res.string.question_845_answer_3
             ),
-            trueAnswer = Res.string.question_845_true_answer
+            trueAnswer = Res.string.question_845_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -527,7 +535,8 @@ class QuestionGroup8 {
                 Res.string.question_846_answer_2,
                 Res.string.question_846_answer_3
             ),
-            trueAnswer = Res.string.question_846_true_answer
+            trueAnswer = Res.string.question_846_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -538,7 +547,8 @@ class QuestionGroup8 {
                 Res.string.question_847_answer_2,
                 Res.string.question_847_answer_3
             ),
-            trueAnswer = Res.string.question_847_true_answer
+            trueAnswer = Res.string.question_847_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -549,7 +559,8 @@ class QuestionGroup8 {
                 Res.string.question_848_answer_2,
                 Res.string.question_848_answer_3
             ),
-            trueAnswer = Res.string.question_848_true_answer
+            trueAnswer = Res.string.question_848_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -562,7 +573,8 @@ class QuestionGroup8 {
                 Res.string.question_849_answer_4,
                 Res.string.question_849_answer_5
             ),
-            trueAnswer = Res.string.question_849_true_answer
+            trueAnswer = Res.string.question_849_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -574,7 +586,8 @@ class QuestionGroup8 {
                 Res.string.question_850_answer_3,
                 Res.string.question_850_answer_4
             ),
-            trueAnswer = Res.string.question_850_true_answer
+            trueAnswer = Res.string.question_850_true_answer,
+            book = Book.BOOK_8
         ),
         Question(
             question = Res.string.question_851,
@@ -584,7 +597,8 @@ class QuestionGroup8 {
                 Res.string.question_851_answer_2,
                 Res.string.question_851_answer_3
             ),
-            trueAnswer = Res.string.question_851_true_answer
+            trueAnswer = Res.string.question_851_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -597,7 +611,8 @@ class QuestionGroup8 {
                 Res.string.question_852_answer_4,
                 Res.string.question_852_answer_5
             ),
-            trueAnswer = Res.string.question_852_true_answer
+            trueAnswer = Res.string.question_852_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -608,7 +623,8 @@ class QuestionGroup8 {
                 Res.string.question_853_answer_2,
                 Res.string.question_853_answer_3
             ),
-            trueAnswer = Res.string.question_853_true_answer
+            trueAnswer = Res.string.question_853_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -620,7 +636,8 @@ class QuestionGroup8 {
                 Res.string.question_854_answer_3,
                 Res.string.question_854_answer_4
             ),
-            trueAnswer = Res.string.question_854_true_answer
+            trueAnswer = Res.string.question_854_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -633,7 +650,8 @@ class QuestionGroup8 {
                 Res.string.question_855_answer_4,
                 Res.string.question_855_answer_5
             ),
-            trueAnswer = Res.string.question_855_true_answer
+            trueAnswer = Res.string.question_855_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -644,7 +662,8 @@ class QuestionGroup8 {
                 Res.string.question_856_answer_2,
                 Res.string.question_856_answer_3
             ),
-            trueAnswer = Res.string.question_856_true_answer
+            trueAnswer = Res.string.question_856_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -657,7 +676,8 @@ class QuestionGroup8 {
                 Res.string.question_857_answer_4,
                 Res.string.question_857_answer_5
             ),
-            trueAnswer = Res.string.question_857_true_answer
+            trueAnswer = Res.string.question_857_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -668,7 +688,8 @@ class QuestionGroup8 {
                 Res.string.question_858_answer_2,
                 Res.string.question_858_answer_3
             ),
-            trueAnswer = Res.string.question_858_true_answer
+            trueAnswer = Res.string.question_858_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -681,7 +702,8 @@ class QuestionGroup8 {
                 Res.string.question_859_answer_4,
                 Res.string.question_859_answer_5
             ),
-            trueAnswer = Res.string.question_859_true_answer
+            trueAnswer = Res.string.question_859_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -692,7 +714,8 @@ class QuestionGroup8 {
                 Res.string.question_860_answer_2,
                 Res.string.question_860_answer_3
             ),
-            trueAnswer = Res.string.question_860_true_answer
+            trueAnswer = Res.string.question_860_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -705,7 +728,8 @@ class QuestionGroup8 {
                 Res.string.question_861_answer_4,
                 Res.string.question_861_answer_5
             ),
-            trueAnswer = Res.string.question_861_true_answer
+            trueAnswer = Res.string.question_861_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -718,7 +742,8 @@ class QuestionGroup8 {
                 Res.string.question_862_answer_4,
                 Res.string.question_862_answer_5
             ),
-            trueAnswer = Res.string.question_862_true_answer
+            trueAnswer = Res.string.question_862_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -729,7 +754,8 @@ class QuestionGroup8 {
                 Res.string.question_863_answer_2,
                 Res.string.question_863_answer_3
             ),
-            trueAnswer = Res.string.question_863_true_answer
+            trueAnswer = Res.string.question_863_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -741,7 +767,8 @@ class QuestionGroup8 {
                 Res.string.question_864_answer_3,
                 Res.string.question_864_answer_4
             ),
-            trueAnswer = Res.string.question_864_true_answer
+            trueAnswer = Res.string.question_864_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -752,7 +779,8 @@ class QuestionGroup8 {
                 Res.string.question_865_answer_2,
                 Res.string.question_865_answer_3
             ),
-            trueAnswer = Res.string.question_865_true_answer
+            trueAnswer = Res.string.question_865_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -765,7 +793,8 @@ class QuestionGroup8 {
                 Res.string.question_866_answer_4,
                 Res.string.question_866_answer_5
             ),
-            trueAnswer = Res.string.question_866_true_answer
+            trueAnswer = Res.string.question_866_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -776,7 +805,8 @@ class QuestionGroup8 {
                 Res.string.question_867_answer_2,
                 Res.string.question_867_answer_3
             ),
-            trueAnswer = Res.string.question_867_true_answer
+            trueAnswer = Res.string.question_867_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -787,7 +817,8 @@ class QuestionGroup8 {
                 Res.string.question_868_answer_2,
                 Res.string.question_868_answer_3
             ),
-            trueAnswer = Res.string.question_868_true_answer
+            trueAnswer = Res.string.question_868_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -798,7 +829,8 @@ class QuestionGroup8 {
                 Res.string.question_869_answer_2,
                 Res.string.question_869_answer_3
             ),
-            trueAnswer = Res.string.question_869_true_answer
+            trueAnswer = Res.string.question_869_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -808,7 +840,8 @@ class QuestionGroup8 {
                 Res.string.question_870_answer_1,
                 Res.string.question_870_answer_2
             ),
-            trueAnswer = Res.string.question_870_true_answer
+            trueAnswer = Res.string.question_870_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -819,7 +852,8 @@ class QuestionGroup8 {
                 Res.string.question_871_answer_2,
                 Res.string.question_871_answer_3
             ),
-            trueAnswer = Res.string.question_871_true_answer
+            trueAnswer = Res.string.question_871_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -830,7 +864,8 @@ class QuestionGroup8 {
                 Res.string.question_872_answer_2,
                 Res.string.question_872_answer_3
             ),
-            trueAnswer = Res.string.question_872_true_answer
+            trueAnswer = Res.string.question_872_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -841,7 +876,8 @@ class QuestionGroup8 {
                 Res.string.question_873_answer_2,
                 Res.string.question_873_answer_3
             ),
-            trueAnswer = Res.string.question_873_true_answer
+            trueAnswer = Res.string.question_873_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -851,7 +887,8 @@ class QuestionGroup8 {
                 Res.string.question_874_answer_1,
                 Res.string.question_874_answer_2
             ),
-            trueAnswer = Res.string.question_874_true_answer
+            trueAnswer = Res.string.question_874_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -863,7 +900,8 @@ class QuestionGroup8 {
                 Res.string.question_875_answer_3,
                 Res.string.question_875_answer_4
             ),
-            trueAnswer = Res.string.question_875_true_answer
+            trueAnswer = Res.string.question_875_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -874,7 +912,8 @@ class QuestionGroup8 {
                 Res.string.question_876_answer_2,
                 Res.string.question_876_answer_3
             ),
-            trueAnswer = Res.string.question_876_true_answer
+            trueAnswer = Res.string.question_876_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -885,7 +924,8 @@ class QuestionGroup8 {
                 Res.string.question_877_answer_2,
                 Res.string.question_877_answer_3
             ),
-            trueAnswer = Res.string.question_877_true_answer
+            trueAnswer = Res.string.question_877_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -896,7 +936,8 @@ class QuestionGroup8 {
                 Res.string.question_878_answer_2,
                 Res.string.question_878_answer_3
             ),
-            trueAnswer = Res.string.question_878_true_answer
+            trueAnswer = Res.string.question_878_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -906,7 +947,8 @@ class QuestionGroup8 {
                 Res.string.question_879_answer_1,
                 Res.string.question_879_answer_2
             ),
-            trueAnswer = Res.string.question_879_true_answer
+            trueAnswer = Res.string.question_879_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -917,7 +959,8 @@ class QuestionGroup8 {
                 Res.string.question_880_answer_2,
                 Res.string.question_880_answer_3
             ),
-            trueAnswer = Res.string.question_880_true_answer
+            trueAnswer = Res.string.question_880_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -928,7 +971,8 @@ class QuestionGroup8 {
                 Res.string.question_881_answer_2,
                 Res.string.question_881_answer_3
             ),
-            trueAnswer = Res.string.question_881_true_answer
+            trueAnswer = Res.string.question_881_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -939,7 +983,8 @@ class QuestionGroup8 {
                 Res.string.question_882_answer_2,
                 Res.string.question_882_answer_3
             ),
-            trueAnswer = Res.string.question_882_true_answer
+            trueAnswer = Res.string.question_882_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -949,7 +994,8 @@ class QuestionGroup8 {
                 Res.string.question_883_answer_1,
                 Res.string.question_883_answer_2
             ),
-            trueAnswer = Res.string.question_883_true_answer
+            trueAnswer = Res.string.question_883_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -960,7 +1006,8 @@ class QuestionGroup8 {
                 Res.string.question_884_answer_2,
                 Res.string.question_884_answer_3
             ),
-            trueAnswer = Res.string.question_884_true_answer
+            trueAnswer = Res.string.question_884_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -970,7 +1017,8 @@ class QuestionGroup8 {
                 Res.string.question_885_answer_1,
                 Res.string.question_885_answer_2
             ),
-            trueAnswer = Res.string.question_885_true_answer
+            trueAnswer = Res.string.question_885_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -981,7 +1029,8 @@ class QuestionGroup8 {
                 Res.string.question_886_answer_2,
                 Res.string.question_886_answer_3
             ),
-            trueAnswer = Res.string.question_886_true_answer
+            trueAnswer = Res.string.question_886_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -992,7 +1041,8 @@ class QuestionGroup8 {
                 Res.string.question_887_answer_2,
                 Res.string.question_887_answer_3
             ),
-            trueAnswer = Res.string.question_887_true_answer
+            trueAnswer = Res.string.question_887_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1004,7 +1054,8 @@ class QuestionGroup8 {
                 Res.string.question_888_answer_3,
                 Res.string.question_888_answer_4
             ),
-            trueAnswer = Res.string.question_888_true_answer
+            trueAnswer = Res.string.question_888_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1015,7 +1066,8 @@ class QuestionGroup8 {
                 Res.string.question_889_answer_2,
                 Res.string.question_889_answer_3
             ),
-            trueAnswer = Res.string.question_889_true_answer
+            trueAnswer = Res.string.question_889_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1026,7 +1078,8 @@ class QuestionGroup8 {
                 Res.string.question_890_answer_2,
                 Res.string.question_890_answer_3
             ),
-            trueAnswer = Res.string.question_890_true_answer
+            trueAnswer = Res.string.question_890_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1037,7 +1090,8 @@ class QuestionGroup8 {
                 Res.string.question_891_answer_2,
                 Res.string.question_891_answer_3
             ),
-            trueAnswer = Res.string.question_891_true_answer
+            trueAnswer = Res.string.question_891_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1048,7 +1102,8 @@ class QuestionGroup8 {
                 Res.string.question_892_answer_2,
                 Res.string.question_892_answer_3
             ),
-            trueAnswer = Res.string.question_892_true_answer
+            trueAnswer = Res.string.question_892_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1059,7 +1114,8 @@ class QuestionGroup8 {
                 Res.string.question_893_answer_2,
                 Res.string.question_893_answer_3
             ),
-            trueAnswer = Res.string.question_893_true_answer
+            trueAnswer = Res.string.question_893_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1070,7 +1126,8 @@ class QuestionGroup8 {
                 Res.string.question_894_answer_2,
                 Res.string.question_894_answer_3
             ),
-            trueAnswer = Res.string.question_894_true_answer
+            trueAnswer = Res.string.question_894_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1083,7 +1140,8 @@ class QuestionGroup8 {
                 Res.string.question_895_answer_4,
                 Res.string.question_895_answer_5
             ),
-            trueAnswer = Res.string.question_895_true_answer
+            trueAnswer = Res.string.question_895_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1096,7 +1154,8 @@ class QuestionGroup8 {
                 Res.string.question_896_answer_4,
                 Res.string.question_896_answer_5
             ),
-            trueAnswer = Res.string.question_896_true_answer
+            trueAnswer = Res.string.question_896_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1109,7 +1168,8 @@ class QuestionGroup8 {
                 Res.string.question_897_answer_4,
                 Res.string.question_897_answer_5
             ),
-            trueAnswer = Res.string.question_897_true_answer
+            trueAnswer = Res.string.question_897_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1120,7 +1180,8 @@ class QuestionGroup8 {
                 Res.string.question_898_answer_2,
                 Res.string.question_898_answer_3
             ),
-            trueAnswer = Res.string.question_898_true_answer
+            trueAnswer = Res.string.question_898_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1133,7 +1194,8 @@ class QuestionGroup8 {
                 Res.string.question_899_answer_4,
                 Res.string.question_899_answer_5
             ),
-            trueAnswer = Res.string.question_899_true_answer
+            trueAnswer = Res.string.question_899_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1144,7 +1206,8 @@ class QuestionGroup8 {
                 Res.string.question_900_answer_2,
                 Res.string.question_900_answer_3
             ),
-            trueAnswer = Res.string.question_900_true_answer
+            trueAnswer = Res.string.question_900_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1154,7 +1217,8 @@ class QuestionGroup8 {
                 Res.string.question_901_answer_1,
                 Res.string.question_901_answer_2
             ),
-            trueAnswer = Res.string.question_901_true_answer
+            trueAnswer = Res.string.question_901_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1165,7 +1229,8 @@ class QuestionGroup8 {
                 Res.string.question_902_answer_2,
                 Res.string.question_902_answer_3
             ),
-            trueAnswer = Res.string.question_902_true_answer
+            trueAnswer = Res.string.question_902_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1175,7 +1240,8 @@ class QuestionGroup8 {
                 Res.string.question_903_answer_1,
                 Res.string.question_903_answer_2
             ),
-            trueAnswer = Res.string.question_903_true_answer
+            trueAnswer = Res.string.question_903_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1188,7 +1254,8 @@ class QuestionGroup8 {
                 Res.string.question_904_answer_4,
                 Res.string.question_904_answer_5
             ),
-            trueAnswer = Res.string.question_904_true_answer
+            trueAnswer = Res.string.question_904_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1200,7 +1267,8 @@ class QuestionGroup8 {
                 Res.string.question_905_answer_3,
                 Res.string.question_905_answer_4
             ),
-            trueAnswer = Res.string.question_905_true_answer
+            trueAnswer = Res.string.question_905_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1211,7 +1279,8 @@ class QuestionGroup8 {
                 Res.string.question_906_answer_2,
                 Res.string.question_906_answer_3
             ),
-            trueAnswer = Res.string.question_906_true_answer
+            trueAnswer = Res.string.question_906_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1221,7 +1290,8 @@ class QuestionGroup8 {
                 Res.string.question_907_answer_1,
                 Res.string.question_907_answer_2
             ),
-            trueAnswer = Res.string.question_907_true_answer
+            trueAnswer = Res.string.question_907_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1232,7 +1302,8 @@ class QuestionGroup8 {
                 Res.string.question_908_answer_2,
                 Res.string.question_908_answer_3
             ),
-            trueAnswer = Res.string.question_908_true_answer
+            trueAnswer = Res.string.question_908_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1244,7 +1315,8 @@ class QuestionGroup8 {
                 Res.string.question_909_answer_3,
                 Res.string.question_909_answer_4,
             ),
-            trueAnswer = Res.string.question_909_true_answer
+            trueAnswer = Res.string.question_909_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1254,7 +1326,8 @@ class QuestionGroup8 {
                 Res.string.question_910_answer_1,
                 Res.string.question_910_answer_2
             ),
-            trueAnswer = Res.string.question_910_true_answer
+            trueAnswer = Res.string.question_910_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1265,7 +1338,8 @@ class QuestionGroup8 {
                 Res.string.question_911_answer_2,
                 Res.string.question_911_answer_3
             ),
-            trueAnswer = Res.string.question_911_true_answer
+            trueAnswer = Res.string.question_911_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1275,7 +1349,8 @@ class QuestionGroup8 {
                 Res.string.question_912_answer_1,
                 Res.string.question_912_answer_2
             ),
-            trueAnswer = Res.string.question_912_true_answer
+            trueAnswer = Res.string.question_912_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1285,7 +1360,8 @@ class QuestionGroup8 {
                 Res.string.question_913_answer_1,
                 Res.string.question_913_answer_2
             ),
-            trueAnswer = Res.string.question_913_true_answer
+            trueAnswer = Res.string.question_913_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1297,7 +1373,8 @@ class QuestionGroup8 {
                 Res.string.question_914_answer_3,
                 Res.string.question_914_answer_4
             ),
-            trueAnswer = Res.string.question_914_true_answer
+            trueAnswer = Res.string.question_914_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1307,7 +1384,8 @@ class QuestionGroup8 {
                 Res.string.question_915_answer_1,
                 Res.string.question_915_answer_2
             ),
-            trueAnswer = Res.string.question_915_true_answer
+            trueAnswer = Res.string.question_915_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1317,7 +1395,8 @@ class QuestionGroup8 {
                 Res.string.question_916_answer_1,
                 Res.string.question_916_answer_2
             ),
-            trueAnswer = Res.string.question_916_true_answer
+            trueAnswer = Res.string.question_916_true_answer,
+            book = Book.BOOK_8
         ),
 
         Question(
@@ -1327,7 +1406,8 @@ class QuestionGroup8 {
                 Res.string.question_917_answer_1,
                 Res.string.question_917_answer_2
             ),
-            trueAnswer = Res.string.question_917_true_answer
+            trueAnswer = Res.string.question_917_true_answer,
+            book = Book.BOOK_8
         )
     )
 }

@@ -6,5 +6,6 @@ class Question(
     val question: StringResource,
     val image: String?,
     val answers: List<StringResource>,
-    val trueAnswer: StringResource
+    val trueAnswer: StringResource,
+    val book: Book
 )
