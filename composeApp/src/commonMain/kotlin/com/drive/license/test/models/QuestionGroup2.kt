@@ -426,8 +426,6 @@ class QuestionGroup2 {
             answers = listOf(
                 Res.string.question_154_answer_1,
                 Res.string.question_154_answer_2,
-                Res.string.question_154_answer_3,
-                Res.string.question_154_answer_4
             ),
             trueAnswer = Res.string.question_154_true_answer,
             book = Book.BOOK_2
@@ -440,7 +438,6 @@ class QuestionGroup2 {
                 Res.string.question_155_answer_1,
                 Res.string.question_155_answer_2,
                 Res.string.question_155_answer_3,
-                Res.string.question_155_answer_4
             ),
             trueAnswer = Res.string.question_155_true_answer,
             book = Book.BOOK_2
