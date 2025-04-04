@@ -65,7 +65,6 @@ import drivelicensetest.composeapp.generated.resources.question_620_true_answer
 import drivelicensetest.composeapp.generated.resources.question_621
 import drivelicensetest.composeapp.generated.resources.question_621_answer_1
 import drivelicensetest.composeapp.generated.resources.question_621_answer_2
-import drivelicensetest.composeapp.generated.resources.question_621_answer_3
 import drivelicensetest.composeapp.generated.resources.question_621_true_answer
 import drivelicensetest.composeapp.generated.resources.question_622
 import drivelicensetest.composeapp.generated.resources.question_622_answer_1
@@ -85,12 +84,10 @@ import drivelicensetest.composeapp.generated.resources.question_624_true_answer
 import drivelicensetest.composeapp.generated.resources.question_625
 import drivelicensetest.composeapp.generated.resources.question_625_answer_1
 import drivelicensetest.composeapp.generated.resources.question_625_answer_2
-import drivelicensetest.composeapp.generated.resources.question_625_answer_3
 import drivelicensetest.composeapp.generated.resources.question_625_true_answer
 import drivelicensetest.composeapp.generated.resources.question_626
 import drivelicensetest.composeapp.generated.resources.question_626_answer_1
 import drivelicensetest.composeapp.generated.resources.question_626_answer_2
-import drivelicensetest.composeapp.generated.resources.question_626_answer_3
 import drivelicensetest.composeapp.generated.resources.question_626_true_answer
 import drivelicensetest.composeapp.generated.resources.question_627
 import drivelicensetest.composeapp.generated.resources.question_627_answer_1
@@ -100,7 +97,6 @@ import drivelicensetest.composeapp.generated.resources.question_627_true_answer
 import drivelicensetest.composeapp.generated.resources.question_628
 import drivelicensetest.composeapp.generated.resources.question_628_answer_1
 import drivelicensetest.composeapp.generated.resources.question_628_answer_2
-import drivelicensetest.composeapp.generated.resources.question_628_answer_3
 import drivelicensetest.composeapp.generated.resources.question_628_true_answer
 import drivelicensetest.composeapp.generated.resources.question_629
 import drivelicensetest.composeapp.generated.resources.question_629_answer_1
