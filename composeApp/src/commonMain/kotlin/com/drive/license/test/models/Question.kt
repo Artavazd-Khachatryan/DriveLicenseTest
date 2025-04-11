@@ -7,5 +7,6 @@ class Question(
     val image: String?,
     val answers: List<StringResource>,
     val trueAnswer: StringResource,
-    val book: Book
+    val book: Book,
+    val categories: List<QuestionCategory> = emptyList()
 )
