@@ -936,7 +936,8 @@ class QuestionGroup4 {
                 Res.string.question_298_answer_3
             ),
             trueAnswer = Res.string.question_298_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -948,7 +949,8 @@ class QuestionGroup4 {
                 Res.string.question_299_answer_3
             ),
             trueAnswer = Res.string.question_299_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -962,7 +964,8 @@ class QuestionGroup4 {
                 Res.string.question_300_answer_5
             ),
             trueAnswer = Res.string.question_300_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -976,7 +979,8 @@ class QuestionGroup4 {
                 Res.string.question_301_answer_5
             ),
             trueAnswer = Res.string.question_301_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -985,10 +989,11 @@ class QuestionGroup4 {
             answers = listOf(
                 Res.string.question_302_answer_1,
                 Res.string.question_302_answer_2,
-                Res.string.question_302_answer_3,
+                Res.string.question_302_answer_3
             ),
             trueAnswer = Res.string.question_302_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -1002,7 +1007,8 @@ class QuestionGroup4 {
                 Res.string.question_303_answer_5
             ),
             trueAnswer = Res.string.question_303_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.SPECIAL_VEHICLES_AND_SITUATIONS)
         ),
 
         Question(
@@ -1016,7 +1022,8 @@ class QuestionGroup4 {
                 Res.string.question_304_answer_5
             ),
             trueAnswer = Res.string.question_304_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.INTERSECTIONS_AND_CROSSINGS)
         ),
 
         Question(
@@ -1030,7 +1037,8 @@ class QuestionGroup4 {
                 Res.string.question_305_answer_5
             ),
             trueAnswer = Res.string.question_305_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.ROAD_CONDITIONS_AND_VISIBILITY)
         ),
 
         Question(
@@ -1043,11 +1051,12 @@ class QuestionGroup4 {
                 Res.string.question_306_answer_4
             ),
             trueAnswer = Res.string.question_306_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.VEHICLE_TYPES_AND_CATEGORIES)
         ),
 
         Question(
-            Res.string.question_307,
+            question = Res.string.question_307,
             image = null,
             answers = listOf(
                 Res.string.question_307_answer_1,
@@ -1057,7 +1066,8 @@ class QuestionGroup4 {
                 Res.string.question_307_answer_5
             ),
             trueAnswer = Res.string.question_307_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
 
         Question(
@@ -1069,7 +1079,8 @@ class QuestionGroup4 {
                 Res.string.question_308_answer_3
             ),
             trueAnswer = Res.string.question_308_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1080,7 +1091,8 @@ class QuestionGroup4 {
                 Res.string.question_309_answer_2
             ),
             trueAnswer = Res.string.question_309_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -1094,7 +1106,8 @@ class QuestionGroup4 {
                 Res.string.question_310_answer_5
             ),
             trueAnswer = Res.string.question_310_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -1106,7 +1119,8 @@ class QuestionGroup4 {
                 Res.string.question_311_answer_3
             ),
             trueAnswer = Res.string.question_311_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -1120,7 +1134,8 @@ class QuestionGroup4 {
                 Res.string.question_312_answer_5
             ),
             trueAnswer = Res.string.question_312_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -1132,7 +1147,8 @@ class QuestionGroup4 {
                 Res.string.question_313_answer_3
             ),
             trueAnswer = Res.string.question_313_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1146,7 +1162,8 @@ class QuestionGroup4 {
                 Res.string.question_314_answer_5
             ),
             trueAnswer = Res.string.question_314_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1158,7 +1175,8 @@ class QuestionGroup4 {
                 Res.string.question_315_answer_3
             ),
             trueAnswer = Res.string.question_315_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1172,7 +1190,8 @@ class QuestionGroup4 {
                 Res.string.question_316_answer_5
             ),
             trueAnswer = Res.string.question_316_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1186,7 +1205,8 @@ class QuestionGroup4 {
                 Res.string.question_317_answer_5
             ),
             trueAnswer = Res.string.question_317_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1198,7 +1218,8 @@ class QuestionGroup4 {
                 Res.string.question_318_answer_3
             ),
             trueAnswer = Res.string.question_318_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1210,7 +1231,8 @@ class QuestionGroup4 {
                 Res.string.question_319_answer_3
             ),
             trueAnswer = Res.string.question_319_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1224,7 +1246,8 @@ class QuestionGroup4 {
                 Res.string.question_320_answer_5
             ),
             trueAnswer = Res.string.question_320_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1238,7 +1261,8 @@ class QuestionGroup4 {
                 Res.string.question_321_answer_5
             ),
             trueAnswer = Res.string.question_321_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1250,7 +1274,8 @@ class QuestionGroup4 {
                 Res.string.question_322_answer_3
             ),
             trueAnswer = Res.string.question_322_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1264,7 +1289,8 @@ class QuestionGroup4 {
                 Res.string.question_323_answer_5
             ),
             trueAnswer = Res.string.question_323_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1277,7 +1303,8 @@ class QuestionGroup4 {
                 Res.string.question_324_answer_4
             ),
             trueAnswer = Res.string.question_324_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1291,7 +1318,8 @@ class QuestionGroup4 {
                 Res.string.question_325_answer_5
             ),
             trueAnswer = Res.string.question_325_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1303,7 +1331,8 @@ class QuestionGroup4 {
                 Res.string.question_326_answer_3
             ),
             trueAnswer = Res.string.question_326_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1316,7 +1345,8 @@ class QuestionGroup4 {
                 Res.string.question_327_answer_4
             ),
             trueAnswer = Res.string.question_327_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1330,7 +1360,8 @@ class QuestionGroup4 {
                 Res.string.question_328_answer_5
             ),
             trueAnswer = Res.string.question_328_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1341,7 +1372,8 @@ class QuestionGroup4 {
                 Res.string.question_329_answer_2
             ),
             trueAnswer = Res.string.question_329_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1353,7 +1385,8 @@ class QuestionGroup4 {
                 Res.string.question_330_answer_3
             ),
             trueAnswer = Res.string.question_330_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1367,7 +1400,8 @@ class QuestionGroup4 {
                 Res.string.question_331_answer_5
             ),
             trueAnswer = Res.string.question_331_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1381,7 +1415,8 @@ class QuestionGroup4 {
                 Res.string.question_332_answer_5
             ),
             trueAnswer = Res.string.question_332_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1393,7 +1428,8 @@ class QuestionGroup4 {
                 Res.string.question_333_answer_3
             ),
             trueAnswer = Res.string.question_333_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1405,7 +1441,8 @@ class QuestionGroup4 {
                 Res.string.question_334_answer_3
             ),
             trueAnswer = Res.string.question_334_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1419,7 +1456,8 @@ class QuestionGroup4 {
                 Res.string.question_335_answer_5
             ),
             trueAnswer = Res.string.question_335_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1433,7 +1471,8 @@ class QuestionGroup4 {
                 Res.string.question_336_answer_5
             ),
             trueAnswer = Res.string.question_336_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1445,7 +1484,8 @@ class QuestionGroup4 {
                 Res.string.question_337_answer_3
             ),
             trueAnswer = Res.string.question_337_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1459,7 +1499,8 @@ class QuestionGroup4 {
                 Res.string.question_338_answer_5
             ),
             trueAnswer = Res.string.question_338_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1472,7 +1513,8 @@ class QuestionGroup4 {
                 Res.string.question_339_answer_4
             ),
             trueAnswer = Res.string.question_339_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1486,7 +1528,8 @@ class QuestionGroup4 {
                 Res.string.question_340_answer_5
             ),
             trueAnswer = Res.string.question_340_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1498,7 +1541,8 @@ class QuestionGroup4 {
                 Res.string.question_341_answer_3
             ),
             trueAnswer = Res.string.question_341_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1512,7 +1556,8 @@ class QuestionGroup4 {
                 Res.string.question_342_answer_5
             ),
             trueAnswer = Res.string.question_342_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1526,7 +1571,8 @@ class QuestionGroup4 {
                 Res.string.question_343_answer_5
             ),
             trueAnswer = Res.string.question_343_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1538,7 +1584,8 @@ class QuestionGroup4 {
                 Res.string.question_344_answer_3
             ),
             trueAnswer = Res.string.question_344_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1550,7 +1597,8 @@ class QuestionGroup4 {
                 Res.string.question_345_answer_3
             ),
             trueAnswer = Res.string.question_345_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1562,7 +1610,8 @@ class QuestionGroup4 {
                 Res.string.question_346_answer_3
             ),
             trueAnswer = Res.string.question_346_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1576,7 +1625,8 @@ class QuestionGroup4 {
                 Res.string.question_347_answer_5
             ),
             trueAnswer = Res.string.question_347_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1589,7 +1639,8 @@ class QuestionGroup4 {
                 Res.string.question_348_answer_4
             ),
             trueAnswer = Res.string.question_348_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1597,10 +1648,11 @@ class QuestionGroup4 {
             image = null,
             answers = listOf(
                 Res.string.question_349_answer_1,
-                Res.string.question_349_answer_2
+                Res.string.question_349_answer_2,
             ),
             trueAnswer = Res.string.question_349_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1611,7 +1663,8 @@ class QuestionGroup4 {
                 Res.string.question_350_answer_2
             ),
             trueAnswer = Res.string.question_350_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1624,7 +1677,8 @@ class QuestionGroup4 {
                 Res.string.question_351_answer_4
             ),
             trueAnswer = Res.string.question_351_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1635,7 +1689,8 @@ class QuestionGroup4 {
                 Res.string.question_352_answer_2
             ),
             trueAnswer = Res.string.question_352_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1646,7 +1701,8 @@ class QuestionGroup4 {
                 Res.string.question_353_answer_2
             ),
             trueAnswer = Res.string.question_353_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1658,7 +1714,8 @@ class QuestionGroup4 {
                 Res.string.question_354_answer_3
             ),
             trueAnswer = Res.string.question_354_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1671,7 +1728,8 @@ class QuestionGroup4 {
                 Res.string.question_355_answer_4
             ),
             trueAnswer = Res.string.question_355_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1683,7 +1741,8 @@ class QuestionGroup4 {
                 Res.string.question_356_answer_3
             ),
             trueAnswer = Res.string.question_356_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1694,7 +1753,8 @@ class QuestionGroup4 {
                 Res.string.question_357_answer_2
             ),
             trueAnswer = Res.string.question_357_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1706,7 +1766,8 @@ class QuestionGroup4 {
                 Res.string.question_358_answer_3
             ),
             trueAnswer = Res.string.question_358_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1718,7 +1779,8 @@ class QuestionGroup4 {
                 Res.string.question_359_answer_3
             ),
             trueAnswer = Res.string.question_359_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1730,7 +1792,8 @@ class QuestionGroup4 {
                 Res.string.question_360_answer_3
             ),
             trueAnswer = Res.string.question_360_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1741,7 +1804,8 @@ class QuestionGroup4 {
                 Res.string.question_361_answer_2
             ),
             trueAnswer = Res.string.question_361_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1752,7 +1816,8 @@ class QuestionGroup4 {
                 Res.string.question_362_answer_2
             ),
             trueAnswer = Res.string.question_362_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1764,7 +1829,8 @@ class QuestionGroup4 {
                 Res.string.question_363_answer_3
             ),
             trueAnswer = Res.string.question_363_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1776,7 +1842,8 @@ class QuestionGroup4 {
                 Res.string.question_364_answer_3
             ),
             trueAnswer = Res.string.question_364_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1788,7 +1855,8 @@ class QuestionGroup4 {
                 Res.string.question_365_answer_3
             ),
             trueAnswer = Res.string.question_365_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1799,7 +1867,8 @@ class QuestionGroup4 {
                 Res.string.question_366_answer_2
             ),
             trueAnswer = Res.string.question_366_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1811,7 +1880,8 @@ class QuestionGroup4 {
                 Res.string.question_367_answer_3
             ),
             trueAnswer = Res.string.question_367_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1823,7 +1893,8 @@ class QuestionGroup4 {
                 Res.string.question_368_answer_3
             ),
             trueAnswer = Res.string.question_368_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1835,7 +1906,8 @@ class QuestionGroup4 {
                 Res.string.question_369_answer_3
             ),
             trueAnswer = Res.string.question_369_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1847,7 +1919,8 @@ class QuestionGroup4 {
                 Res.string.question_370_answer_3
             ),
             trueAnswer = Res.string.question_370_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1858,7 +1931,8 @@ class QuestionGroup4 {
                 Res.string.question_371_answer_2
             ),
             trueAnswer = Res.string.question_371_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1869,7 +1943,8 @@ class QuestionGroup4 {
                 Res.string.question_372_answer_2
             ),
             trueAnswer = Res.string.question_372_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1881,7 +1956,8 @@ class QuestionGroup4 {
                 Res.string.question_373_answer_3
             ),
             trueAnswer = Res.string.question_373_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1892,7 +1968,8 @@ class QuestionGroup4 {
                 Res.string.question_374_answer_2
             ),
             trueAnswer = Res.string.question_374_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1904,7 +1981,8 @@ class QuestionGroup4 {
                 Res.string.question_375_answer_3
             ),
             trueAnswer = Res.string.question_375_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1915,7 +1993,8 @@ class QuestionGroup4 {
                 Res.string.question_376_answer_2
             ),
             trueAnswer = Res.string.question_376_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1928,7 +2007,8 @@ class QuestionGroup4 {
                 Res.string.question_377_answer_4
             ),
             trueAnswer = Res.string.question_377_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1940,7 +2020,8 @@ class QuestionGroup4 {
                 Res.string.question_378_answer_3
             ),
             trueAnswer = Res.string.question_378_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1952,7 +2033,8 @@ class QuestionGroup4 {
                 Res.string.question_379_answer_3
             ),
             trueAnswer = Res.string.question_379_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1965,7 +2047,8 @@ class QuestionGroup4 {
                 Res.string.question_380_answer_4
             ),
             trueAnswer = Res.string.question_380_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1977,7 +2060,8 @@ class QuestionGroup4 {
                 Res.string.question_381_answer_3
             ),
             trueAnswer = Res.string.question_381_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1988,7 +2072,8 @@ class QuestionGroup4 {
                 Res.string.question_382_answer_2
             ),
             trueAnswer = Res.string.question_382_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2000,7 +2085,8 @@ class QuestionGroup4 {
                 Res.string.question_383_answer_3
             ),
             trueAnswer = Res.string.question_383_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2012,7 +2098,8 @@ class QuestionGroup4 {
                 Res.string.question_384_answer_3
             ),
             trueAnswer = Res.string.question_384_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2025,7 +2112,8 @@ class QuestionGroup4 {
                 Res.string.question_385_answer_4
             ),
             trueAnswer = Res.string.question_385_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2036,7 +2124,8 @@ class QuestionGroup4 {
                 Res.string.question_386_answer_2
             ),
             trueAnswer = Res.string.question_386_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2048,7 +2137,8 @@ class QuestionGroup4 {
                 Res.string.question_387_answer_3
             ),
             trueAnswer = Res.string.question_387_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2059,7 +2149,8 @@ class QuestionGroup4 {
                 Res.string.question_388_answer_2
             ),
             trueAnswer = Res.string.question_388_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2071,7 +2162,8 @@ class QuestionGroup4 {
                 Res.string.question_389_answer_3
             ),
             trueAnswer = Res.string.question_389_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2083,7 +2175,8 @@ class QuestionGroup4 {
                 Res.string.question_390_answer_3
             ),
             trueAnswer = Res.string.question_390_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2095,7 +2188,8 @@ class QuestionGroup4 {
                 Res.string.question_391_answer_3
             ),
             trueAnswer = Res.string.question_391_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2108,7 +2202,8 @@ class QuestionGroup4 {
                 Res.string.question_392_answer_4
             ),
             trueAnswer = Res.string.question_392_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2120,7 +2215,8 @@ class QuestionGroup4 {
                 Res.string.question_393_answer_3
             ),
             trueAnswer = Res.string.question_393_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2132,7 +2228,8 @@ class QuestionGroup4 {
                 Res.string.question_394_answer_3
             ),
             trueAnswer = Res.string.question_394_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2144,7 +2241,8 @@ class QuestionGroup4 {
                 Res.string.question_395_answer_3
             ),
             trueAnswer = Res.string.question_395_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2156,7 +2254,8 @@ class QuestionGroup4 {
                 Res.string.question_396_answer_3
             ),
             trueAnswer = Res.string.question_396_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2168,7 +2267,8 @@ class QuestionGroup4 {
                 Res.string.question_397_answer_3
             ),
             trueAnswer = Res.string.question_397_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2179,7 +2279,8 @@ class QuestionGroup4 {
                 Res.string.question_398_answer_2
             ),
             trueAnswer = Res.string.question_398_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2191,7 +2292,8 @@ class QuestionGroup4 {
                 Res.string.question_399_answer_3
             ),
             trueAnswer = Res.string.question_399_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2203,7 +2305,8 @@ class QuestionGroup4 {
                 Res.string.question_400_answer_3
             ),
             trueAnswer = Res.string.question_400_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2216,7 +2319,8 @@ class QuestionGroup4 {
                 Res.string.question_401_answer_4
             ),
             trueAnswer = Res.string.question_401_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2227,7 +2331,8 @@ class QuestionGroup4 {
                 Res.string.question_402_answer_2
             ),
             trueAnswer = Res.string.question_402_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2238,7 +2343,8 @@ class QuestionGroup4 {
                 Res.string.question_403_answer_2
             ),
             trueAnswer = Res.string.question_403_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2250,7 +2356,8 @@ class QuestionGroup4 {
                 Res.string.question_404_answer_3
             ),
             trueAnswer = Res.string.question_404_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2262,7 +2369,8 @@ class QuestionGroup4 {
                 Res.string.question_405_answer_3
             ),
             trueAnswer = Res.string.question_405_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2274,7 +2382,8 @@ class QuestionGroup4 {
                 Res.string.question_406_answer_3
             ),
             trueAnswer = Res.string.question_406_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2286,7 +2395,8 @@ class QuestionGroup4 {
                 Res.string.question_407_answer_3
             ),
             trueAnswer = Res.string.question_407_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2297,7 +2407,8 @@ class QuestionGroup4 {
                 Res.string.question_408_answer_2
             ),
             trueAnswer = Res.string.question_408_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2308,7 +2419,8 @@ class QuestionGroup4 {
                 Res.string.question_409_answer_2
             ),
             trueAnswer = Res.string.question_409_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2320,7 +2432,8 @@ class QuestionGroup4 {
                 Res.string.question_410_answer_3
             ),
             trueAnswer = Res.string.question_410_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2332,7 +2445,8 @@ class QuestionGroup4 {
                 Res.string.question_411_answer_3
             ),
             trueAnswer = Res.string.question_411_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2344,7 +2458,8 @@ class QuestionGroup4 {
                 Res.string.question_412_answer_3
             ),
             trueAnswer = Res.string.question_412_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2355,7 +2470,8 @@ class QuestionGroup4 {
                 Res.string.question_413_answer_2
             ),
             trueAnswer = Res.string.question_413_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2367,7 +2483,8 @@ class QuestionGroup4 {
                 Res.string.question_414_answer_3
             ),
             trueAnswer = Res.string.question_414_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2379,7 +2496,8 @@ class QuestionGroup4 {
                 Res.string.question_415_answer_3
             ),
             trueAnswer = Res.string.question_415_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2391,7 +2509,8 @@ class QuestionGroup4 {
                 Res.string.question_416_answer_3
             ),
             trueAnswer = Res.string.question_416_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2403,7 +2522,8 @@ class QuestionGroup4 {
                 Res.string.question_417_answer_3
             ),
             trueAnswer = Res.string.question_417_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2415,7 +2535,8 @@ class QuestionGroup4 {
                 Res.string.question_418_answer_3
             ),
             trueAnswer = Res.string.question_418_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2427,7 +2548,8 @@ class QuestionGroup4 {
                 Res.string.question_419_answer_3
             ),
             trueAnswer = Res.string.question_419_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2440,7 +2562,8 @@ class QuestionGroup4 {
                 Res.string.question_420_answer_4
             ),
             trueAnswer = Res.string.question_420_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2452,7 +2575,8 @@ class QuestionGroup4 {
                 Res.string.question_421_answer_3
             ),
             trueAnswer = Res.string.question_421_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2465,7 +2589,8 @@ class QuestionGroup4 {
                 Res.string.question_422_answer_4
             ),
             trueAnswer = Res.string.question_422_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2477,7 +2602,8 @@ class QuestionGroup4 {
                 Res.string.question_423_answer_3
             ),
             trueAnswer = Res.string.question_423_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2489,7 +2615,8 @@ class QuestionGroup4 {
                 Res.string.question_424_answer_3
             ),
             trueAnswer = Res.string.question_424_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2501,7 +2628,8 @@ class QuestionGroup4 {
                 Res.string.question_425_answer_3
             ),
             trueAnswer = Res.string.question_425_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2513,7 +2641,8 @@ class QuestionGroup4 {
                 Res.string.question_426_answer_3
             ),
             trueAnswer = Res.string.question_426_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2525,7 +2654,8 @@ class QuestionGroup4 {
                 Res.string.question_427_answer_3
             ),
             trueAnswer = Res.string.question_427_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2536,7 +2666,8 @@ class QuestionGroup4 {
                 Res.string.question_428_answer_2
             ),
             trueAnswer = Res.string.question_428_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2548,7 +2679,8 @@ class QuestionGroup4 {
                 Res.string.question_429_answer_3
             ),
             trueAnswer = Res.string.question_429_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2561,7 +2693,8 @@ class QuestionGroup4 {
                 Res.string.question_430_answer_4
             ),
             trueAnswer = Res.string.question_430_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2573,7 +2706,8 @@ class QuestionGroup4 {
                 Res.string.question_431_answer_3
             ),
             trueAnswer = Res.string.question_431_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2585,7 +2719,8 @@ class QuestionGroup4 {
                 Res.string.question_432_answer_3
             ),
             trueAnswer = Res.string.question_432_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2597,7 +2732,8 @@ class QuestionGroup4 {
                 Res.string.question_433_answer_3
             ),
             trueAnswer = Res.string.question_433_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2609,7 +2745,8 @@ class QuestionGroup4 {
                 Res.string.question_434_answer_3
             ),
             trueAnswer = Res.string.question_434_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2621,7 +2758,8 @@ class QuestionGroup4 {
                 Res.string.question_435_answer_3
             ),
             trueAnswer = Res.string.question_435_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2633,7 +2771,8 @@ class QuestionGroup4 {
                 Res.string.question_436_answer_3
             ),
             trueAnswer = Res.string.question_436_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2645,7 +2784,8 @@ class QuestionGroup4 {
                 Res.string.question_437_answer_3
             ),
             trueAnswer = Res.string.question_437_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2657,7 +2797,8 @@ class QuestionGroup4 {
                 Res.string.question_438_answer_3
             ),
             trueAnswer = Res.string.question_438_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2670,7 +2811,8 @@ class QuestionGroup4 {
                 Res.string.question_439_answer_4
             ),
             trueAnswer = Res.string.question_439_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2682,7 +2824,8 @@ class QuestionGroup4 {
                 Res.string.question_440_answer_3
             ),
             trueAnswer = Res.string.question_440_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2694,7 +2837,8 @@ class QuestionGroup4 {
                 Res.string.question_441_answer_3
             ),
             trueAnswer = Res.string.question_441_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2706,7 +2850,8 @@ class QuestionGroup4 {
                 Res.string.question_442_answer_3
             ),
             trueAnswer = Res.string.question_442_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2718,7 +2863,8 @@ class QuestionGroup4 {
                 Res.string.question_443_answer_3
             ),
             trueAnswer = Res.string.question_443_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2730,7 +2876,8 @@ class QuestionGroup4 {
                 Res.string.question_444_answer_3
             ),
             trueAnswer = Res.string.question_444_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2742,7 +2889,8 @@ class QuestionGroup4 {
                 Res.string.question_445_answer_3
             ),
             trueAnswer = Res.string.question_445_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2754,7 +2902,8 @@ class QuestionGroup4 {
                 Res.string.question_446_answer_3
             ),
             trueAnswer = Res.string.question_446_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2766,7 +2915,8 @@ class QuestionGroup4 {
                 Res.string.question_447_answer_3
             ),
             trueAnswer = Res.string.question_447_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2778,7 +2928,8 @@ class QuestionGroup4 {
                 Res.string.question_448_answer_3
             ),
             trueAnswer = Res.string.question_448_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2790,7 +2941,8 @@ class QuestionGroup4 {
                 Res.string.question_449_answer_3
             ),
             trueAnswer = Res.string.question_449_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2803,7 +2955,8 @@ class QuestionGroup4 {
                 Res.string.question_450_answer_4
             ),
             trueAnswer = Res.string.question_450_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2815,7 +2968,8 @@ class QuestionGroup4 {
                 Res.string.question_451_answer_3
             ),
             trueAnswer = Res.string.question_451_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2828,7 +2982,8 @@ class QuestionGroup4 {
                 Res.string.question_452_answer_4
             ),
             trueAnswer = Res.string.question_452_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2839,7 +2994,8 @@ class QuestionGroup4 {
                 Res.string.question_453_answer_2
             ),
             trueAnswer = Res.string.question_453_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2851,7 +3007,8 @@ class QuestionGroup4 {
                 Res.string.question_454_answer_3
             ),
             trueAnswer = Res.string.question_454_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2863,7 +3020,8 @@ class QuestionGroup4 {
                 Res.string.question_455_answer_3
             ),
             trueAnswer = Res.string.question_455_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2875,7 +3033,8 @@ class QuestionGroup4 {
                 Res.string.question_456_answer_3
             ),
             trueAnswer = Res.string.question_456_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2887,7 +3046,8 @@ class QuestionGroup4 {
                 Res.string.question_457_answer_3
             ),
             trueAnswer = Res.string.question_457_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2899,7 +3059,8 @@ class QuestionGroup4 {
                 Res.string.question_458_answer_3
             ),
             trueAnswer = Res.string.question_458_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2911,7 +3072,8 @@ class QuestionGroup4 {
                 Res.string.question_459_answer_3
             ),
             trueAnswer = Res.string.question_459_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2923,7 +3085,8 @@ class QuestionGroup4 {
                 Res.string.question_460_answer_3
             ),
             trueAnswer = Res.string.question_460_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2936,7 +3099,8 @@ class QuestionGroup4 {
                 Res.string.question_461_answer_4
             ),
             trueAnswer = Res.string.question_461_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2949,7 +3113,8 @@ class QuestionGroup4 {
                 Res.string.question_462_answer_4
             ),
             trueAnswer = Res.string.question_462_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2960,7 +3125,8 @@ class QuestionGroup4 {
                 Res.string.question_463_answer_2
             ),
             trueAnswer = Res.string.question_463_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2971,7 +3137,8 @@ class QuestionGroup4 {
                 Res.string.question_464_answer_2
             ),
             trueAnswer = Res.string.question_464_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2983,7 +3150,8 @@ class QuestionGroup4 {
                 Res.string.question_465_answer_3
             ),
             trueAnswer = Res.string.question_465_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2995,7 +3163,8 @@ class QuestionGroup4 {
                 Res.string.question_466_answer_3
             ),
             trueAnswer = Res.string.question_466_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -3007,7 +3176,8 @@ class QuestionGroup4 {
                 Res.string.question_467_answer_3
             ),
             trueAnswer = Res.string.question_467_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -3018,7 +3188,8 @@ class QuestionGroup4 {
                 Res.string.question_468_answer_2
             ),
             trueAnswer = Res.string.question_468_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -3030,7 +3201,8 @@ class QuestionGroup4 {
                 Res.string.question_469_answer_3
             ),
             trueAnswer = Res.string.question_469_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -3042,7 +3214,8 @@ class QuestionGroup4 {
                 Res.string.question_470_answer_3
             ),
             trueAnswer = Res.string.question_470_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -3054,7 +3227,8 @@ class QuestionGroup4 {
                 Res.string.question_471_answer_3
             ),
             trueAnswer = Res.string.question_471_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -3066,7 +3240,8 @@ class QuestionGroup4 {
                 Res.string.question_472_answer_3
             ),
             trueAnswer = Res.string.question_472_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -3079,7 +3254,8 @@ class QuestionGroup4 {
                 Res.string.question_473_answer_4
             ),
             trueAnswer = Res.string.question_473_true_answer,
-            book = Book.BOOK_4
+            book = Book.BOOK_4,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         )
     )
 }
