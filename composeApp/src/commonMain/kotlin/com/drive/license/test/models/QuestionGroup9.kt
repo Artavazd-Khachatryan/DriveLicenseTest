@@ -624,7 +624,8 @@ class QuestionGroup9 {
                 Res.string.question_918_answer_3
             ),
             trueAnswer = Res.string.question_918_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
         Question(
             question = Res.string.question_919,
@@ -635,7 +636,8 @@ class QuestionGroup9 {
                 Res.string.question_919_answer_3
             ),
             trueAnswer = Res.string.question_919_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -648,7 +650,8 @@ class QuestionGroup9 {
                 Res.string.question_920_answer_4
             ),
             trueAnswer = Res.string.question_920_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -660,7 +663,8 @@ class QuestionGroup9 {
                 Res.string.question_921_answer_3
             ),
             trueAnswer = Res.string.question_921_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -671,7 +675,8 @@ class QuestionGroup9 {
                 Res.string.question_922_answer_2
             ),
             trueAnswer = Res.string.question_922_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -683,7 +688,8 @@ class QuestionGroup9 {
                 Res.string.question_923_answer_3
             ),
             trueAnswer = Res.string.question_923_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -695,7 +701,8 @@ class QuestionGroup9 {
                 Res.string.question_924_answer_3
             ),
             trueAnswer = Res.string.question_924_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.SPECIAL_VEHICLES_AND_SITUATIONS)
         ),
 
         Question(
@@ -707,7 +714,8 @@ class QuestionGroup9 {
                 Res.string.question_925_answer_3
             ),
             trueAnswer = Res.string.question_925_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.INTERSECTIONS_AND_CROSSINGS)
         ),
 
         Question(
@@ -719,7 +727,8 @@ class QuestionGroup9 {
                 Res.string.question_926_answer_3
             ),
             trueAnswer = Res.string.question_926_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.ROAD_CONDITIONS_AND_VISIBILITY)
         ),
 
         Question(
@@ -731,7 +740,8 @@ class QuestionGroup9 {
                 Res.string.question_927_answer_3
             ),
             trueAnswer = Res.string.question_927_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.VEHICLE_TYPES_AND_CATEGORIES)
         ),
 
         Question(
@@ -743,7 +753,8 @@ class QuestionGroup9 {
                 Res.string.question_928_answer_3
             ),
             trueAnswer = Res.string.question_928_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
 
         Question(
@@ -755,7 +766,8 @@ class QuestionGroup9 {
                 Res.string.question_929_answer_3
             ),
             trueAnswer = Res.string.question_929_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -768,7 +780,8 @@ class QuestionGroup9 {
                 Res.string.question_930_answer_4
             ),
             trueAnswer = Res.string.question_930_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -780,7 +793,8 @@ class QuestionGroup9 {
                 Res.string.question_931_answer_3
             ),
             trueAnswer = Res.string.question_931_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -791,7 +805,8 @@ class QuestionGroup9 {
                 Res.string.question_932_answer_2
             ),
             trueAnswer = Res.string.question_932_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -802,7 +817,8 @@ class QuestionGroup9 {
                 Res.string.question_933_answer_2
             ),
             trueAnswer = Res.string.question_933_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -810,10 +826,11 @@ class QuestionGroup9 {
             image = "question934_image.png",
             answers = listOf(
                 Res.string.question_934_answer_1,
-                Res.string.question_934_answer_2
+                Res.string.question_934_answer_2,
             ),
             trueAnswer = Res.string.question_934_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.SPECIAL_VEHICLES_AND_SITUATIONS)
         ),
 
         Question(
@@ -825,7 +842,8 @@ class QuestionGroup9 {
                 Res.string.question_935_answer_3
             ),
             trueAnswer = Res.string.question_935_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.INTERSECTIONS_AND_CROSSINGS)
         ),
 
         Question(
@@ -836,7 +854,8 @@ class QuestionGroup9 {
                 Res.string.question_936_answer_2
             ),
             trueAnswer = Res.string.question_936_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.ROAD_CONDITIONS_AND_VISIBILITY)
         ),
 
         Question(
@@ -847,7 +866,8 @@ class QuestionGroup9 {
                 Res.string.question_937_answer_2
             ),
             trueAnswer = Res.string.question_937_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.VEHICLE_TYPES_AND_CATEGORIES)
         ),
 
         Question(
@@ -859,7 +879,8 @@ class QuestionGroup9 {
                 Res.string.question_938_answer_3
             ),
             trueAnswer = Res.string.question_938_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
 
         Question(
@@ -870,7 +891,8 @@ class QuestionGroup9 {
                 Res.string.question_939_answer_2
             ),
             trueAnswer = Res.string.question_939_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -883,7 +905,8 @@ class QuestionGroup9 {
                 Res.string.question_940_answer_4
             ),
             trueAnswer = Res.string.question_940_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -894,7 +917,8 @@ class QuestionGroup9 {
                 Res.string.question_941_answer_2
             ),
             trueAnswer = Res.string.question_941_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -905,7 +929,8 @@ class QuestionGroup9 {
                 Res.string.question_942_answer_2
             ),
             trueAnswer = Res.string.question_942_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -917,7 +942,8 @@ class QuestionGroup9 {
                 Res.string.question_943_answer_3
             ),
             trueAnswer = Res.string.question_943_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -929,7 +955,8 @@ class QuestionGroup9 {
                 Res.string.question_944_answer_3
             ),
             trueAnswer = Res.string.question_944_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.SPECIAL_VEHICLES_AND_SITUATIONS)
         ),
 
         Question(
@@ -940,7 +967,8 @@ class QuestionGroup9 {
                 Res.string.question_945_answer_2
             ),
             trueAnswer = Res.string.question_945_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.INTERSECTIONS_AND_CROSSINGS)
         ),
 
         Question(
@@ -952,7 +980,8 @@ class QuestionGroup9 {
                 Res.string.question_946_answer_3
             ),
             trueAnswer = Res.string.question_946_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.ROAD_CONDITIONS_AND_VISIBILITY)
         ),
 
         Question(
@@ -964,7 +993,8 @@ class QuestionGroup9 {
                 Res.string.question_947_answer_3
             ),
             trueAnswer = Res.string.question_947_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.VEHICLE_TYPES_AND_CATEGORIES)
         ),
 
         Question(
@@ -976,7 +1006,8 @@ class QuestionGroup9 {
                 Res.string.question_948_answer_3
             ),
             trueAnswer = Res.string.question_948_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
 
         Question(
@@ -987,7 +1018,8 @@ class QuestionGroup9 {
                 Res.string.question_949_answer_2
             ),
             trueAnswer = Res.string.question_949_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -999,7 +1031,8 @@ class QuestionGroup9 {
                 Res.string.question_950_answer_3
             ),
             trueAnswer = Res.string.question_950_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -1011,7 +1044,8 @@ class QuestionGroup9 {
                 Res.string.question_951_answer_3
             ),
             trueAnswer = Res.string.question_951_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -1022,7 +1056,8 @@ class QuestionGroup9 {
                 Res.string.question_952_answer_2
             ),
             trueAnswer = Res.string.question_952_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -1033,7 +1068,8 @@ class QuestionGroup9 {
                 Res.string.question_953_answer_2
             ),
             trueAnswer = Res.string.question_953_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -1045,7 +1081,8 @@ class QuestionGroup9 {
                 Res.string.question_954_answer_3
             ),
             trueAnswer = Res.string.question_954_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.SPECIAL_VEHICLES_AND_SITUATIONS)
         ),
 
         Question(
@@ -1058,7 +1095,8 @@ class QuestionGroup9 {
                 Res.string.question_955_answer_4
             ),
             trueAnswer = Res.string.question_955_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.INTERSECTIONS_AND_CROSSINGS)
         ),
 
         Question(
@@ -1071,7 +1109,8 @@ class QuestionGroup9 {
                 Res.string.question_956_answer_4
             ),
             trueAnswer = Res.string.question_956_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.ROAD_CONDITIONS_AND_VISIBILITY)
         ),
 
         Question(
@@ -1083,7 +1122,8 @@ class QuestionGroup9 {
                 Res.string.question_957_answer_3
             ),
             trueAnswer = Res.string.question_957_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.VEHICLE_TYPES_AND_CATEGORIES)
         ),
 
         Question(
@@ -1095,7 +1135,8 @@ class QuestionGroup9 {
                 Res.string.question_958_answer_3
             ),
             trueAnswer = Res.string.question_958_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
 
         Question(
@@ -1109,7 +1150,8 @@ class QuestionGroup9 {
                 Res.string.question_959_answer_5
             ),
             trueAnswer = Res.string.question_959_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1121,7 +1163,8 @@ class QuestionGroup9 {
                 Res.string.question_960_answer_3
             ),
             trueAnswer = Res.string.question_960_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -1134,7 +1177,8 @@ class QuestionGroup9 {
                 Res.string.question_961_answer_4
             ),
             trueAnswer = Res.string.question_961_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -1146,7 +1190,8 @@ class QuestionGroup9 {
                 Res.string.question_962_answer_3
             ),
             trueAnswer = Res.string.question_962_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -1158,7 +1203,8 @@ class QuestionGroup9 {
                 Res.string.question_963_answer_3
             ),
             trueAnswer = Res.string.question_963_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -1171,7 +1217,8 @@ class QuestionGroup9 {
                 Res.string.question_964_answer_4
             ),
             trueAnswer = Res.string.question_964_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.SPECIAL_VEHICLES_AND_SITUATIONS)
         ),
 
         Question(
@@ -1184,7 +1231,8 @@ class QuestionGroup9 {
                 Res.string.question_965_answer_4
             ),
             trueAnswer = Res.string.question_965_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.INTERSECTIONS_AND_CROSSINGS)
         ),
 
         Question(
@@ -1196,7 +1244,8 @@ class QuestionGroup9 {
                 Res.string.question_966_answer_3
             ),
             trueAnswer = Res.string.question_966_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.ROAD_CONDITIONS_AND_VISIBILITY)
         ),
 
         Question(
@@ -1209,7 +1258,8 @@ class QuestionGroup9 {
                 Res.string.question_967_answer_4
             ),
             trueAnswer = Res.string.question_967_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.VEHICLE_TYPES_AND_CATEGORIES)
         ),
 
         Question(
@@ -1221,7 +1271,8 @@ class QuestionGroup9 {
                 Res.string.question_968_answer_3
             ),
             trueAnswer = Res.string.question_968_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
 
         Question(
@@ -1233,7 +1284,8 @@ class QuestionGroup9 {
                 Res.string.question_969_answer_3
             ),
             trueAnswer = Res.string.question_969_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1245,7 +1297,8 @@ class QuestionGroup9 {
                 Res.string.question_970_answer_3
             ),
             trueAnswer = Res.string.question_970_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -1258,7 +1311,8 @@ class QuestionGroup9 {
                 Res.string.question_971_answer_4
             ),
             trueAnswer = Res.string.question_971_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -1270,7 +1324,8 @@ class QuestionGroup9 {
                 Res.string.question_972_answer_3
             ),
             trueAnswer = Res.string.question_972_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -1282,7 +1337,8 @@ class QuestionGroup9 {
                 Res.string.question_973_answer_3
             ),
             trueAnswer = Res.string.question_973_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -1294,7 +1350,8 @@ class QuestionGroup9 {
                 Res.string.question_974_answer_3
             ),
             trueAnswer = Res.string.question_974_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.SPECIAL_VEHICLES_AND_SITUATIONS)
         ),
 
         Question(
@@ -1306,7 +1363,8 @@ class QuestionGroup9 {
                 Res.string.question_975_answer_3
             ),
             trueAnswer = Res.string.question_975_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.INTERSECTIONS_AND_CROSSINGS)
         ),
 
         Question(
@@ -1318,7 +1376,8 @@ class QuestionGroup9 {
                 Res.string.question_976_answer_3
             ),
             trueAnswer = Res.string.question_976_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.ROAD_CONDITIONS_AND_VISIBILITY)
         ),
 
         Question(
@@ -1329,7 +1388,8 @@ class QuestionGroup9 {
                 Res.string.question_977_answer_2
             ),
             trueAnswer = Res.string.question_977_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.VEHICLE_TYPES_AND_CATEGORIES)
         ),
 
         Question(
@@ -1342,7 +1402,8 @@ class QuestionGroup9 {
                 Res.string.question_978_answer_4
             ),
             trueAnswer = Res.string.question_978_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
 
         Question(
@@ -1353,7 +1414,8 @@ class QuestionGroup9 {
                 Res.string.question_979_answer_2
             ),
             trueAnswer = Res.string.question_979_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1364,7 +1426,8 @@ class QuestionGroup9 {
                 Res.string.question_980_answer_2
             ),
             trueAnswer = Res.string.question_980_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -1375,7 +1438,8 @@ class QuestionGroup9 {
                 Res.string.question_981_answer_2
             ),
             trueAnswer = Res.string.question_981_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -1386,7 +1450,8 @@ class QuestionGroup9 {
                 Res.string.question_982_answer_2
             ),
             trueAnswer = Res.string.question_982_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -1399,7 +1464,8 @@ class QuestionGroup9 {
                 Res.string.question_983_answer_4
             ),
             trueAnswer = Res.string.question_983_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -1412,7 +1478,8 @@ class QuestionGroup9 {
                 Res.string.question_984_answer_4
             ),
             trueAnswer = Res.string.question_984_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.SPECIAL_VEHICLES_AND_SITUATIONS)
         ),
 
         Question(
@@ -1425,7 +1492,8 @@ class QuestionGroup9 {
                 Res.string.question_985_answer_4
             ),
             trueAnswer = Res.string.question_985_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.INTERSECTIONS_AND_CROSSINGS)
         ),
 
         Question(
@@ -1436,7 +1504,8 @@ class QuestionGroup9 {
                 Res.string.question_986_answer_2
             ),
             trueAnswer = Res.string.question_986_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.ROAD_CONDITIONS_AND_VISIBILITY)
         ),
 
         Question(
@@ -1448,7 +1517,8 @@ class QuestionGroup9 {
                 Res.string.question_987_answer_3
             ),
             trueAnswer = Res.string.question_987_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.VEHICLE_TYPES_AND_CATEGORIES)
         ),
 
         Question(
@@ -1460,7 +1530,8 @@ class QuestionGroup9 {
                 Res.string.question_988_answer_3
             ),
             trueAnswer = Res.string.question_988_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
 
         Question(
@@ -1472,7 +1543,8 @@ class QuestionGroup9 {
                 Res.string.question_989_answer_3
             ),
             trueAnswer = Res.string.question_989_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1483,7 +1555,8 @@ class QuestionGroup9 {
                 Res.string.question_990_answer_2
             ),
             trueAnswer = Res.string.question_990_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -1495,7 +1568,8 @@ class QuestionGroup9 {
                 Res.string.question_991_answer_3
             ),
             trueAnswer = Res.string.question_991_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -1507,7 +1581,8 @@ class QuestionGroup9 {
                 Res.string.question_992_answer_3
             ),
             trueAnswer = Res.string.question_992_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -1519,7 +1594,8 @@ class QuestionGroup9 {
                 Res.string.question_993_answer_3
             ),
             trueAnswer = Res.string.question_993_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -1530,7 +1606,8 @@ class QuestionGroup9 {
                 Res.string.question_994_answer_2
             ),
             trueAnswer = Res.string.question_994_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.SPECIAL_VEHICLES_AND_SITUATIONS)
         ),
 
         Question(
@@ -1542,7 +1619,8 @@ class QuestionGroup9 {
                 Res.string.question_995_answer_3
             ),
             trueAnswer = Res.string.question_995_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.INTERSECTIONS_AND_CROSSINGS)
         ),
 
         Question(
@@ -1553,7 +1631,8 @@ class QuestionGroup9 {
                 Res.string.question_996_answer_2
             ),
             trueAnswer = Res.string.question_996_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.ROAD_CONDITIONS_AND_VISIBILITY)
         ),
 
         Question(
@@ -1564,7 +1643,8 @@ class QuestionGroup9 {
                 Res.string.question_997_answer_2
             ),
             trueAnswer = Res.string.question_997_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.VEHICLE_TYPES_AND_CATEGORIES)
         ),
 
         Question(
@@ -1577,7 +1657,8 @@ class QuestionGroup9 {
                 Res.string.question_998_answer_4
             ),
             trueAnswer = Res.string.question_998_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
 
         Question(
@@ -1588,7 +1669,8 @@ class QuestionGroup9 {
                 Res.string.question_999_answer_2
             ),
             trueAnswer = Res.string.question_999_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1600,7 +1682,8 @@ class QuestionGroup9 {
                 Res.string.question_1000_answer_3
             ),
             trueAnswer = Res.string.question_1000_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -1611,7 +1694,8 @@ class QuestionGroup9 {
                 Res.string.question_1001_answer_2
             ),
             trueAnswer = Res.string.question_1001_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -1623,7 +1707,8 @@ class QuestionGroup9 {
                 Res.string.question_1002_answer_3
             ),
             trueAnswer = Res.string.question_1002_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -1634,7 +1719,8 @@ class QuestionGroup9 {
                 Res.string.question_1003_answer_2
             ),
             trueAnswer = Res.string.question_1003_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -1646,7 +1732,8 @@ class QuestionGroup9 {
                 Res.string.question_1004_answer_3
             ),
             trueAnswer = Res.string.question_1004_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.SPECIAL_VEHICLES_AND_SITUATIONS)
         ),
 
         Question(
@@ -1658,7 +1745,8 @@ class QuestionGroup9 {
                 Res.string.question_1005_answer_3
             ),
             trueAnswer = Res.string.question_1005_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.INTERSECTIONS_AND_CROSSINGS)
         ),
 
         Question(
@@ -1670,7 +1758,8 @@ class QuestionGroup9 {
                 Res.string.question_1006_answer_3
             ),
             trueAnswer = Res.string.question_1006_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.ROAD_CONDITIONS_AND_VISIBILITY)
         ),
 
         Question(
@@ -1682,7 +1771,8 @@ class QuestionGroup9 {
                 Res.string.question_1007_answer_3
             ),
             trueAnswer = Res.string.question_1007_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.VEHICLE_TYPES_AND_CATEGORIES)
         ),
 
         Question(
@@ -1694,7 +1784,8 @@ class QuestionGroup9 {
                 Res.string.question_1008_answer_3
             ),
             trueAnswer = Res.string.question_1008_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
 
         Question(
@@ -1705,7 +1796,8 @@ class QuestionGroup9 {
                 Res.string.question_1009_answer_2
             ),
             trueAnswer = Res.string.question_1009_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1717,7 +1809,8 @@ class QuestionGroup9 {
                 Res.string.question_1010_answer_3
             ),
             trueAnswer = Res.string.question_1010_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -1729,7 +1822,8 @@ class QuestionGroup9 {
                 Res.string.question_1011_answer_3
             ),
             trueAnswer = Res.string.question_1011_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -1741,7 +1835,8 @@ class QuestionGroup9 {
                 Res.string.question_1012_answer_3
             ),
             trueAnswer = Res.string.question_1012_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -1752,7 +1847,8 @@ class QuestionGroup9 {
                 Res.string.question_1013_answer_2
             ),
             trueAnswer = Res.string.question_1013_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -1764,7 +1860,8 @@ class QuestionGroup9 {
                 Res.string.question_1014_answer_3
             ),
             trueAnswer = Res.string.question_1014_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.SPECIAL_VEHICLES_AND_SITUATIONS)
         ),
 
         Question(
@@ -1776,7 +1873,8 @@ class QuestionGroup9 {
                 Res.string.question_1015_answer_3
             ),
             trueAnswer = Res.string.question_1015_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.INTERSECTIONS_AND_CROSSINGS)
         ),
 
         Question(
@@ -1787,7 +1885,8 @@ class QuestionGroup9 {
                 Res.string.question_1016_answer_2
             ),
             trueAnswer = Res.string.question_1016_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.ROAD_CONDITIONS_AND_VISIBILITY)
         ),
 
         Question(
@@ -1799,7 +1898,8 @@ class QuestionGroup9 {
                 Res.string.question_1017_answer_3
             ),
             trueAnswer = Res.string.question_1017_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.VEHICLE_TYPES_AND_CATEGORIES)
         ),
 
         Question(
@@ -1811,7 +1911,8 @@ class QuestionGroup9 {
                 Res.string.question_1018_answer_3
             ),
             trueAnswer = Res.string.question_1018_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
 
         Question(
@@ -1823,7 +1924,8 @@ class QuestionGroup9 {
                 Res.string.question_1019_answer_3
             ),
             trueAnswer = Res.string.question_1019_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1835,7 +1937,8 @@ class QuestionGroup9 {
                 Res.string.question_1020_answer_3
             ),
             trueAnswer = Res.string.question_1020_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -1847,7 +1950,8 @@ class QuestionGroup9 {
                 Res.string.question_1021_answer_3
             ),
             trueAnswer = Res.string.question_1021_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -1859,7 +1963,8 @@ class QuestionGroup9 {
                 Res.string.question_1022_answer_3
             ),
             trueAnswer = Res.string.question_1022_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -1871,7 +1976,8 @@ class QuestionGroup9 {
                 Res.string.question_1023_answer_3
             ),
             trueAnswer = Res.string.question_1023_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -1882,7 +1988,8 @@ class QuestionGroup9 {
                 Res.string.question_1024_answer_2
             ),
             trueAnswer = Res.string.question_1024_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.SPECIAL_VEHICLES_AND_SITUATIONS)
         ),
 
         Question(
@@ -1894,7 +2001,8 @@ class QuestionGroup9 {
                 Res.string.question_1025_answer_3
             ),
             trueAnswer = Res.string.question_1025_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.INTERSECTIONS_AND_CROSSINGS)
         ),
 
         Question(
@@ -1906,7 +2014,8 @@ class QuestionGroup9 {
                 Res.string.question_1026_answer_3
             ),
             trueAnswer = Res.string.question_1026_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.ROAD_CONDITIONS_AND_VISIBILITY)
         ),
 
         Question(
@@ -1918,7 +2027,8 @@ class QuestionGroup9 {
                 Res.string.question_1027_answer_3
             ),
             trueAnswer = Res.string.question_1027_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.VEHICLE_TYPES_AND_CATEGORIES)
         ),
 
         Question(
@@ -1930,7 +2040,8 @@ class QuestionGroup9 {
                 Res.string.question_1028_answer_3
             ),
             trueAnswer = Res.string.question_1028_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
 
         Question(
@@ -1942,7 +2053,8 @@ class QuestionGroup9 {
                 Res.string.question_1029_answer_3
             ),
             trueAnswer = Res.string.question_1029_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -1953,7 +2065,8 @@ class QuestionGroup9 {
                 Res.string.question_1030_answer_2
             ),
             trueAnswer = Res.string.question_1030_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -1965,7 +2078,8 @@ class QuestionGroup9 {
                 Res.string.question_1031_answer_3
             ),
             trueAnswer = Res.string.question_1031_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -1976,7 +2090,8 @@ class QuestionGroup9 {
                 Res.string.question_1032_answer_2
             ),
             trueAnswer = Res.string.question_1032_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -1988,7 +2103,8 @@ class QuestionGroup9 {
                 Res.string.question_1033_answer_3
             ),
             trueAnswer = Res.string.question_1033_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         ),
 
         Question(
@@ -2000,7 +2116,8 @@ class QuestionGroup9 {
                 Res.string.question_1034_answer_3
             ),
             trueAnswer = Res.string.question_1034_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.SPECIAL_VEHICLES_AND_SITUATIONS)
         ),
 
         Question(
@@ -2011,7 +2128,8 @@ class QuestionGroup9 {
                 Res.string.question_1035_answer_2
             ),
             trueAnswer = Res.string.question_1035_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.INTERSECTIONS_AND_CROSSINGS)
         ),
 
         Question(
@@ -2022,7 +2140,8 @@ class QuestionGroup9 {
                 Res.string.question_1036_answer_2
             ),
             trueAnswer = Res.string.question_1036_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.ROAD_CONDITIONS_AND_VISIBILITY)
         ),
 
         Question(
@@ -2033,7 +2152,8 @@ class QuestionGroup9 {
                 Res.string.question_1037_answer_2
             ),
             trueAnswer = Res.string.question_1037_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.VEHICLE_TYPES_AND_CATEGORIES)
         ),
 
         Question(
@@ -2044,7 +2164,8 @@ class QuestionGroup9 {
                 Res.string.question_1038_answer_2
             ),
             trueAnswer = Res.string.question_1038_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.GENERAL_TRAFFIC_RULES)
         ),
 
         Question(
@@ -2056,7 +2177,8 @@ class QuestionGroup9 {
                 Res.string.question_1039_answer_3
             ),
             trueAnswer = Res.string.question_1039_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.TRAFFIC_SIGNS_AND_MARKINGS)
         ),
 
         Question(
@@ -2068,7 +2190,8 @@ class QuestionGroup9 {
                 Res.string.question_1040_answer_3
             ),
             trueAnswer = Res.string.question_1040_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.LANE_USAGE_AND_POSITIONING)
         ),
 
         Question(
@@ -2079,7 +2202,8 @@ class QuestionGroup9 {
                 Res.string.question_1041_answer_2
             ),
             trueAnswer = Res.string.question_1041_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.MANEUVERS_AND_TURNS)
         ),
 
         Question(
@@ -2091,7 +2215,8 @@ class QuestionGroup9 {
                 Res.string.question_1042_answer_3
             ),
             trueAnswer = Res.string.question_1042_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.RIGHT_OF_WAY_AND_PRIORITY)
         ),
 
         Question(
@@ -2103,7 +2228,8 @@ class QuestionGroup9 {
                 Res.string.question_1043_answer_3
             ),
             trueAnswer = Res.string.question_1043_true_answer,
-            book = Book.BOOK_9
+            book = Book.BOOK_9,
+            categories = listOf(QuestionCategory.PROHIBITED_ACTIONS)
         )
     )
 }
