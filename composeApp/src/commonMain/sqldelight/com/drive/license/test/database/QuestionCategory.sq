@@ -1,0 +1,6 @@
+CREATE TABLE QuestionCategory (
+    question_id INTEGER NOT NULL,
+    category_id INTEGER NOT NULL,
+    FOREIGN KEY (question_id) REFERENCES Question(id),
+    FOREIGN KEY (category_id) REFERENCES Category(id)
+); 

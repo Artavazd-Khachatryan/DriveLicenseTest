@@ -1,0 +1,8 @@
+CREATE TABLE Question (
+    id INTEGER NOT NULL PRIMARY KEY,
+    question TEXT NOT NULL,
+    image TEXT,
+    answers TEXT NOT NULL,
+    true_answer TEXT NOT NULL,
+    book_id INTEGER
+); 
