@@ -1,0 +1,23 @@
+CREATE TABLE QuestionCategoryJunction (
+    question_id INTEGER NOT NULL,
+    category_id INTEGER NOT NULL,
+    PRIMARY KEY (question_id, category_id),
+    FOREIGN KEY (question_id) REFERENCES Question(id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES QuestionCategory(id) ON DELETE CASCADE
+);
+
+insertQuestionCategory:
+INSERT INTO QuestionCategoryJunction (question_id, category_id) VALUES (?, ?);
+
+deleteQuestionCategories:
+DELETE FROM QuestionCategoryJunction WHERE question_id = ?;
+
+selectCategoriesForQuestion:
+SELECT c.* FROM QuestionCategory c
+JOIN QuestionCategoryJunction j ON c.id = j.category_id
+WHERE j.question_id = ?;
+
+selectQuestionsForCategory:
+SELECT q.* FROM Question q
+JOIN QuestionCategoryJunction j ON q.id = j.question_id
+WHERE j.category_id = ?;

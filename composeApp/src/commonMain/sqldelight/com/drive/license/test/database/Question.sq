@@ -2,7 +2,34 @@ CREATE TABLE Question (
     id INTEGER NOT NULL PRIMARY KEY,
     question TEXT NOT NULL,
     image TEXT,
-    answers TEXT NOT NULL,
+    answers TEXT NOT NULL, -- JSON array of answer strings
     true_answer TEXT NOT NULL,
-    book_id INTEGER
-); 
+    book_id INTEGER NOT NULL,
+    FOREIGN KEY (book_id) REFERENCES Book(id)
+);
+
+selectAll:
+SELECT q.*, b.name AS book_name FROM Question q
+JOIN Book b ON q.book_id = b.id;
+
+selectById:
+SELECT q.*, b.name AS book_name FROM Question q
+JOIN Book b ON q.book_id = b.id
+WHERE q.id = ?;
+
+selectByBook:
+SELECT q.*, b.name AS book_name FROM Question q
+JOIN Book b ON q.book_id = b.id
+WHERE q.book_id = ?;
+
+insertQuestion:
+INSERT INTO Question (question, image, answers, true_answer, book_id)
+VALUES (?, ?, ?, ?, ?);
+
+updateQuestion:
+UPDATE Question
+SET question = ?, image = ?, answers = ?, true_answer = ?, book_id = ?
+WHERE id = ?;
+
+deleteQuestion:
+DELETE FROM Question WHERE id = ?;

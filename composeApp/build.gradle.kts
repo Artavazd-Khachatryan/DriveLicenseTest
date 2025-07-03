@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.sqlDelight)
+    alias(libs.plugins.kotlinxSerialization)
 }
 
 kotlin {
@@ -17,7 +18,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -28,9 +29,9 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
-        
+
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -54,6 +55,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.sqldelight.runtime)
             implementation(libs.sqldelight.coroutines.extensions)
+            implementation(libs.kotlinx.serialization.json)
         }
     }
 }
@@ -65,6 +67,7 @@ android {
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
+    sourceSets["main"].assets.srcDirs("src/commonMain/resources")
 
     defaultConfig {
         applicationId = "com.drive.license.test"
@@ -90,6 +93,10 @@ android {
     buildFeatures {
         compose = true
     }
+    
+    // Include pre-populated database in assets
+    sourceSets["main"].assets.srcDirs("src/commonMain/resources")
+    
     dependencies {
         debugImplementation(compose.uiTooling)
     }
@@ -103,4 +110,3 @@ sqldelight {
         }
     }
 }
-
