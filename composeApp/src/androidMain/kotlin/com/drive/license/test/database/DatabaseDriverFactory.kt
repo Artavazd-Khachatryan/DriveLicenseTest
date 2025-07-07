@@ -28,12 +28,7 @@ actual class DatabaseDriverFactory {
                         inputStream.copyTo(outputStream)
                     }
                 }
-                println("[DEBUG_LOG] Prepopulated database copied from assets to: ${databaseFile.absolutePath}")
-            } else {
-                println("[DEBUG_LOG] Database already exists at: ${databaseFile.absolutePath}")
             }
-        } catch (e: Exception) {
-            println("[DEBUG_LOG] Error copying prepopulated database: ${e.message}")
-        }
+        } catch (e: Exception) { }
     }
 }

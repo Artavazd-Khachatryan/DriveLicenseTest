@@ -27,6 +27,32 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            export(libs.sqldelight.runtime)
+            export(libs.sqldelight.coroutines.extensions)
+        }
+    }
+
+    // Custom task to copy database file to iOS framework
+    tasks.register("copyDatabaseToIosFramework") {
+        dependsOn("linkDebugFrameworkIosArm64", "linkDebugFrameworkIosSimulatorArm64")
+        doLast {
+            // Copy to device framework
+            val deviceFrameworkDir = file("build/bin/iosArm64/debugFramework/ComposeApp.framework")
+            val deviceResourcesDir = file("${deviceFrameworkDir}/Resources")
+            val databaseFile = file("src/commonMain/resources/license_test_questions.db")
+            
+            deviceResourcesDir.mkdirs()
+            databaseFile.copyTo(file("${deviceResourcesDir}/license_test_questions.db"), overwrite = true)
+            
+            // Copy to simulator framework
+            val simulatorFrameworkDir = file("build/bin/iosSimulatorArm64/debugFramework/ComposeApp.framework")
+            val simulatorResourcesDir = file("${simulatorFrameworkDir}/Resources")
+            
+            simulatorResourcesDir.mkdirs()
+            databaseFile.copyTo(file("${simulatorResourcesDir}/license_test_questions.db"), overwrite = true)
+            
+            println("Database file copied to device framework: ${deviceResourcesDir}/license_test_questions.db")
+            println("Database file copied to simulator framework: ${simulatorResourcesDir}/license_test_questions.db")
         }
     }
 
@@ -41,7 +67,9 @@ kotlin {
         }
 
         iosMain.dependencies {
-            implementation(libs.sqldelight.native.driver)
+            implementation("app.cash.sqldelight:native-driver:2.0.2")
+            api(libs.sqldelight.runtime)
+            api(libs.sqldelight.coroutines.extensions)
         }
 
         commonMain.dependencies {
@@ -56,6 +84,11 @@ kotlin {
             implementation(libs.sqldelight.runtime)
             implementation(libs.sqldelight.coroutines.extensions)
             implementation(libs.kotlinx.serialization.json)
+        }
+
+        // Include resources for iOS
+        iosMain {
+            resources.srcDir("src/commonMain/resources")
         }
     }
 }
