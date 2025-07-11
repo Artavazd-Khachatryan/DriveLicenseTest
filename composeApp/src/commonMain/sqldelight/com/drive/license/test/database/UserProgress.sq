@@ -1,0 +1,153 @@
+-- User progress tracking for individual questions
+CREATE TABLE UserQuestionProgress (
+    question_id INTEGER NOT NULL PRIMARY KEY,
+    times_answered INTEGER NOT NULL DEFAULT 0,
+    times_correct INTEGER NOT NULL DEFAULT 0,
+    times_incorrect INTEGER NOT NULL DEFAULT 0,
+    is_learned INTEGER NOT NULL DEFAULT 0, -- 0 = false, 1 = true
+    last_answered_at INTEGER, -- timestamp
+    FOREIGN KEY (question_id) REFERENCES Question(id)
+);
+
+-- Test sessions tracking
+CREATE TABLE TestSession (
+    id TEXT NOT NULL PRIMARY KEY,
+    start_time INTEGER NOT NULL,
+    end_time INTEGER,
+    total_questions INTEGER NOT NULL,
+    correct_answers INTEGER NOT NULL DEFAULT 0,
+    is_completed INTEGER NOT NULL DEFAULT 0 -- 0 = false, 1 = true
+);
+
+-- Individual question attempts within a test session
+CREATE TABLE QuestionAttempt (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    session_id TEXT NOT NULL,
+    question_id INTEGER NOT NULL,
+    selected_answer TEXT NOT NULL,
+    is_correct INTEGER NOT NULL, -- 0 = false, 1 = true
+    time_spent INTEGER, -- milliseconds
+    attempt_time INTEGER NOT NULL, -- timestamp
+    FOREIGN KEY (session_id) REFERENCES TestSession(id),
+    FOREIGN KEY (question_id) REFERENCES Question(id)
+);
+
+-- User statistics summary
+CREATE TABLE UserStatistics (
+    id INTEGER NOT NULL PRIMARY KEY DEFAULT 1,
+    total_questions_attempted INTEGER NOT NULL DEFAULT 0,
+    total_correct_answers INTEGER NOT NULL DEFAULT 0,
+    total_incorrect_answers INTEGER NOT NULL DEFAULT 0,
+    total_test_sessions INTEGER NOT NULL DEFAULT 0,
+    total_passed_sessions INTEGER NOT NULL DEFAULT 0,
+    last_updated INTEGER NOT NULL -- timestamp
+);
+
+-- Insert user question progress
+insertQuestionProgress:
+INSERT INTO UserQuestionProgress (question_id, times_answered, times_correct, times_incorrect, last_answered_at)
+VALUES (?, 1, ?, ?, ?);
+
+-- Update user question progress
+updateQuestionProgress:
+UPDATE UserQuestionProgress
+SET times_answered = times_answered + 1,
+    times_correct = times_correct + ?,
+    times_incorrect = times_incorrect + ?,
+    last_answered_at = ?
+WHERE question_id = ?;
+
+-- Mark question as learned
+markQuestionAsLearned:
+UPDATE UserQuestionProgress
+SET is_learned = 1
+WHERE question_id = ?;
+
+-- Get question progress by ID
+getQuestionProgress:
+SELECT * FROM UserQuestionProgress WHERE question_id = ?;
+
+-- Get all question progress
+getAllQuestionProgress:
+SELECT * FROM UserQuestionProgress;
+
+-- Get questions by difficulty (for practice mode)
+getQuestionsByDifficulty:
+SELECT q.*, b.name AS book_name, 
+       COALESCE(up.times_answered, 0) AS times_answered,
+       COALESCE(up.times_correct, 0) AS times_correct,
+       COALESCE(up.times_incorrect, 0) AS times_incorrect,
+       COALESCE(up.is_learned, 0) AS is_learned
+FROM Question q
+JOIN Book b ON q.book_id = b.id
+LEFT JOIN UserQuestionProgress up ON q.id = up.question_id
+WHERE COALESCE(up.times_correct, 0) < 3
+ORDER BY COALESCE(up.times_incorrect, 0) DESC, COALESCE(up.times_answered, 0) ASC;
+
+-- Get random questions for test
+getRandomQuestions:
+SELECT q.*, b.name AS book_name,
+       COALESCE(up.times_answered, 0) AS times_answered,
+       COALESCE(up.times_correct, 0) AS times_correct,
+       COALESCE(up.times_incorrect, 0) AS times_incorrect,
+       COALESCE(up.is_learned, 0) AS is_learned
+FROM Question q
+JOIN Book b ON q.book_id = b.id
+LEFT JOIN UserQuestionProgress up ON q.id = up.question_id
+ORDER BY RANDOM()
+LIMIT ?;
+
+-- Get user statistics
+getUserStatistics:
+SELECT 
+    COUNT(DISTINCT q.id) total_questions,
+    COALESCE(SUM(up.times_answered), 0) total_attempts,
+    COALESCE(SUM(up.times_correct), 0) total_correct,
+    COALESCE(SUM(up.times_incorrect), 0) total_incorrect,
+    COALESCE(SUM(up.is_learned), 0) learned_questions
+FROM Question q
+LEFT JOIN UserQuestionProgress up ON q.id = up.question_id;
+
+-- Insert test session
+insertTestSession:
+INSERT INTO TestSession (id, start_time, total_questions)
+VALUES (?, ?, ?);
+
+-- Update test session completion
+updateTestSessionCompletion:
+UPDATE TestSession
+SET end_time = ?, correct_answers = ?, is_completed = 1
+WHERE id = ?;
+
+-- Insert question attempt
+insertQuestionAttempt:
+INSERT INTO QuestionAttempt (session_id, question_id, selected_answer, is_correct, time_spent, attempt_time)
+VALUES (?, ?, ?, ?, ?, ?);
+
+-- Get test session by ID
+getTestSession:
+SELECT * FROM TestSession WHERE id = ?;
+
+-- Get all test sessions
+getAllTestSessions:
+SELECT * FROM TestSession ORDER BY start_time DESC;
+
+-- Get question attempts for a session
+getQuestionAttemptsForSession:
+SELECT * FROM QuestionAttempt WHERE session_id = ? ORDER BY attempt_time;
+
+-- Initialize user statistics
+insertUserStatistics:
+INSERT OR IGNORE INTO UserStatistics (id, last_updated)
+VALUES (1, ?);
+
+-- Update user statistics
+updateUserStatistics:
+UPDATE UserStatistics
+SET total_questions_attempted = ?,
+    total_correct_answers = ?,
+    total_incorrect_answers = ?,
+    total_test_sessions = ?,
+    total_passed_sessions = ?,
+    last_updated = ?
+WHERE id = 1; 

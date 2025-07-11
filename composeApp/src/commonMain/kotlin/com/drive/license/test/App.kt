@@ -6,8 +6,7 @@ import com.drive.license.test.database.Database
 import com.drive.license.test.database.DatabaseDriverFactory
 import com.drive.license.test.database.DatabaseInitializer
 import com.drive.license.test.repository.QuestionRepository
-import com.drive.license.test.ui.QuestionViewModel
-import com.drive.license.test.ui.components.QuestionScreen
+import com.drive.license.test.ui.MainScreen
 import androidx.compose.runtime.rememberCoroutineScope
 
 @Composable
@@ -26,9 +25,10 @@ fun App() {
         databaseInitializer.initializeDatabase()
     }
 
-    val viewModel = remember { QuestionViewModel(questionRepository, coroutineScope) }
-
     MaterialTheme {
-        QuestionScreen(viewModel = viewModel)
+        MainScreen(
+            questionRepository = questionRepository,
+            coroutineScope = coroutineScope
+        )
     }
 }
