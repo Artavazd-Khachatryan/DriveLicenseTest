@@ -48,24 +48,31 @@ class QuestionViewModel(
     
     fun nextQuestion() {
         val questions = _uiState.value.questions
+        println("[DEBUG] nextQuestion called (current: $currentQuestionIndex, total: ${questions.size})")
         if (currentQuestionIndex < questions.size - 1) {
             currentQuestionIndex++
+            println("[DEBUG] Moved to question: $currentQuestionIndex")
         }
     }
     
     fun previousQuestion() {
+        println("[DEBUG] previousQuestion called (current: $currentQuestionIndex)")
         if (currentQuestionIndex > 0) {
             currentQuestionIndex--
+            println("[DEBUG] Moved to question: $currentQuestionIndex")
         }
     }
     
     fun canMoveToNext(): Boolean {
-        return currentQuestionIndex < _uiState.value.questions.size - 1 &&
-               _selectedAnswers.containsKey(currentQuestionIndex)
+        val canMove = currentQuestionIndex < _uiState.value.questions.size - 1
+        println("[DEBUG] canMoveToNext: $canMove (current: $currentQuestionIndex, total: ${_uiState.value.questions.size})")
+        return canMove
     }
     
     fun canMoveToPrevious(): Boolean {
-        return currentQuestionIndex > 0
+        val canMove = currentQuestionIndex > 0
+        println("[DEBUG] canMoveToPrevious: $canMove (current: $currentQuestionIndex)")
+        return canMove
     }
     
     fun isOnLastQuestion(): Boolean {
@@ -73,7 +80,7 @@ class QuestionViewModel(
     }
     
     fun canFinish(): Boolean {
-        return isOnLastQuestion() && _selectedAnswers.size == _uiState.value.questions.size
+        return isOnLastQuestion()
     }
     
     fun getCurrentQuestion(): DatabaseQuestion? {

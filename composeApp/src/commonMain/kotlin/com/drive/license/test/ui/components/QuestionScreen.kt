@@ -112,7 +112,8 @@ private fun QuestionContent(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp),
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             LinearProgressIndicator(
@@ -128,6 +129,15 @@ private fun QuestionContent(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             
+            // Debug information (commented out for cleaner UI)
+            // Text(
+            //     text = "Debug: canMoveToPrevious=${viewModel.canMoveToPrevious()}, canMoveToNext=${viewModel.canMoveToNext()}, isOnLastQuestion=${viewModel.isOnLastQuestion()}",
+            //     style = MaterialTheme.typography.bodySmall,
+            //     color = MaterialTheme.colorScheme.error
+            // )
+            
+            Spacer(modifier = Modifier.weight(1f))
+            
             viewModel.getCurrentQuestion()?.let { question ->
                 QuestionItem(
                     question = question,
@@ -138,32 +148,69 @@ private fun QuestionContent(
                 )
             }
             
-            Spacer(modifier = Modifier.weight(1f))
+            Spacer(modifier = Modifier.height(16.dp))
             
-            Row(
+            // Navigation buttons - always visible at the bottom
+            Card(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                )
             ) {
-                Button(
-                    onClick = { viewModel.previousQuestion() },
-                    enabled = viewModel.canMoveToPrevious()
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text("Previous")
-                }
-                
-                if (viewModel.isOnLastQuestion()) {
                     Button(
-                        onClick = { showResults = true },
-                        enabled = viewModel.canFinish()
+                        onClick = { 
+                            println("[DEBUG] Previous button clicked")
+                            viewModel.previousQuestion() 
+                        },
+                        enabled = viewModel.canMoveToPrevious(),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = if (viewModel.canMoveToPrevious()) 
+                                MaterialTheme.colorScheme.primary 
+                            else 
+                                MaterialTheme.colorScheme.surfaceVariant
+                        )
                     ) {
-                        Text("Finish")
+                        Text("Previous")
                     }
-                } else {
-                    Button(
-                        onClick = { viewModel.nextQuestion() },
-                        enabled = viewModel.canMoveToNext()
-                    ) {
-                        Text("Next")
+                    
+                    if (viewModel.isOnLastQuestion()) {
+                        Button(
+                            onClick = { 
+                                println("[DEBUG] Finish button clicked")
+                                showResults = true 
+                            },
+                            enabled = viewModel.canFinish(),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = if (viewModel.canFinish()) 
+                                    Color(0xFF4CAF50) 
+                                else 
+                                    MaterialTheme.colorScheme.surfaceVariant
+                            )
+                        ) {
+                            Text("Finish")
+                        }
+                    } else {
+                        Button(
+                            onClick = { 
+                                println("[DEBUG] Next button clicked")
+                                viewModel.nextQuestion() 
+                            },
+                            enabled = viewModel.canMoveToNext(),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = if (viewModel.canMoveToNext()) 
+                                    MaterialTheme.colorScheme.primary 
+                                else 
+                                    MaterialTheme.colorScheme.surfaceVariant
+                            )
+                        ) {
+                            Text("Next")
+                        }
                     }
                 }
             }
@@ -182,8 +229,7 @@ private fun QuestionItem(
     
     Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .verticalScroll(rememberScrollState()),
+            .fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
@@ -272,7 +318,6 @@ private fun QuestionItem(
             Button(
                 onClick = { onAnswerSelected(index) },
                 modifier = Modifier.fillMaxWidth(),
-                enabled = selectedAnswerIndex == null,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = backgroundColor,
                     contentColor = contentColor
