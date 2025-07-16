@@ -11,13 +11,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.drive.license.test.repository.QuestionRepository
-import com.drive.license.test.ui.components.PopulateQuestionsOnce
-import com.drive.license.test.models.DatabaseQuestion
-import com.drive.license.test.database.DatabaseLoader
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.first
-import java.io.File
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,42 +20,7 @@ fun MainScreen(
     coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
-    // Populate the database with actual strings once
-    PopulateQuestionsOnce(
-        questionRepository = questionRepository,
-        onComplete = {
-            println("[DEBUG_LOG] All questions populated successfully")
-        }
-    )
-    
-    // Debug: Check database content and export
-    LaunchedEffect(Unit) {
-        delay(2000) // Wait for population to complete
-        val questions = questionRepository.getAllQuestions().first()
-        if (questions.isNotEmpty()) {
-            println("[DEBUG_LOG] Database contains ${questions.size} questions")
-            println("[DEBUG_LOG] First question: ${questions.first().question}")
-            println("[DEBUG_LOG] First answer: ${questions.first().answers.firstOrNull()}")
-            println("[DEBUG_LOG] First true answer: ${questions.first().trueAnswer}")
-            
-            // Debug: Show more details about the first question
-            println("[DEBUG_LOG] First question type: ${questions.first().question::class.simpleName}")
-            println("[DEBUG_LOG] First answer type: ${questions.first().answers.firstOrNull()?.javaClass?.simpleName}")
-            println("[DEBUG_LOG] First true answer type: ${questions.first().trueAnswer::class.simpleName}")
-            
-            // Check if we have actual strings or StringResource objects
-            val firstQuestion = questions.first().question
-            if (firstQuestion.contains("StringResource@")) {
-                println("[DEBUG_LOG] WARNING: Database still contains StringResource objects!")
-                println("[DEBUG_LOG] This means the string resolution didn't work properly.")
-            } else {
-                println("[DEBUG_LOG] SUCCESS: Database contains actual strings!")
-            }
-        } else {
-            println("[DEBUG_LOG] Database is empty")
-        }
-    }
-    
+    // Remove PopulateQuestionsOnce and related debug LaunchedEffect
     var selectedTab by remember { mutableStateOf(0) }
     
     Scaffold(
@@ -141,7 +100,7 @@ fun MainScreen(
                 coroutineScope = coroutineScope,
                 modifier = Modifier.padding(paddingValues)
             )
-                }
+        }
     }
 }
 

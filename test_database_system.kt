@@ -1,123 +1,79 @@
 #!/usr/bin/env kotlin
 
 @file:DependsOn("org.jetbrains.kotlin:kotlin-stdlib:1.9.0")
-@file:DependsOn("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+@file:DependsOn("org.xerial:sqlite-jdbc:3.42.0.0")
 
-import java.io.File
-
-/**
- * Simple test script to verify our database system works.
- */
+import java.sql.*
 
 fun main() {
-    println("=== Database System Test ===")
-    
-    // Test 1: Check if all required files exist
-    testFileExistence()
-    
-    // Test 2: Check if build succeeds
-    testBuildSuccess()
-    
-    // Test 3: Check database structure
-    testDatabaseStructure()
-    
-    println("=== Test completed! ===")
-}
-
-fun testFileExistence() {
-    println("\n[TEST] Checking file existence...")
-    
-    val requiredFiles = listOf(
-        "composeApp/src/commonMain/kotlin/com/drive/license/test/database/Database.kt",
-        "composeApp/src/commonMain/kotlin/com/drive/license/test/database/DatabaseInitializer.kt",
-        "composeApp/src/commonMain/kotlin/com/drive/license/test/database/DatabaseLoader.kt",
-        "composeApp/src/androidMain/kotlin/com/drive/license/test/database/DatabaseLoader.android.kt",
-        "composeApp/src/commonMain/kotlin/com/drive/license/test/database/DatabaseExportUtil.kt",
-        "composeApp/src/commonMain/kotlin/com/drive/license/test/database/DatabaseTest.kt",
-        "composeApp/src/commonMain/resources/prepopulated_database.db",
-        "composeApp/build.gradle.kts"
-    )
-    
-    var allFilesExist = true
-    requiredFiles.forEach { filePath ->
-        val file = File(filePath)
-        val exists = file.exists()
-        println("  ${if (exists) "✓" else "✗"} $filePath")
-        if (!exists) allFilesExist = false
-    }
-    
-    if (allFilesExist) {
-        println("  ✓ All required files exist")
-    } else {
-        println("  ✗ Some required files are missing")
-    }
-}
-
-fun testBuildSuccess() {
-    println("\n[TEST] Checking build success...")
+    println("Testing database system...")
     
     try {
-        val process = ProcessBuilder("./gradlew", ":composeApp:assembleDebug")
-            .directory(File("."))
-            .redirectErrorStream(true)
-            .start()
+        Class.forName("org.sqlite.JDBC")
+        val connection = DriverManager.getConnection("jdbc:sqlite:composeApp/src/commonMain/resources/license_test_questions.db")
         
-        val output = process.inputStream.bufferedReader().readText()
-        val exitCode = process.waitFor()
-        
-        if (exitCode == 0) {
-            println("  ✓ Build succeeded")
-        } else {
-            println("  ✗ Build failed with exit code: $exitCode")
-            println("  Output: $output")
+        // Check table structure
+        println("=== Table Structure ===")
+        val metaData = connection.metaData
+        val columns = metaData.getColumns(null, null, "Question", null)
+        while (columns.next()) {
+            println("Column: ${columns.getString("COLUMN_NAME")} | Type: ${columns.getString("TYPE_NAME")}")
         }
+        columns.close()
+        
+        // Check question count
+        println("\n=== Question Count ===")
+        val countStmt = connection.createStatement()
+        val countRs = countStmt.executeQuery("SELECT COUNT(*) FROM Question")
+        if (countRs.next()) {
+            println("Total questions: ${countRs.getInt(1)}")
+        }
+        countRs.close()
+        countStmt.close()
+        
+        // Check first few questions
+        println("\n=== Sample Questions ===")
+        val stmt = connection.createStatement()
+        val rs = stmt.executeQuery("SELECT * FROM Question LIMIT 3")
+        val rsMetaData = rs.metaData
+        val columnCount = rsMetaData.columnCount
+        
+        while (rs.next()) {
+            println("Question ID: ${rs.getInt("id")}")
+            println("Question: ${rs.getString("question")}")
+            println("Answers: ${rs.getString("answers")}")
+            println("True Answer: ${rs.getString("true_answer")}")
+            println("Book ID: ${rs.getInt("book_id")}")
+            println("---")
+        }
+        rs.close()
+        stmt.close()
+        
+        // Check for any null or empty values
+        println("\n=== Data Quality Check ===")
+        val qualityStmt = connection.createStatement()
+        val qualityRs = qualityStmt.executeQuery("""
+            SELECT 
+                COUNT(*) as total,
+                SUM(CASE WHEN question IS NULL OR question = '' THEN 1 ELSE 0 END) as null_questions,
+                SUM(CASE WHEN answers IS NULL OR answers = '' THEN 1 ELSE 0 END) as null_answers,
+                SUM(CASE WHEN true_answer IS NULL OR true_answer = '' THEN 1 ELSE 0 END) as null_true_answers
+            FROM Question
+        """)
+        
+        if (qualityRs.next()) {
+            println("Total questions: ${qualityRs.getInt("total")}")
+            println("Null/empty questions: ${qualityRs.getInt("null_questions")}")
+            println("Null/empty answers: ${qualityRs.getInt("null_answers")}")
+            println("Null/empty true answers: ${qualityRs.getInt("null_true_answers")}")
+        }
+        qualityRs.close()
+        qualityStmt.close()
+        
+        connection.close()
+        
     } catch (e: Exception) {
-        println("  ✗ Build test failed: ${e.message}")
-    }
-}
-
-fun testDatabaseStructure() {
-    println("\n[TEST] Checking database structure...")
-    
-    // Check if SQLDelight files exist
-    val sqldelightFiles = listOf(
-        "composeApp/src/commonMain/sqldelight/com/drive/license/test/database/Question.sq",
-        "composeApp/src/commonMain/sqldelight/com/drive/license/test/database/Book.sq",
-        "composeApp/src/commonMain/sqldelight/com/drive/license/test/database/Category.sq"
-    )
-    
-    var allSqldelightFilesExist = true
-    sqldelightFiles.forEach { filePath ->
-        val file = File(filePath)
-        val exists = file.exists()
-        println("  ${if (exists) "✓" else "✗"} $filePath")
-        if (!exists) allSqldelightFilesExist = false
-    }
-    
-    if (allSqldelightFilesExist) {
-        println("  ✓ All SQLDelight files exist")
-    } else {
-        println("  ✗ Some SQLDelight files are missing")
-    }
-    
-    // Check if models exist
-    val modelFiles = listOf(
-        "composeApp/src/commonMain/kotlin/com/drive/license/test/models/DatabaseQuestion.kt",
-        "composeApp/src/commonMain/kotlin/com/drive/license/test/models/Book.kt",
-        "composeApp/src/commonMain/kotlin/com/drive/license/test/models/QuestionCategory.kt"
-    )
-    
-    var allModelFilesExist = true
-    modelFiles.forEach { filePath ->
-        val file = File(filePath)
-        val exists = file.exists()
-        println("  ${if (exists) "✓" else "✗"} $filePath")
-        if (!exists) allModelFilesExist = false
-    }
-    
-    if (allModelFilesExist) {
-        println("  ✓ All model files exist")
-    } else {
-        println("  ✗ Some model files are missing")
+        println("Error: ${e.message}")
+        e.printStackTrace()
     }
 } 

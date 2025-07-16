@@ -387,7 +387,7 @@ private fun ResultsScreen(
         )
         
         Text(
-            text = "Percentage: ${String.format("%.1f", score.percentage)}%",
+            text = "Percentage: ${score.percentage}%",
             style = MaterialTheme.typography.bodyLarge
         )
         
