@@ -33,3 +33,6 @@ WHERE id = ?;
 
 deleteQuestion:
 DELETE FROM Question WHERE id = ?;
+
+deleteAllQuestions:
+DELETE FROM Question;

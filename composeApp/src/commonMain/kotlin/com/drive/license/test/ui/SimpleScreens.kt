@@ -10,7 +10,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.drive.license.test.repository.QuestionRepository
+import com.drive.license.test.ui.components.QuestionScreen
+import com.drive.license.test.ui.QuestionViewModel
 import kotlinx.coroutines.CoroutineScope
+import androidx.compose.runtime.collectAsState
 
 @Composable
 fun TestModeScreen(
@@ -18,42 +21,32 @@ fun TestModeScreen(
     coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Icon(
-            imageVector = Icons.Default.List,
-            contentDescription = null,
-            modifier = Modifier.size(64.dp),
-            tint = MaterialTheme.colorScheme.primary
-        )
-        
-        Spacer(modifier = Modifier.height(16.dp))
-        
-        Text(
-            text = "Test Mode",
-            style = MaterialTheme.typography.headlineMedium
-        )
-        
-        Spacer(modifier = Modifier.height(8.dp))
-        
-        Text(
-            text = "Take a 20-question test to assess your knowledge",
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center
-        )
-        
-        Spacer(modifier = Modifier.height(24.dp))
-        
-        Button(
-            onClick = { }
+    val questions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
+    val viewModel = remember { QuestionViewModel(questionRepository, coroutineScope) }
+    
+    if (questions.isEmpty()) {
+        // Show loading state while questions are being loaded
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            Text("Start Test")
+            CircularProgressIndicator()
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = "Loading questions...",
+                style = MaterialTheme.typography.bodyLarge,
+                textAlign = TextAlign.Center
+            )
         }
+    } else {
+        // Show the question screen with loaded questions
+        QuestionScreen(
+            viewModel = viewModel,
+            modifier = modifier
+        )
     }
 }
 
@@ -63,6 +56,8 @@ fun PracticeModeScreen(
     coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
+    val questions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
+    
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -87,7 +82,7 @@ fun PracticeModeScreen(
         Spacer(modifier = Modifier.height(8.dp))
         
         Text(
-            text = "Focus on questions you need to improve",
+            text = "Total questions available: ${questions.size}",
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center
         )
@@ -108,6 +103,8 @@ fun StatisticsScreen(
     coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
+    val questions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
+    
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -132,7 +129,7 @@ fun StatisticsScreen(
         Spacer(modifier = Modifier.height(8.dp))
         
         Text(
-            text = "Track your progress and performance",
+            text = "Questions loaded: ${questions.size}",
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center
         )
@@ -153,6 +150,8 @@ fun AIAssistantScreen(
     coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
+    val questions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
+    
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -177,7 +176,7 @@ fun AIAssistantScreen(
         Spacer(modifier = Modifier.height(8.dp))
         
         Text(
-            text = "Get help and explanations from AI",
+            text = "Questions available: ${questions.size}",
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center
         )

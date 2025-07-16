@@ -152,4 +152,11 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
     fun deleteQuestion(id: Long) {
         questionQueries.deleteQuestion(id)
     }
+    
+    fun deleteAllQuestions() {
+        // Clear junction table first to avoid foreign key constraints
+        junctionQueries.deleteAllQuestionCategories()
+        // Then clear questions
+        questionQueries.deleteAllQuestions()
+    }
 }

@@ -12,6 +12,9 @@ INSERT INTO QuestionCategoryJunction (question_id, category_id) VALUES (?, ?);
 deleteQuestionCategories:
 DELETE FROM QuestionCategoryJunction WHERE question_id = ?;
 
+deleteAllQuestionCategories:
+DELETE FROM QuestionCategoryJunction;
+
 selectCategoriesForQuestion:
 SELECT c.* FROM QuestionCategory c
 JOIN QuestionCategoryJunction j ON c.id = j.category_id

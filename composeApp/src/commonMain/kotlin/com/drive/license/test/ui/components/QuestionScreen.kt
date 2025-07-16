@@ -101,6 +101,8 @@ private fun QuestionContent(
     if (showResults) {
         ResultsScreen(
             score = viewModel.calculateScore(),
+            questions = uiState.questions,
+            selectedAnswers = uiState.selectedAnswers,
             onRetry = {
                 viewModel.resetTest()
                 showResults = false
@@ -176,6 +178,8 @@ private fun QuestionItem(
     selectedAnswerIndex: Int?,
     onAnswerSelected: (Int) -> Unit
 ) {
+    var showCorrectAnswer by remember { mutableStateOf(false) }
+    
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -187,6 +191,49 @@ private fun QuestionItem(
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier.fillMaxWidth()
         )
+        
+        // Toggle button to show/hide correct answer
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Show correct answer",
+                style = MaterialTheme.typography.bodyMedium
+            )
+            Switch(
+                checked = showCorrectAnswer,
+                onCheckedChange = { showCorrectAnswer = it }
+            )
+        }
+        
+        // Show the correct answer if toggle is enabled
+        if (showCorrectAnswer) {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFFE8F5E8)
+                )
+            ) {
+                Column(
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    Text(
+                        text = "Correct Answer:",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = Color(0xFF2E7D32),
+                        fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = question.trueAnswer,
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = Color(0xFF2E7D32)
+                    )
+                }
+            }
+        }
         
         question.image?.let { imageName ->
             val resourceName = imageName.replace(".png", "")
@@ -238,20 +285,50 @@ private fun QuestionItem(
                 )
             }
         }
+        
+        // Show the correct answer after user has selected an answer
+        if (selectedAnswerIndex != null) {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFFE8F5E8)
+                )
+            ) {
+                Column(
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    Text(
+                        text = "Correct Answer:",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = Color(0xFF2E7D32),
+                        fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = question.trueAnswer,
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = Color(0xFF2E7D32)
+                    )
+                }
+            }
+        }
     }
 }
 
 @Composable
 private fun ResultsScreen(
     score: TestScore,
+    questions: List<DatabaseQuestion>,
+    selectedAnswers: Map<Int, Int>,
     onRetry: () -> Unit
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
             text = if (score.isPassed) "Congratulations!" else "Try Again",
@@ -259,25 +336,83 @@ private fun ResultsScreen(
             color = if (score.isPassed) Color(0xFF4CAF50) else Color(0xFFE53935)
         )
         
-        Spacer(modifier = Modifier.height(16.dp))
-        
         Text(
             text = "Score: ${score.correctAnswers}/${score.totalAnswered}",
             style = MaterialTheme.typography.titleLarge
         )
         
         Text(
-            text = "Percentage: ${score.percentage}",
+            text = "Percentage: ${String.format("%.1f", score.percentage)}%",
             style = MaterialTheme.typography.bodyLarge
         )
         
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         
         Button(
             onClick = onRetry,
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Take Test Again")
+        }
+        
+        // Detailed breakdown of questions and answers
+        if (questions.isNotEmpty()) {
+            Spacer(modifier = Modifier.height(16.dp))
+            
+            Text(
+                text = "Question Review",
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.fillMaxWidth()
+            )
+            
+            questions.forEachIndexed { index, question ->
+                val selectedAnswerIndex = selectedAnswers[index]
+                val isCorrect = selectedAnswerIndex != null && 
+                               question.answers[selectedAnswerIndex] == question.trueAnswer
+                
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(
+                        containerColor = if (isCorrect) Color(0xFFE8F5E8) else Color(0xFFFFEBEE)
+                    )
+                ) {
+                    Column(
+                        modifier = Modifier.padding(12.dp)
+                    ) {
+                        Text(
+                            text = "Question ${index + 1}",
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
+                            color = if (isCorrect) Color(0xFF2E7D32) else Color(0xFFC62828)
+                        )
+                        
+                        Text(
+                            text = question.question,
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                        
+                        Spacer(modifier = Modifier.height(8.dp))
+                        
+                        if (selectedAnswerIndex != null) {
+                            Text(
+                                text = "Your Answer: ${question.answers[selectedAnswerIndex]}",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = if (isCorrect) Color(0xFF2E7D32) else Color(0xFFC62828)
+                            )
+                        }
+                        
+                        Text(
+                            text = "Correct Answer: ${question.trueAnswer}",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = Color(0xFF2E7D32),
+                            fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
+                        )
+                    }
+                }
+                
+                Spacer(modifier = Modifier.height(8.dp))
+            }
         }
     }
 } 

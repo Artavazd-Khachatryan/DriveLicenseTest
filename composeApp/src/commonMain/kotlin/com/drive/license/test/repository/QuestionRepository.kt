@@ -26,4 +26,8 @@ class QuestionRepository(private val database: Database) {
     fun deleteQuestion(id: Long) {
         database.deleteQuestion(id)
     }
+    
+    fun deleteAllQuestions() {
+        database.deleteAllQuestions()
+    }
 }

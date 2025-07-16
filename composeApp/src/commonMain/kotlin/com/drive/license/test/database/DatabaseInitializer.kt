@@ -12,27 +12,32 @@ class DatabaseInitializer(
     private val questionRepository: QuestionRepository,
     private val coroutineScope: CoroutineScope
 ) {
-    
+
     fun initializeDatabase() {
         coroutineScope.launch {
-            val success = loadPrepopulatedDatabase()
-            
+            val success = checkDatabaseStatus()
+
             if (success) {
                 val questionCount = questionRepository.getAllQuestions().first().size
-                println("[DEBUG_LOG] Pre-populated database loaded successfully with $questionCount questions")
+                println("[DEBUG_LOG] Database status checked - contains $questionCount questions")
             } else {
-                println("[DEBUG_LOG] Failed to load pre-populated database")
+                println("[DEBUG_LOG] Failed to check database status")
             }
         }
     }
 
-    private suspend fun loadPrepopulatedDatabase(): Boolean {
+    private suspend fun checkDatabaseStatus(): Boolean {
         return withContext(Dispatchers.IO) {
             try {
                 val questions = questionRepository.getAllQuestions().first()
-                questions.isNotEmpty()
+                if (questions.isEmpty()) {
+                    println("[DEBUG_LOG] Database is empty. Will be populated from Compose UI.")
+                } else {
+                    println("[DEBUG_LOG] Database already contains ${questions.size} questions")
+                }
+                true
             } catch (e: Exception) {
-                println("[DEBUG_LOG] Error loading pre-populated database: ${e.message}")
+                println("[DEBUG_LOG] Error checking database: ${e.message}")
                 false
             }
         }
