@@ -165,7 +165,6 @@ private fun QuestionContent(
                 ) {
                     Button(
                         onClick = { 
-                            println("[DEBUG] Previous button clicked")
                             viewModel.previousQuestion() 
                         },
                         enabled = viewModel.canMoveToPrevious(),
@@ -182,7 +181,6 @@ private fun QuestionContent(
                     if (viewModel.isOnLastQuestion()) {
                         Button(
                             onClick = { 
-                                println("[DEBUG] Finish button clicked")
                                 showResults = true 
                             },
                             enabled = viewModel.canFinish(),
@@ -198,7 +196,6 @@ private fun QuestionContent(
                     } else {
                         Button(
                             onClick = { 
-                                println("[DEBUG] Next button clicked")
                                 viewModel.nextQuestion() 
                             },
                             enabled = viewModel.canMoveToNext(),
