@@ -11,7 +11,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.drive.license.test.repository.QuestionRepository
 import com.drive.license.test.ui.components.QuestionScreen
-import com.drive.license.test.ui.QuestionViewModel
 import kotlinx.coroutines.CoroutineScope
 import androidx.compose.runtime.collectAsState
 
@@ -25,7 +24,6 @@ fun TestModeScreen(
     val viewModel = remember { QuestionViewModel(questionRepository, coroutineScope) }
     
     if (questions.isEmpty()) {
-        // Show loading state while questions are being loaded
         Column(
             modifier = modifier
                 .fillMaxSize()
@@ -42,7 +40,6 @@ fun TestModeScreen(
             )
         }
     } else {
-        // Show the question screen with loaded questions
         QuestionScreen(
             viewModel = viewModel,
             modifier = modifier
@@ -53,7 +50,6 @@ fun TestModeScreen(
 @Composable
 fun PracticeModeScreen(
     questionRepository: QuestionRepository,
-    coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
     val questions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
@@ -100,7 +96,6 @@ fun PracticeModeScreen(
 @Composable
 fun StatisticsScreen(
     questionRepository: QuestionRepository,
-    coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
     val questions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
@@ -147,7 +142,6 @@ fun StatisticsScreen(
 @Composable
 fun AIAssistantScreen(
     questionRepository: QuestionRepository,
-    coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
     val questions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())

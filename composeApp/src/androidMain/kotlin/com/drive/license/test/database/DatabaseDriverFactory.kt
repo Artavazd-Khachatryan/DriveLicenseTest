@@ -1,6 +1,7 @@
 package com.drive.license.test.database
 
 import android.content.Context
+import androidx.compose.runtime.Composable
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import app.cash.sqldelight.db.SqlDriver
 import com.drive.license.test.LicenseDatabase
@@ -32,3 +33,6 @@ actual class DatabaseDriverFactory {
         } catch (e: Exception) { }
     }
 }
+
+@Composable
+actual fun getDatabaseDriverFactory(): DatabaseDriverFactory = DatabaseDriverFactory()

@@ -15,14 +15,7 @@ class DatabaseInitializer(
 
     fun initializeDatabase() {
         coroutineScope.launch {
-            val success = checkDatabaseStatus()
-
-            if (success) {
-                val questionCount = questionRepository.getAllQuestions().first().size
-                println("[DEBUG_LOG] Database status checked - contains $questionCount questions")
-            } else {
-                println("[DEBUG_LOG] Failed to check database status")
-            }
+            checkDatabaseStatus()
         }
     }
 
@@ -30,14 +23,8 @@ class DatabaseInitializer(
         return withContext(Dispatchers.IO) {
             try {
                 val questions = questionRepository.getAllQuestions().first()
-                if (questions.isEmpty()) {
-                    println("[DEBUG_LOG] Database is empty. Will be populated from Compose UI.")
-                } else {
-                    println("[DEBUG_LOG] Database already contains ${questions.size} questions")
-                }
-                true
+                questions.isNotEmpty()
             } catch (e: Exception) {
-                println("[DEBUG_LOG] Error checking database: ${e.message}")
                 false
             }
         }

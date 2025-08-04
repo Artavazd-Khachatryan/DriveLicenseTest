@@ -31,30 +31,6 @@ kotlin {
         }
     }
 
-    // Custom task to copy database file to iOS framework
-    tasks.register("copyDatabaseToIosFramework") {
-        dependsOn("linkDebugFrameworkIosArm64", "linkDebugFrameworkIosSimulatorArm64")
-        doLast {
-            // Copy to device framework
-            val deviceFrameworkDir = file("build/bin/iosArm64/debugFramework/ComposeApp.framework")
-            val deviceResourcesDir = file("${deviceFrameworkDir}/Resources")
-            val databaseFile = file("src/commonMain/resources/license_test_questions.db")
-            
-            deviceResourcesDir.mkdirs()
-            databaseFile.copyTo(file("${deviceResourcesDir}/license_test_questions.db"), overwrite = true)
-            
-            // Copy to simulator framework
-            val simulatorFrameworkDir = file("build/bin/iosSimulatorArm64/debugFramework/ComposeApp.framework")
-            val simulatorResourcesDir = file("${simulatorFrameworkDir}/Resources")
-            
-            simulatorResourcesDir.mkdirs()
-            databaseFile.copyTo(file("${simulatorResourcesDir}/license_test_questions.db"), overwrite = true)
-            
-            println("Database file copied to device framework: ${deviceResourcesDir}/license_test_questions.db")
-            println("Database file copied to simulator framework: ${simulatorResourcesDir}/license_test_questions.db")
-        }
-    }
-
     sourceSets {
 
         androidMain.dependencies {

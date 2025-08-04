@@ -3,18 +3,6 @@ CREATE TABLE QuestionCategory (
     name TEXT NOT NULL
 );
 
--- Insert all the enum values
-INSERT INTO QuestionCategory (id, name) VALUES (1, 'TRAFFIC_SIGNS_AND_MARKINGS');
-INSERT INTO QuestionCategory (id, name) VALUES (2, 'LANE_USAGE_AND_POSITIONING');
-INSERT INTO QuestionCategory (id, name) VALUES (3, 'MANEUVERS_AND_TURNS');
-INSERT INTO QuestionCategory (id, name) VALUES (4, 'RIGHT_OF_WAY_AND_PRIORITY');
-INSERT INTO QuestionCategory (id, name) VALUES (5, 'PROHIBITED_ACTIONS');
-INSERT INTO QuestionCategory (id, name) VALUES (6, 'SPECIAL_VEHICLES_AND_SITUATIONS');
-INSERT INTO QuestionCategory (id, name) VALUES (7, 'INTERSECTIONS_AND_CROSSINGS');
-INSERT INTO QuestionCategory (id, name) VALUES (8, 'ROAD_CONDITIONS_AND_VISIBILITY');
-INSERT INTO QuestionCategory (id, name) VALUES (9, 'VEHICLE_TYPES_AND_CATEGORIES');
-INSERT INTO QuestionCategory (id, name) VALUES (10, 'GENERAL_TRAFFIC_RULES');
-
 selectAll:
 SELECT * FROM QuestionCategory;
 

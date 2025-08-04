@@ -32,17 +32,13 @@ actual class DatabaseLoader {
                         inputStream.copyTo(outputStream)
                     }
                 }
-                println("[DEBUG_LOG] Pre-populated database copied from assets to: ${databaseFile.absolutePath}")
                 true
             } else {
-                println("[DEBUG_LOG] Database already exists at: ${databaseFile.absolutePath}")
                 true
             }
         } catch (e: IOException) {
-            println("[DEBUG_LOG] Error loading pre-populated database: ${e.message}")
             false
         } catch (e: ClassCastException) {
-            println("[DEBUG_LOG] Invalid context type: ${e.message}")
             false
         }
     }
@@ -63,17 +59,13 @@ actual class DatabaseLoader {
             if (databaseFile.exists()) {
                 outputFile.parentFile?.mkdirs()
                 databaseFile.copyTo(outputFile, overwrite = true)
-                println("[DEBUG_LOG] Database exported to: ${outputFile.absolutePath}")
                 true
             } else {
-                println("[DEBUG_LOG] Database file not found: ${databaseFile.absolutePath}")
                 false
             }
         } catch (e: IOException) {
-            println("[DEBUG_LOG] Error exporting database: ${e.message}")
             false
         } catch (e: ClassCastException) {
-            println("[DEBUG_LOG] Invalid context type: ${e.message}")
             false
         }
     }

@@ -3,18 +3,6 @@ CREATE TABLE Book (
     name TEXT NOT NULL
 );
 
--- Insert all the enum values
-INSERT INTO Book (id, name) VALUES (1, 'BOOK_1');
-INSERT INTO Book (id, name) VALUES (2, 'BOOK_2');
-INSERT INTO Book (id, name) VALUES (3, 'BOOK_3');
-INSERT INTO Book (id, name) VALUES (4, 'BOOK_4');
-INSERT INTO Book (id, name) VALUES (5, 'BOOK_5');
-INSERT INTO Book (id, name) VALUES (6, 'BOOK_6');
-INSERT INTO Book (id, name) VALUES (7, 'BOOK_7');
-INSERT INTO Book (id, name) VALUES (8, 'BOOK_8');
-INSERT INTO Book (id, name) VALUES (9, 'BOOK_9');
-INSERT INTO Book (id, name) VALUES (10, 'BOOK_10');
-
 selectAll:
 SELECT * FROM Book;
 

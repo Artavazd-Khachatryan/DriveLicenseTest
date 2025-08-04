@@ -2,6 +2,8 @@ package com.drive.license.test.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -20,7 +22,6 @@ fun MainScreen(
     coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
-    // Remove PopulateQuestionsOnce and related debug LaunchedEffect
     var selectedTab by remember { mutableStateOf(0) }
     
     Scaffold(
@@ -48,7 +49,7 @@ fun MainScreen(
                     onClick = { selectedTab = 0 }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Default.List, contentDescription = "Test") },
+                    icon = { Icon(Icons.AutoMirrored.Filled.List, contentDescription = "Test") },
                     label = { Text("Test") },
                     selected = selectedTab == 1,
                     onClick = { selectedTab = 1 }
@@ -76,8 +77,6 @@ fun MainScreen(
     ) { paddingValues ->
         when (selectedTab) {
             0 -> HomeScreen(
-                questionRepository = questionRepository,
-                coroutineScope = coroutineScope,
                 modifier = Modifier.padding(paddingValues)
             )
             1 -> TestModeScreen(
@@ -87,17 +86,14 @@ fun MainScreen(
             )
             2 -> PracticeModeScreen(
                 questionRepository = questionRepository,
-                coroutineScope = coroutineScope,
                 modifier = Modifier.padding(paddingValues)
             )
             3 -> StatisticsScreen(
                 questionRepository = questionRepository,
-                coroutineScope = coroutineScope,
                 modifier = Modifier.padding(paddingValues)
             )
             4 -> AIAssistantScreen(
                 questionRepository = questionRepository,
-                coroutineScope = coroutineScope,
                 modifier = Modifier.padding(paddingValues)
             )
         }
@@ -108,8 +104,6 @@ fun MainScreen(
 
 @Composable
 fun HomeScreen(
-    questionRepository: QuestionRepository,
-    coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -149,15 +143,14 @@ fun HomeScreen(
                 )
             }
         }
-        
-        // Quick actions
+
         Column(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             QuickActionCard(
                 title = "Take a Test",
                 description = "20 random questions to test your knowledge",
-                icon = Icons.Default.List,
+                icon = Icons.AutoMirrored.Filled.List,
                 onClick = { }
             )
             
@@ -230,7 +223,7 @@ fun QuickActionCard(
             }
             
             Icon(
-                imageVector = Icons.Default.ArrowForward,
+                imageVector = Icons.AutoMirrored.Filled.ArrowForward,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )

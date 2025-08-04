@@ -28,7 +28,7 @@ fun QuestionScreen(
     modifier: Modifier = Modifier
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    
+
     Surface(
         modifier = modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -37,12 +37,15 @@ fun QuestionScreen(
             uiState.isLoading -> {
                 LoadingScreen()
             }
+
             uiState.error != null -> {
                 ErrorScreen(error = uiState.error!!)
             }
+
             uiState.questions.isEmpty() -> {
                 EmptyStateScreen()
             }
+
             else -> {
                 QuestionContent(
                     viewModel = viewModel,
@@ -97,7 +100,7 @@ private fun QuestionContent(
     uiState: QuestionUiState
 ) {
     var showResults by remember { mutableStateOf(false) }
-    
+
     if (showResults) {
         ResultsScreen(
             score = viewModel.calculateScore(),
@@ -117,27 +120,25 @@ private fun QuestionContent(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             LinearProgressIndicator(
-                progress = if (uiState.questions.isNotEmpty()) {
-                    (viewModel.currentQuestionIndex + 1).toFloat() / uiState.questions.size
-                } else 0f,
-                modifier = Modifier.fillMaxWidth()
+                progress = {
+                    if (uiState.questions.isNotEmpty()) {
+                        (viewModel.currentQuestionIndex + 1).toFloat() / uiState.questions.size
+                    } else 0f
+                },
+                modifier = Modifier.fillMaxWidth(),
+                color = ProgressIndicatorDefaults.linearColor,
+                trackColor = ProgressIndicatorDefaults.linearTrackColor,
+                strokeCap = ProgressIndicatorDefaults.LinearStrokeCap,
             )
-            
+
             Text(
                 text = "Question ${viewModel.currentQuestionIndex + 1} of ${uiState.questions.size}",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
-            
-            // Debug information (commented out for cleaner UI)
-            // Text(
-            //     text = "Debug: canMoveToPrevious=${viewModel.canMoveToPrevious()}, canMoveToNext=${viewModel.canMoveToNext()}, isOnLastQuestion=${viewModel.isOnLastQuestion()}",
-            //     style = MaterialTheme.typography.bodySmall,
-            //     color = MaterialTheme.colorScheme.error
-            // )
-            
+
             Spacer(modifier = Modifier.weight(1f))
-            
+
             viewModel.getCurrentQuestion()?.let { question ->
                 QuestionItem(
                     question = question,
@@ -147,9 +148,9 @@ private fun QuestionContent(
                     }
                 )
             }
-            
+
             Spacer(modifier = Modifier.height(16.dp))
-            
+
             // Navigation buttons - always visible at the bottom
             Card(
                 modifier = Modifier.fillMaxWidth(),
@@ -164,30 +165,30 @@ private fun QuestionContent(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Button(
-                        onClick = { 
-                            viewModel.previousQuestion() 
+                        onClick = {
+                            viewModel.previousQuestion()
                         },
                         enabled = viewModel.canMoveToPrevious(),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = if (viewModel.canMoveToPrevious()) 
-                                MaterialTheme.colorScheme.primary 
-                            else 
+                            containerColor = if (viewModel.canMoveToPrevious())
+                                MaterialTheme.colorScheme.primary
+                            else
                                 MaterialTheme.colorScheme.surfaceVariant
                         )
                     ) {
                         Text("Previous")
                     }
-                    
+
                     if (viewModel.isOnLastQuestion()) {
                         Button(
-                            onClick = { 
-                                showResults = true 
+                            onClick = {
+                                showResults = true
                             },
                             enabled = viewModel.canFinish(),
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = if (viewModel.canFinish()) 
-                                    Color(0xFF4CAF50) 
-                                else 
+                                containerColor = if (viewModel.canFinish())
+                                    Color(0xFF4CAF50)
+                                else
                                     MaterialTheme.colorScheme.surfaceVariant
                             )
                         ) {
@@ -195,14 +196,14 @@ private fun QuestionContent(
                         }
                     } else {
                         Button(
-                            onClick = { 
-                                viewModel.nextQuestion() 
+                            onClick = {
+                                viewModel.nextQuestion()
                             },
                             enabled = viewModel.canMoveToNext(),
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = if (viewModel.canMoveToNext()) 
-                                    MaterialTheme.colorScheme.primary 
-                                else 
+                                containerColor = if (viewModel.canMoveToNext())
+                                    MaterialTheme.colorScheme.primary
+                                else
                                     MaterialTheme.colorScheme.surfaceVariant
                             )
                         ) {
@@ -223,7 +224,7 @@ private fun QuestionItem(
     onAnswerSelected: (Int) -> Unit
 ) {
     var showCorrectAnswer by remember { mutableStateOf(false) }
-    
+
     Column(
         modifier = Modifier
             .fillMaxWidth(),
@@ -234,8 +235,7 @@ private fun QuestionItem(
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier.fillMaxWidth()
         )
-        
-        // Toggle button to show/hide correct answer
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -250,8 +250,7 @@ private fun QuestionItem(
                 onCheckedChange = { showCorrectAnswer = it }
             )
         }
-        
-        // Show the correct answer if toggle is enabled
+
         if (showCorrectAnswer) {
             Card(
                 modifier = Modifier.fillMaxWidth(),
@@ -277,7 +276,7 @@ private fun QuestionItem(
                 }
             }
         }
-        
+
         question.image?.let { imageName ->
             val resourceName = imageName.replace(".png", "")
             val imageResource = Res.allDrawableResources[resourceName]
@@ -292,26 +291,26 @@ private fun QuestionItem(
                 )
             }
         }
-        
+
         question.answers.forEachIndexed { index, answer ->
             val isSelected = selectedAnswerIndex == index
             val trueAnswerText = question.trueAnswer
             val answerText = answer
             val isCorrect = selectedAnswerIndex != null && answerText == trueAnswerText
             val isIncorrect = selectedAnswerIndex != null && answerText != trueAnswerText && isSelected
-            
+
             val backgroundColor = when {
                 isCorrect -> Color(0xFF4CAF50)
                 isIncorrect -> Color(0xFFE53935)
                 isSelected -> MaterialTheme.colorScheme.primaryContainer
                 else -> MaterialTheme.colorScheme.surface
             }
-            
+
             val contentColor = when {
                 isCorrect || isIncorrect || isSelected -> MaterialTheme.colorScheme.onPrimaryContainer
                 else -> MaterialTheme.colorScheme.onSurface
             }
-            
+
             Button(
                 onClick = { onAnswerSelected(index) },
                 modifier = Modifier.fillMaxWidth(),
@@ -327,8 +326,7 @@ private fun QuestionItem(
                 )
             }
         }
-        
-        // Show the correct answer after user has selected an answer
+
         if (selectedAnswerIndex != null) {
             Card(
                 modifier = Modifier.fillMaxWidth(),
@@ -377,41 +375,40 @@ private fun ResultsScreen(
             style = MaterialTheme.typography.headlineMedium,
             color = if (score.isPassed) Color(0xFF4CAF50) else Color(0xFFE53935)
         )
-        
+
         Text(
             text = "Score: ${score.correctAnswers}/${score.totalAnswered}",
             style = MaterialTheme.typography.titleLarge
         )
-        
+
         Text(
             text = "Percentage: ${score.percentage}%",
             style = MaterialTheme.typography.bodyLarge
         )
-        
+
         Spacer(modifier = Modifier.height(16.dp))
-        
+
         Button(
             onClick = onRetry,
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Take Test Again")
         }
-        
-        // Detailed breakdown of questions and answers
+
         if (questions.isNotEmpty()) {
             Spacer(modifier = Modifier.height(16.dp))
-            
+
             Text(
                 text = "Question Review",
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.fillMaxWidth()
             )
-            
+
             questions.forEachIndexed { index, question ->
                 val selectedAnswerIndex = selectedAnswers[index]
-                val isCorrect = selectedAnswerIndex != null && 
-                               question.answers[selectedAnswerIndex] == question.trueAnswer
-                
+                val isCorrect = selectedAnswerIndex != null &&
+                        question.answers[selectedAnswerIndex] == question.trueAnswer
+
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     colors = CardDefaults.cardColors(
@@ -427,15 +424,15 @@ private fun ResultsScreen(
                             fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
                             color = if (isCorrect) Color(0xFF2E7D32) else Color(0xFFC62828)
                         )
-                        
+
                         Text(
                             text = question.question,
                             style = MaterialTheme.typography.bodyMedium,
                             modifier = Modifier.fillMaxWidth()
                         )
-                        
+
                         Spacer(modifier = Modifier.height(8.dp))
-                        
+
                         if (selectedAnswerIndex != null) {
                             Text(
                                 text = "Your Answer: ${question.answers[selectedAnswerIndex]}",
@@ -443,7 +440,7 @@ private fun ResultsScreen(
                                 color = if (isCorrect) Color(0xFF2E7D32) else Color(0xFFC62828)
                             )
                         }
-                        
+
                         Text(
                             text = "Correct Answer: ${question.trueAnswer}",
                             style = MaterialTheme.typography.bodySmall,
@@ -452,7 +449,7 @@ private fun ResultsScreen(
                         )
                     }
                 }
-                
+
                 Spacer(modifier = Modifier.height(8.dp))
             }
         }

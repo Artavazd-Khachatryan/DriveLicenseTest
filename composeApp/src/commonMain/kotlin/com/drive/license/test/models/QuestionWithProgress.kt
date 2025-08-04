@@ -33,8 +33,8 @@ data class QuestionAttempt(
     val questionId: Long,
     val selectedAnswer: String,
     val isCorrect: Boolean,
-    val timeSpent: Long?, // milliseconds
-    val attemptTime: Long // timestamp
+    val timeSpent: Long?,
+    val attemptTime: Long
 )
 
 data class TestSession(
@@ -49,7 +49,7 @@ data class TestSession(
         get() = if (totalQuestions > 0) correctAnswers.toFloat() / totalQuestions else 0f
     
     val isPassed: Boolean
-        get() = score >= 0.7f // 70% passing threshold
+        get() = score >= 0.7f
     
     val timeSpent: Long?
         get() = endTime?.let { it - startTime }

@@ -11,9 +11,6 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.serializer
 
@@ -37,7 +34,7 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             }
     }
     
-    suspend fun getQuestionById(id: Long): DatabaseQuestion? {
+    fun getQuestionById(id: Long): DatabaseQuestion? {
         val dbQuestion = questionQueries.selectById(id).executeAsOneOrNull() ?: return null
         return mapDbQuestionToDatabaseQuestionById(dbQuestion)
     }
@@ -54,7 +51,26 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             }
     }
     
-    private suspend fun mapDbQuestionToDatabaseQuestion(dbQuestion: com.drive.license.test.database.SelectAll): DatabaseQuestion {
+    private fun mapDbQuestionToDatabaseQuestion(dbQuestion: SelectAll): DatabaseQuestion {
+        val bookEnum = Book.valueOf(dbQuestion.book_name)
+        val categories = junctionQueries.selectCategoriesForQuestion(dbQuestion.id)
+            .executeAsList()
+            .map { QuestionCategory.valueOf(it.name) }
+        
+        val answersList = parseAnswersFromJson(dbQuestion.answers)
+        
+        return DatabaseQuestion(
+            id = dbQuestion.id,
+            question = dbQuestion.question,
+            image = dbQuestion.image,
+            answers = answersList,
+            trueAnswer = dbQuestion.true_answer,
+            book = bookEnum,
+            categories = categories
+        )
+    }
+    
+    private fun mapDbQuestionToDatabaseQuestionById(dbQuestion: SelectById): DatabaseQuestion {
         val bookEnum = Book.valueOf(dbQuestion.book_name)
         val categories = junctionQueries.selectCategoriesForQuestion(dbQuestion.id)
             .executeAsList()
@@ -74,33 +90,12 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
         )
     }
     
-    private suspend fun mapDbQuestionToDatabaseQuestionById(dbQuestion: com.drive.license.test.database.SelectById): DatabaseQuestion {
+    private fun mapDbQuestionToDatabaseQuestionByBook(dbQuestion: SelectByBook): DatabaseQuestion {
         val bookEnum = Book.valueOf(dbQuestion.book_name)
         val categories = junctionQueries.selectCategoriesForQuestion(dbQuestion.id)
             .executeAsList()
             .map { QuestionCategory.valueOf(it.name) }
-        
-        // Parse JSON answers string back to list
-        val answersList = parseAnswersFromJson(dbQuestion.answers)
-        
-        return DatabaseQuestion(
-            id = dbQuestion.id,
-            question = dbQuestion.question,
-            image = dbQuestion.image,
-            answers = answersList,
-            trueAnswer = dbQuestion.true_answer,
-            book = bookEnum,
-            categories = categories
-        )
-    }
-    
-    private suspend fun mapDbQuestionToDatabaseQuestionByBook(dbQuestion: com.drive.license.test.database.SelectByBook): DatabaseQuestion {
-        val bookEnum = Book.valueOf(dbQuestion.book_name)
-        val categories = junctionQueries.selectCategoriesForQuestion(dbQuestion.id)
-            .executeAsList()
-            .map { QuestionCategory.valueOf(it.name) }
-        
-        // Parse JSON answers string back to list
+
         val answersList = parseAnswersFromJson(dbQuestion.answers)
         
         return DatabaseQuestion(
@@ -117,7 +112,7 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
     private fun parseAnswersFromJson(answersJson: String): List<String> {
         return try {
             Json.decodeFromString(ListSerializer(String.serializer()), answersJson)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             answersJson.split(",").map { it.trim() }
         }
     }
@@ -126,7 +121,7 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
         return Json.encodeToString(ListSerializer(String.serializer()), answers)
     }
     
-    suspend fun insertDatabaseQuestion(databaseQuestion: DatabaseQuestion): Long {
+    fun insertDatabaseQuestion(databaseQuestion: DatabaseQuestion): Long {
         val bookId = bookQueries.selectByName(databaseQuestion.book.name).executeAsOne().id
         
         val answersJson = answersToJson(databaseQuestion.answers)
@@ -156,7 +151,6 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
     fun deleteAllQuestions() {
         // Clear junction table first to avoid foreign key constraints
         junctionQueries.deleteAllQuestionCategories()
-        // Then clear questions
         questionQueries.deleteAllQuestions()
     }
 }

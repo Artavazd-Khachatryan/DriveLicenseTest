@@ -11,7 +11,7 @@ class QuestionRepository(private val database: Database) {
         return database.getAllQuestions()
     }
     
-    suspend fun getQuestionById(id: Long): DatabaseQuestion? {
+    fun getQuestionById(id: Long): DatabaseQuestion? {
         return database.getQuestionById(id)
     }
     
@@ -19,7 +19,7 @@ class QuestionRepository(private val database: Database) {
         return database.getQuestionsByBook(book)
     }
     
-    suspend fun insertDatabaseQuestion(databaseQuestion: DatabaseQuestion): Long {
+    fun insertDatabaseQuestion(databaseQuestion: DatabaseQuestion): Long {
         return database.insertDatabaseQuestion(databaseQuestion)
     }
     
