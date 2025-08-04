@@ -3,6 +3,7 @@ package com.drive.license.test.repository
 import com.drive.license.test.database.Database
 import com.drive.license.test.models.Book
 import com.drive.license.test.models.DatabaseQuestion
+import com.drive.license.test.models.QuestionCategory
 import kotlinx.coroutines.flow.Flow
 
 class QuestionRepository(private val database: Database) {
@@ -17,6 +18,10 @@ class QuestionRepository(private val database: Database) {
     
     fun getQuestionsByBook(book: Book): Flow<List<DatabaseQuestion>> {
         return database.getQuestionsByBook(book)
+    }
+    
+    fun getQuestionsByCategory(category: QuestionCategory): Flow<List<DatabaseQuestion>> {
+        return database.getQuestionsByCategory(category)
     }
     
     fun insertDatabaseQuestion(databaseQuestion: DatabaseQuestion): Long {

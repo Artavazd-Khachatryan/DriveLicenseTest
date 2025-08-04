@@ -11,3 +11,9 @@ SELECT * FROM QuestionCategory WHERE id = ?;
 
 selectByName:
 SELECT * FROM QuestionCategory WHERE name = ?;
+
+insertCategory:
+INSERT INTO QuestionCategory (name) VALUES (?);
+
+deleteAllCategories:
+DELETE FROM QuestionCategory;

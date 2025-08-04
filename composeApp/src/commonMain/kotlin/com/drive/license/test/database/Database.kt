@@ -51,6 +51,18 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             }
     }
     
+    fun getQuestionsByCategory(category: QuestionCategory): Flow<List<DatabaseQuestion>> {
+        val categoryId = categoryQueries.selectByName(category.name).executeAsOne().id
+        return junctionQueries.selectQuestionsForCategory(categoryId)
+            .asFlow()
+            .mapToList(Dispatchers.IO)
+            .map { dbQuestions ->
+                dbQuestions.map { dbQuestion ->
+                    mapDbQuestionToDatabaseQuestionByCategory(dbQuestion)
+                }
+            }
+    }
+    
     private fun mapDbQuestionToDatabaseQuestion(dbQuestion: SelectAll): DatabaseQuestion {
         val bookEnum = Book.valueOf(dbQuestion.book_name)
         val categories = junctionQueries.selectCategoriesForQuestion(dbQuestion.id)
@@ -91,6 +103,25 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
     }
     
     private fun mapDbQuestionToDatabaseQuestionByBook(dbQuestion: SelectByBook): DatabaseQuestion {
+        val bookEnum = Book.valueOf(dbQuestion.book_name)
+        val categories = junctionQueries.selectCategoriesForQuestion(dbQuestion.id)
+            .executeAsList()
+            .map { QuestionCategory.valueOf(it.name) }
+
+        val answersList = parseAnswersFromJson(dbQuestion.answers)
+        
+        return DatabaseQuestion(
+            id = dbQuestion.id,
+            question = dbQuestion.question,
+            image = dbQuestion.image,
+            answers = answersList,
+            trueAnswer = dbQuestion.true_answer,
+            book = bookEnum,
+            categories = categories
+        )
+    }
+    
+    private fun mapDbQuestionToDatabaseQuestionByCategory(dbQuestion: SelectQuestionsForCategory): DatabaseQuestion {
         val bookEnum = Book.valueOf(dbQuestion.book_name)
         val categories = junctionQueries.selectCategoriesForQuestion(dbQuestion.id)
             .executeAsList()

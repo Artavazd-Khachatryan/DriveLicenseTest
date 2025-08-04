@@ -21,6 +21,7 @@ JOIN QuestionCategoryJunction j ON c.id = j.category_id
 WHERE j.question_id = ?;
 
 selectQuestionsForCategory:
-SELECT q.* FROM Question q
+SELECT q.*, b.name AS book_name FROM Question q
 JOIN QuestionCategoryJunction j ON q.id = j.question_id
+JOIN Book b ON q.book_id = b.id
 WHERE j.category_id = ?;

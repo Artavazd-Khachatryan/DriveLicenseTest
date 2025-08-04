@@ -11,3 +11,9 @@ SELECT * FROM Book WHERE id = ?;
 
 selectByName:
 SELECT * FROM Book WHERE name = ?;
+
+insertBook:
+INSERT INTO Book (name) VALUES (?);
+
+deleteAllBooks:
+DELETE FROM Book;
