@@ -1,6 +1,7 @@
 package com.drive.license.test.database
 
 import android.content.Context
+import com.drive.license.test.database.Database.Companion.POPULATED_DB_NAME
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -20,7 +21,7 @@ actual class DatabaseLoader {
     actual fun loadPrepopulatedDatabase(context: Any, assetPath: String, databaseName: String): Boolean {
         return try {
             val androidContext = context as Context
-            val databaseFile = androidContext.getDatabasePath("license_test_questions.db")
+            val databaseFile = androidContext.getDatabasePath(POPULATED_DB_NAME)
             
             // Create the database directory if it doesn't exist
             databaseFile.parentFile?.mkdirs()
@@ -53,7 +54,7 @@ actual class DatabaseLoader {
     actual fun exportDatabase(context: Any, databaseName: String, outputPath: String): Boolean {
         return try {
             val androidContext = context as Context
-            val databaseFile = androidContext.getDatabasePath("license_test_questions.db")
+            val databaseFile = androidContext.getDatabasePath(POPULATED_DB_NAME)
             val outputFile = File(outputPath)
             
             if (databaseFile.exists()) {

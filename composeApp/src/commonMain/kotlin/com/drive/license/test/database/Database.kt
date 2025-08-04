@@ -15,6 +15,11 @@ import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.serializer
 
 class Database(databaseDriverFactory: DatabaseDriverFactory) {
+
+    companion object {
+        const val POPULATED_DB_NAME = "license_test_questions.db"
+    }
+
     private val driver = databaseDriverFactory.createDriver()
     private val database = LicenseDatabase(driver = driver)
     

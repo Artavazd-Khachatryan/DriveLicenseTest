@@ -4,31 +4,31 @@ import androidx.compose.runtime.Composable
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.native.NativeSqliteDriver
 import com.drive.license.test.LicenseDatabase
+import com.drive.license.test.database.Database.Companion.POPULATED_DB_NAME
 import platform.Foundation.*
 
 @OptIn(kotlinx.cinterop.ExperimentalForeignApi::class)
 actual class DatabaseDriverFactory {
     actual fun createDriver(): SqlDriver {
-        val databaseName = "license_test_questions.db"
         val fileManager = NSFileManager.defaultManager
 
         val appDir = NSSearchPathForDirectoriesInDomains(
             NSApplicationSupportDirectory, NSUserDomainMask, true
         ).firstOrNull() as? String ?: throw IllegalStateException("Application directory not found")
         val databasesDir = "$appDir/databases"
-        val databaseFilePath = "$databasesDir/$databaseName"
+        val databaseFilePath = "$databasesDir/$POPULATED_DB_NAME"
 
         if (!fileManager.fileExistsAtPath(databasesDir)) {
             fileManager.createDirectoryAtPath(databasesDir, withIntermediateDirectories = true, null, null)
         }
 
         if (!fileManager.fileExistsAtPath(databaseFilePath)) {
-            var bundleDatabasePath = NSBundle.mainBundle.pathForResource(databaseName, null)
+            var bundleDatabasePath = NSBundle.mainBundle.pathForResource(POPULATED_DB_NAME, null)
             
             if (bundleDatabasePath == null) {
                 val composeResourcesPath = NSBundle.mainBundle.pathForResource("compose-resources", null)
                 if (composeResourcesPath != null) {
-                    bundleDatabasePath = "$composeResourcesPath/$databaseName"
+                    bundleDatabasePath = "$composeResourcesPath/$POPULATED_DB_NAME"
                     if (!fileManager.fileExistsAtPath(bundleDatabasePath)) {
                         bundleDatabasePath = null
                     }
@@ -36,7 +36,7 @@ actual class DatabaseDriverFactory {
             }
             
             if (bundleDatabasePath == null) {
-                throw IllegalStateException("Database file $databaseName not found in bundle or compose-resources")
+                throw IllegalStateException("Database file $POPULATED_DB_NAME not found in bundle or compose-resources")
             }
 
             try {
@@ -49,7 +49,7 @@ actual class DatabaseDriverFactory {
             println("Database already exists at $databaseFilePath")
         }
 
-        return NativeSqliteDriver(LicenseDatabase.Schema, databaseName)
+        return NativeSqliteDriver(LicenseDatabase.Schema, POPULATED_DB_NAME)
     }
 }
 
