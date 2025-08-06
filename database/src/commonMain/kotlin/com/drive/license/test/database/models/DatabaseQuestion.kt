@@ -1,4 +1,4 @@
-package com.drive.license.test.models
+package com.drive.license.test.database.models
 
 class DatabaseQuestion(
     val id: Long,

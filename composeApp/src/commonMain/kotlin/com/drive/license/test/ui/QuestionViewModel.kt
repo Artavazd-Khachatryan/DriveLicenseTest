@@ -3,8 +3,8 @@ package com.drive.license.test.ui
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.drive.license.test.models.DatabaseQuestion
-import com.drive.license.test.repository.QuestionRepository
+import com.drive.license.test.database.models.DatabaseQuestion
+import com.drive.license.test.database.repository.QuestionRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -1,4 +1,4 @@
-package com.drive.license.test.models
+package com.drive.license.test.database.models
 
 enum class QuestionCategory {
     TRAFFIC_SIGNS_AND_MARKINGS,

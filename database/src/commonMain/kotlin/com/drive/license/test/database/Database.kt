@@ -2,10 +2,9 @@ package com.drive.license.test.database
 
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
-import com.drive.license.test.LicenseDatabase
-import com.drive.license.test.models.Book
-import com.drive.license.test.models.DatabaseQuestion
-import com.drive.license.test.models.QuestionCategory
+import com.drive.license.test.database.models.Book
+import com.drive.license.test.database.models.DatabaseQuestion
+import com.drive.license.test.database.models.QuestionCategory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow

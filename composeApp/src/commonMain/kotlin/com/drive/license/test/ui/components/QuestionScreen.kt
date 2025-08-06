@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.drive.license.test.models.DatabaseQuestion
+import com.drive.license.test.database.models.DatabaseQuestion
 import com.drive.license.test.ui.QuestionUiState
 import com.drive.license.test.ui.QuestionViewModel
 import com.drive.license.test.ui.TestScore

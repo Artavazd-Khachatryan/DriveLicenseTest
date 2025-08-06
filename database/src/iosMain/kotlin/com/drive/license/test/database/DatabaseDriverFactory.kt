@@ -1,9 +1,7 @@
 package com.drive.license.test.database
 
-import androidx.compose.runtime.Composable
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.native.NativeSqliteDriver
-import com.drive.license.test.LicenseDatabase
 import com.drive.license.test.database.Database.Companion.POPULATED_DB_NAME
 import platform.Foundation.*
 
@@ -24,8 +22,18 @@ actual class DatabaseDriverFactory {
 
         if (!fileManager.fileExistsAtPath(databaseFilePath)) {
             var bundleDatabasePath = NSBundle.mainBundle.pathForResource(POPULATED_DB_NAME, null)
-            
+
             if (bundleDatabasePath == null) {
+                // Try to find the database in the main bundle root
+                val mainBundlePath = NSBundle.mainBundle.bundlePath
+                bundleDatabasePath = "$mainBundlePath/$POPULATED_DB_NAME"
+                if (!fileManager.fileExistsAtPath(bundleDatabasePath)) {
+                    bundleDatabasePath = null
+                }
+            }
+
+            if (bundleDatabasePath == null) {
+                // Try compose-resources as fallback
                 val composeResourcesPath = NSBundle.mainBundle.pathForResource("compose-resources", null)
                 if (composeResourcesPath != null) {
                     bundleDatabasePath = "$composeResourcesPath/$POPULATED_DB_NAME"
@@ -34,9 +42,9 @@ actual class DatabaseDriverFactory {
                     }
                 }
             }
-            
+
             if (bundleDatabasePath == null) {
-                throw IllegalStateException("Database file $POPULATED_DB_NAME not found in bundle or compose-resources")
+                throw IllegalStateException("Database file $POPULATED_DB_NAME not found in bundle, main bundle root, or compose-resources")
             }
 
             try {
@@ -53,5 +61,4 @@ actual class DatabaseDriverFactory {
     }
 }
 
-@Composable
 actual fun getDatabaseDriverFactory(): DatabaseDriverFactory = DatabaseDriverFactory()

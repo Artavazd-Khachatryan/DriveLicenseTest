@@ -1,9 +1,9 @@
-package com.drive.license.test.repository
+package com.drive.license.test.database.repository
 
 import com.drive.license.test.database.Database
-import com.drive.license.test.models.Book
-import com.drive.license.test.models.DatabaseQuestion
-import com.drive.license.test.models.QuestionCategory
+import com.drive.license.test.database.models.Book
+import com.drive.license.test.database.models.DatabaseQuestion
+import com.drive.license.test.database.models.QuestionCategory
 import kotlinx.coroutines.flow.Flow
 
 class QuestionRepository(private val database: Database) {

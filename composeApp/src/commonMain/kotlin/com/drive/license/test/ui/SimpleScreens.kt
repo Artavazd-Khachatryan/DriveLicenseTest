@@ -9,7 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.drive.license.test.repository.QuestionRepository
+import com.drive.license.test.database.repository.QuestionRepository
 import com.drive.license.test.ui.components.QuestionScreen
 import kotlinx.coroutines.CoroutineScope
 import androidx.compose.runtime.collectAsState

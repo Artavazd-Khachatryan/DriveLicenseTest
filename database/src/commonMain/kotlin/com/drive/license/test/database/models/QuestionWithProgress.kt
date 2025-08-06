@@ -1,4 +1,4 @@
-package com.drive.license.test.models
+package com.drive.license.test.database.models
 
 data class QuestionWithProgress(
     val question: DatabaseQuestion,

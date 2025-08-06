@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.sqlDelight)
     alias(libs.plugins.kotlinxSerialization)
 }
 
@@ -26,8 +25,7 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
-            export(libs.sqldelight.runtime)
-            export(libs.sqldelight.coroutines.extensions)
+            export(project(":database"))
         }
     }
 
@@ -36,15 +34,10 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-            implementation(libs.sqldelight.android.driver)
-            implementation(libs.sqldelight.coroutines.extensions)
-            implementation(libs.sqldelight.test.driver)
         }
 
         iosMain.dependencies {
-            implementation("app.cash.sqldelight:native-driver:2.0.2")
-            api(libs.sqldelight.runtime)
-            api(libs.sqldelight.coroutines.extensions)
+            api(project(":database"))
         }
 
         commonMain.dependencies {
@@ -56,14 +49,14 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
-            implementation(libs.sqldelight.runtime)
-            implementation(libs.sqldelight.coroutines.extensions)
             implementation(libs.kotlinx.serialization.json)
+            implementation(project(":database"))
         }
 
         // Include resources for iOS
         iosMain {
             resources.srcDir("src/commonMain/resources")
+            resources.srcDir("../database/src/commonMain/resources")
         }
     }
 }
@@ -102,19 +95,7 @@ android {
         compose = true
     }
     
-    // Include pre-populated database in assets
-    sourceSets["main"].assets.srcDirs("src/commonMain/resources")
-    
     dependencies {
         debugImplementation(compose.uiTooling)
-    }
-}
-
-sqldelight {
-    databases {
-        create("LicenseDatabase") {
-            verifyMigrations.set(true)
-            packageName.set("com.drive.license.test")
-        }
     }
 }

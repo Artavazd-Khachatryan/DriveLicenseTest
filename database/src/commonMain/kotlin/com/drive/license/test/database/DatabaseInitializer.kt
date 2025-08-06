@@ -1,6 +1,6 @@
 package com.drive.license.test.database
 
-import com.drive.license.test.repository.QuestionRepository
+import com.drive.license.test.database.repository.QuestionRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
