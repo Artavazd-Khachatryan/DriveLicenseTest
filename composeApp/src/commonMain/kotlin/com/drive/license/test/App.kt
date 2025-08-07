@@ -6,15 +6,19 @@ import androidx.compose.runtime.rememberCoroutineScope
 import com.drive.license.test.database.DatabaseInitializer
 import com.drive.license.test.domain.repository.QuestionRepository
 import com.drive.license.test.ui.MainScreen
-import org.koin.core.context.GlobalContext
+import com.drive.license.test.di.getKoin
 
 @Composable
 fun App() {
     val coroutineScope = rememberCoroutineScope()
     
     // ✅ Use Koin DI for clean dependency management
-    val questionRepository: QuestionRepository = GlobalContext.get().get()
-    val databaseInitializer: DatabaseInitializer = GlobalContext.get().get()
+    val questionRepository: QuestionRepository = getKoin()
+    
+    // ✅ Create DatabaseInitializer manually since it needs CoroutineScope
+    val databaseInitializer = remember { 
+        DatabaseInitializer(questionRepository, coroutineScope) 
+    }
     
     LaunchedEffect(Unit) {
         databaseInitializer.initializeDatabase()

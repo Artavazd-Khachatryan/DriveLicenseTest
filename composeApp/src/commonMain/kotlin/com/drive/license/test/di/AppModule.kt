@@ -27,9 +27,6 @@ val appModule = module {
     single<DomainQuestionRepository> { 
         QuestionRepository(get()) 
     }
-    
-    // ✅ Database Initializer
-    single { DatabaseInitializer(get(), get()) }
 }
 
 /**
