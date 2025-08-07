@@ -50,12 +50,11 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.koin.core)
+
             implementation(project(":ui"))
-            // ✅ For dependency injection only - composeApp acts as DI container
             implementation(project(":database"))
             implementation(project(":domain"))
-            // ✅ Koin DI
-            implementation(libs.koin.core)
         }
 
         // Include resources for iOS

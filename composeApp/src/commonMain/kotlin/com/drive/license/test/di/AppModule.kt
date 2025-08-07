@@ -18,13 +18,11 @@ import org.koin.dsl.module
  * - UI components get domain interfaces, not implementations
  */
 val appModule = module {
-    
-    // ✅ Database Layer
+
     single { DatabaseDriverFactory() }
     single { Database(get()) }
     
-    // ✅ Repository Implementation (implements domain interface)
-    single<DomainQuestionRepository> { 
+    single<DomainQuestionRepository> {
         QuestionRepository(get()) 
     }
 }

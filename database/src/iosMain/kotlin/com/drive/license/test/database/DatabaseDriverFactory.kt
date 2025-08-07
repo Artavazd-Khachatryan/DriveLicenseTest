@@ -24,7 +24,6 @@ actual class DatabaseDriverFactory {
             var bundleDatabasePath = NSBundle.mainBundle.pathForResource(POPULATED_DB_NAME, null)
 
             if (bundleDatabasePath == null) {
-                // Try to find the database in the main bundle root
                 val mainBundlePath = NSBundle.mainBundle.bundlePath
                 bundleDatabasePath = "$mainBundlePath/$POPULATED_DB_NAME"
                 if (!fileManager.fileExistsAtPath(bundleDatabasePath)) {
@@ -33,7 +32,6 @@ actual class DatabaseDriverFactory {
             }
 
             if (bundleDatabasePath == null) {
-                // Try compose-resources as fallback
                 val composeResourcesPath = NSBundle.mainBundle.pathForResource("compose-resources", null)
                 if (composeResourcesPath != null) {
                     bundleDatabasePath = "$composeResourcesPath/$POPULATED_DB_NAME"

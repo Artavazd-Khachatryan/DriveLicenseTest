@@ -10,8 +10,7 @@ import com.drive.license.test.di.initKoin
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
-        // ✅ Initialize Koin DI
+
         initKoin()
 
         setContent {

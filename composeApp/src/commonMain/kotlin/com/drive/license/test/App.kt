@@ -12,11 +12,9 @@ import com.drive.license.test.di.KoinHelper
 fun App() {
     val coroutineScope = rememberCoroutineScope()
     
-    // ✅ Use Koin DI for clean dependency management
     val questionRepository: QuestionRepository = KoinHelper.get()
     
-    // ✅ Create DatabaseInitializer manually since it needs CoroutineScope
-    val databaseInitializer = remember { 
+    val databaseInitializer = remember {
         DatabaseInitializer(questionRepository, coroutineScope) 
     }
     
@@ -24,7 +22,6 @@ fun App() {
         databaseInitializer.initializeDatabase()
     }
     
-    // ✅ Pass domain interface to UI (not implementation)
     MaterialTheme {
         MainScreen(
             questionRepository = questionRepository,
