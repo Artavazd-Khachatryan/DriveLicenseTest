@@ -13,8 +13,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.first
 
 class QuestionRepository(private val database: Database) : DomainQuestionRepository {
-    
-    // Domain interface implementation
+
     override fun getAllQuestions(): Flow<List<Question>> {
         return database.getAllQuestions().map { databaseQuestions ->
             databaseQuestions.map { it.toDomainModel() }
@@ -32,8 +31,7 @@ class QuestionRepository(private val database: Database) : DomainQuestionReposit
     fun getQuestionsByCategory(category: DatabaseQuestionCategory): Flow<List<DatabaseQuestion>> {
         return database.getQuestionsByCategory(category)
     }
-    
-    // Domain interface implementation
+
     override fun getQuestionsByCategory(category: QuestionCategory): Flow<List<Question>> {
         return database.getAllQuestions().map { questions ->
             questions.filter { question ->
