@@ -16,8 +16,8 @@ import com.drive.license.test.database.models.DatabaseQuestion
 import com.drive.license.test.ui.QuestionUiState
 import com.drive.license.test.ui.QuestionViewModel
 import com.drive.license.test.ui.TestScore
-import drivelicensetest.composeapp.generated.resources.Res
-import drivelicensetest.composeapp.generated.resources.allDrawableResources
+import drivelicensetest.ui.generated.resources.Res
+import drivelicensetest.ui.generated.resources.allDrawableResources
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 

@@ -37,7 +37,7 @@ kotlin {
         }
 
         iosMain.dependencies {
-            implementation("app.cash.sqldelight:native-driver:2.0.2")
+            implementation(libs.sqldelight.native.driver)
             api(libs.sqldelight.runtime)
             api(libs.sqldelight.coroutines.extensions)
         }
