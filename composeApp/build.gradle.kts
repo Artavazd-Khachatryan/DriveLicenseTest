@@ -52,6 +52,7 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(project(":database"))
             implementation(project(":ui"))
+            implementation(project(":domain"))
         }
 
         // Include resources for iOS

@@ -3,8 +3,8 @@ package com.drive.license.test.ui
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.drive.license.test.database.models.DatabaseQuestion
-import com.drive.license.test.database.repository.QuestionRepository
+import com.drive.license.test.domain.model.Question
+import com.drive.license.test.domain.repository.QuestionRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -75,7 +75,7 @@ class QuestionViewModel(
         return isOnLastQuestion()
     }
     
-    fun getCurrentQuestion(): DatabaseQuestion? {
+    fun getCurrentQuestion(): Question? {
         val questions = _uiState.value.questions
         return if (currentQuestionIndex < questions.size) {
             questions[currentQuestionIndex]
@@ -96,7 +96,7 @@ class QuestionViewModel(
             if (selectedAnswer != null) {
                 totalAnswered++
                 val selectedAnswerText = question.answers[selectedAnswer]
-                val correctAnswerText = question.trueAnswer
+                val correctAnswerText = question.correctAnswer
                 if (selectedAnswerText == correctAnswerText) {
                     correctAnswers++
                 }
@@ -120,7 +120,7 @@ class QuestionViewModel(
 }
 
 data class QuestionUiState(
-    val questions: List<DatabaseQuestion> = emptyList(),
+    val questions: List<Question> = emptyList(),
     val selectedAnswers: Map<Int, Int> = emptyMap(),
     val isLoading: Boolean = true,
     val error: String? = null

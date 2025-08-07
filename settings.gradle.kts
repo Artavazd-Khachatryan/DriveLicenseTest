@@ -31,3 +31,4 @@ dependencyResolutionManagement {
 include(":composeApp")
 include(":database")
 include(":ui")
+include(":domain")

@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.drive.license.test.database.models.DatabaseQuestion
+import com.drive.license.test.domain.model.Question
 import com.drive.license.test.ui.QuestionUiState
 import com.drive.license.test.ui.QuestionViewModel
 import com.drive.license.test.ui.TestScore
@@ -219,7 +219,7 @@ private fun QuestionContent(
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 private fun QuestionItem(
-    question: DatabaseQuestion,
+    question: Question,
     selectedAnswerIndex: Int?,
     onAnswerSelected: (Int) -> Unit
 ) {
@@ -269,7 +269,7 @@ private fun QuestionItem(
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = question.trueAnswer,
+                        text = question.correctAnswer,
                         style = MaterialTheme.typography.bodyLarge,
                         color = Color(0xFF2E7D32)
                     )
@@ -277,7 +277,7 @@ private fun QuestionItem(
             }
         }
 
-        question.image?.let { imageName ->
+        question.imageUrl?.let { imageName ->
             val resourceName = imageName.replace(".png", "")
             val imageResource = Res.allDrawableResources[resourceName]
             imageResource?.let { resource ->
@@ -294,7 +294,7 @@ private fun QuestionItem(
 
         question.answers.forEachIndexed { index, answer ->
             val isSelected = selectedAnswerIndex == index
-            val trueAnswerText = question.trueAnswer
+            val trueAnswerText = question.correctAnswer
             val answerText = answer
             val isCorrect = selectedAnswerIndex != null && answerText == trueAnswerText
             val isIncorrect = selectedAnswerIndex != null && answerText != trueAnswerText && isSelected
@@ -345,7 +345,7 @@ private fun QuestionItem(
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = question.trueAnswer,
+                        text = question.correctAnswer,
                         style = MaterialTheme.typography.bodyLarge,
                         color = Color(0xFF2E7D32)
                     )
@@ -358,7 +358,7 @@ private fun QuestionItem(
 @Composable
 private fun ResultsScreen(
     score: TestScore,
-    questions: List<DatabaseQuestion>,
+    questions: List<Question>,
     selectedAnswers: Map<Int, Int>,
     onRetry: () -> Unit
 ) {
@@ -407,7 +407,7 @@ private fun ResultsScreen(
             questions.forEachIndexed { index, question ->
                 val selectedAnswerIndex = selectedAnswers[index]
                 val isCorrect = selectedAnswerIndex != null &&
-                        question.answers[selectedAnswerIndex] == question.trueAnswer
+                        question.answers[selectedAnswerIndex] == question.correctAnswer
 
                 Card(
                     modifier = Modifier.fillMaxWidth(),
@@ -442,7 +442,7 @@ private fun ResultsScreen(
                         }
 
                         Text(
-                            text = "Correct Answer: ${question.trueAnswer}",
+                            text = "Correct Answer: ${question.correctAnswer}",
                             style = MaterialTheme.typography.bodySmall,
                             color = Color(0xFF2E7D32),
                             fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
