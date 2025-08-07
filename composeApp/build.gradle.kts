@@ -54,6 +54,8 @@ kotlin {
             // ✅ For dependency injection only - composeApp acts as DI container
             implementation(project(":database"))
             implementation(project(":domain"))
+            // ✅ Koin DI
+            implementation(libs.koin.core)
         }
 
         // Include resources for iOS
