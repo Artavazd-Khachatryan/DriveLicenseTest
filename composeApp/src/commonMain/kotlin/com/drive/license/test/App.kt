@@ -6,14 +6,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import com.drive.license.test.database.DatabaseInitializer
 import com.drive.license.test.domain.repository.QuestionRepository
 import com.drive.license.test.ui.MainScreen
-import com.drive.license.test.di.getKoin
+import com.drive.license.test.di.KoinHelper
 
 @Composable
 fun App() {
     val coroutineScope = rememberCoroutineScope()
     
     // ✅ Use Koin DI for clean dependency management
-    val questionRepository: QuestionRepository = getKoin()
+    val questionRepository: QuestionRepository = KoinHelper.get()
     
     // ✅ Create DatabaseInitializer manually since it needs CoroutineScope
     val databaseInitializer = remember { 

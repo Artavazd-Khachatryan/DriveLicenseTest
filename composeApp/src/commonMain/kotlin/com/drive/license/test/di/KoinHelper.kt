@@ -1,10 +1,17 @@
 package com.drive.license.test.di
 
-import org.koin.core.context.GlobalContext
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 /**
- * Helper function to get Koin dependencies in a type-safe way
+ * Koin component for dependency injection
  */
-inline fun <reified T : Any> getKoin(): T {
-    return GlobalContext.get().get<T>()
+object KoinHelper : KoinComponent {
+    
+    /**
+     * Get a dependency from Koin
+     */
+    inline fun <reified T : Any> get(): T {
+        return inject<T>().value
+    }
 } 
