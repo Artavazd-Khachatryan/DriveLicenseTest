@@ -24,6 +24,7 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "UI"
             isStatic = true
+            binaryOption("bundleId", "com.drive.license.test.ui")
         }
     }
 
@@ -38,6 +39,7 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.ui)
+            implementation(compose.materialIconsExtended)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
