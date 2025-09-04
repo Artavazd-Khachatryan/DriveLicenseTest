@@ -11,6 +11,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.drive.license.test.domain.repository.QuestionRepository
@@ -24,13 +27,18 @@ fun MainScreen(
     coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
-    HomeScreen(
-        onStartTest = { },
-        onOpenStats = { },
-        onOpenFailed = { },
-        onOpenChat = { },
-        modifier = modifier
-    )
+    var route by remember { mutableStateOf("home") }
+    when (route) {
+        "home" -> HomeScreen(
+            onStartTest = { },
+            onOpenStats = { route = "stats" },
+            onOpenFailed = { },
+            onOpenChat = { },
+            onOpenStatsFromRing = { route = "stats" },
+            modifier = modifier
+        )
+        "stats" -> StatsScreen(onBack = { route = "home" })
+    }
 }
 
 @Composable

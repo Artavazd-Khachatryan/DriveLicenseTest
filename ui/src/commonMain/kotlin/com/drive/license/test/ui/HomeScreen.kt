@@ -9,13 +9,21 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material3.AssistChip
+import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AutoAwesome
-import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Chat
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.HelpOutline
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,6 +39,7 @@ import com.drive.license.test.ui.components.ProgressRing
 fun HomeScreen(
     onStartTest: () -> Unit,
     onOpenStats: () -> Unit,
+    onOpenStatsFromRing: () -> Unit,
     onOpenFailed: () -> Unit,
     onOpenChat: () -> Unit,
     modifier: Modifier = Modifier
@@ -40,70 +49,61 @@ fun HomeScreen(
             modifier = modifier
                 .fillMaxSize()
                 .then(inner)
-                .padding(16.dp),
+                .padding(16.dp)
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .widthIn(max = 720.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            Text(text = "Your progress", style = MaterialTheme.typography.headlineMedium)
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly,
+                horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                ProgressRing(progress = 0.7f, size = 140.dp) {
+                ProgressRing(
+                    progress = 0.7f,
+                    size = 140.dp,
+                    modifier = Modifier.clickable { onOpenStatsFromRing() }
+                ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(text = "Accuracy", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         Text(text = "70%", style = MaterialTheme.typography.headlineMedium)
-                        Text(text = "Completed", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
-                }
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    StatItem(title = "Correct", value = "140")
-                    StatItem(title = "Incorrect", value = "60")
-                    StatItem(title = "Unseen", value = "40")
                 }
             }
 
-            AppCard(modifier = Modifier.fillMaxWidth()) {
+            AppCard(modifier = Modifier.fillMaxWidth(), containerColor = MaterialTheme.colorScheme.primaryContainer) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Icon(Icons.Filled.PlayArrow, contentDescription = null, modifier = Modifier.size(24.dp), tint = MaterialTheme.colorScheme.primary)
-                        Text(text = "Start 20-question Test", style = MaterialTheme.typography.titleMedium)
+                        Icon(Icons.Filled.PlayArrow, contentDescription = null, modifier = Modifier.size(24.dp), tint = MaterialTheme.colorScheme.onPrimaryContainer)
+                        Text(text = "Start 20-question Test", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onPrimaryContainer)
                     }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(text = "Randomized each time • ~5–7 min", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f))
                     Spacer(modifier = Modifier.height(8.dp))
                     AppButton(text = "Start Test", onClick = onStartTest, modifier = Modifier.fillMaxWidth())
                 }
             }
 
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
-                AppCard(modifier = Modifier.weight(1f)) {
+                AppCard(modifier = Modifier.weight(1f), containerColor = MaterialTheme.colorScheme.tertiaryContainer) {
                     Column(modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                        Icon(Icons.Filled.BarChart, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
+                        Icon(Icons.Filled.AutoAwesome, contentDescription = null, tint = MaterialTheme.colorScheme.onTertiaryContainer)
                         Spacer(modifier = Modifier.height(8.dp))
-                        Text(text = "Statistics", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center)
-                        Spacer(modifier = Modifier.height(8.dp))
-                        AppButton(text = "Open", onClick = onOpenStats, modifier = Modifier.fillMaxWidth())
-                    }
-                }
-
-                AppCard(modifier = Modifier.weight(1f)) {
-                    Column(modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                        Icon(Icons.Filled.AutoAwesome, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(text = "Failed Questions", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center)
+                        Text(text = "Failed Questions", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onTertiaryContainer)
                         Spacer(modifier = Modifier.height(8.dp))
                         AppButton(text = "Review", onClick = onOpenFailed, modifier = Modifier.fillMaxWidth())
                     }
                 }
-            }
-
-            AppCard(modifier = Modifier.fillMaxWidth()) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Icon(Icons.Filled.Chat, contentDescription = null, modifier = Modifier.size(24.dp), tint = MaterialTheme.colorScheme.primary)
-                        Text(text = "Chat with Assistant", style = MaterialTheme.typography.titleMedium)
+                AppCard(modifier = Modifier.weight(1f)) {
+                    Column(modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                        Icon(Icons.Filled.Chat, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(text = "Chat with Assistant", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center)
+                        Spacer(modifier = Modifier.height(8.dp))
+                        AppButton(text = "Open Chat", onClick = onOpenChat, modifier = Modifier.fillMaxWidth())
                     }
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = "Ask explanations for rules and questions.", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    Spacer(modifier = Modifier.height(8.dp))
-                    AppButton(text = "Open Chat", onClick = onOpenChat, modifier = Modifier.fillMaxWidth())
                 }
             }
         }
@@ -111,11 +111,8 @@ fun HomeScreen(
 }
 
 @Composable
-private fun StatItem(title: String, value: String) {
-    Column {
-        Text(text = value, style = MaterialTheme.typography.titleLarge)
-        Text(text = title, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-    }
+private fun SectionTitle(text: String) {
+    Text(text = text, style = MaterialTheme.typography.headlineSmall)
 }
 
 
