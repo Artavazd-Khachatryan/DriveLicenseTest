@@ -1,11 +1,11 @@
 package com.drive.license.test
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.rememberCoroutineScope
 import com.drive.license.test.database.DatabaseInitializer
 import com.drive.license.test.domain.repository.QuestionRepository
 import com.drive.license.test.ui.MainScreen
+import com.drive.license.test.ui.theme.AppTheme
 import com.drive.license.test.di.KoinHelper
 
 @Composable
@@ -22,7 +22,7 @@ fun App() {
         databaseInitializer.initializeDatabase()
     }
     
-    MaterialTheme {
+    AppTheme {
         MainScreen(
             questionRepository = questionRepository,
             coroutineScope = coroutineScope
