@@ -1,5 +1,6 @@
 package com.drive.license.test.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -22,8 +24,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
@@ -32,6 +36,7 @@ import com.drive.license.test.ui.components.AnswerButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
+import com.drive.license.test.ui.util.resolveDrawableResource
 
 @Composable
 fun QuestionDetailScreen(
@@ -84,6 +89,32 @@ fun QuestionDetailScreen(
                         textAlign = TextAlign.Center,
                         color = MaterialTheme.colorScheme.onPrimaryContainer
                     )
+                    
+                    question.imageUrl?.let { imageName ->
+                        Spacer(modifier = Modifier.height(16.dp))
+                        
+                        AppCard(
+                            modifier = Modifier.fillMaxWidth(),
+                            containerColor = MaterialTheme.colorScheme.surface
+                        ) {
+                            Column(
+                                modifier = Modifier.padding(16.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                val imageResource = resolveDrawableResource(imageName)
+                                imageResource?.let { res ->
+                                    Image(
+                                        painter = painterResource(res),
+                                        contentDescription = "Question image",
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(200.dp),
+                                        contentScale = ContentScale.Fit
+                                    )
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
