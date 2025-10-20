@@ -6917,5 +6917,23 @@
     <string name="question_1094_answer_3">20 րոպե տևողությամբ այրվածքի մակերեսը սառեցնել ջրով: Առանց բշտիկները բացելու և հագուստի մնացորդները հեռացնելու այրվածքի մակերեսը ծածկել ստերիլ անձեռոցիկով (չվիրակապել), հնարավորության դեպքում սառը դնել և տուժածին ջուր խմեցնել:</string>
     <string name="question_1094_true_answer">20 րոպե տևողությամբ այրվածքի մակերեսը սառեցնել ջրով: Առանց բշտիկները բացելու և հագուստի մնացորդները հեռացնելու այրվածքի մակերեսը ծածկել ստերիլ անձեռոցիկով (չվիրակապել), հնարավորության դեպքում սառը դնել և տուժածին ջուր խմեցնել:</string>
 
+    <!-- Home Screen Strings -->
+    <string name="home_ready_title">Պատրաստ եք հանձնել քննությունը?</string>
+    <string name="home_ready_subtitle">Պարապեք իրական հարցերով և հետևեք ձեր առաջընթացին</string>
+    <string name="home_progress_title">Ձեր Առաջընթացը</string>
+    <string name="home_accuracy">Ճշտություն</string>
+    <string name="home_start_test_title">Սկսել Պարապել</string>
+    <string name="home_start_test_subtitle">20 պատահական հարց • 5-7 րոպե</string>
+    <string name="home_start_button">Սկսել</string>
+    <string name="home_quick_actions">Արագ Գործողություններ</string>
+    <string name="home_review_mistakes_title">Վերանայել Սխալները</string>
+    <string name="home_review_mistakes_subtitle">Սովորեք սխալ հարցերից</string>
+    <string name="home_review_button">Վերանայել</string>
+    <string name="home_ai_assistant_title">AI Օգնական</string>
+    <string name="home_ai_assistant_subtitle">Արագ օգնություն</string>
+    <string name="home_chat_button">Զրուցել</string>
+    <string name="home_learning_centers_title">Գտնել Սովորելու Վայրեր</string>
+    <string name="home_learning_centers_subtitle">Գտեք մոտակա վարորդական դպրոցներ և պարապելու վայրեր</string>
+    <string name="home_view_map_button">Տեսնել Քարտեզը</string>
 
 </resources>

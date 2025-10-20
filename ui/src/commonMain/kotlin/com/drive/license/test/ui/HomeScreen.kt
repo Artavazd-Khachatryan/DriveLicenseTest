@@ -1,6 +1,14 @@
 package com.drive.license.test.ui
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.animateIntAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,32 +17,52 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material3.AssistChip
-import androidx.compose.material3.AssistChipDefaults
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.TrendingUp
+import androidx.compose.material.icons.filled.Chat
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Quiz
+import androidx.compose.material.icons.filled.School
+import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AutoAwesome
-import androidx.compose.material.icons.filled.Chat
-import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.HelpOutline
-import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Map
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.ProgressRing
+import drivelicensetest.ui.generated.resources.Res
+import drivelicensetest.ui.generated.resources.home_accuracy
+import drivelicensetest.ui.generated.resources.home_ai_assistant_subtitle
+import drivelicensetest.ui.generated.resources.home_ai_assistant_title
+import drivelicensetest.ui.generated.resources.home_chat_button
+import drivelicensetest.ui.generated.resources.home_learning_centers_subtitle
+import drivelicensetest.ui.generated.resources.home_learning_centers_title
+import drivelicensetest.ui.generated.resources.home_progress_title
+import drivelicensetest.ui.generated.resources.home_ready_subtitle
+import drivelicensetest.ui.generated.resources.home_ready_title
+import drivelicensetest.ui.generated.resources.home_review_button
+import drivelicensetest.ui.generated.resources.home_review_mistakes_subtitle
+import drivelicensetest.ui.generated.resources.home_review_mistakes_title
+import drivelicensetest.ui.generated.resources.home_start_button
+import drivelicensetest.ui.generated.resources.home_start_test_subtitle
+import drivelicensetest.ui.generated.resources.home_start_test_title
+import drivelicensetest.ui.generated.resources.home_view_map_button
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun HomeScreen(
@@ -51,73 +79,383 @@ fun HomeScreen(
             modifier = modifier
                 .fillMaxSize()
                 .then(inner)
-                .padding(16.dp)
+                .verticalScroll(rememberScrollState())
+                .padding(20.dp)
                 .wrapContentWidth(Alignment.CenterHorizontally)
                 .widthIn(max = 720.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            Text(text = "Your progress", style = MaterialTheme.typography.headlineMedium)
-
-            Row(
+            // 1. Welcome Section - Clean and Readable
+            AppCard(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
+                containerColor = MaterialTheme.colorScheme.primaryContainer
             ) {
-                ProgressRing(
-                    progress = 0.7f,
-                    size = 140.dp,
-                    modifier = Modifier.clickable { onOpenStatsFromRing() }
+                Column(
+                    modifier = Modifier.padding(24.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "🚗",
+                        style = MaterialTheme.typography.displayLarge
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        text = stringResource(Res.string.home_ready_title),
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = stringResource(Res.string.home_ready_subtitle),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f),
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+
+            // 2. Enhanced Primary Action - Start Test with Animations
+            AppCard(
+                modifier = Modifier.fillMaxWidth(),
+                containerColor = MaterialTheme.colorScheme.primary
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            Brush.verticalGradient(
+                                colors = listOf(
+                                    MaterialTheme.colorScheme.primary,
+                                    MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)
+                                )
+                            )
+                        )
+                        .padding(28.dp)
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(text = "Accuracy", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        Text(text = "70%", style = MaterialTheme.typography.headlineMedium)
+                        Spacer(modifier = Modifier.height(20.dp))
+                        
+                        Text(
+                            text = stringResource(Res.string.home_start_test_title),
+                            style = MaterialTheme.typography.headlineLarge,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onPrimary,
+                            textAlign = TextAlign.Center
+                        )
+                        
+                        Spacer(modifier = Modifier.height(12.dp))
+                        
+                        Text(
+                            text = stringResource(Res.string.home_start_test_subtitle),
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f),
+                            textAlign = TextAlign.Center
+                        )
+                        
+                        Spacer(modifier = Modifier.height(24.dp))
+
+                        val buttonScale by animateFloatAsState(
+                            targetValue = 1f,
+                            animationSpec = spring(dampingRatio = 0.8f),
+                            label = "button_scale"
+                        )
+                        
+                        AppButton(
+                            text = stringResource(Res.string.home_start_button),
+                            onClick = onStartTest,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .graphicsLayer { scaleX = buttonScale; scaleY = buttonScale }
+                        )
                     }
                 }
             }
 
-            AppCard(modifier = Modifier.fillMaxWidth(), containerColor = MaterialTheme.colorScheme.primaryContainer) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Icon(Icons.Filled.PlayArrow, contentDescription = null, modifier = Modifier.size(24.dp), tint = MaterialTheme.colorScheme.onPrimaryContainer)
-                        Text(text = "Start 20-question Test", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onPrimaryContainer)
+            AppCard(
+                modifier = Modifier.fillMaxWidth(),
+                containerColor = MaterialTheme.colorScheme.surface
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            Brush.verticalGradient(
+                                colors = listOf(
+                                    MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.1f),
+                                    MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.05f)
+                                )
+                            )
+                        )
+                        .padding(24.dp)
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Icon(
+                                Icons.AutoMirrored.Filled.TrendingUp,
+                                contentDescription = null,
+                                modifier = Modifier.size(24.dp),
+                                tint = MaterialTheme.colorScheme.primary
+                            )
+                            Text(
+                                text = stringResource(Res.string.home_progress_title),
+                                style = MaterialTheme.typography.headlineSmall,
+                                fontWeight = FontWeight.Bold,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                        }
+                        
+                        Spacer(modifier = Modifier.height(24.dp))
+                        
+                        // Centered Progress Ring
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            val animatedProgress by animateFloatAsState(
+                                targetValue = 0.7f,
+                                animationSpec = tween(1500, easing = LinearEasing),
+                                label = "progress"
+                            )
+                            
+                            ProgressRing(
+                                progress = animatedProgress,
+                                size = 140.dp,
+                                modifier = Modifier.clickable { onOpenStatsFromRing() }
+                            ) {
+                                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                    val animatedPercentage by animateIntAsState(
+                                        targetValue = 70,
+                                        animationSpec = tween(1500, easing = LinearEasing),
+                                        label = "percentage"
+                                    )
+                                    Text(
+                                        text = "$animatedPercentage%", 
+                                        style = MaterialTheme.typography.displaySmall, 
+                                        fontWeight = FontWeight.Bold,
+                                        color = MaterialTheme.colorScheme.primary
+                                    )
+                                    Text(
+                                        text = stringResource(Res.string.home_accuracy), 
+                                        style = MaterialTheme.typography.titleMedium, 
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                        }
                     }
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = "Randomized each time • ~5–7 min", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f))
-                    Spacer(modifier = Modifier.height(8.dp))
-                    AppButton(text = "Start Test", onClick = onStartTest, modifier = Modifier.fillMaxWidth())
                 }
             }
 
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
-                AppCard(modifier = Modifier.weight(1f), containerColor = MaterialTheme.colorScheme.tertiaryContainer) {
-                    Column(modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                        Icon(Icons.Filled.AutoAwesome, contentDescription = null, tint = MaterialTheme.colorScheme.onTertiaryContainer)
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(text = "Failed Questions", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onTertiaryContainer)
-                        Spacer(modifier = Modifier.height(8.dp))
-                        AppButton(text = "Review", onClick = onOpenFailed, modifier = Modifier.fillMaxWidth())
+            Row(horizontalArrangement = Arrangement.spacedBy(16.dp), modifier = Modifier.fillMaxWidth()) {
+                // Review Mistakes - Consistent Size
+                AppCard(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(200.dp),
+                    containerColor = MaterialTheme.colorScheme.surface
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(
+                                Brush.verticalGradient(
+                                    colors = listOf(
+                                        MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.15f),
+                                        MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.05f)
+                                    )
+                                )
+                            )
+                            .padding(20.dp)
+                    ) {
+                        Column(
+                            modifier = Modifier.fillMaxSize(),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                // Animated Icon
+                                val iconScale by animateFloatAsState(
+                                    targetValue = 1f,
+                                    animationSpec = spring(dampingRatio = 0.7f),
+                                    label = "review_icon_scale"
+                                )
+                                
+                                Icon(
+                                    Icons.Filled.Quiz,
+                                    contentDescription = null,
+                                    modifier = Modifier
+                                        .size(36.dp)
+                                        .graphicsLayer { scaleX = iconScale; scaleY = iconScale },
+                                    tint = MaterialTheme.colorScheme.error
+                                )
+                                
+                                Spacer(modifier = Modifier.height(12.dp))
+                                
+                                Text(
+                                    text = stringResource(Res.string.home_review_mistakes_title),
+                                    style = MaterialTheme.typography.titleLarge,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MaterialTheme.colorScheme.error,
+                                    textAlign = TextAlign.Center
+                                )
+                                
+                                Spacer(modifier = Modifier.height(8.dp))
+                                
+                                Text(
+                                    text = stringResource(Res.string.home_review_mistakes_subtitle),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    textAlign = TextAlign.Center
+                                )
+                            }
+                            
+                            AppButton(
+                                text = stringResource(Res.string.home_review_button),
+                                onClick = onOpenFailed,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
                     }
                 }
-                AppCard(modifier = Modifier.weight(1f)) {
-                    Column(modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                        Icon(Icons.Filled.Chat, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(text = "Chat with Assistant", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center)
-                        Spacer(modifier = Modifier.height(8.dp))
-                        AppButton(text = "Open Chat", onClick = onOpenChat, modifier = Modifier.fillMaxWidth())
+                
+                // AI Assistant - Consistent Size
+                AppCard(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(200.dp), // Fixed height for consistency
+                    containerColor = MaterialTheme.colorScheme.surface
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(
+                                Brush.verticalGradient(
+                                    colors = listOf(
+                                        MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.15f),
+                                        MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.05f)
+                                    )
+                                )
+                            )
+                            .padding(20.dp)
+                    ) {
+                        Column(
+                            modifier = Modifier.fillMaxSize(),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                // Animated Icon
+                                val iconScale by animateFloatAsState(
+                                    targetValue = 1f,
+                                    animationSpec = spring(dampingRatio = 0.7f),
+                                    label = "chat_icon_scale"
+                                )
+                                
+                                Icon(
+                                    Icons.Filled.Chat,
+                                    contentDescription = null,
+                                    modifier = Modifier
+                                        .size(36.dp)
+                                        .graphicsLayer { scaleX = iconScale; scaleY = iconScale },
+                                    tint = MaterialTheme.colorScheme.tertiary
+                                )
+                                
+                                Spacer(modifier = Modifier.height(12.dp))
+                                
+                                Text(
+                                    text = stringResource(Res.string.home_ai_assistant_title),
+                                    style = MaterialTheme.typography.titleLarge,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MaterialTheme.colorScheme.tertiary,
+                                    textAlign = TextAlign.Center
+                                )
+                                
+                                Spacer(modifier = Modifier.height(8.dp))
+                                
+                                Text(
+                                    text = stringResource(Res.string.home_ai_assistant_subtitle),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    textAlign = TextAlign.Center
+                                )
+                            }
+                            
+                            AppButton(
+                                text = stringResource(Res.string.home_chat_button),
+                                onClick = onOpenChat,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
                     }
                 }
             }
 
-            AppCard(modifier = Modifier.fillMaxWidth(), containerColor = MaterialTheme.colorScheme.secondaryContainer) {
-                Column(modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Icon(Icons.Filled.Map, contentDescription = null, tint = MaterialTheme.colorScheme.onSecondaryContainer)
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = "Learning Places", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onSecondaryContainer)
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = "Find nearby driving schools and practice areas", style = MaterialTheme.typography.bodySmall, textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.8f))
-                    Spacer(modifier = Modifier.height(8.dp))
-                    AppButton(text = "View Map", onClick = onOpenMap, modifier = Modifier.fillMaxWidth())
+            // 5. Enhanced Learning Places with Animation
+            AppCard(
+                modifier = Modifier.fillMaxWidth(),
+                containerColor = MaterialTheme.colorScheme.surface
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            Brush.verticalGradient(
+                                colors = listOf(
+                                    MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.1f),
+                                    MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.05f)
+                                )
+                            )
+                        )
+                        .padding(20.dp)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        // Animated School Icon
+                        val iconScale by animateFloatAsState(
+                            targetValue = 1f,
+                            animationSpec = spring(dampingRatio = 0.8f),
+                            label = "school_icon_scale"
+                        )
+                        
+                        Icon(
+                            Icons.Filled.School,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(36.dp)
+                                .graphicsLayer { scaleX = iconScale; scaleY = iconScale },
+                            tint = MaterialTheme.colorScheme.secondary
+                        )
+                        
+                        Spacer(modifier = Modifier.width(16.dp))
+                        
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = stringResource(Res.string.home_learning_centers_title),
+                                style = MaterialTheme.typography.titleLarge,
+                                fontWeight = FontWeight.Bold,
+                                color = MaterialTheme.colorScheme.secondary
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = stringResource(Res.string.home_learning_centers_subtitle),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        
+                        Spacer(modifier = Modifier.width(12.dp))
+                        
+                        AppButton(
+                            text = stringResource(Res.string.home_view_map_button),
+                            onClick = onOpenMap
+                        )
+                    }
                 }
             }
         }
