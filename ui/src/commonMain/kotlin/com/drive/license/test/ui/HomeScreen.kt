@@ -25,6 +25,7 @@ import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.HelpOutline
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Map
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,6 +43,7 @@ fun HomeScreen(
     onOpenStatsFromRing: () -> Unit,
     onOpenFailed: () -> Unit,
     onOpenChat: () -> Unit,
+    onOpenMap: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     AppScaffold { inner ->
@@ -104,6 +106,18 @@ fun HomeScreen(
                         Spacer(modifier = Modifier.height(8.dp))
                         AppButton(text = "Open Chat", onClick = onOpenChat, modifier = Modifier.fillMaxWidth())
                     }
+                }
+            }
+
+            AppCard(modifier = Modifier.fillMaxWidth(), containerColor = MaterialTheme.colorScheme.secondaryContainer) {
+                Column(modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Icon(Icons.Filled.Map, contentDescription = null, tint = MaterialTheme.colorScheme.onSecondaryContainer)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(text = "Learning Places", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onSecondaryContainer)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(text = "Find nearby driving schools and practice areas", style = MaterialTheme.typography.bodySmall, textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.8f))
+                    Spacer(modifier = Modifier.height(8.dp))
+                    AppButton(text = "View Map", onClick = onOpenMap, modifier = Modifier.fillMaxWidth())
                 }
             }
         }

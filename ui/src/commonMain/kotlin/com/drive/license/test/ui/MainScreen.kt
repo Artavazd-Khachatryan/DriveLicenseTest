@@ -43,6 +43,7 @@ fun MainScreen(
             onOpenStats = { route = "stats" },
             onOpenFailed = { },
             onOpenChat = { },
+            onOpenMap = { },
             onOpenStatsFromRing = { route = "stats" },
             modifier = modifier
         )
