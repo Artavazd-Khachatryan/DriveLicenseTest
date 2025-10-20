@@ -61,7 +61,7 @@ fun QuestionDetailScreen(
 
     AppScaffold(
         topBarTitle = "Question $questionNumber of $totalQuestions",
-        topBarActions = {
+        navigationIcon = {
             IconButton(onClick = onBack) {
                 Icon(Icons.Default.ArrowBack, contentDescription = "Back")
             }
@@ -134,46 +134,6 @@ fun QuestionDetailScreen(
                 )
             }
 
-            if (showResult) {
-                AppCard(
-                    modifier = Modifier.fillMaxWidth(),
-                    containerColor = if (selectedAnswerIndex != null && question.answers[selectedAnswerIndex!!] == question.correctAnswer) {
-                        MaterialTheme.colorScheme.primaryContainer
-                    } else {
-                        MaterialTheme.colorScheme.errorContainer
-                    }
-                ) {
-                    Column(
-                        modifier = Modifier.padding(16.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = if (selectedAnswerIndex != null && question.answers[selectedAnswerIndex!!] == question.correctAnswer) {
-                                "Correct!"
-                            } else {
-                                "Incorrect"
-                            },
-                            style = MaterialTheme.typography.titleMedium,
-                            color = if (selectedAnswerIndex != null && question.answers[selectedAnswerIndex!!] == question.correctAnswer) {
-                                MaterialTheme.colorScheme.onPrimaryContainer
-                            } else {
-                                MaterialTheme.colorScheme.onErrorContainer
-                            }
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = "Correct answer: ${question.correctAnswer}",
-                            style = MaterialTheme.typography.bodyMedium,
-                            textAlign = TextAlign.Center,
-                            color = if (selectedAnswerIndex != null && question.answers[selectedAnswerIndex!!] == question.correctAnswer) {
-                                MaterialTheme.colorScheme.onPrimaryContainer
-                            } else {
-                                MaterialTheme.colorScheme.onErrorContainer
-                            }
-                        )
-                    }
-                }
-            }
 
             Spacer(modifier = Modifier.height(16.dp))
 

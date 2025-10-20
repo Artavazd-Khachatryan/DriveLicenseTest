@@ -44,7 +44,7 @@ fun HomeScreen(
     onOpenChat: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    AppScaffold(topBarTitle = "Home") { inner ->
+    AppScaffold { inner ->
         Column(
             modifier = modifier
                 .fillMaxSize()

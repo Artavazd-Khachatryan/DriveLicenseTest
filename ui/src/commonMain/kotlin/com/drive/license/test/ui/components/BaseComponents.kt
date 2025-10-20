@@ -21,14 +21,19 @@ import androidx.compose.ui.unit.dp
 fun AppScaffold(
     topBarTitle: String? = null,
     topBarActions: @Composable (() -> Unit)? = null,
+    navigationIcon: @Composable (() -> Unit)? = null,
     bottomBar: @Composable (() -> Unit)? = null,
     floatingActionButton: @Composable (() -> Unit)? = null,
     content: @Composable (innerPadding: Modifier) -> Unit
 ) {
     Scaffold(
         topBar = {
-            if (topBarTitle != null) {
-                TopAppBar(title = { Text(text = topBarTitle) }, actions = { topBarActions?.invoke() })
+            if (topBarTitle != null || navigationIcon != null) {
+                TopAppBar(
+                    title = { if (topBarTitle != null) Text(text = topBarTitle) },
+                    navigationIcon = { navigationIcon?.invoke() },
+                    actions = { topBarActions?.invoke() }
+                )
             }
         },
         bottomBar = { bottomBar?.invoke() },
