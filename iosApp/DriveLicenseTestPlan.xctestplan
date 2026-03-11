@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "E65122D5-19AE-49A8-868C-1D977830E98D",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:iosApp.xcodeproj",
+        "identifier" : "61486AB52F61BEE10028E8B0",
+        "name" : "DriveLicenseTestTests"
+      }
+    }
+  ],
+  "version" : 1
+}
