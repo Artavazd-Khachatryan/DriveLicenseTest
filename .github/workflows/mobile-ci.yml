@@ -11,6 +11,10 @@ jobs:
     name: Android build, checks & unit tests
     runs-on: ubuntu-latest
 
+    env:
+      # Used for auto-incrementing Android versionCode on CI
+      CI_BUILD_NUMBER: ${{ github.run_number }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,13 +29,20 @@ jobs:
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x gradlew
 
+      - name: Print Android app version
+        id: app_version
+        run: |
+          VERSION_NAME=$(./gradlew :androidApp:properties | grep "^versionName:" | awk '{print $2}')
+          echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
+
       - name: Build, run checks & unit tests (KMP + Android)
         run: ./gradlew clean check :androidApp:testDebugUnitTest :androidApp:assembleDebug --stacktrace
 
       - name: Upload Android debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: android-debug-apk
+          # Example: android-1.0.0+42-debug
+          name: android-${{ steps.app_version.outputs.version_name || 'unknown' }}+${{ github.run_number }}-debug
           path: androidApp/build/outputs/apk/debug/*.apk
 
   ios:
@@ -53,6 +64,13 @@ jobs:
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x gradlew
 
+      - name: Bump iOS build number from CI run
+        id: ios_version
+        run: |
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${GITHUB_RUN_NUMBER}" "iosApp/iosApp/Info.plist"
+          VERSION_NAME=$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "iosApp/iosApp/Info.plist")
+          echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
+
       - name: Build iOS KMP framework
         run: ./gradlew :composeApp:linkDebugFrameworkIosSimulatorArm64 --stacktrace
 
@@ -73,6 +91,7 @@ jobs:
       - name: Upload iOS build products
         uses: actions/upload-artifact@v4
         with:
-          name: ios-build
-          path: iosApp/build/DerivedData/**/*
+          # Example: ios-1.0+42-debug
+          name: ios-${{ steps.ios_version.outputs.version_name || 'unknown' }}+${{ github.run_number }}-debug
+          path: iosApp/build/DerivedData/Build/Products/**/*.app
 

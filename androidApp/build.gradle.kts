@@ -8,12 +8,18 @@ android {
     namespace = "com.drive.license.test"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
+    val ciBuildNumber = System.getenv("CI_BUILD_NUMBER")?.toIntOrNull()
+
     defaultConfig {
         applicationId = "com.drive.license.test"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+
+        // versionName is manual (edit here for releases)
+        versionName = "1.0.0"
+
+        // versionCode: use CI build number if present, fall back locally
+        versionCode = ciBuildNumber ?: 1
     }
     packaging {
         resources {
