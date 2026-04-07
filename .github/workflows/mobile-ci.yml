@@ -90,6 +90,7 @@ jobs:
           xcodebuild \
             -project iosApp/iosApp.xcodeproj \
             -scheme iosApp \
+            -configuration Release \
             -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.5' \
             -derivedDataPath iosApp/build/DerivedData \
             -testPlan DriveLicenseTestPlan \
@@ -102,7 +103,7 @@ jobs:
       - name: Upload iOS build products
         uses: actions/upload-artifact@v4
         with:
-          # Example: ios-1.0+42-debug
-          name: ios-${{ steps.ios_version.outputs.version_name || 'unknown' }}+${{ github.run_number }}-debug
+          # Example: ios-1.0+42-release
+          name: ios-${{ steps.ios_version.outputs.version_name || 'unknown' }}+${{ github.run_number }}-release
           path: iosApp/build/DerivedData/Build/Products/**/*.app
 
