@@ -17,6 +17,9 @@ jobs:
     env:
       # Used for auto-incrementing Android versionCode on CI
       CI_BUILD_NUMBER: ${{ github.run_number }}
+      STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
 
     steps:
       - name: Checkout
@@ -32,6 +35,11 @@ jobs:
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x gradlew
 
+      - name: Decode keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > "$RUNNER_TEMP/drivelicense.jks"
+          echo "KEYSTORE_PATH=$RUNNER_TEMP/drivelicense.jks" >> "$GITHUB_ENV"
+
       - name: Print Android app version
         id: app_version
         run: |
@@ -39,14 +47,14 @@ jobs:
           echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
 
       - name: Build, run checks & unit tests (KMP + Android)
-        run: ./gradlew clean check :androidApp:testDebugUnitTest :androidApp:assembleDebug --stacktrace
+        run: ./gradlew clean check :androidApp:testDebugUnitTest :androidApp:assembleRelease --stacktrace
 
-      - name: Upload Android debug APK
+      - name: Upload Android release APK
         uses: actions/upload-artifact@v4
         with:
-          # Example: android-1.0.0+42-debug
-          name: android-${{ steps.app_version.outputs.version_name || 'unknown' }}+${{ github.run_number }}-debug
-          path: androidApp/build/outputs/apk/debug/*.apk
+          # Example: android-1.0.0+42-release
+          name: android-${{ steps.app_version.outputs.version_name || 'unknown' }}+${{ github.run_number }}-release
+          path: androidApp/build/outputs/apk/release/*.apk
 
   ios:
     name: iOS build & unit tests (KMP framework + Xcode)
