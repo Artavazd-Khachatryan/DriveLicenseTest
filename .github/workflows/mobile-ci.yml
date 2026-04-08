@@ -82,8 +82,14 @@ jobs:
           VERSION_NAME=$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "iosApp/iosApp/Info.plist")
           echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
 
-      - name: Build iOS KMP framework
+      - name: Build iOS KMP framework (simulator arm64 only)
         run: ./gradlew :composeApp:linkDebugFrameworkIosSimulatorArm64 --stacktrace
+
+      - name: Copy framework to Xcode search path
+        run: |
+          mkdir -p composeApp/build/xcode-frameworks/Debug/iphonesimulator
+          cp -R composeApp/build/bin/iosSimulatorArm64/debugFramework/ComposeApp.framework \
+                composeApp/build/xcode-frameworks/Debug/iphonesimulator/
 
       - name: Xcode build & tests (adjust scheme/SDK if needed)
         run: |
@@ -98,6 +104,7 @@ jobs:
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
             DEVELOPMENT_TEAM="" \
+            OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED=YES \
             clean build test
 
       - name: Upload iOS build products
