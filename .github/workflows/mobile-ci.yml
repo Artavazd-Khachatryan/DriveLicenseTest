@@ -91,7 +91,7 @@ jobs:
             -project iosApp/iosApp.xcodeproj \
             -scheme iosApp \
             -configuration Release \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.5' \
+            -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
             -derivedDataPath iosApp/build/DerivedData \
             -testPlan DriveLicenseTestPlan \
             CODE_SIGNING_ALLOWED=NO \
