@@ -90,7 +90,7 @@ jobs:
           xcodebuild \
             -project iosApp/iosApp.xcodeproj \
             -scheme iosApp \
-            -configuration Release \
+            -configuration Debug \
             -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
             -derivedDataPath iosApp/build/DerivedData \
             -testPlan DriveLicenseTestPlan \
