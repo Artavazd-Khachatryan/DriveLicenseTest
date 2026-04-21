@@ -1,9 +1,12 @@
 package com.drive.license.test.ui
 
 import com.drive.license.test.domain.model.Question
+import kotlinx.datetime.Clock
 
 data class TestSession(
     val questions: List<Question>,
+    val sessionId: String = Clock.System.now().toEpochMilliseconds().toString(),
+    val startTime: Long = Clock.System.now().toEpochMilliseconds(),
     val currentQuestionIndex: Int = 0,
     val answers: MutableMap<Int, String> = mutableMapOf(),
     val isCompleted: Boolean = false

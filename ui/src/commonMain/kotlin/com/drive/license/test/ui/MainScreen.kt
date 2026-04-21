@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,26 +17,36 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.drive.license.test.domain.model.UserStatistics
 import com.drive.license.test.domain.repository.QuestionRepository
+import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.domain.model.Question
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.datetime.Clock
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
 
 @Composable
 fun MainScreen(
     questionRepository: QuestionRepository,
+    userProgressRepository: UserProgressRepository,
     coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
     var route by remember { mutableStateOf("home") }
     var testSession by remember { mutableStateOf<TestSession?>(null) }
+    var userStatistics by remember { mutableStateOf(UserStatistics()) }
     val allQuestions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
-    
+
+    LaunchedEffect(Unit) {
+        userStatistics = userProgressRepository.getUserStatistics()
+    }
+
     when (route) {
         "home" -> HomeScreen(
-            onStartTest = { 
-                // Create test session with 20 random questions and go directly to first question
+            userStatistics = userStatistics,
+            onStartTest = {
                 val randomQuestions = allQuestions.shuffled().take(20)
                 testSession = TestSession(questions = randomQuestions)
                 route = "question"
@@ -56,11 +67,35 @@ fun MainScreen(
                 selectedAnswer = session.answers[session.currentQuestionIndex],
                 onBack = { route = "home" },
                 onAnswer = { answer ->
-                    testSession = session.answerQuestion(answer)
+                    val updatedSession = session.answerQuestion(answer)
+                    testSession = updatedSession
+                    // Persist each answer immediately
+                    coroutineScope.launch {
+                        userProgressRepository.saveQuestionAttempt(
+                            sessionId = session.sessionId,
+                            questionId = session.currentQuestion.id,
+                            selectedAnswer = answer,
+                            isCorrect = answer == session.currentQuestion.correctAnswer,
+                            attemptTime = Clock.System.now().toEpochMilliseconds()
+                        )
+                    }
                 },
                 onNext = {
-                    testSession = session.nextQuestion()
-                    if (session.nextQuestion().isCompleted) {
+                    val next = session.nextQuestion()
+                    testSession = next
+                    if (next.isCompleted) {
+                        // Persist the completed test session
+                        coroutineScope.launch {
+                            val now = Clock.System.now().toEpochMilliseconds()
+                            userProgressRepository.saveTestSession(
+                                sessionId = session.sessionId,
+                                startTime = session.startTime,
+                                endTime = now,
+                                totalQuestions = session.questions.size,
+                                correctAnswers = next.correctAnswers
+                            )
+                            userStatistics = userProgressRepository.getUserStatistics()
+                        }
                         route = "results"
                     }
                 },
@@ -71,12 +106,11 @@ fun MainScreen(
         }
         "results" -> TestResultsScreen(
             session = testSession!!,
-            onBackToHome = { 
+            onBackToHome = {
                 route = "home"
                 testSession = null
             },
             onRetakeTest = {
-                // Create new test session and go directly to first question
                 val randomQuestions = allQuestions.shuffled().take(20)
                 testSession = TestSession(questions = randomQuestions)
                 route = "question"
