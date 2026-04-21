@@ -150,4 +150,34 @@ SET total_questions_attempted = ?,
     total_test_sessions = ?,
     total_passed_sessions = ?,
     last_updated = ?
-WHERE id = 1; 
+WHERE id = 1;
+
+-- Get accuracy per category
+getCategoryAccuracy:
+SELECT
+    qc.name AS category_name,
+    COUNT(DISTINCT q.id) AS total_questions,
+    COALESCE(SUM(up.times_answered), 0) AS total_attempts,
+    COALESCE(SUM(up.times_correct), 0) AS total_correct
+FROM QuestionCategory qc
+JOIN QuestionCategoryJunction jct ON jct.category_id = qc.id
+JOIN Question q ON q.id = jct.question_id
+LEFT JOIN UserQuestionProgress up ON up.question_id = q.id
+GROUP BY qc.id, qc.name
+ORDER BY qc.name;
+
+-- Get questions answered incorrectly at least once
+getIncorrectQuestions:
+SELECT q.id, q.question, q.true_answer
+FROM Question q
+JOIN UserQuestionProgress up ON up.question_id = q.id
+WHERE up.times_incorrect > 0
+ORDER BY up.times_incorrect DESC;
+
+-- Get completed test sessions ordered by most recent
+getCompletedTestSessions:
+SELECT id, start_time, end_time, total_questions, correct_answers
+FROM TestSession
+WHERE is_completed = 1
+ORDER BY start_time DESC
+LIMIT 50;
