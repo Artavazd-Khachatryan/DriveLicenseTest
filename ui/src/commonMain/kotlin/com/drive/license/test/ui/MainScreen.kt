@@ -58,7 +58,10 @@ fun MainScreen(
             onOpenStatsFromRing = { route = "stats" },
             modifier = modifier
         )
-        "stats" -> StatsScreen(onBack = { route = "home" })
+        "stats" -> StatsScreen(
+            userProgressRepository = userProgressRepository,
+            onBack = { route = "home" }
+        )
         "question" -> testSession?.let { session ->
             QuestionDetailScreen(
                 question = session.currentQuestion,
