@@ -94,6 +94,14 @@ home → question → results
 4. Wrap content with `AppScaffold` or `AppTheme` appropriately
 5. Reuse components from `components/` before building new ones
 
+### Implementation Workflow
+
+- Every implementation must be **iterative** — break work into small, logical steps
+- Each iteration must be a **separate commit** with a clear message describing what was done
+- Never batch multiple unrelated changes into a single commit
+- Commit after each meaningful unit of work (e.g., one new screen, one bug fix, one refactor)
+- This keeps the git history readable and makes code review easier
+
 ### Adding New Components
 
 1. Place in `ui/src/commonMain/kotlin/.../ui/components/`
