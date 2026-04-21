@@ -41,6 +41,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.drive.license.test.domain.model.UserStatistics
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
@@ -66,6 +67,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun HomeScreen(
+    userStatistics: UserStatistics,
     onStartTest: () -> Unit,
     onOpenStats: () -> Unit,
     onOpenStatsFromRing: () -> Unit,
@@ -216,12 +218,13 @@ fun HomeScreen(
                             horizontalArrangement = Arrangement.Center,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
+                            val accuracy = userStatistics.overallAccuracy
                             val animatedProgress by animateFloatAsState(
-                                targetValue = 0.7f,
+                                targetValue = accuracy,
                                 animationSpec = tween(1500, easing = LinearEasing),
                                 label = "progress"
                             )
-                            
+
                             ProgressRing(
                                 progress = animatedProgress,
                                 size = 140.dp,
@@ -229,19 +232,19 @@ fun HomeScreen(
                             ) {
                                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                                     val animatedPercentage by animateIntAsState(
-                                        targetValue = 70,
+                                        targetValue = (accuracy * 100).toInt(),
                                         animationSpec = tween(1500, easing = LinearEasing),
                                         label = "percentage"
                                     )
                                     Text(
-                                        text = "$animatedPercentage%", 
-                                        style = MaterialTheme.typography.displaySmall, 
+                                        text = "$animatedPercentage%",
+                                        style = MaterialTheme.typography.displaySmall,
                                         fontWeight = FontWeight.Bold,
                                         color = MaterialTheme.colorScheme.primary
                                     )
                                     Text(
-                                        text = stringResource(Res.string.home_accuracy), 
-                                        style = MaterialTheme.typography.titleMedium, 
+                                        text = stringResource(Res.string.home_accuracy),
+                                        style = MaterialTheme.typography.titleMedium,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
                                 }
