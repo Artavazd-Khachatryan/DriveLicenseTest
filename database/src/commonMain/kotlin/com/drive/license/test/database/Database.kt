@@ -5,10 +5,12 @@ import app.cash.sqldelight.coroutines.mapToList
 import com.drive.license.test.database.models.Book
 import com.drive.license.test.database.models.DatabaseQuestion
 import com.drive.license.test.database.models.QuestionCategory
+import com.drive.license.test.database.models.UserStatistics
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.serializer
@@ -26,6 +28,7 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
     private val bookQueries = database.bookQueries
     private val categoryQueries = database.questionCategoryQueries
     private val junctionQueries = database.questionCategoryJunctionQueries
+    private val userProgressQueries = database.userProgressQueries
     
     fun getAllQuestions(): Flow<List<DatabaseQuestion>> {
         return questionQueries.selectAll()
@@ -186,5 +189,67 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
     fun deleteAllQuestions() {
         junctionQueries.deleteAllQuestionCategories()
         questionQueries.deleteAllQuestions()
+    }
+
+    // --- User Progress Operations ---
+
+    suspend fun getUserStatistics(): UserStatistics = withContext(Dispatchers.IO) {
+        val row = userProgressQueries.getUserStatistics().executeAsOne()
+        UserStatistics(
+            totalQuestions = row.total_questions.toInt(),
+            totalAttempts = row.total_attempts.toInt(),
+            totalCorrect = row.total_correct.toInt(),
+            totalIncorrect = row.total_incorrect.toInt(),
+            learnedQuestions = row.learned_questions.toInt()
+        )
+    }
+
+    suspend fun insertTestSession(id: String, startTime: Long, totalQuestions: Int) = withContext(Dispatchers.IO) {
+        userProgressQueries.insertTestSession(id, startTime, totalQuestions.toLong())
+    }
+
+    suspend fun completeTestSession(id: String, endTime: Long, correctAnswers: Int) = withContext(Dispatchers.IO) {
+        userProgressQueries.updateTestSessionCompletion(endTime, correctAnswers.toLong(), id)
+    }
+
+    suspend fun insertQuestionAttempt(
+        sessionId: String,
+        questionId: Long,
+        selectedAnswer: String,
+        isCorrect: Boolean,
+        timeSpent: Long?,
+        attemptTime: Long
+    ) = withContext(Dispatchers.IO) {
+        userProgressQueries.insertQuestionAttempt(
+            session_id = sessionId,
+            question_id = questionId,
+            selected_answer = selectedAnswer,
+            is_correct = if (isCorrect) 1L else 0L,
+            time_spent = timeSpent,
+            attempt_time = attemptTime
+        )
+    }
+
+    suspend fun updateQuestionProgress(
+        questionId: Long,
+        isCorrect: Boolean,
+        timestamp: Long
+    ) = withContext(Dispatchers.IO) {
+        val existing = userProgressQueries.getQuestionProgress(questionId).executeAsOneOrNull()
+        if (existing == null) {
+            userProgressQueries.insertQuestionProgress(
+                question_id = questionId,
+                times_correct = if (isCorrect) 1L else 0L,
+                times_incorrect = if (isCorrect) 0L else 1L,
+                last_answered_at = timestamp
+            )
+        } else {
+            userProgressQueries.updateQuestionProgress(
+                times_correct = if (isCorrect) 1L else 0L,
+                times_incorrect = if (isCorrect) 0L else 1L,
+                last_answered_at = timestamp,
+                question_id = questionId
+            )
+        }
     }
 }
