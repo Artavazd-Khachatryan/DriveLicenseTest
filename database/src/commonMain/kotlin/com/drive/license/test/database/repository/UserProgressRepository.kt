@@ -1,6 +1,9 @@
 package com.drive.license.test.database.repository
 
 import com.drive.license.test.database.Database
+import com.drive.license.test.domain.model.CategoryStats
+import com.drive.license.test.domain.model.MistakeQuestion
+import com.drive.license.test.domain.model.TestSessionSummary
 import com.drive.license.test.domain.model.UserStatistics
 import com.drive.license.test.domain.repository.UserProgressRepository as DomainUserProgressRepository
 
@@ -15,6 +18,39 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
             totalIncorrect = stats.totalIncorrect,
             learnedQuestions = stats.learnedQuestions
         )
+    }
+
+    override suspend fun getCategoryStats(): List<CategoryStats> {
+        return database.getCategoryAccuracy().map { row ->
+            CategoryStats(
+                categoryName = row.category_name,
+                totalQuestions = row.total_questions.toInt(),
+                totalAttempts = row.total_attempts.toInt(),
+                totalCorrect = row.total_correct.toInt()
+            )
+        }
+    }
+
+    override suspend fun getTestHistory(): List<TestSessionSummary> {
+        return database.getCompletedTestSessions().map { row ->
+            TestSessionSummary(
+                id = row.id,
+                startTime = row.start_time,
+                endTime = row.end_time,
+                totalQuestions = row.total_questions.toInt(),
+                correctAnswers = row.correct_answers.toInt()
+            )
+        }
+    }
+
+    override suspend fun getMistakeQuestions(): List<MistakeQuestion> {
+        return database.getIncorrectQuestions().map { row ->
+            MistakeQuestion(
+                id = row.id.toInt(),
+                question = row.question,
+                correctAnswer = row.true_answer
+            )
+        }
     }
 
     override suspend fun saveTestSession(

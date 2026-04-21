@@ -252,4 +252,16 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             )
         }
     }
+
+    suspend fun getCategoryAccuracy() = withContext(Dispatchers.IO) {
+        userProgressQueries.getCategoryAccuracy().executeAsList()
+    }
+
+    suspend fun getCompletedTestSessions() = withContext(Dispatchers.IO) {
+        userProgressQueries.getCompletedTestSessions().executeAsList()
+    }
+
+    suspend fun getIncorrectQuestions() = withContext(Dispatchers.IO) {
+        userProgressQueries.getIncorrectQuestions().executeAsList()
+    }
 }
