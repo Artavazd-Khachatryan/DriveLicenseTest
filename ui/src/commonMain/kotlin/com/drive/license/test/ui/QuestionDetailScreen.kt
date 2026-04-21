@@ -36,6 +36,7 @@ import com.drive.license.test.ui.components.AnswerButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.BrokenImage
 import com.drive.license.test.ui.util.resolveDrawableResource
 
 @Composable
@@ -102,14 +103,23 @@ fun QuestionDetailScreen(
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 val imageResource = resolveDrawableResource(imageName)
-                                imageResource?.let { res ->
+                                if (imageResource != null) {
                                     Image(
-                                        painter = painterResource(res),
+                                        painter = painterResource(imageResource),
                                         contentDescription = "Question image",
                                         modifier = Modifier
                                             .fillMaxWidth()
                                             .height(200.dp),
                                         contentScale = ContentScale.Fit
+                                    )
+                                } else {
+                                    Icon(
+                                        imageVector = Icons.Default.BrokenImage,
+                                        contentDescription = "Image not available",
+                                        modifier = Modifier
+                                            .size(64.dp)
+                                            .padding(vertical = 16.dp),
+                                        tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
                                     )
                                 }
                             }
