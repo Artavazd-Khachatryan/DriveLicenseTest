@@ -52,13 +52,17 @@ fun MainScreen(
                 route = "question"
             },
             onOpenStats = { route = "stats" },
-            onOpenFailed = { },
+            onOpenFailed = { route = "mistakes" },
             onOpenChat = { },
             onOpenMap = { },
             onOpenStatsFromRing = { route = "stats" },
             modifier = modifier
         )
         "stats" -> StatsScreen(
+            userProgressRepository = userProgressRepository,
+            onBack = { route = "home" }
+        )
+        "mistakes" -> ReviewMistakesScreen(
             userProgressRepository = userProgressRepository,
             onBack = { route = "home" }
         )
