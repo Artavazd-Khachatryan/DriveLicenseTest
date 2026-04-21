@@ -19,11 +19,11 @@ The app has DB models and UI but they aren't connected. Fix this first — every
 
 Users need to see their progress and learn from errors.
 
-- [ ] **2.1 Build StatsScreen** — Overall accuracy, total tests taken, pass rate, streak
-- [ ] **2.2 Category breakdown** — Show accuracy per category (Traffic Signs, Right of Way, etc.) using existing `QuestionCategory` enum
+- [x] **2.1 Build StatsScreen** — Overall accuracy ring, total attempts, correct/incorrect counts
+- [x] **2.2 Category breakdown** — Per-category accuracy with progress bars
 - [ ] **2.3 Difficulty distribution** — Show how many questions are EASY/MEDIUM/HARD/LEARNED based on `QuestionWithProgress.difficulty`
-- [ ] **2.4 Test history list** — Show past test sessions (date, score, pass/fail) with ability to tap and review
-- [ ] **2.5 Review Mistakes screen** — List all incorrectly answered questions; tap to see question + correct answer + user's wrong answer
+- [x] **2.4 Test history list** — Show past test sessions (date, score, pass/fail icon)
+- [x] **2.5 Review Mistakes screen** — Lists incorrectly answered questions with correct answer shown
 
 ---
 
@@ -93,3 +93,4 @@ Nice-to-have features if time allows.
 |------|---------------|
 | 2026-04-21 | Initial roadmap created |
 | 2026-04-21 | Phase 1 complete — DB persistence wired, real stats on HomeScreen, image fallback |
+| 2026-04-21 | Phase 2 mostly done — StatsScreen (accuracy, categories, history), ReviewMistakesScreen; difficulty distribution left for later |
