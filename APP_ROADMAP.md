@@ -31,11 +31,11 @@ Users need to see their progress and learn from errors.
 
 Move beyond random 20-question tests.
 
-- [ ] **3.1 Practice by category** — Category picker screen, then questions filtered by selected category
+- [x] **3.1 Practice by category** — Category picker screen with question counts; starts filtered test
 - [ ] **3.2 Practice by book** — Book picker (Book 1–10), then questions from that book
-- [ ] **3.3 Weak areas practice** — Auto-select questions where `needsPractice == true` from `QuestionWithProgress`
+- [x] **3.3 Weak areas practice** — Pulls questions with most mistakes first via getWeakAreaQuestions()
 - [ ] **3.4 Configurable test length** — Let user choose 10/20/30 questions before starting
-- [ ] **3.5 Exam simulation mode** — 30 questions, 20-minute timer, pass at 80% (mirrors real Armenian driving exam rules)
+- [x] **3.5 Exam simulation mode** — 30 questions, 20-minute countdown timer, auto-submits on timeout
 
 ---
 
@@ -94,3 +94,4 @@ Nice-to-have features if time allows.
 | 2026-04-21 | Initial roadmap created |
 | 2026-04-21 | Phase 1 complete — DB persistence wired, real stats on HomeScreen, image fallback |
 | 2026-04-21 | Phase 2 mostly done — StatsScreen (accuracy, categories, history), ReviewMistakesScreen; difficulty distribution left for later |
+| 2026-04-28 | Phase 3 (partial) — Category picker, weak areas practice, exam simulation with 20-min countdown timer |
