@@ -45,6 +45,7 @@ import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.ProgressRing
+import com.drive.license.test.ui.components.StatChip
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.home_accuracy
 import drivelicensetest.ui.generated.resources.home_ai_assistant_subtitle
@@ -255,6 +256,36 @@ fun HomeScreen(
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
                                 }
+                            }
+                        }
+
+                        if (userStatistics.totalAttempts > 0) {
+                            Spacer(modifier = Modifier.height(16.dp))
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                StatChip(
+                                    label = "Correct",
+                                    value = userStatistics.totalCorrect.toString(),
+                                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                                    modifier = Modifier.weight(1f)
+                                )
+                                StatChip(
+                                    label = "Incorrect",
+                                    value = userStatistics.totalIncorrect.toString(),
+                                    containerColor = MaterialTheme.colorScheme.errorContainer,
+                                    contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                                    modifier = Modifier.weight(1f)
+                                )
+                                StatChip(
+                                    label = "Attempted",
+                                    value = userStatistics.totalAttempts.toString(),
+                                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                                    contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    modifier = Modifier.weight(1f)
+                                )
                             }
                         }
                     }
