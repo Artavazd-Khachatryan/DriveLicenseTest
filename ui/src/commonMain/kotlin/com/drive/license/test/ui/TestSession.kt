@@ -9,8 +9,14 @@ data class TestSession(
     val startTime: Long = Clock.System.now().toEpochMilliseconds(),
     val currentQuestionIndex: Int = 0,
     val answers: MutableMap<Int, String> = mutableMapOf(),
-    val isCompleted: Boolean = false
+    val isCompleted: Boolean = false,
+    val isExamMode: Boolean = false,
+    val examDurationSeconds: Int = EXAM_DURATION_SECONDS
 ) {
+    companion object {
+        const val EXAM_DURATION_SECONDS = 20 * 60  // 20 minutes
+        const val EXAM_QUESTION_COUNT = 30
+    }
     val currentQuestion: Question
         get() = questions[currentQuestionIndex]
     
