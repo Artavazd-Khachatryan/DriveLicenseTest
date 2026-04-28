@@ -35,6 +35,8 @@ import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.AnswerButton
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
@@ -55,6 +57,26 @@ fun QuestionDetailScreen(
     onNext: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var showExitDialog by remember { mutableStateOf(false) }
+
+    if (showExitDialog) {
+        AlertDialog(
+            onDismissRequest = { showExitDialog = false },
+            title = { Text("Exit test?") },
+            text = { Text("Your progress will be lost. Are you sure you want to leave?") },
+            confirmButton = {
+                TextButton(onClick = { showExitDialog = false; onBack() }) {
+                    Text("Exit")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showExitDialog = false }) {
+                    Text("Continue")
+                }
+            }
+        )
+    }
+
     var selectedAnswerIndex by remember(question.id) {
         mutableStateOf(
             if (selectedAnswer != null) {
@@ -79,7 +101,7 @@ fun QuestionDetailScreen(
     AppScaffold(
         topBarTitle = "Question $questionNumber of $totalQuestions",
         navigationIcon = {
-            IconButton(onClick = onBack) {
+            IconButton(onClick = { showExitDialog = true }) {
                 Icon(Icons.Default.ArrowBack, contentDescription = "Back")
             }
         },
