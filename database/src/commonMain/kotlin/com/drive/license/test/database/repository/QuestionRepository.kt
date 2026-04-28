@@ -57,6 +57,10 @@ class QuestionRepository(private val database: Database) : DomainQuestionReposit
     override suspend fun getQuestionById(id: Int): Question? {
         return database.getQuestionById(id.toLong())?.toDomainModel()
     }
+
+    override suspend fun getWeakAreaQuestions(): List<Question> {
+        return database.getWeakAreaQuestions().map { it.toDomainModel() }
+    }
     
     fun insertDatabaseQuestion(databaseQuestion: DatabaseQuestion): Long {
         return database.insertDatabaseQuestion(databaseQuestion)

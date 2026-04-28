@@ -15,4 +15,5 @@ interface QuestionRepository {
     fun getQuestionsByBook(book: Book): Flow<List<Question>>
     suspend fun getRandomQuestions(count: Int): List<Question>
     suspend fun getQuestionById(id: Int): Question?
+    suspend fun getWeakAreaQuestions(): List<Question>
 } 

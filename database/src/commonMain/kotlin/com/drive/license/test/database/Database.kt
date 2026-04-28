@@ -253,6 +253,25 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
         }
     }
 
+    suspend fun getWeakAreaQuestions(): List<DatabaseQuestion> = withContext(Dispatchers.IO) {
+        userProgressQueries.getQuestionsByDifficulty().executeAsList().map { row ->
+            val bookEnum = Book.valueOf(row.book_name)
+            val categories = junctionQueries.selectCategoriesForQuestion(row.id)
+                .executeAsList()
+                .map { QuestionCategory.valueOf(it.name) }
+            val answers = parseAnswersFromJson(row.answers)
+            DatabaseQuestion(
+                id = row.id,
+                question = row.question,
+                image = row.image,
+                answers = answers,
+                trueAnswer = row.true_answer,
+                book = bookEnum,
+                categories = categories
+            )
+        }
+    }
+
     suspend fun getCategoryAccuracy() = withContext(Dispatchers.IO) {
         userProgressQueries.getCategoryAccuracy().executeAsList()
     }
