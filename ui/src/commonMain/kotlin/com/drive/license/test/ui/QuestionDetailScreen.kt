@@ -33,10 +33,13 @@ import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.AnswerButton
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.BrokenImage
+import androidx.compose.material.icons.filled.Timer
 import com.drive.license.test.ui.util.resolveDrawableResource
 
 @Composable
@@ -45,13 +48,14 @@ fun QuestionDetailScreen(
     questionNumber: Int,
     totalQuestions: Int,
     selectedAnswer: String? = null,
+    remainingSeconds: Int? = null,
     onBack: () -> Unit,
     onAnswer: (String) -> Unit,
     onPrevious: () -> Unit,
     onNext: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var selectedAnswerIndex by remember(question.id) { 
+    var selectedAnswerIndex by remember(question.id) {
         mutableStateOf(
             if (selectedAnswer != null) {
                 question.answers.indexOf(selectedAnswer).takeIf { it >= 0 }
@@ -60,13 +64,46 @@ fun QuestionDetailScreen(
     }
     var showResult by remember(question.id) { mutableStateOf(selectedAnswer != null) }
 
+    val timerLabel = remainingSeconds?.let {
+        val m = it / 60
+        val s = it % 60
+        "%d:%02d".format(m, s)
+    }
+    val timerUrgent = (remainingSeconds ?: Int.MAX_VALUE) < 60
+    val timerColor by animateColorAsState(
+        targetValue = if (timerUrgent) androidx.compose.ui.graphics.Color.Red else androidx.compose.ui.graphics.Color.Unspecified,
+        animationSpec = tween(300),
+        label = "timer_color"
+    )
+
     AppScaffold(
         topBarTitle = "Question $questionNumber of $totalQuestions",
         navigationIcon = {
             IconButton(onClick = onBack) {
                 Icon(Icons.Default.ArrowBack, contentDescription = "Back")
             }
-        }
+        },
+        topBarActions = if (timerLabel != null) {
+            {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    modifier = Modifier.padding(end = 8.dp)
+                ) {
+                    Icon(
+                        Icons.Default.Timer,
+                        contentDescription = "Time remaining",
+                        tint = timerColor,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Text(
+                        text = timerLabel,
+                        style = MaterialTheme.typography.labelLarge,
+                        color = timerColor
+                    )
+                }
+            }
+        } else null
     ) { innerPadding ->
         Column(
             modifier = modifier
