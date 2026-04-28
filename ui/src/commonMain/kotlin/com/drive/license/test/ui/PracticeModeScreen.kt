@@ -37,7 +37,8 @@ fun PracticeModeScreen(
     onPickCategory: () -> Unit,
     onStartWeakAreas: () -> Unit,
     onStartExam: () -> Unit,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    bottomBar: @Composable (() -> Unit)? = null
 ) {
     AppScaffold(
         topBarTitle = "Practice",
@@ -45,7 +46,8 @@ fun PracticeModeScreen(
             IconButton(onClick = onBack) {
                 Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
             }
-        }
+        },
+        bottomBar = bottomBar
     ) { inner ->
         Column(
             modifier = Modifier

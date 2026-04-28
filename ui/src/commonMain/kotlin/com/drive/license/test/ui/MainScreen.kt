@@ -11,7 +11,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.drive.license.test.domain.model.UserStatistics
 import com.drive.license.test.domain.repository.QuestionRepository
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.BarChart
+import androidx.compose.material.icons.filled.FitnessCenter
+import androidx.compose.material.icons.filled.Home
 import com.drive.license.test.domain.repository.UserProgressRepository
+import com.drive.license.test.ui.components.AppBottomBar
+import com.drive.license.test.ui.components.BottomNavItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
@@ -32,6 +38,16 @@ fun MainScreen(
     var userStatistics by remember { mutableStateOf(UserStatistics()) }
     var examRemainingSeconds by remember { mutableStateOf<Int?>(null) }
     val allQuestions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
+
+    val bottomBar: @Composable () -> Unit = {
+        AppBottomBar(
+            listOf(
+                BottomNavItem("Home", Icons.Default.Home, currentScreen is Screen.Home) { navigate(Screen.Home) },
+                BottomNavItem("Practice", Icons.Default.FitnessCenter, currentScreen is Screen.Practice) { navigate(Screen.Practice) },
+                BottomNavItem("Stats", Icons.Default.BarChart, currentScreen is Screen.Stats) { navigate(Screen.Stats) }
+            )
+        )
+    }
 
     fun navigate(screen: Screen) {
         if (screen.isTopLevel) {
@@ -96,11 +112,13 @@ fun MainScreen(
             onOpenChat = { },
             onOpenMap = { },
             onOpenStatsFromRing = { navigate(Screen.Stats) },
+            bottomBar = bottomBar,
             modifier = modifier
         )
         Screen.Stats -> StatsScreen(
             userProgressRepository = userProgressRepository,
-            onBack = { navigateBack() }
+            onBack = { navigateBack() },
+            bottomBar = bottomBar
         )
         Screen.Mistakes -> ReviewMistakesScreen(
             userProgressRepository = userProgressRepository,
@@ -128,7 +146,8 @@ fun MainScreen(
                     testSession = TestSession(questions = examQuestions, isExamMode = true)
                     navigate(Screen.Question)
                 },
-                onBack = { navigateBack() }
+                onBack = { navigateBack() },
+                bottomBar = bottomBar
             )
         }
         Screen.CategoryPicker -> CategoryPickerScreen(

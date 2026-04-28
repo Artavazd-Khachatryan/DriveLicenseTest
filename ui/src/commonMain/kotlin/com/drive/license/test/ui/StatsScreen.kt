@@ -47,7 +47,8 @@ import kotlinx.datetime.toLocalDateTime
 @Composable
 fun StatsScreen(
     userProgressRepository: UserProgressRepository,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    bottomBar: @Composable (() -> Unit)? = null
 ) {
     var stats by remember { mutableStateOf(UserStatistics()) }
     var categoryStats by remember { mutableStateOf<List<CategoryStats>>(emptyList()) }
@@ -65,7 +66,8 @@ fun StatsScreen(
             IconButton(onClick = onBack) {
                 Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
             }
-        }
+        },
+        bottomBar = bottomBar
     ) { inner ->
         Column(
             modifier = Modifier

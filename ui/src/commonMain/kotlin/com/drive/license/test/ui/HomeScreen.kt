@@ -74,9 +74,10 @@ fun HomeScreen(
     onOpenPractice: () -> Unit,
     onOpenChat: () -> Unit,
     onOpenMap: () -> Unit,
+    bottomBar: @Composable (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
-    AppScaffold { inner ->
+    AppScaffold(bottomBar = bottomBar) { inner ->
         Column(
             modifier = modifier
                 .fillMaxSize()
