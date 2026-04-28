@@ -6939,6 +6939,7 @@
     <string name="home_stat_correct">Ճիշտ</string>
     <string name="home_stat_incorrect">Սխալ</string>
     <string name="home_stat_attempted">Փորձ</string>
+    <string name="home_accuracy_ring_cd">Ընդհանուր ճշգրտություն %1$d%%: Հպեք վիճակագրությունը բացելու համար</string>
 
     <!-- Stats Screen -->
     <string name="stats_title">Վիճակագրություն</string>

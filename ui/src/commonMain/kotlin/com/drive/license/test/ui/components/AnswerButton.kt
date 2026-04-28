@@ -29,7 +29,8 @@ fun AnswerButton(
     }
     
     val contentColor = when {
-        isCorrect || isIncorrect -> MaterialTheme.colorScheme.onPrimary
+        isCorrect -> MaterialTheme.colorScheme.onPrimary
+        isIncorrect -> MaterialTheme.colorScheme.onError
         isSelected -> MaterialTheme.colorScheme.onPrimaryContainer
         else -> MaterialTheme.colorScheme.onSurface
     }

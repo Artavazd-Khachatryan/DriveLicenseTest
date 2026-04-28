@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -24,6 +26,7 @@ fun ProgressRing(
     trackColor: androidx.compose.ui.graphics.Color = MaterialTheme.colorScheme.surfaceVariant,
     progressColor: androidx.compose.ui.graphics.Color? = null,
     strokeWidth: Dp = 16.dp,
+    contentDescription: String? = null,
     centerContent: @Composable (() -> Unit)? = null
 ) {
     val coerced = progress.coerceIn(0f, 1f)
@@ -33,7 +36,11 @@ fun ProgressRing(
         coerced >= 0.5f -> MaterialTheme.colorScheme.tertiary
         else -> MaterialTheme.colorScheme.error
     }
-    Box(modifier = modifier.size(size), contentAlignment = Alignment.Center) {
+    val defaultDescription = "${(coerced * 100).toInt()}%"
+    val semanticsModifier = Modifier.semantics {
+        this.contentDescription = contentDescription ?: defaultDescription
+    }
+    Box(modifier = modifier.size(size).then(semanticsModifier), contentAlignment = Alignment.Center) {
         Canvas(modifier = Modifier.size(size)) {
             val stroke = Stroke(width = strokeWidth.toPx(), cap = StrokeCap.Round)
             drawArc(

@@ -66,6 +66,7 @@ import drivelicensetest.ui.generated.resources.home_start_test_title
 import drivelicensetest.ui.generated.resources.home_stat_attempted
 import drivelicensetest.ui.generated.resources.home_stat_correct
 import drivelicensetest.ui.generated.resources.home_stat_incorrect
+import drivelicensetest.ui.generated.resources.home_accuracy_ring_cd
 import drivelicensetest.ui.generated.resources.home_view_map_button
 import org.jetbrains.compose.resources.stringResource
 
@@ -240,6 +241,7 @@ fun HomeScreen(
                             ProgressRing(
                                 progress = animatedProgress,
                                 size = 140.dp,
+                                contentDescription = stringResource(Res.string.home_accuracy_ring_cd, (accuracy * 100).toInt()),
                                 modifier = Modifier.clickable { onOpenStatsFromRing() }
                             ) {
                                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
