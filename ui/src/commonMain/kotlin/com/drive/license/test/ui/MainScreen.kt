@@ -1,5 +1,11 @@
 package com.drive.license.test.ui
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -73,11 +79,11 @@ fun MainScreen(
             return@LaunchedEffect
         }
         examRemainingSeconds = session.examDurationSeconds
-        while ((examRemainingSeconds ?: 0) > 0 && currentScreen is Screen.Question) {
+        while ((examRemainingSeconds ?: 0) > 0 && backStack.last() is Screen.Question) {
             delay(1000)
             examRemainingSeconds = (examRemainingSeconds ?: 0) - 1
         }
-        if ((examRemainingSeconds ?: 1) == 0 && currentScreen is Screen.Question) {
+        if ((examRemainingSeconds ?: 1) == 0 && backStack.last() is Screen.Question) {
             val current = testSession
             if (current != null) {
                 val completed = current.copy(isCompleted = true)
@@ -98,7 +104,23 @@ fun MainScreen(
         }
     }
 
-    when (currentScreen) {
+    AnimatedContent(
+        targetState = currentScreen,
+        transitionSpec = {
+            if (targetState.isTopLevel && initialState.isTopLevel) {
+                // Tab switch: fade
+                fadeIn() togetherWith fadeOut()
+            } else if (!targetState.isTopLevel) {
+                // Pushing onto stack: slide in from right
+                slideInHorizontally { it } togetherWith slideOutHorizontally { -it / 3 }
+            } else {
+                // Popping from stack: slide out to right
+                slideInHorizontally { -it / 3 } togetherWith slideOutHorizontally { it }
+            }
+        },
+        label = "screen_transition"
+    ) { screen ->
+    when (screen) {
         Screen.Home -> HomeScreen(
             userStatistics = userStatistics,
             onStartTest = {
@@ -218,10 +240,10 @@ fun MainScreen(
             onRetakeTest = {
                 val randomQuestions = allQuestions.shuffled().take(20)
                 testSession = TestSession(questions = randomQuestions)
-                // replace Results with Question in back stack
                 backStack.removeAt(backStack.lastIndex)
                 backStack.add(Screen.Question)
             }
         )
     }
+    } // AnimatedContent
 }
