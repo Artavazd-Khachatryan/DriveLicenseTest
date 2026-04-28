@@ -1,6 +1,7 @@
 package com.drive.license.test.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,6 +18,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Cancel
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -68,11 +70,13 @@ fun StatsScreen(
     var stats by remember { mutableStateOf(UserStatistics()) }
     var categoryStats by remember { mutableStateOf<List<CategoryStats>>(emptyList()) }
     var testHistory by remember { mutableStateOf<List<TestSessionSummary>>(emptyList()) }
+    var isLoading by remember { mutableStateOf(true) }
 
     LaunchedEffect(Unit) {
         stats = userProgressRepository.getUserStatistics()
         categoryStats = userProgressRepository.getCategoryStats()
         testHistory = userProgressRepository.getTestHistory()
+        isLoading = false
     }
 
     AppScaffold(
@@ -84,19 +88,28 @@ fun StatsScreen(
         },
         bottomBar = bottomBar
     ) { inner ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .then(inner)
-                .verticalScroll(rememberScrollState())
-                .padding(16.dp)
-                .wrapContentWidth(Alignment.CenterHorizontally)
-                .widthIn(max = 720.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            OverallStatsCard(stats)
-            CategoryBreakdownCard(categoryStats)
-            TestHistoryCard(testHistory)
+        if (isLoading) {
+            Box(
+                modifier = Modifier.fillMaxSize().then(inner),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
+            }
+        } else {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .then(inner)
+                    .verticalScroll(rememberScrollState())
+                    .padding(16.dp)
+                    .wrapContentWidth(Alignment.CenterHorizontally)
+                    .widthIn(max = 720.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                OverallStatsCard(stats)
+                CategoryBreakdownCard(categoryStats)
+                TestHistoryCard(testHistory)
+            }
         }
     }
 }

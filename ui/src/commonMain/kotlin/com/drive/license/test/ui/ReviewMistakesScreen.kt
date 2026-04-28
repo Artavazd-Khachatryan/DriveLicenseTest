@@ -1,6 +1,7 @@
 package com.drive.license.test.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,6 +15,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -48,9 +50,11 @@ fun ReviewMistakesScreen(
     onBack: () -> Unit
 ) {
     var mistakes by remember { mutableStateOf<List<MistakeQuestion>>(emptyList()) }
+    var isLoading by remember { mutableStateOf(true) }
 
     LaunchedEffect(Unit) {
         mistakes = userProgressRepository.getMistakeQuestions()
+        isLoading = false
     }
 
     AppScaffold(
@@ -61,7 +65,14 @@ fun ReviewMistakesScreen(
             }
         }
     ) { inner ->
-        Column(
+        if (isLoading) {
+            Box(
+                modifier = Modifier.fillMaxSize().then(inner),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
+            }
+        } else Column(
             modifier = Modifier
                 .fillMaxSize()
                 .then(inner)
