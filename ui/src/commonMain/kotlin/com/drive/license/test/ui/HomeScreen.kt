@@ -59,9 +59,13 @@ import drivelicensetest.ui.generated.resources.home_ready_title
 import drivelicensetest.ui.generated.resources.home_review_button
 import drivelicensetest.ui.generated.resources.home_review_mistakes_subtitle
 import drivelicensetest.ui.generated.resources.home_review_mistakes_title
+import drivelicensetest.ui.generated.resources.home_practice_button
 import drivelicensetest.ui.generated.resources.home_start_button
 import drivelicensetest.ui.generated.resources.home_start_test_subtitle
 import drivelicensetest.ui.generated.resources.home_start_test_title
+import drivelicensetest.ui.generated.resources.home_stat_attempted
+import drivelicensetest.ui.generated.resources.home_stat_correct
+import drivelicensetest.ui.generated.resources.home_stat_incorrect
 import drivelicensetest.ui.generated.resources.home_view_map_button
 import org.jetbrains.compose.resources.stringResource
 
@@ -175,7 +179,7 @@ fun HomeScreen(
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                         AppButton(
-                            text = "Practice Mode",
+                            text = stringResource(Res.string.home_practice_button),
                             onClick = onOpenPractice,
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -266,21 +270,21 @@ fun HomeScreen(
                                 horizontalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
                                 StatChip(
-                                    label = "Correct",
+                                    label = stringResource(Res.string.home_stat_correct),
                                     value = userStatistics.totalCorrect.toString(),
                                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                                     contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                                     modifier = Modifier.weight(1f)
                                 )
                                 StatChip(
-                                    label = "Incorrect",
+                                    label = stringResource(Res.string.home_stat_incorrect),
                                     value = userStatistics.totalIncorrect.toString(),
                                     containerColor = MaterialTheme.colorScheme.errorContainer,
                                     contentColor = MaterialTheme.colorScheme.onErrorContainer,
                                     modifier = Modifier.weight(1f)
                                 )
                                 StatChip(
-                                    label = "Attempted",
+                                    label = stringResource(Res.string.home_stat_attempted),
                                     value = userStatistics.totalAttempts.toString(),
                                     containerColor = MaterialTheme.colorScheme.surfaceVariant,
                                     contentColor = MaterialTheme.colorScheme.onSurfaceVariant,

@@ -30,6 +30,20 @@ import androidx.compose.ui.unit.dp
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
+import drivelicensetest.ui.generated.resources.Res
+import drivelicensetest.ui.generated.resources.back
+import drivelicensetest.ui.generated.resources.practice_by_category_button
+import drivelicensetest.ui.generated.resources.practice_by_category_desc
+import drivelicensetest.ui.generated.resources.practice_by_category_title
+import drivelicensetest.ui.generated.resources.practice_exam_button
+import drivelicensetest.ui.generated.resources.practice_exam_desc
+import drivelicensetest.ui.generated.resources.practice_exam_title
+import drivelicensetest.ui.generated.resources.practice_title
+import drivelicensetest.ui.generated.resources.practice_weak_areas_button
+import drivelicensetest.ui.generated.resources.practice_weak_areas_count
+import drivelicensetest.ui.generated.resources.practice_weak_areas_empty
+import drivelicensetest.ui.generated.resources.practice_weak_areas_title
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun PracticeModeScreen(
@@ -41,10 +55,10 @@ fun PracticeModeScreen(
     bottomBar: @Composable (() -> Unit)? = null
 ) {
     AppScaffold(
-        topBarTitle = "Practice",
+        topBarTitle = stringResource(Res.string.practice_title),
         navigationIcon = {
             IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(Res.string.back))
             }
         },
         bottomBar = bottomBar
@@ -61,21 +75,21 @@ fun PracticeModeScreen(
         ) {
             PracticeCard(
                 icon = { Icon(Icons.Default.Category, contentDescription = null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.primary) },
-                title = "By Category",
-                description = "Focus on a specific topic: traffic signs, right of way, maneuvers, and more.",
-                buttonText = "Choose Category",
+                title = stringResource(Res.string.practice_by_category_title),
+                description = stringResource(Res.string.practice_by_category_desc),
+                buttonText = stringResource(Res.string.practice_by_category_button),
                 onClick = onPickCategory,
                 containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f)
             )
 
             PracticeCard(
                 icon = { Icon(Icons.Default.TrendingDown, contentDescription = null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.error) },
-                title = "Weak Areas",
+                title = stringResource(Res.string.practice_weak_areas_title),
                 description = if (weakAreaCount > 0)
-                    "$weakAreaCount question${if (weakAreaCount == 1) "" else "s"} where you need more practice."
+                    stringResource(Res.string.practice_weak_areas_count, weakAreaCount)
                 else
-                    "Complete a test first to identify your weak areas.",
-                buttonText = "Start Practice",
+                    stringResource(Res.string.practice_weak_areas_empty),
+                buttonText = stringResource(Res.string.practice_weak_areas_button),
                 onClick = onStartWeakAreas,
                 enabled = weakAreaCount > 0,
                 containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.3f)
@@ -83,9 +97,9 @@ fun PracticeModeScreen(
 
             PracticeCard(
                 icon = { Icon(Icons.Default.Timer, contentDescription = null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.tertiary) },
-                title = "Exam Simulation",
-                description = "30 questions · 20 minutes · Pass at 70%. Mirrors the real Armenian driving exam.",
-                buttonText = "Start Exam",
+                title = stringResource(Res.string.practice_exam_title),
+                description = stringResource(Res.string.practice_exam_desc),
+                buttonText = stringResource(Res.string.practice_exam_button),
                 onClick = onStartExam,
                 containerColor = MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.3f)
             )

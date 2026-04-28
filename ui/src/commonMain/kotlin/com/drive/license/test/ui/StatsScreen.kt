@@ -40,9 +40,24 @@ import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.ProgressRing
+import drivelicensetest.ui.generated.resources.Res
+import drivelicensetest.ui.generated.resources.back
+import drivelicensetest.ui.generated.resources.stats_by_category
+import drivelicensetest.ui.generated.resources.stats_correct
+import drivelicensetest.ui.generated.resources.stats_correct_of_total
+import drivelicensetest.ui.generated.resources.stats_failed
+import drivelicensetest.ui.generated.resources.stats_incorrect
+import drivelicensetest.ui.generated.resources.stats_no_category_data
+import drivelicensetest.ui.generated.resources.stats_no_history
+import drivelicensetest.ui.generated.resources.stats_overall_performance
+import drivelicensetest.ui.generated.resources.stats_passed
+import drivelicensetest.ui.generated.resources.stats_test_history
+import drivelicensetest.ui.generated.resources.stats_title
+import drivelicensetest.ui.generated.resources.stats_total_attempts
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun StatsScreen(
@@ -61,10 +76,10 @@ fun StatsScreen(
     }
 
     AppScaffold(
-        topBarTitle = "Statistics",
+        topBarTitle = stringResource(Res.string.stats_title),
         navigationIcon = {
             IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(Res.string.back))
             }
         },
         bottomBar = bottomBar
@@ -94,7 +109,7 @@ private fun OverallStatsCard(stats: UserStatistics) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Text(
-                text = "Overall Performance",
+                text = stringResource(Res.string.stats_overall_performance),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
@@ -111,9 +126,9 @@ private fun OverallStatsCard(stats: UserStatistics) {
                 )
 
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    StatRow(label = "Total attempts", value = stats.totalAttempts.toString())
-                    StatRow(label = "Correct", value = stats.totalCorrect.toString(), positive = true)
-                    StatRow(label = "Incorrect", value = stats.totalIncorrect.toString(), positive = false)
+                    StatRow(label = stringResource(Res.string.stats_total_attempts), value = stats.totalAttempts.toString())
+                    StatRow(label = stringResource(Res.string.stats_correct), value = stats.totalCorrect.toString(), positive = true)
+                    StatRow(label = stringResource(Res.string.stats_incorrect), value = stats.totalIncorrect.toString(), positive = false)
                 }
             }
         }
@@ -128,14 +143,14 @@ private fun CategoryBreakdownCard(categories: List<CategoryStats>) {
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
-                text = "By Category",
+                text = stringResource(Res.string.stats_by_category),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
 
             if (categories.isEmpty()) {
                 Text(
-                    text = "No data yet — complete a test to see category stats.",
+                    text = stringResource(Res.string.stats_no_category_data),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -205,14 +220,14 @@ private fun TestHistoryCard(history: List<TestSessionSummary>) {
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
-                text = "Test History",
+                text = stringResource(Res.string.stats_test_history),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
 
             if (history.isEmpty()) {
                 Text(
-                    text = "No completed tests yet.",
+                    text = stringResource(Res.string.stats_no_history),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -244,7 +259,7 @@ private fun TestHistoryRow(session: TestSessionSummary) {
         Column {
             Text(text = dateStr, style = MaterialTheme.typography.bodyMedium)
             Text(
-                text = "${session.correctAnswers}/${session.totalQuestions} correct",
+                text = stringResource(Res.string.stats_correct_of_total, session.correctAnswers, session.totalQuestions),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -261,7 +276,7 @@ private fun TestHistoryRow(session: TestSessionSummary) {
             )
             Icon(
                 imageVector = if (session.passed) Icons.Default.CheckCircle else Icons.Default.Cancel,
-                contentDescription = if (session.passed) "Passed" else "Failed",
+                contentDescription = if (session.passed) stringResource(Res.string.stats_passed) else stringResource(Res.string.stats_failed),
                 modifier = Modifier.size(18.dp),
                 tint = if (session.passed) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error
             )

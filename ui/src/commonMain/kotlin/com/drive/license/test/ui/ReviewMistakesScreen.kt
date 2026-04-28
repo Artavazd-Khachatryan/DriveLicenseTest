@@ -33,6 +33,14 @@ import com.drive.license.test.domain.model.MistakeQuestion
 import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
+import drivelicensetest.ui.generated.resources.Res
+import drivelicensetest.ui.generated.resources.back
+import drivelicensetest.ui.generated.resources.mistakes_correct_answer
+import drivelicensetest.ui.generated.resources.mistakes_count
+import drivelicensetest.ui.generated.resources.mistakes_empty_subtitle
+import drivelicensetest.ui.generated.resources.mistakes_empty_title
+import drivelicensetest.ui.generated.resources.mistakes_title
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun ReviewMistakesScreen(
@@ -46,10 +54,10 @@ fun ReviewMistakesScreen(
     }
 
     AppScaffold(
-        topBarTitle = "Review Mistakes",
+        topBarTitle = stringResource(Res.string.mistakes_title),
         navigationIcon = {
             IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(Res.string.back))
             }
         }
     ) { inner ->
@@ -67,7 +75,7 @@ fun ReviewMistakesScreen(
                 EmptyMistakesCard()
             } else {
                 Text(
-                    text = "${mistakes.size} question${if (mistakes.size == 1) "" else "s"} to review",
+                    text = stringResource(Res.string.mistakes_count, mistakes.size),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -107,13 +115,13 @@ private fun EmptyMistakesCard() {
                 tint = MaterialTheme.colorScheme.primary
             )
             Text(
-                text = "No mistakes yet!",
+                text = stringResource(Res.string.mistakes_empty_title),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onPrimaryContainer
             )
             Text(
-                text = "Complete a test and any incorrect answers will appear here.",
+                text = stringResource(Res.string.mistakes_empty_subtitle),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
             )
@@ -138,7 +146,7 @@ private fun MistakeItem(mistake: MistakeQuestion) {
         ) {
             Icon(
                 imageVector = Icons.Default.CheckCircle,
-                contentDescription = "Correct answer",
+                contentDescription = stringResource(Res.string.mistakes_correct_answer),
                 modifier = Modifier.size(14.dp),
                 tint = MaterialTheme.colorScheme.primary
             )

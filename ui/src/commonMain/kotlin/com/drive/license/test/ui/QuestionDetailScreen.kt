@@ -43,6 +43,19 @@ import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.BrokenImage
 import androidx.compose.material.icons.filled.Timer
 import com.drive.license.test.ui.util.resolveDrawableResource
+import drivelicensetest.ui.generated.resources.Res
+import drivelicensetest.ui.generated.resources.back
+import drivelicensetest.ui.generated.resources.question_exit_cancel
+import drivelicensetest.ui.generated.resources.question_exit_confirm
+import drivelicensetest.ui.generated.resources.question_exit_message
+import drivelicensetest.ui.generated.resources.question_exit_title
+import drivelicensetest.ui.generated.resources.question_finish
+import drivelicensetest.ui.generated.resources.question_image_unavailable
+import drivelicensetest.ui.generated.resources.question_next
+import drivelicensetest.ui.generated.resources.question_number_of_total
+import drivelicensetest.ui.generated.resources.question_previous
+import drivelicensetest.ui.generated.resources.question_time_remaining
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun QuestionDetailScreen(
@@ -62,16 +75,16 @@ fun QuestionDetailScreen(
     if (showExitDialog) {
         AlertDialog(
             onDismissRequest = { showExitDialog = false },
-            title = { Text("Exit test?") },
-            text = { Text("Your progress will be lost. Are you sure you want to leave?") },
+            title = { Text(stringResource(Res.string.question_exit_title)) },
+            text = { Text(stringResource(Res.string.question_exit_message)) },
             confirmButton = {
                 TextButton(onClick = { showExitDialog = false; onBack() }) {
-                    Text("Exit")
+                    Text(stringResource(Res.string.question_exit_confirm))
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showExitDialog = false }) {
-                    Text("Continue")
+                    Text(stringResource(Res.string.question_exit_cancel))
                 }
             }
         )
@@ -99,10 +112,10 @@ fun QuestionDetailScreen(
     )
 
     AppScaffold(
-        topBarTitle = "Question $questionNumber of $totalQuestions",
+        topBarTitle = stringResource(Res.string.question_number_of_total, questionNumber, totalQuestions),
         navigationIcon = {
             IconButton(onClick = { showExitDialog = true }) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(Res.string.back))
             }
         },
         topBarActions = if (timerLabel != null) {
@@ -114,7 +127,7 @@ fun QuestionDetailScreen(
                 ) {
                     Icon(
                         Icons.Default.Timer,
-                        contentDescription = "Time remaining",
+                        contentDescription = stringResource(Res.string.question_time_remaining),
                         tint = timerColor,
                         modifier = Modifier.size(18.dp)
                     )
@@ -174,7 +187,7 @@ fun QuestionDetailScreen(
                                 } else {
                                     Icon(
                                         imageVector = Icons.Default.BrokenImage,
-                                        contentDescription = "Image not available",
+                                        contentDescription = stringResource(Res.string.question_image_unavailable),
                                         modifier = Modifier
                                             .size(64.dp)
                                             .padding(vertical = 16.dp),
@@ -211,16 +224,16 @@ fun QuestionDetailScreen(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 AppButton(
-                    text = "Previous",
+                    text = stringResource(Res.string.question_previous),
                     onClick = onPrevious,
                     modifier = Modifier.weight(1f),
                     enabled = questionNumber > 1
                 )
-                
+
                 Spacer(modifier = Modifier.width(16.dp))
-                
+
                 AppButton(
-                    text = if (questionNumber == totalQuestions) "Finish" else "Next",
+                    text = if (questionNumber == totalQuestions) stringResource(Res.string.question_finish) else stringResource(Res.string.question_next),
                     onClick = onNext,
                     modifier = Modifier.weight(1f),
                     enabled = showResult

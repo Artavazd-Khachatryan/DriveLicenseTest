@@ -20,6 +20,19 @@ import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.ProgressRing
+import drivelicensetest.ui.generated.resources.Res
+import drivelicensetest.ui.generated.resources.results_back_home
+import drivelicensetest.ui.generated.resources.results_correct_answers
+import drivelicensetest.ui.generated.resources.results_failed_subtitle
+import drivelicensetest.ui.generated.resources.results_failed_title
+import drivelicensetest.ui.generated.resources.results_incorrect_answers
+import drivelicensetest.ui.generated.resources.results_passed_subtitle
+import drivelicensetest.ui.generated.resources.results_passed_title
+import drivelicensetest.ui.generated.resources.results_questions_answered
+import drivelicensetest.ui.generated.resources.results_retake
+import drivelicensetest.ui.generated.resources.results_title
+import drivelicensetest.ui.generated.resources.results_your_score
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun TestResultsScreen(
@@ -32,7 +45,7 @@ fun TestResultsScreen(
     val passed = score >= 0.8f // 80% to pass
     
     AppScaffold(
-        topBarTitle = "Test Results"
+        topBarTitle = stringResource(Res.string.results_title)
     ) { innerPadding ->
         Column(
             modifier = modifier
@@ -59,7 +72,7 @@ fun TestResultsScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = if (passed) "Congratulations!" else "Keep Practicing!",
+                        text = if (passed) stringResource(Res.string.results_passed_title) else stringResource(Res.string.results_failed_title),
                         style = MaterialTheme.typography.headlineMedium,
                         textAlign = TextAlign.Center,
                         color = if (passed) {
@@ -70,7 +83,7 @@ fun TestResultsScreen(
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = if (passed) "You passed the test!" else "You need 80% to pass",
+                        text = if (passed) stringResource(Res.string.results_passed_subtitle) else stringResource(Res.string.results_failed_subtitle),
                         style = MaterialTheme.typography.bodyLarge,
                         textAlign = TextAlign.Center,
                         color = if (passed) {
@@ -100,7 +113,7 @@ fun TestResultsScreen(
                     )
                     
                     Text(
-                        text = "Your Score",
+                        text = stringResource(Res.string.results_your_score),
                         style = MaterialTheme.typography.titleMedium,
                         textAlign = TextAlign.Center
                     )
@@ -120,7 +133,7 @@ fun TestResultsScreen(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = "Correct Answers:",
+                            text = stringResource(Res.string.results_correct_answers),
                             style = MaterialTheme.typography.bodyLarge
                         )
                         Text(
@@ -135,7 +148,7 @@ fun TestResultsScreen(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = "Incorrect Answers:",
+                            text = stringResource(Res.string.results_incorrect_answers),
                             style = MaterialTheme.typography.bodyLarge
                         )
                         Text(
@@ -150,7 +163,7 @@ fun TestResultsScreen(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = "Questions Answered:",
+                            text = stringResource(Res.string.results_questions_answered),
                             style = MaterialTheme.typography.bodyLarge
                         )
                         Text(
@@ -170,13 +183,13 @@ fun TestResultsScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 AppButton(
-                    text = "Retake Test",
+                    text = stringResource(Res.string.results_retake),
                     onClick = onRetakeTest,
                     modifier = Modifier.fillMaxWidth()
                 )
-                
+
                 AppButton(
-                    text = "Back to Home",
+                    text = stringResource(Res.string.results_back_home),
                     onClick = onBackToHome,
                     modifier = Modifier.fillMaxWidth()
                 )

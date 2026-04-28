@@ -28,6 +28,11 @@ import com.drive.license.test.domain.model.Question
 import com.drive.license.test.domain.model.QuestionCategory
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
+import drivelicensetest.ui.generated.resources.Res
+import drivelicensetest.ui.generated.resources.back
+import drivelicensetest.ui.generated.resources.category_picker_title
+import drivelicensetest.ui.generated.resources.category_question_count
+import org.jetbrains.compose.resources.stringResource
 
 data class CategoryInfo(
     val category: QuestionCategory,
@@ -41,10 +46,10 @@ fun CategoryPickerScreen(
     onBack: () -> Unit
 ) {
     AppScaffold(
-        topBarTitle = "Choose Category",
+        topBarTitle = stringResource(Res.string.category_picker_title),
         navigationIcon = {
             IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(Res.string.back))
             }
         }
     ) { inner ->
@@ -93,7 +98,7 @@ private fun CategoryRow(info: CategoryInfo, onClick: () -> Unit) {
         Column(modifier = Modifier.weight(1f)) {
             Text(text = displayName, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
             Text(
-                text = "${info.questionCount} questions",
+                text = stringResource(Res.string.category_question_count, info.questionCount),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
