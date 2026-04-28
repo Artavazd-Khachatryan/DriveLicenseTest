@@ -28,7 +28,6 @@ import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material.icons.filled.School
-import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -72,6 +71,7 @@ fun HomeScreen(
     onOpenStats: () -> Unit,
     onOpenStatsFromRing: () -> Unit,
     onOpenFailed: () -> Unit,
+    onOpenPractice: () -> Unit,
     onOpenChat: () -> Unit,
     onOpenMap: () -> Unit,
     modifier: Modifier = Modifier
@@ -170,6 +170,12 @@ fun HomeScreen(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .graphicsLayer { scaleX = buttonScale; scaleY = buttonScale }
+                        )
+                        Spacer(modifier = Modifier.height(12.dp))
+                        AppButton(
+                            text = "Practice Mode",
+                            onClick = onOpenPractice,
+                            modifier = Modifier.fillMaxWidth()
                         )
                     }
                 }
