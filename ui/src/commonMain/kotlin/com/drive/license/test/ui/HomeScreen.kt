@@ -28,11 +28,15 @@ import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material.icons.filled.School
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -67,13 +71,15 @@ import drivelicensetest.ui.generated.resources.home_stat_attempted
 import drivelicensetest.ui.generated.resources.home_stat_correct
 import drivelicensetest.ui.generated.resources.home_stat_incorrect
 import drivelicensetest.ui.generated.resources.home_accuracy_ring_cd
+import drivelicensetest.ui.generated.resources.home_question_count
+import drivelicensetest.ui.generated.resources.home_test_length_label
 import drivelicensetest.ui.generated.resources.home_view_map_button
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun HomeScreen(
     userStatistics: UserStatistics,
-    onStartTest: () -> Unit,
+    onStartTest: (Int) -> Unit,
     onOpenStats: () -> Unit,
     onOpenStatsFromRing: () -> Unit,
     onOpenFailed: () -> Unit,
@@ -83,6 +89,8 @@ fun HomeScreen(
     bottomBar: @Composable (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
+    var selectedTestLength by remember { mutableStateOf(20) }
+
     AppScaffold(bottomBar = bottomBar) { inner ->
         Column(
             modifier = modifier
@@ -163,17 +171,38 @@ fun HomeScreen(
                             textAlign = TextAlign.Center
                         )
                         
-                        Spacer(modifier = Modifier.height(24.dp))
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        Text(
+                            text = stringResource(Res.string.home_test_length_label),
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f)
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            listOf(10, 20, 30).forEach { count ->
+                                FilterChip(
+                                    selected = selectedTestLength == count,
+                                    onClick = { selectedTestLength = count },
+                                    label = { Text(stringResource(Res.string.home_question_count, count)) }
+                                )
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(16.dp))
 
                         val buttonScale by animateFloatAsState(
                             targetValue = 1f,
                             animationSpec = spring(dampingRatio = 0.8f),
                             label = "button_scale"
                         )
-                        
+
                         AppButton(
                             text = stringResource(Res.string.home_start_button),
-                            onClick = onStartTest,
+                            onClick = { onStartTest(selectedTestLength) },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .graphicsLayer { scaleX = buttonScale; scaleY = buttonScale }

@@ -6940,6 +6940,8 @@
     <string name="home_stat_incorrect">Սխալ</string>
     <string name="home_stat_attempted">Փորձ</string>
     <string name="home_accuracy_ring_cd">Ընդհանուր ճշգրտություն %1$d%%: Հպեք վիճակագրությունը բացելու համար</string>
+    <string name="home_question_count">%1$d հարց</string>
+    <string name="home_test_length_label">Հարցերի քանակ</string>
 
     <!-- Stats Screen -->
     <string name="stats_title">Վիճակագրություն</string>

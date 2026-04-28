@@ -123,8 +123,8 @@ fun MainScreen(
     when (screen) {
         Screen.Home -> HomeScreen(
             userStatistics = userStatistics,
-            onStartTest = {
-                val randomQuestions = allQuestions.shuffled().take(20)
+            onStartTest = { count ->
+                val randomQuestions = allQuestions.shuffled().take(count)
                 testSession = TestSession(questions = randomQuestions)
                 navigate(Screen.Question)
             },
