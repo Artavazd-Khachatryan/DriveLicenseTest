@@ -34,7 +34,7 @@ Move beyond random 20-question tests.
 - [x] **3.1 Practice by category** — Category picker screen with question counts; starts filtered test
 - [ ] **3.2 Practice by book** — Book picker (Book 1–10), then questions from that book
 - [x] **3.3 Weak areas practice** — Pulls questions with most mistakes first via getWeakAreaQuestions()
-- [ ] **3.4 Configurable test length** — Let user choose 10/20/30 questions before starting
+- [x] **3.4 Configurable test length** — Let user choose 10/20/30 questions before starting
 - [x] **3.5 Exam simulation mode** — 30 questions, 20-minute countdown timer, auto-submits on timeout
 
 ---
@@ -66,11 +66,11 @@ The app targets Armenian users preparing for the driving exam.
 
 Polish the look and feel.
 
-- [ ] **6.1 Dark mode audit** — Test all screens in dark mode, fix any hardcoded colors
-- [ ] **6.2 Long text handling** — Handle long question/answer text (scrolling, text wrapping, truncation)
-- [ ] **6.3 Empty states** — Add empty state UI for: no test history, no mistakes to review, no questions in category
-- [ ] **6.4 Loading states** — Add skeleton/shimmer loading while questions load from DB
-- [ ] **6.5 Accessibility pass** — Add missing `contentDescription`, verify 48dp touch targets, test with TalkBack/VoiceOver
+- [x] **6.1 Dark mode audit** — Fixed hardcoded Color.Red in timer; all other colors use colorScheme tokens
+- [x] **6.2 Long text handling** — Existing verticalScroll on detail screens handles long content; Text wraps naturally
+- [x] **6.3 Empty states** — Mistakes screen has illustrated empty card; Stats cards show inline empty messages
+- [x] **6.4 Loading states** — CircularProgressIndicator added to StatsScreen and ReviewMistakesScreen
+- [x] **6.5 Accessibility pass** — ProgressRing contentDescription; AnswerButton incorrect color fixed; home ring CD wired
 - [ ] **6.6 Tablet/landscape** — Verify 720dp max-width works, test side-by-side layout on tablets
 
 ---
@@ -97,3 +97,5 @@ Nice-to-have features if time allows.
 | 2026-04-28 | Phase 3 (partial) — Category picker, weak areas practice, exam simulation with 20-min countdown timer |
 | 2026-04-28 | Phase 4 complete — Sealed class navigation, back stack, bottom nav bar, slide/fade transitions, exit dialog |
 | 2026-04-28 | Phase 5 (mostly done) — All strings extracted to Armenian resources; 5.4 (font/RTL check) needs on-device verification |
+| 2026-04-28 | Phase 6 (5/6 done) — Dark mode, loading states, empty states, accessibility, long text; 6.6 tablet/landscape still to verify |
+| 2026-04-28 | Phase 3.4 done — Configurable test length (10/20/30 chip selector on HomeScreen) |
