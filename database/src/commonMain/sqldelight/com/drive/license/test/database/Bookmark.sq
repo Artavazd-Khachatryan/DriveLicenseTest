@@ -1,0 +1,27 @@
+CREATE TABLE BookmarkedQuestion (
+    question_id INTEGER NOT NULL PRIMARY KEY,
+    bookmarked_at INTEGER NOT NULL,
+    FOREIGN KEY (question_id) REFERENCES Question(id)
+);
+
+getBookmarkedQuestions:
+SELECT q.id, q.question, q.true_answer
+FROM Question q
+JOIN BookmarkedQuestion bq ON bq.question_id = q.id
+ORDER BY bq.bookmarked_at DESC;
+
+getBookmarkedQuestionsFull:
+SELECT q.id, q.question, q.answers, q.image, q.true_answer, b.name AS book_name
+FROM Question q
+JOIN Book b ON q.book_id = b.id
+JOIN BookmarkedQuestion bq ON bq.question_id = q.id
+ORDER BY bq.bookmarked_at DESC;
+
+isBookmarked:
+SELECT COUNT(*) FROM BookmarkedQuestion WHERE question_id = ?;
+
+addBookmark:
+INSERT OR IGNORE INTO BookmarkedQuestion (question_id, bookmarked_at) VALUES (?, ?);
+
+removeBookmark:
+DELETE FROM BookmarkedQuestion WHERE question_id = ?;
