@@ -43,11 +43,11 @@ Move beyond random 20-question tests.
 
 Replace fragile navigation and improve overall feel.
 
-- [ ] **4.1 Type-safe navigation** — Replace string routes ("home", "stats", "question") with sealed class/enum
-- [ ] **4.2 Bottom navigation bar** — Home / Practice / Stats tabs using `AppScaffold` bottomBar
-- [ ] **4.3 Transitions** — Add `AnimatedContent` transitions between screens (slide, fade)
-- [ ] **4.4 Back handling** — Proper back press behavior (confirm exit during active test, navigate back stack otherwise)
-- [ ] **4.5 Use existing components** — Wire `QuestionCard`, `ActionCard`, `StatChip` into screens where they fit (stats, review, home)
+- [x] **4.1 Type-safe navigation** — Sealed class `Screen` with back stack (`mutableStateListOf`)
+- [x] **4.2 Bottom navigation bar** — Home / Practice / Stats tabs via `AppBottomBar`, shown on top-level screens only
+- [x] **4.3 Transitions** — `AnimatedContent`: slide for stack push/pop, fade for tab switches
+- [x] **4.4 Back handling** — Exit confirmation dialog when tapping back during an active test
+- [x] **4.5 Use existing components** — `StatChip` wired into HomeScreen progress section
 
 ---
 
@@ -95,3 +95,4 @@ Nice-to-have features if time allows.
 | 2026-04-21 | Phase 1 complete — DB persistence wired, real stats on HomeScreen, image fallback |
 | 2026-04-21 | Phase 2 mostly done — StatsScreen (accuracy, categories, history), ReviewMistakesScreen; difficulty distribution left for later |
 | 2026-04-28 | Phase 3 (partial) — Category picker, weak areas practice, exam simulation with 20-min countdown timer |
+| 2026-04-28 | Phase 4 complete — Sealed class navigation, back stack, bottom nav bar, slide/fade transitions, exit dialog |
