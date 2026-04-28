@@ -105,8 +105,10 @@ fun QuestionDetailScreen(
         "%d:%02d".format(m, s)
     }
     val timerUrgent = (remainingSeconds ?: Int.MAX_VALUE) < 60
+    val timerNormalColor = MaterialTheme.colorScheme.onSurface
+    val timerUrgentColor = MaterialTheme.colorScheme.error
     val timerColor by animateColorAsState(
-        targetValue = if (timerUrgent) androidx.compose.ui.graphics.Color.Red else androidx.compose.ui.graphics.Color.Unspecified,
+        targetValue = if (timerUrgent) timerUrgentColor else timerNormalColor,
         animationSpec = tween(300),
         label = "timer_color"
     )
