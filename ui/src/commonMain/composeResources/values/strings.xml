@@ -6935,5 +6935,75 @@
     <string name="home_learning_centers_title">Գտնել Սովորելու Վայրեր</string>
     <string name="home_learning_centers_subtitle">Գտեք մոտակա վարորդական դպրոցներ և պարապելու վայրեր</string>
     <string name="home_view_map_button">Տեսնել Քարտեզը</string>
+    <string name="home_practice_button">Պարապման Ռեժիմ</string>
+    <string name="home_stat_correct">Ճիշտ</string>
+    <string name="home_stat_incorrect">Սխալ</string>
+    <string name="home_stat_attempted">Փորձ</string>
+
+    <!-- Stats Screen -->
+    <string name="stats_title">Վիճակագրություն</string>
+    <string name="stats_overall_performance">Ընդհանուր Կատարողականություն</string>
+    <string name="stats_total_attempts">Ընդամենը փորձ</string>
+    <string name="stats_correct">Ճիշտ</string>
+    <string name="stats_incorrect">Սխալ</string>
+    <string name="stats_by_category">Ըստ Կատեգորիայի</string>
+    <string name="stats_no_category_data">Տվյալներ չկան — կատարեք թեստ՝ կատեգորիայի վիճակագրությունը տեսնելու համար։</string>
+    <string name="stats_test_history">Թեստերի Պատմություն</string>
+    <string name="stats_no_history">Ավարտված թեստեր դեռ չկան։</string>
+    <string name="stats_correct_of_total">%1$d/%2$d ճիշտ</string>
+    <string name="stats_passed">Հաջողված</string>
+    <string name="stats_failed">Ձախողված</string>
+
+    <!-- Review Mistakes Screen -->
+    <string name="mistakes_title">Վերանայել Սխալները</string>
+    <string name="mistakes_count">%1$d հարց վերանայելու համար</string>
+    <string name="mistakes_empty_title">Սխալներ դեռ չկան!</string>
+    <string name="mistakes_empty_subtitle">Կատարեք թեստ, և բոլոր սխալ պատասխանները կհայտնվեն այստեղ։</string>
+    <string name="mistakes_correct_answer">Ճիշտ պատասխան</string>
+
+    <!-- Question Detail Screen -->
+    <string name="question_exit_title">Ելնե՞լ թեստից</string>
+    <string name="question_exit_message">Ձեր առաջընթացը կկորի։ Վստա՞հ եք, որ ցանկանում եք դուրս գալ:</string>
+    <string name="question_exit_confirm">Ելք</string>
+    <string name="question_exit_cancel">Շարունակել</string>
+    <string name="question_number_of_total">Հարց %1$d / %2$d-ից</string>
+    <string name="question_time_remaining">Մնացած ժամանակ</string>
+    <string name="question_previous">Նախորդ</string>
+    <string name="question_next">Հաջորդ</string>
+    <string name="question_finish">Ավարտել</string>
+    <string name="question_image_unavailable">Նկարն անհասանելի է</string>
+
+    <!-- Test Results Screen -->
+    <string name="results_title">Թեստի Արդյունքներ</string>
+    <string name="results_passed_title">Շնորհավորանք!</string>
+    <string name="results_failed_title">Շարունակեք Պարապել!</string>
+    <string name="results_passed_subtitle">Դուք հաջողությամբ անցաք թեստը!</string>
+    <string name="results_failed_subtitle">Անցնելու համար անհրաժեշտ է 70%</string>
+    <string name="results_your_score">Ձեր Արդյունքը</string>
+    <string name="results_correct_answers">Ճիշտ Պատասխաններ։</string>
+    <string name="results_incorrect_answers">Սխալ Պատասխաններ։</string>
+    <string name="results_questions_answered">Պատասխանված Հարցեր։</string>
+    <string name="results_retake">Կրկնել Թեստը</string>
+    <string name="results_back_home">Վերադառնալ Գլխավոր</string>
+
+    <!-- Practice Mode Screen -->
+    <string name="practice_title">Պարապանք</string>
+    <string name="practice_by_category_title">Ըստ Կատեգորիայի</string>
+    <string name="practice_by_category_desc">Կենտրոնացեք կոնկրետ թեմայի վրա. ճանապարհային նշաններ, առաջնությունը, մանևրներ և ավելին:</string>
+    <string name="practice_by_category_button">Ընտրել Կատեգորիա</string>
+    <string name="practice_weak_areas_title">Թույլ Կողմեր</string>
+    <string name="practice_weak_areas_count">%1$d հարց, որտեղ ավելի շատ պարապանք է անհրաժեշտ:</string>
+    <string name="practice_weak_areas_empty">Նախ կատարեք թեստ՝ ձեր թույլ կողմերը բացահայտելու համար:</string>
+    <string name="practice_weak_areas_button">Սկսել Պարապանքը</string>
+    <string name="practice_exam_title">Քննության Սիմուլյացիա</string>
+    <string name="practice_exam_desc">30 հարց · 20 րոպե · Անցում 70%-ով: Կրկնում է իրական հայկական վարորդական քննությունը:</string>
+    <string name="practice_exam_button">Սկսել Քննությունը</string>
+
+    <!-- Category Picker Screen -->
+    <string name="category_picker_title">Ընտրել Կատեգորիա</string>
+    <string name="category_question_count">%1$d հարց</string>
+
+    <!-- Common -->
+    <string name="back">Հետ</string>
 
 </resources>
