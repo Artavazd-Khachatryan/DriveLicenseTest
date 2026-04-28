@@ -55,9 +55,9 @@ Replace fragile navigation and improve overall feel.
 
 The app targets Armenian users preparing for the driving exam.
 
-- [ ] **5.1 Extract all strings** — Move hardcoded English text to string resources
-- [ ] **5.2 Armenian translations** — Add Armenian (`hy`) translations for all UI strings
-- [ ] **5.3 Armenian as default** — Set Armenian as primary language, English as fallback
+- [x] **5.1 Extract all strings** — Move hardcoded English text to string resources
+- [x] **5.2 Armenian translations** — Add Armenian (`hy`) translations for all UI strings
+- [x] **5.3 Armenian as default** — Set Armenian as primary language, English as fallback
 - [ ] **5.4 RTL/font check** — Verify Armenian script renders correctly on both platforms
 
 ---
@@ -96,3 +96,4 @@ Nice-to-have features if time allows.
 | 2026-04-21 | Phase 2 mostly done — StatsScreen (accuracy, categories, history), ReviewMistakesScreen; difficulty distribution left for later |
 | 2026-04-28 | Phase 3 (partial) — Category picker, weak areas practice, exam simulation with 20-min countdown timer |
 | 2026-04-28 | Phase 4 complete — Sealed class navigation, back stack, bottom nav bar, slide/fade transitions, exit dialog |
+| 2026-04-28 | Phase 5 (mostly done) — All strings extracted to Armenian resources; 5.4 (font/RTL check) needs on-device verification |
