@@ -82,7 +82,7 @@ Nice-to-have features if time allows.
 - [ ] **7.1 Achievement badges** — Badges for milestones (first test, 10 tests, 100% score, category mastery)
 - [x] **7.2 Daily streak tracker** — Track consecutive days of practice
 - [x] **7.3 Question bookmarks** — Let users bookmark questions to review later
-- [ ] **7.4 AI assistant** — Explain why an answer is correct/incorrect (wire the existing placeholder button)
+- [x] **7.4 AI assistant** — Explain why an answer is correct/incorrect (wire the existing placeholder button)
 - [ ] **7.5 Learning centers map** — Show nearby driving schools on a map (wire the existing placeholder button)
 
 ---
@@ -101,3 +101,4 @@ Nice-to-have features if time allows.
 | 2026-04-28 | Phase 3.4 done — Configurable test length (10/20/30 chip selector on HomeScreen) |
 | 2026-04-29 | Phase 7.2 done — Daily streak: UserStreak table, streak chip on HomeScreen |
 | 2026-04-29 | Phase 7.3 done — Bookmarks: toggle on QuestionDetailScreen, BookmarksScreen, practice from bookmarks |
+| 2026-04-29 | Phase 7.4 done — AI assistant: Anthropic API via Ktor, API key from env var (BuildConfig/Info.plist), AiExplanationScreen |
