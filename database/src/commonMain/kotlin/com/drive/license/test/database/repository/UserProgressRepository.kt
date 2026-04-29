@@ -1,6 +1,7 @@
 package com.drive.license.test.database.repository
 
 import com.drive.license.test.database.Database
+import com.drive.license.test.domain.model.BookmarkedQuestion
 import com.drive.license.test.domain.model.CategoryStats
 import com.drive.license.test.domain.model.MistakeQuestion
 import com.drive.license.test.domain.model.TestSessionSummary
@@ -11,12 +12,15 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
 
     override suspend fun getUserStatistics(): UserStatistics {
         val stats = database.getUserStatistics()
+        val streak = database.getStreak()
         return UserStatistics(
             totalQuestions = stats.totalQuestions,
             totalAttempts = stats.totalAttempts,
             totalCorrect = stats.totalCorrect,
             totalIncorrect = stats.totalIncorrect,
-            learnedQuestions = stats.learnedQuestions
+            learnedQuestions = stats.learnedQuestions,
+            currentStreak = streak.currentStreak,
+            longestStreak = streak.longestStreak
         )
     }
 
@@ -84,5 +88,31 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
             isCorrect = isCorrect,
             timestamp = attemptTime
         )
+    }
+
+    override suspend fun updateStreak(todayEpochDay: Long) {
+        database.updateStreak(todayEpochDay)
+    }
+
+    override suspend fun getBookmarkedQuestions(): List<BookmarkedQuestion> {
+        return database.getBookmarkedQuestions().map { row ->
+            BookmarkedQuestion(
+                id = row.id.toInt(),
+                question = row.question,
+                correctAnswer = row.true_answer
+            )
+        }
+    }
+
+    override suspend fun isBookmarked(questionId: Int): Boolean {
+        return database.isBookmarked(questionId.toLong())
+    }
+
+    override suspend fun toggleBookmark(questionId: Int, bookmarkedAt: Long) {
+        if (database.isBookmarked(questionId.toLong())) {
+            database.removeBookmark(questionId.toLong())
+        } else {
+            database.addBookmark(questionId.toLong(), bookmarkedAt)
+        }
     }
 }

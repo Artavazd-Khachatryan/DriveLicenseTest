@@ -16,4 +16,5 @@ interface QuestionRepository {
     suspend fun getRandomQuestions(count: Int): List<Question>
     suspend fun getQuestionById(id: Int): Question?
     suspend fun getWeakAreaQuestions(): List<Question>
-} 
+    suspend fun getBookmarkedQuestionsForPractice(): List<Question>
+}

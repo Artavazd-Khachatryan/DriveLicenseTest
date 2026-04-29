@@ -29,6 +29,7 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
     private val categoryQueries = database.questionCategoryQueries
     private val junctionQueries = database.questionCategoryJunctionQueries
     private val userProgressQueries = database.userProgressQueries
+    private val bookmarkQueries = database.bookmarkQueries
     
     fun getAllQuestions(): Flow<List<DatabaseQuestion>> {
         return questionQueries.selectAll()
@@ -282,5 +283,72 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
 
     suspend fun getIncorrectQuestions() = withContext(Dispatchers.IO) {
         userProgressQueries.getIncorrectQuestions().executeAsList()
+    }
+
+    // --- Streak Operations ---
+
+    data class StreakRow(val currentStreak: Int, val longestStreak: Int, val lastActiveDay: Long?)
+
+    suspend fun getStreak(): StreakRow = withContext(Dispatchers.IO) {
+        val row = userProgressQueries.getStreak().executeAsOneOrNull()
+        StreakRow(
+            currentStreak = row?.current_streak?.toInt() ?: 0,
+            longestStreak = row?.longest_streak?.toInt() ?: 0,
+            lastActiveDay = row?.last_active_day
+        )
+    }
+
+    suspend fun updateStreak(todayEpochDay: Long) = withContext(Dispatchers.IO) {
+        val current = userProgressQueries.getStreak().executeAsOneOrNull()
+        val lastDay = current?.last_active_day
+        val currentStreak = current?.current_streak ?: 0L
+        val longestStreak = current?.longest_streak ?: 0L
+
+        val (newStreak, newLongest) = when {
+            lastDay == null -> 1L to maxOf(1L, longestStreak)
+            todayEpochDay == lastDay -> return@withContext
+            todayEpochDay == lastDay + 1 -> {
+                val s = currentStreak + 1
+                s to maxOf(s, longestStreak)
+            }
+            else -> 1L to longestStreak
+        }
+        userProgressQueries.upsertStreak(newStreak, newLongest, todayEpochDay)
+    }
+
+    // --- Bookmark Operations ---
+
+    suspend fun getBookmarkedQuestions() = withContext(Dispatchers.IO) {
+        bookmarkQueries.getBookmarkedQuestions().executeAsList()
+    }
+
+    suspend fun getBookmarkedQuestionsFull(): List<DatabaseQuestion> = withContext(Dispatchers.IO) {
+        bookmarkQueries.getBookmarkedQuestionsFull().executeAsList().map { row ->
+            val bookEnum = Book.valueOf(row.book_name)
+            val categories = junctionQueries.selectCategoriesForQuestion(row.id)
+                .executeAsList()
+                .map { QuestionCategory.valueOf(it.name) }
+            DatabaseQuestion(
+                id = row.id,
+                question = row.question,
+                image = row.image,
+                answers = parseAnswersFromJson(row.answers),
+                trueAnswer = row.true_answer,
+                book = bookEnum,
+                categories = categories
+            )
+        }
+    }
+
+    suspend fun isBookmarked(questionId: Long): Boolean = withContext(Dispatchers.IO) {
+        (bookmarkQueries.isBookmarked(questionId).executeAsOne()) > 0
+    }
+
+    suspend fun addBookmark(questionId: Long, bookmarkedAt: Long) = withContext(Dispatchers.IO) {
+        bookmarkQueries.addBookmark(questionId, bookmarkedAt)
+    }
+
+    suspend fun removeBookmark(questionId: Long) = withContext(Dispatchers.IO) {
+        bookmarkQueries.removeBookmark(questionId)
     }
 }

@@ -8,6 +8,7 @@ sealed class Screen {
     object Question : Screen()
     object Results : Screen()
     object Mistakes : Screen()
+    object Bookmarks : Screen()
 
     val isTopLevel: Boolean
         get() = this is Home || this is Stats || this is Practice

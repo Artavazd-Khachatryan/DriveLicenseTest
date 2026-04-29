@@ -29,6 +29,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 
 @Composable
 fun MainScreen(
@@ -89,14 +91,16 @@ fun MainScreen(
                 val completed = current.copy(isCompleted = true)
                 testSession = completed
                 coroutineScope.launch {
-                    val now = Clock.System.now().toEpochMilliseconds()
+                    val now = Clock.System.now()
                     userProgressRepository.saveTestSession(
                         sessionId = current.sessionId,
                         startTime = current.startTime,
-                        endTime = now,
+                        endTime = now.toEpochMilliseconds(),
                         totalQuestions = current.questions.size,
                         correctAnswers = completed.correctAnswers
                     )
+                    val todayEpochDay = now.toLocalDateTime(TimeZone.currentSystemDefault()).date.toEpochDays().toLong()
+                    userProgressRepository.updateStreak(todayEpochDay)
                     userStatistics = userProgressRepository.getUserStatistics()
                 }
                 navigate(Screen.Results)
@@ -213,14 +217,16 @@ fun MainScreen(
                     testSession = next
                     if (next.isCompleted) {
                         coroutineScope.launch {
-                            val now = Clock.System.now().toEpochMilliseconds()
+                            val now = Clock.System.now()
                             userProgressRepository.saveTestSession(
                                 sessionId = session.sessionId,
                                 startTime = session.startTime,
-                                endTime = now,
+                                endTime = now.toEpochMilliseconds(),
                                 totalQuestions = session.questions.size,
                                 correctAnswers = next.correctAnswers
                             )
+                            val todayEpochDay = now.toLocalDateTime(TimeZone.currentSystemDefault()).date.toEpochDays().toLong()
+                            userProgressRepository.updateStreak(todayEpochDay)
                             userStatistics = userProgressRepository.getUserStatistics()
                         }
                         navigate(Screen.Results)

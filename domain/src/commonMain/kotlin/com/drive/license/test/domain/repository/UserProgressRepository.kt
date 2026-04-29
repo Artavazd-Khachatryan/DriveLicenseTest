@@ -1,5 +1,6 @@
 package com.drive.license.test.domain.repository
 
+import com.drive.license.test.domain.model.BookmarkedQuestion
 import com.drive.license.test.domain.model.CategoryStats
 import com.drive.license.test.domain.model.MistakeQuestion
 import com.drive.license.test.domain.model.TestSessionSummary
@@ -12,4 +13,8 @@ interface UserProgressRepository {
     suspend fun getMistakeQuestions(): List<MistakeQuestion>
     suspend fun saveTestSession(sessionId: String, startTime: Long, endTime: Long, totalQuestions: Int, correctAnswers: Int)
     suspend fun saveQuestionAttempt(sessionId: String, questionId: Int, selectedAnswer: String, isCorrect: Boolean, attemptTime: Long)
+    suspend fun updateStreak(todayEpochDay: Long)
+    suspend fun getBookmarkedQuestions(): List<BookmarkedQuestion>
+    suspend fun isBookmarked(questionId: Int): Boolean
+    suspend fun toggleBookmark(questionId: Int, bookmarkedAt: Long)
 }
