@@ -20,6 +20,12 @@ android {
 
         // versionCode: use CI build number if present, fall back locally
         versionCode = ciBuildNumber ?: 1
+
+        buildConfigField(
+            "String",
+            "ANTHROPIC_API_KEY",
+            "\"${System.getenv("ANTHROPIC_API_KEY") ?: ""}\""
+        )
     }
     packaging {
         resources {
@@ -47,6 +53,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -55,6 +62,6 @@ dependencies {
     implementation(project(":database"))
     implementation(libs.androidx.activity.compose)
     implementation(libs.koin.core)
-    implementation(compose.components.uiToolingPreview)
-    debugImplementation(compose.uiTooling)
+    implementation(libs.compose.ui.tooling.preview)
+    debugImplementation(libs.compose.ui.tooling)
 }

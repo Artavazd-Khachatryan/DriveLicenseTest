@@ -10,7 +10,7 @@ plugins {
 }
 
 kotlin {
-    androidLibrary {
+    android {
         namespace = "com.drive.license.test.composeapp"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -19,16 +19,6 @@ kotlin {
         }
         androidResources {
             enable = true
-        }
-        buildFeatures {
-            buildConfig = true
-        }
-        defaultConfig {
-            buildConfigField(
-                "String",
-                "ANTHROPIC_API_KEY",
-                "\"${System.getenv("ANTHROPIC_API_KEY") ?: ""}\""
-            )
         }
     }
 
@@ -56,12 +46,12 @@ kotlin {
         }
 
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.foundation)
+            implementation(libs.compose.material3)
+            implementation(libs.compose.ui)
+            implementation(libs.compose.components.resources)
+            implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.kotlinx.serialization.json)
@@ -85,5 +75,5 @@ kotlin {
 }
 
 dependencies {
-    androidRuntimeClasspath(compose.uiTooling)
+    androidRuntimeClasspath(libs.compose.ui.tooling)
 }

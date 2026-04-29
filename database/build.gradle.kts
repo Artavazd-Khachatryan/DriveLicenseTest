@@ -9,7 +9,7 @@ plugins {
 }
 
 kotlin {
-    androidLibrary {
+    android {
         namespace = "com.drive.license.test.database"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         @OptIn(ExperimentalKotlinGradlePluginApi::class)

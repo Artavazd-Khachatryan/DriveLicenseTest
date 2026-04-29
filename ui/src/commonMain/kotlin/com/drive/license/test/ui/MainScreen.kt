@@ -50,6 +50,17 @@ fun MainScreen(
     var currentQuestionBookmarked by remember { mutableStateOf(false) }
     val allQuestions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
 
+    fun navigate(screen: Screen) {
+        if (screen.isTopLevel) {
+            backStack.clear()
+        }
+        backStack.add(screen)
+    }
+
+    fun navigateBack() {
+        if (backStack.size > 1) backStack.removeAt(backStack.lastIndex)
+    }
+
     val bottomBar: @Composable () -> Unit = {
         AppBottomBar(
             listOf(
@@ -58,18 +69,6 @@ fun MainScreen(
                 BottomNavItem("Stats", Icons.Default.BarChart, currentScreen is Screen.Stats) { navigate(Screen.Stats) }
             )
         )
-    }
-
-    fun navigate(screen: Screen) {
-        if (screen.isTopLevel) {
-            // Tab switch — replace back stack up to the first top-level screen
-            backStack.clear()
-        }
-        backStack.add(screen)
-    }
-
-    fun navigateBack() {
-        if (backStack.size > 1) backStack.removeAt(backStack.lastIndex)
     }
 
     LaunchedEffect(Unit) {

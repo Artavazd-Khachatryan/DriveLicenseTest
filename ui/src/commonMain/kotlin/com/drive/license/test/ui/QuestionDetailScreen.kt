@@ -110,7 +110,7 @@ fun QuestionDetailScreen(
     val timerLabel = remainingSeconds?.let {
         val m = it / 60
         val s = it % 60
-        "%d:%02d".format(m, s)
+        "$m:${s.toString().padStart(2, '0')}"
     }
     val timerUrgent = (remainingSeconds ?: Int.MAX_VALUE) < 60
     val timerNormalColor = MaterialTheme.colorScheme.onSurface

@@ -1,5 +1,10 @@
 package com.drive.license.test
 
 actual object PlatformConfig {
-    actual val anthropicApiKey: String = BuildConfig.ANTHROPIC_API_KEY
+    private var _anthropicApiKey: String = ""
+    actual val anthropicApiKey: String get() = _anthropicApiKey
+
+    fun init(apiKey: String) {
+        _anthropicApiKey = apiKey
+    }
 }
