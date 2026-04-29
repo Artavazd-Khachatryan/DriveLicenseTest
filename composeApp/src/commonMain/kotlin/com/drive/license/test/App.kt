@@ -3,6 +3,7 @@ package com.drive.license.test
 import androidx.compose.runtime.*
 import androidx.compose.runtime.rememberCoroutineScope
 import com.drive.license.test.database.DatabaseInitializer
+import com.drive.license.test.domain.repository.AiAssistant
 import com.drive.license.test.domain.repository.QuestionRepository
 import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.ui.MainScreen
@@ -15,6 +16,7 @@ fun App() {
 
     val questionRepository: QuestionRepository = KoinHelper.get()
     val userProgressRepository: UserProgressRepository = KoinHelper.get()
+    val aiAssistant: AiAssistant = KoinHelper.get()
 
     val databaseInitializer = remember {
         DatabaseInitializer(questionRepository, coroutineScope)
@@ -28,6 +30,7 @@ fun App() {
         MainScreen(
             questionRepository = questionRepository,
             userProgressRepository = userProgressRepository,
+            aiAssistant = aiAssistant,
             coroutineScope = coroutineScope
         )
     }

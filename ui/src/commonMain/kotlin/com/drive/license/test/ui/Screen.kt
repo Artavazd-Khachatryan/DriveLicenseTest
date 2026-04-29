@@ -9,6 +9,12 @@ sealed class Screen {
     object Results : Screen()
     object Mistakes : Screen()
     object Bookmarks : Screen()
+    data class AiExplanation(
+        val questionText: String,
+        val userAnswer: String,
+        val correctAnswer: String,
+        val isCorrect: Boolean
+    ) : Screen()
 
     val isTopLevel: Boolean
         get() = this is Home || this is Stats || this is Practice

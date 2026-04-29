@@ -56,6 +56,7 @@ import drivelicensetest.ui.generated.resources.question_image_unavailable
 import drivelicensetest.ui.generated.resources.question_next
 import drivelicensetest.ui.generated.resources.question_number_of_total
 import drivelicensetest.ui.generated.resources.question_previous
+import drivelicensetest.ui.generated.resources.ai_explain_button
 import drivelicensetest.ui.generated.resources.question_bookmark_add
 import drivelicensetest.ui.generated.resources.question_bookmark_remove
 import drivelicensetest.ui.generated.resources.question_time_remaining
@@ -74,6 +75,7 @@ fun QuestionDetailScreen(
     onPrevious: () -> Unit,
     onNext: () -> Unit,
     onToggleBookmark: () -> Unit = {},
+    onExplain: ((userAnswer: String, correctAnswer: String, isCorrect: Boolean) -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     var showExitDialog by remember { mutableStateOf(false) }
@@ -239,6 +241,20 @@ fun QuestionDetailScreen(
                 )
             }
 
+
+            if (showResult && onExplain != null) {
+                val answeredIndex = selectedAnswerIndex
+                if (answeredIndex != null) {
+                    val answered = question.answers[answeredIndex]
+                    AppButton(
+                        text = stringResource(Res.string.ai_explain_button),
+                        onClick = {
+                            onExplain(answered, question.correctAnswer, answered == question.correctAnswer)
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
 

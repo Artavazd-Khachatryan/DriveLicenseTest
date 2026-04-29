@@ -7025,4 +7025,13 @@
     <!-- Common -->
     <string name="back">Հետ</string>
 
+    <!-- AI Explanation Screen -->
+    <string name="ai_explain_title">Բացատրություն</string>
+    <string name="ai_explain_button">Բացատրել Պատասխանը</string>
+    <string name="ai_explain_loading">Բացատրությունը բեռնվում է…</string>
+    <string name="ai_explain_correct_label">Ճիշտ Պատասխան</string>
+    <string name="ai_explain_your_answer_label">Ձեր Պատասխանը</string>
+    <string name="ai_explain_correct_badge">Ճիշտ</string>
+    <string name="ai_explain_incorrect_badge">Սխալ</string>
+
 </resources>

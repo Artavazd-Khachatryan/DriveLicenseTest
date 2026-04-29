@@ -20,6 +20,16 @@ kotlin {
         androidResources {
             enable = true
         }
+        buildFeatures {
+            buildConfig = true
+        }
+        defaultConfig {
+            buildConfigField(
+                "String",
+                "ANTHROPIC_API_KEY",
+                "\"${System.getenv("ANTHROPIC_API_KEY") ?: ""}\""
+            )
+        }
     }
 
     listOf(
@@ -36,8 +46,13 @@ kotlin {
     }
 
     sourceSets {
+        androidMain.dependencies {
+            implementation(libs.ktor.client.okhttp)
+        }
+
         iosMain.dependencies {
             api(project(":database"))
+            implementation(libs.ktor.client.darwin)
         }
 
         commonMain.dependencies {
@@ -52,6 +67,9 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
 
             implementation(project(":ui"))
             implementation(project(":database"))

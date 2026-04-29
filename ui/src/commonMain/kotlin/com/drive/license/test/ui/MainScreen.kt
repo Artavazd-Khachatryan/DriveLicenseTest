@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.drive.license.test.domain.model.UserStatistics
+import com.drive.license.test.domain.repository.AiAssistant
 import com.drive.license.test.domain.repository.QuestionRepository
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BarChart
@@ -36,6 +37,7 @@ import kotlinx.datetime.toLocalDateTime
 fun MainScreen(
     questionRepository: QuestionRepository,
     userProgressRepository: UserProgressRepository,
+    aiAssistant: AiAssistant,
     coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
@@ -250,6 +252,14 @@ fun MainScreen(
                         )
                         currentQuestionBookmarked = userProgressRepository.isBookmarked(session.currentQuestion.id)
                     }
+                },
+                onExplain = { userAnswer, correctAnswer, isCorrect ->
+                    navigate(Screen.AiExplanation(
+                        questionText = session.currentQuestion.question,
+                        userAnswer = userAnswer,
+                        correctAnswer = correctAnswer,
+                        isCorrect = isCorrect
+                    ))
                 }
             )
         }
@@ -265,6 +275,14 @@ fun MainScreen(
                     }
                 }
             }
+        )
+        is Screen.AiExplanation -> AiExplanationScreen(
+            questionText = screen.questionText,
+            userAnswer = screen.userAnswer,
+            correctAnswer = screen.correctAnswer,
+            isCorrect = screen.isCorrect,
+            aiAssistant = aiAssistant,
+            onBack = { navigateBack() }
         )
         Screen.Results -> TestResultsScreen(
             session = testSession!!,

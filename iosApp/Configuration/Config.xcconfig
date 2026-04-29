@@ -1,3 +1,4 @@
 TEAM_ID=
 BUNDLE_ID=com.drive.license.test.DriveLicenseTest
 APP_NAME=DriveLicenseTest
+ANTHROPIC_API_KEY=$(ANTHROPIC_API_KEY)

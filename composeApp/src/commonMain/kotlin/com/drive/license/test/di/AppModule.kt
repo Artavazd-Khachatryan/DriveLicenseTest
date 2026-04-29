@@ -1,9 +1,12 @@
 package com.drive.license.test.di
 
+import com.drive.license.test.AnthropicAiAssistant
+import com.drive.license.test.PlatformConfig
 import com.drive.license.test.database.Database
 import com.drive.license.test.database.DatabaseDriverFactory
 import com.drive.license.test.database.repository.QuestionRepository
 import com.drive.license.test.database.repository.UserProgressRepository
+import com.drive.license.test.domain.repository.AiAssistant
 import com.drive.license.test.domain.repository.QuestionRepository as DomainQuestionRepository
 import com.drive.license.test.domain.repository.UserProgressRepository as DomainUserProgressRepository
 import org.koin.core.context.startKoin
@@ -21,6 +24,10 @@ val appModule = module {
 
     single<DomainUserProgressRepository> {
         UserProgressRepository(get())
+    }
+
+    single<AiAssistant> {
+        AnthropicAiAssistant(PlatformConfig.anthropicApiKey)
     }
 }
 
