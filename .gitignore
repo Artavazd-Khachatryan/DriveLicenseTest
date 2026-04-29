@@ -17,3 +17,12 @@ captures
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
 .claude
+
+# Compose / Gradle generated files accidentally created in repo root
+META-INF/
+org/
+default-compose-desktop-icon-*.png
+default-compose-desktop-icon-*.icns
+default-compose-desktop-icon-*.ico
+default-compose-desktop-rules.pro
+default-entitlements.plist
