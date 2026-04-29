@@ -78,6 +78,36 @@ A comprehensive driving license test preparation app built with Kotlin Multiplat
 ### Database Setup
 The app uses a prepopulated SQLite database with driving test questions. The database is automatically initialized on first launch.
 
+### AI Assistant Setup (optional)
+
+The "Explain Answer" feature calls the Anthropic API. Without a key the button still appears but returns a "not configured" message.
+
+**Local development**
+
+Set the environment variable before building:
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...
+./gradlew assembleDebug          # Android
+```
+
+For Android Studio, add it to the run configuration's environment variables, or add it to your shell profile so it's always present.
+
+**CI / GitHub Actions**
+
+Add `ANTHROPIC_API_KEY` as a repository secret (Settings → Secrets → Actions), then expose it in your workflow:
+
+```yaml
+- name: Build
+  env:
+    ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+  run: ./gradlew assembleRelease
+```
+
+**iOS**
+
+The key is read from `Info.plist` via `Config.xcconfig`. Xcode picks up `$(ANTHROPIC_API_KEY)` from the environment automatically when building from the command line. In Xcode IDE builds, add it under Product → Scheme → Edit Scheme → Run → Arguments → Environment Variables.
+
 ## Usage Guide
 
 ### Taking a Test
