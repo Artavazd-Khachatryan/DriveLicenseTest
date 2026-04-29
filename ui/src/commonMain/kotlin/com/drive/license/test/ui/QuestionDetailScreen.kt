@@ -40,6 +40,8 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.BookmarkBorder
 import androidx.compose.material.icons.filled.BrokenImage
 import androidx.compose.material.icons.filled.Timer
 import com.drive.license.test.ui.util.resolveDrawableResource
@@ -54,6 +56,8 @@ import drivelicensetest.ui.generated.resources.question_image_unavailable
 import drivelicensetest.ui.generated.resources.question_next
 import drivelicensetest.ui.generated.resources.question_number_of_total
 import drivelicensetest.ui.generated.resources.question_previous
+import drivelicensetest.ui.generated.resources.question_bookmark_add
+import drivelicensetest.ui.generated.resources.question_bookmark_remove
 import drivelicensetest.ui.generated.resources.question_time_remaining
 import org.jetbrains.compose.resources.stringResource
 
@@ -64,10 +68,12 @@ fun QuestionDetailScreen(
     totalQuestions: Int,
     selectedAnswer: String? = null,
     remainingSeconds: Int? = null,
+    isBookmarked: Boolean = false,
     onBack: () -> Unit,
     onAnswer: (String) -> Unit,
     onPrevious: () -> Unit,
     onNext: () -> Unit,
+    onToggleBookmark: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     var showExitDialog by remember { mutableStateOf(false) }
@@ -120,27 +126,42 @@ fun QuestionDetailScreen(
                 Icon(Icons.Default.ArrowBack, contentDescription = stringResource(Res.string.back))
             }
         },
-        topBarActions = if (timerLabel != null) {
-            {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(4.dp),
-                    modifier = Modifier.padding(end = 8.dp)
-                ) {
+        topBarActions = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                if (timerLabel != null) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp),
+                        modifier = Modifier.padding(end = 4.dp)
+                    ) {
+                        Icon(
+                            Icons.Default.Timer,
+                            contentDescription = stringResource(Res.string.question_time_remaining),
+                            tint = timerColor,
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Text(
+                            text = timerLabel,
+                            style = MaterialTheme.typography.labelLarge,
+                            color = timerColor
+                        )
+                    }
+                }
+                IconButton(onClick = onToggleBookmark) {
                     Icon(
-                        Icons.Default.Timer,
-                        contentDescription = stringResource(Res.string.question_time_remaining),
-                        tint = timerColor,
-                        modifier = Modifier.size(18.dp)
-                    )
-                    Text(
-                        text = timerLabel,
-                        style = MaterialTheme.typography.labelLarge,
-                        color = timerColor
+                        imageVector = if (isBookmarked) Icons.Default.Bookmark else Icons.Default.BookmarkBorder,
+                        contentDescription = if (isBookmarked)
+                            stringResource(Res.string.question_bookmark_remove)
+                        else
+                            stringResource(Res.string.question_bookmark_add),
+                        tint = if (isBookmarked) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
                     )
                 }
             }
-        } else null
+        }
     ) { innerPadding ->
         Column(
             modifier = modifier

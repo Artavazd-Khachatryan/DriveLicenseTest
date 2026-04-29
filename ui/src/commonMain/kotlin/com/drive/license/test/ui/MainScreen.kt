@@ -45,6 +45,7 @@ fun MainScreen(
     var testSession by remember { mutableStateOf<TestSession?>(null) }
     var userStatistics by remember { mutableStateOf(UserStatistics()) }
     var examRemainingSeconds by remember { mutableStateOf<Int?>(null) }
+    var currentQuestionBookmarked by remember { mutableStateOf(false) }
     val allQuestions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
 
     val bottomBar: @Composable () -> Unit = {
@@ -152,11 +153,14 @@ fun MainScreen(
         )
         Screen.Practice -> {
             var weakAreaCount by remember { mutableStateOf(0) }
+            var bookmarkCount by remember { mutableStateOf(0) }
             LaunchedEffect(Unit) {
                 weakAreaCount = questionRepository.getWeakAreaQuestions().size
+                bookmarkCount = userProgressRepository.getBookmarkedQuestions().size
             }
             PracticeModeScreen(
                 weakAreaCount = weakAreaCount,
+                bookmarkCount = bookmarkCount,
                 onPickCategory = { navigate(Screen.CategoryPicker) },
                 onStartWeakAreas = {
                     coroutineScope.launch {
@@ -172,6 +176,7 @@ fun MainScreen(
                     testSession = TestSession(questions = examQuestions, isExamMode = true)
                     navigate(Screen.Question)
                 },
+                onOpenBookmarks = { navigate(Screen.Bookmarks) },
                 onBack = { navigateBack() },
                 bottomBar = bottomBar
             )
@@ -193,12 +198,16 @@ fun MainScreen(
             onBack = { navigateBack() }
         )
         Screen.Question -> testSession?.let { session ->
+            LaunchedEffect(session.currentQuestion.id) {
+                currentQuestionBookmarked = userProgressRepository.isBookmarked(session.currentQuestion.id)
+            }
             QuestionDetailScreen(
                 question = session.currentQuestion,
                 questionNumber = session.currentQuestionIndex + 1,
                 totalQuestions = session.questions.size,
                 selectedAnswer = session.answers[session.currentQuestionIndex],
                 remainingSeconds = if (session.isExamMode) examRemainingSeconds else null,
+                isBookmarked = currentQuestionBookmarked,
                 onBack = { navigateBack() },
                 onAnswer = { answer ->
                     testSession = session.answerQuestion(answer)
@@ -232,9 +241,31 @@ fun MainScreen(
                         navigate(Screen.Results)
                     }
                 },
-                onPrevious = { testSession = session.previousQuestion() }
+                onPrevious = { testSession = session.previousQuestion() },
+                onToggleBookmark = {
+                    coroutineScope.launch {
+                        userProgressRepository.toggleBookmark(
+                            questionId = session.currentQuestion.id,
+                            bookmarkedAt = Clock.System.now().toEpochMilliseconds()
+                        )
+                        currentQuestionBookmarked = userProgressRepository.isBookmarked(session.currentQuestion.id)
+                    }
+                }
             )
         }
+        Screen.Bookmarks -> BookmarksScreen(
+            userProgressRepository = userProgressRepository,
+            onBack = { navigateBack() },
+            onStartPractice = {
+                coroutineScope.launch {
+                    val bookmarked = questionRepository.getBookmarkedQuestionsForPractice()
+                    if (bookmarked.isNotEmpty()) {
+                        testSession = TestSession(questions = bookmarked.shuffled())
+                        navigate(Screen.Question)
+                    }
+                }
+            }
+        )
         Screen.Results -> TestResultsScreen(
             session = testSession!!,
             onBackToHome = {

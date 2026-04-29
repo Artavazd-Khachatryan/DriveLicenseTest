@@ -6942,6 +6942,22 @@
     <string name="home_accuracy_ring_cd">Ընդհանուր ճշգրտություն %1$d%%: Հպեք վիճակագրությունը բացելու համար</string>
     <string name="home_question_count">%1$d հարց</string>
     <string name="home_test_length_label">Հարցերի քանակ</string>
+    <string name="home_streak_days">%1$d օր</string>
+    <string name="home_streak_label">Հաջողություն</string>
+
+    <!-- Bookmarks Screen -->
+    <string name="bookmarks_title">Էջանշաններ</string>
+    <string name="bookmarks_count">%1$d հարց պահված</string>
+    <string name="bookmarks_empty_title">Էջանշաններ դեռ չկան</string>
+    <string name="bookmarks_empty_subtitle">Հարցերի էջում հպեք աստղի կոճակին՝ հարցը պահելու համար:</string>
+    <string name="bookmarks_correct_answer">Ճիշտ պատասխան</string>
+    <string name="bookmarks_practice_button">Պարապել Էջանշաններով</string>
+    <string name="practice_bookmarks_title">Էջանշված Հարցեր</string>
+    <string name="practice_bookmarks_desc">Վերանայեք ձեր պահած հարցերը:</string>
+    <string name="practice_bookmarks_button">Սկսել Պարապանքը</string>
+    <string name="practice_bookmarks_empty">Նախ ավելացրեք հարցեր էջանշաններին:</string>
+    <string name="question_bookmark_add">Ավելացնել էջանշաններ</string>
+    <string name="question_bookmark_remove">Հեռացնել էջանշաններից</string>
 
     <!-- Stats Screen -->
     <string name="stats_title">Վիճակագրություն</string>

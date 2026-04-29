@@ -72,6 +72,8 @@ import drivelicensetest.ui.generated.resources.home_stat_correct
 import drivelicensetest.ui.generated.resources.home_stat_incorrect
 import drivelicensetest.ui.generated.resources.home_accuracy_ring_cd
 import drivelicensetest.ui.generated.resources.home_question_count
+import drivelicensetest.ui.generated.resources.home_streak_days
+import drivelicensetest.ui.generated.resources.home_streak_label
 import drivelicensetest.ui.generated.resources.home_test_length_label
 import drivelicensetest.ui.generated.resources.home_view_map_button
 import org.jetbrains.compose.resources.stringResource
@@ -321,6 +323,15 @@ fun HomeScreen(
                                     contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
                                     modifier = Modifier.weight(1f)
                                 )
+                                if (userStatistics.currentStreak > 0) {
+                                    StatChip(
+                                        label = stringResource(Res.string.home_streak_label),
+                                        value = stringResource(Res.string.home_streak_days, userStatistics.currentStreak),
+                                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                        modifier = Modifier.weight(1f)
+                                    )
+                                }
                             }
                         }
                     }

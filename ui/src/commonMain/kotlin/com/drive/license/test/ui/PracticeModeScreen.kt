@@ -15,6 +15,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.filled.TrendingDown
@@ -39,6 +40,10 @@ import drivelicensetest.ui.generated.resources.practice_exam_button
 import drivelicensetest.ui.generated.resources.practice_exam_desc
 import drivelicensetest.ui.generated.resources.practice_exam_title
 import drivelicensetest.ui.generated.resources.practice_title
+import drivelicensetest.ui.generated.resources.practice_bookmarks_button
+import drivelicensetest.ui.generated.resources.practice_bookmarks_desc
+import drivelicensetest.ui.generated.resources.practice_bookmarks_empty
+import drivelicensetest.ui.generated.resources.practice_bookmarks_title
 import drivelicensetest.ui.generated.resources.practice_weak_areas_button
 import drivelicensetest.ui.generated.resources.practice_weak_areas_count
 import drivelicensetest.ui.generated.resources.practice_weak_areas_empty
@@ -48,9 +53,11 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun PracticeModeScreen(
     weakAreaCount: Int,
+    bookmarkCount: Int,
     onPickCategory: () -> Unit,
     onStartWeakAreas: () -> Unit,
     onStartExam: () -> Unit,
+    onOpenBookmarks: () -> Unit,
     onBack: () -> Unit,
     bottomBar: @Composable (() -> Unit)? = null
 ) {
@@ -102,6 +109,19 @@ fun PracticeModeScreen(
                 buttonText = stringResource(Res.string.practice_exam_button),
                 onClick = onStartExam,
                 containerColor = MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.3f)
+            )
+
+            PracticeCard(
+                icon = { Icon(Icons.Default.Bookmark, contentDescription = null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.secondary) },
+                title = stringResource(Res.string.practice_bookmarks_title),
+                description = if (bookmarkCount > 0)
+                    stringResource(Res.string.practice_bookmarks_desc)
+                else
+                    stringResource(Res.string.practice_bookmarks_empty),
+                buttonText = stringResource(Res.string.practice_bookmarks_button),
+                onClick = onOpenBookmarks,
+                enabled = bookmarkCount > 0,
+                containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.3f)
             )
         }
     }
