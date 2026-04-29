@@ -188,12 +188,8 @@ SELECT current_streak, longest_streak, last_active_day FROM UserStreak WHERE id 
 
 -- Upsert streak
 upsertStreak:
-INSERT INTO UserStreak (id, current_streak, longest_streak, last_active_day)
-VALUES (1, ?, ?, ?)
-ON CONFLICT(id) DO UPDATE SET
-    current_streak = excluded.current_streak,
-    longest_streak = excluded.longest_streak,
-    last_active_day = excluded.last_active_day;
+INSERT OR REPLACE INTO UserStreak (id, current_streak, longest_streak, last_active_day)
+VALUES (1, ?, ?, ?);
 
 -- Get completed test sessions ordered by most recent
 getCompletedTestSessions:
