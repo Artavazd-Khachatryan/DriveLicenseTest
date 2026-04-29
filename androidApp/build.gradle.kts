@@ -32,19 +32,22 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    signingConfigs {
-        create("release") {
-            storeFile = System.getenv("KEYSTORE_PATH")?.let { file(it) }
+    val keystorePath = System.getenv("KEYSTORE_PATH")
+    val releaseSigningConfig = if (!keystorePath.isNullOrBlank()) {
+        signingConfigs.create("release") {
+            storeFile = file(keystorePath)
             storePassword = System.getenv("STORE_PASSWORD")
             keyAlias = System.getenv("KEY_ALIAS")
             keyPassword = System.getenv("KEY_PASSWORD")
         }
+    } else {
+        null
     }
 
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = releaseSigningConfig ?: signingConfigs.getByName("debug")
         }
     }
     compileOptions {
