@@ -17,6 +17,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -59,6 +60,20 @@ fun AppButton(
     enabled: Boolean = true
 ) {
     Button(
+        onClick = onClick,
+        modifier = modifier,
+        enabled = enabled
+    ) { Text(text) }
+}
+
+@Composable
+fun AppOutlinedButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true
+) {
+    OutlinedButton(
         onClick = onClick,
         modifier = modifier,
         enabled = enabled

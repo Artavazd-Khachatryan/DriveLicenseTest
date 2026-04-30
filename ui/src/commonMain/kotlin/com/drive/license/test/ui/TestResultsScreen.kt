@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
+import com.drive.license.test.ui.components.AppOutlinedButton
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.ProgressRing
 import drivelicensetest.ui.generated.resources.Res
@@ -209,7 +210,7 @@ fun TestResultsScreen(
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                AppButton(
+                AppOutlinedButton(
                     text = stringResource(Res.string.results_back_home),
                     onClick = onBackToHome,
                     modifier = Modifier.fillMaxWidth()
