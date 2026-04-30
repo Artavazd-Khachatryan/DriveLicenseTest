@@ -30,6 +30,7 @@ import com.drive.license.test.domain.model.QuestionCategory
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
 import drivelicensetest.ui.generated.resources.Res
+import com.drive.license.test.ui.util.formatCategoryName
 import drivelicensetest.ui.generated.resources.back
 import drivelicensetest.ui.generated.resources.category_picker_title
 import drivelicensetest.ui.generated.resources.category_question_count
@@ -83,10 +84,7 @@ fun CategoryPickerScreen(
 
 @Composable
 private fun CategoryRow(info: CategoryInfo, onClick: () -> Unit) {
-    val displayName = info.category.name
-        .replace("_", " ")
-        .lowercase()
-        .replaceFirstChar { it.uppercase() }
+    val displayName = formatCategoryName(info.category.name)
 
     Row(
         modifier = Modifier

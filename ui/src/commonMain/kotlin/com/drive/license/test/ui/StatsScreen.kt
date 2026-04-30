@@ -56,6 +56,8 @@ import drivelicensetest.ui.generated.resources.stats_passed
 import drivelicensetest.ui.generated.resources.stats_test_history
 import drivelicensetest.ui.generated.resources.stats_title
 import drivelicensetest.ui.generated.resources.stats_total_attempts
+import com.drive.license.test.ui.util.accuracyColor
+import com.drive.license.test.ui.util.formatCategoryName
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -181,10 +183,7 @@ private fun CategoryBreakdownCard(categories: List<CategoryStats>) {
 
 @Composable
 private fun CategoryRow(cat: CategoryStats) {
-    val displayName = cat.categoryName
-        .replace("_", " ")
-        .lowercase()
-        .replaceFirstChar { it.uppercase() }
+    val displayName = formatCategoryName(cat.categoryName)
 
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Row(
@@ -318,9 +317,3 @@ private fun StatRow(label: String, value: String, positive: Boolean? = null) {
     }
 }
 
-@Composable
-private fun accuracyColor(accuracy: Float) = when {
-    accuracy >= 0.8f -> MaterialTheme.colorScheme.primary
-    accuracy >= 0.5f -> MaterialTheme.colorScheme.tertiary
-    else -> MaterialTheme.colorScheme.error
-}
