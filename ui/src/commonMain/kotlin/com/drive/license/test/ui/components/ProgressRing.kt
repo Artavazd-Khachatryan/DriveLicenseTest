@@ -17,6 +17,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.drive.license.test.ui.util.accuracyColor
 
 @Composable
 fun ProgressRing(
@@ -31,11 +32,7 @@ fun ProgressRing(
 ) {
     val coerced = progress.coerceIn(0f, 1f)
     val animated by animateFloatAsState(targetValue = coerced)
-    val ringColor = progressColor ?: when {
-        coerced >= 0.8f -> MaterialTheme.colorScheme.primary
-        coerced >= 0.5f -> MaterialTheme.colorScheme.tertiary
-        else -> MaterialTheme.colorScheme.error
-    }
+    val ringColor = progressColor ?: accuracyColor(coerced)
     val defaultDescription = "${(coerced * 100).toInt()}%"
     val semanticsModifier = Modifier.semantics {
         this.contentDescription = contentDescription ?: defaultDescription
