@@ -3,7 +3,6 @@ package com.drive.license.test.ui
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.animateIntAsState
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -40,7 +39,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -196,18 +194,10 @@ fun HomeScreen(
 
                         Spacer(modifier = Modifier.height(16.dp))
 
-                        val buttonScale by animateFloatAsState(
-                            targetValue = 1f,
-                            animationSpec = spring(dampingRatio = 0.8f),
-                            label = "button_scale"
-                        )
-
                         AppButton(
                             text = stringResource(Res.string.home_start_button),
                             onClick = { onStartTest(selectedTestLength) },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .graphicsLayer { scaleX = buttonScale; scaleY = buttonScale }
+                            modifier = Modifier.fillMaxWidth()
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                         AppButton(
@@ -365,19 +355,10 @@ fun HomeScreen(
                             verticalArrangement = Arrangement.SpaceBetween
                         ) {
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                // Animated Icon
-                                val iconScale by animateFloatAsState(
-                                    targetValue = 1f,
-                                    animationSpec = spring(dampingRatio = 0.7f),
-                                    label = "review_icon_scale"
-                                )
-                                
                                 Icon(
                                     Icons.Filled.Quiz,
                                     contentDescription = null,
-                                    modifier = Modifier
-                                        .size(36.dp)
-                                        .graphicsLayer { scaleX = iconScale; scaleY = iconScale },
+                                    modifier = Modifier.size(36.dp),
                                     tint = MaterialTheme.colorScheme.error
                                 )
                                 
@@ -436,19 +417,10 @@ fun HomeScreen(
                             verticalArrangement = Arrangement.SpaceBetween
                         ) {
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                // Animated Icon
-                                val iconScale by animateFloatAsState(
-                                    targetValue = 1f,
-                                    animationSpec = spring(dampingRatio = 0.7f),
-                                    label = "chat_icon_scale"
-                                )
-                                
                                 Icon(
                                     Icons.Filled.Chat,
                                     contentDescription = null,
-                                    modifier = Modifier
-                                        .size(36.dp)
-                                        .graphicsLayer { scaleX = iconScale; scaleY = iconScale },
+                                    modifier = Modifier.size(36.dp),
                                     tint = MaterialTheme.colorScheme.tertiary
                                 )
                                 
@@ -503,19 +475,10 @@ fun HomeScreen(
                     Row(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        // Animated School Icon
-                        val iconScale by animateFloatAsState(
-                            targetValue = 1f,
-                            animationSpec = spring(dampingRatio = 0.8f),
-                            label = "school_icon_scale"
-                        )
-                        
                         Icon(
                             Icons.Filled.School,
                             contentDescription = null,
-                            modifier = Modifier
-                                .size(36.dp)
-                                .graphicsLayer { scaleX = iconScale; scaleY = iconScale },
+                            modifier = Modifier.size(36.dp),
                             tint = MaterialTheme.colorScheme.secondary
                         )
                         
@@ -549,9 +512,5 @@ fun HomeScreen(
     }
 }
 
-@Composable
-private fun SectionTitle(text: String) {
-    Text(text = text, style = MaterialTheme.typography.headlineSmall)
-}
 
 
