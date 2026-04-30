@@ -38,6 +38,8 @@ kotlin {
     sourceSets {
         androidMain.dependencies {
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.maps.compose)
+            implementation(libs.play.services.maps)
         }
 
         iosMain.dependencies {

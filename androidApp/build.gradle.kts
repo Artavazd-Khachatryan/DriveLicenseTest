@@ -26,6 +26,7 @@ android {
             "ANTHROPIC_API_KEY",
             "\"${System.getenv("ANTHROPIC_API_KEY") ?: ""}\""
         )
+        manifestPlaceholders["GOOGLE_MAPS_API_KEY"] = System.getenv("GOOGLE_MAPS_API_KEY") ?: ""
     }
     packaging {
         resources {

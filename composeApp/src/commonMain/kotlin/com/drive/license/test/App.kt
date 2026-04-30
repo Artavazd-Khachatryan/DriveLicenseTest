@@ -31,6 +31,7 @@ fun App() {
             questionRepository = questionRepository,
             userProgressRepository = userProgressRepository,
             aiAssistant = aiAssistant,
+            mapContent = { modifier -> MapView(LearningCentersData.all, modifier) },
             coroutineScope = coroutineScope
         )
     }

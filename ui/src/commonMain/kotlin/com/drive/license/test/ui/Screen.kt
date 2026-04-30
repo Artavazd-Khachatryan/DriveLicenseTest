@@ -9,6 +9,7 @@ sealed class Screen {
     object Results : Screen()
     object Mistakes : Screen()
     object Bookmarks : Screen()
+    object Map : Screen()
     data class AiExplanation(
         val questionText: String,
         val userAnswer: String,

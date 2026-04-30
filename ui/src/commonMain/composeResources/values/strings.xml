@@ -7026,6 +7026,11 @@
     <!-- Common -->
     <string name="back">Հետ</string>
 
+    <!-- Map Screen -->
+    <string name="map_title">Ուսուցչական Կենտրոններ</string>
+    <string name="map_centers_count">%1$d կենտրոն</string>
+    <string name="map_phone">Հեռ.՝</string>
+
     <!-- AI Explanation Screen -->
     <string name="ai_explain_title">Բացատրություն</string>
     <string name="ai_explain_button">Բացատրել Պատասխանը</string>

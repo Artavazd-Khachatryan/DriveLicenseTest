@@ -38,6 +38,7 @@ fun MainScreen(
     questionRepository: QuestionRepository,
     userProgressRepository: UserProgressRepository,
     aiAssistant: AiAssistant,
+    mapContent: @Composable (Modifier) -> Unit,
     coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
@@ -138,7 +139,7 @@ fun MainScreen(
             onOpenFailed = { navigate(Screen.Mistakes) },
             onOpenPractice = { navigate(Screen.Practice) },
             onOpenChat = { },
-            onOpenMap = { },
+            onOpenMap = { navigate(Screen.Map) },
             onOpenStatsFromRing = { navigate(Screen.Stats) },
             bottomBar = bottomBar,
             modifier = modifier
@@ -274,6 +275,10 @@ fun MainScreen(
                     }
                 }
             }
+        )
+        Screen.Map -> MapScreen(
+            mapContent = mapContent,
+            onBack = { navigateBack() }
         )
         is Screen.AiExplanation -> AiExplanationScreen(
             questionText = screen.questionText,
