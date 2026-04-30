@@ -14,6 +14,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
@@ -42,6 +43,7 @@ import drivelicensetest.ui.generated.resources.mistakes_count
 import drivelicensetest.ui.generated.resources.mistakes_empty_subtitle
 import drivelicensetest.ui.generated.resources.mistakes_empty_title
 import drivelicensetest.ui.generated.resources.mistakes_title
+import drivelicensetest.ui.generated.resources.mistakes_your_answer
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -144,28 +146,60 @@ private fun EmptyMistakesCard() {
 private fun MistakeItem(mistake: MistakeQuestion) {
     Column(
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
-        verticalArrangement = Arrangement.spacedBy(6.dp)
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
             text = mistake.question,
             style = MaterialTheme.typography.bodyMedium,
             fontWeight = FontWeight.Medium
         )
+        if (mistake.userAnswer.isNotBlank()) {
+            Row(
+                verticalAlignment = Alignment.Top,
+                horizontalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Cancel,
+                    contentDescription = null,
+                    modifier = Modifier.size(14.dp).padding(top = 2.dp),
+                    tint = MaterialTheme.colorScheme.error
+                )
+                Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                    Text(
+                        text = stringResource(Res.string.mistakes_your_answer),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.error.copy(alpha = 0.8f)
+                    )
+                    Text(
+                        text = mistake.userAnswer,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.error
+                    )
+                }
+            }
+        }
         Row(
-            verticalAlignment = Alignment.CenterVertically,
+            verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
             Icon(
                 imageVector = Icons.Default.CheckCircle,
                 contentDescription = stringResource(Res.string.mistakes_correct_answer),
-                modifier = Modifier.size(14.dp),
+                modifier = Modifier.size(14.dp).padding(top = 2.dp),
                 tint = MaterialTheme.colorScheme.primary
             )
-            Text(
-                text = mistake.correctAnswer,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.primary
-            )
+            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                Text(
+                    text = stringResource(Res.string.mistakes_correct_answer),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
+                )
+                Text(
+                    text = mistake.correctAnswer,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
         }
     }
 }

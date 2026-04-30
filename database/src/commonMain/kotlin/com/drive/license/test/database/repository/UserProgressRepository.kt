@@ -52,7 +52,8 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
             MistakeQuestion(
                 id = row.id.toInt(),
                 question = row.question,
-                correctAnswer = row.true_answer
+                correctAnswer = row.true_answer,
+                userAnswer = row.last_wrong_answer
             )
         }
     }

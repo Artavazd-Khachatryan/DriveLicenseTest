@@ -6978,6 +6978,7 @@
     <string name="mistakes_count">%1$d հարց վերանայելու համար</string>
     <string name="mistakes_empty_title">Սխալներ դեռ չկան!</string>
     <string name="mistakes_empty_subtitle">Կատարեք թեստ, և բոլոր սխալ պատասխանները կհայտնվեն այստեղ։</string>
+    <string name="mistakes_your_answer">Ձեր պատասխանը</string>
     <string name="mistakes_correct_answer">Ճիշտ պատասխան</string>
 
     <!-- Question Detail Screen -->

@@ -176,7 +176,13 @@ ORDER BY qc.name;
 
 -- Get questions answered incorrectly at least once
 getIncorrectQuestions:
-SELECT q.id, q.question, q.true_answer
+SELECT q.id, q.question, q.true_answer,
+    COALESCE(
+        (SELECT qa.selected_answer FROM QuestionAttempt qa
+         WHERE qa.question_id = q.id AND qa.is_correct = 0
+         ORDER BY qa.attempt_time DESC LIMIT 1),
+        ''
+    ) AS last_wrong_answer
 FROM Question q
 JOIN UserQuestionProgress up ON up.question_id = q.id
 WHERE up.times_incorrect > 0
