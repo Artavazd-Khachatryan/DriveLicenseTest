@@ -93,6 +93,25 @@ export ANTHROPIC_API_KEY=sk-ant-...
 
 For Android Studio, add it to the run configuration's environment variables, or add it to your shell profile so it's always present.
 
+### Maps Setup (optional)
+
+The learning centers map uses Google Maps on Android and MapKit on iOS.
+
+**Android — Google Maps API key**
+
+Set the environment variable before building:
+
+```bash
+export GOOGLE_MAPS_API_KEY=AIza...
+./gradlew assembleDebug
+```
+
+Without a key the map still renders but shows a "For development purposes only" watermark.
+
+For GitHub Actions add `GOOGLE_MAPS_API_KEY` as a repository secret and expose it the same way as `ANTHROPIC_API_KEY`.
+
+**iOS** — MapKit is used on iOS, which requires no API key.
+
 **CI / GitHub Actions**
 
 Add `ANTHROPIC_API_KEY` as a repository secret (Settings → Secrets → Actions), then expose it in your workflow:
