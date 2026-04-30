@@ -1,5 +1,9 @@
 package com.drive.license.test.ui
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,10 +16,16 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.delay
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
@@ -42,8 +52,20 @@ fun TestResultsScreen(
     modifier: Modifier = Modifier
 ) {
     val score = session.correctAnswers.toFloat() / session.questions.size
-    val passed = score >= 0.8f // 80% to pass
-    
+    val passed = score >= 0.8f
+
+    var headerVisible by remember { mutableStateOf(false) }
+    var ringVisible by remember { mutableStateOf(false) }
+    var statsVisible by remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        headerVisible = true
+        delay(150)
+        ringVisible = true
+        delay(100)
+        statsVisible = true
+    }
+
     AppScaffold(
         topBarTitle = stringResource(Res.string.results_title)
     ) { innerPadding ->
@@ -58,72 +80,70 @@ fun TestResultsScreen(
         ) {
             Spacer(modifier = Modifier.height(32.dp))
             
-            // Results Header
-            AppCard(
-                modifier = Modifier.fillMaxWidth(),
-                containerColor = if (passed) {
-                    MaterialTheme.colorScheme.primaryContainer
-                } else {
-                    MaterialTheme.colorScheme.errorContainer
-                }
+            AnimatedVisibility(
+                visible = headerVisible,
+                enter = slideInVertically(animationSpec = tween(300)) { -it / 2 } + fadeIn(tween(300))
             ) {
-                Column(
-                    modifier = Modifier.padding(24.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                AppCard(
+                    modifier = Modifier.fillMaxWidth(),
+                    containerColor = if (passed) {
+                        MaterialTheme.colorScheme.primaryContainer
+                    } else {
+                        MaterialTheme.colorScheme.errorContainer
+                    }
                 ) {
-                    Text(
-                        text = if (passed) stringResource(Res.string.results_passed_title) else stringResource(Res.string.results_failed_title),
-                        style = MaterialTheme.typography.headlineMedium,
-                        textAlign = TextAlign.Center,
-                        color = if (passed) {
-                            MaterialTheme.colorScheme.onPrimaryContainer
-                        } else {
-                            MaterialTheme.colorScheme.onErrorContainer
-                        }
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = if (passed) stringResource(Res.string.results_passed_subtitle) else stringResource(Res.string.results_failed_subtitle),
-                        style = MaterialTheme.typography.bodyLarge,
-                        textAlign = TextAlign.Center,
-                        color = if (passed) {
-                            MaterialTheme.colorScheme.onPrimaryContainer
-                        } else {
-                            MaterialTheme.colorScheme.onErrorContainer
-                        }
-                    )
+                    Column(
+                        modifier = Modifier.padding(24.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = if (passed) stringResource(Res.string.results_passed_title) else stringResource(Res.string.results_failed_title),
+                            style = MaterialTheme.typography.headlineMedium,
+                            textAlign = TextAlign.Center,
+                            color = if (passed) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onErrorContainer
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            text = if (passed) stringResource(Res.string.results_passed_subtitle) else stringResource(Res.string.results_failed_subtitle),
+                            style = MaterialTheme.typography.bodyLarge,
+                            textAlign = TextAlign.Center,
+                            color = if (passed) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onErrorContainer
+                        )
+                    }
                 }
             }
-            
-            // Score Ring
-            AppCard(
-                modifier = Modifier.fillMaxWidth()
+
+            AnimatedVisibility(
+                visible = ringVisible,
+                enter = fadeIn(tween(400))
             ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(24.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    ProgressRing(
-                        progress = score,
-                        size = 120.dp,
-                        strokeWidth = 12.dp
-                    )
-                    
-                    Text(
-                        text = stringResource(Res.string.results_your_score),
-                        style = MaterialTheme.typography.titleMedium,
-                        textAlign = TextAlign.Center
-                    )
+                AppCard(modifier = Modifier.fillMaxWidth()) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(24.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        ProgressRing(
+                            progress = if (ringVisible) score else 0f,
+                            size = 120.dp,
+                            strokeWidth = 12.dp
+                        )
+                        Text(
+                            text = stringResource(Res.string.results_your_score),
+                            style = MaterialTheme.typography.titleMedium,
+                            textAlign = TextAlign.Center
+                        )
+                    }
                 }
             }
-            
-            // Detailed Stats
-            AppCard(
-                modifier = Modifier.fillMaxWidth()
+
+            AnimatedVisibility(
+                visible = statsVisible,
+                enter = slideInVertically(animationSpec = tween(300)) { it / 2 } + fadeIn(tween(300))
             ) {
+                AppCard(modifier = Modifier.fillMaxWidth()) {
                 Column(
                     modifier = Modifier.padding(20.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
@@ -174,7 +194,8 @@ fun TestResultsScreen(
                     }
                 }
             }
-            
+            } // AnimatedVisibility stats
+
             Spacer(modifier = Modifier.weight(1f))
             
             // Action Buttons
