@@ -53,7 +53,7 @@ class IosReminderScheduler : ReminderScheduler {
 
     companion object {
         private const val REQUEST_ID = "practice_reminder_daily"
-        private const val TITLE = "Time to practice 🚗"
-        private const val BODY = "A few questions today keeps you exam-ready. You've got this!"
+        private const val TITLE = "Ժամանակն է պարապելու 🚗"
+        private const val BODY = "Մի քանի հարց այսօր ձեզ կպահեն քննությանը պատրաստ։ Հավատում եմ ձեզ։"
     }
 }

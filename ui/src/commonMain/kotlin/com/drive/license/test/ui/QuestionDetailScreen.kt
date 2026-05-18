@@ -52,6 +52,7 @@ import drivelicensetest.ui.generated.resources.question_exit_confirm
 import drivelicensetest.ui.generated.resources.question_exit_message
 import drivelicensetest.ui.generated.resources.question_exit_title
 import drivelicensetest.ui.generated.resources.question_finish
+import drivelicensetest.ui.generated.resources.question_image_cd
 import drivelicensetest.ui.generated.resources.question_image_unavailable
 import drivelicensetest.ui.generated.resources.question_next
 import drivelicensetest.ui.generated.resources.question_number_of_total
@@ -203,7 +204,7 @@ fun QuestionDetailScreen(
                                 if (imageResource != null) {
                                     Image(
                                         painter = painterResource(imageResource),
-                                        contentDescription = "Question image",
+                                        contentDescription = stringResource(Res.string.question_image_cd),
                                         modifier = Modifier
                                             .fillMaxWidth()
                                             .height(200.dp),

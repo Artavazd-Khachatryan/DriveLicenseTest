@@ -56,10 +56,10 @@ class ReminderReceiver : BroadcastReceiver() {
     companion object {
         const val ACTION_REMINDER = "com.drive.license.test.action.PRACTICE_REMINDER"
         const val CHANNEL_ID = "practice_reminder"
-        private const val CHANNEL_NAME = "Practice reminders"
-        private const val CHANNEL_DESC = "Daily reminder to practice driving questions"
+        private const val CHANNEL_NAME = "Պարապանքի հիշեցումներ"
+        private const val CHANNEL_DESC = "Օրական հիշեցում վարորդական հարցերի պարապանքի համար"
         private const val NOTIFICATION_ID = 1001
-        private const val TITLE = "Time to practice 🚗"
-        private const val BODY = "A few questions today keeps you exam-ready. You've got this!"
+        private const val TITLE = "Ժամանակն է պարապելու 🚗"
+        private const val BODY = "Մի քանի հարց այսօր ձեզ կպահեն քննությանը պատրաստ։ Հավատում եմ ձեզ։"
     }
 }

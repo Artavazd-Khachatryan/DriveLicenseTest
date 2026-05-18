@@ -6992,6 +6992,7 @@
     <string name="question_next">Հաջորդ</string>
     <string name="question_finish">Ավարտել</string>
     <string name="question_image_unavailable">Նկարն անհասանելի է</string>
+    <string name="question_image_cd">Հարցի նկար</string>
 
     <!-- Test Results Screen -->
     <string name="results_title">Թեստի Արդյունքներ</string>
@@ -7025,6 +7026,9 @@
 
     <!-- Common -->
     <string name="back">Հետ</string>
+    <string name="nav_home">Գլխավոր</string>
+    <string name="nav_practice">Պարապանք</string>
+    <string name="nav_stats">Վիճակագրություն</string>
 
     <!-- Map Screen -->
     <string name="map_title">Ուսուցչական Կենտրոններ</string>

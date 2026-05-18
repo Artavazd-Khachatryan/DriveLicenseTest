@@ -27,6 +27,11 @@ import androidx.compose.material.icons.filled.Home
 import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.ui.components.AppBottomBar
 import com.drive.license.test.ui.components.BottomNavItem
+import drivelicensetest.ui.generated.resources.Res
+import drivelicensetest.ui.generated.resources.nav_home
+import drivelicensetest.ui.generated.resources.nav_practice
+import drivelicensetest.ui.generated.resources.nav_stats
+import org.jetbrains.compose.resources.stringResource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
@@ -66,12 +71,15 @@ fun MainScreen(
         if (backStack.size > 1) backStack.removeAt(backStack.lastIndex)
     }
 
+    val navHomeLabel = stringResource(Res.string.nav_home)
+    val navPracticeLabel = stringResource(Res.string.nav_practice)
+    val navStatsLabel = stringResource(Res.string.nav_stats)
     val bottomBar: @Composable () -> Unit = {
         AppBottomBar(
             listOf(
-                BottomNavItem("Home", Icons.Default.Home, currentScreen is Screen.Home) { navigate(Screen.Home) },
-                BottomNavItem("Practice", Icons.Default.FitnessCenter, currentScreen is Screen.Practice) { navigate(Screen.Practice) },
-                BottomNavItem("Stats", Icons.Default.BarChart, currentScreen is Screen.Stats) { navigate(Screen.Stats) }
+                BottomNavItem(navHomeLabel, Icons.Default.Home, currentScreen is Screen.Home) { navigate(Screen.Home) },
+                BottomNavItem(navPracticeLabel, Icons.Default.FitnessCenter, currentScreen is Screen.Practice) { navigate(Screen.Practice) },
+                BottomNavItem(navStatsLabel, Icons.Default.BarChart, currentScreen is Screen.Stats) { navigate(Screen.Stats) }
             )
         )
     }
