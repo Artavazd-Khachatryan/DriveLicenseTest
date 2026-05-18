@@ -40,6 +40,7 @@ kotlin {
             implementation(libs.ktor.client.okhttp)
             implementation(libs.maps.compose)
             implementation(libs.play.services.maps)
+            implementation(libs.androidx.core.ktx)
         }
 
         iosMain.dependencies {
