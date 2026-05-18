@@ -33,5 +33,5 @@ val appModule = module {
 
 fun initKoin(appDeclaration: KoinAppDeclaration = {}) = startKoin {
     appDeclaration()
-    modules(appModule)
-} 
+    modules(appModule, platformModule)
+}

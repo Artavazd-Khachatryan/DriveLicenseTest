@@ -7040,4 +7040,15 @@
     <string name="ai_explain_correct_badge">Ճիշտ</string>
     <string name="ai_explain_incorrect_badge">Սխալ</string>
 
+    <!-- Settings Screen -->
+    <string name="settings_title">Կարգավորումներ</string>
+    <string name="settings_reminder_title">Օրական պարապանքի հիշեցում</string>
+    <string name="settings_reminder_subtitle">Ստացեք մեղմ հիշեցում ամեն օր պարապելու համար</string>
+    <string name="settings_reminder_time_label">Հիշեցման ժամ</string>
+    <string name="settings_reminder_change_time">Փոխել ժամը</string>
+    <string name="settings_reminder_permission_denied">Ծանուցումները թույլատրված չեն: Միացրեք համակարգի կարգավորումներից:</string>
+    <string name="settings_dialog_ok">Լավ</string>
+    <string name="settings_dialog_cancel">Չեղարկել</string>
+    <string name="settings_open_action_cd">Բացել կարգավորումները</string>
+
 </resources>

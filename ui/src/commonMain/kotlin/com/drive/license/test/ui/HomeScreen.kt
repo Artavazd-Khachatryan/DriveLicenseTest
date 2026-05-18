@@ -27,8 +27,10 @@ import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material.icons.filled.School
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -74,6 +76,7 @@ import drivelicensetest.ui.generated.resources.home_streak_days
 import drivelicensetest.ui.generated.resources.home_streak_label
 import drivelicensetest.ui.generated.resources.home_test_length_label
 import drivelicensetest.ui.generated.resources.home_view_map_button
+import drivelicensetest.ui.generated.resources.settings_title
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -86,12 +89,23 @@ fun HomeScreen(
     onOpenPractice: () -> Unit,
     onOpenChat: () -> Unit,
     onOpenMap: () -> Unit,
+    onOpenSettings: () -> Unit,
     bottomBar: @Composable (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     var selectedTestLength by remember { mutableStateOf(20) }
 
-    AppScaffold(bottomBar = bottomBar) { inner ->
+    AppScaffold(
+        bottomBar = bottomBar,
+        topBarActions = {
+            IconButton(onClick = onOpenSettings) {
+                Icon(
+                    imageVector = Icons.Filled.Settings,
+                    contentDescription = stringResource(Res.string.settings_title)
+                )
+            }
+        }
+    ) { inner ->
         Column(
             modifier = modifier
                 .fillMaxSize()

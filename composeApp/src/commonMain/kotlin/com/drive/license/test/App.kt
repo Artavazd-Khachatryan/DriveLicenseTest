@@ -5,6 +5,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import com.drive.license.test.database.DatabaseInitializer
 import com.drive.license.test.domain.repository.AiAssistant
 import com.drive.license.test.domain.repository.QuestionRepository
+import com.drive.license.test.domain.repository.ReminderPreferences
+import com.drive.license.test.domain.repository.ReminderScheduler
 import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.ui.MainScreen
 import com.drive.license.test.ui.theme.AppTheme
@@ -17,6 +19,8 @@ fun App() {
     val questionRepository: QuestionRepository = KoinHelper.get()
     val userProgressRepository: UserProgressRepository = KoinHelper.get()
     val aiAssistant: AiAssistant = KoinHelper.get()
+    val reminderPreferences: ReminderPreferences = KoinHelper.get()
+    val reminderScheduler: ReminderScheduler = KoinHelper.get()
 
     val databaseInitializer = remember {
         DatabaseInitializer(questionRepository, coroutineScope)
@@ -31,6 +35,8 @@ fun App() {
             questionRepository = questionRepository,
             userProgressRepository = userProgressRepository,
             aiAssistant = aiAssistant,
+            reminderPreferences = reminderPreferences,
+            reminderScheduler = reminderScheduler,
             mapContent = { modifier -> MapView(LearningCentersData.all, modifier) },
             coroutineScope = coroutineScope
         )

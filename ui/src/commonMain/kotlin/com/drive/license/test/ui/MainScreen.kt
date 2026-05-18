@@ -18,6 +18,8 @@ import androidx.compose.ui.Modifier
 import com.drive.license.test.domain.model.UserStatistics
 import com.drive.license.test.domain.repository.AiAssistant
 import com.drive.license.test.domain.repository.QuestionRepository
+import com.drive.license.test.domain.repository.ReminderPreferences
+import com.drive.license.test.domain.repository.ReminderScheduler
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.FitnessCenter
@@ -38,6 +40,8 @@ fun MainScreen(
     questionRepository: QuestionRepository,
     userProgressRepository: UserProgressRepository,
     aiAssistant: AiAssistant,
+    reminderPreferences: ReminderPreferences,
+    reminderScheduler: ReminderScheduler,
     mapContent: @Composable (Modifier) -> Unit,
     coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
@@ -141,6 +145,7 @@ fun MainScreen(
             onOpenChat = { },
             onOpenMap = { navigate(Screen.Map) },
             onOpenStatsFromRing = { navigate(Screen.Stats) },
+            onOpenSettings = { navigate(Screen.Settings) },
             bottomBar = bottomBar,
             modifier = modifier
         )
@@ -278,6 +283,11 @@ fun MainScreen(
         )
         Screen.Map -> MapScreen(
             mapContent = mapContent,
+            onBack = { navigateBack() }
+        )
+        Screen.Settings -> SettingsScreen(
+            reminderPreferences = reminderPreferences,
+            reminderScheduler = reminderScheduler,
             onBack = { navigateBack() }
         )
         is Screen.AiExplanation -> AiExplanationScreen(

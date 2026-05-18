@@ -37,7 +37,7 @@ fun AppScaffold(
 ) {
     Scaffold(
         topBar = {
-            if (topBarTitle != null || navigationIcon != null) {
+            if (topBarTitle != null || navigationIcon != null || topBarActions != null) {
                 TopAppBar(
                     title = { if (topBarTitle != null) Text(text = topBarTitle) },
                     navigationIcon = { navigationIcon?.invoke() },
