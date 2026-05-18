@@ -31,7 +31,6 @@ Kotlin Multiplatform app targeting **Android** and **iOS** using **Compose Multi
 - `ActionCard` — card with title, description, and action
 - `StatChip` — value + label stat display
 - `AnswerButton` — answer selection with visual state (default / selected / correct / incorrect)
-- `QuestionCard` — question preview with status chip
 - `ProgressRing` — animated circular progress, color-coded by score (≥80% primary, ≥50% tertiary, <50% error)
 
 ### Layout Rules
