@@ -468,57 +468,59 @@ fun HomeScreen(
                 }
             }
 
-            // 5. Enhanced Learning Places with Animation
-            AppCard(
-                modifier = Modifier.fillMaxWidth(),
-                containerColor = MaterialTheme.colorScheme.surface
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(
-                            Brush.verticalGradient(
-                                colors = listOf(
-                                    MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.1f),
-                                    MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.05f)
+            if (AppFeatures.mapEnabled) {
+                // 5. Enhanced Learning Places with Animation
+                AppCard(
+                    modifier = Modifier.fillMaxWidth(),
+                    containerColor = MaterialTheme.colorScheme.surface
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(
+                                Brush.verticalGradient(
+                                    colors = listOf(
+                                        MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.1f),
+                                        MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.05f)
+                                    )
                                 )
                             )
-                        )
-                        .padding(20.dp)
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
+                            .padding(20.dp)
                     ) {
-                        Icon(
-                            Icons.Filled.School,
-                            contentDescription = null,
-                            modifier = Modifier.size(36.dp),
-                            tint = MaterialTheme.colorScheme.secondary
-                        )
-                        
-                        Spacer(modifier = Modifier.width(16.dp))
-                        
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = stringResource(Res.string.home_learning_centers_title),
-                                style = MaterialTheme.typography.titleLarge,
-                                fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.secondary
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Icon(
+                                Icons.Filled.School,
+                                contentDescription = null,
+                                modifier = Modifier.size(36.dp),
+                                tint = MaterialTheme.colorScheme.secondary
                             )
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Text(
-                                text = stringResource(Res.string.home_learning_centers_subtitle),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
+
+                            Spacer(modifier = Modifier.width(16.dp))
+
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    text = stringResource(Res.string.home_learning_centers_title),
+                                    style = MaterialTheme.typography.titleLarge,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MaterialTheme.colorScheme.secondary
+                                )
+                                Spacer(modifier = Modifier.height(4.dp))
+                                Text(
+                                    text = stringResource(Res.string.home_learning_centers_subtitle),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+
+                            Spacer(modifier = Modifier.width(12.dp))
+
+                            AppButton(
+                                text = stringResource(Res.string.home_view_map_button),
+                                onClick = onOpenMap
                             )
                         }
-                        
-                        Spacer(modifier = Modifier.width(12.dp))
-                        
-                        AppButton(
-                            text = stringResource(Res.string.home_view_map_button),
-                            onClick = onOpenMap
-                        )
                     }
                 }
             }

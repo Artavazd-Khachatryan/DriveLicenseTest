@@ -151,7 +151,9 @@ fun MainScreen(
             onOpenFailed = { navigate(Screen.Mistakes) },
             onOpenPractice = { navigate(Screen.Practice) },
             onOpenChat = { },
-            onOpenMap = { navigate(Screen.Map) },
+            onOpenMap = {
+                if (AppFeatures.mapEnabled) navigate(Screen.Map)
+            },
             onOpenStatsFromRing = { navigate(Screen.Stats) },
             onOpenSettings = { navigate(Screen.Settings) },
             bottomBar = bottomBar,
@@ -289,10 +291,14 @@ fun MainScreen(
                 }
             }
         )
-        Screen.Map -> MapScreen(
-            mapContent = mapContent,
-            onBack = { navigateBack() }
-        )
+        Screen.Map -> if (AppFeatures.mapEnabled) {
+            MapScreen(
+                mapContent = mapContent,
+                onBack = { navigateBack() }
+            )
+        } else {
+            LaunchedEffect(Unit) { navigateBack() }
+        }
         Screen.Settings -> SettingsScreen(
             reminderPreferences = reminderPreferences,
             reminderScheduler = reminderScheduler,
