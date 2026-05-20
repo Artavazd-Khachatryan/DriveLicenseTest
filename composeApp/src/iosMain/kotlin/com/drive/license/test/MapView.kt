@@ -1,3 +1,5 @@
+@file:OptIn(kotlinx.cinterop.ExperimentalForeignApi::class)
+
 package com.drive.license.test
 
 import androidx.compose.runtime.Composable
