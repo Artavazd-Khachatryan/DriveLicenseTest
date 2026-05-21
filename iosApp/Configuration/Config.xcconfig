@@ -1,4 +1,6 @@
-TEAM_ID=
 BUNDLE_ID=com.drive.license.test.DriveLicenseTest
 APP_NAME=DriveLicenseTest
 ANTHROPIC_API_KEY=$(ANTHROPIC_API_KEY)
+
+// Per-machine signing team (see Local.xcconfig.example). Must be last so it is not overridden.
+#include? "Local.xcconfig"

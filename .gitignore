@@ -18,6 +18,9 @@ captures
 **/xcshareddata/WorkspaceSettings.xcsettings
 .claude
 
+# Per-developer Xcode signing (see iosApp/Configuration/Local.xcconfig.example)
+iosApp/Configuration/Local.xcconfig
+
 # Compose / Gradle generated files accidentally created in repo root
 META-INF/
 org/

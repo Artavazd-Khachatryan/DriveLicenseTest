@@ -32,6 +32,7 @@ kotlin {
             isStatic = true
             export(project(":database"))
             freeCompilerArgs += "-Xbinary=bundleId=com.drive.license.test.ComposeApp"
+            linkerOpts("-framework", "CoreLocation", "-framework", "MapKit")
         }
     }
 
