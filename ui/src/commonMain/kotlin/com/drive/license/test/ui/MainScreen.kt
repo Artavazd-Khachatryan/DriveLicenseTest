@@ -144,8 +144,10 @@ fun MainScreen(
             userStatistics = userStatistics,
             onStartTest = { count ->
                 val randomQuestions = allQuestions.shuffled().take(count)
-                testSession = TestSession(questions = randomQuestions)
-                navigate(Screen.Question)
+                if (randomQuestions.isNotEmpty()) {
+                    testSession = TestSession(questions = randomQuestions)
+                    navigate(Screen.Question)
+                }
             },
             onOpenStats = { navigate(Screen.Stats) },
             onOpenFailed = { navigate(Screen.Mistakes) },
@@ -190,8 +192,10 @@ fun MainScreen(
                 },
                 onStartExam = {
                     val examQuestions = allQuestions.shuffled().take(TestSession.EXAM_QUESTION_COUNT)
-                    testSession = TestSession(questions = examQuestions, isExamMode = true)
-                    navigate(Screen.Question)
+                    if (examQuestions.isNotEmpty()) {
+                        testSession = TestSession(questions = examQuestions, isExamMode = true)
+                        navigate(Screen.Question)
+                    }
                 },
                 onOpenBookmarks = { navigate(Screen.Bookmarks) },
                 onBack = { navigateBack() },
@@ -322,9 +326,11 @@ fun MainScreen(
             },
             onRetakeTest = {
                 val randomQuestions = allQuestions.shuffled().take(20)
-                testSession = TestSession(questions = randomQuestions)
-                backStack.removeAt(backStack.lastIndex)
-                backStack.add(Screen.Question)
+                if (randomQuestions.isNotEmpty()) {
+                    testSession = TestSession(questions = randomQuestions)
+                    backStack.removeAt(backStack.lastIndex)
+                    backStack.add(Screen.Question)
+                }
             }
         )
     }
