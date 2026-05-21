@@ -6920,6 +6920,12 @@
     <!-- Home Screen Strings -->
     <string name="home_ready_title">Պատրաստ եք հանձնել քննությունը?</string>
     <string name="home_ready_subtitle">Պարապեք իրական հարցերով և հետևեք ձեր առաջընթացին</string>
+    <string name="home_motivation_first_visit">Սկսեք առաջին թեստից — յուրաքանչյուր հարցը ձեզ ավելի մոտեցնում է քննությանը։</string>
+    <string name="home_motivation_streak_strong">%1$d օր անընդմեջ — հիանալի հաստատակամություն։ Շարունակեք այս տեմպով։</string>
+    <string name="home_motivation_streak_growing">%1$d օր անընդմեջ — լավ աշխատանք է։ Մի օր էլ մեկ քայլ։</string>
+    <string name="home_motivation_high_accuracy">Ձեր ճշգրտությունը բարձր է — դուք լավ պատրաստված եք։</string>
+    <string name="home_motivation_mid_accuracy">Կայուն առաջընթաց եք ցույց տալիս — մի քանի պարապում և ավելի վստահ կլինեք։</string>
+    <string name="home_motivation_low_accuracy">Յուրաքանչյուր հարցը կարևոր է — շարունակեք, արդյունքը կգա։</string>
     <string name="home_progress_title">Ձեր Առաջընթացը</string>
     <string name="home_accuracy">Ճշտություն</string>
     <string name="home_start_test_title">Սկսել Պարապել</string>
@@ -7000,6 +7006,11 @@
     <string name="results_failed_title">Շարունակեք Պարապել!</string>
     <string name="results_passed_subtitle">Դուք հաջողությամբ անցաք թեստը!</string>
     <string name="results_failed_subtitle">Անցնելու համար անհրաժեշտ է 70%</string>
+    <string name="results_motivation_perfect">Կատարյալ արդյունք — դուք պատրաստ եք։</string>
+    <string name="results_motivation_excellent">Հիանալի աշխատանք — մնացել է մի քիչ մանրուքների վրա։</string>
+    <string name="results_motivation_pass">Դուք անցաք — շարունակեք այս տեմպով։</string>
+    <string name="results_motivation_almost">Շատ մոտ եք — մի քանի սխալ հարց և կանցնեք։</string>
+    <string name="results_motivation_fail">Մի հանգամտի չկորցրեք — վերանայեք սխալները և փորձեք կրկին։</string>
     <string name="results_your_score">Ձեր Արդյունքը</string>
     <string name="results_correct_answers">Ճիշտ Պատասխաններ։</string>
     <string name="results_incorrect_answers">Սխալ Պատասխաններ։</string>

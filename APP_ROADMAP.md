@@ -72,18 +72,7 @@ Polish the look and feel.
 - **6.4 Loading states** — CircularProgressIndicator added to StatsScreen and ReviewMistakesScreen
 - **6.5 Accessibility pass** — ProgressRing contentDescription; AnswerButton incorrect color fixed; home ring CD wired
 - **6.6 Tablet/landscape** — Verify 720dp max-width works, test side-by-side layout on tablets
-
----
-
-## Phase 7: Stretch Goals
-
-Nice-to-have features if time allows.
-
-- **7.1 Achievement badges** — Badges for milestones (first test, 10 tests, 100% score, category mastery)
-- **7.2 Daily streak tracker** — Track consecutive days of practice
-- **7.3 Question bookmarks** — Let users bookmark questions to review later
-- **7.4 AI assistant** — Explain why an answer is correct/incorrect (wire the existing placeholder button)
-- [x] **7.5 Learning centers map** — Show nearby driving schools on a map (wire the existing placeholder button)
+- [x] **6.7 Motivating messages** — Context-aware encouragement on Home (streak, accuracy, first visit) and test results (score bands)
 
 ---
 
@@ -100,7 +89,4 @@ Nice-to-have features if time allows.
 | 2026-04-28 | Phase 5 (mostly done) — All strings extracted to Armenian resources; 5.4 (font/RTL check) needs on-device verification          |
 | 2026-04-28 | Phase 6 (5/6 done) — Dark mode, loading states, empty states, accessibility, long text; 6.6 tablet/landscape still to verify    |
 | 2026-04-28 | Phase 3.4 done — Configurable test length (10/20/30 chip selector on HomeScreen)                                                |
-| 2026-04-29 | Phase 7.2 done — Daily streak: UserStreak table, streak chip on HomeScreen                                                      |
-| 2026-04-29 | Phase 7.3 done — Bookmarks: toggle on QuestionDetailScreen, BookmarksScreen, practice from bookmarks                            |
-| 2026-04-29 | Phase 7.4 done — AI assistant: Anthropic API via Ktor, API key from env var (BuildConfig/Info.plist), AiExplanationScreen       |
-| 2026-04-30 | Phase 7.5 done — Learning centers map: Google Maps Compose (Android) + MapKit UIKitView (iOS), 9 hardcoded Armenian schools     |
+| 2026-05-20 | Phase 7 removed from roadmap (stretch goals out of scope); motivating messages added as 6.7 instead of achievement badges       |

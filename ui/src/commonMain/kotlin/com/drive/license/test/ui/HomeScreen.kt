@@ -58,8 +58,8 @@ import drivelicensetest.ui.generated.resources.home_chat_button
 import drivelicensetest.ui.generated.resources.home_learning_centers_subtitle
 import drivelicensetest.ui.generated.resources.home_learning_centers_title
 import drivelicensetest.ui.generated.resources.home_progress_title
-import drivelicensetest.ui.generated.resources.home_ready_subtitle
 import drivelicensetest.ui.generated.resources.home_ready_title
+import com.drive.license.test.ui.util.homeMotivationMessage
 import drivelicensetest.ui.generated.resources.home_review_button
 import drivelicensetest.ui.generated.resources.home_review_mistakes_subtitle
 import drivelicensetest.ui.generated.resources.home_review_mistakes_title
@@ -139,7 +139,7 @@ fun HomeScreen(
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = stringResource(Res.string.home_ready_subtitle),
+                        text = homeMotivationMessage(userStatistics),
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f),
                         textAlign = TextAlign.Center

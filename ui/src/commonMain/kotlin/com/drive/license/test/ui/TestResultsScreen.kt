@@ -34,11 +34,10 @@ import com.drive.license.test.ui.components.ProgressRing
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.results_back_home
 import drivelicensetest.ui.generated.resources.results_correct_answers
-import drivelicensetest.ui.generated.resources.results_failed_subtitle
 import drivelicensetest.ui.generated.resources.results_failed_title
 import drivelicensetest.ui.generated.resources.results_incorrect_answers
-import drivelicensetest.ui.generated.resources.results_passed_subtitle
 import drivelicensetest.ui.generated.resources.results_passed_title
+import com.drive.license.test.ui.util.testResultMotivationMessage
 import drivelicensetest.ui.generated.resources.results_questions_answered
 import drivelicensetest.ui.generated.resources.results_retake
 import drivelicensetest.ui.generated.resources.results_title
@@ -105,7 +104,7 @@ fun TestResultsScreen(
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
-                            text = if (passed) stringResource(Res.string.results_passed_subtitle) else stringResource(Res.string.results_failed_subtitle),
+                            text = testResultMotivationMessage(score, passed),
                             style = MaterialTheme.typography.bodyLarge,
                             textAlign = TextAlign.Center,
                             color = if (passed) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onErrorContainer
