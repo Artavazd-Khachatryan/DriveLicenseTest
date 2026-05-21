@@ -40,17 +40,18 @@ actual class DatabaseDriverFactory {
     
     private fun copyPrepopulatedDatabaseIfNeeded() {
         val databaseFile = appContext.getDatabasePath(POPULATED_DB_NAME)
-        if (databaseFile.exists()) return
+        val bundledBytes = (javaClass.classLoader?.getResourceAsStream(POPULATED_DB_NAME)
+            ?: runCatching { appContext.assets.open(POPULATED_DB_NAME) }.getOrNull()
+            ?: error("Pre-populated database '$POPULATED_DB_NAME' not found on classpath or in assets"))
+            .use { it.readBytes() }
+
+        // A prior broken install can leave a stub DB created by SqlDelight's Schema.create()
+        // that's much smaller than the bundled one. The bundled questions are immutable, so a
+        // healthy DB is never smaller than the bundled file. If it is, treat it as a stub.
+        if (databaseFile.exists() && databaseFile.length() >= bundledBytes.size) return
 
         databaseFile.parentFile?.mkdirs()
-
-        val inputStream = javaClass.classLoader?.getResourceAsStream(POPULATED_DB_NAME)
-            ?: runCatching { appContext.assets.open(POPULATED_DB_NAME) }.getOrNull()
-            ?: error("Pre-populated database '$POPULATED_DB_NAME' not found on classpath or in assets")
-
-        inputStream.use { input ->
-            FileOutputStream(databaseFile).use { output -> input.copyTo(output) }
-        }
+        FileOutputStream(databaseFile).use { it.write(bundledBytes) }
     }
 }
 
