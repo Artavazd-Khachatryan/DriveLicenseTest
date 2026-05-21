@@ -85,19 +85,44 @@ jobs:
       - name: Build iOS KMP framework
         run: ./gradlew :composeApp:linkDebugFrameworkIosSimulatorArm64 --stacktrace
 
-      - name: Xcode build & tests (adjust scheme/SDK if needed)
+      - name: Resolve iOS Simulator
+        id: sim
+        run: |
+          UDID=$(xcrun simctl list devices available -j | python3 -c "
+          import json, sys
+          data = json.load(sys.stdin)
+          preferred = ('iPhone 16 Pro', 'iPhone 16', 'iPhone 15 Pro', 'iPhone 15')
+          runtimes = sorted(data.get('devices', {}).keys(), reverse=True)
+          for name in preferred:
+              for runtime in runtimes:
+                  for device in data['devices'][runtime]:
+                      if device.get('name') == name and device.get('isAvailable'):
+                          print(device['udid'])
+                          sys.exit(0)
+          for runtime in runtimes:
+              for device in data['devices'][runtime]:
+                  if 'iPhone' in device.get('name', '') and device.get('isAvailable'):
+                      print(device['udid'])
+                      sys.exit(0)
+          sys.exit(1)
+          ")
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+
+      - name: Xcode build & tests
         run: |
           xcodebuild \
             -project iosApp/iosApp.xcodeproj \
             -scheme iosApp \
             -configuration Debug \
-            -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
+            -destination "platform=iOS Simulator,id=${{ steps.sim.outputs.udid }}" \
             -derivedDataPath iosApp/build/DerivedData \
             -testPlan DriveLicenseTestPlan \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
             DEVELOPMENT_TEAM="" \
+            TEAM_ID="" \
+            ENABLE_DEBUG_DYLIB=NO \
             clean build test
 
       - name: Upload iOS build products
