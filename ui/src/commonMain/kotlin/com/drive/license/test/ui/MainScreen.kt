@@ -272,14 +272,16 @@ fun MainScreen(
                         currentQuestionBookmarked = userProgressRepository.isBookmarked(session.currentQuestion.id)
                     }
                 },
-                onExplain = { userAnswer, correctAnswer, isCorrect ->
-                    navigate(Screen.AiExplanation(
-                        questionText = session.currentQuestion.question,
-                        userAnswer = userAnswer,
-                        correctAnswer = correctAnswer,
-                        isCorrect = isCorrect
-                    ))
-                }
+                onExplain = if (AppFeatures.aiEnabled) {
+                    { userAnswer, correctAnswer, isCorrect ->
+                        navigate(Screen.AiExplanation(
+                            questionText = session.currentQuestion.question,
+                            userAnswer = userAnswer,
+                            correctAnswer = correctAnswer,
+                            isCorrect = isCorrect
+                        ))
+                    }
+                } else null
             )
         }
         Screen.Bookmarks -> BookmarksScreen(
