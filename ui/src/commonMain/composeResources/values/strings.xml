@@ -6926,30 +6926,30 @@
     <string name="home_motivation_high_accuracy">Ձեր ճշգրտությունը բարձր է — դուք լավ պատրաստված եք։</string>
     <string name="home_motivation_mid_accuracy">Կայուն առաջընթաց եք ցույց տալիս — մի քանի պարապում և ավելի վստահ կլինեք։</string>
     <string name="home_motivation_low_accuracy">Յուրաքանչյուր հարցը կարևոր է — շարունակեք, արդյունքը կգա։</string>
-    <string name="home_progress_title">Ձեր Առաջընթացը</string>
-    <string name="home_accuracy">Ճշտություն</string>
-    <string name="home_start_test_title">Սկսել Պարապել</string>
-    <string name="home_start_test_subtitle">20 պատահական հարց • 5-7 րոպե</string>
+    <string name="home_progress_title">Ձեր առաջընթացը</string>
+    <string name="home_accuracy">Ճշգրտություն</string>
+    <string name="home_start_test_title">Սկսել պարապել</string>
+    <string name="home_start_test_subtitle">%1$d պատահական հարց · մոտ %2$d րոպե</string>
     <string name="home_start_button">Սկսել</string>
-    <string name="home_quick_actions">Արագ Գործողություններ</string>
-    <string name="home_review_mistakes_title">Վերանայել Սխալները</string>
-    <string name="home_review_mistakes_subtitle">Սովորեք սխալ հարցերից</string>
+    <string name="home_quick_actions">Արագ գործողություններ</string>
+    <string name="home_review_mistakes_title">Վերանայել սխալները</string>
+    <string name="home_review_mistakes_subtitle">Սովորեք սխալ պատասխաններից</string>
     <string name="home_review_button">Վերանայել</string>
     <string name="home_ai_assistant_title">AI Օգնական</string>
     <string name="home_ai_assistant_subtitle">Արագ օգնություն</string>
     <string name="home_chat_button">Զրուցել</string>
-    <string name="home_learning_centers_title">Գտնել Սովորելու Վայրեր</string>
-    <string name="home_learning_centers_subtitle">Գտեք մոտակա վարորդական դպրոցներ և պարապելու վայրեր</string>
-    <string name="home_view_map_button">Տեսնել Քարտեզը</string>
-    <string name="home_practice_button">Պարապման Ռեժիմ</string>
+    <string name="home_learning_centers_title">Գտնել սովորելու վայրեր</string>
+    <string name="home_learning_centers_subtitle">Գտեք մոտակա վարորդական դպրոցներ և պարապման վայրեր</string>
+    <string name="home_view_map_button">Տեսնել քարտեզը</string>
+    <string name="home_practice_button">Պարապման ռեժիմ</string>
     <string name="home_stat_correct">Ճիշտ</string>
     <string name="home_stat_incorrect">Սխալ</string>
     <string name="home_stat_attempted">Փորձ</string>
-    <string name="home_accuracy_ring_cd">Ընդհանուր ճշգրտություն %1$d%%: Հպեք վիճակագրությունը բացելու համար</string>
+    <string name="home_accuracy_ring_cd">Ընդհանուր ճշգրտություն %1$d%%։ Հպեք՝ վիճակագրությունը բացելու համար</string>
     <string name="home_question_count">%1$d հարց</string>
     <string name="home_test_length_label">Հարցերի քանակ</string>
     <string name="home_streak_days">%1$d օր</string>
-    <string name="home_streak_label">Հաջողություն</string>
+    <string name="home_streak_label">Շարք</string>
 
     <!-- Bookmarks Screen -->
     <string name="bookmarks_title">Էջանշաններ</string>
@@ -6957,30 +6957,30 @@
     <string name="bookmarks_empty_title">Էջանշաններ դեռ չկան</string>
     <string name="bookmarks_empty_subtitle">Հարցերի էջում հպեք աստղի կոճակին՝ հարցը պահելու համար:</string>
     <string name="bookmarks_correct_answer">Ճիշտ պատասխան</string>
-    <string name="bookmarks_practice_button">Պարապել Էջանշաններով</string>
-    <string name="practice_bookmarks_title">Էջանշված Հարցեր</string>
-    <string name="practice_bookmarks_desc">Վերանայեք ձեր պահած հարցերը:</string>
-    <string name="practice_bookmarks_button">Սկսել Պարապանքը</string>
+    <string name="bookmarks_practice_button">Պարապել էջանշաններով</string>
+    <string name="practice_bookmarks_title">Էջանշված հարցեր</string>
+    <string name="practice_bookmarks_desc">Վերանայեք ձեր պահած հարցերը։</string>
+    <string name="practice_bookmarks_button">Սկսել պարապանքը</string>
     <string name="practice_bookmarks_empty">Նախ ավելացրեք հարցեր էջանշաններին:</string>
     <string name="question_bookmark_add">Ավելացնել էջանշաններ</string>
     <string name="question_bookmark_remove">Հեռացնել էջանշաններից</string>
 
     <!-- Stats Screen -->
     <string name="stats_title">Վիճակագրություն</string>
-    <string name="stats_overall_performance">Ընդհանուր Կատարողականություն</string>
+    <string name="stats_overall_performance">Ընդհանուր կատարողականություն</string>
     <string name="stats_total_attempts">Ընդամենը փորձ</string>
     <string name="stats_correct">Ճիշտ</string>
     <string name="stats_incorrect">Սխալ</string>
-    <string name="stats_by_category">Ըստ Կատեգորիայի</string>
+    <string name="stats_by_category">Ըստ կատեգորիայի</string>
     <string name="stats_no_category_data">Տվյալներ չկան — կատարեք թեստ՝ կատեգորիայի վիճակագրությունը տեսնելու համար։</string>
-    <string name="stats_test_history">Թեստերի Պատմություն</string>
+    <string name="stats_test_history">Թեստերի պատմություն</string>
     <string name="stats_no_history">Ավարտված թեստեր դեռ չկան։</string>
     <string name="stats_correct_of_total">%1$d/%2$d ճիշտ</string>
     <string name="stats_passed">Հաջողված</string>
     <string name="stats_failed">Ձախողված</string>
 
     <!-- Review Mistakes Screen -->
-    <string name="mistakes_title">Վերանայել Սխալները</string>
+    <string name="mistakes_title">Վերանայել սխալները</string>
     <string name="mistakes_count">%1$d հարց վերանայելու համար</string>
     <string name="mistakes_empty_title">Սխալներ դեռ չկան!</string>
     <string name="mistakes_empty_subtitle">Կատարեք թեստ, և բոլոր սխալ պատասխանները կհայտնվեն այստեղ։</string>
@@ -7001,9 +7001,9 @@
     <string name="question_image_cd">Հարցի նկար</string>
 
     <!-- Test Results Screen -->
-    <string name="results_title">Թեստի Արդյունքներ</string>
+    <string name="results_title">Թեստի արդյունքներ</string>
     <string name="results_passed_title">Շնորհավորանք!</string>
-    <string name="results_failed_title">Շարունակեք Պարապել!</string>
+    <string name="results_failed_title">Շարունակեք պարապել!</string>
     <string name="results_passed_subtitle">Դուք հաջողությամբ անցաք թեստը!</string>
     <string name="results_failed_subtitle">Անցնելու համար անհրաժեշտ է 70%</string>
     <string name="results_motivation_perfect">Կատարյալ արդյունք — դուք պատրաստ եք։</string>
@@ -7011,28 +7011,28 @@
     <string name="results_motivation_pass">Դուք անցաք — շարունակեք այս տեմպով։</string>
     <string name="results_motivation_almost">Շատ մոտ եք — մի քանի սխալ հարց և կանցնեք։</string>
     <string name="results_motivation_fail">Մի հանգամտի չկորցրեք — վերանայեք սխալները և փորձեք կրկին։</string>
-    <string name="results_your_score">Ձեր Արդյունքը</string>
-    <string name="results_correct_answers">Ճիշտ Պատասխաններ։</string>
-    <string name="results_incorrect_answers">Սխալ Պատասխաններ։</string>
-    <string name="results_questions_answered">Պատասխանված Հարցեր։</string>
-    <string name="results_retake">Կրկնել Թեստը</string>
-    <string name="results_back_home">Վերադառնալ Գլխավոր</string>
+    <string name="results_your_score">Ձեր արդյունքը</string>
+    <string name="results_correct_answers">Ճիշտ պատասխաններ</string>
+    <string name="results_incorrect_answers">Սխալ պատասխաններ</string>
+    <string name="results_questions_answered">Պատասխանված հարցեր</string>
+    <string name="results_retake">Կրկնել թեստը</string>
+    <string name="results_back_home">Վերադառնալ գլխավոր</string>
 
     <!-- Practice Mode Screen -->
     <string name="practice_title">Պարապանք</string>
-    <string name="practice_by_category_title">Ըստ Կատեգորիայի</string>
-    <string name="practice_by_category_desc">Կենտրոնացեք կոնկրետ թեմայի վրա. ճանապարհային նշաններ, առաջնությունը, մանևրներ և ավելին:</string>
-    <string name="practice_by_category_button">Ընտրել Կատեգորիա</string>
-    <string name="practice_weak_areas_title">Թույլ Կողմեր</string>
-    <string name="practice_weak_areas_count">%1$d հարց, որտեղ ավելի շատ պարապանք է անհրաժեշտ:</string>
+    <string name="practice_by_category_title">Ըստ կատեգորիայի</string>
+    <string name="practice_by_category_desc">Կենտրոնացեք կոնկրետ թեմայի վրա՝ ճանապարհային նշաններ, առաջնություն, մանևրներ և այլն։</string>
+    <string name="practice_by_category_button">Ընտրել կատեգորիա</string>
+    <string name="practice_weak_areas_title">Թույլ կողմեր</string>
+    <string name="practice_weak_areas_count">%1$d հարց՝ լրացուցիչ պարապման համար</string>
     <string name="practice_weak_areas_empty">Նախ կատարեք թեստ՝ ձեր թույլ կողմերը բացահայտելու համար:</string>
-    <string name="practice_weak_areas_button">Սկսել Պարապանքը</string>
-    <string name="practice_exam_title">Քննության Սիմուլյացիա</string>
-    <string name="practice_exam_desc">30 հարց · 20 րոպե · Անցում 70%-ով: Կրկնում է իրական հայկական վարորդական քննությունը:</string>
-    <string name="practice_exam_button">Սկսել Քննությունը</string>
+    <string name="practice_weak_areas_button">Սկսել պարապանքը</string>
+    <string name="practice_exam_title">Քննության սիմուլյացիա</string>
+    <string name="practice_exam_desc">30 հարց · 20 րոպե · անցում 70%-ով։ Կրկնում է իրական հայկական վարորդական քննությունը։</string>
+    <string name="practice_exam_button">Սկսել քննությունը</string>
 
     <!-- Category Picker Screen -->
-    <string name="category_picker_title">Ընտրել Կատեգորիա</string>
+    <string name="category_picker_title">Ընտրել կատեգորիա</string>
     <string name="category_question_count">%1$d հարց</string>
 
     <!-- Common -->
@@ -7042,7 +7042,7 @@
     <string name="nav_stats">Վիճակագրություն</string>
 
     <!-- Map Screen -->
-    <string name="map_title">Ուսուցչական Կենտրոններ</string>
+    <string name="map_title">Ուսուցչական կենտրոններ</string>
     <string name="map_centers_count">%1$d կենտրոն</string>
     <string name="map_phone">Հեռ.՝</string>
 
@@ -7050,8 +7050,8 @@
     <string name="ai_explain_title">Բացատրություն</string>
     <string name="ai_explain_button">Բացատրել Պատասխանը</string>
     <string name="ai_explain_loading">Բացատրությունը բեռնվում է…</string>
-    <string name="ai_explain_correct_label">Ճիշտ Պատասխան</string>
-    <string name="ai_explain_your_answer_label">Ձեր Պատասխանը</string>
+    <string name="ai_explain_correct_label">Ճիշտ պատասխան</string>
+    <string name="ai_explain_your_answer_label">Ձեր պատասխանը</string>
     <string name="ai_explain_correct_badge">Ճիշտ</string>
     <string name="ai_explain_incorrect_badge">Սխալ</string>
 
@@ -7061,9 +7061,22 @@
     <string name="settings_reminder_subtitle">Ստացեք մեղմ հիշեցում ամեն օր պարապելու համար</string>
     <string name="settings_reminder_time_label">Հիշեցման ժամ</string>
     <string name="settings_reminder_change_time">Փոխել ժամը</string>
-    <string name="settings_reminder_permission_denied">Ծանուցումները թույլատրված չեն: Միացրեք համակարգի կարգավորումներից:</string>
+    <string name="settings_reminder_permission_denied">Ծանուցումները թույլատրված չեն։ Միացրեք համակարգի կարգավորումներից։</string>
     <string name="settings_dialog_ok">Լավ</string>
     <string name="settings_dialog_cancel">Չեղարկել</string>
     <string name="settings_open_action_cd">Բացել կարգավորումները</string>
+
+    <!-- Question categories -->
+    <string name="category_traffic_signs_and_markings">Ճանապարհային նշաններ և գծանշումներ</string>
+    <string name="category_lane_usage_and_positioning">Գոտիների օգտագործում և դիրքավորում</string>
+    <string name="category_maneuvers_and_turns">Մանևրներ և շրջադարձեր</string>
+    <string name="category_right_of_way_and_priority">Առաջնություն և իրավունք</string>
+    <string name="category_prohibited_actions">Արգելված գործողություններ</string>
+    <string name="category_special_vehicles_and_situations">Հատուկ տրանսպորտ և իրավիճակներ</string>
+    <string name="category_intersections_and_crossings">Խաչմերուկներ և անցումներ</string>
+    <string name="category_road_conditions_and_visibility">Ճանապարհի վիճակ և տեսանելիություն</string>
+    <string name="category_vehicle_types_and_categories">Տրանսպորտի տեսակներ և կատեգորիաներ</string>
+    <string name="category_general_traffic_rules">Ընդհանուր երթևեկության կանոններ</string>
+    <string name="category_unknown">Այլ</string>
 
 </resources>
