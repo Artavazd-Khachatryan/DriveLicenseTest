@@ -254,6 +254,12 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
         }
     }
 
+    suspend fun getQuestionAttemptCounts(): Map<Int, Int> = withContext(Dispatchers.IO) {
+        userProgressQueries.getAllQuestionProgress().executeAsList().associate { row ->
+            row.question_id.toInt() to row.times_answered.toInt()
+        }
+    }
+
     suspend fun getWeakAreaQuestions(): List<DatabaseQuestion> = withContext(Dispatchers.IO) {
         userProgressQueries.getQuestionsByDifficulty().executeAsList().map { row ->
             val bookEnum = Book.valueOf(row.book_name)

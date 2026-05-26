@@ -116,4 +116,8 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
             database.addBookmark(questionId.toLong(), bookmarkedAt)
         }
     }
+
+    override suspend fun getQuestionAttemptCounts(): Map<Int, Int> {
+        return database.getQuestionAttemptCounts()
+    }
 }

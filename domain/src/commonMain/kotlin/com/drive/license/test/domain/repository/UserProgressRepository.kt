@@ -17,4 +17,5 @@ interface UserProgressRepository {
     suspend fun getBookmarkedQuestions(): List<BookmarkedQuestion>
     suspend fun isBookmarked(questionId: Int): Boolean
     suspend fun toggleBookmark(questionId: Int, bookmarkedAt: Long)
+    suspend fun getQuestionAttemptCounts(): Map<Int, Int>
 }
