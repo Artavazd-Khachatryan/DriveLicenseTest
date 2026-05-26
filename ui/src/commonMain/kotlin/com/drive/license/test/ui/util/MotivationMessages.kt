@@ -17,20 +17,20 @@ import drivelicensetest.ui.generated.resources.results_motivation_perfect
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun homeMotivationMessage(stats: UserStatistics): String = when {
-    stats.totalAttempts == 0 -> stringResource(Res.string.home_motivation_first_visit)
-    stats.currentStreak >= 7 -> stringResource(Res.string.home_motivation_streak_strong, stats.currentStreak)
-    stats.currentStreak >= 3 -> stringResource(Res.string.home_motivation_streak_growing, stats.currentStreak)
-    stats.overallAccuracy >= 0.8f -> stringResource(Res.string.home_motivation_high_accuracy)
-    stats.overallAccuracy >= 0.5f -> stringResource(Res.string.home_motivation_mid_accuracy)
-    else -> stringResource(Res.string.home_motivation_low_accuracy)
+fun homeMotivationMessage(stats: UserStatistics): String = when (resolveHomeMotivationKind(stats)) {
+    HomeMotivationKind.FirstVisit -> stringResource(Res.string.home_motivation_first_visit)
+    HomeMotivationKind.StreakStrong -> stringResource(Res.string.home_motivation_streak_strong, stats.currentStreak)
+    HomeMotivationKind.StreakGrowing -> stringResource(Res.string.home_motivation_streak_growing, stats.currentStreak)
+    HomeMotivationKind.HighAccuracy -> stringResource(Res.string.home_motivation_high_accuracy)
+    HomeMotivationKind.MidAccuracy -> stringResource(Res.string.home_motivation_mid_accuracy)
+    HomeMotivationKind.LowAccuracy -> stringResource(Res.string.home_motivation_low_accuracy)
 }
 
 @Composable
-fun testResultMotivationMessage(score: Float, passed: Boolean): String = when {
-    passed && score >= 1f -> stringResource(Res.string.results_motivation_perfect)
-    passed && score >= 0.9f -> stringResource(Res.string.results_motivation_excellent)
-    passed -> stringResource(Res.string.results_motivation_pass)
-    score >= 0.6f -> stringResource(Res.string.results_motivation_almost)
-    else -> stringResource(Res.string.results_motivation_fail)
+fun testResultMotivationMessage(score: Float, passed: Boolean): String = when (resolveTestResultMotivationKind(score, passed)) {
+    TestResultMotivationKind.Perfect -> stringResource(Res.string.results_motivation_perfect)
+    TestResultMotivationKind.Excellent -> stringResource(Res.string.results_motivation_excellent)
+    TestResultMotivationKind.Pass -> stringResource(Res.string.results_motivation_pass)
+    TestResultMotivationKind.Almost -> stringResource(Res.string.results_motivation_almost)
+    TestResultMotivationKind.Fail -> stringResource(Res.string.results_motivation_fail)
 }
