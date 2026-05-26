@@ -32,15 +32,12 @@ kotlin {
             isStatic = true
             export(project(":database"))
             freeCompilerArgs += "-Xbinary=bundleId=com.drive.license.test.ComposeApp"
-            linkerOpts("-framework", "CoreLocation", "-framework", "MapKit")
         }
     }
 
     sourceSets {
         androidMain.dependencies {
             implementation(libs.ktor.client.okhttp)
-            implementation(libs.maps.compose)
-            implementation(libs.play.services.maps)
             implementation(libs.androidx.core.ktx)
         }
 
@@ -68,6 +65,8 @@ kotlin {
             implementation(project(":ui"))
             implementation(project(":database"))
             implementation(project(":domain"))
+            implementation(libs.gitlive.firebase.app)
+            implementation(libs.gitlive.firebase.crashlytics)
         }
 
         // Include resources for iOS
@@ -80,4 +79,5 @@ kotlin {
 
 dependencies {
     androidRuntimeClasspath(libs.compose.ui.tooling)
+    add("androidMainImplementation", platform(libs.firebase.bom))
 }

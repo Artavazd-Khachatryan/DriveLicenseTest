@@ -11,6 +11,7 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		F1A2B3C82F700001 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C72F700001 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		F1A2B3C72F700001 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -99,6 +101,7 @@
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
+				F1A2B3C72F700001 /* GoogleService-Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 			);
@@ -154,6 +157,8 @@
 			);
 			name = iosApp;
 			packageProductDependencies = (
+				F1A2B3C52F700001 /* FirebaseCore */,
+				F1A2B3C62F700001 /* FirebaseCrashlytics */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* DriveLicenseTest.app */;
@@ -189,6 +194,7 @@
 			);
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
+				F1A2B3C42F700001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -214,6 +220,7 @@
 			files = (
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
+				F1A2B3C82F700001 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,11 +486,9 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
 					"-lsqlite3",
-					"-framework",
-					CoreLocation,
-					"-framework",
-					MapKit,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID)";
 				PRODUCT_NAME = "${APP_NAME}";
@@ -513,12 +518,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				"OTHER_LDFLAGS[arch=*]" = (
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
 					"-lsqlite3",
-					"-framework",
-					CoreLocation,
-					"-framework",
-					MapKit,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID)";
 				PRODUCT_NAME = "${APP_NAME}";
@@ -529,6 +532,30 @@
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F1A2B3C42F700001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F1A2B3C52F700001 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1A2B3C42F700001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		F1A2B3C62F700001 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1A2B3C42F700001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCConfigurationList section */
 		61486ABE2F61BEE10028E8B0 /* Build configuration list for PBXNativeTarget "DriveLicenseTestTests" */ = {
