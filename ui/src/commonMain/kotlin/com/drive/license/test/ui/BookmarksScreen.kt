@@ -36,6 +36,7 @@ import com.drive.license.test.domain.model.BookmarkedQuestion
 import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
+import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppScaffold
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.back
@@ -64,9 +65,10 @@ fun BookmarksScreen(
     AppScaffold(
         topBarTitle = stringResource(Res.string.bookmarks_title),
         navigationIcon = {
-            IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(Res.string.back))
-            }
+            AppBackNavigationIcon(
+                onClick = onBack,
+                contentDescription = stringResource(Res.string.back),
+            )
         }
     ) { inner ->
         if (isLoading) {

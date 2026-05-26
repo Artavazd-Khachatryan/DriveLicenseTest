@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.domain.model.QuestionCategory
 import com.drive.license.test.ui.components.AppCard
+import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppScaffold
 import drivelicensetest.ui.generated.resources.Res
 import com.drive.license.test.ui.util.formatCategoryName
@@ -50,9 +51,10 @@ fun CategoryPickerScreen(
     AppScaffold(
         topBarTitle = stringResource(Res.string.category_picker_title),
         navigationIcon = {
-            IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(Res.string.back))
-            }
+            AppBackNavigationIcon(
+                onClick = onBack,
+                contentDescription = stringResource(Res.string.back),
+            )
         }
     ) { inner ->
         Column(

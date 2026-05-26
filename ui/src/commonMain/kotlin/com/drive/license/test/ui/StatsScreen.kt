@@ -40,6 +40,7 @@ import com.drive.license.test.domain.model.TestSessionSummary
 import com.drive.license.test.domain.model.UserStatistics
 import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.ui.components.AppCard
+import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.ProgressRing
 import drivelicensetest.ui.generated.resources.Res
@@ -85,9 +86,10 @@ fun StatsScreen(
     AppScaffold(
         topBarTitle = stringResource(Res.string.stats_title),
         navigationIcon = {
-            IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(Res.string.back))
-            }
+            AppBackNavigationIcon(
+                onClick = onBack,
+                contentDescription = stringResource(Res.string.back),
+            )
         },
         bottomBar = bottomBar
     ) { inner ->

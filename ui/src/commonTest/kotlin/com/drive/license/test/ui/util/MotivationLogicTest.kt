@@ -35,6 +35,21 @@ class MotivationLogicTest {
     }
 
     @Test
+    fun inTestMotivation_showsAtEveryFifthAnswer() {
+        assertEquals(false, shouldShowInTestMotivation(4))
+        assertEquals(true, shouldShowInTestMotivation(5))
+        assertEquals(false, shouldShowInTestMotivation(6))
+        assertEquals(true, shouldShowInTestMotivation(10))
+    }
+
+    @Test
+    fun inTestMotivation_strong_whenEightyPercentOrMoreInSession() {
+        assertEquals(InTestMotivationKind.Strong, resolveInTestMotivationKind(5, 4))
+        assertEquals(InTestMotivationKind.Steady, resolveInTestMotivationKind(5, 3))
+        assertEquals(InTestMotivationKind.KeepGoing, resolveInTestMotivationKind(5, 2))
+    }
+
+    @Test
     fun estimatedMinutes_matchesStandardLengths() {
         assertEquals(3, estimatedTestMinutes(10))
         assertEquals(6, estimatedTestMinutes(20))

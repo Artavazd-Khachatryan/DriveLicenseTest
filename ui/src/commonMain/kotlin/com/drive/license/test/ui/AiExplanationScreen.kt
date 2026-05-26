@@ -33,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.drive.license.test.domain.repository.AiAssistant
 import com.drive.license.test.ui.components.AppCard
+import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppScaffold
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.ai_explain_correct_badge
@@ -62,9 +63,10 @@ fun AiExplanationScreen(
     AppScaffold(
         topBarTitle = stringResource(Res.string.ai_explain_title),
         navigationIcon = {
-            IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(Res.string.back))
-            }
+            AppBackNavigationIcon(
+                onClick = onBack,
+                contentDescription = stringResource(Res.string.back),
+            )
         }
     ) { inner ->
         Column(

@@ -30,6 +30,7 @@ import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -50,6 +51,7 @@ import androidx.compose.ui.unit.dp
 import com.drive.license.test.domain.model.UserStatistics
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
+import com.drive.license.test.ui.components.AppOutlinedButton
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.ProgressRing
 import com.drive.license.test.ui.components.StatChip
@@ -80,6 +82,7 @@ import drivelicensetest.ui.generated.resources.home_question_count
 import drivelicensetest.ui.generated.resources.home_streak_days
 import drivelicensetest.ui.generated.resources.home_streak_label
 import drivelicensetest.ui.generated.resources.home_test_length_label
+import drivelicensetest.ui.generated.resources.home_unseen_questions
 import drivelicensetest.ui.generated.resources.home_view_map_button
 import drivelicensetest.ui.generated.resources.settings_title
 import org.jetbrains.compose.resources.stringResource
@@ -87,13 +90,15 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun HomeScreen(
     userStatistics: UserStatistics,
+    unseenQuestionCount: Int = 0,
+    totalQuestionCount: Int = 0,
     onStartTest: (Int) -> Unit,
     onOpenStats: () -> Unit,
     onOpenStatsFromRing: () -> Unit,
     onOpenFailed: () -> Unit,
     onOpenPractice: () -> Unit,
     onOpenChat: () -> Unit,
-    onOpenMap: () -> Unit,
+    onOpenDrivingSchools: () -> Unit,
     onOpenSettings: () -> Unit,
     bottomBar: @Composable (() -> Unit)? = null,
     modifier: Modifier = Modifier
@@ -119,13 +124,19 @@ fun HomeScreen(
             modifier = modifier
                 .fillMaxSize()
                 .then(inner)
-                .verticalScroll(rememberScrollState())
-                .padding(20.dp)
         ) { isExpanded, contentModifier ->
+        val sectionSpacing = if (isExpanded) 16.dp else 24.dp
+        val scrollState = rememberScrollState()
+        LaunchedEffect(Unit) {
+            scrollState.scrollTo(0)
+        }
         Column(
-            modifier = contentModifier,
-            verticalArrangement = Arrangement.spacedBy(24.dp)
+            modifier = contentModifier
+                .verticalScroll(scrollState)
+                .padding(20.dp),
+            verticalArrangement = Arrangement.spacedBy(sectionSpacing)
         ) {
+            val welcomeCard: @Composable () -> Unit = {
             AnimatedVisibility(
                 visible = contentVisible,
                 enter = fadeIn(tween(300)) + slideInVertically(tween(300)) { it / 4 }
@@ -135,35 +146,42 @@ fun HomeScreen(
                 containerColor = MaterialTheme.colorScheme.primaryContainer
             ) {
                 Column(
-                    modifier = Modifier.padding(24.dp),
+                    modifier = Modifier.padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Icon(
                         imageVector = Icons.Filled.DirectionsCar,
                         contentDescription = null,
-                        modifier = Modifier.size(56.dp),
+                        modifier = Modifier.size(40.dp),
                         tint = MaterialTheme.colorScheme.onPrimaryContainer
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
                     Text(
                         text = stringResource(Res.string.home_ready_title),
-                        style = MaterialTheme.typography.headlineMedium,
+                        style = MaterialTheme.typography.titleLarge,
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = homeMotivationMessage(userStatistics),
-                        style = MaterialTheme.typography.bodyLarge,
+                        style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f),
                         textAlign = TextAlign.Center
                     )
                 }
             }
             }
+            }
 
             val startTestCard: @Composable (Modifier) -> Unit = { cardModifier ->
+            val chipColors = FilterChipDefaults.filterChipColors(
+                selectedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                selectedLabelColor = MaterialTheme.colorScheme.primary,
+                containerColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.2f),
+                labelColor = MaterialTheme.colorScheme.onPrimary
+            )
             AppCard(
                 modifier = cardModifier.fillMaxWidth(),
                 containerColor = MaterialTheme.colorScheme.primary
@@ -179,18 +197,47 @@ fun HomeScreen(
                                 )
                             )
                         )
-                        .padding(28.dp)
+                        .padding(horizontal = 20.dp, vertical = 20.dp)
                 ) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
                         Text(
                             text = stringResource(Res.string.home_start_test_title),
-                            style = MaterialTheme.typography.headlineLarge,
+                            style = MaterialTheme.typography.headlineSmall,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onPrimary,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth(),
                         )
-                        
-                        Spacer(modifier = Modifier.height(12.dp))
+
+                        if (!isExpanded) {
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = homeMotivationMessage(userStatistics),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.85f),
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier.fillMaxWidth(),
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        if (totalQuestionCount > 0 && unseenQuestionCount > 0) {
+                            Text(
+                                text = stringResource(
+                                    Res.string.home_unseen_questions,
+                                    unseenQuestionCount,
+                                    totalQuestionCount
+                                ),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.85f),
+                                textAlign = TextAlign.Center
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                        }
                         
                         Text(
                             text = stringResource(
@@ -202,7 +249,17 @@ fun HomeScreen(
                             color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f),
                             textAlign = TextAlign.Center
                         )
-                        
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        AppButton(
+                            text = stringResource(Res.string.home_start_button),
+                            onClick = { onStartTest(selectedTestLength) },
+                            modifier = Modifier.fillMaxWidth(),
+                            containerColor = MaterialTheme.colorScheme.onPrimary,
+                            contentColor = MaterialTheme.colorScheme.primary,
+                        )
+
                         Spacer(modifier = Modifier.height(16.dp))
 
                         Text(
@@ -219,23 +276,19 @@ fun HomeScreen(
                                 FilterChip(
                                     selected = selectedTestLength == count,
                                     onClick = { selectedTestLength = count },
-                                    label = { Text(stringResource(Res.string.home_question_count, count)) }
+                                    label = { Text(stringResource(Res.string.home_question_count, count)) },
+                                    colors = chipColors
                                 )
                             }
                         }
 
-                        Spacer(modifier = Modifier.height(16.dp))
-
-                        AppButton(
-                            text = stringResource(Res.string.home_start_button),
-                            onClick = { onStartTest(selectedTestLength) },
-                            modifier = Modifier.fillMaxWidth()
-                        )
                         Spacer(modifier = Modifier.height(12.dp))
-                        AppButton(
+                        AppOutlinedButton(
                             text = stringResource(Res.string.home_practice_button),
                             onClick = onOpenPractice,
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier.fillMaxWidth(),
+                            contentColor = MaterialTheme.colorScheme.onPrimary,
+                            borderColor = MaterialTheme.colorScheme.onPrimary,
                         )
                     }
                 }
@@ -252,9 +305,10 @@ fun HomeScreen(
 
             AnimatedVisibility(
                 visible = contentVisible,
-                enter = fadeIn(tween(300, delayMillis = 80)) + slideInVertically(tween(300, delayMillis = 80)) { it / 4 }
+                enter = fadeIn(tween(300, delayMillis = 80))
             ) {
             if (isExpanded) {
+                welcomeCard()
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -264,7 +318,6 @@ fun HomeScreen(
                 }
             } else {
                 startTestCard(Modifier)
-                progressCard(Modifier)
             }
             }
 
@@ -400,10 +453,10 @@ fun HomeScreen(
             }
 
             AnimatedVisibility(
-                visible = contentVisible && AppFeatures.mapEnabled,
+                visible = contentVisible && AppFeatures.drivingSchoolsEnabled,
                 enter = fadeIn(tween(300, delayMillis = 240)) + slideInVertically(tween(300, delayMillis = 240)) { it / 4 }
             ) {
-            if (AppFeatures.mapEnabled) {
+            if (AppFeatures.drivingSchoolsEnabled) {
                 // 5. Enhanced Learning Places with Animation
                 AppCard(
                     modifier = Modifier.fillMaxWidth(),
@@ -453,12 +506,21 @@ fun HomeScreen(
 
                             AppButton(
                                 text = stringResource(Res.string.home_view_map_button),
-                                onClick = onOpenMap
+                                onClick = onOpenDrivingSchools
                             )
                         }
                     }
                 }
             }
+            }
+
+            if (!isExpanded) {
+                AnimatedVisibility(
+                    visible = contentVisible,
+                    enter = fadeIn(tween(300, delayMillis = 200))
+                ) {
+                    progressCard(Modifier)
+                }
             }
         }
         }
@@ -521,7 +583,7 @@ private fun HomeProgressCard(
 
                     ProgressRing(
                         progress = animatedProgress,
-                        size = 140.dp,
+                        size = 120.dp,
                         contentDescription = stringResource(
                             Res.string.home_accuracy_ring_cd,
                             (accuracy * 100).toInt()

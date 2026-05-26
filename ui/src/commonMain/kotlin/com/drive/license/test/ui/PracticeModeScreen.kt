@@ -30,6 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
+import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.util.AdaptiveContentContainer
 import drivelicensetest.ui.generated.resources.Res
@@ -65,9 +66,10 @@ fun PracticeModeScreen(
     AppScaffold(
         topBarTitle = stringResource(Res.string.practice_title),
         navigationIcon = {
-            IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(Res.string.back))
-            }
+            AppBackNavigationIcon(
+                onClick = onBack,
+                contentDescription = stringResource(Res.string.back),
+            )
         },
         bottomBar = bottomBar
     ) { inner ->

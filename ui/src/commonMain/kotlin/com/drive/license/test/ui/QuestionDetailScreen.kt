@@ -31,16 +31,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.painterResource
 import com.drive.license.test.domain.model.Question
+import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.AnswerButton
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.TextButton
+import com.drive.license.test.ui.components.InTestMotivationBanner
+import com.drive.license.test.ui.util.InTestMotivationKind
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.BookmarkBorder
@@ -50,10 +50,6 @@ import com.drive.license.test.ui.util.AdaptiveContentContainer
 import com.drive.license.test.ui.util.resolveDrawableResource
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.back
-import drivelicensetest.ui.generated.resources.question_exit_cancel
-import drivelicensetest.ui.generated.resources.question_exit_confirm
-import drivelicensetest.ui.generated.resources.question_exit_message
-import drivelicensetest.ui.generated.resources.question_exit_title
 import drivelicensetest.ui.generated.resources.question_finish
 import drivelicensetest.ui.generated.resources.question_image_cd
 import drivelicensetest.ui.generated.resources.question_image_unavailable
@@ -80,28 +76,10 @@ fun QuestionDetailScreen(
     onNext: () -> Unit,
     onToggleBookmark: () -> Unit = {},
     onExplain: ((userAnswer: String, correctAnswer: String, isCorrect: Boolean) -> Unit)? = null,
+    milestoneKind: InTestMotivationKind? = null,
+    milestoneAnsweredCount: Int = 0,
     modifier: Modifier = Modifier
 ) {
-    var showExitDialog by remember { mutableStateOf(false) }
-
-    if (showExitDialog) {
-        AlertDialog(
-            onDismissRequest = { showExitDialog = false },
-            title = { Text(stringResource(Res.string.question_exit_title)) },
-            text = { Text(stringResource(Res.string.question_exit_message)) },
-            confirmButton = {
-                TextButton(onClick = { showExitDialog = false; onBack() }) {
-                    Text(stringResource(Res.string.question_exit_confirm))
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { showExitDialog = false }) {
-                    Text(stringResource(Res.string.question_exit_cancel))
-                }
-            }
-        )
-    }
-
     var selectedAnswerIndex by remember(question.id) {
         mutableStateOf(
             if (selectedAnswer != null) {
@@ -128,9 +106,10 @@ fun QuestionDetailScreen(
     AppScaffold(
         topBarTitle = stringResource(Res.string.question_number_of_total, questionNumber, totalQuestions),
         navigationIcon = {
-            IconButton(onClick = { showExitDialog = true }) {
-                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(Res.string.back))
-            }
+            AppBackNavigationIcon(
+                onClick = onBack,
+                contentDescription = stringResource(Res.string.back),
+            )
         },
         topBarActions = {
             Row(
@@ -262,6 +241,12 @@ fun QuestionDetailScreen(
                 )
             }
 
+            InTestMotivationBanner(
+                visible = showResult && milestoneKind != null && milestoneAnsweredCount > 0,
+                kind = milestoneKind ?: InTestMotivationKind.KeepGoing,
+                answeredCount = milestoneAnsweredCount,
+                totalQuestions = totalQuestions,
+            )
 
             if (showResult && onExplain != null) {
                 val answeredIndex = selectedAnswerIndex

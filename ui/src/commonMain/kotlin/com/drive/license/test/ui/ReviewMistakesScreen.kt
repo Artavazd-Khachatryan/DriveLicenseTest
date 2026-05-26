@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import com.drive.license.test.domain.model.MistakeQuestion
 import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.ui.components.AppCard
+import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppScaffold
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.back
@@ -62,9 +63,10 @@ fun ReviewMistakesScreen(
     AppScaffold(
         topBarTitle = stringResource(Res.string.mistakes_title),
         navigationIcon = {
-            IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(Res.string.back))
-            }
+            AppBackNavigationIcon(
+                onClick = onBack,
+                contentDescription = stringResource(Res.string.back),
+            )
         }
     ) { inner ->
         if (isLoading) {
