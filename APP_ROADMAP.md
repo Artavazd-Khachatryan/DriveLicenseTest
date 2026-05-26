@@ -21,7 +21,6 @@ Users need to see their progress and learn from errors.
 
 - **2.1 Build StatsScreen** — Overall accuracy ring, total attempts, correct/incorrect counts
 - **2.2 Category breakdown** — Per-category accuracy with progress bars
-- **2.3 Difficulty distribution** — Show how many questions are EASY/MEDIUM/HARD/LEARNED based on `QuestionWithProgress.difficulty`
 - **2.4 Test history list** — Show past test sessions (date, score, pass/fail icon)
 - **2.5 Review Mistakes screen** — Lists incorrectly answered questions with correct answer shown
 
@@ -32,7 +31,6 @@ Users need to see their progress and learn from errors.
 Move beyond random 20-question tests.
 
 - **3.1 Practice by category** — Category picker screen with question counts; starts filtered test
-- **3.2 Practice by book** — Book picker (Book 1–10), then questions from that book
 - **3.3 Weak areas practice** — Pulls questions with most mistakes first via getWeakAreaQuestions()
 - **3.4 Configurable test length** — Let user choose 10/20/30 questions before starting
 - **3.5 Exam simulation mode** — 30 questions, 20-minute countdown timer, auto-submits on timeout
@@ -58,7 +56,6 @@ The app targets Armenian users preparing for the driving exam.
 - **5.1 Extract all strings** — Move hardcoded English text to string resources
 - **5.2 Armenian translations** — Add Armenian (`hy`) translations for all UI strings
 - **5.3 Armenian as default** — Set Armenian as primary language, English as fallback
-- **5.4 RTL/font check** — Verify Armenian script renders correctly on both platforms
 
 ---
 
@@ -71,8 +68,9 @@ Polish the look and feel.
 - **6.3 Empty states** — Mistakes screen has illustrated empty card; Stats cards show inline empty messages
 - **6.4 Loading states** — CircularProgressIndicator added to StatsScreen and ReviewMistakesScreen
 - **6.5 Accessibility pass** — ProgressRing contentDescription; AnswerButton incorrect color fixed; home ring CD wired
-- **6.6 Tablet/landscape** — Verify 720dp max-width works, test side-by-side layout on tablets
+- [x] **6.6 Tablet/landscape** — `AdaptiveContentContainer` (600dp+ expanded); Home start/progress side-by-side; question image beside text on wide screens; 720dp max width
 - [x] **6.7 Motivating messages** — Context-aware encouragement on Home (streak, accuracy, first visit) and test results (score bands)
+- [x] **6.8 UI polish (May 2026)** — Armenian string grammar, Material icons instead of emoji, staggered home animations, dynamic test-length subtitle, category string resources
 
 ---
 
@@ -83,10 +81,12 @@ Polish the look and feel.
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | 2026-04-21 | Initial roadmap created                                                                                                         |
 | 2026-04-21 | Phase 1 complete — DB persistence wired, real stats on HomeScreen, image fallback                                               |
-| 2026-04-21 | Phase 2 mostly done — StatsScreen (accuracy, categories, history), ReviewMistakesScreen; difficulty distribution left for later |
+| 2026-04-21 | Phase 2 complete — StatsScreen (accuracy, categories, history), ReviewMistakesScreen |
 | 2026-04-28 | Phase 3 (partial) — Category picker, weak areas practice, exam simulation with 20-min countdown timer                           |
 | 2026-04-28 | Phase 4 complete — Sealed class navigation, back stack, bottom nav bar, slide/fade transitions, exit dialog                     |
-| 2026-04-28 | Phase 5 (mostly done) — All strings extracted to Armenian resources; 5.4 (font/RTL check) needs on-device verification          |
+| 2026-04-28 | Phase 5 complete — All strings in Armenian resources as default language |
 | 2026-04-28 | Phase 6 (5/6 done) — Dark mode, loading states, empty states, accessibility, long text; 6.6 tablet/landscape still to verify    |
 | 2026-04-28 | Phase 3.4 done — Configurable test length (10/20/30 chip selector on HomeScreen)                                                |
 | 2026-05-20 | Phase 7 removed from roadmap (stretch goals out of scope); motivating messages added as 6.7 instead of achievement badges       |
+| 2026-05-26 | Phase 6.6–6.8 — Adaptive tablet layouts, string grammar pass, home animations, `MotivationLogic` unit tests                     |
+| 2026-05-26 | Removed from scope: difficulty distribution (2.3), practice by book (3.2), RTL/font check (5.4)                               |
