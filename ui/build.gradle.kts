@@ -39,6 +39,11 @@ kotlin {
             implementation(libs.androidx.activity.compose)
         }
 
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
+            implementation(project(":domain"))
+        }
+
         commonMain.dependencies {
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
