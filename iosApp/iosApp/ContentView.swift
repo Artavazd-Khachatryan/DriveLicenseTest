@@ -13,8 +13,9 @@ struct ComposeView: UIViewControllerRepresentable {
 struct ContentView: View {
     var body: some View {
         ComposeView()
-            .ignoresSafeArea(.keyboard) // Compose handles keyboard insets
-            .ignoresSafeArea(.container, edges: .bottom)
+            // Compose applies safe-area insets itself; partial ignore misaligns iOS hit targets (e.g. top-bar back).
+            .ignoresSafeArea(.all)
+            .ignoresSafeArea(.keyboard)
     }
 }
 

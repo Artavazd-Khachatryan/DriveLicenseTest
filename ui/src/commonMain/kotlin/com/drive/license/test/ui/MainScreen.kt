@@ -3,9 +3,8 @@ package com.drive.license.test.ui
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -158,16 +157,14 @@ fun MainScreen(
 
     AnimatedContent(
         targetState = currentScreen,
+        modifier = Modifier.fillMaxSize(),
+        contentKey = { screen -> screen::class },
         transitionSpec = {
             if (targetState.isTopLevel && initialState.isTopLevel) {
-                // Tab switch: fade
                 fadeIn() togetherWith fadeOut()
-            } else if (!targetState.isTopLevel) {
-                // Pushing onto stack: slide in from right
-                slideInHorizontally { it } togetherWith slideOutHorizontally { -it / 3 }
             } else {
-                // Popping from stack: slide out to right
-                slideInHorizontally { -it / 3 } togetherWith slideOutHorizontally { it }
+                // Fade avoids overlapping screens stealing touches on iOS during slide transitions.
+                fadeIn() togetherWith fadeOut()
             }
         },
         label = "screen_transition"

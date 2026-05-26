@@ -1,9 +1,12 @@
 package com.drive.license.test.ui.components
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.BarChart
@@ -12,9 +15,15 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.minimumInteractiveComponentSize
+import androidx.compose.material3.ripple
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.zIndex
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Card
@@ -50,15 +59,10 @@ fun AppScaffold(
         topBar = {
             if (topBarTitle != null || navigationIcon != null || topBarActions != null) {
                 TopAppBar(
+                    modifier = Modifier.zIndex(1f),
                     windowInsets = TopAppBarDefaults.windowInsets,
                     title = { if (topBarTitle != null) Text(text = topBarTitle) },
-                    navigationIcon = {
-                        navigationIcon?.let { icon ->
-                            Box(Modifier.minimumInteractiveComponentSize()) {
-                                icon()
-                            }
-                        }
-                    },
+                    navigationIcon = { navigationIcon?.invoke() },
                     actions = { topBarActions?.invoke() }
                 )
             }
@@ -76,13 +80,24 @@ fun AppBackNavigationIcon(
     contentDescription: String,
     modifier: Modifier = Modifier,
 ) {
-    IconButton(
-        onClick = onClick,
-        modifier = modifier.minimumInteractiveComponentSize(),
+    // Box+clickable is more reliable than IconButton in TopAppBar on iOS (CMP safe-area hit testing).
+    Box(
+        modifier = modifier
+            .size(48.dp)
+            .semantics {
+                role = Role.Button
+                this.contentDescription = contentDescription
+            }
+            .clickable(
+                onClick = onClick,
+                interactionSource = remember { MutableInteractionSource() },
+                indication = ripple(bounded = false, radius = 24.dp),
+            ),
+        contentAlignment = Alignment.Center,
     ) {
         Icon(
             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-            contentDescription = contentDescription,
+            contentDescription = null,
         )
     }
 }
