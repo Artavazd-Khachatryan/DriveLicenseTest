@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
+import com.drive.license.test.ui.util.AdaptiveContentContainer
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.back
 import drivelicensetest.ui.generated.resources.practice_by_category_button
@@ -70,14 +71,15 @@ fun PracticeModeScreen(
         },
         bottomBar = bottomBar
     ) { inner ->
-        Column(
+        AdaptiveContentContainer(
             modifier = Modifier
                 .fillMaxSize()
                 .then(inner)
                 .verticalScroll(rememberScrollState())
                 .padding(16.dp)
-                .wrapContentWidth(Alignment.CenterHorizontally)
-                .widthIn(max = 720.dp),
+        ) { _, contentModifier ->
+        Column(
+            modifier = contentModifier,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             PracticeCard(
@@ -123,6 +125,7 @@ fun PracticeModeScreen(
                 enabled = bookmarkCount > 0,
                 containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.3f)
             )
+        }
         }
     }
 }

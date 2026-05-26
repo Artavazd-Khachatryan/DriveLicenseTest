@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
@@ -44,6 +46,7 @@ import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.BookmarkBorder
 import androidx.compose.material.icons.filled.BrokenImage
 import androidx.compose.material.icons.filled.Timer
+import com.drive.license.test.ui.util.AdaptiveContentContainer
 import com.drive.license.test.ui.util.resolveDrawableResource
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.back
@@ -166,60 +169,77 @@ fun QuestionDetailScreen(
             }
         }
     ) { innerPadding ->
-        Column(
+        AdaptiveContentContainer(
             modifier = modifier
                 .fillMaxSize()
                 .then(innerPadding)
+                .verticalScroll(rememberScrollState())
                 .padding(16.dp)
-                .verticalScroll(rememberScrollState()),
+        ) { isExpanded, contentModifier ->
+        Column(
+            modifier = contentModifier,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             AppCard(
                 modifier = Modifier.fillMaxWidth(),
                 containerColor = MaterialTheme.colorScheme.primaryContainer
             ) {
-                Column(
-                    modifier = Modifier.padding(20.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = question.question,
-                        style = MaterialTheme.typography.titleLarge,
-                        textAlign = TextAlign.Center,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer
-                    )
-                    
-                    question.imageUrl?.let { imageName ->
-                        Spacer(modifier = Modifier.height(16.dp))
-                        
-                        AppCard(
-                            modifier = Modifier.fillMaxWidth(),
-                            containerColor = MaterialTheme.colorScheme.surface
-                        ) {
-                            Column(
-                                modifier = Modifier.padding(16.dp),
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                val imageResource = resolveDrawableResource(imageName)
-                                if (imageResource != null) {
-                                    Image(
-                                        painter = painterResource(imageResource),
-                                        contentDescription = stringResource(Res.string.question_image_cd),
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .height(200.dp),
-                                        contentScale = ContentScale.Fit
-                                    )
-                                } else {
-                                    Icon(
-                                        imageVector = Icons.Default.BrokenImage,
-                                        contentDescription = stringResource(Res.string.question_image_unavailable),
-                                        modifier = Modifier
-                                            .size(64.dp)
-                                            .padding(vertical = 16.dp),
-                                        tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
-                                    )
-                                }
+                val imageName = question.imageUrl
+                val imageResource = imageName?.let { resolveDrawableResource(it) }
+                val showImage = imageName != null && imageResource != null
+                val imageHeight = if (isExpanded) 140.dp else 160.dp
+
+                if (isExpanded && showImage) {
+                    Row(
+                        modifier = Modifier.padding(20.dp),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = question.question,
+                            style = MaterialTheme.typography.titleLarge,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Image(
+                            painter = painterResource(imageResource!!),
+                            contentDescription = stringResource(Res.string.question_image_cd),
+                            modifier = Modifier
+                                .widthIn(max = 220.dp)
+                                .heightIn(max = imageHeight)
+                                .weight(0.45f),
+                            contentScale = ContentScale.Fit
+                        )
+                    }
+                } else {
+                    Column(
+                        modifier = Modifier.padding(20.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = question.question,
+                            style = MaterialTheme.typography.titleLarge,
+                            textAlign = TextAlign.Center,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
+                        if (imageName != null) {
+                            Spacer(modifier = Modifier.height(12.dp))
+                            if (imageResource != null) {
+                                Image(
+                                    painter = painterResource(imageResource),
+                                    contentDescription = stringResource(Res.string.question_image_cd),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(imageHeight),
+                                    contentScale = ContentScale.Fit
+                                )
+                            } else {
+                                Icon(
+                                    imageVector = Icons.Default.BrokenImage,
+                                    contentDescription = stringResource(Res.string.question_image_unavailable),
+                                    modifier = Modifier.size(48.dp),
+                                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
+                                )
                             }
                         }
                     }
@@ -279,6 +299,7 @@ fun QuestionDetailScreen(
                     enabled = showResult
                 )
             }
+        }
         }
     }
 }

@@ -56,6 +56,7 @@ import drivelicensetest.ui.generated.resources.stats_passed
 import drivelicensetest.ui.generated.resources.stats_test_history
 import drivelicensetest.ui.generated.resources.stats_title
 import drivelicensetest.ui.generated.resources.stats_total_attempts
+import com.drive.license.test.ui.util.AdaptiveContentContainer
 import com.drive.license.test.ui.util.accuracyColor
 import com.drive.license.test.ui.util.formatCategoryName
 import kotlinx.datetime.Instant
@@ -98,19 +99,21 @@ fun StatsScreen(
                 CircularProgressIndicator()
             }
         } else {
-            Column(
+            AdaptiveContentContainer(
                 modifier = Modifier
                     .fillMaxSize()
                     .then(inner)
                     .verticalScroll(rememberScrollState())
                     .padding(16.dp)
-                    .wrapContentWidth(Alignment.CenterHorizontally)
-                    .widthIn(max = 720.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                OverallStatsCard(stats)
-                CategoryBreakdownCard(categoryStats)
-                TestHistoryCard(testHistory)
+            ) { _, contentModifier ->
+                Column(
+                    modifier = contentModifier,
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    OverallStatsCard(stats)
+                    CategoryBreakdownCard(categoryStats)
+                    TestHistoryCard(testHistory)
+                }
             }
         }
     }
