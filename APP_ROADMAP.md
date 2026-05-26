@@ -80,15 +80,63 @@ Capture crashes and non-fatal errors on **Android** and **iOS** so production is
 
 **Recommended stack:** [Firebase Crashlytics](https://firebase.google.com/docs/crashlytics) (native SDK per platform; KMP bridge via `expect`/`actual`).
 
-- **7.1 Firebase project & apps** — Create Firebase project; register `androidApp` (package `com.drive.license.test`) and iOS app (`com.drive.license.test.DriveLicenseTest`); download `google-services.json` and `GoogleService-Info.plist` (store secrets outside git or use CI secrets).
-- **7.2 Android Crashlytics** — Apply Google Services + Crashlytics Gradle plugins in `androidApp`; depend on Firebase BOM; enable collection in `LicenseApplication` / `MainActivity`; verify debug mapping upload for release builds.
-- **7.3 iOS Crashlytics** — Add Firebase iOS SDK (SPM or CocoaPods) to `iosApp`; include `GoogleService-Info.plist` in target; run upload-symbols run script for dSYM; confirm crashes appear in Firebase console from a test crash on simulator/device.
-- **7.4 KMP crash reporting API** — `expect object CrashReporter` in `composeApp` or `domain` with `logNonFatal(throwable, message?)`, `log(message)`, `setUserId`, `setCustomKey`; `actual` implementations delegate to Firebase on each platform; no-op in common tests.
-- **7.5 Wire critical paths** — Report non-fatals for: DB init/load failures, question image resolve failures, AI/network errors (when enabled), uncaught coroutine exceptions in `MainScreen` / repositories (via `CoroutineExceptionHandler`).
-- **7.6 Privacy & build flavors** — Document data collected; disable or sample Crashlytics in debug if desired; ensure release builds upload ProGuard/R8 mapping (Android) and dSYM (iOS).
-- **7.7 Verification checklist** — Force test crash on Android + iOS; confirm event in Firebase within ~5 min; confirm symbolicated stack traces for release build.
+- [x] **7.1 Firebase project & apps** — Placeholder `google-services.json` + `GoogleService-Info.plist`; replace with real Firebase project (see `FIREBASE_SETUP.md`).
+- [x] **7.2 Android Crashlytics** — Google Services + Crashlytics Gradle plugins on `androidApp`; Firebase BOM dependency.
+- [x] **7.3 iOS Crashlytics** — GitLive Firebase SDK + `GoogleService-Info.plist` in iosApp bundle.
+- [x] **7.4 Crash reporting API** — `CrashReporting` in `composeApp` (GitLive); initialized from `App.kt`.
+- **7.5 Wire critical paths** — Report non-fatals for DB init failures, coroutine errors (optional follow-up).
+- **7.6 Privacy & build flavors** — Document data collected; tune debug collection if needed.
+- **7.7 Verification checklist** — Replace placeholder Firebase configs; force test crash; confirm in console.
 
 **Out of scope for 7.x (optional later):** Analytics, Performance Monitoring, Remote Config, Sentry (unless we switch providers).
+
+---
+
+## Phase 8: Driving Schools (list only)
+
+Help users find a physical driving school in Armenia — **list view only** (no in-app map).
+
+- [x] **8.1 Curated school list** — Static list of well-known auto schools (Yerevan + regions) with name, city, address, phone, short description (`LearningCentersData`, `DrivingSchoolsScreen`).
+- [x] **8.2 Full question coverage** — `QuestionSelector` prioritizes never-attempted questions before repeats so the user does not miss items in the bank.
+
+**Out of scope:** Embedded map, dial/maps deep links, verified phone directory (not planned).
+
+**Feature flag:** `AppFeatures.drivingSchoolsEnabled`
+
+---
+
+## Encouragement messages (current behavior)
+
+Context-aware Armenian copy — **not** a chat bot; rules live in `MotivationLogic.kt` + `strings.xml`.
+
+### Home (`homeMotivationMessage`)
+
+| Condition | Message tone |
+|-----------|----------------|
+| No tests yet | Start your first test |
+| Streak ≥ 7 days | Strong consistency praise |
+| Streak ≥ 3 days | Growing streak encouragement |
+| Accuracy ≥ 80% | High accuracy — well prepared |
+| Accuracy ≥ 50% | Steady progress — keep practicing |
+| Else | Every question counts — keep going |
+
+### Test results (`testResultMotivationMessage`)
+
+| Condition | Message tone |
+|-----------|----------------|
+| Passed, 100% | Perfect — ready for exam |
+| Passed, ≥ 90% | Excellent — almost there |
+| Passed | You passed — keep pace |
+| Failed, ≥ 60% | Almost passed |
+| Failed | Review mistakes and retry |
+
+Shown on **Home** welcome card, **during a test** every 5 answered questions (inline banner on the question screen), and **Results** header (with pass/fail title). No push notifications for motivation yet.
+
+### In-test milestone (`inTestMilestoneMotivation*`)
+
+| When | Message tone (based on session accuracy so far) |
+|------|--------------------------------------------------|
+| After 5, 10, 15… answers | Header: “X/Y questions”; body: strong / steady / keep going (≥80% / ≥50% / else) |
 
 ---
 
@@ -109,3 +157,4 @@ Capture crashes and non-fatal errors on **Android** and **iOS** so production is
 | 2026-05-26 | Phase 6.6–6.8 — Adaptive tablet layouts, string grammar pass, home animations, `MotivationLogic` unit tests                     |
 | 2026-05-26 | Removed from scope: difficulty distribution (2.3), practice by book (3.2), RTL/font check (5.4)                               |
 | 2026-05-26 | Phase 7 added — Firebase Crashlytics plan for Android + iOS with KMP `expect`/`actual` bridge                                   |
+| 2026-05-26 | Phase 8.1 — Driving schools list enabled; map pins planned in 8.2; motivation rules documented in roadmap                        |

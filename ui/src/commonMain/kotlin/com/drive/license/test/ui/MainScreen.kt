@@ -15,6 +15,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.drive.license.test.domain.QuestionSelector
+import com.drive.license.test.ui.util.InTestMotivationKind
+import com.drive.license.test.ui.util.resolveInTestMotivationKind
+import com.drive.license.test.ui.util.shouldShowInTestMotivation
+import com.drive.license.test.domain.model.LearningCenter
+import com.drive.license.test.domain.model.Question
 import com.drive.license.test.domain.model.UserStatistics
 import com.drive.license.test.domain.repository.AiAssistant
 import com.drive.license.test.domain.repository.QuestionRepository
@@ -47,7 +53,7 @@ fun MainScreen(
     aiAssistant: AiAssistant,
     reminderPreferences: ReminderPreferences,
     reminderScheduler: ReminderScheduler,
-    mapContent: @Composable (Modifier) -> Unit,
+    learningCenters: List<LearningCenter> = emptyList(),
     coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier
 ) {
@@ -59,6 +65,19 @@ fun MainScreen(
     var examRemainingSeconds by remember { mutableStateOf<Int?>(null) }
     var currentQuestionBookmarked by remember { mutableStateOf(false) }
     val allQuestions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
+    var questionAttemptCounts by remember { mutableStateOf<Map<Int, Int>>(emptyMap()) }
+    var inTestMilestoneKind by remember { mutableStateOf<InTestMotivationKind?>(null) }
+    var inTestMilestoneAnsweredCount by remember { mutableStateOf(0) }
+
+    fun clearInTestMilestone() {
+        inTestMilestoneKind = null
+        inTestMilestoneAnsweredCount = 0
+    }
+
+    suspend fun refreshUserProgress() {
+        userStatistics = userProgressRepository.getUserStatistics()
+        questionAttemptCounts = userProgressRepository.getQuestionAttemptCounts()
+    }
 
     fun navigate(screen: Screen) {
         if (screen.isTopLevel) {
@@ -69,6 +88,18 @@ fun MainScreen(
 
     fun navigateBack() {
         if (backStack.size > 1) backStack.removeAt(backStack.lastIndex)
+    }
+
+    fun pickFromPool(pool: List<Question>, count: Int): List<Question> =
+        QuestionSelector.selectForPractice(pool, count, questionAttemptCounts)
+
+    fun startTest(pool: List<Question>, count: Int) {
+        val selected = pickFromPool(pool, count)
+        if (selected.isNotEmpty()) {
+            clearInTestMilestone()
+            testSession = TestSession(questions = selected)
+            navigate(Screen.Question)
+        }
     }
 
     val navHomeLabel = stringResource(Res.string.nav_home)
@@ -85,8 +116,10 @@ fun MainScreen(
     }
 
     LaunchedEffect(Unit) {
-        userStatistics = userProgressRepository.getUserStatistics()
+        refreshUserProgress()
     }
+
+    val unseenQuestionCount = QuestionSelector.countUnseen(allQuestions, questionAttemptCounts)
 
     // Exam countdown
     LaunchedEffect(testSession?.isExamMode, testSession?.sessionId) {
@@ -116,7 +149,7 @@ fun MainScreen(
                     )
                     val todayEpochDay = now.toLocalDateTime(TimeZone.currentSystemDefault()).date.toEpochDays().toLong()
                     userProgressRepository.updateStreak(todayEpochDay)
-                    userStatistics = userProgressRepository.getUserStatistics()
+                    refreshUserProgress()
                 }
                 navigate(Screen.Results)
             }
@@ -142,19 +175,15 @@ fun MainScreen(
     when (screen) {
         Screen.Home -> HomeScreen(
             userStatistics = userStatistics,
-            onStartTest = { count ->
-                val randomQuestions = allQuestions.shuffled().take(count)
-                if (randomQuestions.isNotEmpty()) {
-                    testSession = TestSession(questions = randomQuestions)
-                    navigate(Screen.Question)
-                }
-            },
+            unseenQuestionCount = unseenQuestionCount,
+            totalQuestionCount = allQuestions.size,
+            onStartTest = { count -> startTest(allQuestions, count) },
             onOpenStats = { navigate(Screen.Stats) },
             onOpenFailed = { navigate(Screen.Mistakes) },
             onOpenPractice = { navigate(Screen.Practice) },
             onOpenChat = { },
-            onOpenMap = {
-                if (AppFeatures.mapEnabled) navigate(Screen.Map)
+            onOpenDrivingSchools = {
+                if (AppFeatures.drivingSchoolsEnabled) navigate(Screen.DrivingSchools)
             },
             onOpenStatsFromRing = { navigate(Screen.Stats) },
             onOpenSettings = { navigate(Screen.Settings) },
@@ -185,13 +214,12 @@ fun MainScreen(
                     coroutineScope.launch {
                         val weak = questionRepository.getWeakAreaQuestions()
                         if (weak.isNotEmpty()) {
-                            testSession = TestSession(questions = weak.take(20))
-                            navigate(Screen.Question)
+                            startTest(weak, 20)
                         }
                     }
                 },
                 onStartExam = {
-                    val examQuestions = allQuestions.shuffled().take(TestSession.EXAM_QUESTION_COUNT)
+                    val examQuestions = pickFromPool(allQuestions, TestSession.EXAM_QUESTION_COUNT)
                     if (examQuestions.isNotEmpty()) {
                         testSession = TestSession(questions = examQuestions, isExamMode = true)
                         navigate(Screen.Question)
@@ -206,14 +234,8 @@ fun MainScreen(
             categories = remember(allQuestions) { allQuestions.toCategoryInfoList() },
             onSelectCategory = { category ->
                 coroutineScope.launch {
-                    val questions = questionRepository.getQuestionsByCategory(category)
-                        .first()
-                        .shuffled()
-                        .take(20)
-                    if (questions.isNotEmpty()) {
-                        testSession = TestSession(questions = questions)
-                        navigate(Screen.Question)
-                    }
+                    val pool = questionRepository.getQuestionsByCategory(category).first()
+                    startTest(pool, 20)
                 }
             },
             onBack = { navigateBack() }
@@ -229,20 +251,34 @@ fun MainScreen(
                 selectedAnswer = session.answers[session.currentQuestionIndex],
                 remainingSeconds = if (session.isExamMode) examRemainingSeconds else null,
                 isBookmarked = currentQuestionBookmarked,
-                onBack = { navigateBack() },
+                onBack = {
+                    clearInTestMilestone()
+                    navigateBack()
+                },
                 onAnswer = { answer ->
-                    testSession = session.answerQuestion(answer)
+                    val updated = session.answerQuestion(answer)
+                    testSession = updated
+                    if (shouldShowInTestMotivation(updated.totalAnswered)) {
+                        inTestMilestoneKind = resolveInTestMotivationKind(
+                            updated.totalAnswered,
+                            updated.correctAnswers,
+                        )
+                        inTestMilestoneAnsweredCount = updated.totalAnswered
+                    }
                     coroutineScope.launch {
                         userProgressRepository.saveQuestionAttempt(
-                            sessionId = session.sessionId,
-                            questionId = session.currentQuestion.id,
+                            sessionId = updated.sessionId,
+                            questionId = updated.currentQuestion.id,
                             selectedAnswer = answer,
-                            isCorrect = answer == session.currentQuestion.correctAnswer,
+                            isCorrect = answer == updated.currentQuestion.correctAnswer,
                             attemptTime = Clock.System.now().toEpochMilliseconds()
                         )
                     }
                 },
+                milestoneKind = inTestMilestoneKind,
+                milestoneAnsweredCount = inTestMilestoneAnsweredCount,
                 onNext = {
+                    clearInTestMilestone()
                     val next = session.nextQuestion()
                     testSession = next
                     if (next.isCompleted) {
@@ -257,12 +293,15 @@ fun MainScreen(
                             )
                             val todayEpochDay = now.toLocalDateTime(TimeZone.currentSystemDefault()).date.toEpochDays().toLong()
                             userProgressRepository.updateStreak(todayEpochDay)
-                            userStatistics = userProgressRepository.getUserStatistics()
+                            refreshUserProgress()
                         }
                         navigate(Screen.Results)
                     }
                 },
-                onPrevious = { testSession = session.previousQuestion() },
+                onPrevious = {
+                    clearInTestMilestone()
+                    testSession = session.previousQuestion()
+                },
                 onToggleBookmark = {
                     coroutineScope.launch {
                         userProgressRepository.toggleBookmark(
@@ -291,15 +330,14 @@ fun MainScreen(
                 coroutineScope.launch {
                     val bookmarked = questionRepository.getBookmarkedQuestionsForPractice()
                     if (bookmarked.isNotEmpty()) {
-                        testSession = TestSession(questions = bookmarked.shuffled())
-                        navigate(Screen.Question)
+                        startTest(bookmarked, bookmarked.size)
                     }
                 }
             }
         )
-        Screen.Map -> if (AppFeatures.mapEnabled) {
-            MapScreen(
-                mapContent = mapContent,
+        Screen.DrivingSchools -> if (AppFeatures.drivingSchoolsEnabled) {
+            DrivingSchoolsScreen(
+                schools = learningCenters,
                 onBack = { navigateBack() }
             )
         } else {
@@ -325,11 +363,12 @@ fun MainScreen(
                 backStack.add(Screen.Home)
                 testSession = null
                 examRemainingSeconds = null
+                clearInTestMilestone()
             },
             onRetakeTest = {
-                val randomQuestions = allQuestions.shuffled().take(20)
-                if (randomQuestions.isNotEmpty()) {
-                    testSession = TestSession(questions = randomQuestions)
+                val selected = pickFromPool(allQuestions, 20)
+                if (selected.isNotEmpty()) {
+                    testSession = TestSession(questions = selected)
                     backStack.removeAt(backStack.lastIndex)
                     backStack.add(Screen.Question)
                 }

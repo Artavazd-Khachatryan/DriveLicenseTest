@@ -6940,12 +6940,14 @@
     <string name="home_chat_button">Զրուցել</string>
     <string name="home_learning_centers_title">Գտնել սովորելու վայրեր</string>
     <string name="home_learning_centers_subtitle">Գտեք մոտակա վարորդական դպրոցներ և պարապման վայրեր</string>
-    <string name="home_view_map_button">Տեսնել քարտեզը</string>
+    <string name="home_view_map_button">Ավտոդպրոցներ</string>
+    <string name="home_unseen_questions">%1$d հարց դեռ չեք փորձել (ընդամենը %2$d)</string>
+    <string name="home_quick_start_cd">Արագ սկսել թեստը</string>
     <string name="home_practice_button">Պարապման ռեժիմ</string>
     <string name="home_stat_correct">Ճիշտ</string>
     <string name="home_stat_incorrect">Սխալ</string>
     <string name="home_stat_attempted">Փորձ</string>
-    <string name="home_accuracy_ring_cd">Ընդհանուր ճշգրտություն %1$d%%։ Հպեք՝ վիճակագրությունը բացելու համար</string>
+    <string name="home_accuracy_ring_cd">Ընդհանուր ճշգրտություն՝ %1$d տոկոս։ Հպեք՝ վիճակագրությունը բացելու համար</string>
     <string name="home_question_count">%1$d հարց</string>
     <string name="home_test_length_label">Հարցերի քանակ</string>
     <string name="home_streak_days">%1$d օր</string>
@@ -6961,7 +6963,7 @@
     <string name="practice_bookmarks_title">Էջանշված հարցեր</string>
     <string name="practice_bookmarks_desc">Վերանայեք ձեր պահած հարցերը։</string>
     <string name="practice_bookmarks_button">Սկսել պարապանքը</string>
-    <string name="practice_bookmarks_empty">Նախ ավելացրեք հարցեր էջանշաններին:</string>
+    <string name="practice_bookmarks_empty">Նախ ավելացրեք հարցեր էջանշաններին։</string>
     <string name="question_bookmark_add">Ավելացնել էջանշաններ</string>
     <string name="question_bookmark_remove">Հեռացնել էջանշաններից</string>
 
@@ -6996,6 +6998,10 @@
     <string name="question_time_remaining">Մնացած ժամանակ</string>
     <string name="question_previous">Նախորդ</string>
     <string name="question_next">Հաջորդ</string>
+    <string name="question_motivation_milestone_header">%1$d/%2$d հարց — լավ աշխատանք է։</string>
+    <string name="question_motivation_strong">Հիանալի եք գնում — շարունակեք այս տեմպով։</string>
+    <string name="question_motivation_steady">Լավ առաջընթաց — դեռ մի քանի հարց մնաց։</string>
+    <string name="question_motivation_keep_going">Շարունակեք — յուրաքանչյուր պատասխանը ձեզ ավելի մոտեցնում է։</string>
     <string name="question_finish">Ավարտել</string>
     <string name="question_image_unavailable">Նկարն անհասանելի է</string>
     <string name="question_image_cd">Հարցի նկար</string>
@@ -7042,9 +7048,13 @@
     <string name="nav_stats">Վիճակագրություն</string>
 
     <!-- Map Screen -->
-    <string name="map_title">Ուսուցչական կենտրոններ</string>
+    <string name="map_title">Ավտոդպրոցներ</string>
     <string name="map_centers_count">%1$d կենտրոն</string>
     <string name="map_phone">Հեռ.՝</string>
+    <string name="driving_schools_intro">Հայտնի վարորդական դպրոցներ Հայաստանում՝ հասցե և հեռախոս։ Տվյալները տեղեկացման նպատակով են։</string>
+    <string name="driving_schools_count">%1$d դպրոց</string>
+    <string name="driving_schools_label_address">Հասցե</string>
+    <string name="driving_schools_label_phone">Հեռախոս</string>
 
     <!-- AI Explanation Screen -->
     <string name="ai_explain_title">Բացատրություն</string>
@@ -7061,6 +7071,8 @@
     <string name="settings_reminder_subtitle">Ստացեք մեղմ հիշեցում ամեն օր պարապելու համար</string>
     <string name="settings_reminder_time_label">Հիշեցման ժամ</string>
     <string name="settings_reminder_change_time">Փոխել ժամը</string>
+    <string name="settings_reminder_pick_time_title">Ընտրեք հիշեցման ժամը</string>
+    <string name="settings_reminder_pick_time_hint">Ժամը կկիրառվի, երբ միացնեք օրական հիշեցումը</string>
     <string name="settings_reminder_permission_denied">Ծանուցումները թույլատրված չեն։ Միացրեք համակարգի կարգավորումներից։</string>
     <string name="settings_dialog_ok">Լավ</string>
     <string name="settings_dialog_cancel">Չեղարկել</string>
