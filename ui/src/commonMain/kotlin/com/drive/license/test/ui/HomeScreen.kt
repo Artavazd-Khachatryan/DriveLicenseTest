@@ -1,9 +1,12 @@
 package com.drive.license.test.ui
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -17,14 +20,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.TrendingUp
 import androidx.compose.material.icons.filled.Chat
-import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.DirectionsCar
 import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Settings
@@ -34,10 +35,12 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import kotlinx.coroutines.delay
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -59,6 +62,8 @@ import drivelicensetest.ui.generated.resources.home_learning_centers_subtitle
 import drivelicensetest.ui.generated.resources.home_learning_centers_title
 import drivelicensetest.ui.generated.resources.home_progress_title
 import drivelicensetest.ui.generated.resources.home_ready_title
+import com.drive.license.test.ui.util.AdaptiveContentContainer
+import com.drive.license.test.ui.util.estimatedTestMinutes
 import com.drive.license.test.ui.util.homeMotivationMessage
 import drivelicensetest.ui.generated.resources.home_review_button
 import drivelicensetest.ui.generated.resources.home_review_mistakes_subtitle
@@ -94,6 +99,10 @@ fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
     var selectedTestLength by remember { mutableStateOf(20) }
+    var contentVisible by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        contentVisible = true
+    }
 
     AppScaffold(
         bottomBar = bottomBar,
@@ -106,17 +115,21 @@ fun HomeScreen(
             }
         }
     ) { inner ->
-        Column(
+        AdaptiveContentContainer(
             modifier = modifier
                 .fillMaxSize()
                 .then(inner)
                 .verticalScroll(rememberScrollState())
                 .padding(20.dp)
-                .wrapContentWidth(Alignment.CenterHorizontally)
-                .widthIn(max = 720.dp),
+        ) { isExpanded, contentModifier ->
+        Column(
+            modifier = contentModifier,
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            // 1. Welcome Section - Clean and Readable
+            AnimatedVisibility(
+                visible = contentVisible,
+                enter = fadeIn(tween(300)) + slideInVertically(tween(300)) { it / 4 }
+            ) {
             AppCard(
                 modifier = Modifier.fillMaxWidth(),
                 containerColor = MaterialTheme.colorScheme.primaryContainer
@@ -125,9 +138,11 @@ fun HomeScreen(
                     modifier = Modifier.padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(
-                        text = "🚗",
-                        style = MaterialTheme.typography.displayLarge
+                    Icon(
+                        imageVector = Icons.Filled.DirectionsCar,
+                        contentDescription = null,
+                        modifier = Modifier.size(56.dp),
+                        tint = MaterialTheme.colorScheme.onPrimaryContainer
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
@@ -146,10 +161,11 @@ fun HomeScreen(
                     )
                 }
             }
+            }
 
-            // 2. Enhanced Primary Action - Start Test with Animations
+            val startTestCard: @Composable (Modifier) -> Unit = { cardModifier ->
             AppCard(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = cardModifier.fillMaxWidth(),
                 containerColor = MaterialTheme.colorScheme.primary
             ) {
                 Box(
@@ -166,8 +182,6 @@ fun HomeScreen(
                         .padding(28.dp)
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Spacer(modifier = Modifier.height(20.dp))
-                        
                         Text(
                             text = stringResource(Res.string.home_start_test_title),
                             style = MaterialTheme.typography.headlineLarge,
@@ -179,7 +193,11 @@ fun HomeScreen(
                         Spacer(modifier = Modifier.height(12.dp))
                         
                         Text(
-                            text = stringResource(Res.string.home_start_test_subtitle),
+                            text = stringResource(
+                                Res.string.home_start_test_subtitle,
+                                selectedTestLength,
+                                estimatedTestMinutes(selectedTestLength)
+                            ),
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f),
                             textAlign = TextAlign.Center
@@ -222,132 +240,44 @@ fun HomeScreen(
                     }
                 }
             }
-
-            AppCard(
-                modifier = Modifier.fillMaxWidth(),
-                containerColor = MaterialTheme.colorScheme.surface
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(
-                            Brush.verticalGradient(
-                                colors = listOf(
-                                    MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.1f),
-                                    MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.05f)
-                                )
-                            )
-                        )
-                        .padding(24.dp)
-                ) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            Icon(
-                                Icons.AutoMirrored.Filled.TrendingUp,
-                                contentDescription = null,
-                                modifier = Modifier.size(24.dp),
-                                tint = MaterialTheme.colorScheme.primary
-                            )
-                            Text(
-                                text = stringResource(Res.string.home_progress_title),
-                                style = MaterialTheme.typography.headlineSmall,
-                                fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.primary
-                            )
-                        }
-                        
-                        Spacer(modifier = Modifier.height(24.dp))
-                        
-                        // Centered Progress Ring
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.Center,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            val accuracy = userStatistics.overallAccuracy
-                            val animatedProgress by animateFloatAsState(
-                                targetValue = accuracy,
-                                animationSpec = tween(1500, easing = LinearEasing),
-                                label = "progress"
-                            )
-
-                            ProgressRing(
-                                progress = animatedProgress,
-                                size = 140.dp,
-                                contentDescription = stringResource(Res.string.home_accuracy_ring_cd, (accuracy * 100).toInt()),
-                                modifier = Modifier.clickable { onOpenStatsFromRing() }
-                            ) {
-                                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                    val animatedPercentage by animateIntAsState(
-                                        targetValue = (accuracy * 100).toInt(),
-                                        animationSpec = tween(1500, easing = LinearEasing),
-                                        label = "percentage"
-                                    )
-                                    Text(
-                                        text = "$animatedPercentage%",
-                                        style = MaterialTheme.typography.displaySmall,
-                                        fontWeight = FontWeight.Bold,
-                                        color = MaterialTheme.colorScheme.primary
-                                    )
-                                    Text(
-                                        text = stringResource(Res.string.home_accuracy),
-                                        style = MaterialTheme.typography.titleMedium,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
-                                }
-                            }
-                        }
-
-                        if (userStatistics.totalAttempts > 0) {
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.spacedBy(8.dp)
-                            ) {
-                                StatChip(
-                                    label = stringResource(Res.string.home_stat_correct),
-                                    value = userStatistics.totalCorrect.toString(),
-                                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                                    modifier = Modifier.weight(1f)
-                                )
-                                StatChip(
-                                    label = stringResource(Res.string.home_stat_incorrect),
-                                    value = userStatistics.totalIncorrect.toString(),
-                                    containerColor = MaterialTheme.colorScheme.errorContainer,
-                                    contentColor = MaterialTheme.colorScheme.onErrorContainer,
-                                    modifier = Modifier.weight(1f)
-                                )
-                                StatChip(
-                                    label = stringResource(Res.string.home_stat_attempted),
-                                    value = userStatistics.totalAttempts.toString(),
-                                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                                    contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    modifier = Modifier.weight(1f)
-                                )
-                                if (userStatistics.currentStreak > 0) {
-                                    StatChip(
-                                        label = stringResource(Res.string.home_streak_label),
-                                        value = stringResource(Res.string.home_streak_days, userStatistics.currentStreak),
-                                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                                        modifier = Modifier.weight(1f)
-                                    )
-                                }
-                            }
-                        }
-                    }
-                }
             }
 
+            val progressCard: @Composable (Modifier) -> Unit = { cardModifier ->
+            HomeProgressCard(
+                modifier = cardModifier,
+                userStatistics = userStatistics,
+                onOpenStatsFromRing = onOpenStatsFromRing
+            )
+            }
+
+            AnimatedVisibility(
+                visible = contentVisible,
+                enter = fadeIn(tween(300, delayMillis = 80)) + slideInVertically(tween(300, delayMillis = 80)) { it / 4 }
+            ) {
+            if (isExpanded) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    startTestCard(Modifier.weight(1f))
+                    progressCard(Modifier.weight(1f))
+                }
+            } else {
+                startTestCard(Modifier)
+                progressCard(Modifier)
+            }
+            }
+
+            AnimatedVisibility(
+                visible = contentVisible,
+                enter = fadeIn(tween(300, delayMillis = 160)) + slideInVertically(tween(300, delayMillis = 160)) { it / 4 }
+            ) {
             Row(horizontalArrangement = Arrangement.spacedBy(16.dp), modifier = Modifier.fillMaxWidth()) {
                 // Review Mistakes - Consistent Size
                 AppCard(
                     modifier = Modifier
                         .weight(1f)
-                        .height(200.dp),
+                        .then(if (isExpanded) Modifier.height(200.dp) else Modifier.height(220.dp)),
                     containerColor = MaterialTheme.colorScheme.surface
                 ) {
                     Box(
@@ -406,10 +336,10 @@ fun HomeScreen(
                 }
                 
                 // AI Assistant - Consistent Size
-                AppCard(
+                if (AppFeatures.aiEnabled) AppCard(
                     modifier = Modifier
                         .weight(1f)
-                        .height(200.dp), // Fixed height for consistency
+                        .then(if (isExpanded) Modifier.height(200.dp) else Modifier.height(220.dp)),
                     containerColor = MaterialTheme.colorScheme.surface
                 ) {
                     Box(
@@ -467,7 +397,12 @@ fun HomeScreen(
                     }
                 }
             }
+            }
 
+            AnimatedVisibility(
+                visible = contentVisible && AppFeatures.mapEnabled,
+                enter = fadeIn(tween(300, delayMillis = 240)) + slideInVertically(tween(300, delayMillis = 240)) { it / 4 }
+            ) {
             if (AppFeatures.mapEnabled) {
                 // 5. Enhanced Learning Places with Animation
                 AppCard(
@@ -519,6 +454,138 @@ fun HomeScreen(
                             AppButton(
                                 text = stringResource(Res.string.home_view_map_button),
                                 onClick = onOpenMap
+                            )
+                        }
+                    }
+                }
+            }
+            }
+        }
+        }
+    }
+}
+
+@Composable
+private fun HomeProgressCard(
+    userStatistics: UserStatistics,
+    onOpenStatsFromRing: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    AppCard(
+        modifier = modifier.fillMaxWidth(),
+        containerColor = MaterialTheme.colorScheme.surface
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.1f),
+                            MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.05f)
+                        )
+                    )
+                )
+                .padding(24.dp)
+        ) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        Icons.AutoMirrored.Filled.TrendingUp,
+                        contentDescription = null,
+                        modifier = Modifier.size(24.dp),
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = stringResource(Res.string.home_progress_title),
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    val accuracy = userStatistics.overallAccuracy
+                    val animatedProgress by animateFloatAsState(
+                        targetValue = accuracy,
+                        animationSpec = tween(1500, easing = LinearEasing),
+                        label = "progress"
+                    )
+
+                    ProgressRing(
+                        progress = animatedProgress,
+                        size = 140.dp,
+                        contentDescription = stringResource(
+                            Res.string.home_accuracy_ring_cd,
+                            (accuracy * 100).toInt()
+                        ),
+                        modifier = Modifier.clickable { onOpenStatsFromRing() }
+                    ) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            val animatedPercentage by animateIntAsState(
+                                targetValue = (accuracy * 100).toInt(),
+                                animationSpec = tween(1500, easing = LinearEasing),
+                                label = "percentage"
+                            )
+                            Text(
+                                text = "$animatedPercentage%",
+                                style = MaterialTheme.typography.displaySmall,
+                                fontWeight = FontWeight.Bold,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                            Text(
+                                text = stringResource(Res.string.home_accuracy),
+                                style = MaterialTheme.typography.titleMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                }
+
+                if (userStatistics.totalAttempts > 0) {
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        StatChip(
+                            label = stringResource(Res.string.home_stat_correct),
+                            value = userStatistics.totalCorrect.toString(),
+                            containerColor = MaterialTheme.colorScheme.primaryContainer,
+                            contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                            modifier = Modifier.weight(1f)
+                        )
+                        StatChip(
+                            label = stringResource(Res.string.home_stat_incorrect),
+                            value = userStatistics.totalIncorrect.toString(),
+                            containerColor = MaterialTheme.colorScheme.errorContainer,
+                            contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                            modifier = Modifier.weight(1f)
+                        )
+                        StatChip(
+                            label = stringResource(Res.string.home_stat_attempted),
+                            value = userStatistics.totalAttempts.toString(),
+                            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                            contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.weight(1f)
+                        )
+                        if (userStatistics.currentStreak > 0) {
+                            StatChip(
+                                label = stringResource(Res.string.home_streak_label),
+                                value = stringResource(
+                                    Res.string.home_streak_days,
+                                    userStatistics.currentStreak
+                                ),
+                                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                modifier = Modifier.weight(1f)
                             )
                         }
                     }
