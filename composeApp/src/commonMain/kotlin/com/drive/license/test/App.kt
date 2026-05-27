@@ -7,6 +7,7 @@ import com.drive.license.test.domain.repository.AiAssistant
 import com.drive.license.test.domain.repository.QuestionRepository
 import com.drive.license.test.domain.repository.ReminderPreferences
 import com.drive.license.test.domain.repository.ReminderScheduler
+import com.drive.license.test.domain.repository.ThemePreferences
 import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.ui.MainScreen
 import com.drive.license.test.ui.theme.AppTheme
@@ -22,6 +23,13 @@ fun App() {
     val aiAssistant: AiAssistant = KoinHelper.get()
     val reminderPreferences: ReminderPreferences = KoinHelper.get()
     val reminderScheduler: ReminderScheduler = KoinHelper.get()
+    val themePreferences: ThemePreferences = KoinHelper.get()
+
+    var isDarkTheme by remember { mutableStateOf(themePreferences.loadDarkTheme()) }
+    fun setDarkTheme(dark: Boolean) {
+        isDarkTheme = dark
+        themePreferences.saveDarkTheme(dark)
+    }
 
     val databaseInitializer = remember {
         DatabaseInitializer(questionRepository, coroutineScope)
@@ -33,7 +41,7 @@ fun App() {
         databaseInitializer.initializeDatabase()
     }
 
-    AppTheme {
+    AppTheme(darkTheme = isDarkTheme) {
         MainScreen(
             questionRepository = questionRepository,
             userProgressRepository = userProgressRepository,
@@ -41,7 +49,9 @@ fun App() {
             reminderPreferences = reminderPreferences,
             reminderScheduler = reminderScheduler,
             learningCenters = LearningCentersData.all,
-            coroutineScope = coroutineScope
+            coroutineScope = coroutineScope,
+            isDarkTheme = isDarkTheme,
+            onDarkThemeChange = ::setDarkTheme,
         )
     }
 }

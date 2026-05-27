@@ -33,6 +33,7 @@ import org.jetbrains.compose.resources.painterResource
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppButton
+import com.drive.license.test.ui.components.AppThemeToggleIcon
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.AnswerButton
@@ -70,6 +71,8 @@ fun QuestionDetailScreen(
     selectedAnswer: String? = null,
     remainingSeconds: Int? = null,
     isBookmarked: Boolean = false,
+    isDarkTheme: Boolean = false,
+    onDarkThemeChange: (Boolean) -> Unit = {},
     onBack: () -> Unit,
     onAnswer: (String) -> Unit,
     onPrevious: () -> Unit,
@@ -135,6 +138,10 @@ fun QuestionDetailScreen(
                         )
                     }
                 }
+                AppThemeToggleIcon(
+                    isDarkTheme = isDarkTheme,
+                    onDarkThemeChange = onDarkThemeChange,
+                )
                 IconButton(onClick = onToggleBookmark) {
                     Icon(
                         imageVector = if (isBookmarked) Icons.Default.Bookmark else Icons.Default.BookmarkBorder,

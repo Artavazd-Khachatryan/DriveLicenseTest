@@ -44,6 +44,7 @@ import com.drive.license.test.domain.repository.ReminderScheduler
 import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
+import com.drive.license.test.ui.components.ThemeModeSelector
 import com.drive.license.test.ui.util.AdaptiveContentContainer
 import com.drive.license.test.ui.util.rememberNotificationPermissionLauncher
 import drivelicensetest.ui.generated.resources.Res
@@ -57,6 +58,8 @@ import drivelicensetest.ui.generated.resources.settings_reminder_pick_time_title
 import drivelicensetest.ui.generated.resources.settings_reminder_subtitle
 import drivelicensetest.ui.generated.resources.settings_reminder_time_label
 import drivelicensetest.ui.generated.resources.settings_reminder_title
+import drivelicensetest.ui.generated.resources.settings_theme_subtitle
+import drivelicensetest.ui.generated.resources.settings_theme_title
 import drivelicensetest.ui.generated.resources.settings_title
 import org.jetbrains.compose.resources.stringResource
 
@@ -65,6 +68,8 @@ import org.jetbrains.compose.resources.stringResource
 fun SettingsScreen(
     reminderPreferences: ReminderPreferences,
     reminderScheduler: ReminderScheduler,
+    isDarkTheme: Boolean,
+    onDarkThemeChange: (Boolean) -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -117,6 +122,28 @@ fun SettingsScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 if (!loaded) return@Column
+
+                AppCard(modifier = Modifier.fillMaxWidth()) {
+                    Column(modifier = Modifier.padding(20.dp)) {
+                        Text(
+                            text = stringResource(Res.string.settings_theme_title),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = stringResource(Res.string.settings_theme_subtitle),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        ThemeModeSelector(
+                            isDarkTheme = isDarkTheme,
+                            onDarkThemeChange = onDarkThemeChange,
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                    }
+                }
 
                 AppCard(modifier = Modifier.fillMaxWidth()) {
                     Column(modifier = Modifier.padding(20.dp)) {

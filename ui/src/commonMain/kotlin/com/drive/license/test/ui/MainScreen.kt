@@ -54,6 +54,8 @@ fun MainScreen(
     reminderScheduler: ReminderScheduler,
     learningCenters: List<LearningCenter> = emptyList(),
     coroutineScope: CoroutineScope,
+    isDarkTheme: Boolean,
+    onDarkThemeChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val backStack = remember { mutableStateListOf<Screen>(Screen.Home) }
@@ -248,6 +250,8 @@ fun MainScreen(
                 selectedAnswer = session.answers[session.currentQuestionIndex],
                 remainingSeconds = if (session.isExamMode) examRemainingSeconds else null,
                 isBookmarked = currentQuestionBookmarked,
+                isDarkTheme = isDarkTheme,
+                onDarkThemeChange = onDarkThemeChange,
                 onBack = {
                     clearInTestMilestone()
                     navigateBack()
@@ -343,6 +347,8 @@ fun MainScreen(
         Screen.Settings -> SettingsScreen(
             reminderPreferences = reminderPreferences,
             reminderScheduler = reminderScheduler,
+            isDarkTheme = isDarkTheme,
+            onDarkThemeChange = onDarkThemeChange,
             onBack = { navigateBack() }
         )
         is Screen.AiExplanation -> AiExplanationScreen(

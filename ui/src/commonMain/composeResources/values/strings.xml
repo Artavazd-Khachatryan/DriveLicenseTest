@@ -7077,6 +7077,12 @@
     <string name="settings_dialog_ok">Լավ</string>
     <string name="settings_dialog_cancel">Չեղարկել</string>
     <string name="settings_open_action_cd">Բացել կարգավորումները</string>
+    <string name="settings_theme_title">Տեսք</string>
+    <string name="settings_theme_subtitle">Ընտրեք բաց կամ մուգ թեմա</string>
+    <string name="settings_theme_light">Բաց</string>
+    <string name="settings_theme_dark">Մուգ</string>
+    <string name="settings_theme_toggle_dark_cd">Միացնել մուգ թեման</string>
+    <string name="settings_theme_toggle_light_cd">Միացնել բաց թեման</string>
 
     <!-- Question categories -->
     <string name="category_traffic_signs_and_markings">Ճանապարհային նշաններ և գծանշումներ</string>
