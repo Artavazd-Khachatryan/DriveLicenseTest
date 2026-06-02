@@ -7073,10 +7073,10 @@
     <string name="settings_reminder_change_time">Փոխել ժամը</string>
 
     <!-- Reset statistics -->
-    <string name="settings_reset_title">Վերակայել վիճակագրությունը</string>
+    <string name="settings_reset_title">Զրոյացնել վիճակագրությունը</string>
     <string name="settings_reset_subtitle">Կջնջվեն բոլոր փորձերը, ճիշտ/սխալ պատասխանների հաշվարկը, սովորած հարցերը, սերիան և թեստերի պատմությունը։</string>
-    <string name="settings_reset_button">Վերակայել</string>
-    <string name="settings_reset_dialog_title">Վերակայե՞լ վիճակագրությունը</string>
+    <string name="settings_reset_button">Զրոյացնել</string>
+    <string name="settings_reset_dialog_title">Վիճակագրությունը զրոյացնե՞լ</string>
     <string name="settings_reset_dialog_message">Այս գործողությունը հետ չի վերադարձվում։</string>
     <string name="settings_reminder_pick_time_title">Ընտրեք հիշեցման ժամը</string>
     <string name="settings_reminder_pick_time_hint">Ժամը կկիրառվի, երբ միացնեք օրական հիշեցումը</string>
