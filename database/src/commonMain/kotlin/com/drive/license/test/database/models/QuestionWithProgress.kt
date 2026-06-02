@@ -8,19 +8,26 @@ data class QuestionWithProgress(
     val isLearned: Boolean = false,
     val lastAnsweredAt: Long? = null
 ) {
+    /**
+     * A question is considered learned when the user has a strong net-correct margin.
+     * Rule: (timesCorrect - timesIncorrect) > 3.
+     */
+    val isLearnedByScore: Boolean
+        get() = (timesCorrect - timesIncorrect) > 3
+
     val accuracy: Float
         get() = if (timesAnswered > 0) timesCorrect.toFloat() / timesAnswered else 0f
     
     val difficulty: QuestionDifficulty
         get() = when {
-            timesCorrect >= 3 -> QuestionDifficulty.LEARNED
+            isLearned || isLearnedByScore -> QuestionDifficulty.LEARNED
             timesIncorrect > timesCorrect -> QuestionDifficulty.HARD
             timesCorrect > timesIncorrect -> QuestionDifficulty.MEDIUM
             else -> QuestionDifficulty.EASY
         }
     
     val needsPractice: Boolean
-        get() = !isLearned && (timesIncorrect > timesCorrect || timesAnswered == 0)
+        get() = !(isLearned || isLearnedByScore) && (timesIncorrect > timesCorrect || timesAnswered == 0)
 }
 
 enum class QuestionDifficulty {
