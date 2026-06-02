@@ -170,12 +170,12 @@ private fun BookmarkItem(bookmark: BookmarkedQuestion) {
                 imageVector = Icons.Default.CheckCircle,
                 contentDescription = stringResource(Res.string.bookmarks_correct_answer),
                 modifier = Modifier.size(14.dp),
-                tint = MaterialTheme.colorScheme.primary
+                tint = MaterialTheme.colorScheme.secondary
             )
             Text(
                 text = bookmark.correctAnswer,
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.secondary
             )
         }
     }

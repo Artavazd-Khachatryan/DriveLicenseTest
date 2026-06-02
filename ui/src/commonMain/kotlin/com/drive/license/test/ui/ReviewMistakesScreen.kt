@@ -188,18 +188,18 @@ private fun MistakeItem(mistake: MistakeQuestion) {
                 imageVector = Icons.Default.CheckCircle,
                 contentDescription = stringResource(Res.string.mistakes_correct_answer),
                 modifier = Modifier.size(14.dp).padding(top = 2.dp),
-                tint = MaterialTheme.colorScheme.primary
+                tint = MaterialTheme.colorScheme.secondary
             )
             Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                 Text(
                     text = stringResource(Res.string.mistakes_correct_answer),
                     style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
+                    color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.8f)
                 )
                 Text(
                     text = mistake.correctAnswer,
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.primary
+                    color = MaterialTheme.colorScheme.secondary
                 )
             }
         }
