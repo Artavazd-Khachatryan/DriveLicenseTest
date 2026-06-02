@@ -32,9 +32,9 @@
     <string name="question_4_true_answer">Կա՛մ աջ, կա՛մ ձախ գոտին։</string>
 
     <string name="question_5">Թույլատրվու՞մ է արդյոք մուտք գործել բակ նշված տեղից։</string>
-    <string name="question_5_answer_1">1.Թույլատրվում է։</string>
-    <string name="question_5_answer_2">2.Արգելվում է։</string>
-    <string name="question_5_true_answer">1.Թույլատրվում է։</string>
+    <string name="question_5_answer_1">1. Թույլատրվում է։</string>
+    <string name="question_5_answer_2">2. Արգելվում է։</string>
+    <string name="question_5_true_answer">1. Թույլատրվում է։</string>
 
     <string name="question_6">
         Երկկողմ երթեւեկությամբ գծանշված ճանապարհներին, երեք
@@ -2239,10 +2239,10 @@
     <string name="question_314_true_answer">3</string>
 
     <string name="question_315">Թույլատրվու՞մ է արդյոք ավտոբուսի վարորդին վազանց կատարել այս նշանի ազդման գոտում։</string>
-    <string name="question_315_answer_1">Թույլատրվում է բոլոր դեպքերում՝ վ dépasser, вразү дзе.и спанское, ́неку.</string>
+    <string name="question_315_answer_1">Թույլատրվում է բոլոր դեպքերում՝ վազանցի կանոնները պահպանելով։</string>
     <string name="question_315_answer_2">Չի թույլատրվում։</string>
     <string name="question_315_answer_3">Թույլատրվում է, եթե վազանցվող տրանսպորտային միջոցի արագությունը չի գերազանցում 30 կմ/ժ։</string>
-    <string name="question_315_true_answer">Թույլատրվում է բոլոր դեպքերում՝ վ dépasser, вразү дзе.и спанское, ́неку.</string>
+    <string name="question_315_true_answer">Թույլատրվում է բոլոր դեպքերում՝ վազանցի կանոնները պահպանելով։</string>
 
     <string name="question_316">Հետեւյալ նշաններից ո՞րն է թույլատրում երթեւեկել միայն նշված (կմ/ժ) կամ ավելի բարձր արագությամբ։</string>
     <string name="question_316_answer_1">1</string>
@@ -2725,7 +2725,7 @@
     <string name="question_391_answer_3">Երթևեկելի մասերի հատումից առաջ(Գ)</string>
     <string name="question_391_true_answer">Երթևեկելի մասերի հատումից առաջ(Գ)</string>
 
-    <string name="question_392">1.1 և 3<br/>2.1 և 4<br/>3.միայն 2-ը<br/>4.2 և 3</string>
+    <string name="question_392">Ո՞ր նշանն է արագության սահմանափակում մտցնում:</string>
     <string name="question_392_answer_1">1.1 և 3</string>
     <string name="question_392_answer_2">2.1 և 4</string>
     <string name="question_392_answer_3">միայն 2-ը</string>
@@ -4788,8 +4788,8 @@
     <string name="question_743">Որտե՞ղ է թույլատրվում երկարատեւ հանգստի, գիշերակացի եւ այլ նպատակներով կայանելը բնակավայրերից դուրս։</string>
     <string name="question_743_answer_1">Ճանապարհի կողնակներին։</string>
     <string name="question_743_answer_2">Կայանման համար նախատեսված հրապարակներում կամ ճանապարհի սահմաններից դուրս։</string>
-    <string name="question_743_answer_3">Ճանապարհի երթեւեկելի մասի աջ SIDE-ով` չխոչընդոտելով այլ տրանսպորտային միջոցների երթեւեկությունը։</string>
-    <string name="question_743_answer_4">Ճանապարհի ձախ SIDE-ով` ապահովելով ճանապարհային երթեւեկության անվտանգությունը։</string>
+    <string name="question_743_answer_3">Ճանապարհի երթեւեկելի մասի աջ կողմում` չխոչընդոտելով այլ տրանսպորտային միջոցների երթեւեկությունը։</string>
+    <string name="question_743_answer_4">Ճանապարհի ձախ կողմում` ապահովելով ճանապարհային երթեւեկության անվտանգությունը։</string>
     <string name="question_743_true_answer">Կայանման համար նախատեսված հրապարակներում կամ ճանապարհի սահմաններից դուրս։</string>
 
     <string name="question_744">Կանգառն արգելվում է, եթե հոծ գծի եւ կանգնած տրանսպորտային միջոցի միջեւ տարածությունը կազմում է`</string>
@@ -5226,10 +5226,10 @@
     <string name="question_815_answer_2">Երթևեկության գոտիները խաչմերուկի սահմաններում</string>
     <string name="question_815_true_answer">Երթևեկության գոտիները խաչմերուկի սահմաններում</string>
 
-    <string name="question_816">Այս գծանշումը վ dépasseը</string>
+    <string name="question_816">Այս գծանշումը վազանցը</string>
     <string name="question_816_answer_1">Թույլատրում է</string>
     <string name="question_816_answer_2">Արգելում է</string>
-    <string name="question_816_answer_3">Թույլատրում է միայն տրակտորներին վարձակել</string>
+    <string name="question_816_answer_3">Թույլատրում է միայն տրակտորներին վազանցել</string>
     <string name="question_816_true_answer">Թույլատրում է</string>
 
     <string name="question_817">Այս ուղղաձիգ գծանշմամբ</string>
@@ -6300,7 +6300,7 @@
     <string name="question_990_answer_2">Պարտավոր չէ։</string>
     <string name="question_990_true_answer">Պարտավոր չէ։</string>
 
-    <string name="question_991">Վ ultrapn արգելվում է`</string>
+    <string name="question_991">Վազանցն արգելվում է`</string>
     <string name="question_991_answer_1">Երկաթուղային գծանցների վրա եւ մինչեւ 100մ դրանցից առաջ։</string>
     <string name="question_991_answer_2">Երկաթուղային գծանցների վրա եւ մինչեւ 150մ դրանցից առաջ։</string>
     <string name="question_991_answer_3">Երկաթուղային գծանցների վրա եւ մինչեւ 250մ դրանցից առաջ։</string>
@@ -6899,11 +6899,11 @@
     <string name="question_1091_answer_3">Հագնել բժշկական ձեռնոցներ, վերքն առանց մաքրելու ծածկել ստերիլ թանզիֆե անձեռոցիկով` եզրերին ամրացնելով կպչուն սպեղանի կամ բինտով վիրակապել:</string>
     <string name="question_1091_true_answer">Հագնել բժշկական ձեռնոցներ, վերքն առանց մաքրելու ծածկել ստերիլ թանզիֆե անձեռոցիկով` եզրերին ամրացնելով կպչուն սպեղանի կամ բինտով վիրակապել:</string>
 
-    <string name="question_1092">Ինչպե՞ս է առաջին օգնություն իրականացվում վերջույթների կոտրվածքների դեպքում, եթե չկան շինաներ և այն պատրաստելու համար ձեռքի տակ եղած միջոցներ:</string>
+    <string name="question_1092">Ինչպե՞ս է առաջին օգնություն իրականացվում վերջույթների կոտրվածքների դեպքում, եթե չկան շինաներ և այն պատրաստելու համար ձեռքի տակ եղած միջոցներ<br/>Ո՞ր դեպքերում պետք է տուժածը դուրս հանվի ավտոմեքենայի խցիկից</string>
     <string name="question_1092_answer_1">Վերին վերջույթը` իրանի երկայնքով տարածած, կապվում է իրանին: Ստորին վերջույթները կապվում են միմյանց՝ փափուկ կտոր դնելով դրանց միջև:</string>
-    <string name="question_1092_answer_2">Վերին վերջույթը` արմնկային հոդում ծալված, գլխաշորի վրա հենած`կապվում է իրանին: Ստորին վերջույթները կապվում են միմյանց` փափուկ կտոր դնելով դրանց միջև:</string>
-    <string name="question_1092_answer_3">Վերին վերջույթը, արմնկային հոդում ծալված, գլխաշորի վրա հենած`կապվում է իրանին: Ստորին վերջույթները կապվում են միմյանց:</string>
-    <string name="question_1092_true_answer">Վերին վերջույթը` արմնկային հոդում ծալված, գլխաշորի վրա հենած`կապվում է իրանին: Ստորին վերջույթները կապվում են միմյանց` փափուկ կտոր դնելով դրանց միջև:</string>
+    <string name="question_1092_answer_2">Վերին վերջույթը` արմնկային հոդում ծալված, գլխաշորի վրա հենած` կապվում է իրանին: Ստորին վերջույթները կապվում են միմյանց` փափուկ կտոր դնելով դրանց միջև:</string>
+    <string name="question_1092_answer_3">Վերին վերջույթը, արմնկային հոդում ծալված, գլխաշորի վրա հենած`կապվում է իրանին: Ստորին վերջույթները կապվում են միմյանց</string>
+    <string name="question_1092_true_answer">Վերին վերջույթը` արմնկային հոդում ծալված, գլխաշորի վրա հենած` կապվում է իրանին: Ստորին վերջույթները կապվում են միմյանց` փափուկ կտոր դնելով դրանց միջև:</string>
 
     <string name="question_1093">Ո՞ր դեպքերում պետք է տուժածը դուրս հանվի ավտոմեքենայի խցիկից:</string>
     <string name="question_1093_answer_1">Ավտոմեքենայի շրջվելու, բռնկվելու, պայթյունի մեծ հավանականության կամ տուժածի գիտակցության կորստի դեպքում:</string>
@@ -6918,7 +6918,7 @@
     <string name="question_1094_true_answer">20 րոպե տևողությամբ այրվածքի մակերեսը սառեցնել ջրով: Առանց բշտիկները բացելու և հագուստի մնացորդները հեռացնելու այրվածքի մակերեսը ծածկել ստերիլ անձեռոցիկով (չվիրակապել), հնարավորության դեպքում սառը դնել և տուժածին ջուր խմեցնել:</string>
 
     <!-- Home Screen Strings -->
-    <string name="home_ready_title">Պատրաստ եք հանձնել քննությունը?</string>
+    <string name="home_ready_title">Պատրաստ ե՞ք հանձնել քննությունը</string>
     <string name="home_ready_subtitle">Պարապեք իրական հարցերով և հետևեք ձեր առաջընթացին</string>
     <string name="home_motivation_first_visit">Սկսեք առաջին թեստից — յուրաքանչյուր հարցը ձեզ ավելի մոտեցնում է քննությանը։</string>
     <string name="home_motivation_streak_strong">%1$d օր անընդմեջ — հիանալի հաստատակամություն։ Շարունակեք այս տեմպով։</string>
@@ -6964,7 +6964,7 @@
     <string name="practice_bookmarks_desc">Վերանայեք ձեր պահած հարցերը։</string>
     <string name="practice_bookmarks_button">Սկսել պարապանքը</string>
     <string name="practice_bookmarks_empty">Նախ ավելացրեք հարցեր էջանշաններին։</string>
-    <string name="question_bookmark_add">Ավելացնել էջանշաններ</string>
+    <string name="question_bookmark_add">Ավելացնել էջանշան</string>
     <string name="question_bookmark_remove">Հեռացնել էջանշաններից</string>
 
     <!-- Stats Screen -->
@@ -6991,7 +6991,7 @@
 
     <!-- Question Detail Screen -->
     <string name="question_exit_title">Ելնե՞լ թեստից</string>
-    <string name="question_exit_message">Ձեր առաջընթացը կկորի։ Վստա՞հ եք, որ ցանկանում եք դուրս գալ:</string>
+    <string name="question_exit_message">Ձեր առաջընթացը կկորի։ Վստա՞հ եք, որ ցանկանում եք դուրս գալ։</string>
     <string name="question_exit_confirm">Ելք</string>
     <string name="question_exit_cancel">Շարունակել</string>
     <string name="question_number_of_total">Հարց %1$d / %2$d-ից</string>
@@ -7016,7 +7016,7 @@
     <string name="results_motivation_excellent">Հիանալի աշխատանք — մնացել է մի քիչ մանրուքների վրա։</string>
     <string name="results_motivation_pass">Դուք անցաք — շարունակեք այս տեմպով։</string>
     <string name="results_motivation_almost">Շատ մոտ եք — մի քանի սխալ հարց և կանցնեք։</string>
-    <string name="results_motivation_fail">Մի հանգամտի չկորցրեք — վերանայեք սխալները և փորձեք կրկին։</string>
+    <string name="results_motivation_fail">Մի պահի չկորցրեք — վերանայեք սխալները և փորձեք կրկին։</string>
     <string name="results_your_score">Ձեր արդյունքը</string>
     <string name="results_correct_answers">Ճիշտ պատասխաններ</string>
     <string name="results_incorrect_answers">Սխալ պատասխաններ</string>
@@ -7031,7 +7031,7 @@
     <string name="practice_by_category_button">Ընտրել կատեգորիա</string>
     <string name="practice_weak_areas_title">Թույլ կողմեր</string>
     <string name="practice_weak_areas_count">%1$d հարց՝ լրացուցիչ պարապման համար</string>
-    <string name="practice_weak_areas_empty">Նախ կատարեք թեստ՝ ձեր թույլ կողմերը բացահայտելու համար:</string>
+    <string name="practice_weak_areas_empty">Նախ կատարեք թեստ՝ ձեր թույլ կողմերը բացահայտելու համար։</string>
     <string name="practice_weak_areas_button">Սկսել պարապանքը</string>
     <string name="practice_exam_title">Քննության սիմուլյացիա</string>
     <string name="practice_exam_desc">20 հարց · 30 րոպե · առավելագույնը 2 սխալ։ Կրկնում է իրական հայկական վարորդական քննությունը։</string>
