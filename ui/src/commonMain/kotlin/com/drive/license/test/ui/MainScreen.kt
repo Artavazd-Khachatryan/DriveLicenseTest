@@ -363,6 +363,7 @@ fun MainScreen(
         )
         Screen.Results -> TestResultsScreen(
             session = testSession!!,
+            onReviewMistakes = { navigate(Screen.Mistakes) },
             onBackToHome = {
                 backStack.clear()
                 backStack.add(Screen.Home)
