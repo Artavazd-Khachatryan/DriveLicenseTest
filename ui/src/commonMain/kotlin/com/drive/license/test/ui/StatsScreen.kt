@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
@@ -22,7 +21,6 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -42,7 +40,9 @@ import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppScaffold
+import com.drive.license.test.ui.components.MasteryRow
 import com.drive.license.test.ui.components.ProgressRing
+import com.drive.license.test.ui.components.StatChip
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.back
 import drivelicensetest.ui.generated.resources.stats_by_category
@@ -58,7 +58,6 @@ import drivelicensetest.ui.generated.resources.stats_test_history
 import drivelicensetest.ui.generated.resources.stats_title
 import drivelicensetest.ui.generated.resources.stats_total_attempts
 import com.drive.license.test.ui.util.AdaptiveContentContainer
-import com.drive.license.test.ui.util.accuracyColor
 import com.drive.license.test.ui.util.formatCategoryName
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
@@ -68,7 +67,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun StatsScreen(
     userProgressRepository: UserProgressRepository,
-    onBack: () -> Unit,
+    onBack: (() -> Unit)? = null,
     bottomBar: @Composable (() -> Unit)? = null
 ) {
     var stats by remember { mutableStateOf(UserStatistics()) }
@@ -85,11 +84,13 @@ fun StatsScreen(
 
     AppScaffold(
         topBarTitle = stringResource(Res.string.stats_title),
-        navigationIcon = {
-            AppBackNavigationIcon(
-                onClick = onBack,
-                contentDescription = stringResource(Res.string.back),
-            )
+        navigationIcon = onBack?.let {
+            {
+                AppBackNavigationIcon(
+                    onClick = it,
+                    contentDescription = stringResource(Res.string.back),
+                )
+            }
         },
         bottomBar = bottomBar
     ) { inner ->
@@ -126,30 +127,47 @@ private fun OverallStatsCard(stats: UserStatistics) {
     AppCard(modifier = Modifier.fillMaxWidth()) {
         Column(
             modifier = Modifier.padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text = stringResource(Res.string.stats_overall_performance),
                 style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            ProgressRing(
+                progress = stats.overallAccuracy,
+                size = 132.dp,
+                strokeWidth = 12.dp
             )
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                verticalAlignment = Alignment.CenterVertically
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                ProgressRing(
-                    progress = stats.overallAccuracy,
-                    size = 100.dp,
-                    strokeWidth = 10.dp
+                StatChip(
+                    label = stringResource(Res.string.stats_correct),
+                    value = stats.totalCorrect.toString(),
+                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                    modifier = Modifier.weight(1f)
                 )
-
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    StatRow(label = stringResource(Res.string.stats_total_attempts), value = stats.totalAttempts.toString())
-                    StatRow(label = stringResource(Res.string.stats_correct), value = stats.totalCorrect.toString(), positive = true)
-                    StatRow(label = stringResource(Res.string.stats_incorrect), value = stats.totalIncorrect.toString(), positive = false)
-                }
+                StatChip(
+                    label = stringResource(Res.string.stats_incorrect),
+                    value = stats.totalIncorrect.toString(),
+                    containerColor = MaterialTheme.colorScheme.errorContainer,
+                    contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                    modifier = Modifier.weight(1f)
+                )
+                StatChip(
+                    label = stringResource(Res.string.stats_total_attempts),
+                    value = stats.totalAttempts.toString(),
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                    contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.weight(1f)
+                )
             }
         }
     }
@@ -159,13 +177,14 @@ private fun OverallStatsCard(stats: UserStatistics) {
 private fun CategoryBreakdownCard(categories: List<CategoryStats>) {
     AppCard(modifier = Modifier.fillMaxWidth()) {
         Column(
-            modifier = Modifier.padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            modifier = Modifier.padding(horizontal = 20.dp, vertical = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Text(
                 text = stringResource(Res.string.stats_by_category),
                 style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 8.dp)
             )
 
             if (categories.isEmpty()) {
@@ -176,55 +195,16 @@ private fun CategoryBreakdownCard(categories: List<CategoryStats>) {
                 )
             } else {
                 categories.forEachIndexed { index, cat ->
-                    CategoryRow(cat)
+                    MasteryRow(
+                        label = formatCategoryName(cat.categoryName),
+                        accuracy = cat.accuracy,
+                        attempted = cat.attempted,
+                    )
                     if (index < categories.lastIndex) {
                         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                     }
                 }
             }
-        }
-    }
-}
-
-@Composable
-private fun CategoryRow(cat: CategoryStats) {
-    val displayName = formatCategoryName(cat.categoryName)
-
-    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = displayName,
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.weight(1f)
-            )
-            if (cat.attempted) {
-                Text(
-                    text = "${(cat.accuracy * 100).toInt()}%",
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.SemiBold,
-                    color = accuracyColor(cat.accuracy)
-                )
-            } else {
-                Text(
-                    text = "—",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-        }
-        if (cat.attempted) {
-            LinearProgressIndicator(
-                progress = { cat.accuracy },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(4.dp),
-                color = accuracyColor(cat.accuracy),
-                trackColor = MaterialTheme.colorScheme.surfaceVariant
-            )
         }
     }
 }
@@ -298,27 +278,6 @@ private fun TestHistoryRow(session: TestSessionSummary) {
                 tint = if (session.passed) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error
             )
         }
-    }
-}
-
-@Composable
-private fun StatRow(label: String, value: String, positive: Boolean? = null) {
-    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        Text(
-            text = value,
-            style = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.Bold,
-            color = when (positive) {
-                true -> MaterialTheme.colorScheme.primary
-                false -> MaterialTheme.colorScheme.error
-                null -> MaterialTheme.colorScheme.onSurface
-            }
-        )
-        Text(
-            text = label,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
     }
 }
 
