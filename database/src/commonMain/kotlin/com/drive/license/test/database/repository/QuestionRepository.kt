@@ -8,16 +8,19 @@ import com.drive.license.test.domain.repository.QuestionRepository as DomainQues
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.domain.model.QuestionCategory
 import com.drive.license.test.domain.model.Book
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.withContext
 
 class QuestionRepository(private val database: Database) : DomainQuestionRepository {
 
     override fun getAllQuestions(): Flow<List<Question>> {
         return database.getAllQuestions().map { databaseQuestions ->
             databaseQuestions.map { it.toDomainModel() }
-        }
+        }.flowOn(Dispatchers.Default)
     }
     
     fun getQuestionById(id: Long): DatabaseQuestion? {
@@ -37,7 +40,7 @@ class QuestionRepository(private val database: Database) : DomainQuestionReposit
             questions.filter { question ->
                 question.categories.any { it.name == category.name }
             }.map { it.toDomainModel() }
-        }
+        }.flowOn(Dispatchers.Default)
     }
     
     override fun getQuestionsByBook(book: Book): Flow<List<Question>> {
@@ -45,25 +48,33 @@ class QuestionRepository(private val database: Database) : DomainQuestionReposit
             questions.filter { question ->
                 question.book.name == book.name
             }.map { it.toDomainModel() }
-        }
+        }.flowOn(Dispatchers.Default)
     }
     
     override suspend fun getRandomQuestions(count: Int): List<Question> {
-        return database.getAllQuestions().map { questions ->
-            questions.shuffled().take(count).map { it.toDomainModel() }
-        }.first()
+        return withContext(Dispatchers.Default) {
+            database.getAllQuestions().map { questions ->
+                questions.shuffled().take(count).map { it.toDomainModel() }
+            }.first()
+        }
     }
     
     override suspend fun getQuestionById(id: Int): Question? {
-        return database.getQuestionById(id.toLong())?.toDomainModel()
+        return withContext(Dispatchers.Default) {
+            database.getQuestionById(id.toLong())?.toDomainModel()
+        }
     }
 
     override suspend fun getWeakAreaQuestions(): List<Question> {
-        return database.getWeakAreaQuestions().map { it.toDomainModel() }
+        return withContext(Dispatchers.Default) {
+            database.getWeakAreaQuestions().map { it.toDomainModel() }
+        }
     }
 
     override suspend fun getBookmarkedQuestionsForPractice(): List<Question> {
-        return database.getBookmarkedQuestionsFull().map { it.toDomainModel() }
+        return withContext(Dispatchers.Default) {
+            database.getBookmarkedQuestionsFull().map { it.toDomainModel() }
+        }
     }
     
     fun insertDatabaseQuestion(databaseQuestion: DatabaseQuestion): Long {
