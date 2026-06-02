@@ -144,4 +144,10 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
             database.getQuestionAttemptCounts()
         }
     }
+
+    override suspend fun resetStatistics() {
+        withContext(Dispatchers.Default) {
+            database.resetStatistics()
+        }
+    }
 }

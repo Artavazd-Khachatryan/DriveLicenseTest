@@ -261,7 +261,7 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
     }
 
     suspend fun getWeakAreaQuestions(): List<DatabaseQuestion> = withContext(Dispatchers.IO) {
-        userProgressQueries.getQuestionsByDifficulty().executeAsList().map { row ->
+        userProgressQueries.getWeakAreaQuestionsFull().executeAsList().map { row ->
             val bookEnum = Book.valueOf(row.book_name)
             val categories = junctionQueries.selectCategoriesForQuestion(row.id)
                 .executeAsList()
@@ -289,6 +289,14 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
 
     suspend fun getIncorrectQuestions() = withContext(Dispatchers.IO) {
         userProgressQueries.getIncorrectQuestions().executeAsList()
+    }
+
+    suspend fun resetStatistics() = withContext(Dispatchers.IO) {
+        // Clear most-dependent tables first.
+        userProgressQueries.deleteAllQuestionAttempts()
+        userProgressQueries.deleteAllTestSessions()
+        userProgressQueries.deleteAllQuestionProgress()
+        userProgressQueries.resetStreak()
     }
 
     // --- Streak Operations ---

@@ -7034,7 +7034,7 @@
     <string name="practice_weak_areas_empty">Նախ կատարեք թեստ՝ ձեր թույլ կողմերը բացահայտելու համար:</string>
     <string name="practice_weak_areas_button">Սկսել պարապանքը</string>
     <string name="practice_exam_title">Քննության սիմուլյացիա</string>
-    <string name="practice_exam_desc">30 հարց · 20 րոպե · անցում 70%-ով։ Կրկնում է իրական հայկական վարորդական քննությունը։</string>
+    <string name="practice_exam_desc">20 հարց · 30 րոպե · առավելագույնը 2 սխալ։ Կրկնում է իրական հայկական վարորդական քննությունը։</string>
     <string name="practice_exam_button">Սկսել քննությունը</string>
 
     <!-- Category Picker Screen -->
@@ -7071,6 +7071,13 @@
     <string name="settings_reminder_subtitle">Ստացեք մեղմ հիշեցում ամեն օր պարապելու համար</string>
     <string name="settings_reminder_time_label">Հիշեցման ժամ</string>
     <string name="settings_reminder_change_time">Փոխել ժամը</string>
+
+    <!-- Reset statistics -->
+    <string name="settings_reset_title">Վերակայել վիճակագրությունը</string>
+    <string name="settings_reset_subtitle">Կջնջվեն բոլոր փորձերը, ճիշտ/սխալ պատասխանների հաշվարկը, սովորած հարցերը, սերիան և թեստերի պատմությունը։</string>
+    <string name="settings_reset_button">Վերակայել</string>
+    <string name="settings_reset_dialog_title">Վերակայե՞լ վիճակագրությունը</string>
+    <string name="settings_reset_dialog_message">Այս գործողությունը հետ չի վերադարձվում։</string>
     <string name="settings_reminder_pick_time_title">Ընտրեք հիշեցման ժամը</string>
     <string name="settings_reminder_pick_time_hint">Ժամը կկիրառվի, երբ միացնեք օրական հիշեցումը</string>
     <string name="settings_reminder_permission_denied">Ծանուցումները թույլատրված չեն։ Միացրեք համակարգի կարգավորումներից։</string>

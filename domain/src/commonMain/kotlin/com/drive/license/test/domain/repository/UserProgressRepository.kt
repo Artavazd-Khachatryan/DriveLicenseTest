@@ -18,4 +18,7 @@ interface UserProgressRepository {
     suspend fun isBookmarked(questionId: Int): Boolean
     suspend fun toggleBookmark(questionId: Int, bookmarkedAt: Long)
     suspend fun getQuestionAttemptCounts(): Map<Int, Int>
+
+    /** Destructive: clears attempts/progress/streak/test history. */
+    suspend fun resetStatistics()
 }

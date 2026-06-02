@@ -41,7 +41,10 @@ import androidx.compose.ui.unit.dp
 import com.drive.license.test.domain.model.ReminderSettings
 import com.drive.license.test.domain.repository.ReminderPreferences
 import com.drive.license.test.domain.repository.ReminderScheduler
+import com.drive.license.test.domain.repository.UserProgressRepository
+import kotlinx.coroutines.launch
 import com.drive.license.test.ui.components.AppBackNavigationIcon
+import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.ThemeModeSelector
@@ -58,16 +61,23 @@ import drivelicensetest.ui.generated.resources.settings_reminder_pick_time_title
 import drivelicensetest.ui.generated.resources.settings_reminder_subtitle
 import drivelicensetest.ui.generated.resources.settings_reminder_time_label
 import drivelicensetest.ui.generated.resources.settings_reminder_title
+import drivelicensetest.ui.generated.resources.settings_reset_button
+import drivelicensetest.ui.generated.resources.settings_reset_dialog_message
+import drivelicensetest.ui.generated.resources.settings_reset_dialog_title
+import drivelicensetest.ui.generated.resources.settings_reset_subtitle
+import drivelicensetest.ui.generated.resources.settings_reset_title
 import drivelicensetest.ui.generated.resources.settings_theme_subtitle
 import drivelicensetest.ui.generated.resources.settings_theme_title
 import drivelicensetest.ui.generated.resources.settings_title
 import org.jetbrains.compose.resources.stringResource
+import androidx.compose.runtime.rememberCoroutineScope
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
     reminderPreferences: ReminderPreferences,
     reminderScheduler: ReminderScheduler,
+    userProgressRepository: UserProgressRepository,
     isDarkTheme: Boolean,
     onDarkThemeChange: (Boolean) -> Unit,
     onBack: () -> Unit,
@@ -77,6 +87,8 @@ fun SettingsScreen(
     var loaded by remember { mutableStateOf(false) }
     var showTimePicker by remember { mutableStateOf(false) }
     var permissionDenied by remember { mutableStateOf(false) }
+    var showResetDialog by remember { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
         settings = reminderPreferences.load()
@@ -195,6 +207,30 @@ fun SettingsScreen(
                         )
                     }
                 }
+
+                AppCard(modifier = Modifier.fillMaxWidth()) {
+                    Column(modifier = Modifier.padding(20.dp)) {
+                        Text(
+                            text = stringResource(Res.string.settings_reset_title),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = stringResource(Res.string.settings_reset_subtitle),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        AppButton(
+                            text = stringResource(Res.string.settings_reset_button),
+                            onClick = { showResetDialog = true },
+                            modifier = Modifier.fillMaxWidth(),
+                            containerColor = MaterialTheme.colorScheme.error,
+                            contentColor = MaterialTheme.colorScheme.onError,
+                        )
+                    }
+                }
             }
         }
     }
@@ -228,6 +264,27 @@ fun SettingsScreen(
             text = {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     TimePicker(state = timeState)
+                }
+            }
+        )
+    }
+
+    if (showResetDialog) {
+        AlertDialog(
+            onDismissRequest = { showResetDialog = false },
+            title = { Text(stringResource(Res.string.settings_reset_dialog_title)) },
+            text = { Text(stringResource(Res.string.settings_reset_dialog_message)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    showResetDialog = false
+                    coroutineScope.launch {
+                        userProgressRepository.resetStatistics()
+                    }
+                }) { Text(stringResource(Res.string.settings_dialog_ok)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { showResetDialog = false }) {
+                    Text(stringResource(Res.string.settings_dialog_cancel))
                 }
             }
         )

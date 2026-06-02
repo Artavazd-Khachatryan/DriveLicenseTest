@@ -217,3 +217,17 @@ FROM TestSession
 WHERE is_completed = 1
 ORDER BY start_time DESC
 LIMIT 50;
+
+-- Reset statistics: clears question progress, attempts, sessions and streak.
+deleteAllQuestionAttempts:
+DELETE FROM QuestionAttempt;
+
+deleteAllTestSessions:
+DELETE FROM TestSession;
+
+deleteAllQuestionProgress:
+DELETE FROM UserQuestionProgress;
+
+resetStreak:
+INSERT OR REPLACE INTO UserStreak (id, current_streak, longest_streak, last_active_day)
+VALUES (1, 0, 0, NULL);

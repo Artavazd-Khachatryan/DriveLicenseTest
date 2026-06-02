@@ -1,6 +1,9 @@
 package com.drive.license.test.ui
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.SizeTransform
+import androidx.compose.animation.core.snap
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
@@ -163,12 +166,11 @@ fun MainScreen(
         modifier = Modifier.fillMaxSize(),
         contentKey = { screen -> screen::class },
         transitionSpec = {
-            if (targetState.isTopLevel && initialState.isTopLevel) {
-                fadeIn() togetherWith fadeOut()
-            } else {
-                // Fade avoids overlapping screens stealing touches on iOS during slide transitions.
-                fadeIn() togetherWith fadeOut()
-            }
+            // Fade avoids overlapping screens stealing touches on iOS during slide transitions.
+            // Quick tween + snapped size transform keeps navigation feeling instant.
+            val fadeSpec = tween<Float>(durationMillis = 140)
+            (fadeIn(fadeSpec) togetherWith fadeOut(fadeSpec))
+                .using(SizeTransform(clip = false) { _, _ -> snap() })
         },
         label = "screen_transition"
     ) { screen ->
@@ -349,6 +351,7 @@ fun MainScreen(
         Screen.Settings -> SettingsScreen(
             reminderPreferences = reminderPreferences,
             reminderScheduler = reminderScheduler,
+            userProgressRepository = userProgressRepository,
             isDarkTheme = isDarkTheme,
             onDarkThemeChange = onDarkThemeChange,
             onBack = { navigateBack() }
