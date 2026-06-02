@@ -180,7 +180,7 @@ fun AppCard(
     containerColor: Color = MaterialTheme.colorScheme.surfaceContainerLow,
     contentColor: Color = MaterialTheme.colorScheme.onSurface,
     shape: Shape = MaterialTheme.shapes.large,
-    elevation: Dp = 0.dp,
+    elevation: Dp = 2.dp,
     border: BorderStroke? = null,
     content: @Composable () -> Unit
 ) {

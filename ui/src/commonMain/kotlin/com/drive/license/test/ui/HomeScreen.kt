@@ -7,7 +7,7 @@ import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
-import androidx.compose.foundation.background
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,11 +28,12 @@ import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -43,7 +44,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -256,21 +256,10 @@ private fun HomeHeroCard(
 ) {
     AppCard(
         modifier = modifier,
-        containerColor = MaterialTheme.colorScheme.surface,
+        containerColor = MaterialTheme.colorScheme.primaryContainer,
+        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(
-                    Brush.verticalGradient(
-                        colors = listOf(
-                            MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.55f),
-                            MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.12f),
-                        )
-                    )
-                )
-                .padding(20.dp)
-        ) {
+        Box(modifier = Modifier.fillMaxWidth().padding(20.dp)) {
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -285,12 +274,12 @@ private fun HomeHeroCard(
                             text = stringResource(Res.string.home_ready_title),
                             style = MaterialTheme.typography.headlineSmall,
                             fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onSurface,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
                         )
                         Text(
                             text = homeMotivationMessage(userStatistics),
                             style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f),
                         )
                         if (userStatistics.currentStreak > 0) {
                             Spacer(modifier = Modifier.height(2.dp))
@@ -324,13 +313,13 @@ private fun HomeHeroCard(
                                 text = "$animatedPercentage%",
                                 style = MaterialTheme.typography.titleLarge,
                                 fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.primary,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer,
                                 maxLines = 1,
                             )
                             Text(
                                 text = stringResource(Res.string.home_accuracy),
                                 style = MaterialTheme.typography.labelMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f),
                                 maxLines = 1,
                             )
                         }
@@ -409,27 +398,15 @@ private fun StartPracticeCard(
     onOpenPractice: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val chipColors = FilterChipDefaults.filterChipColors(
-        selectedContainerColor = MaterialTheme.colorScheme.onPrimary,
-        selectedLabelColor = MaterialTheme.colorScheme.primary,
-        containerColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.2f),
-        labelColor = MaterialTheme.colorScheme.onPrimary
-    )
+    val options = listOf(10, 20, 30)
     AppCard(
         modifier = modifier,
-        containerColor = MaterialTheme.colorScheme.primary
+        containerColor = MaterialTheme.colorScheme.primary,
+        contentColor = MaterialTheme.colorScheme.onPrimary,
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(
-                    Brush.verticalGradient(
-                        colors = listOf(
-                            MaterialTheme.colorScheme.primary,
-                            MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)
-                        )
-                    )
-                )
                 .padding(horizontal = 20.dp, vertical = 20.dp)
         ) {
             Column(
@@ -484,16 +461,20 @@ private fun StartPracticeCard(
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    listOf(10, 20, 30).forEach { count ->
-                        FilterChip(
+                SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+                    options.forEachIndexed { index, count ->
+                        SegmentedButton(
                             selected = selectedTestLength == count,
                             onClick = { onSelectLength(count) },
+                            shape = SegmentedButtonDefaults.itemShape(index, options.size),
+                            colors = SegmentedButtonDefaults.colors(
+                                activeContainerColor = MaterialTheme.colorScheme.onPrimary,
+                                activeContentColor = MaterialTheme.colorScheme.primary,
+                                inactiveContainerColor = MaterialTheme.colorScheme.primary,
+                                inactiveContentColor = MaterialTheme.colorScheme.onPrimary,
+                            ),
+                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.onPrimary),
                             label = { Text(stringResource(Res.string.home_question_count, count)) },
-                            colors = chipColors
                         )
                     }
                 }
