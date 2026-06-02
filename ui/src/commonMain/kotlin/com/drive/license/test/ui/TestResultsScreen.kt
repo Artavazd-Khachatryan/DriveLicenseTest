@@ -60,8 +60,12 @@ fun TestResultsScreen(
 ) {
     val total = session.questions.size
     val score = if (total > 0) session.correctAnswers.toFloat() / total else 0f
-    val passed = score >= 0.8f
     val incorrect = total - session.correctAnswers
+    val passed = if (session.isExamMode) {
+        incorrect <= TestSession.EXAM_MAX_MISTAKES
+    } else {
+        score >= 0.8f
+    }
 
     var heroVisible by remember { mutableStateOf(false) }
     var statsVisible by remember { mutableStateOf(false) }

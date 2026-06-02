@@ -14,8 +14,11 @@ data class TestSession(
     val examDurationSeconds: Int = EXAM_DURATION_SECONDS
 ) {
     companion object {
-        const val EXAM_DURATION_SECONDS = 20 * 60  // 20 minutes
-        const val EXAM_QUESTION_COUNT = 30
+        // Mirrors the official Armenian theory exam: 20 questions, 30 minutes,
+        // pass requires at least 18 correct (max 2 mistakes).
+        const val EXAM_DURATION_SECONDS = 30 * 60
+        const val EXAM_QUESTION_COUNT = 20
+        const val EXAM_MAX_MISTAKES = 2
     }
     val currentQuestion: Question
         get() = questions[currentQuestionIndex]
