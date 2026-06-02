@@ -109,6 +109,18 @@ Help users find a physical driving school in Armenia — **list view only** (no 
 
 ---
 
+## Daltonism (Color Blindness) Tests
+
+Add a dedicated section for color-vision practice (separate from the driving exam question bank).
+
+- **D.1 Content** — Add a small offline test set (e.g., Ishihara-style plates) with localized instructions and clear disclaimers (screening only; not a medical diagnosis)
+- **D.2 UX flow** — Entry point from Home/Practice; step-by-step test; results summary; “try again” and “learn more” links (optional)
+- **D.3 Accessibility** — Ensure all images have meaningful descriptions; no “color only” cues; support dark mode and large text where applicable
+- **D.4 Persistence** — Save last test date/result locally (optional) for history and reminders
+- **D.5 QA** — Verify on Android + iOS, multiple screen sizes, and both themes
+
+---
+
 ## Encouragement messages (current behavior)
 
 Context-aware Armenian copy — **not** a chat bot; rules live in `MotivationLogic.kt` + `strings.xml`.
