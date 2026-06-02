@@ -1,18 +1,17 @@
 package com.drive.license.test.ui.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.LightMode
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.settings_theme_dark
 import drivelicensetest.ui.generated.resources.settings_theme_light
@@ -26,25 +25,20 @@ fun ThemeModeSelector(
     onDarkThemeChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        FilterChip(
+    SingleChoiceSegmentedButtonRow(modifier = modifier) {
+        SegmentedButton(
             selected = !isDarkTheme,
             onClick = { onDarkThemeChange(false) },
+            shape = SegmentedButtonDefaults.itemShape(0, 2),
+            icon = { Icon(Icons.Default.LightMode, contentDescription = null) },
             label = { Text(stringResource(Res.string.settings_theme_light)) },
-            leadingIcon = if (!isDarkTheme) {
-                { Icon(Icons.Default.LightMode, contentDescription = null) }
-            } else null,
         )
-        FilterChip(
+        SegmentedButton(
             selected = isDarkTheme,
             onClick = { onDarkThemeChange(true) },
+            shape = SegmentedButtonDefaults.itemShape(1, 2),
+            icon = { Icon(Icons.Default.DarkMode, contentDescription = null) },
             label = { Text(stringResource(Res.string.settings_theme_dark)) },
-            leadingIcon = if (isDarkTheme) {
-                { Icon(Icons.Default.DarkMode, contentDescription = null) }
-            } else null,
         )
     }
 }

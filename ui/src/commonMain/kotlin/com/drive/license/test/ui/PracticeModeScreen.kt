@@ -1,6 +1,7 @@
 package com.drive.license.test.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,23 +10,23 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.filled.TrendingDown
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.drive.license.test.ui.components.AppButton
@@ -60,16 +61,18 @@ fun PracticeModeScreen(
     onStartWeakAreas: () -> Unit,
     onStartExam: () -> Unit,
     onOpenBookmarks: () -> Unit,
-    onBack: () -> Unit,
+    onBack: (() -> Unit)? = null,
     bottomBar: @Composable (() -> Unit)? = null
 ) {
     AppScaffold(
         topBarTitle = stringResource(Res.string.practice_title),
-        navigationIcon = {
-            AppBackNavigationIcon(
-                onClick = onBack,
-                contentDescription = stringResource(Res.string.back),
-            )
+        navigationIcon = onBack?.let {
+            {
+                AppBackNavigationIcon(
+                    onClick = it,
+                    contentDescription = stringResource(Res.string.back),
+                )
+            }
         },
         bottomBar = bottomBar
     ) { inner ->
@@ -85,16 +88,17 @@ fun PracticeModeScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             PracticeCard(
-                icon = { Icon(Icons.Default.Category, contentDescription = null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.primary) },
+                icon = Icons.Default.Category,
+                accent = MaterialTheme.colorScheme.primary,
                 title = stringResource(Res.string.practice_by_category_title),
                 description = stringResource(Res.string.practice_by_category_desc),
                 buttonText = stringResource(Res.string.practice_by_category_button),
                 onClick = onPickCategory,
-                containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f)
             )
 
             PracticeCard(
-                icon = { Icon(Icons.Default.TrendingDown, contentDescription = null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.error) },
+                icon = Icons.Default.TrendingDown,
+                accent = MaterialTheme.colorScheme.error,
                 title = stringResource(Res.string.practice_weak_areas_title),
                 description = if (weakAreaCount > 0)
                     stringResource(Res.string.practice_weak_areas_count, weakAreaCount)
@@ -103,20 +107,20 @@ fun PracticeModeScreen(
                 buttonText = stringResource(Res.string.practice_weak_areas_button),
                 onClick = onStartWeakAreas,
                 enabled = weakAreaCount > 0,
-                containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.3f)
             )
 
             PracticeCard(
-                icon = { Icon(Icons.Default.Timer, contentDescription = null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.tertiary) },
+                icon = Icons.Default.Timer,
+                accent = MaterialTheme.colorScheme.tertiary,
                 title = stringResource(Res.string.practice_exam_title),
                 description = stringResource(Res.string.practice_exam_desc),
                 buttonText = stringResource(Res.string.practice_exam_button),
                 onClick = onStartExam,
-                containerColor = MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.3f)
             )
 
             PracticeCard(
-                icon = { Icon(Icons.Default.Bookmark, contentDescription = null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.secondary) },
+                icon = Icons.Default.Bookmark,
+                accent = MaterialTheme.colorScheme.secondary,
                 title = stringResource(Res.string.practice_bookmarks_title),
                 description = if (bookmarkCount > 0)
                     stringResource(Res.string.practice_bookmarks_desc)
@@ -125,7 +129,6 @@ fun PracticeModeScreen(
                 buttonText = stringResource(Res.string.practice_bookmarks_button),
                 onClick = onOpenBookmarks,
                 enabled = bookmarkCount > 0,
-                containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.3f)
             )
         }
         }
@@ -134,18 +137,34 @@ fun PracticeModeScreen(
 
 @Composable
 private fun PracticeCard(
-    icon: @Composable () -> Unit,
+    icon: ImageVector,
+    accent: Color,
     title: String,
     description: String,
     buttonText: String,
     onClick: () -> Unit,
     enabled: Boolean = true,
-    containerColor: androidx.compose.ui.graphics.Color = MaterialTheme.colorScheme.surface
 ) {
-    AppCard(modifier = Modifier.fillMaxWidth(), containerColor = containerColor) {
+    AppCard(
+        modifier = Modifier.fillMaxWidth(),
+        containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+    ) {
         Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                icon()
+                Surface(
+                    shape = CircleShape,
+                    color = accent.copy(alpha = 0.14f),
+                    modifier = Modifier.size(52.dp),
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = icon,
+                            contentDescription = null,
+                            tint = accent,
+                            modifier = Modifier.size(26.dp),
+                        )
+                    }
+                }
                 Text(text = title, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
             }
             Text(

@@ -96,9 +96,9 @@ fun AiExplanationScreen(
                 }
             }
 
-            val resultColor = if (isCorrect) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error
-            val resultContainerColor = if (isCorrect) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.errorContainer
-            val resultOnContainerColor = if (isCorrect) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onErrorContainer
+            val resultColor = if (isCorrect) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.error
+            val resultContainerColor = if (isCorrect) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.errorContainer
+            val resultOnContainerColor = if (isCorrect) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onErrorContainer
 
             AppCard(
                 modifier = Modifier.fillMaxWidth(),
