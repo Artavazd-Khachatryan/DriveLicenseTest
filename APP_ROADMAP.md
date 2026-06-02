@@ -63,6 +63,10 @@ The app targets Armenian users preparing for the driving exam.
 
 Polish the look and feel.
 
+- **6.0 App logo + launcher icons** — Design a simple brand mark and add proper app icons for:
+  - Android: adaptive icon (foreground/background) + legacy fallbacks
+  - iOS: AppIcon asset catalog (all required sizes)
+  - In-app: optional small logo in Home/TopAppBar (only if it improves brand recognition)
 - **6.1 Dark mode audit** — Fixed hardcoded Color.Red in timer; all other colors use colorScheme tokens
 - **6.2 Long text handling** — Existing verticalScroll on detail screens handles long content; Text wraps naturally
 - **6.3 Empty states** — Mistakes screen has illustrated empty card; Stats cards show inline empty messages
