@@ -60,6 +60,7 @@ fun MainScreen(
 ) {
     val backStack = remember { mutableStateListOf<Screen>(Screen.Home) }
     val currentScreen = backStack.last()
+    val canGoBack = backStack.size > 1
 
     var testSession by remember { mutableStateOf<TestSession?>(null) }
     var userStatistics by remember { mutableStateOf(UserStatistics()) }
@@ -191,7 +192,7 @@ fun MainScreen(
         )
         Screen.Stats -> StatsScreen(
             userProgressRepository = userProgressRepository,
-            onBack = { navigateBack() },
+            onBack = if (canGoBack) ({ navigateBack() }) else null,
             bottomBar = bottomBar
         )
         Screen.Mistakes -> ReviewMistakesScreen(
@@ -225,12 +226,13 @@ fun MainScreen(
                     }
                 },
                 onOpenBookmarks = { navigate(Screen.Bookmarks) },
-                onBack = { navigateBack() },
+                onBack = if (canGoBack) ({ navigateBack() }) else null,
                 bottomBar = bottomBar
             )
         }
         Screen.CategoryPicker -> CategoryPickerScreen(
             categories = remember(allQuestions) { allQuestions.toCategoryInfoList() },
+            userProgressRepository = userProgressRepository,
             onSelectCategory = { category ->
                 coroutineScope.launch {
                     val pool = questionRepository.getQuestionsByCategory(category).first()

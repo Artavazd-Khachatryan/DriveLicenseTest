@@ -1,35 +1,33 @@
 package com.drive.license.test.ui
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.drive.license.test.domain.model.CategoryStats
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.domain.model.QuestionCategory
+import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppScaffold
+import com.drive.license.test.ui.components.MasteryRow
 import drivelicensetest.ui.generated.resources.Res
 import com.drive.license.test.ui.util.formatCategoryName
 import drivelicensetest.ui.generated.resources.back
@@ -46,8 +44,15 @@ data class CategoryInfo(
 fun CategoryPickerScreen(
     categories: List<CategoryInfo>,
     onSelectCategory: (QuestionCategory) -> Unit,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    userProgressRepository: UserProgressRepository? = null,
 ) {
+    var statsByName by remember { mutableStateOf<Map<String, CategoryStats>>(emptyMap()) }
+    LaunchedEffect(userProgressRepository) {
+        val repo = userProgressRepository ?: return@LaunchedEffect
+        statsByName = repo.getCategoryStats().associateBy { it.categoryName }
+    }
+
     AppScaffold(
         topBarTitle = stringResource(Res.string.category_picker_title),
         navigationIcon = {
@@ -68,48 +73,23 @@ fun CategoryPickerScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             AppCard(modifier = Modifier.fillMaxWidth()) {
-                Column(modifier = Modifier.padding(4.dp)) {
+                Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
                     categories.forEachIndexed { index, info ->
-                        CategoryRow(info, onClick = { onSelectCategory(info.category) })
+                        val stats = statsByName[info.category.name]
+                        MasteryRow(
+                            label = formatCategoryName(info.category.name),
+                            subtitle = stringResource(Res.string.category_question_count, info.questionCount),
+                            accuracy = stats?.accuracy ?: 0f,
+                            attempted = stats?.attempted ?: false,
+                            onClick = { onSelectCategory(info.category) },
+                        )
                         if (index < categories.lastIndex) {
-                            HorizontalDivider(
-                                modifier = Modifier.padding(horizontal = 16.dp),
-                                color = MaterialTheme.colorScheme.outlineVariant
-                            )
+                            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                         }
                     }
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun CategoryRow(info: CategoryInfo, onClick: () -> Unit) {
-    val displayName = formatCategoryName(info.category.name)
-
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(min = 48.dp)
-            .clickable(onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Text(text = displayName, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
-            Text(
-                text = stringResource(Res.string.category_question_count, info.questionCount),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
-        Icon(
-            imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.onSurfaceVariant
-        )
     }
 }
 

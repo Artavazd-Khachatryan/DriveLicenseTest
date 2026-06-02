@@ -271,6 +271,7 @@ fun MasteryRow(
     accuracy: Float,
     attempted: Boolean,
     modifier: Modifier = Modifier,
+    subtitle: String? = null,
     onClick: (() -> Unit)? = null,
 ) {
     val percentColor = when {
@@ -297,6 +298,13 @@ fun MasteryRow(
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurface,
             )
+            if (subtitle != null) {
+                Text(
+                    text = subtitle,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
             LinearProgressIndicator(
                 progress = { if (attempted) accuracy.coerceIn(0f, 1f) else 0f },
                 modifier = Modifier.fillMaxWidth().height(6.dp).clip(PillShape),
