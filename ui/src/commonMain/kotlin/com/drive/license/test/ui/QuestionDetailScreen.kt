@@ -17,6 +17,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -33,6 +35,7 @@ import org.jetbrains.compose.resources.painterResource
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppButton
+import com.drive.license.test.ui.components.AppOutlinedButton
 import com.drive.license.test.ui.components.AppThemeToggleIcon
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
@@ -166,6 +169,21 @@ fun QuestionDetailScreen(
             modifier = contentModifier,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            val questionProgress = if (totalQuestions > 0) {
+                questionNumber.toFloat() / totalQuestions
+            } else 0f
+            LinearProgressIndicator(
+                progress = { questionProgress.coerceIn(0f, 1f) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(8.dp)
+                    .clip(MaterialTheme.shapes.small),
+                color = MaterialTheme.colorScheme.primary,
+                trackColor = MaterialTheme.colorScheme.surfaceVariant,
+                gapSize = 0.dp,
+                drawStopIndicator = {},
+            )
+
             AppCard(
                 modifier = Modifier.fillMaxWidth(),
                 containerColor = MaterialTheme.colorScheme.primaryContainer
@@ -235,6 +253,8 @@ fun QuestionDetailScreen(
             question.answers.forEachIndexed { index, answer ->
                 AnswerButton(
                     answer = answer,
+                    index = index,
+                    enabled = !showResult,
                     isSelected = selectedAnswerIndex == index,
                     isCorrect = showResult && answer == question.correctAnswer,
                     isIncorrect = showResult && selectedAnswerIndex == index && answer != question.correctAnswer,
@@ -275,7 +295,7 @@ fun QuestionDetailScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                AppButton(
+                AppOutlinedButton(
                     text = stringResource(Res.string.question_previous),
                     onClick = onPrevious,
                     modifier = Modifier.weight(1f),
