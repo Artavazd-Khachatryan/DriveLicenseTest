@@ -8,6 +8,8 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -48,6 +50,7 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun MainScreen(
     questionRepository: QuestionRepository,
@@ -93,6 +96,44 @@ fun MainScreen(
 
     fun navigateBack() {
         if (backStack.size > 1) backStack.removeAt(backStack.lastIndex)
+    }
+
+    fun navigateToHome() {
+        backStack.clear()
+        backStack.add(Screen.Home)
+        testSession = null
+        examRemainingSeconds = null
+        clearInTestMilestone()
+    }
+
+    /** Mirrors each screen's toolbar back: Android system back + iOS edge-swipe. */
+    fun handleSystemBack() {
+        when (currentScreen) {
+            Screen.Question -> {
+                clearInTestMilestone()
+                testSession = null
+                examRemainingSeconds = null
+                navigateBack()
+            }
+            Screen.Results -> navigateToHome()
+            Screen.Settings -> {
+                coroutineScope.launch { refreshUserProgress() }
+                navigateBack()
+            }
+            Screen.Practice, Screen.Stats -> {
+                if (backStack.size == 1) navigate(Screen.Home) else navigateBack()
+            }
+            else -> navigateBack()
+        }
+    }
+
+    val interceptSystemBack = canGoBack
+        || currentScreen is Screen.Question
+        || currentScreen is Screen.Results
+        || (currentScreen.isTopLevel && currentScreen !is Screen.Home && backStack.size == 1)
+
+    BackHandler(enabled = interceptSystemBack) {
+        handleSystemBack()
     }
 
     fun pickFromPool(pool: List<Question>, count: Int): List<Question> =
@@ -199,7 +240,16 @@ fun MainScreen(
         )
         Screen.Mistakes -> ReviewMistakesScreen(
             userProgressRepository = userProgressRepository,
-            onBack = { navigateBack() }
+            onBack = { navigateBack() },
+            onPracticeMistakes = {
+                coroutineScope.launch {
+                    val mistakeIds = userProgressRepository.getMistakeQuestions().map { it.id }.toSet()
+                    val pool = allQuestions.filter { it.id in mistakeIds }
+                    if (pool.isNotEmpty()) {
+                        startTest(pool, minOf(pool.size, 20))
+                    }
+                }
+            },
         )
         Screen.Practice -> {
             var weakAreaCount by remember { mutableStateOf(0) }
@@ -243,7 +293,11 @@ fun MainScreen(
             },
             onBack = { navigateBack() }
         )
-        Screen.Question -> testSession?.let { session ->
+        Screen.Question -> {
+            val session = testSession
+            if (session == null) {
+                LaunchedEffect(Unit) { navigateBack() }
+            } else {
             LaunchedEffect(session.currentQuestion.id) {
                 currentQuestionBookmarked = userProgressRepository.isBookmarked(session.currentQuestion.id)
             }
@@ -256,14 +310,11 @@ fun MainScreen(
                 isBookmarked = currentQuestionBookmarked,
                 isDarkTheme = isDarkTheme,
                 onDarkThemeChange = onDarkThemeChange,
-                onBack = {
-                    clearInTestMilestone()
-                    navigateBack()
-                },
+                onBack = { handleSystemBack() },
                 onAnswer = { answer ->
                     val updated = session.answerQuestion(answer)
                     testSession = updated
-                    if (shouldShowInTestMotivation(updated.totalAnswered)) {
+                    if (AppFeatures.motivationEnabled && shouldShowInTestMotivation(updated.totalAnswered)) {
                         inTestMilestoneKind = resolveInTestMotivationKind(
                             updated.totalAnswered,
                             updated.correctAnswers,
@@ -327,6 +378,7 @@ fun MainScreen(
                     }
                 } else null
             )
+            }
         }
         Screen.Bookmarks -> BookmarksScreen(
             userProgressRepository = userProgressRepository,
@@ -354,7 +406,10 @@ fun MainScreen(
             userProgressRepository = userProgressRepository,
             isDarkTheme = isDarkTheme,
             onDarkThemeChange = onDarkThemeChange,
-            onBack = { navigateBack() }
+            onBack = { handleSystemBack() },
+            onStatisticsReset = {
+                coroutineScope.launch { refreshUserProgress() }
+            },
         )
         is Screen.AiExplanation -> AiExplanationScreen(
             questionText = screen.questionText,
@@ -364,25 +419,42 @@ fun MainScreen(
             aiAssistant = aiAssistant,
             onBack = { navigateBack() }
         )
-        Screen.Results -> TestResultsScreen(
-            session = testSession!!,
-            onReviewMistakes = { navigate(Screen.Mistakes) },
-            onBackToHome = {
-                backStack.clear()
-                backStack.add(Screen.Home)
-                testSession = null
-                examRemainingSeconds = null
-                clearInTestMilestone()
-            },
-            onRetakeTest = {
-                val selected = pickFromPool(allQuestions, 20)
-                if (selected.isNotEmpty()) {
-                    testSession = TestSession(questions = selected)
-                    backStack.removeAt(backStack.lastIndex)
-                    backStack.add(Screen.Question)
+        Screen.Results -> {
+            val session = testSession
+            if (session == null) {
+                LaunchedEffect(Unit) {
+                    backStack.clear()
+                    backStack.add(Screen.Home)
                 }
+            } else {
+                TestResultsScreen(
+                    session = session,
+                    onReviewMistakes = { navigate(Screen.Mistakes) },
+                    onBackToHome = { navigateToHome() },
+                    onRetakeTest = {
+                        val count = session.questions.size
+                        val selected = pickFromPool(allQuestions, count)
+                        if (selected.isNotEmpty()) {
+                            clearInTestMilestone()
+                            testSession = TestSession(
+                                questions = selected,
+                                isExamMode = session.isExamMode,
+                            )
+                            if (session.isExamMode) {
+                                examRemainingSeconds = TestSession.EXAM_DURATION_SECONDS
+                            } else {
+                                examRemainingSeconds = null
+                            }
+                            if (backStack.last() is Screen.Results) {
+                                backStack[backStack.lastIndex] = Screen.Question
+                            } else {
+                                navigate(Screen.Question)
+                            }
+                        }
+                    },
+                )
             }
-        )
+        }
     }
     } // AnimatedContent
 }
