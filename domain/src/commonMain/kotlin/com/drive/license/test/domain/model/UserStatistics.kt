@@ -11,4 +11,11 @@ data class UserStatistics(
 ) {
     val overallAccuracy: Float
         get() = if (totalAttempts > 0) totalCorrect.toFloat() / totalAttempts else 0f
+
+    /** Share of the full question bank marked learned (net-correct margin > 3). */
+    val learningProgress: Float
+        get() = if (totalQuestions > 0) learnedQuestions.toFloat() / totalQuestions else 0f
+
+    val questionsRemaining: Int
+        get() = (totalQuestions - learnedQuestions).coerceAtLeast(0)
 }

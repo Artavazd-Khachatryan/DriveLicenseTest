@@ -39,6 +39,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -60,8 +61,10 @@ import com.drive.license.test.ui.util.AdaptiveContentContainer
 import com.drive.license.test.ui.util.estimatedTestMinutes
 import com.drive.license.test.ui.util.homeMotivationMessage
 import drivelicensetest.ui.generated.resources.Res
-import drivelicensetest.ui.generated.resources.home_accuracy
-import drivelicensetest.ui.generated.resources.home_accuracy_ring_cd
+import drivelicensetest.ui.generated.resources.home_learning_complete
+import drivelicensetest.ui.generated.resources.home_learning_progress
+import drivelicensetest.ui.generated.resources.home_learning_ring_cd
+import drivelicensetest.ui.generated.resources.home_seen_progress
 import drivelicensetest.ui.generated.resources.home_ai_assistant_subtitle
 import drivelicensetest.ui.generated.resources.home_ai_assistant_title
 import drivelicensetest.ui.generated.resources.home_chat_button
@@ -77,6 +80,9 @@ import drivelicensetest.ui.generated.resources.home_review_mistakes_title
 import drivelicensetest.ui.generated.resources.home_start_button
 import drivelicensetest.ui.generated.resources.home_start_test_subtitle
 import drivelicensetest.ui.generated.resources.home_start_test_title
+import drivelicensetest.ui.generated.resources.home_stat_learned
+import drivelicensetest.ui.generated.resources.home_stat_remaining
+import drivelicensetest.ui.generated.resources.home_stat_seen
 import drivelicensetest.ui.generated.resources.home_stat_attempted
 import drivelicensetest.ui.generated.resources.home_stat_correct
 import drivelicensetest.ui.generated.resources.home_stat_incorrect
@@ -139,6 +145,8 @@ fun HomeScreen(
                     HomeHeroCard(
                         modifier = cardModifier,
                         userStatistics = userStatistics,
+                        totalQuestionCount = totalQuestionCount,
+                        unseenQuestionCount = unseenQuestionCount,
                         onOpenStatsFromRing = onOpenStatsFromRing,
                     )
                 }
@@ -191,7 +199,6 @@ fun HomeScreen(
                         if (AppFeatures.drivingSchoolsEnabled) {
                             FeatureCard(
                                 modifier = Modifier.fillMaxWidth(),
-                                layoutHorizontal = true,
                                 icon = Icons.Filled.School,
                                 title = stringResource(Res.string.home_learning_centers_title),
                                 description = stringResource(Res.string.home_learning_centers_subtitle),
@@ -251,9 +258,14 @@ fun HomeScreen(
 @Composable
 private fun HomeHeroCard(
     userStatistics: UserStatistics,
+    totalQuestionCount: Int,
+    unseenQuestionCount: Int,
     onOpenStatsFromRing: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val seenQuestionCount = (totalQuestionCount - unseenQuestionCount).coerceAtLeast(0)
+    val learningProgress = userStatistics.learningProgress
+
     AppCard(
         modifier = modifier,
         containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -276,57 +288,110 @@ private fun HomeHeroCard(
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onPrimaryContainer,
                         )
-                        Text(
-                            text = homeMotivationMessage(userStatistics),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f),
-                        )
+                        if (AppFeatures.motivationEnabled) {
+                            Text(
+                                text = homeMotivationMessage(userStatistics),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f),
+                            )
+                        }
+                        if (totalQuestionCount > 0) {
+                            Text(
+                                text = stringResource(
+                                    Res.string.home_learning_progress,
+                                    userStatistics.learnedQuestions,
+                                    totalQuestionCount,
+                                ),
+                                style = MaterialTheme.typography.bodyMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                            )
+                            Text(
+                                text = stringResource(
+                                    Res.string.home_seen_progress,
+                                    seenQuestionCount,
+                                    totalQuestionCount,
+                                ),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.75f),
+                            )
+                        }
                         if (userStatistics.currentStreak > 0) {
                             Spacer(modifier = Modifier.height(2.dp))
                             StreakPill(streak = userStatistics.currentStreak)
                         }
                     }
 
-                    val accuracy = userStatistics.overallAccuracy
-                    val animatedProgress by animateFloatAsState(
-                        targetValue = accuracy,
-                        animationSpec = tween(1200, easing = LinearEasing),
-                        label = "home_progress"
-                    )
-                    ProgressRing(
-                        progress = animatedProgress,
-                        size = 104.dp,
-                        strokeWidth = 11.dp,
-                        contentDescription = stringResource(
-                            Res.string.home_accuracy_ring_cd,
-                            (accuracy * 100).toInt()
-                        ),
-                        modifier = Modifier.clickable { onOpenStatsFromRing() }
-                    ) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            val animatedPercentage by animateIntAsState(
-                                targetValue = (accuracy * 100).toInt(),
-                                animationSpec = tween(1200, easing = LinearEasing),
-                                label = "home_percentage"
-                            )
-                            Text(
-                                text = "$animatedPercentage%",
-                                style = MaterialTheme.typography.titleLarge,
-                                fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer,
-                                maxLines = 1,
-                            )
-                            Text(
-                                text = stringResource(Res.string.home_accuracy),
-                                style = MaterialTheme.typography.labelMedium,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f),
-                                maxLines = 1,
-                            )
+                    key(userStatistics.learnedQuestions, totalQuestionCount) {
+                        val animatedProgress by animateFloatAsState(
+                            targetValue = learningProgress,
+                            animationSpec = tween(1200, easing = LinearEasing),
+                            label = "home_learning_progress"
+                        )
+                        ProgressRing(
+                            progress = animatedProgress,
+                            size = 104.dp,
+                            strokeWidth = 11.dp,
+                            contentDescription = stringResource(
+                                Res.string.home_learning_ring_cd,
+                                (learningProgress * 100).toInt(),
+                                userStatistics.learnedQuestions,
+                                totalQuestionCount,
+                            ),
+                            modifier = Modifier.clickable { onOpenStatsFromRing() }
+                        ) {
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                val animatedPercentage by animateIntAsState(
+                                    targetValue = (learningProgress * 100).toInt(),
+                                    animationSpec = tween(1200, easing = LinearEasing),
+                                    label = "home_learning_percentage"
+                                )
+                                Text(
+                                    text = "$animatedPercentage%",
+                                    style = MaterialTheme.typography.titleLarge,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                    maxLines = 1,
+                                )
+                                Text(
+                                    text = stringResource(Res.string.home_learning_complete),
+                                    style = MaterialTheme.typography.labelMedium,
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f),
+                                    maxLines = 1,
+                                )
+                            }
                         }
                     }
                 }
 
-                if (userStatistics.totalAttempts > 0) {
+                if (totalQuestionCount > 0) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        StatChip(
+                            label = stringResource(Res.string.home_stat_learned),
+                            value = userStatistics.learnedQuestions.toString(),
+                            containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                            contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                            modifier = Modifier.weight(1f)
+                        )
+                        StatChip(
+                            label = stringResource(Res.string.home_stat_remaining),
+                            value = userStatistics.questionsRemaining.toString(),
+                            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                            contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.weight(1f)
+                        )
+                        StatChip(
+                            label = stringResource(Res.string.home_stat_seen),
+                            value = seenQuestionCount.toString(),
+                            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                            contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                } else if (userStatistics.totalAttempts > 0) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(8.dp)

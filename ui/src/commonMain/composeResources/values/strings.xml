@@ -6927,19 +6927,22 @@
     <string name="home_motivation_mid_accuracy">Կայուն առաջընթաց եք ցույց տալիս — մի քանի պարապում և ավելի վստահ կլինեք։</string>
     <string name="home_motivation_low_accuracy">Յուրաքանչյուր հարցը կարևոր է — շարունակեք, արդյունքը կգա։</string>
     <string name="home_progress_title">Ձեր առաջընթացը</string>
+    <string name="home_learning_complete">Ավարտված</string>
+    <string name="home_learning_progress">%1$d / %2$d հարց սովորած</string>
+    <string name="home_seen_progress">%1$d / %2$d հարց դիտել եք</string>
     <string name="home_accuracy">Ճշգրտություն</string>
     <string name="home_start_test_title">Սկսել պարապել</string>
     <string name="home_start_test_subtitle">%1$d պատահական հարց · մոտ %2$d րոպե</string>
     <string name="home_start_button">Սկսել</string>
     <string name="home_quick_actions">Արագ գործողություններ</string>
     <string name="home_review_mistakes_title">Վերանայել սխալները</string>
-    <string name="home_review_mistakes_subtitle">Սովորեք սխալ պատասխաններից</string>
+    <string name="home_review_mistakes_subtitle">Հարցեր, որոնք դեռ հաճախ սխալ եք պատասխանում</string>
     <string name="home_review_button">Վերանայել</string>
     <string name="home_ai_assistant_title">AI Օգնական</string>
     <string name="home_ai_assistant_subtitle">Արագ օգնություն</string>
     <string name="home_chat_button">Զրուցել</string>
-    <string name="home_learning_centers_title">Գտնել սովորելու վայրեր</string>
-    <string name="home_learning_centers_subtitle">Գտեք մոտակա վարորդական դպրոցներ և պարապման վայրեր</string>
+    <string name="home_learning_centers_title">Ավտոդպրոցներ</string>
+    <string name="home_learning_centers_subtitle">Հայտնի վարորդական դպրոցներ՝ հասցե և հեռախոս</string>
     <string name="home_view_map_button">Ավտոդպրոցներ</string>
     <string name="home_unseen_questions">%1$d հարց դեռ չեք փորձել (ընդամենը %2$d)</string>
     <string name="home_quick_start_cd">Արագ սկսել թեստը</string>
@@ -6947,7 +6950,11 @@
     <string name="home_stat_correct">Ճիշտ</string>
     <string name="home_stat_incorrect">Սխալ</string>
     <string name="home_stat_attempted">Փորձ</string>
+    <string name="home_stat_learned">Սովորած</string>
+    <string name="home_stat_remaining">Մնացել</string>
+    <string name="home_stat_seen">Դիտված</string>
     <string name="home_accuracy_ring_cd">Ընդհանուր ճշգրտություն՝ %1$d տոկոս։ Հպեք՝ վիճակագրությունը բացելու համար</string>
+    <string name="home_learning_ring_cd">Սովորած հարցեր՝ %1$d%% (%2$d/%3$d)։ Հպեք՝ վիճակագրությունը բացելու համար</string>
     <string name="home_question_count">%1$d հարց</string>
     <string name="home_test_length_label">Հարցերի քանակ</string>
     <string name="home_streak_days">%1$d օր</string>
@@ -6983,9 +6990,14 @@
 
     <!-- Review Mistakes Screen -->
     <string name="mistakes_title">Վերանայել սխալները</string>
-    <string name="mistakes_count">%1$d հարց վերանայելու համար</string>
+    <string name="mistakes_subtitle">Հարցեր, որտեղ սխալ պատասխանները դեռ գերակշռում են ճիշտներին</string>
+    <string name="mistakes_count">%1$d հարց</string>
+    <string name="mistakes_count_label">Վերանայելու</string>
+    <string name="mistakes_practice_button">Պարապել սխալ հարցերով</string>
+    <string name="mistakes_question_label">Հարց %1$d</string>
+    <string name="mistakes_tip">Կարդացեք ճիշտ պատասխանը, ապա սեղմեք «Պարապել»՝ նույն հարցերը կրկին փորձելու համար</string>
     <string name="mistakes_empty_title">Սխալներ դեռ չկան!</string>
-    <string name="mistakes_empty_subtitle">Կատարեք թեստ, և բոլոր սխալ պատասխանները կհայտնվեն այստեղ։</string>
+    <string name="mistakes_empty_subtitle">Կատարեք թեստ։ Այստեղ կհայտնվեն հարցերը, որոնք դեռ հաճախ սխալ եք պատասխանում — ճիշտ պատասխաններից ավելի սխալներից հետո ցուցակից հանվում են։</string>
     <string name="mistakes_your_answer">Ձեր պատասխանը</string>
     <string name="mistakes_correct_answer">Ճիշտ պատասխան</string>
 
@@ -7053,6 +7065,9 @@
     <string name="map_phone">Հեռ.՝</string>
     <string name="driving_schools_intro">Հայտնի վարորդական դպրոցներ Հայաստանում՝ հասցե և հեռախոս։ Տվյալները տեղեկացման նպատակով են։</string>
     <string name="driving_schools_count">%1$d դպրոց</string>
+    <string name="driving_schools_stat_label">Դպրոց</string>
+    <string name="driving_schools_filter_all">Բոլորը</string>
+    <string name="driving_schools_city_section">%1$s · %2$d</string>
     <string name="driving_schools_label_address">Հասցե</string>
     <string name="driving_schools_label_phone">Հեռախոս</string>
 
