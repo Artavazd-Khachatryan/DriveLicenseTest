@@ -25,6 +25,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material.icons.filled.LocalFireDepartment
+import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Settings
@@ -68,6 +69,9 @@ import drivelicensetest.ui.generated.resources.home_seen_progress
 import drivelicensetest.ui.generated.resources.home_ai_assistant_subtitle
 import drivelicensetest.ui.generated.resources.home_ai_assistant_title
 import drivelicensetest.ui.generated.resources.home_chat_button
+import drivelicensetest.ui.generated.resources.home_color_vision_button
+import drivelicensetest.ui.generated.resources.home_color_vision_subtitle
+import drivelicensetest.ui.generated.resources.home_color_vision_title
 import drivelicensetest.ui.generated.resources.home_learning_centers_subtitle
 import drivelicensetest.ui.generated.resources.home_learning_centers_title
 import drivelicensetest.ui.generated.resources.home_practice_button
@@ -105,6 +109,7 @@ fun HomeScreen(
     onOpenPractice: () -> Unit,
     onOpenChat: () -> Unit,
     onOpenDrivingSchools: () -> Unit,
+    onOpenColorVision: (() -> Unit)? = null,
     onOpenSettings: () -> Unit,
     bottomBar: @Composable (() -> Unit)? = null,
     modifier: Modifier = Modifier
@@ -206,6 +211,18 @@ fun HomeScreen(
                                 onAction = onOpenDrivingSchools,
                                 accent = MaterialTheme.colorScheme.secondary,
                                 onAccent = MaterialTheme.colorScheme.onSecondary,
+                            )
+                        }
+                        if (onOpenColorVision != null) {
+                            FeatureCard(
+                                modifier = Modifier.fillMaxWidth(),
+                                icon = Icons.Filled.Palette,
+                                title = stringResource(Res.string.home_color_vision_title),
+                                description = stringResource(Res.string.home_color_vision_subtitle),
+                                actionText = stringResource(Res.string.home_color_vision_button),
+                                onAction = onOpenColorVision,
+                                accent = MaterialTheme.colorScheme.tertiary,
+                                onAccent = MaterialTheme.colorScheme.onTertiary,
                             )
                         }
                     }

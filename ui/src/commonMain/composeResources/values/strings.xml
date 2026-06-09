@@ -7119,4 +7119,29 @@
     <string name="category_general_traffic_rules">Ընդհանուր երթևեկության կանոններ</string>
     <string name="category_unknown">Այլ</string>
 
+    <!-- Color vision test (daltonism) -->
+    <string name="color_vision_title">Գունային տեսողության թեստ</string>
+    <string name="color_vision_intro_body">Ստանդարտ Իսիհարայի տեսակի թիթեղներ՝ նկարում երևող թիվը ճիշտ նշելու համար։ Առանձին բաժին է՝ տեսական քննության հարցերից դուրս։</string>
+    <string name="color_vision_plate_count">%1$d թիթեղ</string>
+    <string name="color_vision_how_it_works">Ինչպես է աշխատում</string>
+    <string name="color_vision_disclaimer">Սա միայն ինքնաստուգման գործիք է և չի փոխարինում բժշկի ակնաբուժի զննումը։ Էկրանի գույները կարող են տարբերվել իրական թեստի պայմաններից։</string>
+    <string name="color_vision_disclaimer_short">Միայն ինքնաստուգում — ոչ բժշկական ախտորոշում։</string>
+    <string name="color_vision_start_button">Սկսել թեստը</string>
+    <string name="color_vision_plate_prompt">Նկարում երևող թիվը նշեք</string>
+    <string name="color_vision_plate_number_of_total">Թիթեղ %1$d / %2$d</string>
+    <string name="color_vision_image_cd">Գունային տեսողության թեստի նկար</string>
+    <string name="color_vision_image_unavailable">Նկարը հասանելի չէ</string>
+    <string name="color_vision_results_title">Արդյունքներ</string>
+    <string name="color_vision_results_passed_title">Լավ արդյունք</string>
+    <string name="color_vision_results_passed_subtitle">Բոլոր կամ գրեթե բոլոր թիթեղները ճիշտ եք նշել։</string>
+    <string name="color_vision_results_failed_title">Կրկին փորձեք</string>
+    <string name="color_vision_results_failed_subtitle">Որոշ թիթեղներ սխալ են։ Կարող եք կրկին անցնել կամ դիմել ակնաբույժի։</string>
+    <string name="color_vision_retake">Կրկնել թեստը</string>
+    <string name="practice_color_vision_title">Գունային տեսողություն</string>
+    <string name="practice_color_vision_desc">Իսիհարայի տեսակի թիթեղներ՝ վարորդական իրավունքի բժշկական թեստին նման</string>
+    <string name="practice_color_vision_button">Բացել թեստը</string>
+    <string name="home_color_vision_title">Գունային տեսողություն</string>
+    <string name="home_color_vision_subtitle">Իսիհարայի տեսակի թիթեղներ՝ ինքնաստուգման համար</string>
+    <string name="home_color_vision_button">Սկսել</string>
+
 </resources>

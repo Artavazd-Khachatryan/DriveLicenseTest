@@ -23,6 +23,7 @@ import com.drive.license.test.domain.QuestionSelector
 import com.drive.license.test.ui.util.InTestMotivationKind
 import com.drive.license.test.ui.util.resolveInTestMotivationKind
 import com.drive.license.test.ui.util.shouldShowInTestMotivation
+import com.drive.license.test.domain.model.ColorVisionPlate
 import com.drive.license.test.domain.model.LearningCenter
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.domain.model.UserStatistics
@@ -59,6 +60,7 @@ fun MainScreen(
     reminderPreferences: ReminderPreferences,
     reminderScheduler: ReminderScheduler,
     learningCenters: List<LearningCenter> = emptyList(),
+    colorVisionPlates: List<ColorVisionPlate> = emptyList(),
     coroutineScope: CoroutineScope,
     isDarkTheme: Boolean,
     onDarkThemeChange: (Boolean) -> Unit,
@@ -69,6 +71,7 @@ fun MainScreen(
     val canGoBack = backStack.size > 1
 
     var testSession by remember { mutableStateOf<TestSession?>(null) }
+    var colorVisionSession by remember { mutableStateOf<ColorVisionSession?>(null) }
     var userStatistics by remember { mutableStateOf(UserStatistics()) }
     var examRemainingSeconds by remember { mutableStateOf<Int?>(null) }
     var currentQuestionBookmarked by remember { mutableStateOf(false) }
@@ -102,8 +105,20 @@ fun MainScreen(
         backStack.clear()
         backStack.add(Screen.Home)
         testSession = null
+        colorVisionSession = null
         examRemainingSeconds = null
         clearInTestMilestone()
+    }
+
+    fun openColorVisionIntro() {
+        if (AppFeatures.colorVisionTestEnabled && colorVisionPlates.isNotEmpty()) {
+            navigate(Screen.ColorVisionIntro)
+        }
+    }
+
+    fun startColorVisionTest() {
+        colorVisionSession = ColorVisionSession(plates = colorVisionPlates)
+        navigate(Screen.ColorVisionTest)
     }
 
     /** Mirrors each screen's toolbar back: Android system back + iOS edge-swipe. */
@@ -115,6 +130,11 @@ fun MainScreen(
                 examRemainingSeconds = null
                 navigateBack()
             }
+            Screen.ColorVisionTest -> {
+                colorVisionSession = null
+                navigateBack()
+            }
+            Screen.ColorVisionResults -> navigateToHome()
             Screen.Results -> navigateToHome()
             Screen.Settings -> {
                 coroutineScope.launch { refreshUserProgress() }
@@ -130,6 +150,8 @@ fun MainScreen(
     val interceptSystemBack = canGoBack
         || currentScreen is Screen.Question
         || currentScreen is Screen.Results
+        || currentScreen is Screen.ColorVisionTest
+        || currentScreen is Screen.ColorVisionResults
         || (currentScreen.isTopLevel && currentScreen !is Screen.Home && backStack.size == 1)
 
     BackHandler(enabled = interceptSystemBack) {
@@ -228,6 +250,9 @@ fun MainScreen(
             onOpenDrivingSchools = {
                 if (AppFeatures.drivingSchoolsEnabled) navigate(Screen.DrivingSchools)
             },
+            onOpenColorVision = if (AppFeatures.colorVisionTestEnabled && colorVisionPlates.isNotEmpty()) {
+                { openColorVisionIntro() }
+            } else null,
             onOpenStatsFromRing = { navigate(Screen.Stats) },
             onOpenSettings = { navigate(Screen.Settings) },
             bottomBar = bottomBar,
@@ -278,6 +303,9 @@ fun MainScreen(
                     }
                 },
                 onOpenBookmarks = { navigate(Screen.Bookmarks) },
+                onOpenColorVision = if (AppFeatures.colorVisionTestEnabled && colorVisionPlates.isNotEmpty()) {
+                    { openColorVisionIntro() }
+                } else null,
                 onBack = if (canGoBack) ({ navigateBack() }) else null,
                 bottomBar = bottomBar
             )
@@ -399,6 +427,62 @@ fun MainScreen(
             )
         } else {
             LaunchedEffect(Unit) { navigateBack() }
+        }
+        Screen.ColorVisionIntro -> if (AppFeatures.colorVisionTestEnabled && colorVisionPlates.isNotEmpty()) {
+            ColorVisionIntroScreen(
+                plateCount = colorVisionPlates.size,
+                onStart = { startColorVisionTest() },
+                onBack = { navigateBack() },
+            )
+        } else {
+            LaunchedEffect(Unit) { navigateBack() }
+        }
+        Screen.ColorVisionTest -> {
+            val session = colorVisionSession
+            if (session == null) {
+                LaunchedEffect(Unit) { navigateBack() }
+            } else {
+                ColorVisionPlateScreen(
+                    plate = session.currentPlate,
+                    plateNumber = session.currentIndex + 1,
+                    totalPlates = session.plates.size,
+                    selectedAnswer = session.answers[session.currentIndex],
+                    onBack = { handleSystemBack() },
+                    onAnswer = { answer ->
+                        colorVisionSession = session.answerPlate(answer)
+                    },
+                    onNext = {
+                        val current = colorVisionSession ?: return@ColorVisionPlateScreen
+                        val next = current.nextPlate()
+                        colorVisionSession = next
+                        if (next.isCompleted) {
+                            navigate(Screen.ColorVisionResults)
+                        }
+                    },
+                    onPrevious = {
+                        colorVisionSession = colorVisionSession?.previousPlate()
+                    },
+                )
+            }
+        }
+        Screen.ColorVisionResults -> {
+            val session = colorVisionSession
+            if (session == null) {
+                LaunchedEffect(Unit) { navigateToHome() }
+            } else {
+                ColorVisionResultsScreen(
+                    session = session,
+                    onBackToHome = { navigateToHome() },
+                    onRetake = {
+                        colorVisionSession = ColorVisionSession(plates = colorVisionPlates)
+                        if (backStack.last() is Screen.ColorVisionResults) {
+                            backStack[backStack.lastIndex] = Screen.ColorVisionTest
+                        } else {
+                            navigate(Screen.ColorVisionTest)
+                        }
+                    },
+                )
+            }
         }
         Screen.Settings -> SettingsScreen(
             reminderPreferences = reminderPreferences,

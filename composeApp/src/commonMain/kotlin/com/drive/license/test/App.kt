@@ -49,6 +49,7 @@ fun App() {
             reminderPreferences = reminderPreferences,
             reminderScheduler = reminderScheduler,
             learningCenters = LearningCentersData.all,
+            colorVisionPlates = ColorVisionTestData.plates,
             coroutineScope = coroutineScope,
             isDarkTheme = isDarkTheme,
             onDarkThemeChange = ::setDarkTheme,

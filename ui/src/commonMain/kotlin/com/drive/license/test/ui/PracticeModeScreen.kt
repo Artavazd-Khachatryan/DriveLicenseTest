@@ -16,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Category
+import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.filled.TrendingDown
 import androidx.compose.material3.Icon
@@ -51,6 +52,9 @@ import drivelicensetest.ui.generated.resources.practice_weak_areas_button
 import drivelicensetest.ui.generated.resources.practice_weak_areas_count
 import drivelicensetest.ui.generated.resources.practice_weak_areas_empty
 import drivelicensetest.ui.generated.resources.practice_weak_areas_title
+import drivelicensetest.ui.generated.resources.practice_color_vision_button
+import drivelicensetest.ui.generated.resources.practice_color_vision_desc
+import drivelicensetest.ui.generated.resources.practice_color_vision_title
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -61,6 +65,7 @@ fun PracticeModeScreen(
     onStartWeakAreas: () -> Unit,
     onStartExam: () -> Unit,
     onOpenBookmarks: () -> Unit,
+    onOpenColorVision: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
     bottomBar: @Composable (() -> Unit)? = null
 ) {
@@ -130,6 +135,17 @@ fun PracticeModeScreen(
                 onClick = onOpenBookmarks,
                 enabled = bookmarkCount > 0,
             )
+
+            if (onOpenColorVision != null) {
+                PracticeCard(
+                    icon = Icons.Default.Palette,
+                    accent = MaterialTheme.colorScheme.tertiary,
+                    title = stringResource(Res.string.practice_color_vision_title),
+                    description = stringResource(Res.string.practice_color_vision_desc),
+                    buttonText = stringResource(Res.string.practice_color_vision_button),
+                    onClick = onOpenColorVision,
+                )
+            }
         }
         }
     }

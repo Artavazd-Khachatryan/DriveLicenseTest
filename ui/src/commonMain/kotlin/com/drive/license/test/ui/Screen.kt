@@ -10,6 +10,9 @@ sealed class Screen {
     object Mistakes : Screen()
     object Bookmarks : Screen()
     object DrivingSchools : Screen()
+    object ColorVisionIntro : Screen()
+    object ColorVisionTest : Screen()
+    object ColorVisionResults : Screen()
     object Settings : Screen()
     data class AiExplanation(
         val questionText: String,
