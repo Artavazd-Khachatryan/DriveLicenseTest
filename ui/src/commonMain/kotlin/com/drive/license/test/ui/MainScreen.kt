@@ -24,6 +24,7 @@ import com.drive.license.test.ui.util.InTestMotivationKind
 import com.drive.license.test.ui.util.resolveInTestMotivationKind
 import com.drive.license.test.ui.util.shouldShowInTestMotivation
 import com.drive.license.test.domain.model.ColorVisionPlate
+import com.drive.license.test.domain.model.ColorVisionTestRules
 import com.drive.license.test.domain.model.LearningCenter
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.domain.model.UserStatistics
@@ -116,8 +117,19 @@ fun MainScreen(
         }
     }
 
-    fun startColorVisionTest() {
-        colorVisionSession = ColorVisionSession(plates = colorVisionPlates)
+    fun startColorVisionExam() {
+        colorVisionSession = ColorVisionSession(
+            plates = colorVisionPlates.shuffled().take(ColorVisionTestRules.EXAM_QUESTION_COUNT),
+            isExamSimulation = true,
+        )
+        navigate(Screen.ColorVisionTest)
+    }
+
+    fun startColorVisionPractice() {
+        colorVisionSession = ColorVisionSession(
+            plates = colorVisionPlates,
+            isExamSimulation = false,
+        )
         navigate(Screen.ColorVisionTest)
     }
 
@@ -430,8 +442,10 @@ fun MainScreen(
         }
         Screen.ColorVisionIntro -> if (AppFeatures.colorVisionTestEnabled && colorVisionPlates.isNotEmpty()) {
             ColorVisionIntroScreen(
-                plateCount = colorVisionPlates.size,
-                onStart = { startColorVisionTest() },
+                examQuestionCount = ColorVisionTestRules.EXAM_QUESTION_COUNT,
+                bankPlateCount = colorVisionPlates.size,
+                onStartExam = { startColorVisionExam() },
+                onStartPractice = { startColorVisionPractice() },
                 onBack = { navigateBack() },
             )
         } else {
@@ -474,7 +488,19 @@ fun MainScreen(
                     session = session,
                     onBackToHome = { navigateToHome() },
                     onRetake = {
-                        colorVisionSession = ColorVisionSession(plates = colorVisionPlates)
+                        val previous = session
+                        colorVisionSession = if (previous.isExamSimulation) {
+                            ColorVisionSession(
+                                plates = colorVisionPlates.shuffled()
+                                    .take(ColorVisionTestRules.EXAM_QUESTION_COUNT),
+                                isExamSimulation = true,
+                            )
+                        } else {
+                            ColorVisionSession(
+                                plates = colorVisionPlates,
+                                isExamSimulation = false,
+                            )
+                        }
                         if (backStack.last() is Screen.ColorVisionResults) {
                             backStack[backStack.lastIndex] = Screen.ColorVisionTest
                         } else {

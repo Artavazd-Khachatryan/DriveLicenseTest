@@ -46,7 +46,6 @@ import drivelicensetest.ui.generated.resources.color_vision_retake
 import drivelicensetest.ui.generated.resources.home_stat_correct
 import drivelicensetest.ui.generated.resources.home_stat_incorrect
 import drivelicensetest.ui.generated.resources.results_back_home
-import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -59,7 +58,7 @@ fun ColorVisionResultsScreen(
     val total = session.plates.size
     val score = if (total > 0) session.correctAnswers.toFloat() / total else 0f
     val incorrect = total - session.correctAnswers
-    val passed = session.demoPlatePassed && score >= 0.8f
+    val passed = session.passed
 
     var heroVisible by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) {

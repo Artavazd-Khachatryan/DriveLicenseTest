@@ -9,7 +9,7 @@ fun resolveDrawableResource(resourceName: String?): DrawableResource? {
         println("Drawable resource name is null or blank")
         return null
     }
-    val key = resourceName.removeSuffix(".png")
+    val key = resourceName.substringBeforeLast('.')
     val found = Res.allDrawableResources[key]
     if (found == null) {
         println("Drawable resource not found: '$key' (from input: '$resourceName')")

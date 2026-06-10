@@ -38,12 +38,12 @@ import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppOutlinedButton
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.util.AdaptiveContentContainer
+import com.drive.license.test.ui.util.colorVisionPromptText
 import com.drive.license.test.ui.util.resolveDrawableResource
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.back
 import drivelicensetest.ui.generated.resources.color_vision_image_cd
 import drivelicensetest.ui.generated.resources.color_vision_image_unavailable
-import drivelicensetest.ui.generated.resources.color_vision_plate_prompt
 import drivelicensetest.ui.generated.resources.color_vision_plate_number_of_total
 import drivelicensetest.ui.generated.resources.question_finish
 import drivelicensetest.ui.generated.resources.question_next
@@ -119,7 +119,7 @@ fun ColorVisionPlateScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
                         Text(
-                            text = stringResource(Res.string.color_vision_plate_prompt),
+                            text = colorVisionPromptText(plate.prompt),
                             style = MaterialTheme.typography.titleLarge,
                             textAlign = TextAlign.Center,
                             color = MaterialTheme.colorScheme.onPrimaryContainer,

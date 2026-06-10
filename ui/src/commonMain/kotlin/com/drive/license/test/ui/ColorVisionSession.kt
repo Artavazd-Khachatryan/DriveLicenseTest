@@ -5,6 +5,7 @@ import kotlinx.datetime.Clock
 
 data class ColorVisionSession(
     val plates: List<ColorVisionPlate>,
+    val isExamSimulation: Boolean = true,
     val sessionId: String = Clock.System.now().toEpochMilliseconds().toString(),
     val currentIndex: Int = 0,
     val answers: MutableMap<Int, String> = mutableMapOf(),
@@ -24,10 +25,11 @@ data class ColorVisionSession(
             plates.getOrNull(index)?.correctAnswer == answer
         }
 
-    val demoPlatePassed: Boolean
-        get() = plates.withIndex().firstOrNull { it.value.isDemo }?.let { (index, demo) ->
-            answers[index] == demo.correctAnswer
-        } ?: true
+    val passed: Boolean
+        get() = if (plates.isEmpty()) false else when {
+            isExamSimulation -> correctAnswers == plates.size
+            else -> correctAnswers.toFloat() / plates.size >= 0.8f
+        }
 
     fun answerPlate(answer: String): ColorVisionSession {
         val newAnswers = answers.toMutableMap()

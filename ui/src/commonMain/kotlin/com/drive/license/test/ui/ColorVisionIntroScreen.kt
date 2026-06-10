@@ -18,22 +18,27 @@ import androidx.compose.ui.unit.dp
 import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
+import com.drive.license.test.ui.components.AppOutlinedButton
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.util.AdaptiveContentContainer
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.back
 import drivelicensetest.ui.generated.resources.color_vision_disclaimer
+import drivelicensetest.ui.generated.resources.color_vision_exam_rules
 import drivelicensetest.ui.generated.resources.color_vision_how_it_works
 import drivelicensetest.ui.generated.resources.color_vision_intro_body
-import drivelicensetest.ui.generated.resources.color_vision_plate_count
-import drivelicensetest.ui.generated.resources.color_vision_start_button
+import drivelicensetest.ui.generated.resources.color_vision_plate_bank_count
+import drivelicensetest.ui.generated.resources.color_vision_practice_all_button
+import drivelicensetest.ui.generated.resources.color_vision_start_exam_button
 import drivelicensetest.ui.generated.resources.color_vision_title
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun ColorVisionIntroScreen(
-    plateCount: Int,
-    onStart: () -> Unit,
+    examQuestionCount: Int,
+    bankPlateCount: Int,
+    onStartExam: () -> Unit,
+    onStartPractice: () -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -76,9 +81,14 @@ fun ColorVisionIntroScreen(
                             style = MaterialTheme.typography.bodyLarge,
                         )
                         Text(
-                            text = stringResource(Res.string.color_vision_plate_count, plateCount),
+                            text = stringResource(Res.string.color_vision_exam_rules, examQuestionCount),
                             style = MaterialTheme.typography.bodyMedium,
                             fontWeight = FontWeight.SemiBold,
+                        )
+                        Text(
+                            text = stringResource(Res.string.color_vision_plate_bank_count, bankPlateCount),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.85f),
                         )
                     }
                 }
@@ -104,8 +114,13 @@ fun ColorVisionIntroScreen(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 AppButton(
-                    text = stringResource(Res.string.color_vision_start_button),
-                    onClick = onStart,
+                    text = stringResource(Res.string.color_vision_start_exam_button, examQuestionCount),
+                    onClick = onStartExam,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                AppOutlinedButton(
+                    text = stringResource(Res.string.color_vision_practice_all_button, bankPlateCount),
+                    onClick = onStartPractice,
                     modifier = Modifier.fillMaxWidth(),
                 )
             }
