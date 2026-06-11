@@ -6943,7 +6943,7 @@
     <string name="home_chat_button">Զրուցել</string>
     <string name="home_learning_centers_title">Ավտոդպրոցներ</string>
     <string name="home_learning_centers_subtitle">Հայտնի վարորդական դպրոցներ՝ հասցե և հեռախոս</string>
-    <string name="home_view_map_button">Ավտոդպրոցներ</string>
+    <string name="home_view_map_button">Բացել ցանկը</string>
     <string name="home_unseen_questions">%1$d հարց դեռ չեք փորձել (ընդամենը %2$d)</string>
     <string name="home_quick_start_cd">Արագ սկսել թեստը</string>
     <string name="home_practice_button">Պարապման ռեժիմ</string>
