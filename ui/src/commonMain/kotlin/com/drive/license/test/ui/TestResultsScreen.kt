@@ -141,12 +141,14 @@ fun TestResultsScreen(
                             textAlign = TextAlign.Center,
                             color = onContainer,
                         )
-                        Text(
-                            text = testResultMotivationMessage(score, passed),
-                            style = MaterialTheme.typography.bodyLarge,
-                            textAlign = TextAlign.Center,
-                            color = onContainer.copy(alpha = 0.85f),
-                        )
+                        if (AppFeatures.motivationEnabled) {
+                            Text(
+                                text = testResultMotivationMessage(score, passed),
+                                style = MaterialTheme.typography.bodyLarge,
+                                textAlign = TextAlign.Center,
+                                color = onContainer.copy(alpha = 0.85f),
+                            )
+                        }
                     }
                 }
             }

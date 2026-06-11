@@ -268,12 +268,14 @@ fun QuestionDetailScreen(
                 )
             }
 
-            InTestMotivationBanner(
-                visible = showResult && milestoneKind != null && milestoneAnsweredCount > 0,
-                kind = milestoneKind ?: InTestMotivationKind.KeepGoing,
-                answeredCount = milestoneAnsweredCount,
-                totalQuestions = totalQuestions,
-            )
+            if (AppFeatures.motivationEnabled) {
+                InTestMotivationBanner(
+                    visible = showResult && milestoneKind != null && milestoneAnsweredCount > 0,
+                    kind = milestoneKind ?: InTestMotivationKind.KeepGoing,
+                    answeredCount = milestoneAnsweredCount,
+                    totalQuestions = totalQuestions,
+                )
+            }
 
             if (showResult && onExplain != null) {
                 val answeredIndex = selectedAnswerIndex
