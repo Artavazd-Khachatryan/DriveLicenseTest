@@ -187,7 +187,7 @@ LEFT JOIN UserQuestionProgress up ON up.question_id = q.id
 GROUP BY qc.id, qc.name
 ORDER BY qc.name;
 
--- Get questions answered incorrectly at least once
+-- Questions still struggling: more incorrect than correct attempts
 getIncorrectQuestions:
 SELECT q.id, q.question, q.true_answer,
     COALESCE(
@@ -198,8 +198,8 @@ SELECT q.id, q.question, q.true_answer,
     ) AS last_wrong_answer
 FROM Question q
 JOIN UserQuestionProgress up ON up.question_id = q.id
-WHERE up.times_incorrect > 0
-ORDER BY up.times_incorrect DESC;
+WHERE up.times_incorrect > up.times_correct
+ORDER BY (up.times_incorrect - up.times_correct) DESC, up.times_incorrect DESC;
 
 -- Get streak
 getStreak:
