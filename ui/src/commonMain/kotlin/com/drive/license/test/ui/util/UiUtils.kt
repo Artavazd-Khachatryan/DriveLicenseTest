@@ -41,3 +41,14 @@ fun accuracyColor(accuracy: Float): Color = when {
     accuracy >= 0.5f -> MaterialTheme.colorScheme.tertiary
     else -> MaterialTheme.colorScheme.error
 }
+
+/** Armenian uppercase labels used on official exam answer options (Ա, Բ, Գ, Դ, …). */
+private val armenianAnswerLabels = listOf(
+    "Ա", "Բ", "Գ", "Դ", "Ե", "Զ", "Է", "Ը", "Թ", "Ժ",
+    "Ի", "Լ", "Խ", "Ծ", "Կ", "Հ", "Ձ", "Ղ", "Ճ", "Մ",
+    "Յ", "Ն", "Շ", "Ո", "Չ", "Պ", "Ջ", "Ռ", "Ս", "Վ",
+    "Տ", "Ր", "Ց", "Ւ", "Փ", "Ք", "Օ", "Ֆ",
+)
+
+fun answerOptionLabel(index: Int): String =
+    armenianAnswerLabels.getOrElse(index) { "" }

@@ -24,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.drive.license.test.ui.util.answerOptionLabel
 import com.drive.license.test.ui.util.pressScale
 import com.drive.license.test.ui.util.rememberHaptics
 
@@ -133,7 +134,7 @@ private fun AnswerBadge(
                     modifier = Modifier.size(20.dp),
                 )
                 else -> Text(
-                    text = if (index in 0..25) ('A' + index).toString() else "",
+                    text = answerOptionLabel(index),
                     style = MaterialTheme.typography.labelLarge,
                     fontWeight = FontWeight.Bold,
                     color = content,
