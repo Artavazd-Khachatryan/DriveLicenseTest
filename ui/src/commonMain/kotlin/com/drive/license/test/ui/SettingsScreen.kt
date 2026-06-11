@@ -81,6 +81,7 @@ fun SettingsScreen(
     isDarkTheme: Boolean,
     onDarkThemeChange: (Boolean) -> Unit,
     onBack: () -> Unit,
+    onStatisticsReset: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     var settings by remember { mutableStateOf(ReminderSettings()) }
@@ -279,6 +280,7 @@ fun SettingsScreen(
                     showResetDialog = false
                     coroutineScope.launch {
                         userProgressRepository.resetStatistics()
+                        onStatisticsReset()
                     }
                 }) { Text(stringResource(Res.string.settings_dialog_ok)) }
             },

@@ -50,7 +50,8 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun ReviewMistakesScreen(
     userProgressRepository: UserProgressRepository,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onPracticeMistakes: () -> Unit = {},
 ) {
     var mistakes by remember { mutableStateOf<List<MistakeQuestion>>(emptyList()) }
     var isLoading by remember { mutableStateOf(true) }
