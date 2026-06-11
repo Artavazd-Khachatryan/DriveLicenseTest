@@ -65,7 +65,6 @@ import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.home_learning_complete
 import drivelicensetest.ui.generated.resources.home_learning_progress
 import drivelicensetest.ui.generated.resources.home_learning_ring_cd
-import drivelicensetest.ui.generated.resources.home_seen_progress
 import drivelicensetest.ui.generated.resources.home_ai_assistant_subtitle
 import drivelicensetest.ui.generated.resources.home_ai_assistant_title
 import drivelicensetest.ui.generated.resources.home_chat_button
@@ -86,13 +85,11 @@ import drivelicensetest.ui.generated.resources.home_start_test_subtitle
 import drivelicensetest.ui.generated.resources.home_start_test_title
 import drivelicensetest.ui.generated.resources.home_stat_learned
 import drivelicensetest.ui.generated.resources.home_stat_remaining
-import drivelicensetest.ui.generated.resources.home_stat_seen
 import drivelicensetest.ui.generated.resources.home_stat_attempted
 import drivelicensetest.ui.generated.resources.home_stat_correct
 import drivelicensetest.ui.generated.resources.home_stat_incorrect
 import drivelicensetest.ui.generated.resources.home_streak_days
 import drivelicensetest.ui.generated.resources.home_streak_label
-import drivelicensetest.ui.generated.resources.home_unseen_questions
 import drivelicensetest.ui.generated.resources.home_view_map_button
 import drivelicensetest.ui.generated.resources.settings_title
 import org.jetbrains.compose.resources.stringResource
@@ -100,7 +97,6 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun HomeScreen(
     userStatistics: UserStatistics,
-    unseenQuestionCount: Int = 0,
     totalQuestionCount: Int = 0,
     onStartTest: (Int) -> Unit,
     onOpenStats: () -> Unit,
@@ -151,7 +147,6 @@ fun HomeScreen(
                         modifier = cardModifier,
                         userStatistics = userStatistics,
                         totalQuestionCount = totalQuestionCount,
-                        unseenQuestionCount = unseenQuestionCount,
                         onOpenStatsFromRing = onOpenStatsFromRing,
                     )
                 }
@@ -161,8 +156,6 @@ fun HomeScreen(
                         modifier = cardModifier,
                         selectedTestLength = selectedTestLength,
                         onSelectLength = { selectedTestLength = it },
-                        unseenQuestionCount = unseenQuestionCount,
-                        totalQuestionCount = totalQuestionCount,
                         onStartTest = onStartTest,
                         onOpenPractice = onOpenPractice,
                     )
@@ -276,11 +269,9 @@ fun HomeScreen(
 private fun HomeHeroCard(
     userStatistics: UserStatistics,
     totalQuestionCount: Int,
-    unseenQuestionCount: Int,
     onOpenStatsFromRing: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val seenQuestionCount = (totalQuestionCount - unseenQuestionCount).coerceAtLeast(0)
     val learningProgress = userStatistics.learningProgress
 
     AppCard(
@@ -322,15 +313,6 @@ private fun HomeHeroCard(
                                 style = MaterialTheme.typography.bodyMedium,
                                 fontWeight = FontWeight.SemiBold,
                                 color = MaterialTheme.colorScheme.onPrimaryContainer,
-                            )
-                            Text(
-                                text = stringResource(
-                                    Res.string.home_seen_progress,
-                                    seenQuestionCount,
-                                    totalQuestionCount,
-                                ),
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.75f),
                             )
                         }
                         if (userStatistics.currentStreak > 0) {
@@ -400,13 +382,6 @@ private fun HomeHeroCard(
                             contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.weight(1f)
                         )
-                        StatChip(
-                            label = stringResource(Res.string.home_stat_seen),
-                            value = seenQuestionCount.toString(),
-                            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                            contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                            modifier = Modifier.weight(1f)
-                        )
                     }
                 } else if (userStatistics.totalAttempts > 0) {
                     Row(
@@ -474,8 +449,6 @@ private fun StreakPill(streak: Int) {
 private fun StartPracticeCard(
     selectedTestLength: Int,
     onSelectLength: (Int) -> Unit,
-    unseenQuestionCount: Int,
-    totalQuestionCount: Int,
     onStartTest: (Int) -> Unit,
     onOpenPractice: () -> Unit,
     modifier: Modifier = Modifier,
@@ -505,20 +478,6 @@ private fun StartPracticeCard(
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
-
-                if (totalQuestionCount > 0 && unseenQuestionCount > 0) {
-                    Text(
-                        text = stringResource(
-                            Res.string.home_unseen_questions,
-                            unseenQuestionCount,
-                            totalQuestionCount
-                        ),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.85f),
-                        textAlign = TextAlign.Center
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                }
 
                 Text(
                     text = stringResource(

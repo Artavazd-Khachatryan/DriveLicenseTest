@@ -77,7 +77,6 @@ fun MainScreen(
     var examRemainingSeconds by remember { mutableStateOf<Int?>(null) }
     var currentQuestionBookmarked by remember { mutableStateOf(false) }
     val allQuestions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
-    var questionAttemptCounts by remember { mutableStateOf<Map<Int, Int>>(emptyMap()) }
     var inTestMilestoneKind by remember { mutableStateOf<InTestMotivationKind?>(null) }
     var inTestMilestoneAnsweredCount by remember { mutableStateOf(0) }
 
@@ -88,7 +87,6 @@ fun MainScreen(
 
     suspend fun refreshUserProgress() {
         userStatistics = userProgressRepository.getUserStatistics()
-        questionAttemptCounts = userProgressRepository.getQuestionAttemptCounts()
     }
 
     fun navigate(screen: Screen) {
@@ -171,7 +169,7 @@ fun MainScreen(
     }
 
     fun pickFromPool(pool: List<Question>, count: Int): List<Question> =
-        QuestionSelector.selectForPractice(pool, count, questionAttemptCounts)
+        QuestionSelector.selectForPractice(pool, count)
 
     fun startTest(pool: List<Question>, count: Int) {
         val selected = pickFromPool(pool, count)
@@ -198,8 +196,6 @@ fun MainScreen(
     LaunchedEffect(Unit) {
         refreshUserProgress()
     }
-
-    val unseenQuestionCount = QuestionSelector.countUnseen(allQuestions, questionAttemptCounts)
 
     // Exam countdown
     LaunchedEffect(testSession?.isExamMode, testSession?.sessionId) {
@@ -252,7 +248,6 @@ fun MainScreen(
     when (screen) {
         Screen.Home -> HomeScreen(
             userStatistics = userStatistics,
-            unseenQuestionCount = unseenQuestionCount,
             totalQuestionCount = allQuestions.size,
             onStartTest = { count -> startTest(allQuestions, count) },
             onOpenStats = { navigate(Screen.Stats) },

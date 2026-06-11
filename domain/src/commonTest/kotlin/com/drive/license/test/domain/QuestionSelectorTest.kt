@@ -19,25 +19,23 @@ class QuestionSelectorTest {
     )
 
     @Test
-    fun unseenQuestionsComeFirst() {
+    fun returnsRequestedCount() {
         val all = (1..5).map { question(it) }
-        val counts = mapOf(1 to 2, 2 to 1, 3 to 0, 4 to 0, 5 to 0)
-        val picked = QuestionSelector.selectForPractice(all, 3, counts)
-        assertEquals(listOf(3, 4, 5).sorted(), picked.map { it.id }.sorted())
+        val picked = QuestionSelector.selectForPractice(all, 3)
+        assertEquals(3, picked.size)
+        assertEquals(3, picked.map { it.id }.toSet().size)
     }
 
     @Test
     fun allQuestionsIncludedWhenCountEqualsBankSize() {
         val all = (1..4).map { question(it) }
-        val picked = QuestionSelector.selectForPractice(all, 4, emptyMap())
+        val picked = QuestionSelector.selectForPractice(all, 4)
         assertEquals(4, picked.size)
         assertEquals(all.map { it.id }.toSet(), picked.map { it.id }.toSet())
     }
 
     @Test
-    fun countUnseen() {
-        val all = (1..3).map { question(it) }
-        val counts = mapOf(1 to 1, 2 to 0)
-        assertEquals(2, QuestionSelector.countUnseen(all, counts))
+    fun emptyPoolReturnsEmpty() {
+        assertTrue(QuestionSelector.selectForPractice(emptyList(), 10).isEmpty())
     }
 }
