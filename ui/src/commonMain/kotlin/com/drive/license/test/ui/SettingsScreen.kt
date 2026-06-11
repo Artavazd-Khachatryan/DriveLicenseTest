@@ -49,7 +49,8 @@ import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.ThemeModeSelector
 import com.drive.license.test.ui.util.AdaptiveContentContainer
-import com.drive.license.test.ui.util.rememberNotificationPermissionLauncher
+import com.drive.license.test.ui.util.rememberNotificationPermissionState
+import androidx.compose.runtime.rememberUpdatedState
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.back
 import drivelicensetest.ui.generated.resources.settings_dialog_cancel
@@ -99,16 +100,28 @@ fun SettingsScreen(
     fun persist(updated: ReminderSettings, reschedule: Boolean = true) {
         settings = updated
         reminderPreferences.save(updated)
-        if (reschedule) {
+        if (!reschedule) return
+        if (updated.enabled) {
             reminderScheduler.schedule(updated)
+        } else {
+            reminderScheduler.cancel()
         }
     }
 
-    val requestPermission = rememberNotificationPermissionLauncher { granted ->
+    val currentSettings by rememberUpdatedState(settings)
+    val notificationPermission = rememberNotificationPermissionState { granted ->
         if (granted) {
             permissionDenied = false
-            persist(settings.copy(enabled = true))
+            persist(currentSettings.copy(enabled = true))
         } else {
+            permissionDenied = true
+            persist(currentSettings.copy(enabled = false))
+        }
+    }
+
+    LaunchedEffect(loaded, notificationPermission.granted) {
+        if (!loaded || notificationPermission.granted != false) return@LaunchedEffect
+        if (settings.enabled) {
             permissionDenied = true
             persist(settings.copy(enabled = false))
         }
@@ -178,7 +191,7 @@ fun SettingsScreen(
                                 checked = settings.enabled,
                                 onCheckedChange = { wantEnabled ->
                                     if (wantEnabled) {
-                                        requestPermission()
+                                        notificationPermission.request()
                                     } else {
                                         permissionDenied = false
                                         persist(settings.copy(enabled = false))
