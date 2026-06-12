@@ -6955,6 +6955,7 @@
     <string name="home_stat_seen">Դիտված</string>
     <string name="home_accuracy_ring_cd">Ընդհանուր ճշգրտություն՝ %1$d տոկոս։ Հպեք՝ վիճակագրությունը բացելու համար</string>
     <string name="home_learning_ring_cd">Սովորած հարցեր՝ %1$d%% (%2$d/%3$d)։ Հպեք՝ վիճակագրությունը բացելու համար</string>
+    <string name="home_seen_ring_cd">Դիտված հարցեր՝ %1$d%% (%2$d/%3$d)։ Հպեք՝ վիճակագրությունը բացելու համար</string>
     <string name="home_question_count">%1$d հարց</string>
     <string name="home_test_length_label">Հարցերի քանակ</string>
     <string name="home_streak_days">%1$d օր</string>

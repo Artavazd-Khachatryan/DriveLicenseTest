@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Driving license test app">
+  <rect width="512" height="512" fill="#2563EB"/>
+  <!-- License card -->
+  <rect x="88" y="120" width="336" height="272" rx="32" fill="#FFFFFF"/>
+  <!-- Photo placeholder -->
+  <rect x="120" y="152" width="96" height="112" rx="16" fill="none" stroke="#2563EB" stroke-width="10"/>
+  <circle cx="168" cy="192" r="28" fill="#2563EB"/>
+  <path fill="#2563EB" d="M128 248c8-20 24-32 40-32s32 12 40 32v16H128z"/>
+  <!-- License text lines -->
+  <line x1="240" y1="168" x2="376" y2="168" stroke="#2563EB" stroke-width="14" stroke-linecap="round"/>
+  <line x1="240" y1="208" x2="344" y2="208" stroke="#2563EB" stroke-width="14" stroke-linecap="round"/>
+  <line x1="240" y1="248" x2="360" y2="248" stroke="#2563EB" stroke-width="14" stroke-linecap="round"/>
+  <!-- MCQ row -->
+  <circle cx="136" cy="344" r="22" fill="#16A34A"/>
+  <circle cx="136" cy="344" r="10" fill="#FFFFFF" opacity="0.35"/>
+  <circle cx="200" cy="344" r="22" fill="none" stroke="#2563EB" stroke-width="10"/>
+  <circle cx="264" cy="344" r="22" fill="none" stroke="#2563EB" stroke-width="10"/>
+  <circle cx="328" cy="344" r="22" fill="none" stroke="#2563EB" stroke-width="10"/>
+  <!-- Checkmark -->
+  <path fill="none" stroke="#16A34A" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"
+        d="M368 320 L392 344 L440 280"/>
+</svg>

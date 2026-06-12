@@ -22,6 +22,7 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
                 totalCorrect = stats.totalCorrect,
                 totalIncorrect = stats.totalIncorrect,
                 learnedQuestions = stats.learnedQuestions,
+                questionsSeen = stats.questionsSeen,
                 currentStreak = streak.currentStreak,
                 longestStreak = streak.longestStreak
             )
@@ -68,6 +69,16 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
         }
     }
 
+    override suspend fun beginTestSession(
+        sessionId: String,
+        startTime: Long,
+        totalQuestions: Int,
+    ) {
+        withContext(Dispatchers.Default) {
+            database.insertTestSession(sessionId, startTime, totalQuestions)
+        }
+    }
+
     override suspend fun saveTestSession(
         sessionId: String,
         startTime: Long,
@@ -89,19 +100,22 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
         attemptTime: Long
     ) {
         withContext(Dispatchers.Default) {
-            database.insertQuestionAttempt(
-                sessionId = sessionId,
-                questionId = questionId.toLong(),
-                selectedAnswer = selectedAnswer,
-                isCorrect = isCorrect,
-                timeSpent = null,
-                attemptTime = attemptTime
-            )
+            // Progress must be recorded even if attempt logging fails (e.g. missing session row).
             database.updateQuestionProgress(
                 questionId = questionId.toLong(),
                 isCorrect = isCorrect,
                 timestamp = attemptTime
             )
+            runCatching {
+                database.insertQuestionAttempt(
+                    sessionId = sessionId,
+                    questionId = questionId.toLong(),
+                    selectedAnswer = selectedAnswer,
+                    isCorrect = isCorrect,
+                    timeSpent = null,
+                    attemptTime = attemptTime
+                )
+            }
         }
     }
 

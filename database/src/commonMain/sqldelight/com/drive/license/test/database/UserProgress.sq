@@ -125,13 +125,18 @@ SELECT
     COALESCE(SUM(up.times_answered), 0) total_attempts,
     COALESCE(SUM(up.times_correct), 0) total_correct,
     COALESCE(SUM(up.times_incorrect), 0) total_incorrect,
-    COALESCE(SUM(CASE WHEN (up.times_correct - up.times_incorrect) > 3 THEN 1 ELSE 0 END), 0) learned_questions
+    COALESCE(SUM(CASE WHEN (up.times_correct - up.times_incorrect) > 3 THEN 1 ELSE 0 END), 0) learned_questions,
+    COALESCE(SUM(CASE WHEN COALESCE(up.times_answered, 0) > 0 THEN 1 ELSE 0 END), 0) seen_questions
 FROM Question q
 LEFT JOIN UserQuestionProgress up ON q.id = up.question_id;
 
 -- Insert test session
 insertTestSession:
 INSERT INTO TestSession (id, start_time, total_questions)
+VALUES (?, ?, ?);
+
+insertTestSessionOrIgnore:
+INSERT OR IGNORE INTO TestSession (id, start_time, total_questions)
 VALUES (?, ?, ?);
 
 -- Update test session completion

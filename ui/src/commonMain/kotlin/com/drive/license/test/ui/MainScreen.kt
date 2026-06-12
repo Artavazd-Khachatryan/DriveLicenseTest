@@ -107,6 +107,7 @@ fun MainScreen(
         colorVisionSession = null
         examRemainingSeconds = null
         clearInTestMilestone()
+        coroutineScope.launch { refreshUserProgress() }
     }
 
     fun openColorVisionIntro() {
@@ -138,6 +139,7 @@ fun MainScreen(
                 clearInTestMilestone()
                 testSession = null
                 examRemainingSeconds = null
+                coroutineScope.launch { refreshUserProgress() }
                 navigateBack()
             }
             Screen.ColorVisionTest -> {
@@ -171,12 +173,51 @@ fun MainScreen(
     fun pickFromPool(pool: List<Question>, count: Int): List<Question> =
         QuestionSelector.selectForPractice(pool, count)
 
-    fun startTest(pool: List<Question>, count: Int) {
+    fun launchTestSession(
+        session: TestSession,
+        navigation: () -> Unit = { navigate(Screen.Question) },
+    ) {
+        clearInTestMilestone()
+        testSession = session
+        examRemainingSeconds = if (session.isExamMode) session.examDurationSeconds else null
+        coroutineScope.launch {
+            userProgressRepository.beginTestSession(
+                sessionId = session.sessionId,
+                startTime = session.startTime,
+                totalQuestions = session.questions.size,
+            )
+        }
+        navigation()
+    }
+
+    fun startTest(
+        pool: List<Question>,
+        count: Int,
+        isExamMode: Boolean = false,
+    ) {
         val selected = pickFromPool(pool, count)
         if (selected.isNotEmpty()) {
-            clearInTestMilestone()
-            testSession = TestSession(questions = selected)
-            navigate(Screen.Question)
+            launchTestSession(
+                TestSession(questions = selected, isExamMode = isExamMode)
+            )
+        }
+    }
+
+    fun persistQuestionAnswer(
+        session: TestSession,
+        questionId: Int,
+        answer: String,
+        correctAnswer: String,
+    ) {
+        coroutineScope.launch {
+            userProgressRepository.saveQuestionAttempt(
+                sessionId = session.sessionId,
+                questionId = questionId,
+                selectedAnswer = answer,
+                isCorrect = answer == correctAnswer,
+                attemptTime = Clock.System.now().toEpochMilliseconds(),
+            )
+            refreshUserProgress()
         }
     }
 
@@ -195,6 +236,12 @@ fun MainScreen(
 
     LaunchedEffect(Unit) {
         refreshUserProgress()
+    }
+
+    LaunchedEffect(currentScreen) {
+        if (currentScreen is Screen.Home) {
+            refreshUserProgress()
+        }
     }
 
     // Exam countdown
@@ -226,8 +273,8 @@ fun MainScreen(
                     val todayEpochDay = now.toLocalDateTime(TimeZone.currentSystemDefault()).date.toEpochDays().toLong()
                     userProgressRepository.updateStreak(todayEpochDay)
                     refreshUserProgress()
+                    navigate(Screen.Results)
                 }
-                navigate(Screen.Results)
             }
         }
     }
@@ -303,11 +350,7 @@ fun MainScreen(
                     }
                 },
                 onStartExam = {
-                    val examQuestions = pickFromPool(allQuestions, TestSession.EXAM_QUESTION_COUNT)
-                    if (examQuestions.isNotEmpty()) {
-                        testSession = TestSession(questions = examQuestions, isExamMode = true)
-                        navigate(Screen.Question)
-                    }
+                    startTest(allQuestions, TestSession.EXAM_QUESTION_COUNT, isExamMode = true)
                 },
                 onOpenBookmarks = { navigate(Screen.Bookmarks) },
                 onOpenColorVision = if (AppFeatures.colorVisionTestEnabled && colorVisionPlates.isNotEmpty()) {
@@ -347,6 +390,7 @@ fun MainScreen(
                 onDarkThemeChange = onDarkThemeChange,
                 onBack = { handleSystemBack() },
                 onAnswer = { answer ->
+                    val question = session.currentQuestion
                     val updated = session.answerQuestion(answer)
                     testSession = updated
                     if (AppFeatures.motivationEnabled && shouldShowInTestMotivation(updated.totalAnswered)) {
@@ -356,15 +400,12 @@ fun MainScreen(
                         )
                         inTestMilestoneAnsweredCount = updated.totalAnswered
                     }
-                    coroutineScope.launch {
-                        userProgressRepository.saveQuestionAttempt(
-                            sessionId = updated.sessionId,
-                            questionId = updated.currentQuestion.id,
-                            selectedAnswer = answer,
-                            isCorrect = answer == updated.currentQuestion.correctAnswer,
-                            attemptTime = Clock.System.now().toEpochMilliseconds()
-                        )
-                    }
+                    persistQuestionAnswer(
+                        session = updated,
+                        questionId = question.id,
+                        answer = answer,
+                        correctAnswer = question.correctAnswer,
+                    )
                 },
                 milestoneKind = inTestMilestoneKind,
                 milestoneAnsweredCount = inTestMilestoneAnsweredCount,
@@ -385,8 +426,8 @@ fun MainScreen(
                             val todayEpochDay = now.toLocalDateTime(TimeZone.currentSystemDefault()).date.toEpochDays().toLong()
                             userProgressRepository.updateStreak(todayEpochDay)
                             refreshUserProgress()
+                            navigate(Screen.Results)
                         }
-                        navigate(Screen.Results)
                     }
                 },
                 onPrevious = {
@@ -540,21 +581,19 @@ fun MainScreen(
                         val count = session.questions.size
                         val selected = pickFromPool(allQuestions, count)
                         if (selected.isNotEmpty()) {
-                            clearInTestMilestone()
-                            testSession = TestSession(
-                                questions = selected,
-                                isExamMode = session.isExamMode,
+                            launchTestSession(
+                                session = TestSession(
+                                    questions = selected,
+                                    isExamMode = session.isExamMode,
+                                ),
+                                navigation = {
+                                    if (backStack.last() is Screen.Results) {
+                                        backStack[backStack.lastIndex] = Screen.Question
+                                    } else {
+                                        navigate(Screen.Question)
+                                    }
+                                },
                             )
-                            if (session.isExamMode) {
-                                examRemainingSeconds = TestSession.EXAM_DURATION_SECONDS
-                            } else {
-                                examRemainingSeconds = null
-                            }
-                            if (backStack.last() is Screen.Results) {
-                                backStack[backStack.lastIndex] = Screen.Question
-                            } else {
-                                navigate(Screen.Question)
-                            }
                         }
                     },
                 )

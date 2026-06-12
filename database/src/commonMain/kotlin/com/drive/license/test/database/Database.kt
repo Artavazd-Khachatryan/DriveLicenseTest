@@ -201,12 +201,13 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             totalAttempts = row.total_attempts.toInt(),
             totalCorrect = row.total_correct.toInt(),
             totalIncorrect = row.total_incorrect.toInt(),
-            learnedQuestions = row.learned_questions.toInt()
+            learnedQuestions = row.learned_questions.toInt(),
+            questionsSeen = row.seen_questions.toInt(),
         )
     }
 
     suspend fun insertTestSession(id: String, startTime: Long, totalQuestions: Int) = withContext(Dispatchers.IO) {
-        userProgressQueries.insertTestSession(id, startTime, totalQuestions.toLong())
+        userProgressQueries.insertTestSessionOrIgnore(id, startTime, totalQuestions.toLong())
     }
 
     suspend fun completeTestSession(id: String, endTime: Long, correctAnswers: Int) = withContext(Dispatchers.IO) {

@@ -5,13 +5,17 @@ data class UserStatistics(
     val totalAttempts: Int = 0,
     val totalCorrect: Int = 0,
     val totalIncorrect: Int = 0,
-    val learnedQuestions: Int = 0
+    val learnedQuestions: Int = 0,
+    val questionsSeen: Int = 0,
 ) {
     val overallAccuracy: Float
         get() = if (totalAttempts > 0) totalCorrect.toFloat() / totalAttempts else 0f
     
     val progressPercentage: Float
         get() = if (totalQuestions > 0) (learnedQuestions.toFloat() / totalQuestions) * 100 else 0f
+    
+    val coveragePercentage: Float
+        get() = if (totalQuestions > 0) (questionsSeen.toFloat() / totalQuestions) * 100 else 0f
     
     val questionsRemaining: Int
         get() = totalQuestions - learnedQuestions

@@ -259,7 +259,8 @@ fun QuestionDetailScreen(
                     isCorrect = showResult && answer == question.correctAnswer,
                     isIncorrect = showResult && selectedAnswerIndex == index && answer != question.correctAnswer,
                     onClick = {
-                        if (!showResult) {
+                        val isNewSelection = selectedAnswerIndex != index
+                        if (!showResult || isNewSelection) {
                             selectedAnswerIndex = index
                             showResult = true
                             onAnswer(answer)

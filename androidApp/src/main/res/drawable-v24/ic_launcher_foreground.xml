@@ -4,32 +4,44 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Steering wheel ring -->
-    <path
-        android:fillColor="#00000000"
-        android:pathData="M54,28a26,26 0,1 1,0 52a26,26 0,1 1,0 -52"
-        android:strokeWidth="5"
-        android:strokeColor="#FFFFFF" />
-    <!-- Hub -->
+    <!-- License card -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M54,46m-9,0a9,9 0,1 1,18 0a9,9 0,1 1,-18 0" />
-    <!-- Spokes -->
+        android:pathData="M18,25h72c2.2,0 4,1.8 4,4v50c0,2.2 -1.8,4 -4,4H18c-2.2,0 -4,-1.8 -4,-4V29c0,-2.2 1.8,-4 4,-4z" />
+    <!-- Photo -->
     <path
         android:fillColor="#00000000"
-        android:pathData="M54,28 L54,37 M54,71 L54,80 M28,54 L37,54 M71,54 L80,54"
-        android:strokeWidth="5"
-        android:strokeColor="#FFFFFF"
+        android:pathData="M25,32h20c1.5,0 2.5,1 2.5,2.5v22c0,1.5 -1,2.5 -2.5,2.5H25c-1.5,0 -2.5,-1 -2.5,-2.5V34.5c0,-1.5 1,-2.5 2.5,-2.5z"
+        android:strokeWidth="1.5"
+        android:strokeColor="#2563EB" />
+    <path
+        android:fillColor="#2563EB"
+        android:pathData="M35,40m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="#2563EB"
+        android:pathData="M27,56c1.5,-3.5 4,-5.5 7,-5.5s5.5,2 7,5.5v4.5H27z" />
+    <!-- Text lines -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M50,36 L84,36 M50,44 L76,44 M50,52 L80,52"
+        android:strokeWidth="2.5"
+        android:strokeColor="#2563EB"
         android:strokeLineCap="round" />
-    <!-- Success badge -->
+    <!-- MCQ bubbles -->
     <path
         android:fillColor="#16A34A"
-        android:pathData="M74,74m-11,0a11,11 0,1 1,22 0a11,11 0,1 1,-22 0" />
+        android:pathData="M29,68m-4.5,0a4.5,4.5 0,1 1,9 0a4.5,4.5 0,1 1,-9 0" />
     <path
         android:fillColor="#00000000"
-        android:pathData="M68,74 L73,79 L82,68"
-        android:strokeWidth="2.5"
-        android:strokeColor="#FFFFFF"
+        android:pathData="M42,68m-4.5,0a4.5,4.5 0,1 1,9 0a4.5,4.5 0,1 1,-9 0 M55,68m-4.5,0a4.5,4.5 0,1 1,9 0a4.5,4.5 0,1 1,-9 0 M68,68m-4.5,0a4.5,4.5 0,1 1,9 0a4.5,4.5 0,1 1,-9 0"
+        android:strokeWidth="2"
+        android:strokeColor="#2563EB" />
+    <!-- Check -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M78,64 L84,70 L96,56"
+        android:strokeWidth="3.5"
+        android:strokeColor="#16A34A"
         android:strokeLineCap="round"
         android:strokeLineJoin="round" />
 </vector>

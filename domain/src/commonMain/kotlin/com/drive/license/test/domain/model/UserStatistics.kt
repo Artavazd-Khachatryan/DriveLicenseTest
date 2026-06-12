@@ -6,6 +6,7 @@ data class UserStatistics(
     val totalCorrect: Int = 0,
     val totalIncorrect: Int = 0,
     val learnedQuestions: Int = 0,
+    val questionsSeen: Int = 0,
     val currentStreak: Int = 0,
     val longestStreak: Int = 0
 ) {
@@ -16,6 +17,13 @@ data class UserStatistics(
     val learningProgress: Float
         get() = if (totalQuestions > 0) learnedQuestions.toFloat() / totalQuestions else 0f
 
+    /** Share of the question bank the user has attempted at least once. */
+    val coverageProgress: Float
+        get() = if (totalQuestions > 0) questionsSeen.toFloat() / totalQuestions else 0f
+
     val questionsRemaining: Int
         get() = (totalQuestions - learnedQuestions).coerceAtLeast(0)
+
+    val questionsUnseen: Int
+        get() = (totalQuestions - questionsSeen).coerceAtLeast(0)
 }

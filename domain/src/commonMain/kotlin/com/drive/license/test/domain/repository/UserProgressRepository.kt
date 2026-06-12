@@ -11,6 +11,7 @@ interface UserProgressRepository {
     suspend fun getCategoryStats(): List<CategoryStats>
     suspend fun getTestHistory(): List<TestSessionSummary>
     suspend fun getMistakeQuestions(): List<MistakeQuestion>
+    suspend fun beginTestSession(sessionId: String, startTime: Long, totalQuestions: Int)
     suspend fun saveTestSession(sessionId: String, startTime: Long, endTime: Long, totalQuestions: Int, correctAnswers: Int)
     suspend fun saveQuestionAttempt(sessionId: String, questionId: Int, selectedAnswer: String, isCorrect: Boolean, attemptTime: Long)
     suspend fun updateStreak(todayEpochDay: Long)

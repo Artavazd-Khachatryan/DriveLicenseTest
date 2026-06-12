@@ -31,6 +31,7 @@ import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
@@ -46,6 +47,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -62,7 +66,6 @@ import com.drive.license.test.ui.util.AdaptiveContentContainer
 import com.drive.license.test.ui.util.estimatedTestMinutes
 import com.drive.license.test.ui.util.homeMotivationMessage
 import drivelicensetest.ui.generated.resources.Res
-import drivelicensetest.ui.generated.resources.home_learning_complete
 import drivelicensetest.ui.generated.resources.home_learning_progress
 import drivelicensetest.ui.generated.resources.home_learning_ring_cd
 import drivelicensetest.ui.generated.resources.home_ai_assistant_subtitle
@@ -84,10 +87,12 @@ import drivelicensetest.ui.generated.resources.home_start_button
 import drivelicensetest.ui.generated.resources.home_start_test_subtitle
 import drivelicensetest.ui.generated.resources.home_start_test_title
 import drivelicensetest.ui.generated.resources.home_stat_learned
+import drivelicensetest.ui.generated.resources.home_seen_ring_cd
 import drivelicensetest.ui.generated.resources.home_stat_remaining
 import drivelicensetest.ui.generated.resources.home_stat_attempted
 import drivelicensetest.ui.generated.resources.home_stat_correct
 import drivelicensetest.ui.generated.resources.home_stat_incorrect
+import drivelicensetest.ui.generated.resources.home_stat_seen
 import drivelicensetest.ui.generated.resources.home_streak_days
 import drivelicensetest.ui.generated.resources.home_streak_label
 import drivelicensetest.ui.generated.resources.home_view_map_button
@@ -261,9 +266,8 @@ fun HomeScreen(
 }
 
 /**
- * Dashboard-style hero: greeting + motivational status on the left, an animated accuracy ring on
- * the right, and a stat strip below. Merges the old welcome + progress cards into one stronger
- * "where do I stand" summary so the screen opens with a clear sense of readiness.
+ * Dashboard-style hero: greeting on the left, a circular "seen" ring on the right, a horizontal
+ * "learned" bar below, and stat chips at the bottom.
  */
 @Composable
 private fun HomeHeroCard(
@@ -273,6 +277,7 @@ private fun HomeHeroCard(
     modifier: Modifier = Modifier,
 ) {
     val learningProgress = userStatistics.learningProgress
+    val coverageProgress = userStatistics.coverageProgress
 
     AppCard(
         modifier = modifier,
@@ -303,63 +308,44 @@ private fun HomeHeroCard(
                                 color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f),
                             )
                         }
-                        if (totalQuestionCount > 0) {
-                            Text(
-                                text = stringResource(
-                                    Res.string.home_learning_progress,
-                                    userStatistics.learnedQuestions,
-                                    totalQuestionCount,
-                                ),
-                                style = MaterialTheme.typography.bodyMedium,
-                                fontWeight = FontWeight.SemiBold,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer,
-                            )
-                        }
                         if (userStatistics.currentStreak > 0) {
                             Spacer(modifier = Modifier.height(2.dp))
                             StreakPill(streak = userStatistics.currentStreak)
                         }
                     }
 
+                    if (totalQuestionCount > 0) {
+                        key(userStatistics.questionsSeen, totalQuestionCount) {
+                            HomeSeenProgressRing(
+                                progress = coverageProgress,
+                                seenCount = userStatistics.questionsSeen,
+                                totalCount = totalQuestionCount,
+                                contentDescription = stringResource(
+                                    Res.string.home_seen_ring_cd,
+                                    (coverageProgress * 100).toInt(),
+                                    userStatistics.questionsSeen,
+                                    totalQuestionCount,
+                                ),
+                                onClick = onOpenStatsFromRing,
+                            )
+                        }
+                    }
+                }
+
+                if (totalQuestionCount > 0) {
                     key(userStatistics.learnedQuestions, totalQuestionCount) {
-                        val animatedProgress by animateFloatAsState(
-                            targetValue = learningProgress,
-                            animationSpec = tween(1200, easing = LinearEasing),
-                            label = "home_learning_progress"
-                        )
-                        ProgressRing(
-                            progress = animatedProgress,
-                            size = 104.dp,
-                            strokeWidth = 11.dp,
+                        HomeLearnedProgressBar(
+                            progress = learningProgress,
+                            learnedCount = userStatistics.learnedQuestions,
+                            totalCount = totalQuestionCount,
                             contentDescription = stringResource(
                                 Res.string.home_learning_ring_cd,
                                 (learningProgress * 100).toInt(),
                                 userStatistics.learnedQuestions,
                                 totalQuestionCount,
                             ),
-                            modifier = Modifier.clickable { onOpenStatsFromRing() }
-                        ) {
-                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                val animatedPercentage by animateIntAsState(
-                                    targetValue = (learningProgress * 100).toInt(),
-                                    animationSpec = tween(1200, easing = LinearEasing),
-                                    label = "home_learning_percentage"
-                                )
-                                Text(
-                                    text = "$animatedPercentage%",
-                                    style = MaterialTheme.typography.titleLarge,
-                                    fontWeight = FontWeight.Bold,
-                                    color = MaterialTheme.colorScheme.onPrimaryContainer,
-                                    maxLines = 1,
-                                )
-                                Text(
-                                    text = stringResource(Res.string.home_learning_complete),
-                                    style = MaterialTheme.typography.labelMedium,
-                                    color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f),
-                                    maxLines = 1,
-                                )
-                            }
-                        }
+                            onClick = onOpenStatsFromRing,
+                        )
                     }
                 }
 
@@ -373,6 +359,13 @@ private fun HomeHeroCard(
                             value = userStatistics.learnedQuestions.toString(),
                             containerColor = MaterialTheme.colorScheme.secondaryContainer,
                             contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                            modifier = Modifier.weight(1f)
+                        )
+                        StatChip(
+                            label = stringResource(Res.string.home_stat_seen),
+                            value = userStatistics.questionsSeen.toString(),
+                            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                            contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
                             modifier = Modifier.weight(1f)
                         )
                         StatChip(
@@ -411,6 +404,138 @@ private fun HomeHeroCard(
                         )
                     }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun HomeLearnedProgressBar(
+    progress: Float,
+    learnedCount: Int,
+    totalCount: Int,
+    contentDescription: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val visualProgress = if (learnedCount > 0) {
+        progress.coerceIn(0f, 1f).coerceAtLeast(0.02f)
+    } else {
+        progress.coerceIn(0f, 1f)
+    }
+    val animatedProgress by animateFloatAsState(
+        targetValue = visualProgress,
+        animationSpec = tween(1200, easing = LinearEasing),
+        label = "home_learned_progress",
+    )
+    val animatedPercentage by animateIntAsState(
+        targetValue = (progress * 100).toInt(),
+        animationSpec = tween(1200, easing = LinearEasing),
+        label = "home_learned_percentage",
+    )
+    val onContainer = MaterialTheme.colorScheme.onPrimaryContainer
+
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .semantics { this.contentDescription = contentDescription }
+            .clickable(onClick = onClick),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = stringResource(Res.string.home_stat_learned),
+                style = MaterialTheme.typography.labelLarge,
+                fontWeight = FontWeight.SemiBold,
+                color = onContainer,
+            )
+            Text(
+                text = "$animatedPercentage%",
+                style = MaterialTheme.typography.labelLarge,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.primary,
+            )
+        }
+        LinearProgressIndicator(
+            progress = { animatedProgress },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(10.dp)
+                .clip(MaterialTheme.shapes.small),
+            color = MaterialTheme.colorScheme.primary,
+            trackColor = onContainer.copy(alpha = 0.12f),
+            gapSize = 0.dp,
+            drawStopIndicator = {},
+        )
+        Text(
+            text = stringResource(
+                Res.string.home_learning_progress,
+                learnedCount,
+                totalCount,
+            ),
+            style = MaterialTheme.typography.bodySmall,
+            color = onContainer.copy(alpha = 0.75f),
+        )
+    }
+}
+
+@Composable
+private fun HomeSeenProgressRing(
+    progress: Float,
+    seenCount: Int,
+    totalCount: Int,
+    contentDescription: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val visualProgress = if (seenCount > 0) {
+        progress.coerceIn(0f, 1f).coerceAtLeast(0.02f)
+    } else {
+        progress.coerceIn(0f, 1f)
+    }
+    val animatedProgress by animateFloatAsState(
+        targetValue = visualProgress,
+        animationSpec = tween(1200, easing = LinearEasing),
+        label = "home_seen_progress",
+    )
+    ProgressRing(
+        progress = animatedProgress,
+        size = 96.dp,
+        strokeWidth = 10.dp,
+        progressColor = MaterialTheme.colorScheme.tertiary,
+        contentDescription = contentDescription,
+        modifier = modifier.clickable(onClick = onClick),
+    ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            val animatedCount by animateIntAsState(
+                targetValue = seenCount,
+                animationSpec = tween(1200, easing = LinearEasing),
+                label = "home_seen_count",
+            )
+            Text(
+                text = "$animatedCount",
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                maxLines = 1,
+            )
+            Text(
+                text = stringResource(Res.string.home_stat_seen),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f),
+                maxLines = 1,
+            )
+            if (totalCount > 0) {
+                Text(
+                    text = "/ $totalCount",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.6f),
+                    maxLines = 1,
+                )
             }
         }
     }

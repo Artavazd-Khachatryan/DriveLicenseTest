@@ -2,13 +2,21 @@
 
 | File | Use |
 |------|-----|
-| `logo.svg` | Source vector (web, docs, future in-app logo) |
-| `app-icon-1024.png` | Master app icon (1024×1024) |
+| `logo-license-mcq.svg` | **Current** — license card + MCQ bubbles + ✓ |
+| `app-icon-license-mcq-1024.png` | **Current** master app icon (mcq-09) |
+| `logo-test-paper-car.svg` | Earlier — exam sheet + car hints |
+| `app-icon-test-paper-car-1024.png` | Earlier master |
+| `logo-underline-check-car.svg` | Earlier — underline→✓ with car accents |
+| `app-icon-underline-check-car-1024.png` | Earlier master |
+| `logo-steering-check.svg` | Earlier — road ✓ inside steering wheel + shield |
+| `app-icon-steering-check-1024.png` | Earlier master (white bg) |
+| `logo.svg` | Earlier steering-wheel mark (superseded) |
+| `app-icon-1024.png` | Earlier blue-background icon |
 
-**Colors:** primary `#2563EB`, success `#16A34A`, on-primary `#FFFFFF` (see `ui/.../theme/Color.kt`).
+**Icon colors:** blue `#2563EB`, accent `#F97316`, background `#FFFFFF`.
 
 **Wired in app:**
 - **iOS:** `iosApp/iosApp/Assets.xcassets/AppIcon.appiconset/app-icon-1024.png`
-- **Android:** adaptive icon via `ic_launcher_background.xml` + `ic_launcher_foreground.xml`
+- **Android:** white adaptive background + `ic_launcher_foreground.xml`
 
-Regenerate Android vectors from `logo.svg` if the mark changes.
+Exploration drafts live in `options/`.
