@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Drive License Test logo">
+  <rect width="512" height="512" rx="112" fill="#2563EB"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="256" cy="256" r="108"/>
+    <circle cx="256" cy="256" r="36" fill="#FFFFFF" stroke="none"/>
+    <line x1="256" y1="148" x2="256" y2="188"/>
+    <line x1="256" y1="324" x2="256" y2="364"/>
+    <line x1="148" y1="256" x2="188" y2="256"/>
+    <line x1="324" y1="256" x2="364" y2="256"/>
+  </g>
+  <circle cx="372" cy="372" r="56" fill="#16A34A"/>
+  <path d="M352 372 L368 388 L396 356" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

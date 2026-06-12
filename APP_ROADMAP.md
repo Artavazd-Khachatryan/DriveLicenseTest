@@ -63,10 +63,11 @@ The app targets Armenian users preparing for the driving exam.
 
 Polish the look and feel.
 
-- **6.0 App logo + launcher icons** — Design a simple brand mark and add proper app icons for:
-  - Android: adaptive icon (foreground/background) + legacy fallbacks
-  - iOS: AppIcon asset catalog (all required sizes)
-  - In-app: optional small logo in Home/TopAppBar (only if it improves brand recognition)
+- [x] **6.0 App logo + launcher icons** — Brand mark (steering wheel + check on blue `#2563EB`):
+  - Source: `assets/brand/logo.svg`, master PNG `assets/brand/app-icon-1024.png`
+  - Android: adaptive icon (`ic_launcher_background` + `ic_launcher_foreground`)
+  - iOS: `AppIcon.appiconset/app-icon-1024.png`
+  - In-app: optional small logo in Home/TopAppBar (deferred — only if it improves recognition)
 - **6.1 Dark mode audit** — Fixed hardcoded Color.Red in timer; all other colors use colorScheme tokens
 - **6.2 Long text handling** — Existing verticalScroll on detail screens handles long content; Text wraps naturally
 - **6.3 Empty states** — Mistakes screen has illustrated empty card; Stats cards show inline empty messages
@@ -106,6 +107,63 @@ Help users find a physical driving school in Armenia — **list view only** (no 
 **Out of scope:** Embedded map, dial/maps deep links, verified phone directory (not planned).
 
 **Feature flag:** `AppFeatures.drivingSchoolsEnabled`
+
+---
+
+## Phase 9: Subscriptions & Monetization (KMP)
+
+Monthly subscriptions to fund ongoing content and AI costs. **Recommended stack:** [RevenueCat Kotlin Multiplatform SDK](https://www.revenuecat.com/docs/getting-started/installation/kotlin-multiplatform) (`purchases-kmp-core`; optional `purchases-kmp-ui` for server-driven paywalls). One billing API in `commonMain` — no separate Play Billing + StoreKit maintenance.
+
+### Model decision: two tiers (not full-app lock)
+
+| Tier | Product ID (both stores) | Entitlement | Price (TBD) |
+|------|--------------------------|-------------|-------------|
+| **Plus** | `plus_monthly` | `plus` | Lower monthly |
+| **Pro** | `pro_monthly` | `pro` | Higher monthly — **full access** |
+
+**Rule in code:** `pro` includes everything `plus` has. Do **not** gate all questions behind paywall (bad for education apps and store reviews).
+
+### Free vs paid features
+
+| Feature | Free | Plus | Pro |
+|---------|------|------|-----|
+| Home + basic practice | ✓ | ✓ | ✓ |
+| Full tests | Limited (e.g. 1 exam/day or 20 Q/day) | Unlimited | Unlimited |
+| Exam simulation + timer | — | ✓ | ✓ |
+| Mistakes review | — | ✓ | ✓ |
+| Bookmarks | — | ✓ | ✓ |
+| Full stats & test history | Basic | ✓ | ✓ |
+| Category / weak-area practice | Limited | ✓ | ✓ |
+| AI answer explanations | — | — | ✓ |
+| Color vision (Daltonism) tests | — | — | ✓ |
+| Driving schools list | — | — | ✓ |
+| Study reminders (premium polish) | Basic | ✓ | ✓ |
+
+Maps to existing flags: `AppFeatures.aiEnabled`, `colorVisionTestEnabled`, `drivingSchoolsEnabled` become runtime checks against subscription tier, not compile-time constants.
+
+### Implementation steps
+
+- **9.1 Store setup** — Create `plus_monthly` and `pro_monthly` in App Store Connect + Google Play Console (same product IDs). Optional 7-day trial on Pro only.
+- **9.2 RevenueCat** — Project, entitlements (`plus`, `pro`), one Offering with both packages, API keys per platform.
+- **9.3 Domain layer** — `SubscriptionRepository` + `SubscriptionTier` (`Free`, `Plus`, `Pro`) + `PremiumFeature` enum in `domain/`; expose `StateFlow<SubscriptionTier>`.
+- **9.4 SDK integration** — Add `purchases-kmp-core` to `composeApp` `commonMain`; `Purchases.configure()` in `App.kt`; implement repository with `awaitCustomerInfo()` / `awaitPurchase()` / `awaitRestore()`.
+- **9.5 Feature gating** — Gate at navigation in `MainScreen.kt` (show paywall / upgrade prompt, not silent failure). Daily limit counter in local DB or DataStore for free tier.
+- **9.6 Paywall UI** — Compose `PaywallScreen` (Plus vs Pro comparison) or `PaywallDialog` from `purchases-kmp-ui`. Armenian strings in `strings.xml`.
+- **9.7 Settings** — “Manage subscription” + **Restore purchases** (required on iOS). Link to store subscription management where appropriate.
+- **9.8 QA** — Google license testers, iOS Sandbox, upgrade Plus→Pro, restore on second device, offline last-known tier cache.
+- **9.9 Analytics** — Log `paywall_shown`, `purchase_started`, `tier_changed` (Firebase Analytics optional follow-up).
+
+### v1 shortcut (if two tiers feel heavy)
+
+Ship **Pro only** first (`pro_monthly` → `pro`), gate 2–3 high-value features (mistakes + color vision + AI). Add Plus later when conversion data exists.
+
+### Out of scope for 9.x
+
+- Web/Stripe for in-app digital content (store policy)
+- Custom `expect`/`actual` BillingClient + StoreKit (high maintenance unless RevenueCat is rejected)
+- Per-feature micro-subscriptions (one entitlement per feature)
+
+**Kotlin note:** RevenueCat KMP 3.x targets Kotlin 2.3.20+; project is on 2.3.10 — minor version bump likely needed at integration time.
 
 ---
 
@@ -174,3 +232,5 @@ Shown on **Home** welcome card, **during a test** every 5 answered questions (in
 | 2026-05-26 | Removed from scope: difficulty distribution (2.3), practice by book (3.2), RTL/font check (5.4)                               |
 | 2026-05-26 | Phase 7 added — Firebase Crashlytics plan for Android + iOS with KMP `expect`/`actual` bridge                                   |
 | 2026-05-26 | Phase 8.1 — Driving schools list enabled; map pins planned in 8.2; motivation rules documented in roadmap                        |
+| 2026-06-11 | Phase 6.0 — Brand logo + launcher icons (`assets/brand/`); Android adaptive icon + iOS AppIcon 1024 |
+| 2026-06-11 | Phase 9 added — Subscriptions plan (RevenueCat KMP, Plus/Pro tiers, feature matrix, implementation steps) |
