@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Driving license test app">
+  <rect width="512" height="512" fill="#2563EB"/>
+  <!-- Exam sheet (primary) -->
+  <rect x="96" y="88" width="320" height="336" rx="28" fill="#FFFFFF"/>
+  <!-- Answer lines -->
+  <line x1="136" y1="168" x2="344" y2="168" stroke="#CBD5E1" stroke-width="10" stroke-linecap="round"/>
+  <line x1="136" y1="208" x2="296" y2="208" stroke="#CBD5E1" stroke-width="10" stroke-linecap="round"/>
+  <!-- Multiple choice -->
+  <circle cx="152" cy="256" r="16" fill="none" stroke="#94A3B8" stroke-width="8"/>
+  <circle cx="208" cy="256" r="16" fill="none" stroke="#94A3B8" stroke-width="8"/>
+  <circle cx="264" cy="256" r="16" fill="#16A34A" stroke="#16A34A" stroke-width="8"/>
+  <circle cx="320" cy="256" r="16" fill="none" stroke="#94A3B8" stroke-width="8"/>
+  <!-- Correct check (test pass) -->
+  <path fill="none" stroke="#16A34A" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"
+        d="M152 320 L216 384 L360 224"/>
+  <!-- Car hint: question illustration -->
+  <g transform="translate(128 360)">
+    <rect x="0" y="0" width="56" height="28" rx="8" fill="#2563EB" opacity="0.15"/>
+    <path fill="#2563EB" d="M6 10h36c5 0 8 3 8 8v6H2v-6c0-5 3-8 8-8z"/>
+    <circle cx="12" cy="26" r="6" fill="#2563EB"/>
+    <circle cx="38" cy="26" r="6" fill="#2563EB"/>
+  </g>
+  <!-- Car hint: steering wheel on sheet corner -->
+  <circle cx="372" cy="132" r="28" fill="none" stroke="#2563EB" stroke-width="6" opacity="0.35"/>
+  <circle cx="372" cy="132" r="9" fill="#2563EB" opacity="0.35"/>
+  <line x1="372" y1="104" x2="372" y2="112" stroke="#2563EB" stroke-width="5" stroke-linecap="round" opacity="0.35"/>
+  <line x1="372" y1="152" x2="372" y2="160" stroke="#2563EB" stroke-width="5" stroke-linecap="round" opacity="0.35"/>
+  <line x1="344" y1="132" x2="352" y2="132" stroke="#2563EB" stroke-width="5" stroke-linecap="round" opacity="0.35"/>
+  <line x1="392" y1="132" x2="400" y2="132" stroke="#2563EB" stroke-width="5" stroke-linecap="round" opacity="0.35"/>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Driving test — marked correct">
+  <rect width="512" height="512" fill="#2563EB"/>
+  <!-- Underline with lane dashes -->
+  <line x1="88" y1="352" x2="208" y2="352" stroke="#FFFFFF" stroke-width="26" stroke-linecap="round"/>
+  <line x1="100" y1="352" x2="196" y2="352" stroke="#3B82F6" stroke-width="7" stroke-dasharray="12 16" stroke-linecap="round"/>
+  <!-- Fork stem + checkmark (09 layout) -->
+  <path fill="none" stroke="#FFFFFF" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"
+        d="M208 352 L248 280 L208 320 L320 152"/>
+  <!-- Steering wheel at fork -->
+  <circle cx="232" cy="316" r="34" fill="none" stroke="#FFFFFF" stroke-width="7"/>
+  <circle cx="232" cy="316" r="11" fill="#FFFFFF"/>
+  <line x1="232" y1="282" x2="232" y2="294" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+  <line x1="232" y1="338" x2="232" y2="350" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+  <line x1="198" y1="316" x2="210" y2="316" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+  <line x1="254" y1="316" x2="266" y2="316" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+  <!-- Small car on underline -->
+  <path fill="#FFFFFF" d="M92 328h40c6 0 10 4 10 10v6H82v-6c0-6 4-10 10-10z" opacity="0.92"/>
+  <circle cx="94" cy="346" r="6" fill="#FFFFFF"/>
+  <circle cx="126" cy="346" r="6" fill="#FFFFFF"/>
+  <!-- Correct / pass -->
+  <circle cx="320" cy="152" r="18" fill="#16A34A"/>
+</svg>

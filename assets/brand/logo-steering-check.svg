@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Driving test app icon">
+  <rect width="512" height="512" fill="#FFFFFF"/>
+  <!-- Shield (subtle frame) -->
+  <path fill="none" stroke="#2563EB" stroke-width="12" stroke-linejoin="round"
+        d="M256 72 L360 112 L360 248 C360 328 312 388 256 416 C200 388 152 328 152 248 L152 112 Z" opacity="0.22"/>
+  <!-- Steering wheel ring -->
+  <circle cx="256" cy="256" r="132" fill="none" stroke="#2563EB" stroke-width="20"/>
+  <circle cx="256" cy="256" r="44" fill="#2563EB"/>
+  <line x1="256" y1="124" x2="256" y2="168" stroke="#2563EB" stroke-width="16" stroke-linecap="round"/>
+  <line x1="256" y1="344" x2="256" y2="388" stroke="#2563EB" stroke-width="16" stroke-linecap="round"/>
+  <line x1="124" y1="256" x2="168" y2="256" stroke="#2563EB" stroke-width="16" stroke-linecap="round"/>
+  <line x1="344" y1="256" x2="388" y2="256" stroke="#2563EB" stroke-width="16" stroke-linecap="round"/>
+  <!-- Road checkmark inside wheel -->
+  <path fill="none" stroke="#2563EB" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"
+        d="M176 292 L228 344 L340 196"/>
+  <path fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"
+        d="M176 292 L228 344 L340 196" opacity="0.9"/>
+  <!-- Orange accent at check tip -->
+  <circle cx="340" cy="196" r="18" fill="#F97316"/>
+</svg>
