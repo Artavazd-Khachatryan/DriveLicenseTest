@@ -6936,7 +6936,7 @@
     <string name="home_start_button">Սկսել</string>
     <string name="home_quick_actions">Արագ գործողություններ</string>
     <string name="home_review_mistakes_title">Վերանայել սխալները</string>
-    <string name="home_review_mistakes_subtitle">Հարցեր, որոնք դեռ հաճախ սխալ եք պատասխանում</string>
+    <string name="home_review_mistakes_subtitle">Հարցեր, որոնց դեռ հաճախ սխալ եք պատասխանում</string>
     <string name="home_review_button">Վերանայել</string>
     <string name="home_ai_assistant_title">AI Օգնական</string>
     <string name="home_ai_assistant_subtitle">Արագ օգնություն</string>
@@ -6945,8 +6945,8 @@
     <string name="home_learning_centers_subtitle">Հայտնի վարորդական դպրոցներ՝ հասցե և հեռախոս</string>
     <string name="home_view_map_button">Բացել ցանկը</string>
     <string name="home_unseen_questions">%1$d հարց դեռ չեք փորձել (ընդամենը %2$d)</string>
-    <string name="home_quick_start_cd">Արագ սկսել թեստը</string>
-    <string name="home_practice_button">Պարապման ռեժիմ</string>
+    <string name="home_quick_start_cd">Սկսել թեստը</string>
+    <string name="home_practice_button">Պարապունք</string>
     <string name="home_stat_correct">Ճիշտ</string>
     <string name="home_stat_incorrect">Սխալ</string>
     <string name="home_stat_attempted">Փորձ</string>
@@ -6965,12 +6965,12 @@
     <string name="bookmarks_title">Էջանշաններ</string>
     <string name="bookmarks_count">%1$d հարց պահված</string>
     <string name="bookmarks_empty_title">Էջանշաններ դեռ չկան</string>
-    <string name="bookmarks_empty_subtitle">Հարցերի էջում հպեք աստղի կոճակին՝ հարցը պահելու համար:</string>
+    <string name="bookmarks_empty_subtitle">Հարցի էջում սեղմեք էջանշանի կոճակը՝ հարցը պահելու համար։</string>
     <string name="bookmarks_correct_answer">Ճիշտ պատասխան</string>
     <string name="bookmarks_practice_button">Պարապել էջանշաններով</string>
     <string name="practice_bookmarks_title">Էջանշված հարցեր</string>
-    <string name="practice_bookmarks_desc">Վերանայեք ձեր պահած հարցերը։</string>
-    <string name="practice_bookmarks_button">Սկսել պարապանքը</string>
+    <string name="practice_bookmarks_desc">Վերանայեք պահված հարցերը։</string>
+    <string name="practice_bookmarks_button">Սկսել պարապունքը</string>
     <string name="practice_bookmarks_empty">Նախ ավելացրեք հարցեր էջանշաններին։</string>
     <string name="question_bookmark_add">Ավելացնել էջանշան</string>
     <string name="question_bookmark_remove">Հեռացնել էջանշաններից</string>
@@ -7008,28 +7008,28 @@
     <string name="question_exit_confirm">Ելք</string>
     <string name="question_exit_cancel">Շարունակել</string>
     <string name="question_number_of_total">Հարց %1$d / %2$d-ից</string>
-    <string name="question_time_remaining">Մնացած ժամանակ</string>
+    <string name="question_time_remaining">Մնացած ժամանակը</string>
     <string name="question_previous">Նախորդ</string>
     <string name="question_next">Հաջորդ</string>
     <string name="question_motivation_milestone_header">%1$d/%2$d հարց — լավ աշխատանք է։</string>
     <string name="question_motivation_strong">Հիանալի եք գնում — շարունակեք այս տեմպով։</string>
     <string name="question_motivation_steady">Լավ առաջընթաց — դեռ մի քանի հարց մնաց։</string>
-    <string name="question_motivation_keep_going">Շարունակեք — յուրաքանչյուր պատասխանը ձեզ ավելի մոտեցնում է։</string>
+    <string name="question_motivation_keep_going">Շարունակեք — յուրաքանչյուր պատասխանը ձեզ ավելի է մոտեցնում նպատակին։</string>
     <string name="question_finish">Ավարտել</string>
     <string name="question_image_unavailable">Նկարն անհասանելի է</string>
     <string name="question_image_cd">Հարցի նկար</string>
 
     <!-- Test Results Screen -->
     <string name="results_title">Թեստի արդյունքներ</string>
-    <string name="results_passed_title">Շնորհավորանք!</string>
+    <string name="results_passed_title">Թեստը հաղթահարված է</string>
     <string name="results_failed_title">Շարունակեք պարապել!</string>
     <string name="results_passed_subtitle">Դուք հաջողությամբ անցաք թեստը!</string>
     <string name="results_failed_subtitle">Անցնելու համար անհրաժեշտ է 70%</string>
     <string name="results_motivation_perfect">Կատարյալ արդյունք — դուք պատրաստ եք։</string>
-    <string name="results_motivation_excellent">Հիանալի աշխատանք — մնացել է մի քիչ մանրուքների վրա։</string>
+    <string name="results_motivation_excellent">Հիանալի աշխատանք — մնացել է մի քիչ աշխատել մանրուքների վրա։</string>
     <string name="results_motivation_pass">Դուք անցաք — շարունակեք այս տեմպով։</string>
-    <string name="results_motivation_almost">Շատ մոտ եք — մի քանի սխալ հարց և կանցնեք։</string>
-    <string name="results_motivation_fail">Մի պահի չկորցրեք — վերանայեք սխալները և փորձեք կրկին։</string>
+    <string name="results_motivation_almost">Շատ մոտ եք — մի քանի փորձ և կանցնեք։</string>
+    <string name="results_motivation_fail">Պահը բաց չթողնեք — վերանայեք սխալները և փորձեք կրկին։</string>
     <string name="results_your_score">Ձեր արդյունքը</string>
     <string name="results_correct_answers">Ճիշտ պատասխաններ</string>
     <string name="results_incorrect_answers">Սխալ պատասխաններ</string>
@@ -7057,7 +7057,7 @@
     <!-- Common -->
     <string name="back">Հետ</string>
     <string name="nav_home">Գլխավոր</string>
-    <string name="nav_practice">Պարապանք</string>
+    <string name="nav_practice">Պարապունք</string>
     <string name="nav_stats">Վիճակագրություն</string>
 
     <!-- Map Screen -->
@@ -7083,8 +7083,8 @@
 
     <!-- Settings Screen -->
     <string name="settings_title">Կարգավորումներ</string>
-    <string name="settings_reminder_title">Օրական պարապանքի հիշեցում</string>
-    <string name="settings_reminder_subtitle">Ստացեք մեղմ հիշեցում ամեն օր պարապելու համար</string>
+    <string name="settings_reminder_title">Օրական պարապունքի հիշեցում</string>
+    <string name="settings_reminder_subtitle">Ստացեք հիշեցում ամեն օր պարապելու համար</string>
     <string name="settings_reminder_time_label">Հիշեցման ժամ</string>
     <string name="settings_reminder_change_time">Փոխել ժամը</string>
 
@@ -7092,8 +7092,8 @@
     <string name="settings_reset_title">Զրոյացնել վիճակագրությունը</string>
     <string name="settings_reset_subtitle">Կջնջվեն բոլոր փորձերը, ճիշտ/սխալ պատասխանների հաշվարկը, սովորած հարցերը, սերիան և թեստերի պատմությունը։</string>
     <string name="settings_reset_button">Զրոյացնել</string>
-    <string name="settings_reset_dialog_title">Վիճակագրությունը զրոյացնե՞լ</string>
-    <string name="settings_reset_dialog_message">Այս գործողությունը հետ չի վերադարձվում։</string>
+    <string name="settings_reset_dialog_title">Զրոյացնե՞լ վիճակագրությունը</string>
+    <string name="settings_reset_dialog_message">Այս գործողությունը չեղարկել հնարավոր չէ։</string>
     <string name="settings_reminder_pick_time_title">Ընտրեք հիշեցման ժամը</string>
     <string name="settings_reminder_pick_time_hint">Ժամը կկիրառվի, երբ միացնեք օրական հիշեցումը</string>
     <string name="settings_reminder_permission_denied">Ծանուցումները թույլատրված չեն։ Միացրեք համակարգի կարգավորումներից։</string>
@@ -7138,7 +7138,7 @@
     <string name="color_vision_results_title">Արդյունքներ</string>
     <string name="color_vision_results_passed_title">Լավ արդյունք</string>
     <string name="color_vision_results_passed_subtitle">Բոլոր պատասխանները ճիշտ են — կարող եք անցնել տեսական քննությանը։</string>
-    <string name="color_vision_results_failed_title">Չանցաք</string>
+    <string name="color_vision_results_failed_title">Արդյունքը բավարար չէ</string>
     <string name="color_vision_results_failed_subtitle">Քննության ժամանակ մեկ սխալ պատասխանն էլ բավական է՝ շարունակելը արգելելու համար։ Կրկին փորձեք կամ դիմեք ակնաբույժի։</string>
     <string name="color_vision_retake">Կրկնել թեստը</string>
     <string name="practice_color_vision_title">Գունային տեսողություն</string>
