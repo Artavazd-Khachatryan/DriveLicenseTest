@@ -10,7 +10,9 @@ import platform.UserNotifications.UNAuthorizationOptionAlert
 import platform.UserNotifications.UNAuthorizationOptionBadge
 import platform.UserNotifications.UNAuthorizationOptionSound
 import platform.UserNotifications.UNAuthorizationStatusAuthorized
+import platform.UserNotifications.UNAuthorizationStatusDenied
 import platform.UserNotifications.UNAuthorizationStatusEphemeral
+import platform.UserNotifications.UNAuthorizationStatusNotDetermined
 import platform.UserNotifications.UNAuthorizationStatusProvisional
 import platform.UserNotifications.UNUserNotificationCenter
 import platform.darwin.dispatch_async
@@ -27,9 +29,15 @@ actual fun rememberNotificationPermissionState(
         center.getNotificationSettingsWithCompletionHandler { settings ->
             val status = settings?.authorizationStatus
             dispatch_async(dispatch_get_main_queue()) {
-                granted = status == UNAuthorizationStatusAuthorized ||
-                    status == UNAuthorizationStatusProvisional ||
-                    status == UNAuthorizationStatusEphemeral
+                granted = when (status) {
+                    UNAuthorizationStatusNotDetermined -> null
+                    UNAuthorizationStatusDenied -> false
+                    UNAuthorizationStatusAuthorized,
+                    UNAuthorizationStatusProvisional,
+                    UNAuthorizationStatusEphemeral,
+                    -> true
+                    else -> null
+                }
             }
         }
     }
