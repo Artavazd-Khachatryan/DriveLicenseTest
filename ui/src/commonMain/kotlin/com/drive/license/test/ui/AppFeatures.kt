@@ -7,5 +7,5 @@ object AppFeatures {
     const val colorVisionTestEnabled = true
     const val aiEnabled = false
     /** Context-aware copy on home, in-test milestones, and results. */
-    const val motivationEnabled = false
+    const val motivationEnabled = true
 }
