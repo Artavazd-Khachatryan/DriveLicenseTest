@@ -36,7 +36,13 @@ data class TestSession(
     
     val totalAnswered: Int
         get() = answers.size
-    
+
+    /** Questions answered incorrectly or left unanswered in this session. */
+    val failedQuestions: List<Question>
+        get() = questions.filterIndexed { index, question ->
+            answers[index] != question.correctAnswer
+        }
+
     fun answerQuestion(answer: String): TestSession {
         val newAnswers = answers.toMutableMap()
         newAnswers[currentQuestionIndex] = answer

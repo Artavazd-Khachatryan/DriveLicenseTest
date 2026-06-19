@@ -299,7 +299,6 @@ fun MainScreen(
             onStartTest = { count -> startTest(allQuestions, count) },
             onOpenStats = { navigate(Screen.Stats) },
             onOpenFailed = { navigate(Screen.Mistakes) },
-            onOpenPractice = { navigate(Screen.Practice) },
             onOpenChat = { },
             onOpenDrivingSchools = {
                 if (AppFeatures.drivingSchoolsEnabled) navigate(Screen.DrivingSchools)
@@ -578,8 +577,7 @@ fun MainScreen(
                     onReviewMistakes = { navigate(Screen.Mistakes) },
                     onBackToHome = { navigateToHome() },
                     onRetakeTest = {
-                        val count = session.questions.size
-                        val selected = pickFromPool(allQuestions, count)
+                        val selected = session.failedQuestions.ifEmpty { session.questions }
                         if (selected.isNotEmpty()) {
                             launchTestSession(
                                 session = TestSession(

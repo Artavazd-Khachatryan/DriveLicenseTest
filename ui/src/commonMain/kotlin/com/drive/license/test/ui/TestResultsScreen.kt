@@ -70,10 +70,13 @@ fun TestResultsScreen(
 
     var heroVisible by remember { mutableStateOf(false) }
     var statsVisible by remember { mutableStateOf(false) }
+    var motivationVisible by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) {
         heroVisible = true
         delay(180)
         statsVisible = true
+        delay(180)
+        motivationVisible = true
     }
 
     val accentColor = if (passed) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error
@@ -134,26 +137,48 @@ fun TestResultsScreen(
                     )
                 }
 
-                if (isExpanded) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(16.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Column(
-                            modifier = Modifier.weight(1f),
-                            verticalArrangement = Arrangement.spacedBy(16.dp),
+                val motivation: @Composable (Modifier) -> Unit = { motivationModifier ->
+                    if (AppFeatures.motivationEnabled) {
+                        AnimatedVisibility(
+                            visible = motivationVisible,
+                            enter = fadeIn(tween(300)) + slideInVertically(tween(300)) { it / 4 },
+                            modifier = motivationModifier,
                         ) {
-                            heroCard(Modifier.fillMaxWidth())
-                            statsRow(Modifier.fillMaxWidth())
+                            ResultsMotivationCard(
+                                score = score,
+                                passed = passed,
+                            )
                         }
-                        actions(Modifier.weight(1f))
+                    }
+                }
+
+                if (isExpanded) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(16.dp),
+                    ) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Column(
+                                modifier = Modifier.weight(1f),
+                                verticalArrangement = Arrangement.spacedBy(16.dp),
+                            ) {
+                                heroCard(Modifier.fillMaxWidth())
+                                statsRow(Modifier.fillMaxWidth())
+                            }
+                            actions(Modifier.weight(1f))
+                        }
+                        motivation(Modifier.fillMaxWidth())
                     }
                 } else {
                     heroCard(Modifier.fillMaxWidth())
                     statsRow(Modifier.fillMaxWidth())
                     Spacer(modifier = Modifier.height(8.dp))
                     actions(Modifier.fillMaxWidth())
+                    motivation(Modifier.fillMaxWidth())
                 }
             }
         }
@@ -216,15 +241,29 @@ private fun ResultsHeroCard(
                 textAlign = TextAlign.Center,
                 color = onContainer,
             )
-            if (AppFeatures.motivationEnabled) {
-                Text(
-                    text = testResultMotivationMessage(score, passed),
-                    style = MaterialTheme.typography.bodyLarge,
-                    textAlign = TextAlign.Center,
-                    color = onContainer.copy(alpha = 0.85f),
-                )
-            }
         }
+    }
+}
+
+@Composable
+private fun ResultsMotivationCard(
+    score: Float,
+    passed: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    AppCard(
+        modifier = modifier.fillMaxWidth(),
+        containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+    ) {
+        Text(
+            text = testResultMotivationMessage(score, passed),
+            style = MaterialTheme.typography.bodyLarge,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp),
+        )
     }
 }
 

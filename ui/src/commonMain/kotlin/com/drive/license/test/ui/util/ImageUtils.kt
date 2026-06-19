@@ -1,8 +1,14 @@
 package com.drive.license.test.ui.util
 
+import com.drive.license.test.domain.model.Question
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.allDrawableResources
 import org.jetbrains.compose.resources.DrawableResource
+
+fun resolveQuestionImage(question: Question): DrawableResource? {
+    return resolveDrawableResource("question${question.id}_image.png")
+        ?: question.imageUrl?.let { resolveDrawableResource(it) }
+}
 
 fun resolveDrawableResource(resourceName: String?): DrawableResource? {
     if (resourceName.isNullOrBlank()) {

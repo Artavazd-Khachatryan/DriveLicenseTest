@@ -56,7 +56,6 @@ import androidx.compose.ui.unit.dp
 import com.drive.license.test.domain.model.UserStatistics
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppCard
-import com.drive.license.test.ui.components.AppOutlinedButton
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.FeatureCard
 import com.drive.license.test.ui.components.ProgressRing
@@ -76,7 +75,6 @@ import drivelicensetest.ui.generated.resources.home_color_vision_subtitle
 import drivelicensetest.ui.generated.resources.home_color_vision_title
 import drivelicensetest.ui.generated.resources.home_learning_centers_subtitle
 import drivelicensetest.ui.generated.resources.home_learning_centers_title
-import drivelicensetest.ui.generated.resources.home_practice_button
 import drivelicensetest.ui.generated.resources.home_question_count
 import drivelicensetest.ui.generated.resources.home_quick_actions
 import drivelicensetest.ui.generated.resources.home_ready_title
@@ -107,7 +105,6 @@ fun HomeScreen(
     onOpenStats: () -> Unit,
     onOpenStatsFromRing: () -> Unit,
     onOpenFailed: () -> Unit,
-    onOpenPractice: () -> Unit,
     onOpenChat: () -> Unit,
     onOpenDrivingSchools: () -> Unit,
     onOpenColorVision: (() -> Unit)? = null,
@@ -162,7 +159,6 @@ fun HomeScreen(
                         selectedTestLength = selectedTestLength,
                         onSelectLength = { selectedTestLength = it },
                         onStartTest = onStartTest,
-                        onOpenPractice = onOpenPractice,
                     )
                 }
 
@@ -569,13 +565,12 @@ private fun StreakPill(streak: Int) {
     }
 }
 
-/** Primary call to action: pick a test length and start, or jump into practice mode. */
+/** Primary call to action: pick a test length and start. */
 @Composable
 private fun StartPracticeCard(
     selectedTestLength: Int,
     onSelectLength: (Int) -> Unit,
     onStartTest: (Int) -> Unit,
-    onOpenPractice: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val options = listOf(10, 20, 30)
@@ -617,16 +612,6 @@ private fun StartPracticeCard(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                AppButton(
-                    text = stringResource(Res.string.home_start_button),
-                    onClick = { onStartTest(selectedTestLength) },
-                    modifier = Modifier.fillMaxWidth(),
-                    containerColor = MaterialTheme.colorScheme.onPrimary,
-                    contentColor = MaterialTheme.colorScheme.primary,
-                )
-
-                Spacer(modifier = Modifier.height(12.dp))
-
                 SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
                     options.forEachIndexed { index, count ->
                         SegmentedButton(
@@ -645,13 +630,14 @@ private fun StartPracticeCard(
                     }
                 }
 
-                Spacer(modifier = Modifier.height(12.dp))
-                AppOutlinedButton(
-                    text = stringResource(Res.string.home_practice_button),
-                    onClick = onOpenPractice,
+                Spacer(modifier = Modifier.height(16.dp))
+
+                AppButton(
+                    text = stringResource(Res.string.home_start_button),
+                    onClick = { onStartTest(selectedTestLength) },
                     modifier = Modifier.fillMaxWidth(),
-                    contentColor = MaterialTheme.colorScheme.onPrimary,
-                    borderColor = MaterialTheme.colorScheme.onPrimary,
+                    containerColor = MaterialTheme.colorScheme.onPrimary,
+                    contentColor = MaterialTheme.colorScheme.primary,
                 )
             }
         }

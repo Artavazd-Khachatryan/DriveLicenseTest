@@ -22,6 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -51,7 +52,7 @@ import androidx.compose.material.icons.filled.BookmarkBorder
 import androidx.compose.material.icons.filled.BrokenImage
 import androidx.compose.material.icons.filled.Timer
 import com.drive.license.test.ui.util.AdaptiveContentContainer
-import com.drive.license.test.ui.util.resolveDrawableResource
+import com.drive.license.test.ui.util.resolveQuestionImage
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.back
 import drivelicensetest.ui.generated.resources.question_finish
@@ -188,9 +189,8 @@ fun QuestionDetailScreen(
                 modifier = Modifier.fillMaxWidth(),
                 containerColor = MaterialTheme.colorScheme.primaryContainer
             ) {
-                val imageName = question.imageUrl
-                val imageResource = imageName?.let { resolveDrawableResource(it) }
-                val showImage = imageName != null && imageResource != null
+                val imageResource = resolveQuestionImage(question)
+                val showImage = imageResource != null
                 val imageHeight = if (isExpanded) 140.dp else 160.dp
 
                 if (isExpanded && showImage) {
@@ -205,15 +205,17 @@ fun QuestionDetailScreen(
                             color = MaterialTheme.colorScheme.onPrimaryContainer,
                             modifier = Modifier.weight(1f)
                         )
-                        Image(
-                            painter = painterResource(imageResource!!),
-                            contentDescription = stringResource(Res.string.question_image_cd),
-                            modifier = Modifier
-                                .widthIn(max = 220.dp)
-                                .heightIn(max = imageHeight)
-                                .weight(0.45f),
-                            contentScale = ContentScale.Fit
-                        )
+                        key(question.id) {
+                            Image(
+                                painter = painterResource(imageResource!!),
+                                contentDescription = stringResource(Res.string.question_image_cd),
+                                modifier = Modifier
+                                    .widthIn(max = 220.dp)
+                                    .heightIn(max = imageHeight)
+                                    .weight(0.45f),
+                                contentScale = ContentScale.Fit
+                            )
+                        }
                     }
                 } else {
                     Column(
@@ -226,17 +228,19 @@ fun QuestionDetailScreen(
                             textAlign = TextAlign.Center,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
-                        if (imageName != null) {
+                        if (question.imageUrl != null || imageResource != null) {
                             Spacer(modifier = Modifier.height(12.dp))
                             if (imageResource != null) {
-                                Image(
-                                    painter = painterResource(imageResource),
-                                    contentDescription = stringResource(Res.string.question_image_cd),
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .height(imageHeight),
-                                    contentScale = ContentScale.Fit
-                                )
+                                key(question.id) {
+                                    Image(
+                                        painter = painterResource(imageResource),
+                                        contentDescription = stringResource(Res.string.question_image_cd),
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(imageHeight),
+                                        contentScale = ContentScale.Fit
+                                    )
+                                }
                             } else {
                                 Icon(
                                     imageVector = Icons.Default.BrokenImage,
