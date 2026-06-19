@@ -29,3 +29,10 @@ default-compose-desktop-icon-*.icns
 default-compose-desktop-icon-*.ico
 default-compose-desktop-rules.pro
 default-entitlements.plist
+
+# Audit script artifacts (regenerate with scripts/audit_book.py and scripts/audit_images.py)
+scripts/.venv/
+scripts/__pycache__/
+scripts/audit_book_*.json
+scripts/audit_images_*.json
+scripts/audit_all.json

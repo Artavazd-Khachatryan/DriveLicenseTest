@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Image manual review — 43 questions</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f1f5f9; color: #0f172a; }
+  header { background: #1e40af; color: #fff; padding: 16px 24px; position: sticky; top: 0; z-index: 10; }
+  header h1 { margin: 0 0 4px; font-size: 1.25rem; }
+  header p { margin: 0; opacity: .9; font-size: .9rem; }
+  .stats { display: flex; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
+  .stat { background: rgba(255,255,255,.15); padding: 4px 10px; border-radius: 6px; font-size: .85rem; }
+  main { max-width: 900px; margin: 0 auto; padding: 16px; }
+  .card { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); border-left: 4px solid #94a3b8; }
+  .card.mismatch { border-left-color: #dc2626; }
+  .card.warn { border-left-color: #f59e0b; }
+  .card.reviewed-ok { border-left-color: #16a34a; opacity: .75; }
+  .card.reviewed-bad { border-left-color: #7f1d1d; }
+  .meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; align-items: center; }
+  .badge { font-size: .75rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; }
+  .badge.mismatch { background: #fee2e2; color: #991b1b; }
+  .badge.warn { background: #fef3c7; color: #92400e; }
+  .qid { font-size: 1.1rem; font-weight: 700; }
+  .question { font-size: 1rem; line-height: 1.5; margin: 8px 0 12px; }
+  .answer { font-size: .9rem; color: #475569; margin-bottom: 12px; }
+  img { max-width: 100%; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; background: #fff; }
+  .actions { display: flex; gap: 8px; margin-top: 12px; }
+  button { padding: 8px 16px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; font-size: .9rem; }
+  .ok { background: #16a34a; color: #fff; }
+  .bad { background: #dc2626; color: #fff; }
+  .reset { background: #e2e8f0; color: #334155; }
+  .progress { font-size: .85rem; margin-top: 8px; }
+  #export { margin: 16px 0; padding: 10px 16px; background: #1e40af; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }
+  nav { margin-bottom: 16px; }
+  nav a { color: #1e40af; margin-right: 12px; font-size: .9rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Manual image review</h1>
+  <p>43 questions flagged by automated audit — mark each OK or Wrong</p>
+  <div class="stats">
+    <span class="stat" id="count-total">Total: 43</span>
+    <span class="stat" id="count-ok">OK: 0</span>
+    <span class="stat" id="count-bad">Wrong: 0</span>
+    <span class="stat" id="count-left">Left: 43</span>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+<main>
+<button id="export">Copy review results to clipboard</button>
+<nav>Jump: <a href="#q311">Q311</a><a href="#q313">Q313</a><a href="#q315">Q315</a><a href="#q318">Q318</a><a href="#q321">Q321</a><a href="#q324">Q324</a><a href="#q327">Q327</a><a href="#q329">Q329</a><a href="#q337">Q337</a><a href="#q339">Q339</a><a href="#q344">Q344</a><a href="#q345">Q345</a><a href="#q346">Q346</a><a href="#q358">Q358</a><a href="#q378">Q378</a><a href="#q379">Q379</a><a href="#q380">Q380</a><a href="#q484">Q484</a><a href="#q486">Q486</a><a href="#q491">Q491</a><a href="#q496">Q496</a><a href="#q512">Q512</a><a href="#q598">Q598</a><a href="#q617">Q617</a><a href="#q618">Q618</a><a href="#q626">Q626</a><a href="#q634">Q634</a><a href="#q706">Q706</a><a href="#q715">Q715</a><a href="#q718">Q718</a><a href="#q719">Q719</a><a href="#q722">Q722</a><a href="#q723">Q723</a><a href="#q725">Q725</a><a href="#q726">Q726</a><a href="#q729">Q729</a><a href="#q730">Q730</a><a href="#q731">Q731</a><a href="#q747">Q747</a><a href="#q886">Q886</a><a href="#q890">Q890</a><a href="#q896">Q896</a><a href="#q899">Q899</a></nav>
+<article class="card mismatch" id="q311" data-id="311">
+  <div class="meta">
+    <span class="qid">Question 311</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 4</span>
+    <span>score 10 / 2nd 14</span>
+  </div>
+  <div class="question">Այս ճանապարհային նշանը՝</div>
+  <div class="answer"><strong>Answer:</strong> Թույլատրում է երթեւեկել միայն նշված կամ ավելի բարձր արագությամբ։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question311_image.png" alt="Question 311 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(311, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(311, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(311, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q313" data-id="313">
+  <div class="meta">
+    <span class="qid">Question 313</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 4</span>
+    <span>score 4 / 2nd 9</span>
+  </div>
+  <div class="question">Այս նշանը կոչվում է՝</div>
+  <div class="answer"><strong>Answer:</strong> Այլ երթեւեկելի մաս վերադասավորվելու նախնական ցուցիչ։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question313_image.png" alt="Question 313 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(313, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(313, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(313, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q315" data-id="315">
+  <div class="meta">
+    <span class="qid">Question 315</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 4</span>
+    <span>score 31 / 2nd 29</span>
+  </div>
+  <div class="question">Թույլատրվու՞մ է արդյոք ավտոբուսի վարորդին վազանց կատարել այս նշանի ազդման գոտում։</div>
+  <div class="answer"><strong>Answer:</strong> Թույլատրվում է բոլոր դեպքերում՝ վազանցի կանոնները պահպանելով։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question315_image.png" alt="Question 315 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(315, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(315, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(315, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q318" data-id="318">
+  <div class="meta">
+    <span class="qid">Question 318</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 4</span>
+    <span>score 20 / 2nd 38</span>
+  </div>
+  <div class="question">Ի՞նչ է ցույց տալիս այս նշանի տակ տեղադրված ցուցանակը՝</div>
+  <div class="answer"><strong>Answer:</strong> Նշանից մինչեւ սահմանափակման տեղն ընկած հեռավորությունը։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question318_image.png" alt="Question 318 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(318, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(318, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(318, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q321" data-id="321">
+  <div class="meta">
+    <span class="qid">Question 321</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 4</span>
+    <span>score 22 / 2nd 12</span>
+  </div>
+  <div class="question">Հետեւյալ նշաններից ո՞րն է ցույց տալիս նախազգուշացնող նշանների ազդեցության` ճանապարհի վտանգավոր հատվածի երկարությունը։</div>
+  <div class="answer"><strong>Answer:</strong> 4</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question321_image.png" alt="Question 321 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(321, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(321, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(321, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q324" data-id="324">
+  <div class="meta">
+    <span class="qid">Question 324</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 4</span>
+    <span>score 13 / 2nd 10</span>
+  </div>
+  <div class="question">Այսպիսի ճանաչման նշանով կահավորվում են այն ավտոմոբիլները, որոնք՝</div>
+  <div class="answer"><strong>Answer:</strong> Ղեկավարվում են խուլ կամ խուլ ու համր վարորդների կողմից։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question324_image.png" alt="Question 324 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(324, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(324, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(324, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q327" data-id="327">
+  <div class="meta">
+    <span class="qid">Question 327</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 4</span>
+    <span>score 7 / 2nd 3</span>
+  </div>
+  <div class="question">Այսպիսի ճանաչման նշանով են կահավորվում այն տրանսպորտային միջոցները, որոնք՝</div>
+  <div class="answer"><strong>Answer:</strong> Փոխադրում են վտանգավոր բեռներ։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question327_image.png" alt="Question 327 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(327, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(327, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(327, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q329" data-id="329">
+  <div class="meta">
+    <span class="qid">Question 329</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 4</span>
+    <span>score 9 / 2nd 12</span>
+  </div>
+  <div class="question">Ո՞ր դեպքում է վարորդը ճիշտ կատարել այս նշանի պահանջները։</div>
+  <div class="answer"><strong>Answer:</strong> Զիջել է ճանապարհը հատվող ճանապարհով ընթացող տրանսպորտային միջոցներին։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question329_image.png" alt="Question 329 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(329, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(329, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(329, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q337" data-id="337">
+  <div class="meta">
+    <span class="qid">Question 337</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 4</span>
+    <span>score 2 / 2nd 12</span>
+  </div>
+  <div class="question">Այս ճանապարհային նշանը ցույց է տալիս՝</div>
+  <div class="answer"><strong>Answer:</strong> Միջանցիկ անցում չունեցող ճանապարհ։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question337_image.png" alt="Question 337 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(337, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(337, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(337, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q339" data-id="339">
+  <div class="meta">
+    <span class="qid">Question 339</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 4</span>
+    <span>score 3 / 2nd 13</span>
+  </div>
+  <div class="question">Ո՞ր տրանսպորտային միջոցների երթեւեկությունն է թույլատրվում այս նշանի ազդեցության ճանապարհներին։</div>
+  <div class="answer"><strong>Answer:</strong> Ավտոմոբիլների եւ մոտոցիկլների։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question339_image.png" alt="Question 339 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(339, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(339, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(339, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q344" data-id="344">
+  <div class="meta">
+    <span class="qid">Question 344</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 4</span>
+    <span>score 12 / 2nd 14</span>
+  </div>
+  <div class="question">Հետեւյալ նշանները ցույց են տալիս՝</div>
+  <div class="answer"><strong>Answer:</strong> Կայանման տեղը 30 մ երկարությամբ գոտում` մոտոսայլակների եւ «Հաշմանդամ» ճանաչման նշանով կահավորված ավտոմոբիլների համար։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question344_image.png" alt="Question 344 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(344, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(344, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(344, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q345" data-id="345">
+  <div class="meta">
+    <span class="qid">Question 345</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 4</span>
+    <span>score 39 / 2nd 34</span>
+  </div>
+  <div class="question">Այս նշաններից ո՞րն է համարվում տրանսպորտային միջոցի ճանաչման նշան։</div>
+  <div class="answer"><strong>Answer:</strong> 3</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question345_image.png" alt="Question 345 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(345, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(345, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(345, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q346" data-id="346">
+  <div class="meta">
+    <span class="qid">Question 346</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 4</span>
+    <span>score 45 / 2nd 49</span>
+  </div>
+  <div class="question">Ո՞ր տրանսպորտային միջոցի երթեւեկությունն է արգելում այս ճանապարհային նշանը։</div>
+  <div class="answer"><strong>Answer:</strong> Մեխանիկական տրանսպորտային միջոցների։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question346_image.png" alt="Question 346 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(346, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(346, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(346, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q358" data-id="358">
+  <div class="meta">
+    <span class="qid">Question 358</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 4</span>
+    <span>score 6 / 2nd 7</span>
+  </div>
+  <div class="question">Ի՞նչպես պիտի վարվի վարորդն այն դեպքում, երբ խաչմերուկից առաջ տեղադրված է հետեւյալ ճանապարհային նշանը։</div>
+  <div class="answer"><strong>Answer:</strong> Կանգնել նշանի առջեւ եւ ճանապարհը զիջել հատվող ճանապարհով ընթացող տրանսպորտային միջոցներին։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question358_image.png" alt="Question 358 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(358, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(358, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(358, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q378" data-id="378">
+  <div class="meta">
+    <span class="qid">Question 378</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 4</span>
+    <span>score 5 / 2nd 9</span>
+  </div>
+  <div class="question">Ի՞նչ առավելագույն հեռավորության վրա է տեղադրվում բարդ խաչմերուկներում «խաչմերուկի տարածք» ճանապարհային նշանը, եթե այն հնարավոր չէ տեղադրել խաչմերուկի սահմանին:</div>
+  <div class="answer"><strong>Answer:</strong> 30 մետր</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question378_image.png" alt="Question 378 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(378, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(378, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(378, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q379" data-id="379">
+  <div class="meta">
+    <span class="qid">Question 379</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 4</span>
+    <span>score 7 / 2nd 11</span>
+  </div>
+  <div class="question">Ինչի՞ մասին է զգուշացնում հետևյալ ճանապարհային նշանը:</div>
+  <div class="answer"><strong>Answer:</strong> Արգելվում է մուտք գործել խաչմերուկի տարածք, եթե առջևում՝ երթևեկության ուղղությամբ առաջացել է խցանում, որը վարորդին կ հարկադրի կանգ առնել:</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question379_image.png" alt="Question 379 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(379, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(379, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(379, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q380" data-id="380">
+  <div class="meta">
+    <span class="qid">Question 380</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 4</span>
+    <span>score 13 / 2nd 13</span>
+  </div>
+  <div class="question">Ի՞նչ է ցույց տակիս հետևյալ ճանապարհային գծանշումը:</div>
+  <div class="answer"><strong>Answer:</strong> Խաչմերուկի հատված, որտեղ արգելվում է մուտք գործել, եթե առջևում՝ երթևեկության ուղղությամբ առաջացել է խցանում, որը վարորդին կ հարկադրի կանգ առնել:</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question380_image.png" alt="Question 380 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(380, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(380, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(380, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q484" data-id="484">
+  <div class="meta">
+    <span class="qid">Question 484</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 5</span>
+    <span>score 373 / 2nd 373</span>
+  </div>
+  <div class="question">Խաչմերուկը վերջինը կանցնի՝</div>
+  <div class="answer"><strong>Answer:</strong> Կանաչ ավտոմոբիլը։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question484_image.png" alt="Question 484 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(484, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(484, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(484, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q486" data-id="486">
+  <div class="meta">
+    <span class="qid">Question 486</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 5</span>
+    <span>score 373 / 2nd 373</span>
+  </div>
+  <div class="question">Խաչմերուկն առաջինը կանցնի՝</div>
+  <div class="answer"><strong>Answer:</strong> Կարմիր ավտոմոբիլը։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question486_image.png" alt="Question 486 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(486, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(486, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(486, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q491" data-id="491">
+  <div class="meta">
+    <span class="qid">Question 491</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 5</span>
+    <span>score 174 / 2nd 317</span>
+  </div>
+  <div class="question">Խաչմերուկն առաջինը կանցնի՝</div>
+  <div class="answer"><strong>Answer:</strong> Կանաչ ավտոմոբիլը։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question491_image.png" alt="Question 491 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(491, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(491, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(491, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q496" data-id="496">
+  <div class="meta">
+    <span class="qid">Question 496</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 5</span>
+    <span>score 402 / 2nd 402</span>
+  </div>
+  <div class="question">Կարմիր ավտոմոբիլը՝</div>
+  <div class="answer"><strong>Answer:</strong> Պետք է ճանապարհը զիջի շրջանաձեւ երթեւեկությամբ ճանապարհով երթեւեկող կապույտ ավտոմոբիլին։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question496_image.png" alt="Question 496 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(496, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(496, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(496, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q512" data-id="512">
+  <div class="meta">
+    <span class="qid">Question 512</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 5</span>
+    <span>score 395 / 2nd 395</span>
+  </div>
+  <div class="question">Տրանսպորտային միջոցները խաչմերուկը կանցնեն հետեւյալ հերթականությամբ՝</div>
+  <div class="answer"><strong>Answer:</strong> Տրամվայը, ավտոմոբիլը եւ ավտոբուսը միաժամանակ։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question512_image.png" alt="Question 512 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(512, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(512, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(512, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q598" data-id="598">
+  <div class="meta">
+    <span class="qid">Question 598</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 5</span>
+    <span>score 414 / 2nd 409</span>
+  </div>
+  <div class="question">Այս խաչմերուկում</div>
+  <div class="answer"><strong>Answer:</strong> Կանցնեք առաջինը</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question598_image.png" alt="Question 598 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(598, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(598, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(598, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q617" data-id="617">
+  <div class="meta">
+    <span class="qid">Question 617</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 6</span>
+    <span>score 396 / 2nd 396</span>
+  </div>
+  <div class="question">Երթեւեկությունը թույլատրվում է՝</div>
+  <div class="answer"><strong>Answer:</strong> Դեպի աջ՝ առաջին անցումով։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question617_image.png" alt="Question 617 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(617, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(617, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(617, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q618" data-id="618">
+  <div class="meta">
+    <span class="qid">Question 618</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 6</span>
+    <span>score 389 / 2nd 389</span>
+  </div>
+  <div class="question">Երթեւեկությունը թույլատրվում է՝</div>
+  <div class="answer"><strong>Answer:</strong> Դեպի աջ՝ առաջին անցումով։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question618_image.png" alt="Question 618 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(618, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(618, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(618, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q626" data-id="626">
+  <div class="meta">
+    <span class="qid">Question 626</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 6</span>
+    <span>score 1 / 2nd 4</span>
+  </div>
+  <div class="question">Պարտավո՞ր է արդյոք տրամվայի վարորդը լուսացույցի կանաչ ազդանշանի դեպքում զիջել ճանապարհն այլ ուղղություններից մոտեցող տրանսպորտային միջոցներին։</div>
+  <div class="answer"><strong>Answer:</strong> Պարտավոր է։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question626_image.png" alt="Question 626 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(626, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(626, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(626, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q634" data-id="634">
+  <div class="meta">
+    <span class="qid">Question 634</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 6</span>
+    <span>score 13 / 2nd 7</span>
+  </div>
+  <div class="question">Այս լուսացույցի կարմիր ազդանշանի դեպքում երթեւեկությունն արգելվում է՝</div>
+  <div class="answer"><strong>Answer:</strong> Այն գոտիով, որի վերեւում տեղակայված է։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question634_image.png" alt="Question 634 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(634, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(634, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(634, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q706" data-id="706">
+  <div class="meta">
+    <span class="qid">Question 706</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 7</span>
+    <span>score 0 / 2nd 0</span>
+  </div>
+  <div class="question">Թույլատրվու՞մ է արդյոք ուղեւոր իջեցնել ճանապարհի այն տեղում, որտեղ եզրաքարի վերին մակերեսին գծված է դեղին հոծ գիծ եւ տեղադրված է «Կանգառն արգելվում է» նշանը։</div>
+  <div class="answer"><strong>Answer:</strong> Արգելվում է։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question706_image.png" alt="Question 706 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(706, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(706, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(706, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q715" data-id="715">
+  <div class="meta">
+    <span class="qid">Question 715</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 7</span>
+    <span>score 0 / 2nd 0</span>
+  </div>
+  <div class="question">Ի՞նչ է ցույց տալիս հորիզոնական գծանշման դեղին հոծ գիծը։</div>
+  <div class="answer"><strong>Answer:</strong> Այն տեղը, որտեղ արգելվում է տրանսպորտային միջոցների կանգառը եւ կայանումը։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question715_image.png" alt="Question 715 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(715, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(715, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(715, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q718" data-id="718">
+  <div class="meta">
+    <span class="qid">Question 718</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 7</span>
+    <span>score 8 / 2nd 9</span>
+  </div>
+  <div class="question">Ի՞նչ է ցույց տալիս այս գծանշումը։</div>
+  <div class="answer"><strong>Answer:</strong> Այն տեղը, որտեղ հեծանվային արահետը հատում է ճանապարհի երթեւեկելի մասը։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question718_image.png" alt="Question 718 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(718, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(718, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(718, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q719" data-id="719">
+  <div class="meta">
+    <span class="qid">Question 719</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 7</span>
+    <span>score 0 / 2nd 0</span>
+  </div>
+  <div class="question">Քանի՞ գոտի ունի ճանապարհը, որտեղ հանդիպակաց ուղղությունների տրանսպորտային հոսքերը բաժանվում են կրկնակի հոծ գծերով։</div>
+  <div class="answer"><strong>Answer:</strong> Չորս եւ ավելի գոտիներ։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question719_image.png" alt="Question 719 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(719, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(719, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(719, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q722" data-id="722">
+  <div class="meta">
+    <span class="qid">Question 722</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 7</span>
+    <span>score 0 / 2nd 0</span>
+  </div>
+  <div class="question">Որտե՞ղ է գծվում կանգառը եւ կայանումն արգելող տեղերը նշող դեղին հոծ գիծը։</div>
+  <div class="answer"><strong>Answer:</strong> Երթեւեկելի մասի եզրի մոտ կամ եզրաքարի վերին մակերեսին։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question722_image.png" alt="Question 722 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(722, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(722, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(722, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q723" data-id="723">
+  <div class="meta">
+    <span class="qid">Question 723</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 7</span>
+    <span>score 23 / 2nd 9</span>
+  </div>
+  <div class="question">Ճանապարհային նշաններից որի՞ հետ կարող է կիրառվել դեղին գույնի ընդհատվող գծանշումը։</div>
+  <div class="answer"><strong>Answer:</strong> «Կայանելն արգելվում է»։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question723_image.png" alt="Question 723 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(723, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(723, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(723, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q725" data-id="725">
+  <div class="meta">
+    <span class="qid">Question 725</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 7</span>
+    <span>score 11 / 2nd 12</span>
+  </div>
+  <div class="question">Այս ճանապարհային գծանշումն ունի հետեւյալ նշանակությունը։</div>
+  <div class="answer"><strong>Answer:</strong> Ցույց է տալիս ընդհանուր օգտագործման տրանսպորտային միջոցների կանգառի կետերը եւ տաքսիների կայանման վայրերը։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question725_image.png" alt="Question 725 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(725, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(725, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(725, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q726" data-id="726">
+  <div class="meta">
+    <span class="qid">Question 726</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 7</span>
+    <span>score 8 / 2nd 11</span>
+  </div>
+  <div class="question">Այս հորիզոնական ճանապարհային գծանշումը ցույց է տալիս՝</div>
+  <div class="answer"><strong>Answer:</strong> Այն տեղը, որտեղ վարորդը պետք է անհրաժեշտության դեպքում կանգ առնի` հատվող ճանապարհով երթեւեկող տրանսպորտային միջոցներին ճանապարհը զիջելու համար։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question726_image.png" alt="Question 726 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(726, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(726, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(726, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q729" data-id="729">
+  <div class="meta">
+    <span class="qid">Question 729</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 7</span>
+    <span>score 7 / 2nd 16</span>
+  </div>
+  <div class="question">Ի՞նչ է ցույց տալիս այս գծանշումը։</div>
+  <div class="answer"><strong>Answer:</strong> Այն տեղը, որտեղ հեծանվային արահետը հատում է ճանապարհի երթեւեկելի մասը։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question729_image.png" alt="Question 729 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(729, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(729, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(729, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q730" data-id="730">
+  <div class="meta">
+    <span class="qid">Question 730</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 7</span>
+    <span>score 10 / 2nd 12</span>
+  </div>
+  <div class="question">Վարորդը որտե՞ղ պետք է կանգնեցնի տրանսպորտային միջոցն այս գծանշման առկայության դեպքում։</div>
+  <div class="answer"><strong>Answer:</strong> Գծանշման մոտ։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question730_image.png" alt="Question 730 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(730, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(730, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(730, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q731" data-id="731">
+  <div class="meta">
+    <span class="qid">Question 731</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 7</span>
+    <span>score 12 / 2nd 12</span>
+  </div>
+  <div class="question">Ի՞նչ է նշանակում այս գծանշումը։</div>
+  <div class="answer"><strong>Answer:</strong> Ցույց է տալիս երթեւեկության այն գոտիների սահմանները, որտեղ իրականացվում է դարձափոխային կարգավորում։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question731_image.png" alt="Question 731 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(731, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(731, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(731, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q747" data-id="747">
+  <div class="meta">
+    <span class="qid">Question 747</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 7</span>
+    <span>score 17 / 2nd 9</span>
+  </div>
+  <div class="question">Ո՞ր պատասխանում են ճիշտ թվարկած կանգառի կանոնները խախտած վարորդները։</div>
+  <div class="answer"><strong>Answer:</strong> Բոլոր տրանսպորտային միջոցների վարորդները։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question747_image.png" alt="Question 747 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(747, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(747, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(747, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q886" data-id="886">
+  <div class="meta">
+    <span class="qid">Question 886</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 8</span>
+    <span>score 1 / 2nd 6</span>
+  </div>
+  <div class="question">Այս նշանի առկայության դեպքում ի՞նչ առավելագույն արագությամբ երթեւեկելու իրավունք ունեն միջքաղաքային ավտոբուսների վարորդները։</div>
+  <div class="answer"><strong>Answer:</strong> 90 կմ/ժ։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question886_image.png" alt="Question 886 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(886, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(886, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(886, null)">Reset</button>
+  </div>
+</article>
+<article class="card warn" id="q890" data-id="890">
+  <div class="meta">
+    <span class="qid">Question 890</span>
+    <span class="badge warn">WARN</span>
+    <span>Book 8</span>
+    <span>score 20 / 2nd 23</span>
+  </div>
+  <div class="question">Այս նշանով կահավորված ճանապարհներին միջքաղաքային ավտոբուսների վարորդներն իրավունք ունեն երթեւեկելու ոչ ավելի քան`</div>
+  <div class="answer"><strong>Answer:</strong> 60 կմ/ժ արագությամբ։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question890_image.png" alt="Question 890 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(890, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(890, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(890, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q896" data-id="896">
+  <div class="meta">
+    <span class="qid">Question 896</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 8</span>
+    <span>score 2 / 2nd 5</span>
+  </div>
+  <div class="question">Ի՞նչ առավելագույն արագությամբ է թույլատրվում ավտոբուսի երթեւեկությունը այս ճանապարհային նշանի ազդեցության ճանապարհահատվածներում։</div>
+  <div class="answer"><strong>Answer:</strong> 90 կմ/ժ։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question896_image.png" alt="Question 896 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(896, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(896, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(896, null)">Reset</button>
+  </div>
+</article>
+<article class="card mismatch" id="q899" data-id="899">
+  <div class="meta">
+    <span class="qid">Question 899</span>
+    <span class="badge mismatch">MISMATCH</span>
+    <span>Book 8</span>
+    <span>score 1 / 2nd 4</span>
+  </div>
+  <div class="question">Ի՞նչ առավելագույն արագությամբ է թույլատրվում թեթեւ մարդատար ավտոմոբիլների երթեւեկությունը այս ճանապարհային նշանի ազդեցության ճանապարհահատվածներում։</div>
+  <div class="answer"><strong>Answer:</strong> 110 կմ/ժ։</div>
+  <img src="../ui/src/commonMain/composeResources/drawable/question899_image.png" alt="Question 899 image" loading="lazy"/>
+  <div class="actions">
+    <button class="ok" onclick="mark(899, 'ok')">✓ OK</button>
+    <button class="bad" onclick="mark(899, 'bad')">✗ Wrong</button>
+    <button class="reset" onclick="mark(899, null)">Reset</button>
+  </div>
+</article>
+</main>
+<script>
+const KEY = 'image_review_v1';
+function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { return {}; } }
+function save(data) { localStorage.setItem(KEY, JSON.stringify(data)); updateStats(); }
+function mark(id, v) {
+  const d = load();
+  if (v === null) delete d[id]; else d[id] = v;
+  save(d);
+  const el = document.getElementById('q' + id);
+  el.classList.remove('reviewed-ok','reviewed-bad');
+  if (v === 'ok') el.classList.add('reviewed-ok');
+  if (v === 'bad') el.classList.add('reviewed-bad');
+}
+function updateStats() {
+  const d = load();
+  const ok = Object.values(d).filter(v => v === 'ok').length;
+  const bad = Object.values(d).filter(v => v === 'bad').length;
+  const total = 43;
+  document.getElementById('count-ok').textContent = 'OK: ' + ok;
+  document.getElementById('count-bad').textContent = 'Wrong: ' + bad;
+  document.getElementById('count-left').textContent = 'Left: ' + (total - ok - bad);
+  document.getElementById('progress').textContent = bad ? 'Wrong IDs: ' + Object.entries(d).filter(([,v])=>v==='bad').map(([k])=>k).join(', ') : '';
+  document.querySelectorAll('.card[data-id]').forEach(el => {
+    const id = el.dataset.id;
+    el.classList.remove('reviewed-ok','reviewed-bad');
+    if (d[id] === 'ok') el.classList.add('reviewed-ok');
+    if (d[id] === 'bad') el.classList.add('reviewed-bad');
+  });
+}
+document.getElementById('export').onclick = () => {
+  const d = load();
+  const lines = Object.entries(d).sort((a,b)=>a[0]-b[0]).map(([k,v]) => `Q${k}: ${v}`);
+  const text = lines.length ? lines.join('\n') : 'No reviews yet';
+  navigator.clipboard.writeText(text).then(() => alert('Copied:\n' + text));
+};
+updateStats();
+</script>
+</body>
+</html>
