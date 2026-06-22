@@ -43,8 +43,6 @@ import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.AnswerButton
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
-import com.drive.license.test.ui.components.InTestMotivationBanner
-import com.drive.license.test.ui.util.InTestMotivationKind
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Bookmark
@@ -83,8 +81,6 @@ fun QuestionDetailScreen(
     onNext: () -> Unit,
     onToggleBookmark: () -> Unit = {},
     onExplain: ((userAnswer: String, correctAnswer: String, isCorrect: Boolean) -> Unit)? = null,
-    milestoneKind: InTestMotivationKind? = null,
-    milestoneAnsweredCount: Int = 0,
     modifier: Modifier = Modifier
 ) {
     var selectedAnswerIndex by remember(question.id) {
@@ -270,15 +266,6 @@ fun QuestionDetailScreen(
                             onAnswer(answer)
                         }
                     }
-                )
-            }
-
-            if (AppFeatures.motivationEnabled) {
-                InTestMotivationBanner(
-                    visible = showResult && milestoneKind != null && milestoneAnsweredCount > 0,
-                    kind = milestoneKind ?: InTestMotivationKind.KeepGoing,
-                    answeredCount = milestoneAnsweredCount,
-                    totalQuestions = totalQuestions,
                 )
             }
 

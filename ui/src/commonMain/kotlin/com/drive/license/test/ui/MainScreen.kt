@@ -20,9 +20,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.drive.license.test.domain.QuestionSelector
-import com.drive.license.test.ui.util.InTestMotivationKind
-import com.drive.license.test.ui.util.resolveInTestMotivationKind
-import com.drive.license.test.ui.util.shouldShowInTestMotivation
 import com.drive.license.test.domain.model.ColorVisionPlate
 import com.drive.license.test.domain.model.ColorVisionTestRules
 import com.drive.license.test.domain.model.LearningCenter
@@ -77,13 +74,6 @@ fun MainScreen(
     var examRemainingSeconds by remember { mutableStateOf<Int?>(null) }
     var currentQuestionBookmarked by remember { mutableStateOf(false) }
     val allQuestions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
-    var inTestMilestoneKind by remember { mutableStateOf<InTestMotivationKind?>(null) }
-    var inTestMilestoneAnsweredCount by remember { mutableStateOf(0) }
-
-    fun clearInTestMilestone() {
-        inTestMilestoneKind = null
-        inTestMilestoneAnsweredCount = 0
-    }
 
     suspend fun refreshUserProgress() {
         userStatistics = userProgressRepository.getUserStatistics()
@@ -106,7 +96,6 @@ fun MainScreen(
         testSession = null
         colorVisionSession = null
         examRemainingSeconds = null
-        clearInTestMilestone()
         coroutineScope.launch { refreshUserProgress() }
     }
 
@@ -136,7 +125,6 @@ fun MainScreen(
     fun handleSystemBack() {
         when (currentScreen) {
             Screen.Question -> {
-                clearInTestMilestone()
                 testSession = null
                 examRemainingSeconds = null
                 coroutineScope.launch { refreshUserProgress() }
@@ -177,7 +165,6 @@ fun MainScreen(
         session: TestSession,
         navigation: () -> Unit = { navigate(Screen.Question) },
     ) {
-        clearInTestMilestone()
         testSession = session
         examRemainingSeconds = if (session.isExamMode) session.examDurationSeconds else null
         coroutineScope.launch {
@@ -318,7 +305,10 @@ fun MainScreen(
         )
         Screen.Mistakes -> ReviewMistakesScreen(
             userProgressRepository = userProgressRepository,
-            onBack = { navigateBack() },
+            onBack = {
+                coroutineScope.launch { refreshUserProgress() }
+                navigateBack()
+            },
             onPracticeMistakes = {
                 coroutineScope.launch {
                     val mistakeIds = userProgressRepository.getMistakeQuestions().map { it.id }.toSet()
@@ -392,13 +382,6 @@ fun MainScreen(
                     val question = session.currentQuestion
                     val updated = session.answerQuestion(answer)
                     testSession = updated
-                    if (AppFeatures.motivationEnabled && shouldShowInTestMotivation(updated.totalAnswered)) {
-                        inTestMilestoneKind = resolveInTestMotivationKind(
-                            updated.totalAnswered,
-                            updated.correctAnswers,
-                        )
-                        inTestMilestoneAnsweredCount = updated.totalAnswered
-                    }
                     persistQuestionAnswer(
                         session = updated,
                         questionId = question.id,
@@ -406,10 +389,7 @@ fun MainScreen(
                         correctAnswer = question.correctAnswer,
                     )
                 },
-                milestoneKind = inTestMilestoneKind,
-                milestoneAnsweredCount = inTestMilestoneAnsweredCount,
                 onNext = {
-                    clearInTestMilestone()
                     val next = session.nextQuestion()
                     testSession = next
                     if (next.isCompleted) {
@@ -430,7 +410,6 @@ fun MainScreen(
                     }
                 },
                 onPrevious = {
-                    clearInTestMilestone()
                     testSession = session.previousQuestion()
                 },
                 onToggleBookmark = {
@@ -577,21 +556,24 @@ fun MainScreen(
                     onReviewMistakes = { navigate(Screen.Mistakes) },
                     onBackToHome = { navigateToHome() },
                     onRetakeTest = {
-                        val selected = session.failedQuestions.ifEmpty { session.questions }
-                        if (selected.isNotEmpty()) {
-                            launchTestSession(
-                                session = TestSession(
-                                    questions = selected,
-                                    isExamMode = session.isExamMode,
-                                ),
-                                navigation = {
-                                    if (backStack.last() is Screen.Results) {
-                                        backStack[backStack.lastIndex] = Screen.Question
-                                    } else {
-                                        navigate(Screen.Question)
-                                    }
-                                },
-                            )
+                        coroutineScope.launch {
+                            val count = session.questions.size
+                            val selected = pickFromPool(allQuestions, count)
+                            if (selected.isNotEmpty()) {
+                                launchTestSession(
+                                    session = TestSession(
+                                        questions = selected,
+                                        isExamMode = session.isExamMode,
+                                    ),
+                                    navigation = {
+                                        if (backStack.last() is Screen.Results) {
+                                            backStack[backStack.lastIndex] = Screen.Question
+                                        } else {
+                                            navigate(Screen.Question)
+                                        }
+                                    },
+                                )
+                            }
                         }
                     },
                 )

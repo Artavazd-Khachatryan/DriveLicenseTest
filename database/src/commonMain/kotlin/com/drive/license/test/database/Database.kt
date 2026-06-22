@@ -252,6 +252,11 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
                 last_answered_at = timestamp,
                 question_id = questionId
             )
+            val updated = userProgressQueries.getQuestionProgress(questionId).executeAsOne()
+            val netCorrect = updated.times_correct - updated.times_incorrect
+            if (updated.is_learned == 0L && netCorrect > 3) {
+                userProgressQueries.markQuestionAsLearned(questionId)
+            }
         }
     }
 

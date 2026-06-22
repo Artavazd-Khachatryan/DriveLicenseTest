@@ -8,6 +8,7 @@ import com.drive.license.test.domain.repository.QuestionRepository as DomainQues
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.domain.model.QuestionCategory
 import com.drive.license.test.domain.model.Book
+import com.drive.license.test.domain.util.QuestionTextNormalizer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -92,9 +93,9 @@ class QuestionRepository(private val database: Database) : DomainQuestionReposit
     private fun DatabaseQuestion.toDomainModel(): Question {
         return Question(
             id = this.id.toInt(),
-            question = this.question,
-            answers = this.answers,
-            correctAnswer = this.trueAnswer,
+            question = QuestionTextNormalizer.normalize(this.question),
+            answers = QuestionTextNormalizer.normalizeAnswers(this.answers),
+            correctAnswer = QuestionTextNormalizer.normalize(this.trueAnswer),
             imageUrl = this.image,
             book = this.book.toDomainModel(),
             categories = this.categories.map { it.toDomainModel() }

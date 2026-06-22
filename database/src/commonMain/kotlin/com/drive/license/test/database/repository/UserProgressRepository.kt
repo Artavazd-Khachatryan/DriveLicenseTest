@@ -7,6 +7,7 @@ import com.drive.license.test.domain.model.MistakeQuestion
 import com.drive.license.test.domain.model.TestSessionSummary
 import com.drive.license.test.domain.model.UserStatistics
 import com.drive.license.test.domain.repository.UserProgressRepository as DomainUserProgressRepository
+import com.drive.license.test.domain.util.QuestionTextNormalizer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -61,9 +62,9 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
             database.getIncorrectQuestions().map { row ->
                 MistakeQuestion(
                     id = row.id.toInt(),
-                    question = row.question,
-                    correctAnswer = row.true_answer,
-                    userAnswer = row.last_wrong_answer
+                    question = QuestionTextNormalizer.normalize(row.question),
+                    correctAnswer = QuestionTextNormalizer.normalize(row.true_answer),
+                    userAnswer = QuestionTextNormalizer.normalize(row.last_wrong_answer)
                 )
             }
         }

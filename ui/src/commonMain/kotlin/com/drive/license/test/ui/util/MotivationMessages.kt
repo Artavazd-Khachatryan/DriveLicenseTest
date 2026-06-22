@@ -14,10 +14,6 @@ import drivelicensetest.ui.generated.resources.results_motivation_excellent
 import drivelicensetest.ui.generated.resources.results_motivation_fail
 import drivelicensetest.ui.generated.resources.results_motivation_pass
 import drivelicensetest.ui.generated.resources.results_motivation_perfect
-import drivelicensetest.ui.generated.resources.question_motivation_keep_going
-import drivelicensetest.ui.generated.resources.question_motivation_milestone_header
-import drivelicensetest.ui.generated.resources.question_motivation_steady
-import drivelicensetest.ui.generated.resources.question_motivation_strong
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -38,14 +34,3 @@ fun testResultMotivationMessage(score: Float, passed: Boolean): String = when (r
     TestResultMotivationKind.Almost -> stringResource(Res.string.results_motivation_almost)
     TestResultMotivationKind.Fail -> stringResource(Res.string.results_motivation_fail)
 }
-
-@Composable
-fun inTestMilestoneMotivationBody(kind: InTestMotivationKind): String = when (kind) {
-    InTestMotivationKind.Strong -> stringResource(Res.string.question_motivation_strong)
-    InTestMotivationKind.Steady -> stringResource(Res.string.question_motivation_steady)
-    InTestMotivationKind.KeepGoing -> stringResource(Res.string.question_motivation_keep_going)
-}
-
-@Composable
-fun inTestMilestoneMotivationHeader(answeredCount: Int, totalQuestions: Int): String =
-    stringResource(Res.string.question_motivation_milestone_header, answeredCount, totalQuestions)

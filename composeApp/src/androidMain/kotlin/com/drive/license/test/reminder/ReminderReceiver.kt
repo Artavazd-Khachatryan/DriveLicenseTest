@@ -24,11 +24,13 @@ class ReminderReceiver : BroadcastReceiver() {
             )
         }
 
+        val body = PracticeReminderMessages.randomBody()
+
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(context.applicationInfo.icon)
-            .setContentTitle(TITLE)
-            .setContentText(BODY)
-            .setStyle(NotificationCompat.BigTextStyle().bigText(BODY))
+            .setContentTitle(PracticeReminderMessages.title)
+            .setContentText(body)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(body))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setAutoCancel(true)
             .apply { if (contentIntent != null) setContentIntent(contentIntent) }
@@ -59,7 +61,5 @@ class ReminderReceiver : BroadcastReceiver() {
         private const val CHANNEL_NAME = "Պարապանքի հիշեցումներ"
         private const val CHANNEL_DESC = "Օրական հիշեցում վարորդական հարցերի պարապանքի համար"
         private const val NOTIFICATION_ID = 1001
-        private const val TITLE = "Ժամանակն է պարապելու 🚗"
-        private const val BODY = "Մի քանի հարց այսօր ձեզ կպահեն քննությանը պատրաստ։ Հավատում եմ ձեզ։"
     }
 }

@@ -19,27 +19,6 @@ enum class TestResultMotivationKind {
     Fail,
 }
 
-enum class InTestMotivationKind {
-    Strong,
-    Steady,
-    KeepGoing,
-}
-
-/** Show encouragement after every N answered questions in a test session. */
-const val IN_TEST_MOTIVATION_QUESTION_INTERVAL = 5
-
-fun shouldShowInTestMotivation(answeredCount: Int): Boolean =
-    answeredCount > 0 && answeredCount % IN_TEST_MOTIVATION_QUESTION_INTERVAL == 0
-
-fun resolveInTestMotivationKind(answeredCount: Int, correctCount: Int): InTestMotivationKind {
-    val accuracy = correctCount.toFloat() / answeredCount
-    return when {
-        accuracy >= 0.8f -> InTestMotivationKind.Strong
-        accuracy >= 0.5f -> InTestMotivationKind.Steady
-        else -> InTestMotivationKind.KeepGoing
-    }
-}
-
 fun resolveHomeMotivationKind(stats: UserStatistics): HomeMotivationKind = when {
     stats.totalAttempts == 0 -> HomeMotivationKind.FirstVisit
     stats.currentStreak >= 7 -> HomeMotivationKind.StreakStrong

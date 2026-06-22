@@ -31,9 +31,10 @@ class IosReminderScheduler : ReminderScheduler {
     }
 
     private fun postRequest(settings: ReminderSettings) {
+        val body = PracticeReminderMessages.randomBody()
         val content = UNMutableNotificationContent().apply {
-            setTitle(TITLE)
-            setBody(BODY)
+            setTitle(PracticeReminderMessages.title)
+            setBody(body)
         }
         val components = NSDateComponents().apply {
             hour = settings.hourOfDay.toLong()
@@ -53,7 +54,5 @@ class IosReminderScheduler : ReminderScheduler {
 
     companion object {
         private const val REQUEST_ID = "practice_reminder_daily"
-        private const val TITLE = "Ժամանակն է պարապելու 🚗"
-        private const val BODY = "Մի քանի հարց այսօր ձեզ կպահեն քննությանը պատրաստ։ Հավատում եմ ձեզ։"
     }
 }
