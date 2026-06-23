@@ -48,7 +48,6 @@ import drivelicensetest.ui.generated.resources.mistakes_empty_title
 import drivelicensetest.ui.generated.resources.mistakes_practice_button
 import drivelicensetest.ui.generated.resources.mistakes_question_label
 import drivelicensetest.ui.generated.resources.mistakes_subtitle
-import drivelicensetest.ui.generated.resources.mistakes_tip
 import drivelicensetest.ui.generated.resources.mistakes_title
 import drivelicensetest.ui.generated.resources.mistakes_your_answer
 import org.jetbrains.compose.resources.stringResource
@@ -109,14 +108,6 @@ fun ReviewMistakesScreen(
                                 text = stringResource(Res.string.mistakes_practice_button),
                                 onClick = onPracticeMistakes,
                                 modifier = Modifier.fillMaxWidth(),
-                            )
-                        }
-                        item {
-                            Text(
-                                text = stringResource(Res.string.mistakes_tip),
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                modifier = Modifier.padding(horizontal = 4.dp),
                             )
                         }
                         itemsIndexed(mistakes, key = { _, mistake -> mistake.id }) { index, mistake ->

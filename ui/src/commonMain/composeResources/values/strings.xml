@@ -6933,7 +6933,7 @@
     <string name="home_start_button">Սկսել</string>
     <string name="home_quick_actions">Արագ գործողություններ</string>
     <string name="home_review_mistakes_title">Վերանայել սխալները</string>
-    <string name="home_review_mistakes_subtitle">Հարցեր, որոնց դեռ հաճախ սխալ եք պատասխանում</string>
+    <string name="home_review_mistakes_subtitle">Հարցը կհանվի ցուցակից, երբ բավարաչափ ճիշտ պատասխանեք</string>
     <string name="home_review_button">Վերանայել</string>
     <string name="home_ai_assistant_title">AI Օգնական</string>
     <string name="home_ai_assistant_subtitle">Արագ օգնություն</string>
@@ -6988,14 +6988,13 @@
 
     <!-- Review Mistakes Screen -->
     <string name="mistakes_title">Վերանայել սխալները</string>
-    <string name="mistakes_subtitle">Հարցեր, որտեղ սխալ պատասխանները դեռ գերակշռում են ճիշտներին</string>
+    <string name="mistakes_subtitle">Հարցը կհանվի ցուցակից, երբ բավարաչափ ճիշտ պատասխանեք</string>
     <string name="mistakes_count">%1$d հարց</string>
     <string name="mistakes_count_label">Վերանայելու</string>
     <string name="mistakes_practice_button">Պարապել սխալ հարցերով</string>
     <string name="mistakes_question_label">Հարց %1$d</string>
-    <string name="mistakes_tip">Կարդացեք ճիշտ պատասխանը, ապա սեղմեք «Պարապել»՝ նույն հարցերը կրկին փորձելու համար</string>
     <string name="mistakes_empty_title">Սխալներ դեռ չկան!</string>
-    <string name="mistakes_empty_subtitle">Կատարեք թեստ։ Այստեղ կհայտնվեն հարցերը, որոնք դեռ հաճախ սխալ եք պատասխանում — ճիշտ պատասխաններից ավելի սխալներից հետո ցուցակից հանվում են։</string>
+    <string name="mistakes_empty_subtitle">Կատարեք թեստ։ Սխալ պատասխանած հարցերը կհայտնվեն այստեղ։ Հարցը կհանվի ցուցակից, երբ բավարաչափ ճիշտ պատասխանեք։</string>
     <string name="mistakes_your_answer">Ձեր պատասխանը</string>
     <string name="mistakes_correct_answer">Ճիշտ պատասխան</string>
 

@@ -89,7 +89,7 @@ SELECT q.*, b.name AS book_name,
 FROM Question q
 JOIN Book b ON q.book_id = b.id
 LEFT JOIN UserQuestionProgress up ON q.id = up.question_id
-WHERE (COALESCE(up.times_correct, 0) - COALESCE(up.times_incorrect, 0)) <= 3
+WHERE (COALESCE(up.times_correct, 0) - COALESCE(up.times_incorrect, 0)) <= 2
 ORDER BY COALESCE(up.times_incorrect, 0) DESC, COALESCE(up.times_answered, 0) ASC;
 
 -- Weak areas practice should include only questions answered incorrectly at least once.
@@ -125,7 +125,7 @@ SELECT
     COALESCE(SUM(up.times_answered), 0) total_attempts,
     COALESCE(SUM(up.times_correct), 0) total_correct,
     COALESCE(SUM(up.times_incorrect), 0) total_incorrect,
-    COALESCE(SUM(CASE WHEN COALESCE(up.is_learned, 0) = 1 OR (COALESCE(up.times_correct, 0) - COALESCE(up.times_incorrect, 0)) > 3 THEN 1 ELSE 0 END), 0) learned_questions,
+    COALESCE(SUM(CASE WHEN COALESCE(up.is_learned, 0) = 1 OR (COALESCE(up.times_correct, 0) - COALESCE(up.times_incorrect, 0)) > 2 THEN 1 ELSE 0 END), 0) learned_questions,
     COALESCE(SUM(CASE WHEN COALESCE(up.times_answered, 0) > 0 THEN 1 ELSE 0 END), 0) seen_questions
 FROM Question q
 LEFT JOIN UserQuestionProgress up ON q.id = up.question_id;
@@ -192,7 +192,7 @@ LEFT JOIN UserQuestionProgress up ON up.question_id = q.id
 GROUP BY qc.id, qc.name
 ORDER BY qc.name;
 
--- Questions still struggling: more incorrect than correct attempts
+-- Questions still in review: at least one wrong attempt and fewer than 3 correct answers.
 getIncorrectQuestions:
 SELECT q.id, q.question, q.true_answer,
     COALESCE(
@@ -203,8 +203,8 @@ SELECT q.id, q.question, q.true_answer,
     ) AS last_wrong_answer
 FROM Question q
 JOIN UserQuestionProgress up ON up.question_id = q.id
-WHERE up.times_incorrect > up.times_correct
-ORDER BY (up.times_incorrect - up.times_correct) DESC, up.times_incorrect DESC;
+WHERE up.times_incorrect > 0 AND up.times_correct < 3
+ORDER BY up.times_correct ASC, up.times_incorrect DESC;
 
 -- Get streak
 getStreak:

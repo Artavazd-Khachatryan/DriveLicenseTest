@@ -37,4 +37,17 @@ class QuestionTextNormalizerTest {
             QuestionTextNormalizer.normalize("Միայն շրջանցման դեպքում։։"),
         )
     }
+
+    @Test
+    fun stripsLeadingDotBeforeText() {
+        assertEquals(
+            "Միայն Բ",
+            QuestionTextNormalizer.normalize(".Միայն Բ"),
+        )
+    }
+
+    @Test
+    fun keepsDecimalNumbers() {
+        assertEquals("3.5 մ։", QuestionTextNormalizer.normalize("3.5 մ։"))
+    }
 }

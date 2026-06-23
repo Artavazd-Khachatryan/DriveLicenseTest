@@ -254,7 +254,7 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             )
             val updated = userProgressQueries.getQuestionProgress(questionId).executeAsOne()
             val netCorrect = updated.times_correct - updated.times_incorrect
-            if (updated.is_learned == 0L && netCorrect > 3) {
+            if (updated.is_learned == 0L && netCorrect > 2) {
                 userProgressQueries.markQuestionAsLearned(questionId)
             }
         }
@@ -295,6 +295,10 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
 
     suspend fun getIncorrectQuestions() = withContext(Dispatchers.IO) {
         userProgressQueries.getIncorrectQuestions().executeAsList()
+    }
+
+    suspend fun getQuestionProgress(questionId: Long) = withContext(Dispatchers.IO) {
+        userProgressQueries.getQuestionProgress(questionId).executeAsOneOrNull()
     }
 
     suspend fun resetStatistics() = withContext(Dispatchers.IO) {

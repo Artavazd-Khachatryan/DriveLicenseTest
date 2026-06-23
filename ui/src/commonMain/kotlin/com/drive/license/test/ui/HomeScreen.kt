@@ -105,6 +105,7 @@ fun HomeScreen(
     onOpenStats: () -> Unit,
     onOpenStatsFromRing: () -> Unit,
     onOpenFailed: () -> Unit,
+    mistakeCount: Int = 0,
     onOpenChat: () -> Unit,
     onOpenDrivingSchools: () -> Unit,
     onOpenColorVision: (() -> Unit)? = null,
@@ -172,16 +173,18 @@ fun HomeScreen(
                             horizontalArrangement = Arrangement.spacedBy(16.dp),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            FeatureCard(
-                                modifier = Modifier.weight(1f),
-                                icon = Icons.Filled.Quiz,
-                                title = stringResource(Res.string.home_review_mistakes_title),
-                                description = stringResource(Res.string.home_review_mistakes_subtitle),
-                                actionText = stringResource(Res.string.home_review_button),
-                                onAction = onOpenFailed,
-                                accent = MaterialTheme.colorScheme.error,
-                                onAccent = MaterialTheme.colorScheme.onError,
-                            )
+                            if (mistakeCount > 0) {
+                                FeatureCard(
+                                    modifier = Modifier.weight(1f),
+                                    icon = Icons.Filled.Quiz,
+                                    title = stringResource(Res.string.home_review_mistakes_title),
+                                    description = stringResource(Res.string.home_review_mistakes_subtitle),
+                                    actionText = stringResource(Res.string.home_review_button),
+                                    onAction = onOpenFailed,
+                                    accent = MaterialTheme.colorScheme.error,
+                                    onAccent = MaterialTheme.colorScheme.onError,
+                                )
+                            }
                             if (AppFeatures.aiEnabled) {
                                 FeatureCard(
                                     modifier = Modifier.weight(1f),

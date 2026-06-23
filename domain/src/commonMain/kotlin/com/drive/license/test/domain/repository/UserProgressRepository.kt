@@ -3,6 +3,7 @@ package com.drive.license.test.domain.repository
 import com.drive.license.test.domain.model.BookmarkedQuestion
 import com.drive.license.test.domain.model.CategoryStats
 import com.drive.license.test.domain.model.MistakeQuestion
+import com.drive.license.test.domain.model.QuestionProgress
 import com.drive.license.test.domain.model.TestSessionSummary
 import com.drive.license.test.domain.model.UserStatistics
 
@@ -19,6 +20,7 @@ interface UserProgressRepository {
     suspend fun isBookmarked(questionId: Int): Boolean
     suspend fun toggleBookmark(questionId: Int, bookmarkedAt: Long)
     suspend fun getQuestionAttemptCounts(): Map<Int, Int>
+    suspend fun getQuestionProgress(questionId: Int): QuestionProgress?
 
     /** Destructive: clears attempts/progress/streak/test history. */
     suspend fun resetStatistics()

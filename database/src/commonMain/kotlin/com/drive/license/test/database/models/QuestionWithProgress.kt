@@ -10,10 +10,10 @@ data class QuestionWithProgress(
 ) {
     /**
      * A question is considered learned when the user has a strong net-correct margin.
-     * Rule: (timesCorrect - timesIncorrect) > 3.
+     * Rule: (timesCorrect - timesIncorrect) > 2.
      */
     val isLearnedByScore: Boolean
-        get() = (timesCorrect - timesIncorrect) > 3
+        get() = (timesCorrect - timesIncorrect) > 2
 
     val accuracy: Float
         get() = if (timesAnswered > 0) timesCorrect.toFloat() / timesAnswered else 0f

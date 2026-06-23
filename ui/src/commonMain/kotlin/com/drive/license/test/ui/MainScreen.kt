@@ -71,12 +71,14 @@ fun MainScreen(
     var testSession by remember { mutableStateOf<TestSession?>(null) }
     var colorVisionSession by remember { mutableStateOf<ColorVisionSession?>(null) }
     var userStatistics by remember { mutableStateOf(UserStatistics()) }
+    var mistakeCount by remember { mutableStateOf(0) }
     var examRemainingSeconds by remember { mutableStateOf<Int?>(null) }
     var currentQuestionBookmarked by remember { mutableStateOf(false) }
     val allQuestions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
 
     suspend fun refreshUserProgress() {
         userStatistics = userProgressRepository.getUserStatistics()
+        mistakeCount = userProgressRepository.getMistakeQuestions().size
     }
 
     fun navigate(screen: Screen) {
@@ -283,6 +285,7 @@ fun MainScreen(
         Screen.Home -> HomeScreen(
             userStatistics = userStatistics,
             totalQuestionCount = allQuestions.size,
+            mistakeCount = mistakeCount,
             onStartTest = { count -> startTest(allQuestions, count) },
             onOpenStats = { navigate(Screen.Stats) },
             onOpenFailed = { navigate(Screen.Mistakes) },

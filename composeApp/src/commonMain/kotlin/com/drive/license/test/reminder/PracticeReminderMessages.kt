@@ -8,8 +8,7 @@ object PracticeReminderMessages {
 
     private val bodies = listOf(
         "Այսօրվա փոքր ջանքը վաղվա մեծ հաջողությունն է։",
-        "Փոքր ջանքերն ամեն օր՝ մեծ հաջողություն քննության օրը։",
-        "Պատրաստվիր այսօր, անցիր քննությունը վաղը։",
+        "Պատրաստվեք այսօր, անցեք քննությունը վաղը։",
         "Հաղթանակը պատկանում է նրան, ով ամեն օր մի փոքր առաջ է գնում։",
         "Վաղվա հաջողությունը ծնվում է այսօրվա կարգապահությունից։",
         "Չարված գործը մնում է երազանք, արված գործը դառնում է իրականություն։",
@@ -18,4 +17,7 @@ object PracticeReminderMessages {
 
     fun randomBody(random: Random = Random.Default): String =
         bodies[random.nextInt(bodies.size)]
+
+    /** All notification body messages, in display order. */
+    val allBodies: List<String> get() = bodies
 }

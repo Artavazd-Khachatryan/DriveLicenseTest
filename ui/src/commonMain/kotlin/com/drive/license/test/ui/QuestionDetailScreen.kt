@@ -166,11 +166,11 @@ fun QuestionDetailScreen(
             modifier = contentModifier,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            val questionProgress = if (totalQuestions > 0) {
+            val sessionProgress = if (totalQuestions > 0) {
                 questionNumber.toFloat() / totalQuestions
             } else 0f
             LinearProgressIndicator(
-                progress = { questionProgress.coerceIn(0f, 1f) },
+                progress = { sessionProgress.coerceIn(0f, 1f) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(8.dp)

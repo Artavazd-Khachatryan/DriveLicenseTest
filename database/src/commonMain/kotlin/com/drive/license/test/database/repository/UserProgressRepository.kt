@@ -4,6 +4,7 @@ import com.drive.license.test.database.Database
 import com.drive.license.test.domain.model.BookmarkedQuestion
 import com.drive.license.test.domain.model.CategoryStats
 import com.drive.license.test.domain.model.MistakeQuestion
+import com.drive.license.test.domain.model.QuestionProgress
 import com.drive.license.test.domain.model.TestSessionSummary
 import com.drive.license.test.domain.model.UserStatistics
 import com.drive.license.test.domain.repository.UserProgressRepository as DomainUserProgressRepository
@@ -157,6 +158,20 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
     override suspend fun getQuestionAttemptCounts(): Map<Int, Int> {
         return withContext(Dispatchers.Default) {
             database.getQuestionAttemptCounts()
+        }
+    }
+
+    override suspend fun getQuestionProgress(questionId: Int): QuestionProgress? {
+        return withContext(Dispatchers.Default) {
+            database.getQuestionProgress(questionId.toLong())?.let { row ->
+                QuestionProgress(
+                    questionId = row.question_id.toInt(),
+                    timesAnswered = row.times_answered.toInt(),
+                    timesCorrect = row.times_correct.toInt(),
+                    timesIncorrect = row.times_incorrect.toInt(),
+                    isLearned = row.is_learned == 1L,
+                )
+            }
         }
     }
 
