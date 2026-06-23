@@ -76,6 +76,30 @@ Polish the look and feel.
 - [x] **6.6 Tablet/landscape** — `AdaptiveContentContainer` (600dp+ expanded); Home start/progress side-by-side; question image beside text on wide screens; 720dp max width
 - [x] **6.7 Motivating messages** — Context-aware encouragement on Home (streak, accuracy, first visit) and test results (score bands)
 - [x] **6.8 UI polish (May 2026)** — Armenian string grammar, Material icons instead of emoji, staggered home animations, dynamic test-length subtitle, category string resources
+- **6.9 Review autoscroll & list scrolling** — Audit scroll behavior on every scrollable screen; fix unwanted jumps, nested-scroll conflicts, and missing scroll-to-top on navigation.
+
+  **Screens to review**
+
+  | Screen | Scroll type | Check |
+  |--------|-------------|-------|
+  | HomeScreen | `verticalScroll` | Resets to top on enter (`scrollTo(0)`); no jump when stats refresh |
+  | ReviewMistakesScreen | `LazyColumn` | Smooth scroll with many items; practice button stays reachable |
+  | DrivingSchoolsScreen | `LazyColumn` + horizontal chip row | No nested-scroll fight; city filter chips scroll horizontally |
+  | StatsScreen | `verticalScroll` | Long category/history lists readable on small phones |
+  | CategoryPickerScreen | `verticalScroll` | Long category list scrolls under bottom bar |
+  | BookmarksScreen | `verticalScroll` | Empty vs populated states scroll correctly |
+  | PracticeModeScreen | `verticalScroll` | Cards not clipped on landscape/tablet |
+  | QuestionDetailScreen | `verticalScroll` | Answer list scrolls after feedback; image + long text |
+  | TestResultsScreen | `verticalScroll` | Motivation + actions visible without manual hunt |
+  | SettingsScreen | `verticalScroll` | Reminder picker / toggles reachable above keyboard (iOS) |
+
+  **What to fix if found**
+
+  - Unwanted **auto-scroll** (content jumps when state updates, e.g. after answering or refreshing home stats)
+  - **Double scroll** — `verticalScroll` inside `LazyColumn` item or scaffold fighting bottom bar insets
+  - **No scroll-to-top** when switching tabs or returning from a sub-screen
+  - Prefer **`LazyColumn`** for long lists (mistakes, schools); keep **`verticalScroll`** for short forms
+  - **`contentPadding`** on lazy lists so last item clears bottom nav / safe area
 
 ---
 
@@ -234,3 +258,4 @@ Shown on **Home** welcome card, **during a test** every 5 answered questions (in
 | 2026-05-26 | Phase 8.1 — Driving schools list enabled; map pins planned in 8.2; motivation rules documented in roadmap                        |
 | 2026-06-11 | Phase 6.0 — Brand logo + launcher icons (`assets/brand/`); Android adaptive icon + iOS AppIcon 1024 |
 | 2026-06-11 | Phase 9 added — Subscriptions plan (RevenueCat KMP, Plus/Pro tiers, feature matrix, implementation steps) |
+| 2026-06-23 | Phase 6.9 added — Review autoscroll & list scrolling across scrollable screens (audit table + fix checklist) |
