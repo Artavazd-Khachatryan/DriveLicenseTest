@@ -71,6 +71,7 @@ fun MainScreen(
     var testSession by remember { mutableStateOf<TestSession?>(null) }
     var colorVisionSession by remember { mutableStateOf<ColorVisionSession?>(null) }
     var userStatistics by remember { mutableStateOf(UserStatistics()) }
+    var questionAttemptCounts by remember { mutableStateOf<Map<Int, Int>>(emptyMap()) }
     var mistakeCount by remember { mutableStateOf(0) }
     var examRemainingSeconds by remember { mutableStateOf<Int?>(null) }
     var currentQuestionBookmarked by remember { mutableStateOf(false) }
@@ -78,6 +79,7 @@ fun MainScreen(
 
     suspend fun refreshUserProgress() {
         userStatistics = userProgressRepository.getUserStatistics()
+        questionAttemptCounts = userProgressRepository.getQuestionAttemptCounts()
         mistakeCount = userProgressRepository.getMistakeQuestions().size
     }
 
@@ -160,8 +162,8 @@ fun MainScreen(
         handleSystemBack()
     }
 
-    fun pickFromPool(pool: List<Question>, count: Int): List<Question> =
-        QuestionSelector.selectForPractice(pool, count)
+    suspend fun pickFromPool(pool: List<Question>, count: Int): List<Question> =
+        QuestionSelector.selectForPractice(pool, count, questionAttemptCounts)
 
     fun launchTestSession(
         session: TestSession,
@@ -184,11 +186,13 @@ fun MainScreen(
         count: Int,
         isExamMode: Boolean = false,
     ) {
-        val selected = pickFromPool(pool, count)
-        if (selected.isNotEmpty()) {
-            launchTestSession(
-                TestSession(questions = selected, isExamMode = isExamMode)
-            )
+        coroutineScope.launch {
+            val selected = pickFromPool(pool, count)
+            if (selected.isNotEmpty()) {
+                launchTestSession(
+                    TestSession(questions = selected, isExamMode = isExamMode)
+                )
+            }
         }
     }
 

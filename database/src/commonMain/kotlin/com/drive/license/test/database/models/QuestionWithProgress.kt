@@ -1,5 +1,7 @@
 package com.drive.license.test.database.models
 
+import com.drive.license.test.domain.model.QuestionLearningRules
+
 data class QuestionWithProgress(
     val question: DatabaseQuestion,
     val timesAnswered: Int = 0,
@@ -9,11 +11,10 @@ data class QuestionWithProgress(
     val lastAnsweredAt: Long? = null
 ) {
     /**
-     * A question is considered learned when the user has a strong net-correct margin.
-     * Rule: (timesCorrect - timesIncorrect) > 2.
+     * A question is considered learned when correct answers outnumber incorrect ones.
      */
     val isLearnedByScore: Boolean
-        get() = (timesCorrect - timesIncorrect) > 2
+        get() = QuestionLearningRules.isLearned(timesCorrect, timesIncorrect, isLearned)
 
     val accuracy: Float
         get() = if (timesAnswered > 0) timesCorrect.toFloat() / timesAnswered else 0f

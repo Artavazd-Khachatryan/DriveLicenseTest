@@ -38,4 +38,22 @@ class QuestionSelectorTest {
     fun emptyPoolReturnsEmpty() {
         assertTrue(QuestionSelector.selectForPractice(emptyList(), 10).isEmpty())
     }
+
+    @Test
+    fun prefersUnseenQuestions() {
+        val all = (1..6).map { question(it) }
+        val attemptCounts = mapOf(1 to 3, 2 to 1, 3 to 2)
+        val picked = QuestionSelector.selectForPractice(all, 3, attemptCounts)
+        assertEquals(3, picked.size)
+        assertEquals(setOf(4, 5, 6), picked.map { it.id }.toSet())
+    }
+
+    @Test
+    fun fillsWithLeastAttemptedSeenWhenUnseenExhausted() {
+        val all = (1..4).map { question(it) }
+        val attemptCounts = mapOf(1 to 5, 2 to 1, 3 to 3, 4 to 2)
+        val picked = QuestionSelector.selectForPractice(all, 3, attemptCounts)
+        assertEquals(3, picked.size)
+        assertEquals(setOf(2, 4, 3), picked.map { it.id }.toSet())
+    }
 }

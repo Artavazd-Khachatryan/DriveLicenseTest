@@ -2,6 +2,7 @@ package com.drive.license.test.database
 
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
+import com.drive.license.test.domain.model.QuestionLearningRules
 import com.drive.license.test.database.models.Book
 import com.drive.license.test.database.models.DatabaseQuestion
 import com.drive.license.test.database.models.QuestionCategory
@@ -195,7 +196,9 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
     // --- User Progress Operations ---
 
     suspend fun getUserStatistics(): UserStatistics = withContext(Dispatchers.IO) {
-        val row = userProgressQueries.getUserStatistics().executeAsOne()
+        val row = userProgressQueries.getUserStatistics(
+            QuestionLearningRules.NET_CORRECT_MARGIN_FOR_LEARNED.toLong(),
+        ).executeAsOne()
         UserStatistics(
             totalQuestions = row.total_questions.toInt(),
             totalAttempts = row.total_attempts.toInt(),
@@ -252,12 +255,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
                 last_answered_at = timestamp,
                 question_id = questionId
             )
-            val updated = userProgressQueries.getQuestionProgress(questionId).executeAsOne()
-            val netCorrect = updated.times_correct - updated.times_incorrect
-            if (updated.is_learned == 0L && netCorrect > 2) {
-                userProgressQueries.markQuestionAsLearned(questionId)
-            }
         }
+        markQuestionLearnedIfEligible(questionId)
     }
 
     suspend fun getQuestionAttemptCounts(): Map<Int, Int> = withContext(Dispatchers.IO) {
@@ -374,5 +373,16 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
 
     suspend fun removeBookmark(questionId: Long) = withContext(Dispatchers.IO) {
         bookmarkQueries.removeBookmark(questionId)
+    }
+
+    private fun markQuestionLearnedIfEligible(questionId: Long) {
+        val updated = userProgressQueries.getQuestionProgress(questionId).executeAsOne()
+        if (updated.is_learned == 0L && QuestionLearningRules.isLearned(
+                timesCorrect = updated.times_correct.toInt(),
+                timesIncorrect = updated.times_incorrect.toInt(),
+            )
+        ) {
+            userProgressQueries.markQuestionAsLearned(questionId)
+        }
     }
 }
