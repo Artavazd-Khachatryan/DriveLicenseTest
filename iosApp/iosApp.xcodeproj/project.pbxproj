@@ -159,6 +159,7 @@
 			packageProductDependencies = (
 				F1A2B3C52F700001 /* FirebaseCore */,
 				F1A2B3C62F700001 /* FirebaseCrashlytics */,
+				F1A2B3C92F700001 /* FirebaseAnalytics */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* DriveLicenseTest.app */;
@@ -554,6 +555,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F1A2B3C42F700001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		F1A2B3C92F700001 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1A2B3C42F700001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 
