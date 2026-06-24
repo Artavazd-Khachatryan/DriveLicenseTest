@@ -69,7 +69,10 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.koin.core)
     implementation(libs.compose.ui.tooling.preview)
+
     implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
+
     debugImplementation(libs.compose.ui.tooling)
 }

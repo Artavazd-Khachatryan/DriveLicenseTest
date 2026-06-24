@@ -1,19 +1,23 @@
 {
   "project_info": {
-    "project_number": "000000000000",
-    "project_id": "drive-license-test-dev",
-    "storage_bucket": "drive-license-test-dev.appspot.com"
+    "project_number": "714577708600",
+    "project_id": "drive-license-test",
+    "storage_bucket": "drive-license-test.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:000000000000:android:0000000000000000000000",
+        "mobilesdk_app_id": "1:714577708600:android:7a86e70a5fb3d3856208cd",
         "android_client_info": {
           "package_name": "com.drive.license.test"
         }
       },
       "oauth_client": [],
-      "api_key": [{ "current_key": "REPLACE_WITH_FIREBASE_ANDROID_KEY" }],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEO6Va845Pd0e4HLyleGSR2PSeYD8LHfQ"
+        }
+      ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": []
