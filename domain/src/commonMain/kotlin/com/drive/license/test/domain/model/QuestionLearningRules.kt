@@ -9,7 +9,7 @@ package com.drive.license.test.domain.model
  */
 object QuestionLearningRules {
     const val CORRECT_ANSWERS_TO_CLEAR_MISTAKE = 3
-    const val NET_CORRECT_MARGIN_FOR_LEARNED = 2
+    const val NET_CORRECT_MARGIN_FOR_LEARNED = 1
 
     fun isLearned(timesCorrect: Int, timesIncorrect: Int, isLearnedFlag: Boolean = false): Boolean =
         isLearnedFlag || (timesCorrect - timesIncorrect) > NET_CORRECT_MARGIN_FOR_LEARNED
@@ -26,6 +26,6 @@ object QuestionLearningRules {
     fun remainingNetCorrectToLearn(timesCorrect: Int, timesIncorrect: Int, isLearnedFlag: Boolean = false): Int? {
         if (isLearned(timesCorrect, timesIncorrect, isLearnedFlag)) return null
         val targetNet = NET_CORRECT_MARGIN_FOR_LEARNED + 1
-        return (targetNet - (timesCorrect - timesIncorrect)).coerceAtLeast(0)
+        return (targetNet - (timesCorrect - timesIncorrect)).coerceAtLeast(1)
     }
 }

@@ -71,6 +71,12 @@ UPDATE UserQuestionProgress
 SET is_learned = 1
 WHERE question_id = ?;
 
+-- Clear learned when score no longer meets the threshold
+markQuestionAsNotLearned:
+UPDATE UserQuestionProgress
+SET is_learned = 0
+WHERE question_id = ?;
+
 -- Get question progress by ID
 getQuestionProgress:
 SELECT * FROM UserQuestionProgress WHERE question_id = ?;

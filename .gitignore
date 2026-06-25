@@ -36,3 +36,10 @@ scripts/__pycache__/
 scripts/audit_book_*.json
 scripts/audit_images_*.json
 scripts/audit_all.json
+
+# Generated verification / gallery outputs (regenerate with scripts/*.py)
+scripts/book_figures/
+scripts/question_image_gallery.html
+scripts/image_gallery.html
+scripts/verify_report.json
+scripts/verify_text_report.md

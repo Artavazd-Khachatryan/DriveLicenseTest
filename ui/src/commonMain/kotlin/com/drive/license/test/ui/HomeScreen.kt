@@ -266,7 +266,7 @@ fun HomeScreen(
 
 /**
  * Dashboard-style hero: greeting on the left, a circular "seen" ring on the right, a horizontal
- * "learned" bar below, and stat chips at the bottom.
+ * "learned" bar below, and learned/remaining stat chips at the bottom.
  */
 @Composable
 private fun HomeHeroCard(
@@ -358,13 +358,6 @@ private fun HomeHeroCard(
                             value = userStatistics.learnedQuestions.toString(),
                             containerColor = MaterialTheme.colorScheme.secondaryContainer,
                             contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                            modifier = Modifier.weight(1f)
-                        )
-                        StatChip(
-                            label = stringResource(Res.string.home_stat_seen),
-                            value = userStatistics.questionsSeen.toString(),
-                            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                            contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
                             modifier = Modifier.weight(1f)
                         )
                         StatChip(

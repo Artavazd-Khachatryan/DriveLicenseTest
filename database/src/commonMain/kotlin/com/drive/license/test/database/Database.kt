@@ -256,7 +256,7 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
                 question_id = questionId
             )
         }
-        markQuestionLearnedIfEligible(questionId)
+        reconcileQuestionLearnedState(questionId)
     }
 
     suspend fun getQuestionAttemptCounts(): Map<Int, Int> = withContext(Dispatchers.IO) {
@@ -375,14 +375,15 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
         bookmarkQueries.removeBookmark(questionId)
     }
 
-    private fun markQuestionLearnedIfEligible(questionId: Long) {
+    private fun reconcileQuestionLearnedState(questionId: Long) {
         val updated = userProgressQueries.getQuestionProgress(questionId).executeAsOne()
-        if (updated.is_learned == 0L && QuestionLearningRules.isLearned(
-                timesCorrect = updated.times_correct.toInt(),
-                timesIncorrect = updated.times_incorrect.toInt(),
-            )
-        ) {
-            userProgressQueries.markQuestionAsLearned(questionId)
+        val isLearned = QuestionLearningRules.isLearned(
+            timesCorrect = updated.times_correct.toInt(),
+            timesIncorrect = updated.times_incorrect.toInt(),
+        )
+        when {
+            isLearned && updated.is_learned == 0L -> userProgressQueries.markQuestionAsLearned(questionId)
+            !isLearned && updated.is_learned == 1L -> userProgressQueries.markQuestionAsNotLearned(questionId)
         }
     }
 }
