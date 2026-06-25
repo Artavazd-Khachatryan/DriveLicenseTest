@@ -7135,7 +7135,7 @@
     <string name="color_vision_results_passed_title">Լավ արդյունք</string>
     <string name="color_vision_results_passed_subtitle">Բոլոր պատասխանները ճիշտ են — կարող եք անցնել տեսական քննությանը։</string>
     <string name="color_vision_results_failed_title">Արդյունքը բավարար չէ</string>
-    <string name="color_vision_results_failed_subtitle">Քննության ժամանակ մեկ սխալ պատասխանն էլ բավական է՝ շարունակելը արգելելու համար։ Կրկին փորձեք կամ դիմեք ակնաբույժի։</string>
+    <string name="color_vision_results_failed_subtitle">Քննության ժամանակ մեկ սխալ պատասխանն էլ բավական է՝ շարունակելը արգելելու համար։</string>
     <string name="color_vision_retake">Կրկնել թեստը</string>
     <string name="practice_color_vision_title">Գունային տեսողություն</string>
     <string name="practice_color_vision_desc">Պաշտոնական թիթեղներ՝ քննությունից առաջ (3 պատահական հարց)</string>
