@@ -31,3 +31,22 @@ Build and run a release-like build, then trigger a test crash from a debug menu 
 Initialization runs in `App.kt` via `CrashReporting.initialize()`. On iOS, `FirebaseApp.configure()` also runs in `iOSApp.swift` (`AppDelegate`) at launch per Firebase’s SwiftUI setup guide.
 
 Until real config files are in place, Crashlytics stays **disabled** (placeholder API keys are detected so the app still launches on device/simulator).
+
+## 5. iOS-specific requirements (Android works out of the box)
+
+Android reports crashes via the Gradle Crashlytics plugin. iOS needs extra Xcode setup or crashes may never appear in the console:
+
+| Requirement | Status in this project |
+|-------------|------------------------|
+| `GoogleService-Info.plist` in the app bundle | Yes |
+| SPM: `FirebaseCore` + `FirebaseCrashlytics` linked | Yes |
+| **Run Script**: `Crashlytics/run` uploads dSYMs after each build | Yes (`Upload Crashlytics dSYMs` build phase) |
+| `DEBUG_INFORMATION_FORMAT = dwarf-with-dsym` | Yes (Debug + Release) |
+| `-ObjC` linker flag | Yes |
+| Kotlin uncaught exceptions forwarded to Crashlytics | Yes (`setUnhandledExceptionHook` on iOS) |
+
+In Firebase Console, select the **iOS app** (`com.drive.license.test.DriveLicenseTest`) — it is separate from the Android app dropdown.
+
+**Test flow on device:** crash the app → **force-quit and reopen** (or relaunch) → wait 5–15 minutes → refresh Crashlytics.
+
+If the iOS tile still says “Add SDK”, rebuild from Xcode once so the dSYM upload script runs, then send another test crash.
