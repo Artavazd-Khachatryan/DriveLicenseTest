@@ -173,18 +173,6 @@ fun HomeScreen(
                             horizontalArrangement = Arrangement.spacedBy(16.dp),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            if (mistakeCount > 0) {
-                                FeatureCard(
-                                    modifier = Modifier.weight(1f),
-                                    icon = Icons.Filled.Quiz,
-                                    title = stringResource(Res.string.home_review_mistakes_title),
-                                    description = stringResource(Res.string.home_review_mistakes_subtitle),
-                                    actionText = stringResource(Res.string.home_review_button),
-                                    onAction = onOpenFailed,
-                                    accent = MaterialTheme.colorScheme.error,
-                                    onAccent = MaterialTheme.colorScheme.onError,
-                                )
-                            }
                             if (AppFeatures.aiEnabled) {
                                 FeatureCard(
                                     modifier = Modifier.weight(1f),
@@ -277,6 +265,7 @@ private fun HomeHeroCard(
 ) {
     val learningProgress = userStatistics.learningProgress
     val coverageProgress = userStatistics.coverageProgress
+    val totalCountOrNull = totalQuestionCount.takeIf { it > 0 }
 
     AppCard(
         modifier = modifier,
@@ -313,88 +302,49 @@ private fun HomeHeroCard(
                         }
                     }
 
-                    if (totalQuestionCount > 0) {
-                        key(userStatistics.questionsSeen, totalQuestionCount) {
-                            HomeSeenProgressRing(
-                                progress = coverageProgress,
-                                seenCount = userStatistics.questionsSeen,
-                                totalCount = totalQuestionCount,
-                                contentDescription = stringResource(
+                    key(userStatistics.questionsSeen, totalQuestionCount) {
+                        val progress = if (totalCountOrNull != null) coverageProgress else 0f
+                        HomeSeenProgressRing(
+                            progress = progress,
+                            seenCount = userStatistics.questionsSeen,
+                            totalCount = totalCountOrNull,
+                            contentDescription = if (totalCountOrNull != null) {
+                                stringResource(
                                     Res.string.home_seen_ring_cd,
                                     (coverageProgress * 100).toInt(),
                                     userStatistics.questionsSeen,
-                                    totalQuestionCount,
-                                ),
-                                onClick = onOpenStatsFromRing,
-                            )
-                        }
-                    }
-                }
-
-                if (totalQuestionCount > 0) {
-                    key(userStatistics.learnedQuestions, totalQuestionCount) {
-                        HomeLearnedProgressBar(
-                            progress = learningProgress,
-                            learnedCount = userStatistics.learnedQuestions,
-                            totalCount = totalQuestionCount,
-                            contentDescription = stringResource(
-                                Res.string.home_learning_ring_cd,
-                                (learningProgress * 100).toInt(),
-                                userStatistics.learnedQuestions,
-                                totalQuestionCount,
-                            ),
+                                    totalCountOrNull,
+                                )
+                            } else {
+                                stringResource(Res.string.home_stat_seen)
+                            },
                             onClick = onOpenStatsFromRing,
                         )
                     }
                 }
 
-                if (totalQuestionCount > 0) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        StatChip(
-                            label = stringResource(Res.string.home_stat_learned),
-                            value = userStatistics.learnedQuestions.toString(),
-                            containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                            contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                            modifier = Modifier.weight(1f)
-                        )
-                        StatChip(
-                            label = stringResource(Res.string.home_stat_remaining),
-                            value = userStatistics.questionsRemaining.toString(),
-                            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-                            contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier = Modifier.weight(1f)
-                        )
-                    }
-                } else if (userStatistics.totalAttempts > 0) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        StatChip(
-                            label = stringResource(Res.string.home_stat_correct),
-                            value = userStatistics.totalCorrect.toString(),
-                            containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                            contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                            modifier = Modifier.weight(1f)
-                        )
-                        StatChip(
-                            label = stringResource(Res.string.home_stat_incorrect),
-                            value = userStatistics.totalIncorrect.toString(),
-                            containerColor = MaterialTheme.colorScheme.errorContainer,
-                            contentColor = MaterialTheme.colorScheme.onErrorContainer,
-                            modifier = Modifier.weight(1f)
-                        )
-                        StatChip(
-                            label = stringResource(Res.string.home_stat_attempted),
-                            value = userStatistics.totalAttempts.toString(),
-                            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-                            contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier = Modifier.weight(1f)
-                        )
-                    }
+                // Removed per request: avoid transient layout changes on iOS.
+
+                // Keep a stable layout on iOS: always show the same two chips.
+                // This avoids a brief “swap” while totalQuestionCount loads.
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    StatChip(
+                        label = stringResource(Res.string.home_stat_learned),
+                        value = userStatistics.learnedQuestions.toString(),
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                        modifier = Modifier.weight(1f)
+                    )
+                    StatChip(
+                        label = stringResource(Res.string.home_stat_remaining),
+                        value = userStatistics.questionsRemaining.toString(),
+                        containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                        contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.weight(1f)
+                    )
                 }
             }
         }
@@ -402,84 +352,10 @@ private fun HomeHeroCard(
 }
 
 @Composable
-private fun HomeLearnedProgressBar(
-    progress: Float,
-    learnedCount: Int,
-    totalCount: Int,
-    contentDescription: String,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val visualProgress = if (learnedCount > 0) {
-        progress.coerceIn(0f, 1f).coerceAtLeast(0.02f)
-    } else {
-        progress.coerceIn(0f, 1f)
-    }
-    val animatedProgress by animateFloatAsState(
-        targetValue = visualProgress,
-        animationSpec = tween(1200, easing = LinearEasing),
-        label = "home_learned_progress",
-    )
-    val animatedPercentage by animateIntAsState(
-        targetValue = (progress * 100).toInt(),
-        animationSpec = tween(1200, easing = LinearEasing),
-        label = "home_learned_percentage",
-    )
-    val onContainer = MaterialTheme.colorScheme.onPrimaryContainer
-
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .semantics { this.contentDescription = contentDescription }
-            .clickable(onClick = onClick),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                text = stringResource(Res.string.home_stat_learned),
-                style = MaterialTheme.typography.labelLarge,
-                fontWeight = FontWeight.SemiBold,
-                color = onContainer,
-            )
-            Text(
-                text = "$animatedPercentage%",
-                style = MaterialTheme.typography.labelLarge,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary,
-            )
-        }
-        LinearProgressIndicator(
-            progress = { animatedProgress },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(10.dp)
-                .clip(MaterialTheme.shapes.small),
-            color = MaterialTheme.colorScheme.primary,
-            trackColor = onContainer.copy(alpha = 0.12f),
-            gapSize = 0.dp,
-            drawStopIndicator = {},
-        )
-        Text(
-            text = stringResource(
-                Res.string.home_learning_progress,
-                learnedCount,
-                totalCount,
-            ),
-            style = MaterialTheme.typography.bodySmall,
-            color = onContainer.copy(alpha = 0.75f),
-        )
-    }
-}
-
-@Composable
 private fun HomeSeenProgressRing(
     progress: Float,
     seenCount: Int,
-    totalCount: Int,
+    totalCount: Int?,
     contentDescription: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -521,7 +397,7 @@ private fun HomeSeenProgressRing(
                 color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f),
                 maxLines = 1,
             )
-            if (totalCount > 0) {
+            if (totalCount != null && totalCount > 0) {
                 Text(
                     text = "/ $totalCount",
                     style = MaterialTheme.typography.labelSmall,
