@@ -329,7 +329,22 @@ fun MainScreen(
                     val mistakeIds = userProgressRepository.getMistakeQuestions().map { it.id }.toSet()
                     val pool = allQuestions.filter { it.id in mistakeIds }
                     if (pool.isNotEmpty()) {
-                        startTest(pool, minOf(pool.size, 20))
+                        startTest(pool, pool.size)
+                    }
+                }
+            },
+        )
+        Screen.WeakAreas -> WeakAreasScreen(
+            questionRepository = questionRepository,
+            onBack = {
+                coroutineScope.launch { refreshUserProgress() }
+                navigateBack()
+            },
+            onPracticeWeakAreas = {
+                coroutineScope.launch {
+                    val weak = questionRepository.getWeakAreaQuestions()
+                    if (weak.isNotEmpty()) {
+                        startTest(weak, weak.size)
                     }
                 }
             },
@@ -345,14 +360,7 @@ fun MainScreen(
                 weakAreaCount = weakAreaCount,
                 bookmarkCount = bookmarkCount,
                 onPickCategory = { navigate(Screen.CategoryPicker) },
-                onStartWeakAreas = {
-                    coroutineScope.launch {
-                        val weak = questionRepository.getWeakAreaQuestions()
-                        if (weak.isNotEmpty()) {
-                            startTest(weak, 20)
-                        }
-                    }
-                },
+                onOpenWeakAreas = { navigate(Screen.WeakAreas) },
                 onStartExam = {
                     startTest(allQuestions, TestSession.EXAM_QUESTION_COUNT, isExamMode = true)
                 },

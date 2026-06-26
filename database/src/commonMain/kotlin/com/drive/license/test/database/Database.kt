@@ -7,6 +7,7 @@ import com.drive.license.test.database.models.Book
 import com.drive.license.test.database.models.DatabaseQuestion
 import com.drive.license.test.database.models.QuestionCategory
 import com.drive.license.test.database.models.UserStatistics
+import com.drive.license.test.database.models.WeakAreaQuestionRow
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
@@ -262,6 +263,18 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
     suspend fun getQuestionAttemptCounts(): Map<Int, Int> = withContext(Dispatchers.IO) {
         userProgressQueries.getAllQuestionProgress().executeAsList().associate { row ->
             row.question_id.toInt() to row.times_answered.toInt()
+        }
+    }
+
+    suspend fun getWeakAreaQuestionsForReview(): List<WeakAreaQuestionRow> = withContext(Dispatchers.IO) {
+        userProgressQueries.getWeakAreaQuestionsFull().executeAsList().map { row ->
+            WeakAreaQuestionRow(
+                id = row.id.toInt(),
+                question = row.question,
+                correctAnswer = row.true_answer,
+                timesIncorrect = row.times_incorrect?.toInt() ?: 0,
+                timesCorrect = row.times_correct?.toInt() ?: 0,
+            )
         }
     }
 

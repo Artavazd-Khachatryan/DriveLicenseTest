@@ -62,7 +62,7 @@ fun PracticeModeScreen(
     weakAreaCount: Int,
     bookmarkCount: Int,
     onPickCategory: () -> Unit,
-    onStartWeakAreas: () -> Unit,
+    onOpenWeakAreas: () -> Unit,
     onStartExam: () -> Unit,
     onOpenBookmarks: () -> Unit,
     onOpenColorVision: (() -> Unit)? = null,
@@ -110,7 +110,7 @@ fun PracticeModeScreen(
                 else
                     stringResource(Res.string.practice_weak_areas_empty),
                 buttonText = stringResource(Res.string.practice_weak_areas_button),
-                onClick = onStartWeakAreas,
+                onClick = onOpenWeakAreas,
                 enabled = weakAreaCount > 0,
             )
 

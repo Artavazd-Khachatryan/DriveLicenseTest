@@ -6999,12 +6999,23 @@
     <string name="mistakes_subtitle">Հարցը կհանվի ցուցակից, երբ բավարաչափ ճիշտ պատասխանեք</string>
     <string name="mistakes_count">%1$d հարց</string>
     <string name="mistakes_count_label">Վերանայելու</string>
-    <string name="mistakes_practice_button">Պարապել սխալ հարցերով</string>
+    <string name="mistakes_practice_button">Պարապել բոլոր հարցերով</string>
     <string name="mistakes_question_label">Հարց %1$d</string>
     <string name="mistakes_empty_title">Սխալներ դեռ չկան!</string>
     <string name="mistakes_empty_subtitle">Կատարեք թեստ։ Սխալ պատասխանած հարցերը կհայտնվեն այստեղ։ Հարցը կհանվի ցուցակից, երբ բավարաչափ ճիշտ պատասխանեք։</string>
     <string name="mistakes_your_answer">Ձեր պատասխանը</string>
     <string name="mistakes_correct_answer">Ճիշտ պատասխան</string>
+
+    <!-- Weak areas review screen -->
+    <string name="weak_areas_title">Թույլ կողմեր</string>
+    <string name="weak_areas_subtitle">Հարցերը, որոնցում առնվազն մեկ սխալ ունեք՝ դասավորված ըստ սխալների քանակի։</string>
+    <string name="weak_areas_count_label">Հարց</string>
+    <string name="weak_areas_practice_button">Պարապել բոլոր հարցերով</string>
+    <string name="weak_areas_question_label">Հարց %1$d</string>
+    <string name="weak_areas_empty_title">Թույլ կողմեր դեռ չկան</string>
+    <string name="weak_areas_empty_subtitle">Կատարեք թեստ՝ ձեր թույլ կողմերը բացահայտելու համար։</string>
+    <string name="weak_areas_stat_incorrect">Սխալ</string>
+    <string name="weak_areas_stat_correct">Ճիշտ</string>
 
     <!-- Question Detail Screen -->
     <string name="question_exit_title">Ելնե՞լ թեստից</string>
@@ -7049,7 +7060,7 @@
     <string name="practice_weak_areas_title">Թույլ կողմեր</string>
     <string name="practice_weak_areas_count">%1$d հարց՝ լրացուցիչ պարապման համար</string>
     <string name="practice_weak_areas_empty">Նախ կատարեք թեստ՝ ձեր թույլ կողմերը բացահայտելու համար։</string>
-    <string name="practice_weak_areas_button">Սկսել պարապանքը</string>
+    <string name="practice_weak_areas_button">Դիտել ցանկը</string>
     <string name="practice_exam_title">Քննության սիմուլյացիա</string>
     <string name="practice_exam_desc">20 հարց · 30 րոպե · առավելագույնը 2 սխալ։ Կրկնում է իրական հայկական վարորդական քննությունը։</string>
     <string name="practice_exam_button">Սկսել քննությունը</string>

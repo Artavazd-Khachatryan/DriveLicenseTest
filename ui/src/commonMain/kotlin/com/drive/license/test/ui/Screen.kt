@@ -8,6 +8,7 @@ sealed class Screen {
     object Question : Screen()
     object Results : Screen()
     object Mistakes : Screen()
+    object WeakAreas : Screen()
     object Bookmarks : Screen()
     object DrivingSchools : Screen()
     object ColorVisionIntro : Screen()
