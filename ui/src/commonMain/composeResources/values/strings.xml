@@ -7069,7 +7069,7 @@
     <string name="practice_weak_areas_empty">Նախ կատարեք թեստ՝ ձեր թույլ կողմերը բացահայտելու համար։</string>
     <string name="practice_weak_areas_button">Դիտել ցանկը</string>
     <string name="practice_exam_title">Քննության սիմուլյացիա</string>
-    <string name="practice_exam_desc">20 հարց · 30 րոպե · առավելագույնը 2 սխալ։ Կրկնում է իրական հայկական վարորդական քննությունը։</string>
+    <string name="practice_exam_desc">3 գունային թեստ + 20 տեսական հարց · 30 րոպե · առավելագույնը 2 սխալ։</string>
     <string name="practice_exam_button">Սկսել քննությունը</string>
 
     <!-- Category Picker Screen -->
@@ -7146,6 +7146,9 @@
     <string name="color_vision_title">Հոգեբանական թեստ</string>
     <string name="color_vision_intro_body">Պաշտոնական քննության նման թիթեղներ՝ թվեր և պատկերներ։ Առանձին բաժին է՝ տեսական հարցերից դուրս։</string>
     <string name="color_vision_exam_rules">Քննության ժամանակ հարցվում է %1$d պատահական թիթեղ, և բոլոր պատասխանները պետք է լինեն ճիշտ։</string>
+    <string name="color_vision_exam_prelude_passed_subtitle">Գունային թեստը հանձնված է։ Հիմա անցեք տեսական մասին։</string>
+    <string name="color_vision_exam_prelude_failed_subtitle">Քննության սիմուլյացիան դադարեցված է։ Բոլոր 3 գունային պատասխանները պետք է լինեն ճիշտ։</string>
+    <string name="color_vision_continue_theory_button">Շարունակել տեսական քննությունը</string>
     <string name="color_vision_plate_bank_count">Թեստային բազա՝ %1$d թիթեղ</string>
     <string name="color_vision_how_it_works">Ինչպես է աշխատում</string>
     <string name="color_vision_disclaimer">Սա միայն ինքնաստուգման գործիք է և չի փոխարինում բժշկի ակնաբուժի զննումը։ Էկրանի գույները կարող են տարբերվել իրական թեստի պայմաններից։</string>

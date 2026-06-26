@@ -6,6 +6,8 @@ import kotlinx.datetime.Clock
 data class ColorVisionSession(
     val plates: List<ColorVisionPlate>,
     val isExamSimulation: Boolean = true,
+    /** When true, a passing score should continue into the theory exam simulation. */
+    val leadsToTheoryExam: Boolean = false,
     val sessionId: String = Clock.System.now().toEpochMilliseconds().toString(),
     val currentIndex: Int = 0,
     val answers: MutableMap<Int, String> = mutableMapOf(),

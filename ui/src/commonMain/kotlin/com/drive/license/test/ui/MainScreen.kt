@@ -119,6 +119,15 @@ fun MainScreen(
         navigate(Screen.ColorVisionTest)
     }
 
+    fun startColorVisionExamPrelude() {
+        colorVisionSession = ColorVisionSession(
+            plates = colorVisionPlates.shuffled().take(ColorVisionTestRules.EXAM_QUESTION_COUNT),
+            isExamSimulation = true,
+            leadsToTheoryExam = true,
+        )
+        navigate(Screen.ColorVisionTest)
+    }
+
     fun startColorVisionPractice() {
         colorVisionSession = ColorVisionSession(
             plates = colorVisionPlates,
@@ -195,6 +204,23 @@ fun MainScreen(
                     TestSession(questions = selected, isExamMode = isExamMode)
                 )
             }
+        }
+    }
+
+    fun startTheoryExamSimulation() {
+        coroutineScope.launch {
+            val selected = pickFromPool(allQuestions, TestSession.EXAM_QUESTION_COUNT)
+            if (selected.isNotEmpty()) {
+                launchTestSession(TestSession(questions = selected, isExamMode = true))
+            }
+        }
+    }
+
+    fun startFullExamSimulation() {
+        if (AppFeatures.colorVisionTestEnabled && colorVisionPlates.isNotEmpty()) {
+            startColorVisionExamPrelude()
+        } else {
+            startTheoryExamSimulation()
         }
     }
 
@@ -360,9 +386,7 @@ fun MainScreen(
                 onPickCategory = { navigate(Screen.CategoryPicker) },
                 onOpenMistakes = { navigate(Screen.Mistakes) },
                 onOpenWeakAreas = { navigate(Screen.WeakAreas) },
-                onStartExam = {
-                    startTest(allQuestions, TestSession.EXAM_QUESTION_COUNT, isExamMode = true)
-                },
+                onStartExam = { startFullExamSimulation() },
                 onOpenBookmarks = { navigate(Screen.Bookmarks) },
                 onOpenChat = { },
                 onBack = if (canGoBack) ({ navigateBack() }) else null,
@@ -521,16 +545,29 @@ fun MainScreen(
                 ColorVisionResultsScreen(
                     session = session,
                     onBackToHome = { navigateToHome() },
+                    onContinue = if (session.leadsToTheoryExam && session.passed) {
+                        {
+                            colorVisionSession = null
+                            startTheoryExamSimulation()
+                        }
+                    } else {
+                        null
+                    },
                     onRetake = {
                         val previous = session
-                        colorVisionSession = if (previous.isExamSimulation) {
-                            ColorVisionSession(
+                        colorVisionSession = when {
+                            previous.leadsToTheoryExam -> ColorVisionSession(
+                                plates = colorVisionPlates.shuffled()
+                                    .take(ColorVisionTestRules.EXAM_QUESTION_COUNT),
+                                isExamSimulation = true,
+                                leadsToTheoryExam = true,
+                            )
+                            previous.isExamSimulation -> ColorVisionSession(
                                 plates = colorVisionPlates.shuffled()
                                     .take(ColorVisionTestRules.EXAM_QUESTION_COUNT),
                                 isExamSimulation = true,
                             )
-                        } else {
-                            ColorVisionSession(
+                            else -> ColorVisionSession(
                                 plates = colorVisionPlates,
                                 isExamSimulation = false,
                             )
@@ -576,23 +613,35 @@ fun MainScreen(
                     onReviewMistakes = { navigate(Screen.Mistakes) },
                     onBackToHome = { navigateToHome() },
                     onRetakeTest = {
-                        coroutineScope.launch {
-                            val count = session.questions.size
-                            val selected = pickFromPool(allQuestions, count)
-                            if (selected.isNotEmpty()) {
-                                launchTestSession(
-                                    session = TestSession(
-                                        questions = selected,
-                                        isExamMode = session.isExamMode,
-                                    ),
-                                    navigation = {
-                                        if (backStack.last() is Screen.Results) {
-                                            backStack[backStack.lastIndex] = Screen.Question
-                                        } else {
-                                            navigate(Screen.Question)
-                                        }
-                                    },
-                                )
+                        if (session.isExamMode &&
+                            AppFeatures.colorVisionTestEnabled &&
+                            colorVisionPlates.isNotEmpty()
+                        ) {
+                            testSession = null
+                            examRemainingSeconds = null
+                            if (backStack.last() is Screen.Results) {
+                                navigateBack()
+                            }
+                            startColorVisionExamPrelude()
+                        } else {
+                            coroutineScope.launch {
+                                val count = session.questions.size
+                                val selected = pickFromPool(allQuestions, count)
+                                if (selected.isNotEmpty()) {
+                                    launchTestSession(
+                                        session = TestSession(
+                                            questions = selected,
+                                            isExamMode = session.isExamMode,
+                                        ),
+                                        navigation = {
+                                            if (backStack.last() is Screen.Results) {
+                                                backStack[backStack.lastIndex] = Screen.Question
+                                            } else {
+                                                navigate(Screen.Question)
+                                            }
+                                        },
+                                    )
+                                }
                             }
                         }
                     },

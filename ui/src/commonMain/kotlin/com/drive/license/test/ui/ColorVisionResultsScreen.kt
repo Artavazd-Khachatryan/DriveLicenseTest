@@ -36,7 +36,10 @@ import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.ProgressRing
 import com.drive.license.test.ui.components.StatChip
 import drivelicensetest.ui.generated.resources.Res
+import drivelicensetest.ui.generated.resources.color_vision_continue_theory_button
 import drivelicensetest.ui.generated.resources.color_vision_disclaimer_short
+import drivelicensetest.ui.generated.resources.color_vision_exam_prelude_failed_subtitle
+import drivelicensetest.ui.generated.resources.color_vision_exam_prelude_passed_subtitle
 import drivelicensetest.ui.generated.resources.color_vision_results_failed_subtitle
 import drivelicensetest.ui.generated.resources.color_vision_results_failed_title
 import drivelicensetest.ui.generated.resources.color_vision_results_passed_subtitle
@@ -53,12 +56,15 @@ fun ColorVisionResultsScreen(
     session: ColorVisionSession,
     onBackToHome: () -> Unit,
     onRetake: () -> Unit,
+    onContinue: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
 ) {
     val total = session.plates.size
     val score = if (total > 0) session.correctAnswers.toFloat() / total else 0f
     val incorrect = total - session.correctAnswers
     val passed = session.passed
+
+    val showContinue = onContinue != null && passed && session.leadsToTheoryExam
 
     var heroVisible by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) {
@@ -143,10 +149,11 @@ fun ColorVisionResultsScreen(
                         )
                         Text(
                             text = stringResource(
-                                if (passed) {
-                                    Res.string.color_vision_results_passed_subtitle
-                                } else {
-                                    Res.string.color_vision_results_failed_subtitle
+                                when {
+                                    showContinue -> Res.string.color_vision_exam_prelude_passed_subtitle
+                                    passed -> Res.string.color_vision_results_passed_subtitle
+                                    session.leadsToTheoryExam -> Res.string.color_vision_exam_prelude_failed_subtitle
+                                    else -> Res.string.color_vision_results_failed_subtitle
                                 },
                             ),
                             style = MaterialTheme.typography.bodyMedium,
@@ -185,11 +192,19 @@ fun ColorVisionResultsScreen(
                 modifier = Modifier.padding(horizontal = 8.dp),
             )
 
-            AppButton(
-                text = stringResource(Res.string.color_vision_retake),
-                onClick = onRetake,
-                modifier = Modifier.fillMaxWidth(),
-            )
+            if (showContinue) {
+                AppButton(
+                    text = stringResource(Res.string.color_vision_continue_theory_button),
+                    onClick = onContinue,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            } else {
+                AppButton(
+                    text = stringResource(Res.string.color_vision_retake),
+                    onClick = onRetake,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
             AppOutlinedButton(
                 text = stringResource(Res.string.results_back_home),
                 onClick = onBackToHome,
