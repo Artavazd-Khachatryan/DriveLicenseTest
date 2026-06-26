@@ -6985,6 +6985,14 @@
     <string name="stats_correct_of_total">%1$d/%2$d ճիշտ</string>
     <string name="stats_passed">Հաջողված</string>
     <string name="stats_failed">Ձախողված</string>
+    <string name="stats_tap_to_review">Սեղմեք՝ պատասխանները դիտելու համար</string>
+    <string name="test_review_title">Թեստի վերանայում</string>
+    <string name="test_review_summary">%1$d/%2$d ճիշտ · %3$d%%</string>
+    <string name="test_review_question_label">Հարց %1$d</string>
+    <string name="test_review_your_answer">Ձեր պատասխանը</string>
+    <string name="test_review_correct_answer">Ճիշտ պատասխանը</string>
+    <string name="test_review_no_answers">Այս թեստի համար պատասխաններ չեն պահպանվել։</string>
+    <string name="test_review_not_found">Թեստը չի գտնվել։</string>
 
     <!-- Review Mistakes Screen -->
     <string name="mistakes_title">Վերանայել սխալները</string>

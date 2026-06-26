@@ -292,6 +292,14 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
         userProgressQueries.getCompletedTestSessions().executeAsList()
     }
 
+    suspend fun getTestSessionById(sessionId: String) = withContext(Dispatchers.IO) {
+        userProgressQueries.getTestSession(sessionId).executeAsOneOrNull()
+    }
+
+    suspend fun getSessionQuestionReviews(sessionId: String) = withContext(Dispatchers.IO) {
+        userProgressQueries.getSessionQuestionReviews(sessionId).executeAsList()
+    }
+
     suspend fun getIncorrectQuestions() = withContext(Dispatchers.IO) {
         userProgressQueries.getIncorrectQuestions().executeAsList()
     }

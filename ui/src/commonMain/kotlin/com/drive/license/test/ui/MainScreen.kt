@@ -307,8 +307,16 @@ fun MainScreen(
         )
         Screen.Stats -> StatsScreen(
             userProgressRepository = userProgressRepository,
+            onOpenSessionReview = { sessionId ->
+                navigate(Screen.TestSessionReview(sessionId))
+            },
             onBack = if (canGoBack) ({ navigateBack() }) else null,
             bottomBar = bottomBar
+        )
+        is Screen.TestSessionReview -> TestSessionReviewScreen(
+            sessionId = screen.sessionId,
+            userProgressRepository = userProgressRepository,
+            onBack = { navigateBack() },
         )
         Screen.Mistakes -> ReviewMistakesScreen(
             userProgressRepository = userProgressRepository,

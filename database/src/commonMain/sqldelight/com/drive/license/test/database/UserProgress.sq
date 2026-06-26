@@ -166,7 +166,20 @@ SELECT * FROM TestSession ORDER BY start_time DESC;
 
 -- Get question attempts for a session
 getQuestionAttemptsForSession:
-SELECT * FROM QuestionAttempt WHERE session_id = ? ORDER BY attempt_time;
+SELECT * FROM QuestionAttempt WHERE session_id = ? ORDER BY id;
+
+-- Saved answers for a completed test review (question text + user choice)
+getSessionQuestionReviews:
+SELECT
+    qa.question_id,
+    q.question,
+    q.true_answer,
+    qa.selected_answer,
+    qa.is_correct
+FROM QuestionAttempt qa
+JOIN Question q ON q.id = qa.question_id
+WHERE qa.session_id = ?
+ORDER BY qa.id;
 
 -- Initialize user statistics
 insertUserStatistics:

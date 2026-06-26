@@ -4,6 +4,7 @@ import com.drive.license.test.domain.model.BookmarkedQuestion
 import com.drive.license.test.domain.model.CategoryStats
 import com.drive.license.test.domain.model.MistakeQuestion
 import com.drive.license.test.domain.model.QuestionProgress
+import com.drive.license.test.domain.model.TestSessionReview
 import com.drive.license.test.domain.model.TestSessionSummary
 import com.drive.license.test.domain.model.UserStatistics
 
@@ -11,6 +12,7 @@ interface UserProgressRepository {
     suspend fun getUserStatistics(): UserStatistics
     suspend fun getCategoryStats(): List<CategoryStats>
     suspend fun getTestHistory(): List<TestSessionSummary>
+    suspend fun getTestSessionReview(sessionId: String): TestSessionReview?
     suspend fun getMistakeQuestions(): List<MistakeQuestion>
     suspend fun beginTestSession(sessionId: String, startTime: Long, totalQuestions: Int)
     suspend fun saveTestSession(sessionId: String, startTime: Long, endTime: Long, totalQuestions: Int, correctAnswers: Int)

@@ -21,6 +21,8 @@ sealed class Screen {
         val isCorrect: Boolean
     ) : Screen()
 
+    data class TestSessionReview(val sessionId: String) : Screen()
+
     val isTopLevel: Boolean
         get() = this is Home || this is Stats || this is Practice
 }

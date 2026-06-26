@@ -5,6 +5,8 @@ import com.drive.license.test.domain.model.BookmarkedQuestion
 import com.drive.license.test.domain.model.CategoryStats
 import com.drive.license.test.domain.model.MistakeQuestion
 import com.drive.license.test.domain.model.QuestionProgress
+import com.drive.license.test.domain.model.TestSessionAnswerReview
+import com.drive.license.test.domain.model.TestSessionReview
 import com.drive.license.test.domain.model.TestSessionSummary
 import com.drive.license.test.domain.model.UserStatistics
 import com.drive.license.test.domain.repository.UserProgressRepository as DomainUserProgressRepository
@@ -55,6 +57,30 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
                     correctAnswers = row.correct_answers.toInt()
                 )
             }
+        }
+    }
+
+    override suspend fun getTestSessionReview(sessionId: String): TestSessionReview? {
+        return withContext(Dispatchers.Default) {
+            val session = database.getTestSessionById(sessionId) ?: return@withContext null
+            if (session.is_completed != 1L) return@withContext null
+            val summary = TestSessionSummary(
+                id = session.id,
+                startTime = session.start_time,
+                endTime = session.end_time,
+                totalQuestions = session.total_questions.toInt(),
+                correctAnswers = session.correct_answers.toInt(),
+            )
+            val answers = database.getSessionQuestionReviews(sessionId).map { row ->
+                TestSessionAnswerReview(
+                    questionId = row.question_id.toInt(),
+                    question = QuestionTextNormalizer.normalize(row.question),
+                    selectedAnswer = QuestionTextNormalizer.normalize(row.selected_answer),
+                    correctAnswer = QuestionTextNormalizer.normalize(row.true_answer),
+                    isCorrect = row.is_correct == 1L,
+                )
+            }
+            TestSessionReview(summary = summary, answers = answers)
         }
     }
 

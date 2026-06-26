@@ -1,5 +1,6 @@
 package com.drive.license.test.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +16,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material3.CircularProgressIndicator
@@ -29,6 +31,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -55,6 +60,7 @@ import drivelicensetest.ui.generated.resources.stats_no_history
 import drivelicensetest.ui.generated.resources.stats_overall_performance
 import drivelicensetest.ui.generated.resources.stats_passed
 import drivelicensetest.ui.generated.resources.stats_test_history
+import drivelicensetest.ui.generated.resources.stats_tap_to_review
 import drivelicensetest.ui.generated.resources.stats_title
 import drivelicensetest.ui.generated.resources.stats_total_attempts
 import com.drive.license.test.ui.util.AdaptiveContentContainer
@@ -67,6 +73,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun StatsScreen(
     userProgressRepository: UserProgressRepository,
+    onOpenSessionReview: (String) -> Unit = {},
     onBack: (() -> Unit)? = null,
     bottomBar: @Composable (() -> Unit)? = null
 ) {
@@ -115,7 +122,10 @@ fun StatsScreen(
                 ) {
                     OverallStatsCard(stats)
                     CategoryBreakdownCard(categoryStats)
-                    TestHistoryCard(testHistory)
+                    TestHistoryCard(
+                        history = testHistory,
+                        onOpenSessionReview = onOpenSessionReview,
+                    )
                 }
             }
         }
@@ -210,7 +220,10 @@ private fun CategoryBreakdownCard(categories: List<CategoryStats>) {
 }
 
 @Composable
-private fun TestHistoryCard(history: List<TestSessionSummary>) {
+private fun TestHistoryCard(
+    history: List<TestSessionSummary>,
+    onOpenSessionReview: (String) -> Unit,
+) {
     AppCard(modifier = Modifier.fillMaxWidth()) {
         Column(
             modifier = Modifier.padding(20.dp),
@@ -222,6 +235,14 @@ private fun TestHistoryCard(history: List<TestSessionSummary>) {
                 fontWeight = FontWeight.Bold
             )
 
+            if (history.isNotEmpty()) {
+                Text(
+                    text = stringResource(Res.string.stats_tap_to_review),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+
             if (history.isEmpty()) {
                 Text(
                     text = stringResource(Res.string.stats_no_history),
@@ -230,7 +251,10 @@ private fun TestHistoryCard(history: List<TestSessionSummary>) {
                 )
             } else {
                 history.forEachIndexed { index, session ->
-                    TestHistoryRow(session)
+                    TestHistoryRow(
+                        session = session,
+                        onClick = { onOpenSessionReview(session.id) },
+                    )
                     if (index < history.lastIndex) {
                         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                     }
@@ -241,7 +265,10 @@ private fun TestHistoryCard(history: List<TestSessionSummary>) {
 }
 
 @Composable
-private fun TestHistoryRow(session: TestSessionSummary) {
+private fun TestHistoryRow(
+    session: TestSessionSummary,
+    onClick: () -> Unit,
+) {
     val dateStr = remember(session.startTime) {
         val dt = Instant.fromEpochMilliseconds(session.startTime)
             .toLocalDateTime(TimeZone.currentSystemDefault())
@@ -249,7 +276,11 @@ private fun TestHistoryRow(session: TestSessionSummary) {
     }
 
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .semantics { role = Role.Button }
+            .padding(vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -276,6 +307,12 @@ private fun TestHistoryRow(session: TestSessionSummary) {
                 contentDescription = if (session.passed) stringResource(Res.string.stats_passed) else stringResource(Res.string.stats_failed),
                 modifier = Modifier.size(18.dp),
                 tint = if (session.passed) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error
+            )
+            Icon(
+                imageVector = Icons.Default.ChevronRight,
+                contentDescription = null,
+                modifier = Modifier.size(20.dp),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
     }
