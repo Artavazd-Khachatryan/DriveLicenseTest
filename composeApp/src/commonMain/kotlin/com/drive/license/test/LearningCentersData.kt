@@ -4,36 +4,36 @@ import com.drive.license.test.domain.model.LearningCenter
 
 /**
  * Curated list of well-known driving schools in Armenia (static data until map/API integration).
- * One representative school per city. Phone numbers are placeholders — verify before release.
+ * One representative school per city. Sourced from RALLY.am, 2GIS, and official school websites.
  */
 object LearningCentersData {
     val all = listOf(
         LearningCenter(
-            name = "Ավտոդպրոց «Ֆ1 Ռեյս»",
+            name = "BestStart ավտոդպրոց",
             city = "Երևան",
-            address = "Տիգրան Մեծի փող., Երևան",
-            phone = "+374 10 550050",
-            description = "Մեծ փորձ ունեցող ավտոդպրոց Երևանում՝ տեսական և practical դասեր, քննական մեքենաներ։",
-            lat = 40.1834,
-            lng = 44.5121
+            address = "Տիգրան Մեծի պող., 46, Երևան",
+            phone = "+374 99 141455",
+            description = "Տեսական և գործնական վարման դասընթացներ, քննական թեստերի նախապատրաստում։",
+            lat = 40.1395,
+            lng = 44.5270,
         ),
         LearningCenter(
-            name = "Ավտոդպրոց «Ալֆա»",
+            name = "X-Drive ավտոդպրոց",
             city = "Գյումրի",
-            address = "Գյումրի, Շիրակի մարզ",
-            phone = "+374 312 33030",
-            description = "Շիրակի մարզի առաջատար ավտոդպրոց՝ տեղական քննության նախապատրաստությամբ։",
-            lat = 40.7942,
-            lng = 43.8453
+            address = "Խաչատուր Աբովյան փող., 218/1, Գյումրի",
+            phone = "+374 44 572222",
+            description = "Շիրակի մարզի մասնաճյուղ՝ տեսական դասեր և քննական մեքենայով պարապումներ։",
+            lat = 40.7895,
+            lng = 43.8485,
         ),
         LearningCenter(
-            name = "Ավտոդպրոց «Վանաձոր»",
+            name = "BestStart ավտոդպրոց",
             city = "Վանաձոր",
-            address = "Մ. Մկրտչյան փող., Վանաձոր",
-            phone = "+374 322 44040",
-            description = "Լոռու մարզի ավտոդպրոց՝ տեսական դասեր և քննական մեքենայով պարապումներ։",
-            lat = 40.8093,
-            lng = 44.4892
+            address = "Տիգրան Մեծի պող., 18, Վանաձոր",
+            phone = "+374 55 730010",
+            description = "Լոռու մարզի ավտոդպրոց՝ տեսական և գործնական դասընթացներ, քննության նախապատրաստում։",
+            lat = 40.8128,
+            lng = 44.4883,
         ),
     )
 }
