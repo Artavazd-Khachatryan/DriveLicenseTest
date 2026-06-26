@@ -23,15 +23,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.Palette
-import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
@@ -47,9 +44,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -59,37 +54,24 @@ import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.FeatureCard
 import com.drive.license.test.ui.components.ProgressRing
-import com.drive.license.test.ui.components.SectionHeader
 import com.drive.license.test.ui.components.StatChip
 import com.drive.license.test.ui.util.AdaptiveContentContainer
 import com.drive.license.test.ui.util.estimatedTestMinutes
 import com.drive.license.test.ui.util.homeMotivationMessage
 import drivelicensetest.ui.generated.resources.Res
-import drivelicensetest.ui.generated.resources.home_learning_progress
-import drivelicensetest.ui.generated.resources.home_learning_ring_cd
-import drivelicensetest.ui.generated.resources.home_ai_assistant_subtitle
-import drivelicensetest.ui.generated.resources.home_ai_assistant_title
-import drivelicensetest.ui.generated.resources.home_chat_button
 import drivelicensetest.ui.generated.resources.home_color_vision_button
 import drivelicensetest.ui.generated.resources.home_color_vision_subtitle
 import drivelicensetest.ui.generated.resources.home_color_vision_title
 import drivelicensetest.ui.generated.resources.home_learning_centers_subtitle
 import drivelicensetest.ui.generated.resources.home_learning_centers_title
 import drivelicensetest.ui.generated.resources.home_question_count
-import drivelicensetest.ui.generated.resources.home_quick_actions
 import drivelicensetest.ui.generated.resources.home_ready_title
-import drivelicensetest.ui.generated.resources.home_review_button
-import drivelicensetest.ui.generated.resources.home_review_mistakes_subtitle
-import drivelicensetest.ui.generated.resources.home_review_mistakes_title
 import drivelicensetest.ui.generated.resources.home_start_button
 import drivelicensetest.ui.generated.resources.home_start_test_subtitle
 import drivelicensetest.ui.generated.resources.home_start_test_title
 import drivelicensetest.ui.generated.resources.home_stat_learned
 import drivelicensetest.ui.generated.resources.home_seen_ring_cd
 import drivelicensetest.ui.generated.resources.home_stat_remaining
-import drivelicensetest.ui.generated.resources.home_stat_attempted
-import drivelicensetest.ui.generated.resources.home_stat_correct
-import drivelicensetest.ui.generated.resources.home_stat_incorrect
 import drivelicensetest.ui.generated.resources.home_stat_seen
 import drivelicensetest.ui.generated.resources.home_streak_days
 import drivelicensetest.ui.generated.resources.home_streak_label
@@ -102,11 +84,7 @@ fun HomeScreen(
     userStatistics: UserStatistics,
     totalQuestionCount: Int = 0,
     onStartTest: (Int) -> Unit,
-    onOpenStats: () -> Unit,
     onOpenStatsFromRing: () -> Unit,
-    onOpenFailed: () -> Unit,
-    mistakeCount: Int = 0,
-    onOpenChat: () -> Unit,
     onOpenDrivingSchools: () -> Unit,
     onOpenColorVision: (() -> Unit)? = null,
     onOpenSettings: () -> Unit,
@@ -134,8 +112,8 @@ fun HomeScreen(
             modifier = modifier
                 .fillMaxSize()
                 .then(inner)
-        ) { isExpanded, contentModifier ->
-            val sectionSpacing = if (isExpanded) 16.dp else 24.dp
+        ) { _, contentModifier ->
+            val sectionSpacing = 24.dp
             val scrollState = rememberScrollState()
             LaunchedEffect(Unit) { scrollState.scrollTo(0) }
 
@@ -145,106 +123,66 @@ fun HomeScreen(
                     .padding(20.dp),
                 verticalArrangement = Arrangement.spacedBy(sectionSpacing)
             ) {
-                val heroCard: @Composable (Modifier) -> Unit = { cardModifier ->
+                AnimatedVisibility(
+                    visible = contentVisible,
+                    enter = fadeIn(tween(300)) + slideInVertically(tween(300)) { it / 4 }
+                ) {
                     HomeHeroCard(
-                        modifier = cardModifier,
+                        modifier = Modifier.fillMaxWidth(),
                         userStatistics = userStatistics,
                         totalQuestionCount = totalQuestionCount,
                         onOpenStatsFromRing = onOpenStatsFromRing,
                     )
                 }
 
-                val startTestCard: @Composable (Modifier) -> Unit = { cardModifier ->
+                AnimatedVisibility(
+                    visible = contentVisible,
+                    enter = fadeIn(tween(300, delayMillis = 80)) +
+                        slideInVertically(tween(300, delayMillis = 80)) { it / 4 }
+                ) {
                     StartPracticeCard(
-                        modifier = cardModifier,
+                        modifier = Modifier.fillMaxWidth(),
                         selectedTestLength = selectedTestLength,
                         onSelectLength = { selectedTestLength = it },
                         onStartTest = onStartTest,
                     )
                 }
 
-                val quickActions: @Composable (Modifier) -> Unit = { sectionModifier ->
-                    Column(
-                        modifier = sectionModifier,
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        SectionHeader(title = stringResource(Res.string.home_quick_actions))
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            if (AppFeatures.aiEnabled) {
-                                FeatureCard(
-                                    modifier = Modifier.weight(1f),
-                                    icon = Icons.Filled.Chat,
-                                    title = stringResource(Res.string.home_ai_assistant_title),
-                                    description = stringResource(Res.string.home_ai_assistant_subtitle),
-                                    actionText = stringResource(Res.string.home_chat_button),
-                                    onAction = onOpenChat,
-                                    accent = MaterialTheme.colorScheme.tertiary,
-                                    onAccent = MaterialTheme.colorScheme.onTertiary,
-                                )
-                            }
-                        }
-                        if (AppFeatures.drivingSchoolsEnabled) {
-                            FeatureCard(
-                                modifier = Modifier.fillMaxWidth(),
-                                icon = Icons.Filled.School,
-                                title = stringResource(Res.string.home_learning_centers_title),
-                                description = stringResource(Res.string.home_learning_centers_subtitle),
-                                actionText = stringResource(Res.string.home_view_map_button),
-                                onAction = onOpenDrivingSchools,
-                                accent = MaterialTheme.colorScheme.secondary,
-                                onAccent = MaterialTheme.colorScheme.onSecondary,
-                            )
-                        }
-                        if (onOpenColorVision != null) {
-                            FeatureCard(
-                                modifier = Modifier.fillMaxWidth(),
-                                icon = Icons.Filled.Palette,
-                                title = stringResource(Res.string.home_color_vision_title),
-                                description = stringResource(Res.string.home_color_vision_subtitle),
-                                actionText = stringResource(Res.string.home_color_vision_button),
-                                onAction = onOpenColorVision,
-                                accent = MaterialTheme.colorScheme.tertiary,
-                                onAccent = MaterialTheme.colorScheme.onTertiary,
-                            )
-                        }
-                    }
-                }
-
-                AnimatedVisibility(
-                    visible = contentVisible,
-                    enter = fadeIn(tween(300)) + slideInVertically(tween(300)) { it / 4 }
-                ) {
-                    heroCard(Modifier.fillMaxWidth())
-                }
-
-                AnimatedVisibility(
-                    visible = contentVisible,
-                    enter = fadeIn(tween(300, delayMillis = 100)) +
-                        slideInVertically(tween(300, delayMillis = 100)) { it / 4 }
-                ) {
-                    if (isExpanded) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(16.dp)
-                        ) {
-                            startTestCard(Modifier.weight(1f))
-                            quickActions(Modifier.weight(1f))
-                        }
-                    } else {
-                        startTestCard(Modifier.fillMaxWidth())
-                    }
-                }
-
-                if (!isExpanded) {
+                if (onOpenColorVision != null) {
                     AnimatedVisibility(
                         visible = contentVisible,
-                        enter = fadeIn(tween(300, delayMillis = 180)) +
-                            slideInVertically(tween(300, delayMillis = 180)) { it / 4 }
+                        enter = fadeIn(tween(300, delayMillis = 140)) +
+                            slideInVertically(tween(300, delayMillis = 140)) { it / 4 }
                     ) {
-                        quickActions(Modifier.fillMaxWidth())
+                        FeatureCard(
+                            modifier = Modifier.fillMaxWidth(),
+                            icon = Icons.Filled.Palette,
+                            title = stringResource(Res.string.home_color_vision_title),
+                            description = stringResource(Res.string.home_color_vision_subtitle),
+                            actionText = stringResource(Res.string.home_color_vision_button),
+                            onAction = onOpenColorVision,
+                            accent = MaterialTheme.colorScheme.tertiary,
+                            onAccent = MaterialTheme.colorScheme.onTertiary,
+                        )
+                    }
+                }
+
+                if (AppFeatures.drivingSchoolsEnabled) {
+                    AnimatedVisibility(
+                        visible = contentVisible,
+                        enter = fadeIn(tween(300, delayMillis = 200)) +
+                            slideInVertically(tween(300, delayMillis = 200)) { it / 4 }
+                    ) {
+                        FeatureCard(
+                            modifier = Modifier.fillMaxWidth(),
+                            icon = Icons.Filled.School,
+                            title = stringResource(Res.string.home_learning_centers_title),
+                            description = stringResource(Res.string.home_learning_centers_subtitle),
+                            actionText = stringResource(Res.string.home_view_map_button),
+                            onAction = onOpenDrivingSchools,
+                            accent = MaterialTheme.colorScheme.secondary,
+                            onAccent = MaterialTheme.colorScheme.onSecondary,
+                        )
                     }
                 }
             }
@@ -252,10 +190,6 @@ fun HomeScreen(
     }
 }
 
-/**
- * Dashboard-style hero: greeting on the left, a circular "seen" ring on the right, a horizontal
- * "learned" bar below, and learned/remaining stat chips at the bottom.
- */
 @Composable
 private fun HomeHeroCard(
     userStatistics: UserStatistics,
@@ -263,7 +197,6 @@ private fun HomeHeroCard(
     onOpenStatsFromRing: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val learningProgress = userStatistics.learningProgress
     val coverageProgress = userStatistics.coverageProgress
     val totalCountOrNull = totalQuestionCount.takeIf { it > 0 }
 
@@ -323,10 +256,6 @@ private fun HomeHeroCard(
                     }
                 }
 
-                // Removed per request: avoid transient layout changes on iOS.
-
-                // Keep a stable layout on iOS: always show the same two chips.
-                // This avoids a brief “swap” while totalQuestionCount loads.
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -437,7 +366,6 @@ private fun StreakPill(streak: Int) {
     }
 }
 
-/** Primary call to action: pick a test length and start. */
 @Composable
 private fun StartPracticeCard(
     selectedTestLength: Int,

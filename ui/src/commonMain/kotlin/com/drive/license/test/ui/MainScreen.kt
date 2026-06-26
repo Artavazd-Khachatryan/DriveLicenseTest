@@ -73,6 +73,7 @@ fun MainScreen(
     var userStatistics by remember { mutableStateOf(UserStatistics()) }
     var questionAttemptCounts by remember { mutableStateOf<Map<Int, Int>>(emptyMap()) }
     var mistakeCount by remember { mutableStateOf(0) }
+    var weakAreaCount by remember { mutableStateOf(0) }
     var examRemainingSeconds by remember { mutableStateOf<Int?>(null) }
     var currentQuestionBookmarked by remember { mutableStateOf(false) }
     val allQuestions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
@@ -81,6 +82,7 @@ fun MainScreen(
         userStatistics = userProgressRepository.getUserStatistics()
         questionAttemptCounts = userProgressRepository.getQuestionAttemptCounts()
         mistakeCount = userProgressRepository.getMistakeQuestions().size
+        weakAreaCount = questionRepository.getWeakAreaQuestions().size
     }
 
     fun navigate(screen: Screen) {
@@ -232,7 +234,7 @@ fun MainScreen(
     }
 
     LaunchedEffect(currentScreen) {
-        if (currentScreen is Screen.Home) {
+        if (currentScreen is Screen.Home || currentScreen is Screen.Practice) {
             refreshUserProgress()
         }
     }
@@ -289,11 +291,7 @@ fun MainScreen(
         Screen.Home -> HomeScreen(
             userStatistics = userStatistics,
             totalQuestionCount = allQuestions.size,
-            mistakeCount = mistakeCount,
             onStartTest = { count -> startTest(allQuestions, count) },
-            onOpenStats = { navigate(Screen.Stats) },
-            onOpenFailed = { navigate(Screen.Mistakes) },
-            onOpenChat = { },
             onOpenDrivingSchools = {
                 if (AppFeatures.drivingSchoolsEnabled) navigate(Screen.DrivingSchools)
             },
@@ -350,24 +348,23 @@ fun MainScreen(
             },
         )
         Screen.Practice -> {
-            var weakAreaCount by remember { mutableStateOf(0) }
             var bookmarkCount by remember { mutableStateOf(0) }
             LaunchedEffect(Unit) {
-                weakAreaCount = questionRepository.getWeakAreaQuestions().size
+                refreshUserProgress()
                 bookmarkCount = userProgressRepository.getBookmarkedQuestions().size
             }
             PracticeModeScreen(
+                mistakeCount = mistakeCount,
                 weakAreaCount = weakAreaCount,
                 bookmarkCount = bookmarkCount,
                 onPickCategory = { navigate(Screen.CategoryPicker) },
+                onOpenMistakes = { navigate(Screen.Mistakes) },
                 onOpenWeakAreas = { navigate(Screen.WeakAreas) },
                 onStartExam = {
                     startTest(allQuestions, TestSession.EXAM_QUESTION_COUNT, isExamMode = true)
                 },
                 onOpenBookmarks = { navigate(Screen.Bookmarks) },
-                onOpenColorVision = if (AppFeatures.colorVisionTestEnabled && colorVisionPlates.isNotEmpty()) {
-                    { openColorVisionIntro() }
-                } else null,
+                onOpenChat = { },
                 onBack = if (canGoBack) ({ navigateBack() }) else null,
                 bottomBar = bottomBar
             )

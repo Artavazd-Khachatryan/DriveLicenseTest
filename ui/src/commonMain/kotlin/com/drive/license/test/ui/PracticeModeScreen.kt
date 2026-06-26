@@ -16,7 +16,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Category
-import androidx.compose.material.icons.filled.Palette
+import androidx.compose.material.icons.filled.Chat
+import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.filled.TrendingDown
 import androidx.compose.material3.Icon
@@ -37,6 +38,17 @@ import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.util.AdaptiveContentContainer
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.back
+import drivelicensetest.ui.generated.resources.home_ai_assistant_subtitle
+import drivelicensetest.ui.generated.resources.home_ai_assistant_title
+import drivelicensetest.ui.generated.resources.home_chat_button
+import drivelicensetest.ui.generated.resources.home_review_button
+import drivelicensetest.ui.generated.resources.home_review_mistakes_count
+import drivelicensetest.ui.generated.resources.home_review_mistakes_empty
+import drivelicensetest.ui.generated.resources.home_review_mistakes_title
+import drivelicensetest.ui.generated.resources.home_weak_areas_button
+import drivelicensetest.ui.generated.resources.home_weak_areas_empty
+import drivelicensetest.ui.generated.resources.home_weak_areas_subtitle
+import drivelicensetest.ui.generated.resources.home_weak_areas_title
 import drivelicensetest.ui.generated.resources.practice_by_category_button
 import drivelicensetest.ui.generated.resources.practice_by_category_desc
 import drivelicensetest.ui.generated.resources.practice_by_category_title
@@ -48,24 +60,19 @@ import drivelicensetest.ui.generated.resources.practice_bookmarks_button
 import drivelicensetest.ui.generated.resources.practice_bookmarks_desc
 import drivelicensetest.ui.generated.resources.practice_bookmarks_empty
 import drivelicensetest.ui.generated.resources.practice_bookmarks_title
-import drivelicensetest.ui.generated.resources.practice_weak_areas_button
-import drivelicensetest.ui.generated.resources.practice_weak_areas_count
-import drivelicensetest.ui.generated.resources.practice_weak_areas_empty
-import drivelicensetest.ui.generated.resources.practice_weak_areas_title
-import drivelicensetest.ui.generated.resources.practice_color_vision_button
-import drivelicensetest.ui.generated.resources.practice_color_vision_desc
-import drivelicensetest.ui.generated.resources.practice_color_vision_title
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun PracticeModeScreen(
+    mistakeCount: Int,
     weakAreaCount: Int,
     bookmarkCount: Int,
     onPickCategory: () -> Unit,
+    onOpenMistakes: () -> Unit,
     onOpenWeakAreas: () -> Unit,
     onStartExam: () -> Unit,
     onOpenBookmarks: () -> Unit,
-    onOpenColorVision: (() -> Unit)? = null,
+    onOpenChat: () -> Unit,
     onBack: (() -> Unit)? = null,
     bottomBar: @Composable (() -> Unit)? = null
 ) {
@@ -93,25 +100,38 @@ fun PracticeModeScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             PracticeCard(
+                icon = Icons.Default.Quiz,
+                accent = MaterialTheme.colorScheme.error,
+                title = stringResource(Res.string.home_review_mistakes_title),
+                description = if (mistakeCount > 0) {
+                    stringResource(Res.string.home_review_mistakes_count, mistakeCount)
+                } else {
+                    stringResource(Res.string.home_review_mistakes_empty)
+                },
+                buttonText = stringResource(Res.string.home_review_button),
+                onClick = onOpenMistakes,
+            )
+
+            PracticeCard(
+                icon = Icons.Default.TrendingDown,
+                accent = MaterialTheme.colorScheme.tertiary,
+                title = stringResource(Res.string.home_weak_areas_title),
+                description = if (weakAreaCount > 0) {
+                    stringResource(Res.string.home_weak_areas_subtitle, weakAreaCount)
+                } else {
+                    stringResource(Res.string.home_weak_areas_empty)
+                },
+                buttonText = stringResource(Res.string.home_weak_areas_button),
+                onClick = onOpenWeakAreas,
+            )
+
+            PracticeCard(
                 icon = Icons.Default.Category,
                 accent = MaterialTheme.colorScheme.primary,
                 title = stringResource(Res.string.practice_by_category_title),
                 description = stringResource(Res.string.practice_by_category_desc),
                 buttonText = stringResource(Res.string.practice_by_category_button),
                 onClick = onPickCategory,
-            )
-
-            PracticeCard(
-                icon = Icons.Default.TrendingDown,
-                accent = MaterialTheme.colorScheme.error,
-                title = stringResource(Res.string.practice_weak_areas_title),
-                description = if (weakAreaCount > 0)
-                    stringResource(Res.string.practice_weak_areas_count, weakAreaCount)
-                else
-                    stringResource(Res.string.practice_weak_areas_empty),
-                buttonText = stringResource(Res.string.practice_weak_areas_button),
-                onClick = onOpenWeakAreas,
-                enabled = weakAreaCount > 0,
             )
 
             PracticeCard(
@@ -127,23 +147,24 @@ fun PracticeModeScreen(
                 icon = Icons.Default.Bookmark,
                 accent = MaterialTheme.colorScheme.secondary,
                 title = stringResource(Res.string.practice_bookmarks_title),
-                description = if (bookmarkCount > 0)
+                description = if (bookmarkCount > 0) {
                     stringResource(Res.string.practice_bookmarks_desc)
-                else
-                    stringResource(Res.string.practice_bookmarks_empty),
+                } else {
+                    stringResource(Res.string.practice_bookmarks_empty)
+                },
                 buttonText = stringResource(Res.string.practice_bookmarks_button),
                 onClick = onOpenBookmarks,
                 enabled = bookmarkCount > 0,
             )
 
-            if (onOpenColorVision != null) {
+            if (AppFeatures.aiEnabled) {
                 PracticeCard(
-                    icon = Icons.Default.Palette,
+                    icon = Icons.Default.Chat,
                     accent = MaterialTheme.colorScheme.tertiary,
-                    title = stringResource(Res.string.practice_color_vision_title),
-                    description = stringResource(Res.string.practice_color_vision_desc),
-                    buttonText = stringResource(Res.string.practice_color_vision_button),
-                    onClick = onOpenColorVision,
+                    title = stringResource(Res.string.home_ai_assistant_title),
+                    description = stringResource(Res.string.home_ai_assistant_subtitle),
+                    buttonText = stringResource(Res.string.home_chat_button),
+                    onClick = onOpenChat,
                 )
             }
         }
