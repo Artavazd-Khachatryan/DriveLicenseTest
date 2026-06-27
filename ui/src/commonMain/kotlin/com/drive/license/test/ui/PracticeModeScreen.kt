@@ -19,7 +19,6 @@ import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material.icons.filled.Timer
-import androidx.compose.material.icons.filled.TrendingDown
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -45,10 +44,6 @@ import drivelicensetest.ui.generated.resources.home_review_button
 import drivelicensetest.ui.generated.resources.home_review_mistakes_count
 import drivelicensetest.ui.generated.resources.home_review_mistakes_empty
 import drivelicensetest.ui.generated.resources.home_review_mistakes_title
-import drivelicensetest.ui.generated.resources.home_weak_areas_button
-import drivelicensetest.ui.generated.resources.home_weak_areas_empty
-import drivelicensetest.ui.generated.resources.home_weak_areas_subtitle
-import drivelicensetest.ui.generated.resources.home_weak_areas_title
 import drivelicensetest.ui.generated.resources.practice_by_category_button
 import drivelicensetest.ui.generated.resources.practice_by_category_desc
 import drivelicensetest.ui.generated.resources.practice_by_category_title
@@ -65,11 +60,9 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun PracticeModeScreen(
     mistakeCount: Int,
-    weakAreaCount: Int,
     bookmarkCount: Int,
     onPickCategory: () -> Unit,
     onOpenMistakes: () -> Unit,
-    onOpenWeakAreas: () -> Unit,
     onStartExam: () -> Unit,
     onOpenBookmarks: () -> Unit,
     onOpenChat: () -> Unit,
@@ -110,19 +103,6 @@ fun PracticeModeScreen(
                 },
                 buttonText = stringResource(Res.string.home_review_button),
                 onClick = onOpenMistakes,
-            )
-
-            PracticeCard(
-                icon = Icons.Default.TrendingDown,
-                accent = MaterialTheme.colorScheme.tertiary,
-                title = stringResource(Res.string.home_weak_areas_title),
-                description = if (weakAreaCount > 0) {
-                    stringResource(Res.string.home_weak_areas_subtitle, weakAreaCount)
-                } else {
-                    stringResource(Res.string.home_weak_areas_empty)
-                },
-                buttonText = stringResource(Res.string.home_weak_areas_button),
-                onClick = onOpenWeakAreas,
             )
 
             PracticeCard(

@@ -3,7 +3,6 @@ package com.drive.license.test.domain.repository
 import com.drive.license.test.domain.model.Book
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.domain.model.QuestionCategory
-import com.drive.license.test.domain.model.WeakAreaQuestion
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -16,7 +15,5 @@ interface QuestionRepository {
     fun getQuestionsByBook(book: Book): Flow<List<Question>>
     suspend fun getRandomQuestions(count: Int): List<Question>
     suspend fun getQuestionById(id: Int): Question?
-    suspend fun getWeakAreaQuestions(): List<Question>
-    suspend fun getWeakAreaQuestionsForReview(): List<WeakAreaQuestion>
     suspend fun getBookmarkedQuestionsForPractice(): List<Question>
 }

@@ -6936,11 +6936,6 @@
     <string name="home_review_mistakes_subtitle">Հարցը կհանվի ցուցակից, երբ բավարաչափ ճիշտ պատասխանեք</string>
     <string name="home_review_mistakes_count">%1$d հարց վերանայման համար</string>
     <string name="home_review_mistakes_empty">Դեռ սխալ հարցեր չկան</string>
-    <string name="home_weak_areas_title">Թույլ կողմեր</string>
-    <string name="home_weak_areas_subtitle">%1$d հարց՝ լրացուցիչ պարապման համար</string>
-    <string name="home_weak_areas_empty">Դեռ թույլ կողմեր չկան</string>
-    <string name="home_weak_areas_button">Դիտել ցանկը</string>
-    <string name="home_review_section_title">Վերանայում</string>
     <string name="home_review_button">Դիտել ցանկը</string>
     <string name="home_ai_assistant_title">AI Օգնական</string>
     <string name="home_ai_assistant_subtitle">Արագ օգնություն</string>
@@ -7013,17 +7008,6 @@
     <string name="mistakes_your_answer">Ձեր պատասխանը</string>
     <string name="mistakes_correct_answer">Ճիշտ պատասխան</string>
 
-    <!-- Weak areas review screen -->
-    <string name="weak_areas_title">Թույլ կողմեր</string>
-    <string name="weak_areas_subtitle">Հարցերը, որոնցում առնվազն մեկ սխալ ունեք՝ դասավորված ըստ սխալների քանակի։</string>
-    <string name="weak_areas_count_label">Հարց</string>
-    <string name="weak_areas_practice_button">Պարապել բոլոր հարցերով</string>
-    <string name="weak_areas_question_label">Հարց %1$d</string>
-    <string name="weak_areas_empty_title">Թույլ կողմեր դեռ չկան</string>
-    <string name="weak_areas_empty_subtitle">Կատարեք թեստ՝ ձեր թույլ կողմերը բացահայտելու համար։</string>
-    <string name="weak_areas_stat_incorrect">Սխալ</string>
-    <string name="weak_areas_stat_correct">Ճիշտ</string>
-
     <!-- Question Detail Screen -->
     <string name="question_exit_title">Ելնե՞լ թեստից</string>
     <string name="question_exit_message">Ձեր առաջընթացը կկորի։ Վստա՞հ եք, որ ցանկանում եք դուրս գալ։</string>
@@ -7064,10 +7048,6 @@
     <string name="practice_by_category_title">Ըստ կատեգորիայի</string>
     <string name="practice_by_category_desc">Կենտրոնացեք կոնկրետ թեմայի վրա՝ ճանապարհային նշաններ, առաջնություն, մանևրներ և այլն։</string>
     <string name="practice_by_category_button">Ընտրել կատեգորիա</string>
-    <string name="practice_weak_areas_title">Թույլ կողմեր</string>
-    <string name="practice_weak_areas_count">%1$d հարց՝ լրացուցիչ պարապման համար</string>
-    <string name="practice_weak_areas_empty">Նախ կատարեք թեստ՝ ձեր թույլ կողմերը բացահայտելու համար։</string>
-    <string name="practice_weak_areas_button">Դիտել ցանկը</string>
     <string name="practice_exam_title">Քննության սիմուլյացիա</string>
     <string name="practice_exam_desc">3 գունային թեստ + 20 տեսական հարց · 30 րոպե · առավելագույնը 2 սխալ։</string>
     <string name="practice_exam_button">Սկսել քննությունը</string>

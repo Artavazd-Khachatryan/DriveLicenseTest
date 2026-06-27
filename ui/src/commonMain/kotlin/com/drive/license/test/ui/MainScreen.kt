@@ -73,7 +73,6 @@ fun MainScreen(
     var userStatistics by remember { mutableStateOf(UserStatistics()) }
     var questionAttemptCounts by remember { mutableStateOf<Map<Int, Int>>(emptyMap()) }
     var mistakeCount by remember { mutableStateOf(0) }
-    var weakAreaCount by remember { mutableStateOf(0) }
     var examRemainingSeconds by remember { mutableStateOf<Int?>(null) }
     var currentQuestionBookmarked by remember { mutableStateOf(false) }
     val allQuestions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
@@ -82,7 +81,6 @@ fun MainScreen(
         userStatistics = userProgressRepository.getUserStatistics()
         questionAttemptCounts = userProgressRepository.getQuestionAttemptCounts()
         mistakeCount = userProgressRepository.getMistakeQuestions().size
-        weakAreaCount = questionRepository.getWeakAreaQuestions().size
     }
 
     fun navigate(screen: Screen) {
@@ -358,21 +356,6 @@ fun MainScreen(
                 }
             },
         )
-        Screen.WeakAreas -> WeakAreasScreen(
-            questionRepository = questionRepository,
-            onBack = {
-                coroutineScope.launch { refreshUserProgress() }
-                navigateBack()
-            },
-            onPracticeWeakAreas = {
-                coroutineScope.launch {
-                    val weak = questionRepository.getWeakAreaQuestions()
-                    if (weak.isNotEmpty()) {
-                        startTest(weak, weak.size)
-                    }
-                }
-            },
-        )
         Screen.Practice -> {
             var bookmarkCount by remember { mutableStateOf(0) }
             LaunchedEffect(Unit) {
@@ -381,11 +364,9 @@ fun MainScreen(
             }
             PracticeModeScreen(
                 mistakeCount = mistakeCount,
-                weakAreaCount = weakAreaCount,
                 bookmarkCount = bookmarkCount,
                 onPickCategory = { navigate(Screen.CategoryPicker) },
                 onOpenMistakes = { navigate(Screen.Mistakes) },
-                onOpenWeakAreas = { navigate(Screen.WeakAreas) },
                 onStartExam = { startFullExamSimulation() },
                 onOpenBookmarks = { navigate(Screen.Bookmarks) },
                 onOpenChat = { },

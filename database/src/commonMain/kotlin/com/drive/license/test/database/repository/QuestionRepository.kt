@@ -8,7 +8,6 @@ import com.drive.license.test.domain.repository.QuestionRepository as DomainQues
 import com.drive.license.test.domain.model.Book
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.domain.model.QuestionCategory
-import com.drive.license.test.domain.model.WeakAreaQuestion
 import com.drive.license.test.domain.util.QuestionTextNormalizer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -64,26 +63,6 @@ class QuestionRepository(private val database: Database) : DomainQuestionReposit
     override suspend fun getQuestionById(id: Int): Question? {
         return withContext(Dispatchers.Default) {
             database.getQuestionById(id.toLong())?.toDomainModel()
-        }
-    }
-
-    override suspend fun getWeakAreaQuestions(): List<Question> {
-        return withContext(Dispatchers.Default) {
-            database.getWeakAreaQuestions().map { it.toDomainModel() }
-        }
-    }
-
-    override suspend fun getWeakAreaQuestionsForReview(): List<WeakAreaQuestion> {
-        return withContext(Dispatchers.Default) {
-            database.getWeakAreaQuestionsForReview().map { row ->
-                WeakAreaQuestion(
-                    id = row.id,
-                    question = QuestionTextNormalizer.normalize(row.question),
-                    correctAnswer = QuestionTextNormalizer.normalize(row.correctAnswer),
-                    timesIncorrect = row.timesIncorrect,
-                    timesCorrect = row.timesCorrect,
-                )
-            }
         }
     }
 
