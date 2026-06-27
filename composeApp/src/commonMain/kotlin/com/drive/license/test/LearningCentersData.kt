@@ -3,28 +3,29 @@ package com.drive.license.test
 import com.drive.license.test.domain.model.LearningCenter
 
 /**
- * Curated list of well-known driving schools in Armenia (static data until map/API integration).
- * One representative school per city. Sourced from RALLY.am, 2GIS, and official school websites.
+ * Curated list of driving schools in Armenia (static data until map/API integration).
+ * One local school per city with a unique brand — smaller schools over national chains.
+ * Sourced from RALLY.am, 2GIS, and official school websites.
  */
 object LearningCentersData {
     val all = listOf(
         LearningCenter(
-            name = "BestStart ավտոդպրոց",
+            name = "N1 ավտոդպրոց",
             city = "Երևան",
-            address = "Տիգրան Մեծի պող., 46, Երևան",
-            phone = "+374 99 141455",
-            description = "Տեսական և գործնական վարման դասընթացներ, քննական թեստերի նախապատրաստում։",
-            lat = 40.1395,
-            lng = 44.5270,
+            address = "Տիգրան Մեծի պող., 67Ա, Երևան",
+            phone = "+374 41 202303",
+            description = "Տեսական և գործնական վարման դասընթացներ, համակարգչային թեստավորում և քննության նախապատրաստում։",
+            lat = 40.1382,
+            lng = 44.5148,
         ),
         LearningCenter(
-            name = "X-Drive ավտոդպրոց",
+            name = "Զեբրա ավտոդպրոց",
             city = "Գյումրի",
-            address = "Խաչատուր Աբովյան փող., 218/1, Գյումրի",
-            phone = "+374 44 572222",
-            description = "Շիրակի մարզի մասնաճյուղ՝ տեսական դասեր և քննական մեքենայով պարապումներ։",
-            lat = 40.7895,
-            lng = 43.8485,
+            address = "Գարեգին Նժդեհի պող., 8, Գյումրի",
+            phone = "+374 94 992992",
+            description = "Գյումրու տեղական ավտոդպրոց՝ տեսական և գործնական վարման դասընթացներ։",
+            lat = 40.7922,
+            lng = 43.8456,
         ),
         LearningCenter(
             name = "BestStart ավտոդպրոց",
@@ -34,6 +35,15 @@ object LearningCentersData {
             description = "Լոռու մարզի ավտոդպրոց՝ տեսական և գործնական դասընթացներ, քննության նախապատրաստում։",
             lat = 40.8128,
             lng = 44.4883,
+        ),
+        LearningCenter(
+            name = "Art Town Drive ավտոդպրոց",
+            city = "Արտաշատ",
+            address = "Օգոստոսի 23-րդ փող., 64, Արտաշատ",
+            phone = "+374 99 134353",
+            description = "Արտաշատի տեղական ավտոդպրոց՝ տեսական և գործնական վարման դասընթացներ։",
+            lat = 39.9596,
+            lng = 44.5410,
         ),
     )
 }
