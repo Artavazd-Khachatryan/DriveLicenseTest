@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
@@ -35,13 +37,30 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    val signingPropertiesFile = System.getenv("SIGNING_PROPERTIES")
+        ?.let { file(it) }
+        ?.takeIf { it.exists() }
+    val signingProperties = signingPropertiesFile?.let { propsFile ->
+        Properties().also { props ->
+            propsFile.inputStream().use { stream -> props.load(stream) }
+        }
+    }
+
     val keystorePath = System.getenv("KEYSTORE_PATH")
+        ?: signingProperties?.getProperty("storeFile")
+    val releaseStorePassword = System.getenv("STORE_PASSWORD")
+        ?: signingProperties?.getProperty("storePassword")
+    val releaseKeyAlias = System.getenv("KEY_ALIAS")
+        ?: signingProperties?.getProperty("keyAlias")
+    val releaseKeyPassword = System.getenv("KEY_PASSWORD")
+        ?: signingProperties?.getProperty("keyPassword")
+
     val releaseSigningConfig = if (!keystorePath.isNullOrBlank()) {
         signingConfigs.create("release") {
             storeFile = file(keystorePath)
-            storePassword = System.getenv("STORE_PASSWORD")
-            keyAlias = System.getenv("KEY_ALIAS")
-            keyPassword = System.getenv("KEY_PASSWORD")
+            storePassword = releaseStorePassword
+            keyAlias = releaseKeyAlias
+            keyPassword = releaseKeyPassword
         }
     } else {
         null
