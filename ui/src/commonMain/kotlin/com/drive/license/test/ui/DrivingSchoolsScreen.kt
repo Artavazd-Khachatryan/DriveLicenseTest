@@ -38,14 +38,11 @@ import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
 import com.drive.license.test.ui.components.SectionHeader
-import com.drive.license.test.ui.components.StatChip
 import com.drive.license.test.ui.util.AdaptiveContentContainer
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.back
 import drivelicensetest.ui.generated.resources.driving_schools_city_section
-import drivelicensetest.ui.generated.resources.driving_schools_stat_label
 import drivelicensetest.ui.generated.resources.driving_schools_filter_all
-import drivelicensetest.ui.generated.resources.driving_schools_intro
 import drivelicensetest.ui.generated.resources.driving_schools_label_address
 import drivelicensetest.ui.generated.resources.driving_schools_label_phone
 import drivelicensetest.ui.generated.resources.map_title
@@ -92,10 +89,6 @@ fun DrivingSchoolsScreen(
                 contentPadding = PaddingValues(16.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                item {
-                    DrivingSchoolsHeroCard(schoolCount = schools.size)
-                }
-
                 if (cities.size > 1) {
                     item {
                         Row(
@@ -142,57 +135,6 @@ fun DrivingSchoolsScreen(
                     }
                 }
             }
-        }
-    }
-}
-
-@Composable
-private fun DrivingSchoolsHeroCard(schoolCount: Int) {
-    AppCard(
-        modifier = Modifier.fillMaxWidth(),
-        containerColor = MaterialTheme.colorScheme.secondaryContainer,
-        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-    ) {
-        Row(
-            modifier = Modifier.padding(20.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Surface(
-                shape = CircleShape,
-                color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f),
-                modifier = Modifier.size(56.dp),
-            ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        imageVector = Icons.Default.School,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.secondary,
-                        modifier = Modifier.size(28.dp),
-                    )
-                }
-            }
-            Column(
-                modifier = Modifier.weight(1f),
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-            ) {
-                Text(
-                    text = stringResource(Res.string.map_title),
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
-                )
-                Text(
-                    text = stringResource(Res.string.driving_schools_intro),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.85f),
-                )
-            }
-            StatChip(
-                label = stringResource(Res.string.driving_schools_stat_label),
-                value = schoolCount.toString(),
-                containerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.24f),
-                contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-            )
         }
     }
 }

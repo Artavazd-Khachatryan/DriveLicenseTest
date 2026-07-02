@@ -7066,9 +7066,6 @@
     <string name="map_title">Ավտոդպրոցներ</string>
     <string name="map_centers_count">%1$d կենտրոն</string>
     <string name="map_phone">Հեռ.՝</string>
-    <string name="driving_schools_intro">Հայտնի վարորդական դպրոցներ Հայաստանում՝ հասցե և հեռախոս։ Տվյալները տեղեկացման նպատակով են։</string>
-    <string name="driving_schools_count">%1$d դպրոց</string>
-    <string name="driving_schools_stat_label">Դպրոց</string>
     <string name="driving_schools_filter_all">Բոլորը</string>
     <string name="driving_schools_city_section">%1$s · %2$d</string>
     <string name="driving_schools_label_address">Հասցե</string>
