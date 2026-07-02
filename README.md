@@ -69,6 +69,36 @@ A comprehensive driving license test preparation app built with Kotlin Multiplat
 - Kotlin 1.8+
 - JDK 11+
 
+## Android release builds
+
+This repo supports **signed release builds** locally and on GitHub Actions.
+
+### Build on your Mac
+
+- Store signing materials outside git at `~/Documents/driver_license_test/android/` (keystore + `signing.env`).
+- Run:
+
+```bash
+./scripts/android_release.sh
+```
+
+Outputs:
+- `androidApp/build/outputs/bundle/release/*.aab` (Play Store upload)
+- `androidApp/build/outputs/apk/release/*.apk`
+
+### Build (and optionally upload) from GitHub
+
+There is a manual workflow: `.github/workflows/android-release.yml` (Actions → **Android Release (manual)** → Run workflow).
+
+Required GitHub secrets:
+- `KEYSTORE_BASE64`
+- `STORE_PASSWORD`
+- `KEY_ALIAS`
+- `KEY_PASSWORD`
+
+Optional (only if you want the workflow to upload to Google Play):
+- `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON`
+
 ### Installation
 1. Clone the repository
 2. Open the project in Android Studio
