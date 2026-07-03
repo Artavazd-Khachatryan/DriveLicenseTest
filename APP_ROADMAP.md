@@ -238,6 +238,33 @@ Shown on **Home** welcome card, **during a test** every 5 answered questions (in
 
 ---
 
+## Phase 10: Question Content Updates (Migration)
+
+The bundled DB (`database/src/commonMain/resources/license_test_questions.db`) will change over time: new questions arrive, outdated ones (with images) get removed. User progress lives in the same DB file on the device, so content must be refreshed in place, never by overwriting the file.
+
+**How it works (implemented 2026-07-03):**
+
+- Question `id` = printed question number in the source book (`խումբ N.pdf`). IDs are permanent: never renumber, never reuse a removed id. `insertQuestion` requires an explicit id.
+- The bundled DB carries a `content_version` stamp in its `Metadata` table; `ContentRefresh.CONTENT_VERSION` (in `database/.../ContentRefresh.kt`) must equal it.
+- On startup, if the installed DB's stamp is older, `ContentRefresh` ATTACHes the bundled DB, swaps `Book`/`QuestionCategory`/`Question`/`QuestionCategoryJunction` in one transaction, deletes progress/bookmark/attempt rows for removed questions, and stamps the new version. User progress for surviving questions is untouched.
+- The bundled DB is copied to the device only on first launch (both platforms).
+
+**Release checklist for a content update:**
+
+1. Edit the bundled DB (add/remove/fix questions; keep ids = book numbers). Keep user tables empty.
+2. Add new `question{id}_image.*` drawables; delete drawables of removed questions.
+3. Run `python3 scripts/verify_questions.py` (content vs source PDFs) and `python3 scripts/verify_image_refs.py` (DB ↔ drawable consistency). Both must pass.
+4. Run `python3 scripts/set_content_version.py <n+1>` and set `ContentRefresh.CONTENT_VERSION` to the same number.
+5. Commit DB + images + version bump together; release. Devices refresh on next launch.
+
+- [x] **10.1 Stable question ids** — explicit id on insert; ids match source books
+- [x] **10.2 Content version stamp** — `Metadata` table + `scripts/set_content_version.py` (baseline: 1)
+- [x] **10.3 Startup content refresh** — `ContentRefresh` swap + orphan cleanup, wired on Android and iOS
+- [x] **10.4 Image reference verification** — `scripts/verify_image_refs.py`
+- **10.5 First real content update** — apply the checklist when new official questions arrive
+
+---
+
 ## Status Log
 
 
@@ -259,3 +286,4 @@ Shown on **Home** welcome card, **during a test** every 5 answered questions (in
 | 2026-06-11 | Phase 6.0 — Brand logo + launcher icons (`assets/brand/`); Android adaptive icon + iOS AppIcon 1024 |
 | 2026-06-11 | Phase 9 added — Subscriptions plan (RevenueCat KMP, Plus/Pro tiers, feature matrix, implementation steps) |
 | 2026-06-23 | Phase 6.9 added — Review autoscroll & list scrolling across scrollable screens (audit table + fix checklist) |
+| 2026-07-03 | Phase 10 added and 10.1–10.4 done — content-update migration: stable ids, `content_version` stamp, `ContentRefresh` startup swap keeping user progress, image reference verification; removed unsafe size-based DB overwrite |
