@@ -87,7 +87,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             answers = answersList,
             trueAnswer = dbQuestion.true_answer,
             book = bookEnum,
-            categories = categories
+            categories = categories,
+            printedNumber = dbQuestion.printed_number
         )
     }
     
@@ -107,7 +108,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             answers = answersList,
             trueAnswer = dbQuestion.true_answer,
             book = bookEnum,
-            categories = categories
+            categories = categories,
+            printedNumber = dbQuestion.printed_number
         )
     }
     
@@ -126,7 +128,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             answers = answersList,
             trueAnswer = dbQuestion.true_answer,
             book = bookEnum,
-            categories = categories
+            categories = categories,
+            printedNumber = dbQuestion.printed_number
         )
     }
     
@@ -145,7 +148,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             answers = answersList,
             trueAnswer = dbQuestion.true_answer,
             book = bookEnum,
-            categories = categories
+            categories = categories,
+            printedNumber = dbQuestion.printed_number
         )
     }
     
@@ -172,7 +176,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             image = databaseQuestion.image,
             answers = answersJson,
             true_answer = databaseQuestion.trueAnswer,
-            book_id = bookId
+            book_id = bookId,
+            printed_number = databaseQuestion.printedNumber
         )
 
         val questionId = databaseQuestion.id
@@ -348,7 +353,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
                 answers = parseAnswersFromJson(row.answers),
                 trueAnswer = row.true_answer,
                 book = bookEnum,
-                categories = categories
+                categories = categories,
+                printedNumber = row.printed_number
             )
         }
     }

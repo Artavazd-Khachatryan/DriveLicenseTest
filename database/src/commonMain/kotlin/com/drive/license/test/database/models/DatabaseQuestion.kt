@@ -7,5 +7,7 @@ class DatabaseQuestion(
     val answers: List<String>,
     val trueAnswer: String,
     val book: Book,
-    val categories: List<QuestionCategory> = emptyList()
+    val categories: List<QuestionCategory> = emptyList(),
+    // Number printed in the current book edition; equals id unless an edition renumbers.
+    val printedNumber: Long = id
 ) 

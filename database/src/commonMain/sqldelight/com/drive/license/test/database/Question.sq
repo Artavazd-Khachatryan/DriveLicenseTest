@@ -5,6 +5,11 @@ CREATE TABLE Question (
     answers TEXT NOT NULL, -- JSON array of answer strings
     true_answer TEXT NOT NULL,
     book_id INTEGER NOT NULL,
+    -- Number printed in the current edition of the source book. Equals id
+    -- today; diverges only if a future edition renumbers its questions.
+    -- id is permanent identity; printed_number is for finding the question
+    -- in the physical book.
+    printed_number INTEGER NOT NULL,
     FOREIGN KEY (book_id) REFERENCES Book(id)
 );
 
@@ -25,13 +30,18 @@ WHERE q.book_id = ?;
 -- id is the printed question number in the source book and must stay stable
 -- across content updates: user progress and bookmarks are keyed on it.
 insertQuestion:
-INSERT INTO Question (id, question, image, answers, true_answer, book_id)
-VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO Question (id, question, image, answers, true_answer, book_id, printed_number)
+VALUES (?, ?, ?, ?, ?, ?, ?);
 
 updateQuestion:
 UPDATE Question
-SET question = ?, image = ?, answers = ?, true_answer = ?, book_id = ?
+SET question = ?, image = ?, answers = ?, true_answer = ?, book_id = ?, printed_number = ?
 WHERE id = ?;
+
+selectByPrintedNumber:
+SELECT q.*, b.name AS book_name FROM Question q
+JOIN Book b ON q.book_id = b.id
+WHERE q.book_id = ? AND q.printed_number = ?;
 
 deleteQuestion:
 DELETE FROM Question WHERE id = ?;
