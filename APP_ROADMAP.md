@@ -244,7 +244,8 @@ The bundled DB (`database/src/commonMain/resources/license_test_questions.db`) w
 
 **How it works (implemented 2026-07-03):**
 
-- Question `id` = printed question number in the source book (`խումբ N.pdf`). IDs are permanent: never renumber, never reuse a removed id. `insertQuestion` requires an explicit id.
+- Question `id` is permanent identity: never renumber, never reuse a removed id. `insertQuestion` requires an explicit id. Initially `id` = printed question number in the source book (`խումբ N.pdf`).
+- `printed_number` tracks where the question sits in the current book edition (unique per book only). It starts equal to `id`; if a new edition renumbers, update `printed_number` and keep `id`. Look questions up in the physical book via `book_id` + `printed_number` (`selectByPrintedNumber`).
 - The bundled DB carries a `content_version` stamp in its `Metadata` table; `ContentRefresh.CONTENT_VERSION` (in `database/.../ContentRefresh.kt`) must equal it.
 - On startup, if the installed DB's stamp is older, `ContentRefresh` ATTACHes the bundled DB, swaps `Book`/`QuestionCategory`/`Question`/`QuestionCategoryJunction` in one transaction, deletes progress/bookmark/attempt rows for removed questions, and stamps the new version. User progress for surviving questions is untouched.
 - The bundled DB is copied to the device only on first launch (both platforms).
