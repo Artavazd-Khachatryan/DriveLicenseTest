@@ -14,7 +14,23 @@ actual class DatabaseDriverFactory {
 
         val driver = AndroidSqliteDriver(LicenseDatabase.Schema, appContext, POPULATED_DB_NAME)
         ensureMissingTables(driver)
+        refreshContentIfNeeded(driver)
         return driver
+    }
+
+    // When the app update ships newer question content (or a prior broken
+    // install left a stub DB with no questions), swap the content tables from
+    // the bundled DB while keeping user progress. The bundled DB must exist as
+    // a plain file to be ATTACHed, so it is staged into the cache dir.
+    private fun refreshContentIfNeeded(driver: SqlDriver) {
+        if (!ContentRefresh.isRefreshNeeded(driver)) return
+        val staged = java.io.File(appContext.cacheDir, "bundled_$POPULATED_DB_NAME")
+        try {
+            FileOutputStream(staged).use { it.write(readBundledDatabaseBytes()) }
+            ContentRefresh.refresh(driver, staged.absolutePath)
+        } finally {
+            staged.delete()
+        }
     }
 
     // The bundled license_test_questions.db was generated before UserStreak and
@@ -44,20 +60,22 @@ actual class DatabaseDriverFactory {
         """.trimIndent(), 0)
     }
 
+    // Copy the bundled DB only on first launch. Never overwrite an existing
+    // DB here: it holds user progress. Stub or outdated DBs are repaired by
+    // refreshContentIfNeeded, which swaps content tables without data loss.
     private fun copyPrepopulatedDatabaseIfNeeded() {
         val databaseFile = appContext.getDatabasePath(POPULATED_DB_NAME)
-        val bundledBytes = (javaClass.classLoader?.getResourceAsStream(POPULATED_DB_NAME)
+        if (databaseFile.exists()) return
+
+        databaseFile.parentFile?.mkdirs()
+        FileOutputStream(databaseFile).use { it.write(readBundledDatabaseBytes()) }
+    }
+
+    private fun readBundledDatabaseBytes(): ByteArray {
+        return (javaClass.classLoader?.getResourceAsStream(POPULATED_DB_NAME)
             ?: runCatching { appContext.assets.open(POPULATED_DB_NAME) }.getOrNull()
             ?: error("Pre-populated database '$POPULATED_DB_NAME' not found on classpath or in assets"))
             .use { it.readBytes() }
-
-        // A prior broken install can leave a stub DB created by SqlDelight's Schema.create()
-        // that's much smaller than the bundled one. The bundled questions are immutable, so a
-        // healthy DB is never smaller than the bundled file. If it is, treat it as a stub.
-        if (databaseFile.exists() && databaseFile.length() >= bundledBytes.size) return
-
-        databaseFile.parentFile?.mkdirs()
-        FileOutputStream(databaseFile).use { it.write(bundledBytes) }
     }
 }
 

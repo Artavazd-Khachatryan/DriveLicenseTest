@@ -44,32 +44,23 @@ actual class DatabaseDriverFactory {
             throw IllegalStateException("Database file $POPULATED_DB_NAME not found in bundle, main bundle root, or compose-resources")
         }
 
-        // A prior broken install can leave a stub DB created by SqlDelight's Schema.create()
-        // that's much smaller than the bundled one. The bundled questions are immutable, so a
-        // healthy DB is never smaller than the bundled file. If it is, treat it as a stub.
-        val bundledSize = (fileManager.attributesOfItemAtPath(bundleDatabasePath, null)
-            ?.get(NSFileSize) as? NSNumber)?.longLongValue ?: 0L
-        val existingSize = if (fileManager.fileExistsAtPath(databaseFilePath)) {
-            (fileManager.attributesOfItemAtPath(databaseFilePath, null)
-                ?.get(NSFileSize) as? NSNumber)?.longLongValue ?: 0L
-        } else 0L
-
-        if (existingSize < bundledSize) {
-            if (existingSize > 0L) {
-                fileManager.removeItemAtPath(databaseFilePath, null)
-            }
+        // Copy the bundled DB only on first launch. Never overwrite an existing
+        // DB here: it holds user progress. Stub or outdated DBs are repaired by
+        // ContentRefresh below, which swaps content tables without data loss.
+        if (!fileManager.fileExistsAtPath(databaseFilePath)) {
             try {
                 fileManager.copyItemAtPath(bundleDatabasePath, databaseFilePath, null)
                 println("Successfully copied database from bundle to $databaseFilePath")
             } catch (e: Exception) {
                 throw IllegalStateException("Failed to copy database to $databaseFilePath: ${e.message}")
             }
-        } else {
-            println("Database already exists at $databaseFilePath")
         }
 
         val driver = NativeSqliteDriver(LicenseDatabase.Schema, POPULATED_DB_NAME)
         ensureMissingTables(driver)
+        if (ContentRefresh.isRefreshNeeded(driver)) {
+            ContentRefresh.refresh(driver, bundleDatabasePath)
+        }
         return driver
     }
 
