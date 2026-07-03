@@ -1,0 +1,13 @@
+-- Key/value store for database metadata, notably 'content_version': the
+-- version of the bundled question content, stamped by scripts/set_content_version.py
+-- and compared on startup to decide whether to refresh question tables.
+CREATE TABLE Metadata (
+    key TEXT NOT NULL PRIMARY KEY,
+    value TEXT NOT NULL
+);
+
+getValue:
+SELECT value FROM Metadata WHERE key = ?;
+
+setValue:
+INSERT OR REPLACE INTO Metadata (key, value) VALUES (?, ?);
