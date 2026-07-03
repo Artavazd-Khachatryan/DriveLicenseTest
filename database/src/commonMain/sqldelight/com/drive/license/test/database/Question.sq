@@ -22,9 +22,11 @@ SELECT q.*, b.name AS book_name FROM Question q
 JOIN Book b ON q.book_id = b.id
 WHERE q.book_id = ?;
 
+-- id is the printed question number in the source book and must stay stable
+-- across content updates: user progress and bookmarks are keyed on it.
 insertQuestion:
-INSERT INTO Question (question, image, answers, true_answer, book_id)
-VALUES (?, ?, ?, ?, ?);
+INSERT INTO Question (id, question, image, answers, true_answer, book_id)
+VALUES (?, ?, ?, ?, ?, ?);
 
 updateQuestion:
 UPDATE Question

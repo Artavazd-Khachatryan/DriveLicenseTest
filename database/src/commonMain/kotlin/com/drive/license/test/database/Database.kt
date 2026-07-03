@@ -167,15 +167,16 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
         val answersJson = answersToJson(databaseQuestion.answers)
         
         questionQueries.insertQuestion(
+            id = databaseQuestion.id,
             question = databaseQuestion.question,
             image = databaseQuestion.image,
             answers = answersJson,
             true_answer = databaseQuestion.trueAnswer,
             book_id = bookId
         )
-        
-        val questionId = questionQueries.selectAll().executeAsList().last().id
-        
+
+        val questionId = databaseQuestion.id
+
         databaseQuestion.categories.forEach { category ->
             val categoryId = categoryQueries.selectByName(category.name).executeAsOne().id
             junctionQueries.insertQuestionCategory(questionId, categoryId)
