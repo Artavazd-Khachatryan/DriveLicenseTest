@@ -70,6 +70,7 @@ import drivelicensetest.ui.generated.resources.settings_reset_title
 import drivelicensetest.ui.generated.resources.settings_theme_subtitle
 import drivelicensetest.ui.generated.resources.settings_theme_title
 import drivelicensetest.ui.generated.resources.settings_title
+import drivelicensetest.ui.generated.resources.settings_version_label
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.runtime.rememberCoroutineScope
 
@@ -81,6 +82,7 @@ fun SettingsScreen(
     userProgressRepository: UserProgressRepository,
     isDarkTheme: Boolean,
     onDarkThemeChange: (Boolean) -> Unit,
+    appVersionName: String = "",
     onBack: () -> Unit,
     onStatisticsReset: () -> Unit = {},
     modifier: Modifier = Modifier
@@ -244,6 +246,17 @@ fun SettingsScreen(
                             contentColor = MaterialTheme.colorScheme.onError,
                         )
                     }
+                }
+
+                if (appVersionName.isNotBlank()) {
+                    Text(
+                        text = stringResource(Res.string.settings_version_label, appVersionName),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 8.dp),
+                    )
                 }
             }
         }

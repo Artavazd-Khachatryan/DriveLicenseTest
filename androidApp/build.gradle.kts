@@ -12,19 +12,41 @@ android {
     namespace = "com.drive.license.test"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
-    val ciBuildNumber = System.getenv("CI_BUILD_NUMBER")?.toIntOrNull()
+    val versionProperties = Properties().also { props ->
+        rootProject.file("gradle/version.properties").inputStream().use { props.load(it) }
+    }
+    val appVersionMajor = versionProperties.getProperty("APP_VERSION_MAJOR", "1")
+    val appVersionMinor = versionProperties.getProperty("APP_VERSION_MINOR", "0")
+    val appVersionPatch = versionProperties.getProperty("APP_VERSION_PATCH", "0")
+    val localBuildNumber = run {
+        try {
+            ProcessBuilder("git", "rev-list", "--count", "HEAD")
+                .directory(rootProject.projectDir)
+                .redirectErrorStream(true)
+                .start()
+                .inputStream.bufferedReader()
+                .readText()
+                .trim()
+                .toInt()
+        } catch (_: Exception) {
+            0
+        }
+    }
+    // Play Store uploads: set CI_BUILD_NUMBER in GitHub Actions (android-release.yml).
+    // Local builds use git commit count — not for Play upload.
+    val buildNumber = System.getenv("CI_BUILD_NUMBER")?.toIntOrNull() ?: localBuildNumber
+    val appVersionName = "$appVersionMajor.$appVersionMinor.$appVersionPatch.$buildNumber"
 
     defaultConfig {
         applicationId = "com.drive.license.test"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
 
-        // versionName is manual (edit here for releases)
-        versionName = "1.0.0"
+        // X.Y.Z.build — X.Y.Z in gradle/version.properties; build from CI or git commit count locally
+        versionName = appVersionName
+        versionCode = buildNumber
 
-        // versionCode: use CI build number if present, fall back locally
-        versionCode = ciBuildNumber ?: 1
-
+        buildConfigField("String", "VERSION_NAME", "\"$appVersionName\"")
         buildConfigField(
             "String",
             "ANTHROPIC_API_KEY",

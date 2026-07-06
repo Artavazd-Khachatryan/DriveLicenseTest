@@ -11,7 +11,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        PlatformConfig.init(BuildConfig.ANTHROPIC_API_KEY)
+        PlatformConfig.init(BuildConfig.ANTHROPIC_API_KEY, BuildConfig.VERSION_NAME)
         initKoin()
 
         setContent {

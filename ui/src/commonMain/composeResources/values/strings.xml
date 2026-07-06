@@ -7105,6 +7105,7 @@
     <string name="settings_theme_dark">Մուգ</string>
     <string name="settings_theme_toggle_dark_cd">Միացնել մուգ թեման</string>
     <string name="settings_theme_toggle_light_cd">Միացնել բաց թեման</string>
+    <string name="settings_version_label">Տարբերակ %1$s</string>
 
     <!-- Question categories -->
     <string name="category_traffic_signs_and_markings">Ճանապարհային նշաններ և գծանշումներ</string>

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Local signed release build (testing/sideload only).
+# For Google Play uploads use GitHub Actions → "Android Release (manual)".
 set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -12,10 +14,18 @@ fi
 
 cd "$PROJECT_ROOT"
 
+if [[ -n "${CI_BUILD_NUMBER:-}" ]]; then
+  echo "Using CI_BUILD_NUMBER=$CI_BUILD_NUMBER"
+else
+  echo "Local build — versionCode from git commit count (not for Play Store upload)."
+  echo "Upload to Play via GitHub Actions → Android Release (manual)."
+fi
+
+VERSION="$("$PROJECT_ROOT/scripts/print_app_version.sh")"
+
 echo "Building Android release (AAB + APK)..."
 echo "- Project: $PROJECT_ROOT"
-echo "- versionName: $(grep 'versionName = ' androidApp/build.gradle.kts | awk -F'\"' '{print $2}')"
-echo "- versionCode: ${CI_BUILD_NUMBER:-local}"
+echo "- versionName: $VERSION"
 echo ""
 
 ./gradlew :androidApp:bundleRelease :androidApp:assembleRelease --stacktrace

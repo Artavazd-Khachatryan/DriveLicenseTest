@@ -62,6 +62,7 @@ fun MainScreen(
     coroutineScope: CoroutineScope,
     isDarkTheme: Boolean,
     onDarkThemeChange: (Boolean) -> Unit,
+    appVersionName: String = "",
     modifier: Modifier = Modifier
 ) {
     val backStack = remember { mutableStateListOf<Screen>(Screen.Home) }
@@ -568,6 +569,7 @@ fun MainScreen(
             userProgressRepository = userProgressRepository,
             isDarkTheme = isDarkTheme,
             onDarkThemeChange = onDarkThemeChange,
+            appVersionName = appVersionName,
             onBack = { handleSystemBack() },
             onStatisticsReset = {
                 coroutineScope.launch { refreshUserProgress() }

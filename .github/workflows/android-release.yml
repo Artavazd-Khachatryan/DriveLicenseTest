@@ -31,8 +31,6 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      # Auto-increment versionCode on CI
-      CI_BUILD_NUMBER: ${{ github.run_number }}
       STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
       KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
       KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
@@ -49,17 +47,29 @@ jobs:
           cache: gradle
 
       - name: Grant execute permission for Gradle wrapper
-        run: chmod +x gradlew
+        run: chmod +x gradlew scripts/print_app_version.sh
 
       - name: Decode keystore
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > "$RUNNER_TEMP/drivelicense.jks"
           echo "KEYSTORE_PATH=$RUNNER_TEMP/drivelicense.jks" >> "$GITHUB_ENV"
 
+      - name: Resolve build number
+        id: build_number
+        run: |
+          # github.run_number is persisted by GitHub per workflow — no git commits needed.
+          # Optional repo variable VERSION_CODE_OFFSET if you need to jump ahead (e.g. after manual uploads).
+          OFFSET="${{ vars.VERSION_CODE_OFFSET }}"
+          OFFSET="${OFFSET:-0}"
+          BUILD_NUMBER=$((OFFSET + GITHUB_RUN_NUMBER))
+          echo "CI_BUILD_NUMBER=$BUILD_NUMBER" >> "$GITHUB_ENV"
+          echo "number=$BUILD_NUMBER" >> "$GITHUB_OUTPUT"
+          echo "Build number: $BUILD_NUMBER (offset=$OFFSET, run=$GITHUB_RUN_NUMBER)"
+
       - name: Print Android app version
         id: app_version
         run: |
-          VERSION_NAME=$(grep 'versionName = ' androidApp/build.gradle.kts | awk -F'"' '{print $2}')
+          VERSION_NAME=$(CI_BUILD_NUMBER="$CI_BUILD_NUMBER" ./scripts/print_app_version.sh)
           echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
 
       - name: Build signed release AAB + APK
@@ -68,13 +78,13 @@ jobs:
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
         with:
-          name: android-aab-${{ steps.app_version.outputs.version_name || 'unknown' }}+${{ github.run_number }}
+          name: android-aab-${{ steps.app_version.outputs.version_name || 'unknown' }}
           path: androidApp/build/outputs/bundle/release/*.aab
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: android-apk-${{ steps.app_version.outputs.version_name || 'unknown' }}+${{ github.run_number }}
+          name: android-apk-${{ steps.app_version.outputs.version_name || 'unknown' }}
           path: androidApp/build/outputs/apk/release/*.apk
 
       # Optional manual upload to Google Play (recommended: use Internal testing first)

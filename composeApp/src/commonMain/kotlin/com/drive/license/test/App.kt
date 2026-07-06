@@ -53,6 +53,7 @@ fun App() {
             coroutineScope = coroutineScope,
             isDarkTheme = isDarkTheme,
             onDarkThemeChange = ::setDarkTheme,
+            appVersionName = PlatformConfig.appVersionName,
         )
     }
 }

@@ -73,6 +73,29 @@ A comprehensive driving license test preparation app built with Kotlin Multiplat
 
 This repo supports **signed release builds** locally and on GitHub Actions.
 
+### Versioning (`X.Y.Z.build`)
+
+| Part | Source | When to change |
+|---|---|---|
+| `X.Y.Z` | `gradle/version.properties` | Only when cutting a new release (e.g. `1.0.0` → `1.1.0`) — **commit manually** |
+| `build` | **GitHub Actions** `github.run_number` | Automatic — **no commits** |
+
+- **versionName** shown to users: e.g. `1.0.0.3`
+- **versionCode** for Google Play: same build number (must increase every upload)
+
+**Play Store uploads → always use GitHub Actions** (Actions → **Android Release (manual)**). Each workflow run gets the next `github.run_number` automatically.
+
+Optional: set repository variable `VERSION_CODE_OFFSET` (Settings → Secrets and variables → Actions → Variables) if you need to jump ahead — `versionCode = OFFSET + run_number`.
+
+Local `./scripts/android_release.sh` is for signed testing/sideload only; build number comes from git commit count and is **not** used for Play.
+
+Print resolved version:
+
+```bash
+CI_BUILD_NUMBER=3 ./scripts/print_app_version.sh   # → 1.0.0.3
+./scripts/print_app_version.sh                       # → 1.0.0.<git-commit-count>
+```
+
 ### Build on your Mac
 
 - Store signing materials outside git at `~/Documents/driver_license_test/android/` (keystore + `signing.env`).
@@ -98,6 +121,14 @@ Required GitHub secrets:
 
 Optional (only if you want the workflow to upload to Google Play):
 - `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON`
+
+### Google Play Store assets
+
+Store listing, graphics, screenshots, and release checklist live outside the repo:
+
+`~/Documents/driver_license_test/store-assets/`
+
+See also `~/Documents/driver_license_test/README.md`.
 
 ### Installation
 1. Clone the repository
