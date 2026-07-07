@@ -65,7 +65,7 @@
 
 ## 8. Կապ մեզ հետ
 
-Հարցերի դեպքում գրեք՝ **PRIVACY_CONTACT_EMAIL**
+Հարցերի դեպքում գրեք՝ **letaithink@gmail.com**
 
 ---
 
@@ -123,4 +123,4 @@ This page may be updated as the app changes. The "Last updated" date at the top 
 
 ### 8. Contact us
 
-For any questions, email: **PRIVACY_CONTACT_EMAIL**
+For any questions, email: **letaithink@gmail.com**
