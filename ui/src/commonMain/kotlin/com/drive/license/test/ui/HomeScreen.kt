@@ -88,7 +88,6 @@ fun HomeScreen(
     onOpenDrivingSchools: () -> Unit,
     onOpenColorVision: (() -> Unit)? = null,
     onOpenSettings: () -> Unit,
-    bottomBar: @Composable (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     var selectedTestLength by remember { mutableStateOf(20) }
@@ -98,7 +97,6 @@ fun HomeScreen(
     }
 
     AppScaffold(
-        bottomBar = bottomBar,
         topBarActions = {
             IconButton(onClick = onOpenSettings) {
                 Icon(

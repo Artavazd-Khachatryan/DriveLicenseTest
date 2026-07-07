@@ -75,7 +75,6 @@ fun StatsScreen(
     userProgressRepository: UserProgressRepository,
     onOpenSessionReview: (String) -> Unit = {},
     onBack: (() -> Unit)? = null,
-    bottomBar: @Composable (() -> Unit)? = null
 ) {
     var stats by remember { mutableStateOf(UserStatistics()) }
     var categoryStats by remember { mutableStateOf<List<CategoryStats>>(emptyList()) }
@@ -99,7 +98,6 @@ fun StatsScreen(
                 )
             }
         },
-        bottomBar = bottomBar
     ) { inner ->
         if (isLoading) {
             Box(

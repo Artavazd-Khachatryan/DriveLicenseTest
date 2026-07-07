@@ -1,5 +1,6 @@
 package com.drive.license.test.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -29,8 +30,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -339,20 +338,67 @@ data class BottomNavItem(
 
 @Composable
 fun AppBottomBar(items: List<BottomNavItem>) {
-    NavigationBar(
-        containerColor = MaterialTheme.colorScheme.surfaceContainer,
+    val colors = MaterialTheme.colorScheme
+    // Static Surface (no M3 NavigationBar color animation) — avoids iOS blink on dark-mode switch.
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        color = colors.surfaceContainer,
+        contentColor = colors.onSurface,
         tonalElevation = 0.dp,
     ) {
-        items.forEach { item ->
-            NavigationBarItem(
-                selected = item.selected,
-                onClick = item.onClick,
-                icon = { Icon(item.icon, contentDescription = item.label) },
-                label = { Text(item.label) }
-            )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(BottomNavHeight)
+                .padding(horizontal = 8.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            items.forEach { item ->
+                val iconColor = if (item.selected) colors.primary else colors.onSurfaceVariant
+                val textColor = if (item.selected) colors.onSurface else colors.onSurfaceVariant
+                val indicatorColor = if (item.selected) colors.secondaryContainer else Color.Transparent
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .clip(RoundedCornerShape(16.dp))
+                        .clickable(onClick = item.onClick)
+                        .semantics {
+                            role = Role.Tab
+                            contentDescription = item.label
+                        }
+                        .padding(vertical = 6.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(indicatorColor)
+                            .padding(horizontal = 16.dp, vertical = 4.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Icon(
+                            imageVector = item.icon,
+                            contentDescription = null,
+                            tint = iconColor,
+                            modifier = Modifier.size(24.dp),
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = item.label,
+                        style = MaterialTheme.typography.labelMedium,
+                        color = textColor,
+                        textAlign = TextAlign.Center,
+                    )
+                }
+            }
         }
     }
 }
+
+private val BottomNavHeight = 80.dp
 
 @Composable
 fun ActionCard(

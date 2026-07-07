@@ -8,6 +8,10 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.runtime.Composable
@@ -49,7 +53,7 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
-@OptIn(ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
     questionRepository: QuestionRepository,
@@ -244,15 +248,9 @@ fun MainScreen(
     val navHomeLabel = stringResource(Res.string.nav_home)
     val navPracticeLabel = stringResource(Res.string.nav_practice)
     val navStatsLabel = stringResource(Res.string.nav_stats)
-    val bottomBar: @Composable () -> Unit = {
-        AppBottomBar(
-            listOf(
-                BottomNavItem(navHomeLabel, Icons.Default.Home, currentScreen is Screen.Home) { navigate(Screen.Home) },
-                BottomNavItem(navPracticeLabel, Icons.Default.FitnessCenter, currentScreen is Screen.Practice) { navigate(Screen.Practice) },
-                BottomNavItem(navStatsLabel, Icons.Default.BarChart, currentScreen is Screen.Stats) { navigate(Screen.Stats) }
-            )
-        )
-    }
+    val showBottomBar = currentScreen is Screen.Home ||
+        currentScreen is Screen.Practice ||
+        currentScreen is Screen.Stats
 
     LaunchedEffect(Unit) {
         refreshUserProgress()
@@ -299,9 +297,25 @@ fun MainScreen(
         }
     }
 
+    Scaffold(
+        containerColor = MaterialTheme.colorScheme.background,
+        bottomBar = {
+            if (showBottomBar) {
+                AppBottomBar(
+                    listOf(
+                        BottomNavItem(navHomeLabel, Icons.Default.Home, currentScreen is Screen.Home) { navigate(Screen.Home) },
+                        BottomNavItem(navPracticeLabel, Icons.Default.FitnessCenter, currentScreen is Screen.Practice) { navigate(Screen.Practice) },
+                        BottomNavItem(navStatsLabel, Icons.Default.BarChart, currentScreen is Screen.Stats) { navigate(Screen.Stats) },
+                    )
+                )
+            }
+        },
+    ) { paddingValues ->
     AnimatedContent(
         targetState = currentScreen,
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = paddingValues.calculateBottomPadding()),
         contentKey = { screen -> screen::class },
         transitionSpec = {
             // Fade avoids overlapping screens stealing touches on iOS during slide transitions.
@@ -325,7 +339,6 @@ fun MainScreen(
             } else null,
             onOpenStatsFromRing = { navigate(Screen.Stats) },
             onOpenSettings = { navigate(Screen.Settings) },
-            bottomBar = bottomBar,
             modifier = modifier
         )
         Screen.Stats -> StatsScreen(
@@ -334,7 +347,6 @@ fun MainScreen(
                 navigate(Screen.TestSessionReview(sessionId))
             },
             onBack = if (canGoBack) ({ navigateBack() }) else null,
-            bottomBar = bottomBar
         )
         is Screen.TestSessionReview -> TestSessionReviewScreen(
             sessionId = screen.sessionId,
@@ -372,7 +384,6 @@ fun MainScreen(
                 onOpenBookmarks = { navigate(Screen.Bookmarks) },
                 onOpenChat = { },
                 onBack = if (canGoBack) ({ navigateBack() }) else null,
-                bottomBar = bottomBar
             )
         }
         Screen.CategoryPicker -> CategoryPickerScreen(
@@ -633,4 +644,5 @@ fun MainScreen(
         }
     }
     } // AnimatedContent
+    } // Scaffold
 }

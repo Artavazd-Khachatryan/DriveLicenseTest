@@ -67,7 +67,6 @@ fun PracticeModeScreen(
     onOpenBookmarks: () -> Unit,
     onOpenChat: () -> Unit,
     onBack: (() -> Unit)? = null,
-    bottomBar: @Composable (() -> Unit)? = null
 ) {
     AppScaffold(
         topBarTitle = stringResource(Res.string.practice_title),
@@ -79,7 +78,6 @@ fun PracticeModeScreen(
                 )
             }
         },
-        bottomBar = bottomBar
     ) { inner ->
         AdaptiveContentContainer(
             modifier = Modifier
