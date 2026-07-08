@@ -1,68 +1,48 @@
 # Privacy Policy · Driving Code (Վարորդական կոդեքս)
 
 **Package:** `com.drive.license.test`
-**Last updated:** July 7, 2026
+**Last updated:** July 8, 2026
 
-> **Summary.** The Driving Code app works mostly on your device, offline. No account is required. Your test results, progress, and settings are stored only on your device. Below is a detailed description of the limited data used for a few optional features.
+> **Summary.** Driving Code works offline and requires no account. Your progress and settings stay on your device. We only receive anonymous usage statistics and crash reports.
 
-## 1. What data we collect
+## 1. Data that stays on your device
 
-### 1.1 Data that stays on your device
+The following is stored only in the app's local database and never leaves your device:
 
-The following never leaves your device — it is stored only in the app's local database:
-
-- Test/practice results, progress and statistics
+- Test and practice results, progress, and statistics
 - Bookmarked questions
-- App settings (language, light/dark theme, daily reminder time)
+- App settings (theme, daily reminder time)
 
-### 1.2 Firebase Analytics & Crashlytics (Google)
+Daily practice reminders are local notifications scheduled entirely on your device. The driving school directory is a static list — the app does not collect or use your location.
 
-The app uses **Firebase Analytics** for basic usage statistics (e.g. app opens, session length, general device/OS info) and **Firebase Crashlytics** for crash reports (device state and error details at the time of a crash). This data is anonymous and is not linked to your identity.
+## 2. Data we receive
 
-### 1.3 AI explanations (Anthropic)
+The app uses **Google Firebase**:
 
-When you tap "Explain answer", the question text, your answer, and the correct answer are sent to **Anthropic**'s (Claude AI) servers to generate an explanation. This feature is optional and only triggered by your explicit action. Your name, email, or other identifying information is never sent to Anthropic.
+- **Firebase Analytics** — anonymous usage statistics (app opens, session length, general device/OS info)
+- **Firebase Crashlytics** — crash reports (device state and error details at the time of a crash)
 
-### 1.4 Notifications
+This data is anonymous and is not linked to your identity. See [Firebase Privacy & Security](https://firebase.google.com/support/privacy).
 
-You may enable a daily practice reminder. Notifications are scheduled entirely on-device (local notifications) — no data is sent to any server for this feature.
+## 3. What we don't do
 
-### 1.5 Driving school directory
+- We don't require an account and don't collect your name, email, or contacts
+- We don't collect your location
+- We don't sell your data or share it with advertisers
+- We don't show third-party ads
 
-The app includes a static list of driving schools. This feature does not collect or use your GPS/location data.
+## 4. Data deletion
 
-## 2. Why we collect this data
-
-| Purpose | Data |
-|---|---|
-| Core app functionality | Local progress, settings |
-| Stability & bug fixing | Crashlytics crash reports |
-| Usage analytics | Firebase Analytics anonymous data |
-| Optional AI explanation | Question/answer text (only when requested) |
-
-## 3. Third-party data processors
-
-We do not sell your data or share it with advertisers. Data is processed only by the following service providers, on our behalf:
-
-- **Google Firebase** (Analytics, Crashlytics) — [Firebase Privacy & Security](https://firebase.google.com/support/privacy)
-- **Anthropic** (Claude AI) — [Anthropic Privacy Policy](https://www.anthropic.com/legal/privacy), only for the "Explain answer" feature
-
-## 4. Data retention & deletion
-
-Local data (progress, settings) is deleted when you uninstall the app, or when you clear the app's data from Android/iOS system settings. Analytics and Crashlytics data is anonymous and automatically deleted per Google's standard retention periods. AI explanation requests are not stored by us — they are sent directly to Anthropic.
+Local data is deleted when you uninstall the app or clear its data in your device settings. Analytics and crash data is anonymous and automatically deleted per Google's standard retention periods.
 
 ## 5. Children's privacy
 
-The app is designed for people preparing for a driving license exam and does not knowingly collect personal data from children under 13.
+The app is intended for people preparing for a driving license exam and does not knowingly collect personal data from children under 13.
 
-## 6. Your rights
+## 6. Changes to this policy
 
-Because your core data lives on your device, you are always in control of it (you can delete it at any time by uninstalling the app). For questions about Analytics/Crashlytics data, contact us at the email below.
+This page may be updated as the app changes. The "Last updated" date above will reflect any meaningful changes.
 
-## 7. Changes to this policy
-
-This page may be updated as the app changes. The "Last updated" date at the top will reflect any meaningful changes.
-
-## 8. Contact us
+## 7. Contact us
 
 For any questions, email: **letaithink@gmail.com**

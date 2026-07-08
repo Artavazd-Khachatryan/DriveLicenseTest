@@ -41,7 +41,6 @@
     border-bottom: 2px solid var(--card);
     padding-bottom: 8px;
   }
-  h3 { font-size: 16px; margin-bottom: 4px; }
   ul { padding-left: 20px; }
   li { margin-bottom: 6px; }
   .card {
@@ -60,9 +59,6 @@
     padding: 2px 10px;
     margin-right: 6px;
   }
-  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
-  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--card); vertical-align: top; }
-  th { color: var(--muted); font-weight: 600; }
   a { color: var(--primary); }
   footer {
     text-align: center;
@@ -81,64 +77,48 @@
 
 <main>
 
-  <p><strong>Last updated:</strong> July 7, 2026</p>
+  <p><strong>Last updated:</strong> July 8, 2026</p>
 
   <div class="card">
     <span class="badge">Summary</span>
-    <p style="margin-top:10px;">The Driving Code app works mostly on your device, offline. No account is required. Your test results, progress, and settings are stored only on your device. Below is a detailed description of the limited data used for a few optional features.</p>
+    <p style="margin-top:10px;">Driving Code works offline and requires no account. Your progress and settings stay on your device. We only receive anonymous usage statistics and crash reports.</p>
   </div>
 
-  <h2>1. What data we collect</h2>
-
-  <h3>1.1 Data that stays on your device</h3>
-  <p>The following never leaves your device — it is stored only in the app's local database:</p>
+  <h2>1. Data that stays on your device</h2>
+  <p>The following is stored only in the app's local database and never leaves your device:</p>
   <ul>
-    <li>Test/practice results, progress and statistics</li>
+    <li>Test and practice results, progress, and statistics</li>
     <li>Bookmarked questions</li>
-    <li>App settings (language, light/dark theme, daily reminder time)</li>
+    <li>App settings (theme, daily reminder time)</li>
   </ul>
+  <p>Daily practice reminders are local notifications scheduled entirely on your device. The driving school directory is a static list — the app does not collect or use your location.</p>
 
-  <h3>1.2 Firebase Analytics &amp; Crashlytics (Google)</h3>
-  <p>The app uses <strong>Firebase Analytics</strong> for basic usage statistics (e.g. app opens, session length, general device/OS info) and <strong>Firebase Crashlytics</strong> for crash reports (device state and error details at the time of a crash). This data is anonymous and is not linked to your identity.</p>
-
-  <h3>1.3 AI explanations (Anthropic)</h3>
-  <p>When you tap "Explain answer", the question text, your answer, and the correct answer are sent to <strong>Anthropic</strong>'s (Claude AI) servers to generate an explanation. This feature is optional and only triggered by your explicit action. Your name, email, or other identifying information is never sent to Anthropic.</p>
-
-  <h3>1.4 Notifications</h3>
-  <p>You may enable a daily practice reminder. Notifications are scheduled entirely on-device (local notifications) — no data is sent to any server for this feature.</p>
-
-  <h3>1.5 Driving school directory</h3>
-  <p>The app includes a static list of driving schools. This feature does not collect or use your GPS/location data.</p>
-
-  <h2>2. Why we collect this data</h2>
-  <table>
-    <tr><th>Purpose</th><th>Data</th></tr>
-    <tr><td>Core app functionality</td><td>Local progress, settings</td></tr>
-    <tr><td>Stability &amp; bug fixing</td><td>Crashlytics crash reports</td></tr>
-    <tr><td>Usage analytics</td><td>Firebase Analytics anonymous data</td></tr>
-    <tr><td>Optional AI explanation</td><td>Question/answer text (only when requested)</td></tr>
-  </table>
-
-  <h2>3. Third-party data processors</h2>
-  <p>We do not sell your data or share it with advertisers. Data is processed only by the following service providers, on our behalf:</p>
+  <h2>2. Data we receive</h2>
+  <p>The app uses <strong>Google Firebase</strong>:</p>
   <ul>
-    <li><strong>Google Firebase</strong> (Analytics, Crashlytics) — <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy &amp; Security</a></li>
-    <li><strong>Anthropic</strong> (Claude AI) — <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a>, only for the "Explain answer" feature</li>
+    <li><strong>Firebase Analytics</strong> — anonymous usage statistics (app opens, session length, general device/OS info)</li>
+    <li><strong>Firebase Crashlytics</strong> — crash reports (device state and error details at the time of a crash)</li>
+  </ul>
+  <p>This data is anonymous and is not linked to your identity. See <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy &amp; Security</a>.</p>
+
+  <h2>3. What we don't do</h2>
+  <ul>
+    <li>We don't require an account and don't collect your name, email, or contacts</li>
+    <li>We don't collect your location</li>
+    <li>We don't sell your data or share it with advertisers</li>
+    <li>We don't show third-party ads</li>
   </ul>
 
-  <h2>4. Data retention &amp; deletion</h2>
-  <p>Local data (progress, settings) is deleted when you uninstall the app, or when you clear the app's data from Android/iOS system settings. Analytics and Crashlytics data is anonymous and automatically deleted per Google's standard retention periods. AI explanation requests are not stored by us — they are sent directly to Anthropic.</p>
+  <h2>4. Data deletion</h2>
+  <p>Local data is deleted when you uninstall the app or clear its data in your device settings. Analytics and crash data is anonymous and automatically deleted per Google's standard retention periods.</p>
 
   <h2>5. Children's privacy</h2>
-  <p>The app is designed for people preparing for a driving license exam and does not knowingly collect personal data from children under 13.</p>
+  <p>The app is intended for people preparing for a driving license exam and does not knowingly collect personal data from children under 13.</p>
 
-  <h2>6. Your rights</h2>
-  <p>Because your core data lives on your device, you are always in control of it (you can delete it at any time by uninstalling the app). For questions about Analytics/Crashlytics data, contact us at the email below.</p>
+  <h2>6. Changes to this policy</h2>
+  <p>This page may be updated as the app changes. The "Last updated" date above will reflect any meaningful changes.</p>
 
-  <h2>7. Changes to this policy</h2>
-  <p>This page may be updated as the app changes. The "Last updated" date at the top will reflect any meaningful changes.</p>
-
-  <h2>8. Contact us</h2>
+  <h2>7. Contact us</h2>
   <p>For any questions, email: <strong>letaithink@gmail.com</strong></p>
 
 </main>
