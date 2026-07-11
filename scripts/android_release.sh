@@ -31,6 +31,4 @@ echo ""
 ./gradlew :androidApp:bundleRelease :androidApp:assembleRelease --stacktrace
 
 echo ""
-echo "Outputs:"
-echo "- AAB: $PROJECT_ROOT/androidApp/build/outputs/bundle/release/"
-echo "- APK: $PROJECT_ROOT/androidApp/build/outputs/apk/release/"
+"$PROJECT_ROOT/scripts/version_release_artifacts.sh" "$VERSION"

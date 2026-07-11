@@ -47,7 +47,7 @@ jobs:
           cache: gradle
 
       - name: Grant execute permission for Gradle wrapper
-        run: chmod +x gradlew scripts/print_app_version.sh
+        run: chmod +x gradlew scripts/print_app_version.sh scripts/version_release_artifacts.sh
 
       - name: Decode keystore
         run: |
@@ -75,17 +75,20 @@ jobs:
       - name: Build signed release AAB + APK
         run: ./gradlew :androidApp:bundleRelease :androidApp:assembleRelease --stacktrace
 
+      - name: Copy release artifacts with version suffix
+        run: ./scripts/version_release_artifacts.sh "${{ steps.app_version.outputs.version_name }}"
+
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
         with:
           name: android-aab-${{ steps.app_version.outputs.version_name || 'unknown' }}
-          path: androidApp/build/outputs/bundle/release/*.aab
+          path: androidApp/build/outputs/bundle/release/androidApp-release-*.aab
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: android-apk-${{ steps.app_version.outputs.version_name || 'unknown' }}
-          path: androidApp/build/outputs/apk/release/*.apk
+          path: androidApp/build/outputs/apk/release/androidApp-release-*.apk
 
       # Optional manual upload to Google Play (recommended: use Internal testing first)
       - name: Upload to Google Play
@@ -94,5 +97,5 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: com.drive.license.test
-          releaseFiles: androidApp/build/outputs/bundle/release/*.aab
+          releaseFiles: androidApp/build/outputs/bundle/release/androidApp-release.aab
           track: ${{ inputs.track }}

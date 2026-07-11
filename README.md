@@ -105,9 +105,9 @@ CI_BUILD_NUMBER=3 ./scripts/print_app_version.sh   # → 1.0.0.3
 ./scripts/android_release.sh
 ```
 
-Outputs:
-- `androidApp/build/outputs/bundle/release/*.aab` (Play Store upload)
-- `androidApp/build/outputs/apk/release/*.apk`
+Outputs (Gradle default + versioned copies):
+- `androidApp/build/outputs/bundle/release/androidApp-release-<X.Y.Z.build>.aab` (Play Store upload)
+- `androidApp/build/outputs/apk/release/androidApp-release-<X.Y.Z.build>.apk`
 
 ### Build (and optionally upload) from GitHub
 
