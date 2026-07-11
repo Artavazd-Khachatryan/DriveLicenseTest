@@ -90,7 +90,12 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
             signingConfig = releaseSigningConfig ?: signingConfigs.getByName("debug")
             // Native libs (KMP/SQLDelight) — symbols for Play Console + Firebase Crashlytics.
             ndk {
