@@ -11,7 +11,6 @@ import com.drive.license.test.domain.repository.ThemePreferences
 import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.ui.MainScreen
 import com.drive.license.test.ui.theme.AppTheme
-import com.drive.license.test.crash.CrashReporting
 import com.drive.license.test.di.KoinHelper
 
 @Composable
@@ -36,8 +35,6 @@ fun App() {
     }
 
     LaunchedEffect(Unit) {
-        runCatching { CrashReporting.initialize() }
-            .onFailure { CrashReporting.recordException(it, "CrashReporting.initialize") }
         databaseInitializer.initializeDatabase()
     }
 

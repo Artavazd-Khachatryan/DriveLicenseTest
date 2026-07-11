@@ -6,13 +6,17 @@ import dev.gitlive.firebase.initialize
 
 object CrashReporting {
 
+    private var initialized = false
     private var enabled = false
 
     fun initialize() {
+        if (initialized) return
+        initialized = true
         if (!isFirebaseConfigured(FirebaseConfig.apiKey)) return
         Firebase.initialize()
         Firebase.crashlytics.setCrashlyticsCollectionEnabled(true)
         enabled = true
+        installPlatformCrashHandlers()
     }
 
     fun log(message: String) {

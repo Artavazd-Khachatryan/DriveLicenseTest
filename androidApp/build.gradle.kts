@@ -92,6 +92,10 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             signingConfig = releaseSigningConfig ?: signingConfigs.getByName("debug")
+            // Native libs (KMP/SQLDelight) — symbols for Play Console + Firebase Crashlytics.
+            ndk {
+                debugSymbolLevel = "SYMBOL_TABLE"
+            }
         }
     }
     compileOptions {
