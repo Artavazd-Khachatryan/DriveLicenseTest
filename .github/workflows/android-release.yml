@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       upload_to_play:
-        description: "Upload AAB to Google Play (internal track)"
+        description: "Upload AAB to Google Play"
         required: true
         default: "false"
         type: choice
@@ -18,8 +18,8 @@ on:
         type: choice
         options:
           - "internal"
-          - "alpha"
-          - "beta"
+          - "open"
+          - "closed"
           - "production"
 
 env:
@@ -96,7 +96,7 @@ jobs:
           name: android-mapping-${{ steps.app_version.outputs.version_name || 'unknown' }}
           path: androidApp/build/outputs/mapping/release/mapping.txt
 
-      # Optional manual upload to Google Play (recommended: use Internal testing first)
+      # Optional manual upload to Google Play (pick track below: internal, open, closed, production)
       - name: Upload to Google Play
         if: ${{ inputs.upload_to_play == 'true' }}
         uses: r0adkll/upload-google-play@v1
@@ -105,4 +105,4 @@ jobs:
           packageName: com.drive.license.test
           releaseFiles: androidApp/build/outputs/bundle/release/androidApp-release.aab
           mappingFile: androidApp/build/outputs/mapping/release/mapping.txt
-          track: ${{ inputs.track }}
+          track: ${{ inputs.track == 'closed' && 'alpha' || inputs.track == 'open' && 'beta' || inputs.track }}
