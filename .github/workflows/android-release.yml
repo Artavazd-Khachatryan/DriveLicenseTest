@@ -6,19 +6,19 @@ on:
       upload_to_play:
         description: "Upload AAB to Google Play"
         required: true
-        default: "false"
+        default: "true"
         type: choice
         options:
-          - "false"
           - "true"
+          - "false"
       track:
         description: "Google Play track"
         required: true
-        default: "internal"
+        default: "open"
         type: choice
         options:
-          - "internal"
           - "open"
+          - "internal"
           - "closed"
           - "production"
       release_status:
@@ -104,7 +104,7 @@ jobs:
           name: android-mapping-${{ steps.app_version.outputs.version_name || 'unknown' }}
           path: androidApp/build/outputs/mapping/release/mapping.txt
 
-      # Optional manual upload to Google Play (pick track below: internal, open, closed, production)
+      # Upload to Google Play (defaults: upload enabled, open testing track)
       - name: Verify Play upload prerequisites
         if: ${{ inputs.upload_to_play == 'true' }}
         run: |
@@ -125,13 +125,14 @@ jobs:
         if: ${{ inputs.upload_to_play == 'true' }}
         id: play_track
         run: |
-          case "${{ inputs.track }}" in
+          SELECTED="${{ inputs.track }}"
+          case "$SELECTED" in
             closed) TRACK="alpha" ;;
             open) TRACK="beta" ;;
-            *) TRACK="${{ inputs.track }}" ;;
+            *) TRACK="$SELECTED" ;;
           esac
           echo "name=$TRACK" >> "$GITHUB_OUTPUT"
-          echo "Uploading to Play track: $TRACK (selected: ${{ inputs.track }})"
+          echo "Uploading to Play track: $TRACK (selected: $SELECTED)"
 
       - name: Upload to Google Play
         if: ${{ inputs.upload_to_play == 'true' }}
