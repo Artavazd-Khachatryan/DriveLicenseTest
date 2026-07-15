@@ -107,8 +107,10 @@ jobs:
       # Upload to Google Play (defaults: upload enabled, open testing track)
       - name: Verify Play upload prerequisites
         if: ${{ inputs.upload_to_play == 'true' }}
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
         run: |
-          if [[ -z "${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}" ]]; then
+          if [[ -z "$PLAY_SERVICE_ACCOUNT_JSON" ]]; then
             echo "::error::GOOGLE_PLAY_SERVICE_ACCOUNT_JSON secret is missing or empty."
             exit 1
           fi
