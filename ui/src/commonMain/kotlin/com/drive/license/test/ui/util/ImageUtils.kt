@@ -6,8 +6,9 @@ import drivelicensetest.ui.generated.resources.allDrawableResources
 import org.jetbrains.compose.resources.DrawableResource
 
 fun resolveQuestionImage(question: Question): DrawableResource? {
-    return resolveDrawableResource("question${question.id}_image.png")
-        ?: question.imageUrl?.let { resolveDrawableResource(it) }
+    return question.imageUrl?.let { resolveDrawableResource(it) }
+        ?: resolveDrawableResource("question${question.id}_image.webp")
+        ?: resolveDrawableResource("question${question.id}_image.png")
 }
 
 fun resolveDrawableResource(resourceName: String?): DrawableResource? {

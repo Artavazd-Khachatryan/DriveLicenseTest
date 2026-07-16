@@ -25,6 +25,13 @@ OK_MIN_GAP = 8
 WARN_MIN_SCORE = 12
 
 
+def question_image_path(qid: int) -> Path:
+    webp = DRAWABLE_DIR / f"question{qid}_image.webp"
+    if webp.exists():
+        return webp
+    return DRAWABLE_DIR / f"question{qid}_image.png"
+
+
 def extract_pdf_images(pdf_path: Path, out_dir: Path) -> list[Path]:
     subprocess.run(
         ["pdfimages", "-png", str(pdf_path), str(out_dir / "img")],
@@ -104,11 +111,11 @@ def audit_book(book_id: int, matcher: OrbMatcher) -> dict:
             "issues": [],
         }
 
-    missing_asset = [qid for qid in qids if not (DRAWABLE_DIR / f"question{qid}_image.png").exists()]
+    missing_asset = [qid for qid in qids if not question_image_path(qid).exists()]
 
     with tempfile.TemporaryDirectory(prefix=f"audit_b{book_id}_") as tmp:
         pdf_files = extract_pdf_images(pdf_path, Path(tmp))
-        app_files = [DRAWABLE_DIR / f"question{qid}_image.png" for qid in qids]
+        app_files = [question_image_path(qid) for qid in qids]
 
         n, m = len(qids), len(pdf_files)
         scores = np.zeros((n, m), dtype=int)
