@@ -89,13 +89,6 @@ actual class DatabaseDriverFactory {
                 value TEXT NOT NULL
             )
         """.trimIndent(), 0)
-        // Question.printed_number was added after early builds shipped; DBs
-        // created before then lack it and ContentRefresh would fail inserting
-        // into it. The ALTER throws if the column already exists — ignore.
-        try {
-            driver.execute(null, "ALTER TABLE Question ADD COLUMN printed_number INTEGER NOT NULL DEFAULT 0", 0)
-        } catch (_: Throwable) {
-        }
     }
 }
 
