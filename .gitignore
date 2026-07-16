@@ -44,3 +44,6 @@ scripts/question_image_gallery.html
 scripts/image_gallery.html
 scripts/verify_report.json
 scripts/verify_text_report.md
+
+# WebP migration QA backups (regenerate with scripts/migrate_question_images_to_webp.py)
+scripts/review/webp-migration/originals/
