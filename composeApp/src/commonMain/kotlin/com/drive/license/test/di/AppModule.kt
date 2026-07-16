@@ -9,10 +9,10 @@ import com.drive.license.test.database.repository.UserProgressRepository
 import com.drive.license.test.domain.repository.AiAssistant
 import com.drive.license.test.domain.repository.QuestionRepository as DomainQuestionRepository
 import com.drive.license.test.domain.repository.UserProgressRepository as DomainUserProgressRepository
-import org.koin.core.context.GlobalContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
+import org.koin.mp.KoinPlatformTools
 
 val appModule = module {
 
@@ -33,7 +33,7 @@ val appModule = module {
 }
 
 fun initKoin(appDeclaration: KoinAppDeclaration = {}) {
-    if (GlobalContext.getOrNull() != null) return
+    if (KoinPlatformTools.defaultContext().getOrNull() != null) return
     startKoin {
         appDeclaration()
         modules(appModule, platformModule)
