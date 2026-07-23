@@ -210,11 +210,16 @@ fun MainScreen(
         }
     }
 
-    fun startTheoryExamSimulation() {
+    fun startTheoryExamSimulation(
+        navigation: () -> Unit = { navigate(Screen.Question) },
+    ) {
         coroutineScope.launch {
             val selected = pickFromPool(allQuestions, TestSession.EXAM_QUESTION_COUNT)
             if (selected.isNotEmpty()) {
-                launchTestSession(TestSession(questions = selected, isExamMode = true))
+                launchTestSession(
+                    session = TestSession(questions = selected, isExamMode = true),
+                    navigation = navigation,
+                )
             }
         }
     }
@@ -400,7 +405,11 @@ fun MainScreen(
         Screen.Question -> {
             val session = testSession
             if (session == null) {
-                LaunchedEffect(Unit) { navigateBack() }
+                LaunchedEffect(Unit) {
+                    if (backStack.last() is Screen.Question) {
+                        navigateBack()
+                    }
+                }
             } else {
             LaunchedEffect(session.currentQuestion.id) {
                 currentQuestionBookmarked = userProgressRepository.isBookmarked(session.currentQuestion.id)
@@ -505,7 +514,11 @@ fun MainScreen(
         Screen.ColorVisionTest -> {
             val session = colorVisionSession
             if (session == null) {
-                LaunchedEffect(Unit) { navigateBack() }
+                LaunchedEffect(Unit) {
+                    if (backStack.last() is Screen.ColorVisionTest) {
+                        navigateBack()
+                    }
+                }
             } else {
                 ColorVisionPlateScreen(
                     plate = session.currentPlate,
@@ -533,15 +546,30 @@ fun MainScreen(
         Screen.ColorVisionResults -> {
             val session = colorVisionSession
             if (session == null) {
-                LaunchedEffect(Unit) { navigateToHome() }
+                // Only bail out if we're still on this screen. During AnimatedContent
+                // fade-out the outgoing composition can see a cleared session after
+                // Continue starts the theory exam — don't send the user home then.
+                LaunchedEffect(Unit) {
+                    if (backStack.last() is Screen.ColorVisionResults) {
+                        navigateToHome()
+                    }
+                }
             } else {
                 ColorVisionResultsScreen(
                     session = session,
                     onBackToHome = { navigateToHome() },
                     onContinue = if (session.leadsToTheoryExam && session.passed) {
                         {
-                            colorVisionSession = null
-                            startTheoryExamSimulation()
+                            startTheoryExamSimulation(
+                                navigation = {
+                                    if (backStack.last() is Screen.ColorVisionResults) {
+                                        backStack[backStack.lastIndex] = Screen.Question
+                                    } else {
+                                        navigate(Screen.Question)
+                                    }
+                                    colorVisionSession = null
+                                },
+                            )
                         }
                     } else {
                         null

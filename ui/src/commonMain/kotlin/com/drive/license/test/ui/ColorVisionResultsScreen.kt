@@ -16,6 +16,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -72,6 +74,7 @@ fun ColorVisionResultsScreen(
     }
 
     val accentColor = if (passed) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error
+    val scrollState = rememberScrollState()
 
     AppScaffold(
         topBarTitle = stringResource(Res.string.color_vision_results_title),
@@ -80,136 +83,151 @@ fun ColorVisionResultsScreen(
             modifier = modifier
                 .fillMaxSize()
                 .then(innerPadding)
-                .padding(16.dp)
                 .widthIn(max = 720.dp)
                 .wrapContentWidth(Alignment.CenterHorizontally)
                 .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
-
-            AnimatedVisibility(
-                visible = heroVisible,
-                enter = fadeIn(tween(400)) + scaleIn(tween(400), initialScale = 0.85f),
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .verticalScroll(scrollState)
+                    .padding(horizontal = 16.dp)
+                    .padding(top = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
-                AppCard(
-                    modifier = Modifier.fillMaxWidth(),
-                    containerColor = if (passed) {
-                        MaterialTheme.colorScheme.primaryContainer
-                    } else {
-                        MaterialTheme.colorScheme.errorContainer
-                    },
+                AnimatedVisibility(
+                    visible = heroVisible,
+                    enter = fadeIn(tween(400)) + scaleIn(tween(400), initialScale = 0.85f),
                 ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(24.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(12.dp),
-                    ) {
-                        val onContainer = if (passed) {
-                            MaterialTheme.colorScheme.onPrimaryContainer
+                    AppCard(
+                        modifier = Modifier.fillMaxWidth(),
+                        containerColor = if (passed) {
+                            MaterialTheme.colorScheme.primaryContainer
                         } else {
-                            MaterialTheme.colorScheme.onErrorContainer
-                        }
-
-                        ProgressRing(
-                            progress = score,
-                            size = 120.dp,
-                            strokeWidth = 12.dp,
-                            progressColor = accentColor,
-                            trackColor = onContainer.copy(alpha = 0.12f),
+                            MaterialTheme.colorScheme.errorContainer
+                        },
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(24.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(12.dp),
                         ) {
-                            val animatedPercentage by animateIntAsState(
-                                targetValue = (score * 100).toInt(),
-                                animationSpec = tween(1200, easing = LinearEasing),
-                                label = "color_vision_score",
+                            val onContainer = if (passed) {
+                                MaterialTheme.colorScheme.onPrimaryContainer
+                            } else {
+                                MaterialTheme.colorScheme.onErrorContainer
+                            }
+
+                            ProgressRing(
+                                progress = score,
+                                size = 120.dp,
+                                strokeWidth = 12.dp,
+                                progressColor = accentColor,
+                                trackColor = onContainer.copy(alpha = 0.12f),
+                            ) {
+                                val animatedPercentage by animateIntAsState(
+                                    targetValue = (score * 100).toInt(),
+                                    animationSpec = tween(1200, easing = LinearEasing),
+                                    label = "color_vision_score",
+                                )
+                                Text(
+                                    text = "$animatedPercentage%",
+                                    style = MaterialTheme.typography.headlineMedium,
+                                    fontWeight = FontWeight.Bold,
+                                    color = accentColor,
+                                )
+                            }
+
+                            Text(
+                                text = stringResource(
+                                    if (passed) {
+                                        Res.string.color_vision_results_passed_title
+                                    } else {
+                                        Res.string.color_vision_results_failed_title
+                                    },
+                                ),
+                                style = MaterialTheme.typography.titleLarge,
+                                fontWeight = FontWeight.Bold,
+                                color = onContainer,
+                                textAlign = TextAlign.Center,
                             )
                             Text(
-                                text = "$animatedPercentage%",
-                                style = MaterialTheme.typography.headlineMedium,
-                                fontWeight = FontWeight.Bold,
-                                color = accentColor,
+                                text = stringResource(
+                                    when {
+                                        showContinue -> Res.string.color_vision_exam_prelude_passed_subtitle
+                                        passed -> Res.string.color_vision_results_passed_subtitle
+                                        session.leadsToTheoryExam -> Res.string.color_vision_exam_prelude_failed_subtitle
+                                        else -> Res.string.color_vision_results_failed_subtitle
+                                    },
+                                ),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = onContainer.copy(alpha = 0.85f),
+                                textAlign = TextAlign.Center,
                             )
                         }
-
-                        Text(
-                            text = stringResource(
-                                if (passed) {
-                                    Res.string.color_vision_results_passed_title
-                                } else {
-                                    Res.string.color_vision_results_failed_title
-                                },
-                            ),
-                            style = MaterialTheme.typography.titleLarge,
-                            fontWeight = FontWeight.Bold,
-                            color = onContainer,
-                            textAlign = TextAlign.Center,
-                        )
-                        Text(
-                            text = stringResource(
-                                when {
-                                    showContinue -> Res.string.color_vision_exam_prelude_passed_subtitle
-                                    passed -> Res.string.color_vision_results_passed_subtitle
-                                    session.leadsToTheoryExam -> Res.string.color_vision_exam_prelude_failed_subtitle
-                                    else -> Res.string.color_vision_results_failed_subtitle
-                                },
-                            ),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = onContainer.copy(alpha = 0.85f),
-                            textAlign = TextAlign.Center,
-                        )
                     }
                 }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    StatChip(
+                        label = stringResource(Res.string.home_stat_correct),
+                        value = session.correctAnswers.toString(),
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                        modifier = Modifier.weight(1f),
+                    )
+                    StatChip(
+                        label = stringResource(Res.string.home_stat_incorrect),
+                        value = incorrect.toString(),
+                        containerColor = MaterialTheme.colorScheme.errorContainer,
+                        contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                        modifier = Modifier.weight(1f),
+                    )
+                }
+
+                Text(
+                    text = stringResource(Res.string.color_vision_disclaimer_short),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(horizontal = 8.dp),
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
             }
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
-                StatChip(
-                    label = stringResource(Res.string.home_stat_correct),
-                    value = session.correctAnswers.toString(),
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                    modifier = Modifier.weight(1f),
-                )
-                StatChip(
-                    label = stringResource(Res.string.home_stat_incorrect),
-                    value = incorrect.toString(),
-                    containerColor = MaterialTheme.colorScheme.errorContainer,
-                    contentColor = MaterialTheme.colorScheme.onErrorContainer,
-                    modifier = Modifier.weight(1f),
-                )
-            }
-
-            Text(
-                text = stringResource(Res.string.color_vision_disclaimer_short),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(horizontal = 8.dp),
-            )
-
-            if (showContinue) {
-                AppButton(
-                    text = stringResource(Res.string.color_vision_continue_theory_button),
-                    onClick = onContinue,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-            } else {
-                AppButton(
-                    text = stringResource(Res.string.color_vision_retake),
-                    onClick = onRetake,
+                if (showContinue) {
+                    AppButton(
+                        text = stringResource(Res.string.color_vision_continue_theory_button),
+                        onClick = onContinue,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                } else {
+                    AppButton(
+                        text = stringResource(Res.string.color_vision_retake),
+                        onClick = onRetake,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+                AppOutlinedButton(
+                    text = stringResource(Res.string.results_back_home),
+                    onClick = onBackToHome,
                     modifier = Modifier.fillMaxWidth(),
                 )
             }
-            AppOutlinedButton(
-                text = stringResource(Res.string.results_back_home),
-                onClick = onBackToHome,
-                modifier = Modifier.fillMaxWidth(),
-            )
         }
     }
 }
