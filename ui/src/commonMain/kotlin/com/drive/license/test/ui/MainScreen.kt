@@ -365,6 +365,22 @@ fun MainScreen(
             sessionId = screen.sessionId,
             userProgressRepository = userProgressRepository,
             onBack = { navigateBack() },
+            onOpenQuestion = { answer, questionNumber ->
+                navigate(
+                    Screen.TestSessionQuestionReview(
+                        questionId = answer.questionId,
+                        selectedAnswer = answer.selectedAnswer,
+                        questionNumber = questionNumber,
+                    )
+                )
+            },
+        )
+        is Screen.TestSessionQuestionReview -> TestSessionQuestionReviewScreen(
+            questionId = screen.questionId,
+            selectedAnswer = screen.selectedAnswer,
+            questionNumber = screen.questionNumber,
+            questionRepository = questionRepository,
+            onBack = { navigateBack() },
         )
         Screen.Mistakes -> ReviewMistakesScreen(
             userProgressRepository = userProgressRepository,

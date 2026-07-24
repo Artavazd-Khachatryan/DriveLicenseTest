@@ -1,5 +1,6 @@
 package com.drive.license.test.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -27,6 +29,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.drive.license.test.domain.model.TestSessionAnswerReview
@@ -53,6 +58,7 @@ fun TestSessionReviewScreen(
     sessionId: String,
     userProgressRepository: UserProgressRepository,
     onBack: () -> Unit,
+    onOpenQuestion: (answer: TestSessionAnswerReview, questionNumber: Int) -> Unit = { _, _ -> },
     modifier: Modifier = Modifier,
 ) {
     var review by remember { mutableStateOf<TestSessionReview?>(null) }
@@ -124,7 +130,11 @@ fun TestSessionReviewScreen(
                             sessionReview.answers,
                             key = { index, answer -> "${answer.questionId}-$index" },
                         ) { index, answer ->
-                            SessionAnswerCard(index = index + 1, answer = answer)
+                            SessionAnswerCard(
+                                index = index + 1,
+                                answer = answer,
+                                onClick = { onOpenQuestion(answer, index + 1) },
+                            )
                         }
                     }
                 }
@@ -164,6 +174,7 @@ private fun SessionSummaryCard(review: TestSessionReview) {
 private fun SessionAnswerCard(
     index: Int,
     answer: TestSessionAnswerReview,
+    onClick: () -> Unit,
 ) {
     val badgeColor = if (answer.isCorrect) {
         MaterialTheme.colorScheme.secondaryContainer
@@ -177,23 +188,38 @@ private fun SessionAnswerCard(
     }
 
     AppCard(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .semantics { role = Role.Button },
         containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
     ) {
         Column(
             modifier = Modifier.padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            Surface(
-                shape = MaterialTheme.shapes.small,
-                color = badgeColor,
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                Text(
-                    text = stringResource(Res.string.test_review_question_label, index),
-                    style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.SemiBold,
-                    color = badgeContentColor,
-                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
+                Surface(
+                    shape = MaterialTheme.shapes.small,
+                    color = badgeColor,
+                ) {
+                    Text(
+                        text = stringResource(Res.string.test_review_question_label, index),
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.SemiBold,
+                        color = badgeContentColor,
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
+                    )
+                }
+                Icon(
+                    imageVector = Icons.Default.ChevronRight,
+                    contentDescription = null,
+                    modifier = Modifier.size(20.dp),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
             Text(

@@ -23,6 +23,12 @@ sealed class Screen {
 
     data class TestSessionReview(val sessionId: String) : Screen()
 
+    data class TestSessionQuestionReview(
+        val questionId: Int,
+        val selectedAnswer: String,
+        val questionNumber: Int,
+    ) : Screen()
+
     val isTopLevel: Boolean
         get() = this is Home || this is Stats || this is Practice
 }
