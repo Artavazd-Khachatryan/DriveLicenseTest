@@ -139,15 +139,23 @@ fun MainScreen(
         navigate(Screen.ColorVisionTest)
     }
 
+    /** Leave the active question session and return to the previous screen. */
+    fun exitQuestionSession() {
+        examRemainingSeconds = null
+        // Pop Question before clearing the session. Clearing first lets the
+        // AnimatedContent exit frame compose Question with session==null and the
+        // recovery LaunchedEffect can pop again (CategoryPicker → Practice/Home).
+        if (backStack.lastOrNull() is Screen.Question) {
+            backStack.removeAt(backStack.lastIndex)
+        }
+        testSession = null
+        coroutineScope.launch { refreshUserProgress() }
+    }
+
     /** Mirrors each screen's toolbar back: Android system back + iOS edge-swipe. */
     fun handleSystemBack() {
         when (currentScreen) {
-            Screen.Question -> {
-                testSession = null
-                examRemainingSeconds = null
-                coroutineScope.launch { refreshUserProgress() }
-                navigateBack()
-            }
+            Screen.Question -> exitQuestionSession()
             Screen.ColorVisionTest -> {
                 colorVisionSession = null
                 navigateBack()
@@ -405,9 +413,14 @@ fun MainScreen(
         Screen.Question -> {
             val session = testSession
             if (session == null) {
-                LaunchedEffect(Unit) {
-                    if (backStack.last() is Screen.Question) {
-                        navigateBack()
+                // Only recover when Question is still the active destination.
+                // During AnimatedContent fade-out, `screen` is still Question after
+                // exitQuestionSession() already popped — do not pop again.
+                if (currentScreen is Screen.Question) {
+                    LaunchedEffect(Unit) {
+                        if (backStack.lastOrNull() is Screen.Question) {
+                            backStack.removeAt(backStack.lastIndex)
+                        }
                     }
                 }
             } else {
