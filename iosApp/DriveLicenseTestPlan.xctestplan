@@ -18,13 +18,6 @@
         "identifier" : "61486AB52F61BEE10028E8B0",
         "name" : "DriveLicenseTestTests"
       }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:iosApp.xcodeproj",
-        "identifier" : "A7C1D0012F80000100000003",
-        "name" : "DriveLicenseTestUITests"
-      }
     }
   ],
   "version" : 1

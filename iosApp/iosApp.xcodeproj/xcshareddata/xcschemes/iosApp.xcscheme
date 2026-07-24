@@ -48,17 +48,6 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A7C1D0012F80000100000003"
-               BuildableName = "DriveLicenseTestUITests.xctest"
-               BlueprintName = "DriveLicenseTestUITests"
-               ReferencedContainer = "container:iosApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "61486AB52F61BEE10028E8B0"
                BuildableName = "DriveLicenseTestTests.xctest"
                BlueprintName = "DriveLicenseTestTests"
