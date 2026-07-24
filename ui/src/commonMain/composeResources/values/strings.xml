@@ -6977,7 +6977,7 @@
     <!-- Stats Screen -->
     <string name="stats_title">Առաջընթաց</string>
     <string name="stats_overall_performance">Կատարողականություն</string>
-    <string name="stats_total_attempts">Փորձերի քանակ</string>
+    <string name="stats_total_attempts">Քանակ</string>
     <string name="stats_correct">Ճիշտ</string>
     <string name="stats_incorrect">Սխալ</string>
     <string name="stats_by_category">Ըստ կատեգորիայի</string>
