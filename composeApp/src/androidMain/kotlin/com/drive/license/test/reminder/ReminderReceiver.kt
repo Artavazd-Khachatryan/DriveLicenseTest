@@ -58,8 +58,8 @@ class ReminderReceiver : BroadcastReceiver() {
     companion object {
         const val ACTION_REMINDER = "com.drive.license.test.action.PRACTICE_REMINDER"
         const val CHANNEL_ID = "practice_reminder"
-        private const val CHANNEL_NAME = "Պարապանքի հիշեցումներ"
-        private const val CHANNEL_DESC = "Օրական հիշեցում վարորդական հարցերի պարապանքի համար"
+        private const val CHANNEL_NAME = "Պարապմունքի հիշեցումներ"
+        private const val CHANNEL_DESC = "Օրական հիշեցում վարորդական հարցերի պարապմունքի համար"
         private const val NOTIFICATION_ID = 1001
     }
 }

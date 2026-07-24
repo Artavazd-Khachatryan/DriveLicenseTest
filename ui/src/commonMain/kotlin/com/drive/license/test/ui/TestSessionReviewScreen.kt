@@ -152,7 +152,6 @@ private fun SessionSummaryCard(review: TestSessionReview) {
                     Res.string.test_review_summary,
                     summary.correctAnswers,
                     summary.totalQuestions,
-                    (summary.score * 100).toInt(),
                 ),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold,

@@ -6917,11 +6917,11 @@
     <!-- Home Screen Strings -->
     <string name="home_ready_title">Պատրաստ ե՞ք հանձնել քննությունը</string>
     <string name="home_ready_subtitle">Պարապեք իրական հարցերով և հետևեք ձեր առաջընթացին</string>
-    <string name="home_motivation_first_visit">Սկսեք առաջին թեստից — յուրաքանչյուր հարցը ձեզ ավելի մոտեցնում է քննությանը։</string>
+    <string name="home_motivation_first_visit">Սկսեք առաջին թեստից — յուրաքանչյուր հարցը ձեզ ավելի է մոտեցնում քննությանը։</string>
     <string name="home_motivation_streak_strong">%1$d օր անընդմեջ — հիանալի հաստատակամություն։ Շարունակեք այս տեմպով։</string>
     <string name="home_motivation_streak_growing">%1$d օր անընդմեջ — լավ աշխատանք է։ Մի օր էլ մեկ քայլ։</string>
     <string name="home_motivation_high_accuracy">Ձեր ճշգրտությունը բարձր է — դուք լավ պատրաստված եք։</string>
-    <string name="home_motivation_mid_accuracy">Կայուն առաջընթաց եք ցույց տալիս — մի քանի պարապում և ավելի վստահ կլինեք։</string>
+    <string name="home_motivation_mid_accuracy">Կայուն առաջընթաց եք ցույց տալիս — մի քանի պարապմունք և ավելի վստահ կլինեք։</string>
     <string name="home_motivation_low_accuracy">Յուրաքանչյուր հարցը կարևոր է — շարունակեք, արդյունքը կգա։</string>
     <string name="home_progress_title">Ձեր առաջընթացը</string>
     <string name="home_learning_complete">Ավարտված</string>
@@ -6933,10 +6933,10 @@
     <string name="home_start_button">Սկսել</string>
     <string name="home_quick_actions">Արագ գործողություններ</string>
     <string name="home_review_mistakes_title">Վերանայել սխալները</string>
-    <string name="home_review_mistakes_subtitle">Հարցը կհանվի ցուցակից, երբ բավարաչափ ճիշտ պատասխանեք</string>
-    <string name="home_review_mistakes_count">%1$d հարց վերանայման համար</string>
-    <string name="home_review_mistakes_empty">Դեռ սխալ հարցեր չկան</string>
-    <string name="home_review_button">Դիտել ցանկը</string>
+    <string name="home_review_mistakes_subtitle">Հարցը կհանվի ցուցակից, երբ բավարար չափով ճիշտ պատասխանեք</string>
+    <string name="home_review_mistakes_count">%1$d հարց վերանայման համար։</string>
+    <string name="home_review_mistakes_empty">Դեռ սխալներ չկան</string>
+    <string name="home_review_button">Դիտել</string>
     <string name="home_ai_assistant_title">AI Օգնական</string>
     <string name="home_ai_assistant_subtitle">Արագ օգնություն</string>
     <string name="home_chat_button">Զրուցել</string>
@@ -6945,16 +6945,16 @@
     <string name="home_view_map_button">Բացել ցանկը</string>
     <string name="home_unseen_questions">%1$d հարց դեռ չեք փորձել (ընդամենը %2$d)</string>
     <string name="home_quick_start_cd">Սկսել թեստը</string>
-    <string name="home_practice_button">Պարապունք</string>
+    <string name="home_practice_button">Պարապմունք</string>
     <string name="home_stat_correct">Ճիշտ</string>
     <string name="home_stat_incorrect">Սխալ</string>
     <string name="home_stat_attempted">Փորձ</string>
     <string name="home_stat_learned">Սովորած</string>
     <string name="home_stat_remaining">Մնացել</string>
     <string name="home_stat_seen">Դիտված</string>
-    <string name="home_accuracy_ring_cd">Ընդհանուր ճշգրտություն՝ %1$d տոկոս։ Հպեք՝ վիճակագրությունը բացելու համար</string>
-    <string name="home_learning_ring_cd">Սովորած հարցեր՝ %1$d%% (%2$d/%3$d)։ Հպեք՝ վիճակագրությունը բացելու համար</string>
-    <string name="home_seen_ring_cd">Դիտված հարցեր՝ %1$d%% (%2$d/%3$d)։ Հպեք՝ վիճակագրությունը բացելու համար</string>
+    <string name="home_accuracy_ring_cd">Ընդհանուր ճշգրտություն՝ %1$d տոկոս։ Հպեք՝ առաջընթացը բացելու համար</string>
+    <string name="home_learning_ring_cd">Սովորած հարցեր՝ %1$d%% (%2$d/%3$d)։ Հպեք՝ առաջընթացը բացելու համար</string>
+    <string name="home_seen_ring_cd">Դիտված հարցեր՝ %1$d%% (%2$d/%3$d)։ Հպեք՝ առաջընթացը բացելու համար</string>
     <string name="home_question_count">%1$d հարց</string>
     <string name="home_test_length_label">Հարցերի քանակ</string>
     <string name="home_streak_days">%1$d օր</string>
@@ -6963,21 +6963,21 @@
     <!-- Bookmarks Screen -->
     <string name="bookmarks_title">Էջանշաններ</string>
     <string name="bookmarks_count">%1$d հարց պահված</string>
-    <string name="bookmarks_empty_title">Էջանշաններ դեռ չկան</string>
+    <string name="bookmarks_empty_title">Էջանշված հարցեր դեռ չկան</string>
     <string name="bookmarks_empty_subtitle">Հարցի էջում սեղմեք էջանշանի կոճակը՝ հարցը պահելու համար։</string>
     <string name="bookmarks_correct_answer">Ճիշտ պատասխան</string>
-    <string name="bookmarks_practice_button">Պարապել էջանշաններով</string>
+    <string name="bookmarks_practice_button">Պարապել էջանշվածներով</string>
     <string name="practice_bookmarks_title">Էջանշված հարցեր</string>
-    <string name="practice_bookmarks_desc">Վերանայեք պահված հարցերը։</string>
-    <string name="practice_bookmarks_button">Սկսել պարապունքը</string>
-    <string name="practice_bookmarks_empty">Նախ ավելացրեք հարցեր էջանշաններին։</string>
+    <string name="practice_bookmarks_desc">Պարապեք պահված հարցերով։</string>
+    <string name="practice_bookmarks_button">Պարապել</string>
+    <string name="practice_bookmarks_empty">Նախ ավելացրեք հարցերը էջանշաններում:</string>
     <string name="question_bookmark_add">Ավելացնել էջանշան</string>
     <string name="question_bookmark_remove">Հեռացնել էջանշաններից</string>
 
     <!-- Stats Screen -->
-    <string name="stats_title">Վիճակագրություն</string>
-    <string name="stats_overall_performance">Ընդհանուր կատարողականություն</string>
-    <string name="stats_total_attempts">Ընդամենը փորձ</string>
+    <string name="stats_title">Առաջընթաց</string>
+    <string name="stats_overall_performance">Կատարողականություն</string>
+    <string name="stats_total_attempts">Փորձերի քանակ</string>
     <string name="stats_correct">Ճիշտ</string>
     <string name="stats_incorrect">Սխալ</string>
     <string name="stats_by_category">Ըստ կատեգորիայի</string>
@@ -6989,7 +6989,7 @@
     <string name="stats_failed">Ձախողված</string>
     <string name="stats_tap_to_review">Սեղմեք՝ պատասխանները դիտելու համար</string>
     <string name="test_review_title">Թեստի վերանայում</string>
-    <string name="test_review_summary">%1$d/%2$d ճիշտ · %3$d%%</string>
+    <string name="test_review_summary">%1$d/%2$d ճիշտ</string>
     <string name="test_review_question_label">Հարց %1$d</string>
     <string name="test_review_your_answer">Ձեր պատասխանը</string>
     <string name="test_review_correct_answer">Ճիշտ պատասխանը</string>
@@ -6998,13 +6998,13 @@
 
     <!-- Review Mistakes Screen -->
     <string name="mistakes_title">Վերանայել սխալները</string>
-    <string name="mistakes_subtitle">Հարցը կհանվի ցուցակից, երբ բավարաչափ ճիշտ պատասխանեք</string>
+    <string name="mistakes_subtitle">Հարցը կհանվի ցուցակից, երբ բավարար չափով ճիշտ պատասխանեք</string>
     <string name="mistakes_count">%1$d հարց</string>
     <string name="mistakes_count_label">Վերանայելու</string>
-    <string name="mistakes_practice_button">Պարապել բոլոր հարցերով</string>
+    <string name="mistakes_practice_button">Պարապել</string>
     <string name="mistakes_question_label">Հարց %1$d</string>
     <string name="mistakes_empty_title">Սխալներ դեռ չկան!</string>
-    <string name="mistakes_empty_subtitle">Կատարեք թեստ։ Սխալ պատասխանած հարցերը կհայտնվեն այստեղ։ Հարցը կհանվի ցուցակից, երբ բավարաչափ ճիշտ պատասխանեք։</string>
+    <string name="mistakes_empty_subtitle">Կատարեք թեստ։ Սխալ պատասխանած հարցերը կհայտնվեն այստեղ։ Հարցը կհանվի ցուցակից, երբ բավարար չափով ճիշտ պատասխանեք։</string>
     <string name="mistakes_your_answer">Ձեր պատասխանը</string>
     <string name="mistakes_correct_answer">Ճիշտ պատասխան</string>
 
@@ -7028,7 +7028,7 @@
     <!-- Test Results Screen -->
     <string name="results_title">Թեստի արդյունքներ</string>
     <string name="results_passed_title">Թեստը հաղթահարված է</string>
-    <string name="results_failed_title">Շարունակեք պարապել!</string>
+    <string name="results_failed_title">Շարունակեք պատրաստվել!</string>
     <string name="results_passed_subtitle">Դուք հաջողությամբ անցաք թեստը!</string>
     <string name="results_failed_subtitle">Անցնելու համար անհրաժեշտ է 70%</string>
     <string name="results_motivation_perfect">Կատարյալ արդյունք — դուք պատրաստ եք։</string>
@@ -7040,17 +7040,17 @@
     <string name="results_correct_answers">Ճիշտ պատասխաններ</string>
     <string name="results_incorrect_answers">Սխալ պատասխաններ</string>
     <string name="results_questions_answered">Պատասխանված հարցեր</string>
-    <string name="results_retake">Կրկնել թեստը</string>
+    <string name="results_retake">Սկսել նորից</string>
     <string name="results_back_home">Վերադառնալ գլխավոր</string>
 
     <!-- Practice Mode Screen -->
-    <string name="practice_title">Պարապանք</string>
+    <string name="practice_title">Պարապմունք</string>
     <string name="practice_by_category_title">Ըստ կատեգորիայի</string>
-    <string name="practice_by_category_desc">Կենտրոնացեք կոնկրետ թեմայի վրա՝ ճանապարհային նշաններ, առաջնություն, մանևրներ և այլն։</string>
-    <string name="practice_by_category_button">Ընտրել կատեգորիա</string>
+    <string name="practice_by_category_desc">Պատրաստվեք մեկ թեմայով՝ նշաններ, առաջնություն, մանևրներ և այլն։</string>
+    <string name="practice_by_category_button">Ընտրել</string>
     <string name="practice_exam_title">Քննության սիմուլյացիա</string>
-    <string name="practice_exam_desc">3 գունային թեստ + 20 տեսական հարց · 30 րոպե · առավելագույնը 2 սխալ։</string>
-    <string name="practice_exam_button">Սկսել քննությունը</string>
+    <string name="practice_exam_desc">3 գունային + 20 տեսական հարց · 30 րոպե · առավելագույնը 2 սխալ։</string>
+    <string name="practice_exam_button">Սկսել</string>
 
     <!-- Category Picker Screen -->
     <string name="category_picker_title">Ընտրել կատեգորիա</string>
@@ -7059,8 +7059,8 @@
     <!-- Common -->
     <string name="back">Հետ</string>
     <string name="nav_home">Գլխավոր</string>
-    <string name="nav_practice">Պարապունք</string>
-    <string name="nav_stats">Վիճակագրություն</string>
+    <string name="nav_practice">Պարապմունք</string>
+    <string name="nav_stats">Առաջընթաց</string>
 
     <!-- Map Screen -->
     <string name="map_title">Ավտոդպրոցներ</string>
@@ -7082,7 +7082,7 @@
 
     <!-- Settings Screen -->
     <string name="settings_title">Կարգավորումներ</string>
-    <string name="settings_reminder_title">Օրական պարապունքի հիշեցում</string>
+    <string name="settings_reminder_title">Օրական պարապմունքի հիշեցում</string>
     <string name="settings_reminder_subtitle">Ստացեք հիշեցում ամեն օր պարապելու համար</string>
     <string name="settings_reminder_time_label">Հիշեցման ժամ</string>
     <string name="settings_reminder_change_time">Փոխել ժամը</string>
@@ -7143,7 +7143,7 @@
     <string name="color_vision_results_passed_subtitle">Բոլոր պատասխանները ճիշտ են — կարող եք անցնել տեսական քննությանը։</string>
     <string name="color_vision_results_failed_title">Արդյունքը բավարար չէ</string>
     <string name="color_vision_results_failed_subtitle">Քննության ժամանակ մեկ սխալ պատասխանն էլ բավական է՝ շարունակելը արգելելու համար։</string>
-    <string name="color_vision_retake">Կրկնել թեստը</string>
+    <string name="color_vision_retake">Սկսել նորից</string>
     <string name="practice_color_vision_title">Գունային տեսողություն</string>
     <string name="practice_color_vision_desc">Պաշտոնական թիթեղներ՝ քննությունից առաջ (3 պատահական հարց)</string>
     <string name="practice_color_vision_button">Բացել թեստը</string>

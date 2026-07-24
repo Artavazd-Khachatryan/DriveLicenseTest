@@ -17,8 +17,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ChevronRight
-import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -32,6 +30,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.Alignment
@@ -273,6 +272,13 @@ private fun TestHistoryRow(
         "${dt.date.dayOfMonth}.${dt.date.monthNumber.toString().padStart(2, '0')}.${dt.date.year}"
     }
 
+    val resultLabel = if (session.passed) {
+        stringResource(Res.string.stats_passed)
+    } else {
+        stringResource(Res.string.stats_failed)
+    }
+    val scorePercent = (session.score * 100).toInt()
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -295,16 +301,13 @@ private fun TestHistoryRow(
             horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Text(
-                text = "${(session.score * 100).toInt()}%",
+                text = "$scorePercent%",
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.SemiBold,
-                color = if (session.passed) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error
-            )
-            Icon(
-                imageVector = if (session.passed) Icons.Default.CheckCircle else Icons.Default.Cancel,
-                contentDescription = if (session.passed) stringResource(Res.string.stats_passed) else stringResource(Res.string.stats_failed),
-                modifier = Modifier.size(18.dp),
-                tint = if (session.passed) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error
+                color = if (session.passed) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error,
+                modifier = Modifier.semantics {
+                    contentDescription = "$scorePercent%, $resultLabel"
+                },
             )
             Icon(
                 imageVector = Icons.Default.ChevronRight,
