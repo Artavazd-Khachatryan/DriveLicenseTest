@@ -320,7 +320,7 @@ def main() -> int:
                 "png_kb": png_bytes // 1024,
                 "webp_kb": webp_bytes // 1024,
                 "png_rel": f"originals/{png_path.name}",
-                "webp_rel": f"../../ui/src/commonMain/composeResources/drawable/{webp_name}",
+                "webp_rel": f"../../../ui/src/commonMain/composeResources/drawable/{webp_name}",
             }
         )
 
