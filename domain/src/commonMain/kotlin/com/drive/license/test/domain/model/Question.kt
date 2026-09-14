@@ -11,7 +11,8 @@ data class Question(
     val correctAnswer: String,
     val imageUrl: String? = null,
     val book: Book,
-    val categories: List<QuestionCategory> = emptyList()
+    val categories: List<QuestionCategory> = emptyList(),
+    val examGroup: QuestionExamGroup = QuestionExamGroup.GENERAL,
 )
 
 enum class Book {
