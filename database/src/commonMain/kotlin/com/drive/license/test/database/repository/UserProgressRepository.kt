@@ -1,6 +1,7 @@
 package com.drive.license.test.database.repository
 
 import com.drive.license.test.database.Database
+import com.drive.license.test.domain.ExamPaperController
 import com.drive.license.test.domain.model.BookmarkedQuestion
 import com.drive.license.test.domain.model.CategoryStats
 import com.drive.license.test.domain.model.MistakeQuestion
@@ -14,11 +15,16 @@ import com.drive.license.test.domain.util.QuestionTextNormalizer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class UserProgressRepository(private val database: Database) : DomainUserProgressRepository {
+class UserProgressRepository(
+    private val database: Database,
+    private val examPaperController: ExamPaperController,
+) : DomainUserProgressRepository {
+
+    private fun examPaperName(): String = examPaperController.paper.value.name
 
     override suspend fun getUserStatistics(): UserStatistics {
         return withContext(Dispatchers.Default) {
-            val stats = database.getUserStatistics()
+            val stats = database.getUserStatistics(examPaperName())
             val streak = database.getStreak()
             UserStatistics(
                 totalQuestions = stats.totalQuestions,
@@ -35,7 +41,7 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
 
     override suspend fun getCategoryStats(): List<CategoryStats> {
         return withContext(Dispatchers.Default) {
-            database.getCategoryAccuracy().map { row ->
+            database.getCategoryAccuracy(examPaperName()).map { row ->
                 CategoryStats(
                     categoryName = row.category_name,
                     totalQuestions = row.total_questions.toInt(),
@@ -86,7 +92,7 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
 
     override suspend fun getMistakeQuestions(): List<MistakeQuestion> {
         return withContext(Dispatchers.Default) {
-            database.getIncorrectQuestions().map { row ->
+            database.getIncorrectQuestions(examPaperName()).map { row ->
                 MistakeQuestion(
                     id = row.id.toInt(),
                     question = QuestionTextNormalizer.normalize(row.question),
@@ -155,7 +161,7 @@ class UserProgressRepository(private val database: Database) : DomainUserProgres
 
     override suspend fun getBookmarkedQuestions(): List<BookmarkedQuestion> {
         return withContext(Dispatchers.Default) {
-            database.getBookmarkedQuestions().map { row ->
+            database.getBookmarkedQuestions(examPaperName()).map { row ->
                 BookmarkedQuestion(
                     id = row.id.toInt(),
                     question = row.question,

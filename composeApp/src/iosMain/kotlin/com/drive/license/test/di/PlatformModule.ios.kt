@@ -1,8 +1,10 @@
 package com.drive.license.test.di
 
+import com.drive.license.test.domain.repository.ExamGroupPreferences
 import com.drive.license.test.domain.repository.ReminderPreferences
 import com.drive.license.test.domain.repository.ReminderScheduler
 import com.drive.license.test.domain.repository.ThemePreferences
+import com.drive.license.test.exampaper.IosExamGroupPreferences
 import com.drive.license.test.reminder.IosReminderPreferences
 import com.drive.license.test.reminder.IosReminderScheduler
 import com.drive.license.test.theme.IosThemePreferences
@@ -12,4 +14,5 @@ actual val platformModule = module {
     single<ReminderPreferences> { IosReminderPreferences() }
     single<ReminderScheduler> { IosReminderScheduler() }
     single<ThemePreferences> { IosThemePreferences() }
+    single<ExamGroupPreferences> { IosExamGroupPreferences() }
 }

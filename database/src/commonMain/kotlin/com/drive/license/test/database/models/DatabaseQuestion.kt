@@ -9,5 +9,6 @@ class DatabaseQuestion(
     val book: Book,
     val categories: List<QuestionCategory> = emptyList(),
     // Number printed in the current book edition; equals id unless an edition renumbers.
-    val printedNumber: Long = id
+    val printedNumber: Long = id,
+    val examGroup: String = "GENERAL",
 ) 

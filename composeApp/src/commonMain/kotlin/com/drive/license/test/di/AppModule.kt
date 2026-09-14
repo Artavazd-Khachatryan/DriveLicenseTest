@@ -6,6 +6,7 @@ import com.drive.license.test.database.Database
 import com.drive.license.test.database.DatabaseDriverFactory
 import com.drive.license.test.database.repository.QuestionRepository
 import com.drive.license.test.database.repository.UserProgressRepository
+import com.drive.license.test.domain.ExamPaperController
 import com.drive.license.test.domain.repository.AiAssistant
 import com.drive.license.test.domain.repository.QuestionRepository as DomainQuestionRepository
 import com.drive.license.test.domain.repository.UserProgressRepository as DomainUserProgressRepository
@@ -18,13 +19,14 @@ val appModule = module {
 
     single { DatabaseDriverFactory() }
     single { Database(get()) }
+    single { ExamPaperController(get()) }
 
     single<DomainQuestionRepository> {
-        QuestionRepository(get())
+        QuestionRepository(get(), get())
     }
 
     single<DomainUserProgressRepository> {
-        UserProgressRepository(get())
+        UserProgressRepository(get(), get())
     }
 
     single<AiAssistant> {

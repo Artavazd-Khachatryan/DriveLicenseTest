@@ -88,7 +88,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             trueAnswer = dbQuestion.true_answer,
             book = bookEnum,
             categories = categories,
-            printedNumber = dbQuestion.printed_number
+            printedNumber = dbQuestion.printed_number,
+            examGroup = dbQuestion.exam_group,
         )
     }
     
@@ -109,7 +110,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             trueAnswer = dbQuestion.true_answer,
             book = bookEnum,
             categories = categories,
-            printedNumber = dbQuestion.printed_number
+            printedNumber = dbQuestion.printed_number,
+            examGroup = dbQuestion.exam_group,
         )
     }
     
@@ -129,7 +131,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             trueAnswer = dbQuestion.true_answer,
             book = bookEnum,
             categories = categories,
-            printedNumber = dbQuestion.printed_number
+            printedNumber = dbQuestion.printed_number,
+            examGroup = dbQuestion.exam_group,
         )
     }
     
@@ -149,7 +152,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             trueAnswer = dbQuestion.true_answer,
             book = bookEnum,
             categories = categories,
-            printedNumber = dbQuestion.printed_number
+            printedNumber = dbQuestion.printed_number,
+            examGroup = dbQuestion.exam_group,
         )
     }
     
@@ -177,7 +181,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
             answers = answersJson,
             true_answer = databaseQuestion.trueAnswer,
             book_id = bookId,
-            printed_number = databaseQuestion.printedNumber
+            printed_number = databaseQuestion.printedNumber,
+            exam_group = databaseQuestion.examGroup,
         )
 
         val questionId = databaseQuestion.id
@@ -201,9 +206,10 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
 
     // --- User Progress Operations ---
 
-    suspend fun getUserStatistics(): UserStatistics = withContext(Dispatchers.IO) {
+    suspend fun getUserStatistics(examPaper: String): UserStatistics = withContext(Dispatchers.IO) {
         val row = userProgressQueries.getUserStatistics(
             QuestionLearningRules.NET_CORRECT_MARGIN_FOR_LEARNED.toLong(),
+            examPaper,
         ).executeAsOne()
         UserStatistics(
             totalQuestions = row.total_questions.toInt(),
@@ -271,8 +277,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
         }
     }
 
-    suspend fun getCategoryAccuracy() = withContext(Dispatchers.IO) {
-        userProgressQueries.getCategoryAccuracy().executeAsList()
+    suspend fun getCategoryAccuracy(examPaper: String) = withContext(Dispatchers.IO) {
+        userProgressQueries.getCategoryAccuracy(examPaper).executeAsList()
     }
 
     suspend fun getCompletedTestSessions() = withContext(Dispatchers.IO) {
@@ -287,8 +293,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
         userProgressQueries.getSessionQuestionReviews(sessionId).executeAsList()
     }
 
-    suspend fun getIncorrectQuestions() = withContext(Dispatchers.IO) {
-        userProgressQueries.getIncorrectQuestions().executeAsList()
+    suspend fun getIncorrectQuestions(examPaper: String) = withContext(Dispatchers.IO) {
+        userProgressQueries.getIncorrectQuestions(examPaper).executeAsList()
     }
 
     suspend fun getQuestionProgress(questionId: Long) = withContext(Dispatchers.IO) {
@@ -336,12 +342,12 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
 
     // --- Bookmark Operations ---
 
-    suspend fun getBookmarkedQuestions() = withContext(Dispatchers.IO) {
-        bookmarkQueries.getBookmarkedQuestions().executeAsList()
+    suspend fun getBookmarkedQuestions(examPaper: String) = withContext(Dispatchers.IO) {
+        bookmarkQueries.getBookmarkedQuestions(examPaper).executeAsList()
     }
 
-    suspend fun getBookmarkedQuestionsFull(): List<DatabaseQuestion> = withContext(Dispatchers.IO) {
-        bookmarkQueries.getBookmarkedQuestionsFull().executeAsList().map { row ->
+    suspend fun getBookmarkedQuestionsFull(examPaper: String): List<DatabaseQuestion> = withContext(Dispatchers.IO) {
+        bookmarkQueries.getBookmarkedQuestionsFull(examPaper).executeAsList().map { row ->
             val bookEnum = Book.valueOf(row.book_name)
             val categories = junctionQueries.selectCategoriesForQuestion(row.id)
                 .executeAsList()
@@ -354,7 +360,8 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
                 trueAnswer = row.true_answer,
                 book = bookEnum,
                 categories = categories,
-                printedNumber = row.printed_number
+                printedNumber = row.printed_number,
+                examGroup = row.exam_group,
             )
         }
     }

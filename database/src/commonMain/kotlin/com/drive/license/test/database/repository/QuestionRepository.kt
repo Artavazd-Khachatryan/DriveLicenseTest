@@ -5,22 +5,33 @@ import com.drive.license.test.database.models.DatabaseQuestion
 import com.drive.license.test.database.models.QuestionCategory as DatabaseQuestionCategory
 import com.drive.license.test.database.models.Book as DatabaseBook
 import com.drive.license.test.domain.repository.QuestionRepository as DomainQuestionRepository
+import com.drive.license.test.domain.ExamPaperController
 import com.drive.license.test.domain.model.Book
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.domain.model.QuestionCategory
+import com.drive.license.test.domain.model.QuestionExamGroup
 import com.drive.license.test.domain.util.QuestionTextNormalizer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 
-class QuestionRepository(private val database: Database) : DomainQuestionRepository {
+class QuestionRepository(
+    private val database: Database,
+    private val examPaperController: ExamPaperController,
+) : DomainQuestionRepository {
 
     override fun getAllQuestions(): Flow<List<Question>> {
-        return database.getAllQuestions().map { databaseQuestions ->
-            databaseQuestions.map { it.toDomainModel() }
+        return combine(
+            database.getAllQuestions(),
+            examPaperController.paper,
+        ) { databaseQuestions, paper ->
+            databaseQuestions
+                .filter { QuestionExamGroup.fromDb(it.examGroup).isVisibleFor(paper) }
+                .map { it.toDomainModel() }
         }.flowOn(Dispatchers.Default)
     }
     
@@ -37,26 +48,20 @@ class QuestionRepository(private val database: Database) : DomainQuestionReposit
     }
 
     override fun getQuestionsByCategory(category: QuestionCategory): Flow<List<Question>> {
-        return database.getAllQuestions().map { questions ->
-            questions.filter { question ->
-                question.categories.any { it.name == category.name }
-            }.map { it.toDomainModel() }
-        }.flowOn(Dispatchers.Default)
+        return getAllQuestions().map { questions ->
+            questions.filter { question -> question.categories.any { it == category } }
+        }
     }
-    
+
     override fun getQuestionsByBook(book: Book): Flow<List<Question>> {
-        return database.getAllQuestions().map { questions ->
-            questions.filter { question ->
-                question.book.name == book.name
-            }.map { it.toDomainModel() }
-        }.flowOn(Dispatchers.Default)
+        return getAllQuestions().map { questions ->
+            questions.filter { it.book == book }
+        }
     }
     
     override suspend fun getRandomQuestions(count: Int): List<Question> {
         return withContext(Dispatchers.Default) {
-            database.getAllQuestions().map { questions ->
-                questions.shuffled().take(count).map { it.toDomainModel() }
-            }.first()
+            getAllQuestions().first().shuffled().take(count)
         }
     }
     
@@ -68,7 +73,7 @@ class QuestionRepository(private val database: Database) : DomainQuestionReposit
 
     override suspend fun getBookmarkedQuestionsForPractice(): List<Question> {
         return withContext(Dispatchers.Default) {
-            database.getBookmarkedQuestionsFull().map { it.toDomainModel() }
+            database.getBookmarkedQuestionsFull(examPaperController.paper.value.name).map { it.toDomainModel() }
         }
     }
     
@@ -92,7 +97,8 @@ class QuestionRepository(private val database: Database) : DomainQuestionReposit
             correctAnswer = QuestionTextNormalizer.normalize(this.trueAnswer),
             imageUrl = this.image,
             book = this.book.toDomainModel(),
-            categories = this.categories.map { it.toDomainModel() }
+            categories = this.categories.map { it.toDomainModel() },
+            examGroup = QuestionExamGroup.fromDb(this.examGroup),
         )
     }
     
