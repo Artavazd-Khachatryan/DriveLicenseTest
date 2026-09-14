@@ -7082,6 +7082,12 @@
 
     <!-- Settings Screen -->
     <string name="settings_title">Կարգավորումներ</string>
+    <string name="exam_paper_title">Ո՞ր կարգին եք պատրաստվում</string>
+    <string name="exam_paper_option_abc">A, B, C</string>
+    <string name="exam_paper_option_dt">D, T</string>
+    <string name="exam_paper_hint">Կարող եք փոխել Կարգավորումներում։</string>
+    <string name="exam_paper_continue">Շարունակել</string>
+    <string name="settings_exam_paper_title">Ընտրեք կարգը</string>
     <string name="settings_reminder_title">Օրական պարապմունքի հիշեցում</string>
     <string name="settings_reminder_subtitle">Ստացեք հիշեցում ամեն օր պարապելու համար</string>
     <string name="settings_reminder_time_label">Հիշեցման ժամ</string>

@@ -3,6 +3,7 @@ package com.drive.license.test
 import androidx.compose.runtime.*
 import androidx.compose.runtime.rememberCoroutineScope
 import com.drive.license.test.database.DatabaseInitializer
+import com.drive.license.test.domain.ExamPaperController
 import com.drive.license.test.domain.repository.AiAssistant
 import com.drive.license.test.domain.repository.QuestionRepository
 import com.drive.license.test.domain.repository.ReminderPreferences
@@ -23,6 +24,7 @@ fun App() {
     val reminderPreferences: ReminderPreferences = KoinHelper.get()
     val reminderScheduler: ReminderScheduler = KoinHelper.get()
     val themePreferences: ThemePreferences = KoinHelper.get()
+    val examPaperController: ExamPaperController = KoinHelper.get()
 
     var isDarkTheme by remember { mutableStateOf(themePreferences.loadDarkTheme()) }
     fun setDarkTheme(dark: Boolean) {
@@ -50,6 +52,7 @@ fun App() {
             coroutineScope = coroutineScope,
             isDarkTheme = isDarkTheme,
             onDarkThemeChange = ::setDarkTheme,
+            examPaperController = examPaperController,
             appVersionName = PlatformConfig.appVersionName,
         )
     }

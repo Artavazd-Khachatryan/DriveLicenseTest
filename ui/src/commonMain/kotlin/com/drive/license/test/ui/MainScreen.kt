@@ -24,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.drive.license.test.domain.QuestionSelector
+import com.drive.license.test.domain.ExamPaperController
 import com.drive.license.test.domain.model.ColorVisionPlate
 import com.drive.license.test.domain.model.ColorVisionTestRules
 import com.drive.license.test.domain.model.LearningCenter
@@ -66,6 +67,7 @@ fun MainScreen(
     coroutineScope: CoroutineScope,
     isDarkTheme: Boolean,
     onDarkThemeChange: (Boolean) -> Unit,
+    examPaperController: ExamPaperController,
     appVersionName: String = "",
     modifier: Modifier = Modifier
 ) {
@@ -81,6 +83,8 @@ fun MainScreen(
     var examRemainingSeconds by remember { mutableStateOf<Int?>(null) }
     var currentQuestionBookmarked by remember { mutableStateOf(false) }
     val allQuestions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
+    val examPaperPromptPending by examPaperController.promptPending.collectAsState()
+    val selectedExamPaper by examPaperController.paper.collectAsState()
 
     suspend fun refreshUserProgress() {
         userStatistics = userProgressRepository.getUserStatistics()
@@ -265,10 +269,6 @@ fun MainScreen(
         currentScreen is Screen.Practice ||
         currentScreen is Screen.Stats
 
-    LaunchedEffect(Unit) {
-        refreshUserProgress()
-    }
-
     LaunchedEffect(currentScreen) {
         if (currentScreen is Screen.Home || currentScreen is Screen.Practice) {
             refreshUserProgress()
@@ -308,6 +308,11 @@ fun MainScreen(
                 }
             }
         }
+    }
+
+    // Paper change re-scopes every progress query; also covers the initial load.
+    LaunchedEffect(selectedExamPaper) {
+        refreshUserProgress()
     }
 
     Scaffold(
@@ -637,6 +642,8 @@ fun MainScreen(
             userProgressRepository = userProgressRepository,
             isDarkTheme = isDarkTheme,
             onDarkThemeChange = onDarkThemeChange,
+            examPaper = selectedExamPaper,
+            onExamPaperChange = examPaperController::setPaper,
             appVersionName = appVersionName,
             onBack = { handleSystemBack() },
             onStatisticsReset = {
@@ -702,4 +709,11 @@ fun MainScreen(
     }
     } // AnimatedContent
     } // Scaffold
+
+    if (examPaperPromptPending) {
+        ExamPaperPromptDialog(
+            initialPaper = selectedExamPaper,
+            onConfirm = examPaperController::completePrompt,
+        )
+    }
 }

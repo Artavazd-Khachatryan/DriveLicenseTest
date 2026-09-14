@@ -38,6 +38,8 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.drive.license.test.domain.model.ExamPaper
+import com.drive.license.test.ui.components.ExamPaperRadioRows
 import com.drive.license.test.domain.model.ReminderSettings
 import com.drive.license.test.domain.repository.ReminderPreferences
 import com.drive.license.test.domain.repository.ReminderScheduler
@@ -55,6 +57,7 @@ import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.back
 import drivelicensetest.ui.generated.resources.settings_dialog_cancel
 import drivelicensetest.ui.generated.resources.settings_dialog_ok
+import drivelicensetest.ui.generated.resources.settings_exam_paper_title
 import drivelicensetest.ui.generated.resources.settings_reminder_change_time
 import drivelicensetest.ui.generated.resources.settings_reminder_permission_denied
 import drivelicensetest.ui.generated.resources.settings_reminder_pick_time_hint
@@ -82,6 +85,8 @@ fun SettingsScreen(
     userProgressRepository: UserProgressRepository,
     isDarkTheme: Boolean,
     onDarkThemeChange: (Boolean) -> Unit,
+    examPaper: ExamPaper,
+    onExamPaperChange: (ExamPaper) -> Unit,
     appVersionName: String = "",
     onBack: () -> Unit,
     onStatisticsReset: () -> Unit = {},
@@ -150,6 +155,22 @@ fun SettingsScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 if (!loaded) return@Column
+
+                AppCard(modifier = Modifier.fillMaxWidth()) {
+                    Column(modifier = Modifier.padding(20.dp)) {
+                        Text(
+                            text = stringResource(Res.string.settings_exam_paper_title),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                        Spacer(modifier = Modifier.height(12.dp))
+                        ExamPaperRadioRows(
+                            selected = examPaper,
+                            onSelect = onExamPaperChange,
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                    }
+                }
 
                 AppCard(modifier = Modifier.fillMaxWidth()) {
                     Column(modifier = Modifier.padding(20.dp)) {
