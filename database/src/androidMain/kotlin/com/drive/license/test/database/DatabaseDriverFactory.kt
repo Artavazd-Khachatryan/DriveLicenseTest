@@ -13,7 +13,7 @@ actual class DatabaseDriverFactory {
         copyPrepopulatedDatabaseIfNeeded()
 
         val driver = AndroidSqliteDriver(LicenseDatabase.Schema, appContext, POPULATED_DB_NAME)
-        ensureMissingTables(driver)
+        SchemaEnsure.apply(driver)
         refreshContentIfNeeded(driver)
         return driver
     }
@@ -31,33 +31,6 @@ actual class DatabaseDriverFactory {
         } finally {
             staged.delete()
         }
-    }
-
-    // The bundled license_test_questions.db was generated before UserStreak and
-    // BookmarkedQuestion were added to the schema, and SQLDelight only runs
-    // Schema.create() on a brand-new DB. Create the missing tables idempotently.
-    private fun ensureMissingTables(driver: SqlDriver) {
-        driver.execute(null, """
-            CREATE TABLE IF NOT EXISTS UserStreak (
-                id INTEGER NOT NULL PRIMARY KEY DEFAULT 1,
-                current_streak INTEGER NOT NULL DEFAULT 0,
-                longest_streak INTEGER NOT NULL DEFAULT 0,
-                last_active_day INTEGER
-            )
-        """.trimIndent(), 0)
-        driver.execute(null, """
-            CREATE TABLE IF NOT EXISTS BookmarkedQuestion (
-                question_id INTEGER NOT NULL PRIMARY KEY,
-                bookmarked_at INTEGER NOT NULL,
-                FOREIGN KEY (question_id) REFERENCES Question(id)
-            )
-        """.trimIndent(), 0)
-        driver.execute(null, """
-            CREATE TABLE IF NOT EXISTS Metadata (
-                key TEXT NOT NULL PRIMARY KEY,
-                value TEXT NOT NULL
-            )
-        """.trimIndent(), 0)
     }
 
     // Copy the bundled DB only on first launch. Never overwrite an existing

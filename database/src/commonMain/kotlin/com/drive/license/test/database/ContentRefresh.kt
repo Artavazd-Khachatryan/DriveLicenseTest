@@ -17,7 +17,7 @@ object ContentRefresh {
 
     /** Version of the question content bundled with this build. Must match the
      * `content_version` stamped into license_test_questions.db. */
-    const val CONTENT_VERSION = 2L
+    const val CONTENT_VERSION = 4L
 
     private const val VERSION_KEY = "content_version"
 
@@ -55,8 +55,8 @@ object ContentRefresh {
         "DELETE FROM QuestionCategory",
         "INSERT INTO Book (id, name) SELECT id, name FROM bundled.Book",
         "INSERT INTO QuestionCategory (id, name) SELECT id, name FROM bundled.QuestionCategory",
-        "INSERT INTO Question (id, question, image, answers, true_answer, book_id, printed_number) " +
-            "SELECT id, question, image, answers, true_answer, book_id, printed_number FROM bundled.Question",
+        "INSERT INTO Question (id, question, image, answers, true_answer, book_id, printed_number, exam_group) " +
+            "SELECT id, question, image, answers, true_answer, book_id, printed_number, exam_group FROM bundled.Question",
         "INSERT INTO QuestionCategoryJunction (question_id, category_id) " +
             "SELECT question_id, category_id FROM bundled.QuestionCategoryJunction",
         // Progress on questions that no longer exist must not linger: it would

@@ -150,9 +150,30 @@ def parse_book(pdf_path: Path):
     return result
 
 
+VALID_EXAM_GROUPS = {"GENERAL", "ABC", "DT"}
+
+
+def check_exam_groups(con):
+    """exam_group must be one of the values the app understands; the Kotlin
+    side (QuestionExamGroup.fromDb) fails hard on anything else."""
+    bad = con.execute(
+        "SELECT id, exam_group FROM Question WHERE exam_group NOT IN ('GENERAL','ABC','DT')"
+    ).fetchall()
+    if bad:
+        sys.exit(
+            "FAIL: invalid exam_group values: "
+            + ", ".join(f"q{r[0]}={r[1]!r}" for r in bad)
+        )
+    counts = dict(
+        con.execute("SELECT exam_group, COUNT(*) FROM Question GROUP BY exam_group").fetchall()
+    )
+    print(f"exam_group OK: {counts}")
+
+
 def load_db():
     con = sqlite3.connect(str(DB_PATH))
     con.row_factory = sqlite3.Row
+    check_exam_groups(con)
     rows = con.execute(
         "SELECT id, book_id, question, answers, true_answer, image FROM Question ORDER BY id"
     ).fetchall()

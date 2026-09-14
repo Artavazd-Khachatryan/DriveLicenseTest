@@ -121,7 +121,8 @@ SELECT
     COALESCE(SUM(CASE WHEN COALESCE(up.is_learned, 0) = 1 OR (COALESCE(up.times_correct, 0) - COALESCE(up.times_incorrect, 0)) > ? THEN 1 ELSE 0 END), 0) learned_questions,
     COALESCE(SUM(CASE WHEN COALESCE(up.times_answered, 0) > 0 THEN 1 ELSE 0 END), 0) seen_questions
 FROM Question q
-LEFT JOIN UserQuestionProgress up ON q.id = up.question_id;
+LEFT JOIN UserQuestionProgress up ON q.id = up.question_id
+WHERE q.exam_group = 'GENERAL' OR q.exam_group = ?;
 
 -- Insert test session
 insertTestSession:
@@ -195,6 +196,7 @@ FROM QuestionCategory qc
 JOIN QuestionCategoryJunction jct ON jct.category_id = qc.id
 JOIN Question q ON q.id = jct.question_id
 LEFT JOIN UserQuestionProgress up ON up.question_id = q.id
+WHERE q.exam_group = 'GENERAL' OR q.exam_group = ?
 GROUP BY qc.id, qc.name
 ORDER BY qc.name;
 
@@ -210,6 +212,7 @@ SELECT q.id, q.question, q.true_answer,
 FROM Question q
 JOIN UserQuestionProgress up ON up.question_id = q.id
 WHERE up.times_incorrect > 0 AND up.times_correct < 3
+  AND (q.exam_group = 'GENERAL' OR q.exam_group = ?)
 ORDER BY up.times_correct ASC, up.times_incorrect DESC;
 
 -- Get streak

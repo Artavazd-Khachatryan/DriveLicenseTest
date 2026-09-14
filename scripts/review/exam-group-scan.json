@@ -1,0 +1,18 @@
+{
+  "source": "database/src/commonMain/resources/license_test_questions.db",
+  "total": 1094,
+  "rule": "Keyword scan of question+answers. Scene vehicles stay GENERAL. Exclusive = you operate that vehicle or the law is only that կարգ.",
+  "proposed": {
+    "ABC": [149, 150, 159, 160, 186, 187, 241, 246, 860, 865, 870, 911, 955],
+    "DT": [153, 169, 182, 196, 197, 263, 264, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 760, 761, 767, 769, 844, 846, 847, 873, 878, 879, 880, 881, 882, 883, 886, 888, 890, 891, 893, 895, 897, 986],
+    "GENERAL_DECIDED": [157, 194, 223, 226, 229, 235, 237],
+    "UNSURE": []
+  },
+  "notes": {
+    "157": "B+C+D trailer mass — decided GENERAL",
+    "182": "Bus definition — decided DT",
+    "194": "B+C+D+C1+D1 trailer mass — decided GENERAL",
+    "223_237": "223, 226, 229, 235, 237 decided GENERAL",
+    "767_769": "Bus stop/park — decided DT"
+  }
+}

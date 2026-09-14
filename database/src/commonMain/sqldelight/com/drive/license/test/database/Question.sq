@@ -10,6 +10,8 @@ CREATE TABLE Question (
     -- id is permanent identity; printed_number is for finding the question
     -- in the physical book.
     printed_number INTEGER NOT NULL,
+    -- GENERAL = both papers; ABC or DT = exclusive to that paper.
+    exam_group TEXT NOT NULL DEFAULT 'GENERAL',
     FOREIGN KEY (book_id) REFERENCES Book(id)
 );
 
@@ -30,12 +32,12 @@ WHERE q.book_id = ?;
 -- id is the printed question number in the source book and must stay stable
 -- across content updates: user progress and bookmarks are keyed on it.
 insertQuestion:
-INSERT INTO Question (id, question, image, answers, true_answer, book_id, printed_number)
-VALUES (?, ?, ?, ?, ?, ?, ?);
+INSERT INTO Question (id, question, image, answers, true_answer, book_id, printed_number, exam_group)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 updateQuestion:
 UPDATE Question
-SET question = ?, image = ?, answers = ?, true_answer = ?, book_id = ?, printed_number = ?
+SET question = ?, image = ?, answers = ?, true_answer = ?, book_id = ?, printed_number = ?, exam_group = ?
 WHERE id = ?;
 
 selectByPrintedNumber:

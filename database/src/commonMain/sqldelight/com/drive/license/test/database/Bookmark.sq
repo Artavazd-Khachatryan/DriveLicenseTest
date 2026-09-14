@@ -8,13 +8,15 @@ getBookmarkedQuestions:
 SELECT q.id, q.question, q.true_answer
 FROM Question q
 JOIN BookmarkedQuestion bq ON bq.question_id = q.id
+WHERE q.exam_group = 'GENERAL' OR q.exam_group = ?
 ORDER BY bq.bookmarked_at DESC;
 
 getBookmarkedQuestionsFull:
-SELECT q.id, q.question, q.answers, q.image, q.true_answer, q.printed_number, b.name AS book_name
+SELECT q.id, q.question, q.answers, q.image, q.true_answer, q.printed_number, q.exam_group, b.name AS book_name
 FROM Question q
 JOIN Book b ON q.book_id = b.id
 JOIN BookmarkedQuestion bq ON bq.question_id = q.id
+WHERE q.exam_group = 'GENERAL' OR q.exam_group = ?
 ORDER BY bq.bookmarked_at DESC;
 
 isBookmarked:
