@@ -40,6 +40,7 @@ import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.Home
 import com.drive.license.test.domain.repository.UserProgressRepository
 import com.drive.license.test.ui.components.AppBottomBar
+import com.drive.license.test.ui.crossing.CrossingDemoScreen
 import com.drive.license.test.ui.components.BottomNavItem
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.nav_home
@@ -356,6 +357,7 @@ fun MainScreen(
                 { openColorVisionIntro() }
             } else null,
             onOpenStatsFromRing = { navigate(Screen.Stats) },
+            onOpenCrossingDemo = { navigate(Screen.CrossingDemo) },
             onOpenSettings = { navigate(Screen.Settings) },
             modifier = modifier
         )
@@ -636,6 +638,9 @@ fun MainScreen(
                 )
             }
         }
+        Screen.CrossingDemo -> CrossingDemoScreen(
+            onBack = { navigateBack() },
+        )
         Screen.Settings -> SettingsScreen(
             reminderPreferences = reminderPreferences,
             reminderScheduler = reminderScheduler,

@@ -23,6 +23,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DirectionsCar
 import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.School
@@ -62,6 +63,9 @@ import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.home_color_vision_button
 import drivelicensetest.ui.generated.resources.home_color_vision_subtitle
 import drivelicensetest.ui.generated.resources.home_color_vision_title
+import drivelicensetest.ui.generated.resources.home_crossing_button
+import drivelicensetest.ui.generated.resources.home_crossing_subtitle
+import drivelicensetest.ui.generated.resources.home_crossing_title
 import drivelicensetest.ui.generated.resources.home_learning_centers_subtitle
 import drivelicensetest.ui.generated.resources.home_learning_centers_title
 import drivelicensetest.ui.generated.resources.home_question_count
@@ -87,6 +91,7 @@ fun HomeScreen(
     onOpenStatsFromRing: () -> Unit,
     onOpenDrivingSchools: () -> Unit,
     onOpenColorVision: (() -> Unit)? = null,
+    onOpenCrossingDemo: () -> Unit,
     onOpenSettings: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -163,6 +168,23 @@ fun HomeScreen(
                             onAccent = MaterialTheme.colorScheme.onTertiary,
                         )
                     }
+                }
+
+                AnimatedVisibility(
+                    visible = contentVisible,
+                    enter = fadeIn(tween(300, delayMillis = 180)) +
+                        slideInVertically(tween(300, delayMillis = 180)) { it / 4 }
+                ) {
+                    FeatureCard(
+                        modifier = Modifier.fillMaxWidth(),
+                        icon = Icons.Filled.DirectionsCar,
+                        title = stringResource(Res.string.home_crossing_title),
+                        description = stringResource(Res.string.home_crossing_subtitle),
+                        actionText = stringResource(Res.string.home_crossing_button),
+                        onAction = onOpenCrossingDemo,
+                        accent = MaterialTheme.colorScheme.primary,
+                        onAccent = MaterialTheme.colorScheme.onPrimary,
+                    )
                 }
 
                 if (AppFeatures.drivingSchoolsEnabled) {

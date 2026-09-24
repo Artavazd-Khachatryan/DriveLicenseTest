@@ -14,6 +14,7 @@ sealed class Screen {
     object ColorVisionTest : Screen()
     object ColorVisionResults : Screen()
     object Settings : Screen()
+    object CrossingDemo : Screen()
     data class AiExplanation(
         val questionText: String,
         val userAnswer: String,

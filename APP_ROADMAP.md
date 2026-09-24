@@ -266,6 +266,35 @@ The bundled DB (`database/src/commonMain/resources/license_test_questions.db`) w
 
 ---
 
+## Phase 11: Crossing order
+
+Practice who goes first at an uncontrolled junction, then watch the cars take that path. Separate from the question bank: no database, scenarios live in code (`ui/.../crossing/`).
+
+**Rules** (RA traffic rules). Each scenario stores `crossingOrder`, and that list is what the animation plays. `resolveCrossing` checks the stored answer still matches the rules. Opening the screen shuffles the list and walks it in that random order.
+
+| Rule | What it does |
+|------|----------------|
+| §28 | Blue beacon **and** siren: everyone else gives way |
+| §32 | Orange beacon (road works): warning only, no priority |
+| §96 | Secondary road gives way to the main road, any direction |
+| §98 | Equal roads: give way to the vehicle on the right |
+| §99 | Left turn gives way to oncoming traffic going straight or turning right |
+
+Two vehicles with the same beacon rank use the road rules between them. A situation the rules do not settle to one next vehicle is rejected.
+
+**Scenarios.** `CrossingGenerator` builds more than 100 junctions: up to 40 with two cars, up to 40 with three, and up to 40 with four. Each stored `crossingOrder` is the unique order from the rules above. Explanations are filled from four Armenian reason sentences. About 18,000 layouts have a single legal order; the deck keeps a spread of arms, turns, beacons, and main-road directions, and skips ties.
+
+- [x] **11.1 Stored answers** — each scenario keeps `crossingOrder`; `CrossingRules.kt` checks it against the table above. The screen shuffles the list on open
+- [x] **11.2 Stage** — Top-down junction; straight, left, and right paths; car kinds (car, ambulance, police, road works, emergency) and beacon color
+- [x] **11.3 Play-through** — Tap an order, then **Ցույց տալ անցումը** animates the legal order and explains it
+- [x] **11.4 Armenian UI** — Home card **Խաչմերուկի հերթ** and the screen strings
+- [x] **11.5 Tests** — `CrossingRulesTest` locks each scenario’s order, plus orange-beacon, two special vehicles, and main-road cases
+- **11.6 Release** — Merge `poc/crossing-order`; confirm Android and iOS, both themes; keep new scenarios on the same rule engine
+
+**Out of scope for 11.x:** Traffic lights, a regulator, roundabouts, trams, persisting attempts.
+
+---
+
 ## Status Log
 
 
@@ -288,3 +317,4 @@ The bundled DB (`database/src/commonMain/resources/license_test_questions.db`) w
 | 2026-06-11 | Phase 9 added — Subscriptions plan (RevenueCat KMP, Plus/Pro tiers, feature matrix, implementation steps) |
 | 2026-06-23 | Phase 6.9 added — Review autoscroll & list scrolling across scrollable screens (audit table + fix checklist) |
 | 2026-07-03 | Phase 10 added and 10.1–10.4 done — content-update migration: stable ids, `content_version` stamp, `ContentRefresh` startup swap keeping user progress, image reference verification; removed unsafe size-based DB overwrite |
+| 2026-09-24 | Phase 11 added — crossing order: rule engine (§28, §32, §96, §98, §99), five Armenian scenarios, animated paths; 11.6 release merge still open |
