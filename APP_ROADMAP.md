@@ -295,6 +295,18 @@ Two vehicles with the same beacon rank use the road rules between them. A situat
 
 ---
 
+## Phase 12: Traffic sign catalog
+
+A reference of official Armenian road signs, separate from the exam questions. Pictures are cut from the government decision N 955-Ն figure sheets on [arlis.am/hy/acts/73067](https://www.arlis.am/hy/acts/73067). Names and meanings come from Form N 1 of the same decision.
+
+- [x] **12.1 Content table** — `TrafficSign` (`code`, `category`, `name`, `description`, `image`). Swapped with the other content tables on startup. `content_version` 5.
+- [x] **12.2 Sign images** — one `sign_{code}.webp` per sign, cropped from figures 2–9. 271 signs. Where one code is printed as several examples (lane arrows, direction boards), those examples are one image.
+- [x] **12.3 Browse screen** — Home card opens the catalog, filterable by group, each row showing the sign, its code, name, and official meaning.
+- [x] **12.4 Special and information signs** — figures 6 and 7. Multi-panel examples of one code are stored as a single grouped image.
+- **12.5 Still out** — vehicle recognition signs (figure 12) and road markings (Form N 2).
+
+---
+
 ## Status Log
 
 
@@ -318,3 +330,4 @@ Two vehicles with the same beacon rank use the road rules between them. A situat
 | 2026-06-23 | Phase 6.9 added — Review autoscroll & list scrolling across scrollable screens (audit table + fix checklist) |
 | 2026-07-03 | Phase 10 added and 10.1–10.4 done — content-update migration: stable ids, `content_version` stamp, `ContentRefresh` startup swap keeping user progress, image reference verification; removed unsafe size-based DB overwrite |
 | 2026-09-24 | Phase 11 added — crossing order: rule engine (§28, §32, §96, §98, §99), five Armenian scenarios, animated paths; 11.6 release merge still open |
+| 2026-09-24 | Phase 12.1–12.4 — traffic sign catalog from the official rules, 271 signs; multi-panel examples kept as one image |

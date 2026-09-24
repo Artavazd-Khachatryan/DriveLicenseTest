@@ -10,6 +10,7 @@ import com.drive.license.test.domain.model.Book
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.domain.model.QuestionCategory
 import com.drive.license.test.domain.model.QuestionExamGroup
+import com.drive.license.test.domain.model.TrafficSign
 import com.drive.license.test.domain.util.QuestionTextNormalizer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -23,6 +24,8 @@ class QuestionRepository(
     private val database: Database,
     private val examPaperController: ExamPaperController,
 ) : DomainQuestionRepository {
+
+    override fun getTrafficSigns(): Flow<List<TrafficSign>> = database.getTrafficSigns()
 
     override fun getAllQuestions(): Flow<List<Question>> {
         return combine(

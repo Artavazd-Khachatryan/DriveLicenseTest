@@ -84,6 +84,7 @@ fun MainScreen(
     var examRemainingSeconds by remember { mutableStateOf<Int?>(null) }
     var currentQuestionBookmarked by remember { mutableStateOf(false) }
     val allQuestions by questionRepository.getAllQuestions().collectAsState(initial = emptyList())
+    val trafficSigns by questionRepository.getTrafficSigns().collectAsState(initial = emptyList())
     val examPaperPromptPending by examPaperController.promptPending.collectAsState()
     val selectedExamPaper by examPaperController.paper.collectAsState()
 
@@ -356,10 +357,17 @@ fun MainScreen(
             onOpenColorVision = if (AppFeatures.colorVisionTestEnabled && colorVisionPlates.isNotEmpty()) {
                 { openColorVisionIntro() }
             } else null,
+            onOpenTrafficSigns = if (trafficSigns.isNotEmpty()) {
+                { navigate(Screen.TrafficSigns) }
+            } else null,
             onOpenStatsFromRing = { navigate(Screen.Stats) },
             onOpenCrossingDemo = { navigate(Screen.CrossingDemo) },
             onOpenSettings = { navigate(Screen.Settings) },
             modifier = modifier
+        )
+        Screen.TrafficSigns -> TrafficSignsScreen(
+            signs = trafficSigns,
+            onBack = { navigateBack() },
         )
         Screen.Stats -> StatsScreen(
             userProgressRepository = userProgressRepository,

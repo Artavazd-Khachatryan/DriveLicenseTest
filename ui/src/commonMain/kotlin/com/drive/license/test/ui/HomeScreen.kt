@@ -26,6 +26,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DirectionsCar
 import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.Palette
+import androidx.compose.material.icons.filled.Signpost
 import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
@@ -66,6 +67,9 @@ import drivelicensetest.ui.generated.resources.home_color_vision_title
 import drivelicensetest.ui.generated.resources.home_crossing_button
 import drivelicensetest.ui.generated.resources.home_crossing_subtitle
 import drivelicensetest.ui.generated.resources.home_crossing_title
+import drivelicensetest.ui.generated.resources.signs_open
+import drivelicensetest.ui.generated.resources.signs_subtitle
+import drivelicensetest.ui.generated.resources.signs_title
 import drivelicensetest.ui.generated.resources.home_learning_centers_subtitle
 import drivelicensetest.ui.generated.resources.home_learning_centers_title
 import drivelicensetest.ui.generated.resources.home_question_count
@@ -92,6 +96,7 @@ fun HomeScreen(
     onOpenDrivingSchools: () -> Unit,
     onOpenColorVision: (() -> Unit)? = null,
     onOpenCrossingDemo: () -> Unit,
+    onOpenTrafficSigns: (() -> Unit)? = null,
     onOpenSettings: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -149,6 +154,25 @@ fun HomeScreen(
                         onSelectLength = { selectedTestLength = it },
                         onStartTest = onStartTest,
                     )
+                }
+
+                if (onOpenTrafficSigns != null) {
+                    AnimatedVisibility(
+                        visible = contentVisible,
+                        enter = fadeIn(tween(300, delayMillis = 120)) +
+                            slideInVertically(tween(300, delayMillis = 120)) { it / 4 }
+                    ) {
+                        FeatureCard(
+                            modifier = Modifier.fillMaxWidth(),
+                            icon = Icons.Filled.Signpost,
+                            title = stringResource(Res.string.signs_title),
+                            description = stringResource(Res.string.signs_subtitle),
+                            actionText = stringResource(Res.string.signs_open),
+                            onAction = onOpenTrafficSigns,
+                            accent = MaterialTheme.colorScheme.primary,
+                            onAccent = MaterialTheme.colorScheme.onPrimary,
+                        )
+                    }
                 }
 
                 if (onOpenColorVision != null) {

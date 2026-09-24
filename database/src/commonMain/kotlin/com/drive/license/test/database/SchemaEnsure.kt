@@ -38,6 +38,16 @@ object SchemaEnsure {
             )
         """.trimIndent(), 0)
         addExamGroupColumnIfMissing(driver)
+        driver.execute(null, """
+            CREATE TABLE IF NOT EXISTS TrafficSign (
+                id INTEGER NOT NULL PRIMARY KEY,
+                code TEXT NOT NULL UNIQUE,
+                category TEXT NOT NULL,
+                name TEXT NOT NULL,
+                description TEXT NOT NULL,
+                image TEXT
+            )
+        """.trimIndent(), 0)
     }
 
     private fun addExamGroupColumnIfMissing(driver: SqlDriver) {
