@@ -3,6 +3,7 @@ package com.drive.license.test.database
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
 import com.drive.license.test.domain.model.QuestionLearningRules
+import com.drive.license.test.domain.model.TrafficSign
 import com.drive.license.test.database.models.Book
 import com.drive.license.test.database.models.DatabaseQuestion
 import com.drive.license.test.database.models.QuestionCategory
@@ -31,6 +32,25 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
     private val junctionQueries = database.questionCategoryJunctionQueries
     private val userProgressQueries = database.userProgressQueries
     private val bookmarkQueries = database.bookmarkQueries
+    private val trafficSignQueries = database.trafficSignQueries
+
+    fun getTrafficSigns(): Flow<List<TrafficSign>> {
+        return trafficSignQueries.selectAll()
+            .asFlow()
+            .mapToList(Dispatchers.IO)
+            .map { rows ->
+                rows.map { row ->
+                    TrafficSign(
+                        id = row.id,
+                        code = row.code,
+                        category = row.category,
+                        name = row.name,
+                        description = row.description,
+                        imageName = row.image,
+                    )
+                }
+            }
+    }
     
     fun getAllQuestions(): Flow<List<DatabaseQuestion>> {
         return questionQueries.selectAll()

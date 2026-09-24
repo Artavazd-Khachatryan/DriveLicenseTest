@@ -3,6 +3,7 @@ package com.drive.license.test.domain.repository
 import com.drive.license.test.domain.model.Book
 import com.drive.license.test.domain.model.Question
 import com.drive.license.test.domain.model.QuestionCategory
+import com.drive.license.test.domain.model.TrafficSign
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -11,6 +12,7 @@ import kotlinx.coroutines.flow.Flow
  */
 interface QuestionRepository {
     fun getAllQuestions(): Flow<List<Question>>
+    fun getTrafficSigns(): Flow<List<TrafficSign>>
     fun getQuestionsByCategory(category: QuestionCategory): Flow<List<Question>>
     fun getQuestionsByBook(book: Book): Flow<List<Question>>
     suspend fun getRandomQuestions(count: Int): List<Question>

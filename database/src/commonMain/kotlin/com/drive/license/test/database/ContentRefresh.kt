@@ -17,7 +17,7 @@ object ContentRefresh {
 
     /** Version of the question content bundled with this build. Must match the
      * `content_version` stamped into license_test_questions.db. */
-    const val CONTENT_VERSION = 4L
+    const val CONTENT_VERSION = 5L
 
     private const val VERSION_KEY = "content_version"
 
@@ -59,6 +59,9 @@ object ContentRefresh {
             "SELECT id, question, image, answers, true_answer, book_id, printed_number, exam_group FROM bundled.Question",
         "INSERT INTO QuestionCategoryJunction (question_id, category_id) " +
             "SELECT question_id, category_id FROM bundled.QuestionCategoryJunction",
+        "DELETE FROM TrafficSign",
+        "INSERT INTO TrafficSign (id, code, category, name, description, image) " +
+            "SELECT id, code, category, name, description, image FROM bundled.TrafficSign",
         // Progress on questions that no longer exist must not linger: it would
         // skew statistics joins and break bookmark/review lookups.
         "DELETE FROM UserQuestionProgress WHERE question_id NOT IN (SELECT id FROM Question)",

@@ -1,0 +1,11 @@
+CREATE TABLE TrafficSign (
+    id INTEGER NOT NULL PRIMARY KEY,
+    code TEXT NOT NULL UNIQUE,
+    category TEXT NOT NULL,
+    name TEXT NOT NULL,
+    description TEXT NOT NULL,
+    image TEXT
+);
+
+selectAll:
+SELECT * FROM TrafficSign ORDER BY id;

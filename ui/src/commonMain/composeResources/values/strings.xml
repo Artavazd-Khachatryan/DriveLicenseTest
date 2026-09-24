@@ -7156,5 +7156,18 @@
     <string name="home_color_vision_title">Գունային տեսողություն</string>
     <string name="home_color_vision_subtitle">Պաշտոնական թիթեղներ՝ քննության սիմուլյացիայի համար</string>
     <string name="home_color_vision_button">Սկսել</string>
+    <string name="signs_title">Ճանապարհային նշաններ</string>
+    <string name="signs_subtitle">Պաշտոնական նշաններ և դրանց նշանակությունը</string>
+    <string name="signs_open">Դիտել</string>
+    <string name="signs_close">Փակել</string>
+    <string name="signs_filter_all">Բոլորը</string>
+    <string name="signs_category_warning">Նախազգուշացնող</string>
+    <string name="signs_category_priority">Առավելության</string>
+    <string name="signs_category_prohibitory">Արգելող</string>
+    <string name="signs_category_mandatory">Թելադրող</string>
+    <string name="signs_category_special">Հատուկ թելադրանքի</string>
+    <string name="signs_category_information">Տեղեկատվության</string>
+    <string name="signs_category_service">Սպասարկման</string>
+    <string name="signs_category_plate">Ցուցանակներ</string>
 
 </resources>
