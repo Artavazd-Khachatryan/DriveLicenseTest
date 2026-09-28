@@ -1,16 +1,17 @@
 package com.drive.license.test.ui.crossing
 
 /**
- * Order at an uncontrolled junction, from the RA traffic rules:
+ * Order at a junction, from the RA traffic rules:
  * - §28 blue beacon and siren: everyone else gives way
- * - A car going backwards gives way to a car going forwards
  * - §32 orange beacon: no priority
+ * - §49 reversing through a junction is forbidden, so it is not an order here
+ * - §90 / §99 left turn gives way to oncoming traffic going straight or turning right
+ * - §91 green arrow together with a red or yellow main light: that turn may go,
+ *   but it gives way to vehicles moving from other directions
  * - §96 secondary road gives way to the main road, whatever the direction.
  *   The sign's thick line may go left, straight, or right; both of its arms are the main road.
  * - A working traffic light replaces that sign: red gives way to green.
- *   A green arrow allows only that turn. Oncoming traffic on red does not block it.
  * - §98 equal roads: give way to the vehicle on the right
- * - §99 left turn gives way to oncoming traffic going straight or turning right
  *
  * Two vehicles with the same beacon rank use the road rules between them.
  * The result is a single order. A situation the rules leave tied is rejected.
@@ -42,14 +43,12 @@ fun mustYield(
     val otherPrivileged = other.beacon == Beacon.BlueSiren
     if (vehiclePrivileged != otherPrivileged) return otherPrivileged
 
-    val vehicleReversing = vehicle.facing == Facing.Reverse
-    val otherReversing = other.facing == Facing.Reverse
-    if (vehicleReversing != otherReversing) return vehicleReversing
-
     if (control is JunctionControl.Lights) {
-        val vehicleGreen = movementIsGreen(vehicle, control)
-        val otherGreen = movementIsGreen(other, control)
-        if (vehicleGreen != otherGreen) return otherGreen
+        when (lightOrder(vehicle, other, control)) {
+            LightOrder.Yields -> return true
+            LightOrder.Goes -> return false
+            LightOrder.Same -> Unit
+        }
     }
 
     val vehicleOnMain = onPriorityRoad(vehicle, control)
@@ -74,13 +73,14 @@ fun yieldCause(
     val vehiclePrivileged = vehicle.beacon == Beacon.BlueSiren
     val otherPrivileged = other.beacon == Beacon.BlueSiren
     if (vehiclePrivileged != otherPrivileged) return YieldCause.BlueSiren
-    val vehicleReversing = vehicle.facing == Facing.Reverse
-    val otherReversing = other.facing == Facing.Reverse
-    if (vehicleReversing != otherReversing) return YieldCause.Reversing
-    if (control is JunctionControl.Lights) {
-        val vehicleGreen = movementIsGreen(vehicle, control)
-        val otherGreen = movementIsGreen(other, control)
-        if (vehicleGreen != otherGreen) return YieldCause.TrafficLight
+    if (control is JunctionControl.Lights && lightOrder(vehicle, other, control) == LightOrder.Yields) {
+        if (isPermissiveArrow(vehicle, control) &&
+            isGreen(other.approach, control.green) &&
+            vehicle.approach != other.approach
+        ) {
+            return YieldCause.PermissiveArrow
+        }
+        return YieldCause.TrafficLight
     }
     val vehicleOnMain = onPriorityRoad(vehicle, control)
     val otherOnMain = onPriorityRoad(other, control)
@@ -112,8 +112,33 @@ fun movementIsGreen(vehicle: CrossingVehicle, lights: JunctionControl.Lights): B
     val arrowMatch = arrow != null &&
         arrow.approach == vehicle.approach &&
         arrow.maneuver == vehicle.maneuver
-    if (lights.arrowOnly) return arrowMatch
     return isGreen(vehicle.approach, lights.green) || arrowMatch
+}
+
+/** Green arrow while this approach's round light is red or yellow (rules §91). */
+private fun isPermissiveArrow(vehicle: CrossingVehicle, lights: JunctionControl.Lights): Boolean {
+    val arrow = lights.arrow ?: return false
+    return arrow.approach == vehicle.approach &&
+        arrow.maneuver == vehicle.maneuver &&
+        !isGreen(vehicle.approach, lights.green)
+}
+
+private enum class LightOrder { Yields, Goes, Same }
+
+private fun lightOrder(
+    vehicle: CrossingVehicle,
+    other: CrossingVehicle,
+    lights: JunctionControl.Lights,
+): LightOrder {
+    val vehicleArrow = isPermissiveArrow(vehicle, lights)
+    val otherArrow = isPermissiveArrow(other, lights)
+    val vehicleRound = isGreen(vehicle.approach, lights.green)
+    val otherRound = isGreen(other.approach, lights.green)
+    if (vehicleArrow && otherRound && vehicle.approach != other.approach) return LightOrder.Yields
+    if (otherArrow && vehicleRound && vehicle.approach != other.approach) return LightOrder.Goes
+    if (vehicleRound != otherRound) return if (otherRound) LightOrder.Yields else LightOrder.Goes
+    if (vehicleArrow != otherArrow) return if (otherArrow) LightOrder.Yields else LightOrder.Goes
+    return LightOrder.Same
 }
 
 fun isGreen(approach: Approach, phase: SignalPhase): Boolean = when (phase) {

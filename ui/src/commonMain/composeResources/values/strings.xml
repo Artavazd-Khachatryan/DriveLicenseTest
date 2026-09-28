@@ -7199,8 +7199,7 @@
     <string name="crossing_reason_light">%1$s-ը կարմիր լուսացույցով է և զիջում է կանաչով %2$s-ին։</string>
     <string name="crossing_reason_left">%1$s-ը ձախ է շրջում և զիջում է հանդիպակաց %2$s-ին։</string>
     <string name="crossing_reason_right">%1$s-ը զիջում է աջից եկող %2$s-ին։</string>
-    <string name="crossing_reason_reverse">%1$s-ը հետ է գնում և զիջում է առաջ շարժվող %2$s-ին։</string>
-    <string name="crossing_case_reverse">Հետընթաց</string>
+    <string name="crossing_reason_arrow">%1$s-ը կարմիրի հետ միացված սլաքով է գնում և զիջում է այլ ուղղությամբ ընթացող %2$s-ին։</string>
     <string name="crossing_s1_title">Հավասարազոր ճանապարհներ</string>
     <string name="crossing_s1_explanation">Չկարգավորվող հավասարազոր խաչմերուկում ճանապարհը զիջում է այն վարորդը, որին մեքենա է մոտենում աջից։ Արևմուտքից եկողը զիջում է հարավից եկողին։</string>
     <string name="crossing_s2_title">Շտապօգնություն՝ միացված ազդանշանով</string>

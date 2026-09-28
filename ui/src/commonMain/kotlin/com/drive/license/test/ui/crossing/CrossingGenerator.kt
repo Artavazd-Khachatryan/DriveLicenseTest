@@ -3,7 +3,6 @@ package com.drive.license.test.ui.crossing
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.crossing_case_arrow
 import drivelicensetest.ui.generated.resources.crossing_case_equal
-import drivelicensetest.ui.generated.resources.crossing_case_reverse
 import drivelicensetest.ui.generated.resources.crossing_case_lights
 import drivelicensetest.ui.generated.resources.crossing_case_main_left
 import drivelicensetest.ui.generated.resources.crossing_case_main_right
@@ -46,7 +45,6 @@ fun generateCrossingScenarios(): List<CrossingScenario> {
         }
     }
     addBendAndLightScenarios(scenarios, seen)
-    addReverseScenarios(scenarios, seen)
     return scenarios
 }
 
@@ -63,7 +61,6 @@ private fun accept(
     moves: List<Maneuver>,
     beacons: List<Beacon>,
     control: JunctionControl,
-    facing: List<Facing> = List(arms.size) { Facing.Forward },
 ): Boolean {
     val vehicles = arms.indices.map { index ->
         CrossingVehicle(
@@ -73,7 +70,6 @@ private fun accept(
             approach = arms[index],
             maneuver = moves[index],
             beacon = beacons[index],
-            facing = facing[index],
         )
     }
     val draft = CrossingScenario(
@@ -87,7 +83,7 @@ private fun accept(
     val order = runCatching { resolveCrossing(draft) }.getOrNull() ?: return false
     val signature = vehicles.joinToString(",") {
         "${it.approach}-${it.maneuver}-${it.beacon}"
-    } + "|${vehicles.joinToString(",") { it.facing.name }}|${controlKey(control)}"
+    } + "|${controlKey(control)}"
     if (!seen.add(signature)) return false
     scenarios += draft.copy(
         id = "c${scenarios.size + 1}",
@@ -143,60 +139,26 @@ private fun addBendAndLightScenarios(
             JunctionControl.Lights(phase, ignoredSign = sign),
         )
     }
+    // §91: red main light plus a green arrow. The turn yields to the green cross street.
     accept(
         scenarios, seen,
-        listOf(Approach.South, Approach.North),
+        listOf(Approach.South, Approach.West),
         listOf(Maneuver.TurnLeft, Maneuver.Straight),
         none,
         JunctionControl.Lights(
-            green = SignalPhase.NorthSouth,
+            green = SignalPhase.EastWest,
             arrow = ArrowSignal(Approach.South, Maneuver.TurnLeft),
-            arrowOnly = true,
         ),
     )
     accept(
         scenarios, seen,
-        listOf(Approach.East, Approach.West),
+        listOf(Approach.East, Approach.South),
         listOf(Maneuver.TurnRight, Maneuver.Straight),
         none,
         JunctionControl.Lights(
-            green = SignalPhase.EastWest,
+            green = SignalPhase.NorthSouth,
             arrow = ArrowSignal(Approach.East, Maneuver.TurnRight),
-            arrowOnly = true,
         ),
-    )
-}
-
-/** One car backs through the junction and gives way to the car going forwards. */
-private fun addReverseScenarios(
-    scenarios: MutableList<CrossingScenario>,
-    seen: MutableSet<String>,
-) {
-    val none = listOf(Beacon.None, Beacon.None)
-    val straight = listOf(Maneuver.Straight, Maneuver.Straight)
-    val pairs = listOf(
-        Approach.South to Approach.East,
-        Approach.East to Approach.North,
-        Approach.North to Approach.West,
-        Approach.West to Approach.South,
-    )
-    for ((forward, reversing) in pairs) {
-        accept(
-            scenarios, seen,
-            listOf(forward, reversing),
-            straight,
-            none,
-            JunctionControl.Equal,
-            facing = listOf(Facing.Forward, Facing.Reverse),
-        )
-    }
-    accept(
-        scenarios, seen,
-        listOf(Approach.West, Approach.South),
-        straight,
-        none,
-        JunctionControl.Sign(Approach.West, Bend.Straight),
-        facing = listOf(Facing.Reverse, Facing.Forward),
     )
 }
 
@@ -204,7 +166,7 @@ private fun controlKey(control: JunctionControl): String = when (control) {
     JunctionControl.Equal -> "equal"
     is JunctionControl.Sign -> "sign-${control.from}-${control.bend}"
     is JunctionControl.Lights ->
-        "lights-${control.green}-${control.arrowOnly}-${control.arrow?.approach}-${control.arrow?.maneuver}-${control.ignoredSign?.from}"
+        "lights-${control.green}-${control.arrow?.approach}-${control.arrow?.maneuver}-${control.ignoredSign?.from}"
 }
 
 private fun notesFor(order: List<CrossingVehicle>, control: JunctionControl): List<YieldNote> {
@@ -221,7 +183,6 @@ private fun notesFor(order: List<CrossingVehicle>, control: JunctionControl): Li
 }
 
 private fun titleFor(vehicles: List<CrossingVehicle>, control: JunctionControl): StringResource {
-    if (vehicles.any { it.facing == Facing.Reverse }) return Res.string.crossing_case_reverse
     if (control is JunctionControl.Lights && control.arrow != null) return Res.string.crossing_case_arrow
     if (control is JunctionControl.Lights) return Res.string.crossing_case_lights
     if (control is JunctionControl.Sign) {

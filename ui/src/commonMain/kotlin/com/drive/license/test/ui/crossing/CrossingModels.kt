@@ -55,7 +55,11 @@ enum class SignalPhase {
     EastWest,
 }
 
-/** A green arrow for one approach and one maneuver. Other movements stay red when [arrowOnly] is set. */
+/**
+ * Extra green arrow on one approach.
+ * When that approach's round light is red, rules §91 apply: the turn may go,
+ * but it yields to vehicles moving from other directions.
+ */
 data class ArrowSignal(
     val approach: Approach,
     val maneuver: Maneuver,
@@ -75,7 +79,6 @@ sealed class JunctionControl {
         val green: SignalPhase,
         val ignoredSign: Sign? = null,
         val arrow: ArrowSignal? = null,
-        val arrowOnly: Boolean = false,
     ) : JunctionControl()
 }
 
@@ -86,7 +89,7 @@ enum class YieldCause {
     TrafficLight,
     LeftTurn,
     FromTheRight,
-    Reversing,
+    PermissiveArrow,
 }
 
 /** One step of the stored explanation: [waitingId] gives way to [aheadId]. */

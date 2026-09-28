@@ -101,27 +101,39 @@ class CrossingRulesTest {
     }
 
     @Test
-    fun greenArrowLetsTheTurnGoBeforeOncomingTraffic() {
+    fun permissiveArrowYieldsToTrafficFromOtherDirections() {
         val turning = CrossingVehicle(
             "south", "Ա", VehicleKind.General, Approach.South, Maneuver.TurnLeft,
         )
-        val oncoming = CrossingVehicle(
-            "north", "Բ", VehicleKind.General, Approach.North, Maneuver.Straight,
+        val crossing = CrossingVehicle(
+            "west", "Բ", VehicleKind.General, Approach.West, Maneuver.Straight,
         )
         val arrow = JunctionControl.Lights(
+            green = SignalPhase.EastWest,
+            arrow = ArrowSignal(Approach.South, Maneuver.TurnLeft),
+        )
+        assertEquals(true, mustYield(turning, crossing, arrow))
+        assertEquals(false, mustYield(crossing, turning, arrow))
+        assertEquals(YieldCause.PermissiveArrow, yieldCause(turning, crossing, arrow))
+        assertEquals(true, movementIsGreen(turning, arrow))
+        assertEquals(false, movementIsGreen(
+            turning.copy(maneuver = Maneuver.Straight),
+            arrow,
+        ))
+        val oncoming = CrossingVehicle(
+            "north", "Գ", VehicleKind.General, Approach.North, Maneuver.Straight,
+        )
+        val roundGreen = JunctionControl.Lights(
             green = SignalPhase.NorthSouth,
             arrow = ArrowSignal(Approach.South, Maneuver.TurnLeft),
-            arrowOnly = true,
         )
-        assertEquals(false, mustYield(turning, oncoming, arrow))
-        assertEquals(true, mustYield(oncoming, turning, arrow))
-        val roundGreen = JunctionControl.Lights(SignalPhase.NorthSouth)
         assertEquals(true, mustYield(turning, oncoming, roundGreen))
         assertEquals(false, mustYield(oncoming, turning, roundGreen))
+        assertEquals(YieldCause.LeftTurn, yieldCause(turning, oncoming, roundGreen))
     }
 
     @Test
-    fun reversingCarGivesWayEvenWhenItIsOnTheRight() {
+    fun reversingDoesNotChangeWhoGoesFirst() {
         val forward = CrossingVehicle(
             "south", "Ա", VehicleKind.General, Approach.South, Maneuver.Straight,
         )
@@ -129,13 +141,13 @@ class CrossingRulesTest {
             "east", "Բ", VehicleKind.General, Approach.East, Maneuver.Straight,
             facing = Facing.Reverse,
         )
-        assertEquals(true, mustYield(backing, forward, JunctionControl.Equal))
-        assertEquals(false, mustYield(forward, backing, JunctionControl.Equal))
-        assertEquals(YieldCause.Reversing, yieldCause(backing, forward, JunctionControl.Equal))
-        val forwardPose = poseAt(forward, 0.2f)
+        assertEquals(
+            mustYield(forward, backing.copy(facing = Facing.Forward), JunctionControl.Equal),
+            mustYield(forward, backing, JunctionControl.Equal),
+        )
+        assertEquals(YieldCause.FromTheRight, yieldCause(forward, backing, JunctionControl.Equal))
         val backingPose = poseAt(backing, 0.2f)
         val samePathForward = poseAt(backing.copy(facing = Facing.Forward), 0.2f)
-        assertEquals(forwardPose.headingDegrees, poseAt(forward.copy(facing = Facing.Forward), 0.2f).headingDegrees)
         val turned = backingPose.headingDegrees - samePathForward.headingDegrees
         val wrapped = ((turned % 360f) + 360f) % 360f
         assertEquals(180f, wrapped, 1f)
@@ -163,8 +175,8 @@ class CrossingRulesTest {
     }
 
     @Test
-    fun deckIncludesAReversingCar() {
-        assertTrue(CrossingScenarios.any { scenario ->
+    fun deckDoesNotReverseThroughTheJunction() {
+        assertTrue(CrossingScenarios.none { scenario ->
             scenario.vehicles.any { it.facing == Facing.Reverse }
         })
     }
@@ -175,6 +187,9 @@ class CrossingRulesTest {
         assertTrue(CrossingScenarios.any { it.control is JunctionControl.Lights && it.control.ignoredSign == null })
         assertTrue(CrossingScenarios.any { it.control is JunctionControl.Lights && it.control.ignoredSign != null })
         assertTrue(CrossingScenarios.any { it.control is JunctionControl.Lights && it.control.arrow != null })
+        assertTrue(CrossingScenarios.any { scenario ->
+            scenario.notes.any { it.cause == YieldCause.PermissiveArrow }
+        })
         for (bend in Bend.entries) {
             assertTrue(CrossingScenarios.any { it.control is JunctionControl.Sign && it.control.bend == bend })
         }

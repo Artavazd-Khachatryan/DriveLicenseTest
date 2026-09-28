@@ -66,7 +66,7 @@ import drivelicensetest.ui.generated.resources.crossing_reason_blue
 import drivelicensetest.ui.generated.resources.crossing_reason_left
 import drivelicensetest.ui.generated.resources.crossing_reason_light
 import drivelicensetest.ui.generated.resources.crossing_reason_main
-import drivelicensetest.ui.generated.resources.crossing_reason_reverse
+import drivelicensetest.ui.generated.resources.crossing_reason_arrow
 import drivelicensetest.ui.generated.resources.crossing_reason_right
 import drivelicensetest.ui.generated.resources.crossing_right_order
 import drivelicensetest.ui.generated.resources.crossing_show
@@ -507,7 +507,7 @@ private fun crossingExplanation(scenario: CrossingScenario): String {
             YieldCause.TrafficLight -> stringResource(Res.string.crossing_reason_light, waiting, ahead)
             YieldCause.LeftTurn -> stringResource(Res.string.crossing_reason_left, waiting, ahead)
             YieldCause.FromTheRight -> stringResource(Res.string.crossing_reason_right, waiting, ahead)
-            YieldCause.Reversing -> stringResource(Res.string.crossing_reason_reverse, waiting, ahead)
+            YieldCause.PermissiveArrow -> stringResource(Res.string.crossing_reason_arrow, waiting, ahead)
         }
     }
     return lines.joinToString(" ")
