@@ -142,6 +142,27 @@ class CrossingRulesTest {
     }
 
     @Test
+    fun everyCarFacesTheWayItDrives() {
+        CrossingScenarios.forEach { scenario ->
+            scenario.vehicles.forEach { vehicle ->
+                val start = poseAt(vehicle, 0f)
+                val end = poseAt(vehicle, 1f)
+                val flip = if (vehicle.facing == Facing.Reverse) 180f else 0f
+                checkClose(
+                    norm(noseAtStart(vehicle.approach) + flip),
+                    norm(start.headingDegrees),
+                    "${scenario.id} ${vehicle.label} ${vehicle.approach} ${vehicle.maneuver} start",
+                )
+                checkClose(
+                    norm(noseAtEnd(vehicle.approach, vehicle.maneuver) + flip),
+                    norm(end.headingDegrees),
+                    "${scenario.id} ${vehicle.label} ${vehicle.approach} ${vehicle.maneuver} end",
+                )
+            }
+        }
+    }
+
+    @Test
     fun deckIncludesAReversingCar() {
         assertTrue(CrossingScenarios.any { scenario ->
             scenario.vehicles.any { it.facing == Facing.Reverse }
@@ -157,5 +178,40 @@ class CrossingRulesTest {
         for (bend in Bend.entries) {
             assertTrue(CrossingScenarios.any { it.control is JunctionControl.Sign && it.control.bend == bend })
         }
+    }
+}
+
+private fun checkClose(expected: Float, actual: Float, where: String) {
+    val delta = kotlin.math.abs(norm(actual - expected))
+    check(delta <= 8f) { "$where expected $expected actual $actual" }
+}
+
+private fun norm(degrees: Float): Float {
+    var wrapped = degrees % 360f
+    if (wrapped > 180f) wrapped -= 360f
+    if (wrapped < -180f) wrapped += 360f
+    return wrapped
+}
+
+private fun noseAtStart(approach: Approach): Float = when (approach) {
+    Approach.South -> 0f
+    Approach.North -> 180f
+    Approach.West -> 90f
+    Approach.East -> -90f
+}
+
+private fun noseAtEnd(approach: Approach, maneuver: Maneuver): Float = when (maneuver) {
+    Maneuver.Straight -> noseAtStart(approach)
+    Maneuver.TurnRight -> when (approach) {
+        Approach.South -> 90f
+        Approach.West -> 180f
+        Approach.North -> -90f
+        Approach.East -> 0f
+    }
+    Maneuver.TurnLeft -> when (approach) {
+        Approach.South -> -90f
+        Approach.West -> 0f
+        Approach.North -> 90f
+        Approach.East -> 180f
     }
 }
