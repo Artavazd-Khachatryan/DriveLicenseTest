@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -56,6 +57,7 @@ fun CrossingStage(
     progress: Map<String, Float>,
     pickIndex: Map<String, Int>,
     activeId: String?,
+    crashIds: Set<String> = emptySet(),
     onVehicleClick: (CrossingVehicle) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -113,13 +115,56 @@ fun CrossingStage(
                     strokeWidth = 4f,
                     pathEffect = dash,
                 )
-                if (scenario.priorityAxis == RoadAxis.EastWest) {
-                    drawLine(CenterLine, androidx.compose.ui.geometry.Offset(0f, h / 2f), androidx.compose.ui.geometry.Offset(w * 0.35f, h / 2f), strokeWidth = 8f)
-                    drawLine(CenterLine, androidx.compose.ui.geometry.Offset(w * 0.65f, h / 2f), androidx.compose.ui.geometry.Offset(w, h / 2f), strokeWidth = 8f)
+                val sign = when (val control = scenario.control) {
+                    is JunctionControl.Sign -> control
+                    is JunctionControl.Lights -> control.ignoredSign
+                    JunctionControl.Equal -> null
                 }
-                if (scenario.priorityAxis == RoadAxis.NorthSouth) {
-                    drawLine(CenterLine, androidx.compose.ui.geometry.Offset(w / 2f, 0f), androidx.compose.ui.geometry.Offset(w / 2f, h * 0.35f), strokeWidth = 8f)
-                    drawLine(CenterLine, androidx.compose.ui.geometry.Offset(w / 2f, h * 0.65f), androidx.compose.ui.geometry.Offset(w / 2f, h), strokeWidth = 8f)
+                if (sign != null) {
+                    val arms = signArms(sign)
+                    fun thick(approach: Approach) {
+                        val (x1, y1, x2, y2) = armLine(approach)
+                        drawLine(
+                            CenterLine,
+                            androidx.compose.ui.geometry.Offset(w * x1, h * y1),
+                            androidx.compose.ui.geometry.Offset(w * x2, h * y2),
+                            strokeWidth = 8f,
+                        )
+                    }
+                    arms.forEach(::thick)
+                    if (sign.bend != Bend.Straight) {
+                        val from = armInner(sign.from)
+                        val into = armInner(otherArm(sign.from, sign.bend))
+                        drawLine(
+                            CenterLine,
+                            androidx.compose.ui.geometry.Offset(w * from.first, h * from.second),
+                            androidx.compose.ui.geometry.Offset(w * into.first, h * into.second),
+                            strokeWidth = 8f,
+                        )
+                    }
+                }
+                if (scenario.control is JunctionControl.Lights) {
+                    val lights = scenario.control
+                    fun lamp(approach: Approach, maneuver: Maneuver, x: Float, y: Float) {
+                        val probe = CrossingVehicle(
+                            id = "lamp",
+                            label = "",
+                            kind = VehicleKind.General,
+                            approach = approach,
+                            maneuver = maneuver,
+                        )
+                        drawCircle(
+                            color = if (movementIsGreen(probe, lights)) Color(0xFF16A34A) else Color(0xFFDC2626),
+                            radius = 7f,
+                            center = androidx.compose.ui.geometry.Offset(w * x, h * y),
+                        )
+                    }
+                    for (approach in Approach.entries) {
+                        for (maneuver in Maneuver.entries) {
+                            val (x, y) = lampSpot(approach, maneuver)
+                            lamp(approach, maneuver, x, y)
+                        }
+                    }
                 }
                 val stop = 0.66f
                 val lane = 0.07f
@@ -145,6 +190,7 @@ fun CrossingStage(
                 val top = pose.y * sidePx - with(density) { carHeight.toPx() } / 2f
                 val picked = pickIndex[vehicle.id]
                 val moving = vehicle.id == activeId
+                val crashed = vehicle.id in crashIds
                 val description = vehicle.label + ", " + kindLabel(vehicle.kind)
                 Box(
                     modifier = Modifier
@@ -152,8 +198,8 @@ fun CrossingStage(
                         .size(carWidth, carHeight)
                         .graphicsLayer {
                             rotationZ = pose.headingDegrees
-                            scaleX = if (moving) 1.06f else 1f
-                            scaleY = if (moving) 1.06f else 1f
+                            scaleX = if (crashed) 0.92f else if (moving) 1.06f else 1f
+                            scaleY = if (crashed) 0.92f else if (moving) 1.06f else 1f
                         }
                         .clickable { onVehicleClick(vehicle) }
                         .semantics {
@@ -163,59 +209,95 @@ fun CrossingStage(
                     contentAlignment = Alignment.Center,
                 ) {
                     CrossingCarArt(kind = vehicle.kind)
-                    if (moving) {
+                    if (crashed) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(Color(0x66DC2626), RoundedCornerShape(12.dp)),
+                        )
+                    }
+                    if (moving || picked != null) {
                         Box(
                             modifier = Modifier
                                 .fillMaxSize()
                                 .drawBehind {
                                     drawRoundRect(
-                                        color = scheme.tertiary,
+                                        color = if (moving) scheme.tertiary else scheme.primary,
                                         style = Stroke(width = 6f),
                                         cornerRadius = androidx.compose.ui.geometry.CornerRadius(size.width * 0.28f),
                                     )
                                 },
                         )
                     }
-                    Text(
-                        text = vehicle.label,
+                    Column(
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
-                            .graphicsLayer { rotationZ = -pose.headingDegrees }
-                            .background(scheme.surface, CircleShape)
-                            .padding(horizontal = 4.dp),
-                        color = scheme.onSurface,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp,
-                        textAlign = TextAlign.Center,
-                    )
-                }
-                if (picked != null) {
-                    val badge = 22.dp
-                    val badgePx = with(density) { badge.toPx() }
-                    Box(
-                        modifier = Modifier
-                            .offset {
-                                IntOffset(
-                                    (pose.x * sidePx + with(density) { carWidth.toPx() } * 0.28f).roundToInt(),
-                                    (pose.y * sidePx - with(density) { carHeight.toPx() } * 0.42f - badgePx).roundToInt(),
+                            .graphicsLayer { rotationZ = -pose.headingDegrees },
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        if (picked != null) {
+                            Box(
+                                modifier = Modifier
+                                    .size(28.dp)
+                                    .clip(CircleShape)
+                                    .background(scheme.primary),
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                Text(
+                                    text = picked.toString(),
+                                    color = scheme.onPrimary,
+                                    style = MaterialTheme.typography.labelLarge,
+                                    fontWeight = FontWeight.Bold,
                                 )
                             }
-                            .size(badge)
-                            .clip(CircleShape)
-                            .background(scheme.primary),
-                        contentAlignment = Alignment.Center,
-                    ) {
+                        }
                         Text(
-                            text = picked.toString(),
-                            color = scheme.onPrimary,
-                            style = MaterialTheme.typography.labelMedium,
+                            text = vehicle.label,
+                            modifier = Modifier
+                                .background(scheme.surface, CircleShape)
+                                .padding(horizontal = 4.dp),
+                            color = scheme.onSurface,
                             fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp,
+                            textAlign = TextAlign.Center,
                         )
                     }
                 }
             }
         }
     }
+}
+
+private data class Segment(val x1: Float, val y1: Float, val x2: Float, val y2: Float)
+
+private fun armLine(approach: Approach): Segment = when (approach) {
+    Approach.North -> Segment(0.5f, 0f, 0.5f, 0.35f)
+    Approach.South -> Segment(0.5f, 0.65f, 0.5f, 1f)
+    Approach.East -> Segment(0.65f, 0.5f, 1f, 0.5f)
+    Approach.West -> Segment(0f, 0.5f, 0.35f, 0.5f)
+}
+
+/** Three lamps per approach: left, straight, right, as the driver waiting there sees them. */
+private fun lampSpot(approach: Approach, maneuver: Maneuver): Pair<Float, Float> {
+    val slot = when (maneuver) {
+        Maneuver.TurnLeft -> 0
+        Maneuver.Straight -> 1
+        Maneuver.TurnRight -> 2
+    }
+    val step = 0.045f
+    return when (approach) {
+        Approach.North -> (0.66f) to (0.16f + slot * step)
+        Approach.South -> (0.34f) to (0.84f - slot * step)
+        Approach.East -> (0.84f - slot * step) to 0.66f
+        Approach.West -> (0.16f + slot * step) to 0.34f
+    }
+}
+
+private fun armInner(approach: Approach): Pair<Float, Float> = when (approach) {
+    Approach.North -> 0.5f to 0.35f
+    Approach.South -> 0.5f to 0.65f
+    Approach.East -> 0.65f to 0.5f
+    Approach.West -> 0.35f to 0.5f
 }
 
 @Composable

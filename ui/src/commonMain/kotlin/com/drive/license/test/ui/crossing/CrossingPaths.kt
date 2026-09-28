@@ -36,10 +36,12 @@ fun poseAt(vehicle: CrossingVehicle, t: Float): VehiclePose {
     } else {
         position - quadratic(start, control, end, clamped - 0.02f)
     }
+    val travel = headingDegrees(sample.x, sample.y)
+    val heading = if (vehicle.facing == Facing.Reverse) travel + 180f else travel
     return VehiclePose(
         x = position.x,
         y = position.y,
-        headingDegrees = headingDegrees(sample.x, sample.y),
+        headingDegrees = heading,
     )
 }
 

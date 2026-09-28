@@ -1,25 +1,34 @@
 package com.drive.license.test.ui.crossing
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
+import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBackIos
+import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -28,9 +37,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.drive.license.test.ui.components.AppButton
 import com.drive.license.test.ui.components.AppScaffold
@@ -38,13 +50,13 @@ import com.drive.license.test.ui.components.AppOutlinedButton
 import com.drive.license.test.ui.util.AdaptiveContentContainer
 import drivelicensetest.ui.generated.resources.Res
 import drivelicensetest.ui.generated.resources.crossing_back
+import drivelicensetest.ui.generated.resources.crossing_check
 import drivelicensetest.ui.generated.resources.crossing_clear
+import drivelicensetest.ui.generated.resources.crossing_crash
+import drivelicensetest.ui.generated.resources.crossing_pick_all
+import drivelicensetest.ui.generated.resources.crossing_result_correct
+import drivelicensetest.ui.generated.resources.crossing_result_wrong
 import drivelicensetest.ui.generated.resources.crossing_correct
-import drivelicensetest.ui.generated.resources.crossing_kind_car
-import drivelicensetest.ui.generated.resources.crossing_kind_emergency
-import drivelicensetest.ui.generated.resources.crossing_kind_medical
-import drivelicensetest.ui.generated.resources.crossing_kind_police
-import drivelicensetest.ui.generated.resources.crossing_kind_works
 import drivelicensetest.ui.generated.resources.crossing_next
 import drivelicensetest.ui.generated.resources.crossing_playing
 import drivelicensetest.ui.generated.resources.crossing_previous
@@ -52,7 +64,9 @@ import drivelicensetest.ui.generated.resources.crossing_progress
 import drivelicensetest.ui.generated.resources.crossing_prompt
 import drivelicensetest.ui.generated.resources.crossing_reason_blue
 import drivelicensetest.ui.generated.resources.crossing_reason_left
+import drivelicensetest.ui.generated.resources.crossing_reason_light
 import drivelicensetest.ui.generated.resources.crossing_reason_main
+import drivelicensetest.ui.generated.resources.crossing_reason_reverse
 import drivelicensetest.ui.generated.resources.crossing_reason_right
 import drivelicensetest.ui.generated.resources.crossing_right_order
 import drivelicensetest.ui.generated.resources.crossing_show
@@ -81,34 +95,77 @@ fun CrossingDemoScreen(
     var activeId by remember(scenario.id) { mutableStateOf<String?>(null) }
     var playing by remember(scenario.id) { mutableStateOf(false) }
     var revealed by remember(scenario.id) { mutableStateOf(false) }
+    var crashIds by remember(scenario.id) { mutableStateOf<Set<String>>(emptySet()) }
     val scope = rememberCoroutineScope()
     var playJob by remember { mutableStateOf<Job?>(null) }
+    var generation by remember { mutableIntStateOf(0) }
 
     fun stopAndReset() {
+        generation += 1
         playJob?.cancel()
         playJob = null
         playing = false
         activeId = null
+        crashIds = emptySet()
         progress = emptyMap()
     }
 
+    fun goTo(target: Int) {
+        if (playing || target !in deck.indices || target == index) return
+        stopAndReset()
+        picks = emptyList()
+        revealed = false
+        index = target
+    }
+
+    suspend fun move(id: String, target: Float, duration: Int, generationAtStart: Int) {
+        if (generation != generationAtStart) return
+        activeId = id
+        val anim = Animatable(progress[id] ?: 0f)
+        anim.animateTo(
+            targetValue = target,
+            animationSpec = tween(durationMillis = duration, easing = FastOutSlowInEasing),
+        ) {
+            if (generation != generationAtStart) return@animateTo
+            progress = progress + (id to value)
+        }
+    }
+
     fun playAnswer() {
+        val legalIds = crossingOrder.map { it.id }
+        val isCorrect = picks == legalIds
+        generation += 1
+        val generationAtStart = generation
         playJob?.cancel()
         playJob = scope.launch {
             playing = true
             revealed = true
+            crashIds = emptySet()
             progress = scenario.vehicles.associate { it.id to 0f }
-            crossingOrder.forEachIndexed { step, vehicle ->
-                activeId = vehicle.id
-                val anim = Animatable(0f)
-                anim.animateTo(
-                    targetValue = 1f,
-                    animationSpec = tween(durationMillis = 1400, easing = FastOutSlowInEasing),
-                ) {
-                    progress = progress + (vehicle.id to value)
+            if (isCorrect) {
+                crossingOrder.forEachIndexed { step, vehicle ->
+                    if (generation != generationAtStart) return@launch
+                    move(vehicle.id, 1f, 1400, generationAtStart)
+                    if (step < crossingOrder.lastIndex) delay(220)
                 }
-                if (step < crossingOrder.lastIndex) delay(220)
+            } else {
+                val clash = firstClash(picks, legalIds)
+                activeId = null
+                val together = Animatable(0f)
+                together.animateTo(
+                    targetValue = 1f,
+                    animationSpec = tween(durationMillis = 1100, easing = FastOutSlowInEasing),
+                ) {
+                    if (generation != generationAtStart) return@animateTo
+                    progress = progress +
+                        (clash.wrongId to value * 0.5f) +
+                        (clash.priorityId to value * 0.55f)
+                }
+                if (generation != generationAtStart) return@launch
+                crashIds = setOf(clash.wrongId, clash.priorityId)
+                delay(900)
             }
+            if (generation != generationAtStart) return@launch
             activeId = null
             playing = false
         }
@@ -120,15 +177,15 @@ fun CrossingDemoScreen(
     }
 
     val pickIndex = picks.withIndex().associate { it.value to it.index + 1 }
-    val correct = picks == crossingOrder.map { it.id }
-    val kindLabels = mapOf(
-        VehicleKind.General to stringResource(Res.string.crossing_kind_car),
-        VehicleKind.Medical to stringResource(Res.string.crossing_kind_medical),
-        VehicleKind.Police to stringResource(Res.string.crossing_kind_police),
-        VehicleKind.RoadWork to stringResource(Res.string.crossing_kind_works),
-        VehicleKind.Emergency to stringResource(Res.string.crossing_kind_emergency),
-    )
+    val legalIds = crossingOrder.map { it.id }
+    val ready = picks.size == scenario.vehicles.size
+    val correct = picks == legalIds
+    val clash = if (revealed && !correct && picks.isNotEmpty()) firstClash(picks, legalIds) else null
     val explanation = crossingExplanation(scenario)
+
+    val canGoPrevious = index > 0 && !playing
+    val canGoNext = index < deck.lastIndex && !playing
+    val pickedVehicles = picks.map { id -> scenario.vehicles.first { it.id == id } }
 
     AppScaffold(
         topBarTitle = stringResource(Res.string.crossing_title),
@@ -146,78 +203,123 @@ fun CrossingDemoScreen(
         ) { _, contentModifier ->
             Column(
                 modifier = contentModifier
-                    .verticalScroll(rememberScrollState())
-                    .padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
+                QuestionPager(
+                    index = index,
+                    count = deck.size,
+                    canGoPrevious = canGoPrevious,
+                    canGoNext = canGoNext,
+                    emphasizeNext = revealed,
+                    onPrevious = { goTo(index - 1) },
+                    onNext = { goTo(index + 1) },
+                )
                 Text(
                     text = stringResource(scenario.title),
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
                 )
-                Text(
-                    text = stringResource(
-                        Res.string.crossing_progress,
-                        index + 1,
-                        deck.size,
-                    ) + "  ·  " + stringResource(Res.string.crossing_prompt),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                CrossingStage(
-                    scenario = scenario,
-                    progress = progress,
-                    pickIndex = pickIndex,
-                    activeId = activeId,
-                    onVehicleClick = { vehicle ->
-                        if (playing || revealed) return@CrossingStage
-                        picks = if (vehicle.id in picks) {
-                            picks.filter { it != vehicle.id }
-                        } else {
-                            picks + vehicle.id
-                        }
-                    },
+                if (revealed) {
+                    val bannerColor = if (correct) {
+                        MaterialTheme.colorScheme.secondaryContainer
+                    } else {
+                        MaterialTheme.colorScheme.errorContainer
+                    }
+                    val bannerText = if (correct) {
+                        MaterialTheme.colorScheme.onSecondaryContainer
+                    } else {
+                        MaterialTheme.colorScheme.onErrorContainer
+                    }
+                    Surface(
+                        color = bannerColor,
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Text(
+                            text = if (correct) {
+                                stringResource(Res.string.crossing_result_correct)
+                            } else {
+                                stringResource(Res.string.crossing_result_wrong)
+                            },
+                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = bannerText,
+                        )
+                    }
+                } else {
+                    Text(
+                        text = stringResource(Res.string.crossing_prompt),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                }
+                Box(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .heightIn(min = 280.dp, max = 420.dp),
-                )
-                Text(
-                    text = orderLine(
-                        emptyLabel = stringResource(Res.string.crossing_your_order_empty),
-                        filledLabel = Res.string.crossing_your_order,
-                        vehicles = picks.map { id -> crossingOrder.first { it.id == id } },
-                        kindLabels = kindLabels,
-                    ),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface,
+                        .weight(1f)
+                        .fillMaxWidth(),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    CrossingStage(
+                        scenario = scenario,
+                        progress = progress,
+                        pickIndex = pickIndex,
+                        activeId = activeId,
+                        crashIds = crashIds,
+                        onVehicleClick = { vehicle ->
+                            if (playing || revealed) return@CrossingStage
+                            picks = if (vehicle.id in picks) {
+                                picks.filter { it != vehicle.id }
+                            } else {
+                                picks + vehicle.id
+                            }
+                        },
+                        modifier = Modifier.fillMaxSize(),
+                    )
+                }
+                OrderChips(
+                    vehicles = pickedVehicles,
+                    enabled = !playing && !revealed,
+                    emptyLabel = stringResource(Res.string.crossing_your_order_empty),
+                    onRemove = { id -> picks = picks.filter { it != id } },
                 )
                 if (revealed) {
                     Text(
-                        text = orderLine(
-                            emptyLabel = stringResource(Res.string.crossing_your_order_empty),
-                            filledLabel = Res.string.crossing_right_order,
-                            vehicles = crossingOrder,
-                            kindLabels = kindLabels,
+                        text = stringResource(
+                            Res.string.crossing_right_order,
+                            crossingOrder.joinToString(" → ") { it.label },
                         ),
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.SemiBold,
-                        color = if (picks.isNotEmpty() && correct) {
+                        color = if (correct) {
                             MaterialTheme.colorScheme.secondary
                         } else {
-                            MaterialTheme.colorScheme.onSurface
+                            MaterialTheme.colorScheme.error
                         },
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
                     )
-                }
-                AnimatedVisibility(visible = revealed, enter = fadeIn(tween(300))) {
                     Text(
-                        text = if (picks.isEmpty()) {
-                            explanation
-                        } else if (correct) {
-                            stringResource(Res.string.crossing_correct, explanation)
-                        } else {
-                            stringResource(Res.string.crossing_wrong, explanation)
+                        text = when {
+                            correct -> stringResource(Res.string.crossing_correct, explanation)
+                            clash != null -> {
+                                val wrong = scenario.vehicles.first { it.id == clash.wrongId }.label
+                                val priority = scenario.vehicles.first { it.id == clash.priorityId }.label
+                                stringResource(Res.string.crossing_crash, wrong, priority) +
+                                    " " + stringResource(Res.string.crossing_wrong, explanation)
+                            }
+                            else -> explanation
                         },
+                        modifier = Modifier
+                            .heightIn(max = 120.dp)
+                            .verticalScroll(rememberScrollState()),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         textAlign = TextAlign.Start,
@@ -227,16 +329,6 @@ fun CrossingDemoScreen(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
-                    AppButton(
-                        text = if (playing) {
-                            stringResource(Res.string.crossing_playing)
-                        } else {
-                            stringResource(Res.string.crossing_show)
-                        },
-                        onClick = { playAnswer() },
-                        enabled = !playing,
-                        modifier = Modifier.weight(1f),
-                    )
                     AppOutlinedButton(
                         text = stringResource(Res.string.crossing_clear),
                         onClick = {
@@ -247,27 +339,160 @@ fun CrossingDemoScreen(
                         enabled = !playing && (picks.isNotEmpty() || revealed),
                         modifier = Modifier.weight(1f),
                     )
-                }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    AppOutlinedButton(
-                        text = stringResource(Res.string.crossing_previous),
-                        onClick = { if (index > 0) index -= 1 },
-                        enabled = index > 0 && !playing,
-                        modifier = Modifier.weight(1f),
-                    )
-                    AppOutlinedButton(
-                        text = stringResource(Res.string.crossing_next),
-                        onClick = { if (index < deck.lastIndex) index += 1 },
-                        enabled = index < deck.lastIndex && !playing,
-                        modifier = Modifier.weight(1f),
-                    )
+                    if (revealed) {
+                        AppOutlinedButton(
+                            text = if (playing) {
+                                stringResource(Res.string.crossing_playing)
+                            } else {
+                                stringResource(Res.string.crossing_check)
+                            },
+                            onClick = { playAnswer() },
+                            enabled = ready && !playing,
+                            modifier = Modifier.weight(1f),
+                        )
+                    } else {
+                        AppButton(
+                            text = if (playing) {
+                                stringResource(Res.string.crossing_playing)
+                            } else {
+                                stringResource(Res.string.crossing_check)
+                            },
+                            onClick = { playAnswer() },
+                            enabled = ready && !playing,
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
                 }
             }
         }
     }
+}
+
+@Composable
+private fun QuestionPager(
+    index: Int,
+    count: Int,
+    canGoPrevious: Boolean,
+    canGoNext: Boolean,
+    emphasizeNext: Boolean,
+    onPrevious: () -> Unit,
+    onNext: () -> Unit,
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
+        PagerStep(
+            icon = Icons.AutoMirrored.Filled.ArrowBackIos,
+            description = stringResource(Res.string.crossing_previous),
+            enabled = canGoPrevious,
+            filled = false,
+            onClick = onPrevious,
+        )
+        Text(
+            text = stringResource(Res.string.crossing_progress, index + 1, count),
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.onSurface,
+        )
+        PagerStep(
+            icon = Icons.AutoMirrored.Filled.ArrowForwardIos,
+            description = stringResource(Res.string.crossing_next),
+            enabled = canGoNext,
+            filled = emphasizeNext,
+            onClick = onNext,
+        )
+    }
+}
+
+@Composable
+private fun PagerStep(
+    icon: ImageVector,
+    description: String,
+    enabled: Boolean,
+    filled: Boolean,
+    onClick: () -> Unit,
+) {
+    val container = when {
+        filled && enabled -> MaterialTheme.colorScheme.primary
+        else -> MaterialTheme.colorScheme.surfaceContainerHigh
+    }
+    val tint = when {
+        !enabled -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+        filled -> MaterialTheme.colorScheme.onPrimary
+        else -> MaterialTheme.colorScheme.onSurface
+    }
+    Surface(
+        onClick = onClick,
+        enabled = enabled,
+        shape = CircleShape,
+        color = container,
+        modifier = Modifier.size(48.dp),
+    ) {
+        Box(contentAlignment = Alignment.Center) {
+            Icon(
+                imageVector = icon,
+                contentDescription = description,
+                tint = tint,
+            )
+        }
+    }
+}
+
+@Composable
+private fun OrderChips(
+    vehicles: List<CrossingVehicle>,
+    enabled: Boolean,
+    emptyLabel: String,
+    onRemove: (String) -> Unit,
+) {
+    if (vehicles.isEmpty()) {
+        Text(
+            text = emptyLabel,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
+        return
+    }
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalScroll(rememberScrollState()),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        vehicles.forEachIndexed { index, vehicle ->
+            val label = "${index + 1} ${vehicle.label}"
+            Box(
+                modifier = Modifier
+                    .heightIn(min = 48.dp)
+                    .clip(RoundedCornerShape(24.dp))
+                    .background(MaterialTheme.colorScheme.primaryContainer)
+                    .clickable(enabled = enabled) { onRemove(vehicle.id) }
+                    .padding(horizontal = 12.dp, vertical = 8.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text = label,
+                    style = MaterialTheme.typography.labelLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                )
+            }
+        }
+    }
+}
+
+private data class Clash(val wrongId: String, val priorityId: String)
+
+private fun firstClash(picks: List<String>, legal: List<String>): Clash {
+    val index = legal.indices.first { step -> step >= picks.size || picks[step] != legal[step] }
+    return Clash(
+        wrongId = picks.getOrElse(index) { picks.first() },
+        priorityId = legal[index],
+    )
 }
 
 @Composable
@@ -279,21 +504,12 @@ private fun crossingExplanation(scenario: CrossingScenario): String {
         lines += when (note.cause) {
             YieldCause.BlueSiren -> stringResource(Res.string.crossing_reason_blue, waiting, ahead)
             YieldCause.MainRoad -> stringResource(Res.string.crossing_reason_main, waiting, ahead)
+            YieldCause.TrafficLight -> stringResource(Res.string.crossing_reason_light, waiting, ahead)
             YieldCause.LeftTurn -> stringResource(Res.string.crossing_reason_left, waiting, ahead)
             YieldCause.FromTheRight -> stringResource(Res.string.crossing_reason_right, waiting, ahead)
+            YieldCause.Reversing -> stringResource(Res.string.crossing_reason_reverse, waiting, ahead)
         }
     }
     return lines.joinToString(" ")
 }
 
-@Composable
-private fun orderLine(
-    emptyLabel: String,
-    filledLabel: org.jetbrains.compose.resources.StringResource,
-    vehicles: List<CrossingVehicle>,
-    kindLabels: Map<VehicleKind, String>,
-): String {
-    if (vehicles.isEmpty()) return emptyLabel
-    val body = vehicles.joinToString(" → ") { "${it.label} ${kindLabels.getValue(it.kind)}" }
-    return stringResource(filledLabel, body)
-}
