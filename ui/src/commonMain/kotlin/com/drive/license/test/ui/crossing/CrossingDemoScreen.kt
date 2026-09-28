@@ -24,6 +24,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowBackIos
 import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material3.Icon
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -66,6 +67,7 @@ import drivelicensetest.ui.generated.resources.crossing_reason_blue
 import drivelicensetest.ui.generated.resources.crossing_reason_left
 import drivelicensetest.ui.generated.resources.crossing_reason_light
 import drivelicensetest.ui.generated.resources.crossing_reason_main
+import drivelicensetest.ui.generated.resources.crossing_guide_open
 import drivelicensetest.ui.generated.resources.crossing_reason_arrow
 import drivelicensetest.ui.generated.resources.crossing_reason_right
 import drivelicensetest.ui.generated.resources.crossing_right_order
@@ -84,6 +86,7 @@ fun CrossingDemoScreen(
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    var showGuide by remember { mutableStateOf(false) }
     var deck by remember { mutableStateOf(CrossingScenarios.shuffled()) }
     var index by remember { mutableIntStateOf(0) }
     val scenario = deck[index]
@@ -187,6 +190,11 @@ fun CrossingDemoScreen(
     val canGoNext = index < deck.lastIndex && !playing
     val pickedVehicles = picks.map { id -> scenario.vehicles.first { it.id == id } }
 
+    if (showGuide) {
+        CrossingGuideScreen(onBack = { showGuide = false })
+        return
+    }
+
     AppScaffold(
         topBarTitle = stringResource(Res.string.crossing_title),
         navigationIcon = {
@@ -195,6 +203,11 @@ fun CrossingDemoScreen(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = stringResource(Res.string.crossing_back),
                 )
+            }
+        },
+        topBarActions = {
+            TextButton(onClick = { showGuide = true }) {
+                Text(stringResource(Res.string.crossing_guide_open))
             }
         },
     ) { inner ->
