@@ -49,6 +49,7 @@ import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.BookmarkBorder
 import androidx.compose.material.icons.filled.BrokenImage
 import androidx.compose.material.icons.filled.Timer
+import com.drive.license.test.ui.questioncontext.QuestionContextButton
 import com.drive.license.test.ui.util.AdaptiveContentContainer
 import com.drive.license.test.ui.util.resolveQuestionImage
 import drivelicensetest.ui.generated.resources.Res
@@ -267,6 +268,17 @@ fun QuestionDetailScreen(
                         }
                     }
                 )
+            }
+
+            if (showResult && remainingSeconds == null) {
+                val answeredIndex = selectedAnswerIndex
+                if (answeredIndex != null) {
+                    QuestionContextButton(
+                        question = question,
+                        userAnswer = question.answers[answeredIndex],
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
             }
 
             if (showResult && onExplain != null) {

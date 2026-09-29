@@ -38,6 +38,7 @@ import com.drive.license.test.ui.components.AnswerButton
 import com.drive.license.test.ui.components.AppBackNavigationIcon
 import com.drive.license.test.ui.components.AppCard
 import com.drive.license.test.ui.components.AppScaffold
+import com.drive.license.test.ui.questioncontext.QuestionContextButton
 import com.drive.license.test.ui.util.AdaptiveContentContainer
 import com.drive.license.test.ui.util.resolveQuestionImage
 import drivelicensetest.ui.generated.resources.Res
@@ -175,6 +176,11 @@ fun TestSessionQuestionReviewScreen(
                                 onClick = {},
                             )
                         }
+                        QuestionContextButton(
+                            question = q,
+                            userAnswer = selectedAnswer,
+                            modifier = Modifier.fillMaxWidth(),
+                        )
                     }
                 }
             }

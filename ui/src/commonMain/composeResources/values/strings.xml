@@ -7278,4 +7278,11 @@
     <string name="crossing_s12_title">Երկու երկրորդական ճանապարհ</string>
     <string name="crossing_s12_explanation">Գլխավոր ճանապարհով ընթացողն անցնում է առաջինը։ Երկրորդականների միջև ձախ շրջադարձ կատարողը զիջում է հանդիպակաց ուղիղ ընթացողին։ Արևելք-արևմուտքը գլխավոր ճանապարհն է։</string>
 
+    <string name="question_context_button">Վերցնել համատեքստը</string>
+    <string name="question_context_title">Հարցի համատեքստ</string>
+    <string name="question_context_hint">Պատճենիր այս տեքստը, բացիր ChatGPT-ը կամ քո նախընտրած չատը և տեղադրիր այն առաջին հաղորդագրության մեջ։ Այնտեղ կա հարցը, տարբերակները, քո պատասխանը և ճիշտ պատասխանը, որպեսզի կարողանաս շարունակել զրույցը։</string>
+    <string name="question_context_default_follow_up">Բացատրիր ինչու է սա ճիշտ պատասխանը։</string>
+    <string name="question_context_copy">Պատճենել</string>
+    <string name="question_context_copied">Պատճենված է։ Բացիր չատը և տեղադրիր։</string>
+
 </resources>
