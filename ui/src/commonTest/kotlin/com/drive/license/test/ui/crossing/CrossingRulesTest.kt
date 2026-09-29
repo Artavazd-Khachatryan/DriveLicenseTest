@@ -31,8 +31,8 @@ class CrossingRulesTest {
         val car = CrossingVehicle(
             "car", "Ա", VehicleKind.General, Approach.South, Maneuver.Straight,
         )
-        assertEquals(false, mustYield(car, works, priorityAxis = null))
-        assertEquals(true, mustYield(works, car, priorityAxis = null))
+        assertEquals(false, mustYield(car, works, JunctionControl.Equal))
+        assertEquals(true, mustYield(works, car, JunctionControl.Equal))
     }
 
     @Test
@@ -43,16 +43,190 @@ class CrossingRulesTest {
         val police = CrossingVehicle(
             "police", "Ո", VehicleKind.Police, Approach.South, Maneuver.Straight, Beacon.BlueSiren,
         )
-        assertEquals(true, mustYield(ambulance, police, priorityAxis = null))
-        assertEquals(false, mustYield(police, ambulance, priorityAxis = null))
+        assertEquals(true, mustYield(ambulance, police, JunctionControl.Equal))
+        assertEquals(false, mustYield(police, ambulance, JunctionControl.Equal))
     }
 
     @Test
     fun mainRoadBeatsTheVehicleOnTheRight() {
         val onMain = CrossingVehicle("main", "Բ", VehicleKind.General, Approach.West, Maneuver.Straight)
         val onSide = CrossingVehicle("side", "Ա", VehicleKind.General, Approach.South, Maneuver.Straight)
-        assertEquals(true, mustYield(onSide, onMain, RoadAxis.EastWest))
-        assertEquals(false, mustYield(onMain, onSide, RoadAxis.EastWest))
-        assertEquals(true, mustYield(onMain, onSide, priorityAxis = null))
+        val eastWest = JunctionControl.Sign(Approach.West, Bend.Straight)
+        assertEquals(true, mustYield(onSide, onMain, eastWest))
+        assertEquals(false, mustYield(onMain, onSide, eastWest))
+        assertEquals(true, mustYield(onMain, onSide, JunctionControl.Equal))
+    }
+
+    @Test
+    fun mainRoadSignBendsLeftStraightAndRight() {
+        val side = CrossingVehicle("side", "Ա", VehicleKind.General, Approach.East, Maneuver.Straight)
+        val fromSouth = CrossingVehicle("main", "Բ", VehicleKind.General, Approach.South, Maneuver.Straight)
+        for (bend in Bend.entries) {
+            val sign = JunctionControl.Sign(Approach.South, bend)
+            val onMain = fromSouth.approach in signArms(sign) || side.approach in signArms(sign)
+            assertTrue(onMain)
+            if (side.approach in signArms(sign)) {
+                assertEquals(false, mustYield(side, fromSouth, sign))
+            } else {
+                assertEquals(true, mustYield(side, fromSouth, sign))
+            }
+        }
+        assertEquals(
+            setOf(Approach.South, Approach.West),
+            signArms(JunctionControl.Sign(Approach.South, Bend.Left)),
+        )
+        assertEquals(
+            setOf(Approach.South, Approach.North),
+            signArms(JunctionControl.Sign(Approach.South, Bend.Straight)),
+        )
+        assertEquals(
+            setOf(Approach.South, Approach.East),
+            signArms(JunctionControl.Sign(Approach.South, Bend.Right)),
+        )
+    }
+
+    @Test
+    fun trafficLightReplacesTheMainRoadSign() {
+        val green = CrossingVehicle("west", "Ա", VehicleKind.General, Approach.West, Maneuver.Straight)
+        val red = CrossingVehicle("south", "Բ", VehicleKind.General, Approach.South, Maneuver.Straight)
+        val lights = JunctionControl.Lights(
+            SignalPhase.EastWest,
+            ignoredSign = JunctionControl.Sign(Approach.South, Bend.Straight),
+        )
+        assertEquals(true, mustYield(red, green, lights))
+        assertEquals(false, mustYield(green, red, lights))
+        assertEquals(YieldCause.TrafficLight, yieldCause(red, green, lights))
+        val signOnly = JunctionControl.Sign(Approach.South, Bend.Straight)
+        assertEquals(true, mustYield(green, red, signOnly))
+    }
+
+    @Test
+    fun permissiveArrowYieldsToTrafficFromOtherDirections() {
+        val turning = CrossingVehicle(
+            "south", "Ա", VehicleKind.General, Approach.South, Maneuver.TurnLeft,
+        )
+        val crossing = CrossingVehicle(
+            "west", "Բ", VehicleKind.General, Approach.West, Maneuver.Straight,
+        )
+        val arrow = JunctionControl.Lights(
+            green = SignalPhase.EastWest,
+            arrow = ArrowSignal(Approach.South, Maneuver.TurnLeft),
+        )
+        assertEquals(true, mustYield(turning, crossing, arrow))
+        assertEquals(false, mustYield(crossing, turning, arrow))
+        assertEquals(YieldCause.PermissiveArrow, yieldCause(turning, crossing, arrow))
+        assertEquals(true, movementIsGreen(turning, arrow))
+        assertEquals(false, movementIsGreen(
+            turning.copy(maneuver = Maneuver.Straight),
+            arrow,
+        ))
+        val oncoming = CrossingVehicle(
+            "north", "Գ", VehicleKind.General, Approach.North, Maneuver.Straight,
+        )
+        val roundGreen = JunctionControl.Lights(
+            green = SignalPhase.NorthSouth,
+            arrow = ArrowSignal(Approach.South, Maneuver.TurnLeft),
+        )
+        assertEquals(true, mustYield(turning, oncoming, roundGreen))
+        assertEquals(false, mustYield(oncoming, turning, roundGreen))
+        assertEquals(YieldCause.LeftTurn, yieldCause(turning, oncoming, roundGreen))
+    }
+
+    @Test
+    fun reversingDoesNotChangeWhoGoesFirst() {
+        val forward = CrossingVehicle(
+            "south", "Ա", VehicleKind.General, Approach.South, Maneuver.Straight,
+        )
+        val backing = CrossingVehicle(
+            "east", "Բ", VehicleKind.General, Approach.East, Maneuver.Straight,
+            facing = Facing.Reverse,
+        )
+        assertEquals(
+            mustYield(forward, backing.copy(facing = Facing.Forward), JunctionControl.Equal),
+            mustYield(forward, backing, JunctionControl.Equal),
+        )
+        assertEquals(YieldCause.FromTheRight, yieldCause(forward, backing, JunctionControl.Equal))
+        val backingPose = poseAt(backing, 0.2f)
+        val samePathForward = poseAt(backing.copy(facing = Facing.Forward), 0.2f)
+        val turned = backingPose.headingDegrees - samePathForward.headingDegrees
+        val wrapped = ((turned % 360f) + 360f) % 360f
+        assertEquals(180f, wrapped, 1f)
+    }
+
+    @Test
+    fun everyCarFacesTheWayItDrives() {
+        CrossingScenarios.forEach { scenario ->
+            scenario.vehicles.forEach { vehicle ->
+                val start = poseAt(vehicle, 0f)
+                val end = poseAt(vehicle, 1f)
+                val flip = if (vehicle.facing == Facing.Reverse) 180f else 0f
+                checkClose(
+                    norm(noseAtStart(vehicle.approach) + flip),
+                    norm(start.headingDegrees),
+                    "${scenario.id} ${vehicle.label} ${vehicle.approach} ${vehicle.maneuver} start",
+                )
+                checkClose(
+                    norm(noseAtEnd(vehicle.approach, vehicle.maneuver) + flip),
+                    norm(end.headingDegrees),
+                    "${scenario.id} ${vehicle.label} ${vehicle.approach} ${vehicle.maneuver} end",
+                )
+            }
+        }
+    }
+
+    @Test
+    fun deckDoesNotReverseThroughTheJunction() {
+        assertTrue(CrossingScenarios.none { scenario ->
+            scenario.vehicles.any { it.facing == Facing.Reverse }
+        })
+    }
+
+    @Test
+    fun deckIncludesLightsAndEveryMainRoadBend() {
+        assertTrue(CrossingScenarios.any { it.control is JunctionControl.Equal })
+        assertTrue(CrossingScenarios.any { it.control is JunctionControl.Lights && it.control.ignoredSign == null })
+        assertTrue(CrossingScenarios.any { it.control is JunctionControl.Lights && it.control.ignoredSign != null })
+        assertTrue(CrossingScenarios.any { it.control is JunctionControl.Lights && it.control.arrow != null })
+        assertTrue(CrossingScenarios.any { scenario ->
+            scenario.notes.any { it.cause == YieldCause.PermissiveArrow }
+        })
+        for (bend in Bend.entries) {
+            assertTrue(CrossingScenarios.any { it.control is JunctionControl.Sign && it.control.bend == bend })
+        }
+    }
+}
+
+private fun checkClose(expected: Float, actual: Float, where: String) {
+    val delta = kotlin.math.abs(norm(actual - expected))
+    check(delta <= 8f) { "$where expected $expected actual $actual" }
+}
+
+private fun norm(degrees: Float): Float {
+    var wrapped = degrees % 360f
+    if (wrapped > 180f) wrapped -= 360f
+    if (wrapped < -180f) wrapped += 360f
+    return wrapped
+}
+
+private fun noseAtStart(approach: Approach): Float = when (approach) {
+    Approach.South -> 0f
+    Approach.North -> 180f
+    Approach.West -> 90f
+    Approach.East -> -90f
+}
+
+private fun noseAtEnd(approach: Approach, maneuver: Maneuver): Float = when (maneuver) {
+    Maneuver.Straight -> noseAtStart(approach)
+    Maneuver.TurnRight -> when (approach) {
+        Approach.South -> 90f
+        Approach.West -> 180f
+        Approach.North -> -90f
+        Approach.East -> 0f
+    }
+    Maneuver.TurnLeft -> when (approach) {
+        Approach.South -> -90f
+        Approach.West -> 0f
+        Approach.North -> 90f
+        Approach.East -> 180f
     }
 }

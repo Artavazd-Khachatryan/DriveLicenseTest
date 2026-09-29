@@ -1,8 +1,12 @@
 package com.drive.license.test.ui.crossing
 
 import drivelicensetest.ui.generated.resources.Res
+import drivelicensetest.ui.generated.resources.crossing_case_arrow
 import drivelicensetest.ui.generated.resources.crossing_case_equal
-import drivelicensetest.ui.generated.resources.crossing_case_main
+import drivelicensetest.ui.generated.resources.crossing_case_lights
+import drivelicensetest.ui.generated.resources.crossing_case_main_left
+import drivelicensetest.ui.generated.resources.crossing_case_main_right
+import drivelicensetest.ui.generated.resources.crossing_case_main_straight
 import drivelicensetest.ui.generated.resources.crossing_case_mixed
 import drivelicensetest.ui.generated.resources.crossing_case_signal
 import drivelicensetest.ui.generated.resources.crossing_case_turns
@@ -29,68 +33,170 @@ fun generateCrossingScenarios(): List<CrossingScenario> {
                 if (added == perSize || addedHere == perArms) break
                 for (beacons in beaconPlans(count)) {
                     if (added == perSize || addedHere == perArms) break
-                    for (axis in listOf(null, RoadAxis.EastWest, RoadAxis.NorthSouth)) {
+                    for (control in straightControls()) {
                         if (added == perSize || addedHere == perArms) break
-                        val vehicles = arms.indices.map { index ->
-                            CrossingVehicle(
-                                id = "v$index",
-                                label = labels[index],
-                                kind = kindFor(beacons[index], index),
-                                approach = arms[index],
-                                maneuver = moves[index],
-                                beacon = beacons[index],
-                            )
+                        if (accept(scenarios, seen, arms, moves, beacons, control)) {
+                            added += 1
+                            addedHere += 1
                         }
-                        val draft = CrossingScenario(
-                            id = "draft",
-                            title = titleFor(vehicles, axis),
-                            explanation = Res.string.crossing_case_equal,
-                            vehicles = vehicles,
-                            crossingOrder = emptyList(),
-                            priorityAxis = axis,
-                        )
-                        val order = runCatching { resolveCrossing(draft) }.getOrNull() ?: continue
-                        val signature = vehicles.joinToString(",") {
-                            "${it.approach}-${it.maneuver}-${it.beacon}"
-                        } + "|${axis ?: "equal"}"
-                        if (!seen.add(signature)) continue
-                        val notes = notesFor(order, axis)
-                        scenarios += draft.copy(
-                            id = "c${scenarios.size + 1}",
-                            crossingOrder = order.map { it.id },
-                            notes = notes,
-                        )
-                        added += 1
-                        addedHere += 1
                     }
                 }
             }
         }
     }
+    addBendAndLightScenarios(scenarios, seen)
     return scenarios
 }
 
-private fun notesFor(order: List<CrossingVehicle>, axis: RoadAxis?): List<YieldNote> {
+private fun straightControls(): List<JunctionControl> = listOf(
+    JunctionControl.Equal,
+    JunctionControl.Sign(Approach.South, Bend.Straight),
+    JunctionControl.Sign(Approach.West, Bend.Straight),
+)
+
+private fun accept(
+    scenarios: MutableList<CrossingScenario>,
+    seen: MutableSet<String>,
+    arms: List<Approach>,
+    moves: List<Maneuver>,
+    beacons: List<Beacon>,
+    control: JunctionControl,
+): Boolean {
+    val vehicles = arms.indices.map { index ->
+        CrossingVehicle(
+            id = "v$index",
+            label = labels[index],
+            kind = kindFor(beacons[index], index),
+            approach = arms[index],
+            maneuver = moves[index],
+            beacon = beacons[index],
+        )
+    }
+    val draft = CrossingScenario(
+        id = "draft",
+        title = titleFor(vehicles, control),
+        explanation = Res.string.crossing_case_equal,
+        vehicles = vehicles,
+        crossingOrder = emptyList(),
+        control = control,
+    )
+    val order = runCatching { resolveCrossing(draft) }.getOrNull() ?: return false
+    val signature = vehicles.joinToString(",") {
+        "${it.approach}-${it.maneuver}-${it.beacon}"
+    } + "|${controlKey(control)}"
+    if (!seen.add(signature)) return false
+    scenarios += draft.copy(
+        id = "c${scenarios.size + 1}",
+        crossingOrder = order.map { it.id },
+        notes = notesFor(order, control),
+    )
+    return true
+}
+
+/** One sample for every bend, and for lights both with and without a sign behind them. */
+private fun addBendAndLightScenarios(
+    scenarios: MutableList<CrossingScenario>,
+    seen: MutableSet<String>,
+) {
+    val none = listOf(Beacon.None, Beacon.None)
+    val straight = listOf(Maneuver.Straight, Maneuver.Straight)
+    for (from in Approach.entries) {
+        val side = Approach.entries.first { it != from && it != otherArm(from, Bend.Straight) }
+        for (bend in Bend.entries) {
+            val along = when (bend) {
+                Bend.Left -> Maneuver.TurnLeft
+                Bend.Straight -> Maneuver.Straight
+                Bend.Right -> Maneuver.TurnRight
+            }
+            accept(
+                scenarios, seen,
+                listOf(from, side),
+                listOf(along, Maneuver.Straight),
+                none,
+                JunctionControl.Sign(from, bend),
+            )
+        }
+    }
+    for (phase in SignalPhase.entries) {
+        val greenArm = if (phase == SignalPhase.NorthSouth) Approach.South else Approach.West
+        val redArm = if (phase == SignalPhase.NorthSouth) Approach.East else Approach.South
+        accept(
+            scenarios, seen,
+            listOf(greenArm, redArm),
+            straight,
+            none,
+            JunctionControl.Lights(phase),
+        )
+        val sign = JunctionControl.Sign(
+            if (phase == SignalPhase.NorthSouth) Approach.West else Approach.South,
+            Bend.Straight,
+        )
+        accept(
+            scenarios, seen,
+            listOf(greenArm, redArm),
+            listOf(Maneuver.Straight, Maneuver.TurnLeft),
+            none,
+            JunctionControl.Lights(phase, ignoredSign = sign),
+        )
+    }
+    // §91: red main light plus a green arrow. The turn yields to the green cross street.
+    accept(
+        scenarios, seen,
+        listOf(Approach.South, Approach.West),
+        listOf(Maneuver.TurnLeft, Maneuver.Straight),
+        none,
+        JunctionControl.Lights(
+            green = SignalPhase.EastWest,
+            arrow = ArrowSignal(Approach.South, Maneuver.TurnLeft),
+        ),
+    )
+    accept(
+        scenarios, seen,
+        listOf(Approach.East, Approach.South),
+        listOf(Maneuver.TurnRight, Maneuver.Straight),
+        none,
+        JunctionControl.Lights(
+            green = SignalPhase.NorthSouth,
+            arrow = ArrowSignal(Approach.East, Maneuver.TurnRight),
+        ),
+    )
+}
+
+private fun controlKey(control: JunctionControl): String = when (control) {
+    JunctionControl.Equal -> "equal"
+    is JunctionControl.Sign -> "sign-${control.from}-${control.bend}"
+    is JunctionControl.Lights ->
+        "lights-${control.green}-${control.arrow?.approach}-${control.arrow?.maneuver}-${control.ignoredSign?.from}"
+}
+
+private fun notesFor(order: List<CrossingVehicle>, control: JunctionControl): List<YieldNote> {
     return order.drop(1).map { waiting ->
         val ahead = order.takeWhile { it.id != waiting.id }.last { other ->
-            mustYield(waiting, other, axis)
+            mustYield(waiting, other, control)
         }
         YieldNote(
             waitingId = waiting.id,
             aheadId = ahead.id,
-            cause = checkNotNull(yieldCause(waiting, ahead, axis)),
+            cause = checkNotNull(yieldCause(waiting, ahead, control)),
         )
     }
 }
 
-private fun titleFor(vehicles: List<CrossingVehicle>, axis: RoadAxis?): StringResource {
+private fun titleFor(vehicles: List<CrossingVehicle>, control: JunctionControl): StringResource {
+    if (control is JunctionControl.Lights && control.arrow != null) return Res.string.crossing_case_arrow
+    if (control is JunctionControl.Lights) return Res.string.crossing_case_lights
+    if (control is JunctionControl.Sign) {
+        return when (control.bend) {
+            Bend.Left -> Res.string.crossing_case_main_left
+            Bend.Straight -> Res.string.crossing_case_main_straight
+            Bend.Right -> Res.string.crossing_case_main_right
+        }
+    }
     val hasSignal = vehicles.any { it.beacon == Beacon.BlueSiren }
     val hasTurn = vehicles.any { it.maneuver != Maneuver.Straight }
-    val features = listOf(hasSignal, axis != null, hasTurn).count { it }
-    if (features > 1) return Res.string.crossing_case_mixed
+    if (hasSignal && hasTurn) return Res.string.crossing_case_mixed
     return when {
         hasSignal -> Res.string.crossing_case_signal
-        axis != null -> Res.string.crossing_case_main
         hasTurn -> Res.string.crossing_case_turns
         else -> Res.string.crossing_case_equal
     }
