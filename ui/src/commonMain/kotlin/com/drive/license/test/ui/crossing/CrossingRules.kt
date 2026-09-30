@@ -63,6 +63,27 @@ fun mustYield(
     return isFromTheRight(other.approach, vehicle.approach)
 }
 
+/**
+ * The first car in [order] that crosses before another it must give way to, or null
+ * when the order breaks no rule. Cars whose paths never meet are not paired.
+ */
+fun firstYieldViolation(
+    order: List<CrossingVehicle>,
+    control: JunctionControl,
+): YieldNote? {
+    order.forEachIndexed { index, vehicle ->
+        val blocker = order.drop(index + 1).firstOrNull { mustYield(vehicle, it, control) }
+        if (blocker != null) {
+            return YieldNote(
+                waitingId = vehicle.id,
+                aheadId = blocker.id,
+                cause = checkNotNull(yieldCause(vehicle, blocker, control)),
+            )
+        }
+    }
+    return null
+}
+
 /** Why [vehicle] waits for [other], or null when it does not. */
 fun yieldCause(
     vehicle: CrossingVehicle,

@@ -175,6 +175,41 @@ class CrossingRulesTest {
     }
 
     @Test
+    fun wrongOrderBlamesARealYieldNotTheHorizontalNeighbour() {
+        // East and West both drive straight in parallel lanes: their paths never meet.
+        val east = CrossingVehicle("east", "Ա", VehicleKind.General, Approach.East, Maneuver.Straight)
+        val south = CrossingVehicle("south", "Բ", VehicleKind.General, Approach.South, Maneuver.Straight)
+        val west = CrossingVehicle("west", "Գ", VehicleKind.General, Approach.West, Maneuver.Straight)
+        val control = JunctionControl.Equal
+        // Legal order: east, south, west (each yields to the car on its right).
+        // The user answers west, east, south: west's mistake is cutting off south, not east.
+        val violation = firstYieldViolation(listOf(west, east, south), control)
+        assertEquals("west", violation?.waitingId)
+        assertEquals("south", violation?.aheadId)
+        assertEquals(YieldCause.FromTheRight, violation?.cause)
+        // A legal order reports no violation.
+        assertEquals(null, firstYieldViolation(listOf(east, south, west), control))
+        // Two straight cars in opposite lanes owe each other nothing.
+        assertEquals(false, mustYield(east, west, control))
+        assertEquals(false, mustYield(west, east, control))
+    }
+
+    @Test
+    fun everyStoredOrderIsTheOnlyLegalOne() {
+        CrossingScenarios.forEach { scenario ->
+            val order = scenario.crossingOrder.map { id ->
+                scenario.vehicles.first { it.id == id }
+            }
+            assertEquals(null, firstYieldViolation(order, scenario.control), scenario.id)
+            scenario.notes.forEach { note ->
+                val waiting = scenario.vehicles.first { it.id == note.waitingId }
+                val ahead = scenario.vehicles.first { it.id == note.aheadId }
+                assertEquals(note.cause, yieldCause(waiting, ahead, scenario.control), scenario.id)
+            }
+        }
+    }
+
+    @Test
     fun deckDoesNotReverseThroughTheJunction() {
         assertTrue(CrossingScenarios.none { scenario ->
             scenario.vehicles.any { it.facing == Facing.Reverse }
