@@ -152,7 +152,7 @@ fun CrossingDemoScreen(
                     if (step < crossingOrder.lastIndex) delay(220)
                 }
             } else {
-                val clash = firstClash(picks, legalIds)
+                val clash = firstClash(picks, scenario)
                 activeId = null
                 val together = Animatable(0f)
                 together.animateTo(
@@ -183,7 +183,7 @@ fun CrossingDemoScreen(
     val legalIds = crossingOrder.map { it.id }
     val ready = picks.size == scenario.vehicles.size
     val correct = picks == legalIds
-    val clash = if (revealed && !correct && picks.isNotEmpty()) firstClash(picks, legalIds) else null
+    val clash = if (revealed && !correct && picks.isNotEmpty()) firstClash(picks, scenario) else null
     val explanation = crossingExplanation(scenario)
 
     val canGoPrevious = index > 0 && !playing
@@ -500,7 +500,14 @@ private fun OrderChips(
 
 private data class Clash(val wrongId: String, val priorityId: String)
 
-private fun firstClash(picks: List<String>, legal: List<String>): Clash {
+/** The picked car that cut off a car it must give way to; those two are shown colliding. */
+private fun firstClash(picks: List<String>, scenario: CrossingScenario): Clash {
+    val byId = scenario.vehicles.associateBy { it.id }
+    val ordered = picks.mapNotNull { byId[it] } +
+        scenario.vehicles.filter { it.id !in picks }
+    val violation = firstYieldViolation(ordered, scenario.control)
+    if (violation != null) return Clash(violation.waitingId, violation.aheadId)
+    val legal = scenario.crossingOrder
     val index = legal.indices.first { step -> step >= picks.size || picks[step] != legal[step] }
     return Clash(
         wrongId = picks.getOrElse(index) { picks.first() },
