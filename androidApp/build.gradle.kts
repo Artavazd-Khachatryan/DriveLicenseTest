@@ -11,6 +11,8 @@ plugins {
 android {
     namespace = "com.drive.license.test"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
+    // Required for ndk.debugSymbolLevel — without it AGP skips native symbols and Play warns.
+    ndkVersion = "27.2.12479018"
 
     val versionProperties = Properties().also { props ->
         rootProject.file("gradle/version.properties").inputStream().use { props.load(it) }
