@@ -7280,7 +7280,7 @@
 
     <string name="question_context_button">Վերցնել համատեքստը</string>
     <string name="question_context_title">Հարցի համատեքստ</string>
-    <string name="question_context_hint">Պատճենիր հարցի համատեքստը և սկսիր զրույց քո նախընտրած AI չատում՝ ChatGPT, Claude, Gemini կամ այլ։ Տեքստը ներառում է հարցը, տարբերակները, քո պատասխանը և ճիշտ պատասխանը — պարզապես տեղադրիր այն առաջին հաղորդագրության մեջ։</string>
+    <string name="question_context_hint">Պատճենիր հարցի համատեքստը և սկսիր զրույց քո նախընտրած արհեստական բանականության չատում։ Տեքստը ներառում է հարցը, տարբերակները, քո պատասխանը և ճիշտ պատասխանը — պարզապես տեղադրիր այն առաջին հաղորդագրության մեջ։</string>
     <string name="question_context_default_follow_up">Բացատրիր ինչու է սա ճիշտ պատասխանը։</string>
     <string name="question_context_copy">Պատճենել</string>
     <string name="question_context_copied">Պատճենված է։ Բացիր չատը և տեղադրիր։</string>
