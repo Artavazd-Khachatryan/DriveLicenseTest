@@ -45,5 +45,9 @@ scripts/image_gallery.html
 scripts/verify_report.json
 scripts/verify_text_report.md
 
-# WebP migration QA backups (regenerate with scripts/migrate_question_images_to_webp.py)
+# WebP migration QA (regenerate with scripts/migrate_question_images_to_webp.py)
 scripts/review/webp-migration/originals/
+scripts/review/webp-migration/quality_review.html
+
+# One-off question review dumps (not app source)
+scripts/review/ew-questions.html
