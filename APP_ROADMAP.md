@@ -266,6 +266,20 @@ The bundled DB (`database/src/commonMain/resources/license_test_questions.db`) w
 
 ---
 
+## Pre-release regression
+
+Run `scripts/release_check.sh` before every store release. It stops on the first failure and prints a PASS summary.
+
+1. `verify_image_refs.py` and `verify_questions.py` (skip with `--skip-content`; the PDFs are cached in `/tmp/official-exam-2026` and the fetch can time out, so pre-download them with curl, see the script header)
+2. `ContentRefresh.CONTENT_VERSION` equals the `content_version` stamp in the bundled DB
+3. Host tests: `database` (upgrade from the v1.1.0.14 release DB fixture with progress and bookmarks, plus bundled DB stamp and empty user tables), `domain`, `ui`, `composeApp`, `androidApp` (iOS simulator tests only with `--ios`)
+4. `:androidApp:assembleDebug`
+5. `:androidApp:connectedDebugAndroidTest` (Compose smoke tests in `androidApp/src/androidTest`: launch, 10-question session to results, bottom nav, settings category switch, traffic signs) when a device or emulator is attached; skip with `--no-device`
+
+Keep the Armenian strings in `SmokeTest` in sync with `strings.xml`. When a release changes the DB schema, add the new release DB as a fixture in `database/src/androidHostTest/resources/fixtures`.
+
+---
+
 ## Phase 11: Crossing order
 
 Practice who goes first at an uncontrolled junction, then watch the cars take that path. Separate from the question bank: no database, scenarios live in code (`ui/.../crossing/`).

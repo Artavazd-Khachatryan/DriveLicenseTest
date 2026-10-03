@@ -116,6 +116,7 @@ home → question → results
 - Never batch multiple unrelated changes into a single commit
 - Commit after each meaningful unit of work (e.g., one new screen, one bug fix, one refactor)
 - This keeps the git history readable and makes code review easier
+- Before a release, run `scripts/release_check.sh` (see `APP_ROADMAP.md`, Pre-release regression)
 
 ### Adding New Components
 
