@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -160,11 +161,14 @@ fun QuestionDetailScreen(
             modifier = modifier
                 .fillMaxSize()
                 .then(innerPadding)
-                .verticalScroll(rememberScrollState())
-                .padding(16.dp)
         ) { isExpanded, contentModifier ->
+        Column(modifier = contentModifier.fillMaxHeight()) {
         Column(
-            modifier = contentModifier,
+            modifier = Modifier
+                .weight(1f)
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 16.dp)
+                .padding(top = 16.dp, bottom = 8.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             val sessionProgress = if (totalQuestions > 0) {
@@ -295,10 +299,12 @@ fun QuestionDetailScreen(
                 }
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
-
+        }
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+                    .padding(bottom = 16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 AppOutlinedButton(
