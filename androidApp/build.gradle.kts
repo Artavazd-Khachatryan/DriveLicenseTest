@@ -45,6 +45,8 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
 
         // X.Y.Z.build — X.Y.Z in gradle/version.properties; build from CI or git commit count locally
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
         versionName = appVersionName
         versionCode = buildNumber
 
@@ -127,4 +129,9 @@ dependencies {
     implementation(libs.firebase.crashlytics)
 
     debugImplementation(libs.compose.ui.tooling)
+
+    androidTestImplementation(libs.compose.ui.test.junit4)
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    debugImplementation(libs.compose.ui.test.manifest)
 }

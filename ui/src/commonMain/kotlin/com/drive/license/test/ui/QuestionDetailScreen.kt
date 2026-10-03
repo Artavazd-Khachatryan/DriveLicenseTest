@@ -32,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.painterResource
 import com.drive.license.test.domain.model.Question
@@ -257,6 +258,7 @@ fun QuestionDetailScreen(
 
             question.answers.forEachIndexed { index, answer ->
                 AnswerButton(
+                    modifier = Modifier.testTag("answer_option_$index"),
                     answer = answer,
                     index = index,
                     enabled = !showResult,

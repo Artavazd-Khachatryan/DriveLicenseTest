@@ -9,6 +9,8 @@ androidx-espresso-core = "3.7.0"
 androidx-lifecycle = "2.9.6"
 androidx-test-junit = "1.3.0"
 compose-plugin = "1.10.2"
+# androidx Compose UI version that compose-plugin 1.10.2 resolves to (JetBrains publishes no ui-test artifacts)
+androidx-compose-ui-test = "1.10.4"
 compose-material3 = "1.9.0"
 compose-icons = "1.7.3"
 junit = "4.13.2"
@@ -63,6 +65,8 @@ compose-foundation = { group = "org.jetbrains.compose.foundation", name = "found
 compose-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "compose-material3" }
 compose-ui = { group = "org.jetbrains.compose.ui", name = "ui", version.ref = "compose-plugin" }
 compose-ui-backhandler = { group = "org.jetbrains.compose.ui", name = "ui-backhandler", version.ref = "compose-plugin" }
+compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "androidx-compose-ui-test" }
+compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "androidx-compose-ui-test" }
 compose-ui-tooling = { group = "org.jetbrains.compose.ui", name = "ui-tooling", version.ref = "compose-plugin" }
 compose-ui-tooling-preview = { group = "org.jetbrains.compose.ui", name = "ui-tooling-preview", version.ref = "compose-plugin" }
 compose-components-resources = { group = "org.jetbrains.compose.components", name = "components-resources", version.ref = "compose-plugin" }

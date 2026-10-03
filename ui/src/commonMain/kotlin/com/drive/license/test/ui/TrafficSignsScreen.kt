@@ -42,6 +42,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.drive.license.test.domain.model.TrafficSign
 import com.drive.license.test.ui.components.AppBackNavigationIcon
@@ -140,7 +141,7 @@ fun TrafficSignsScreen(
 private fun SignCard(sign: TrafficSign, onPreview: () -> Unit) {
     val image = resolveDrawableResource(sign.imageName)
     val openLabel = stringResource(Res.string.signs_open)
-    AppCard(modifier = Modifier.fillMaxWidth()) {
+    AppCard(modifier = Modifier.fillMaxWidth().testTag("sign_card")) {
         Row(
             modifier = Modifier.fillMaxWidth().padding(12.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp),
