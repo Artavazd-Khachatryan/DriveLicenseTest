@@ -262,7 +262,7 @@ The bundled DB (`database/src/commonMain/resources/license_test_questions.db`) w
 - [x] **10.2 Content version stamp** — `Metadata` table + `scripts/set_content_version.py` (baseline: 1)
 - [x] **10.3 Startup content refresh** — `ContentRefresh` swap + orphan cleanup, wired on Android and iOS
 - [x] **10.4 Image reference verification** — `scripts/verify_image_refs.py`
-- [x] **10.5 Official 2026-09-01 / PDFs 2026-10-02 content update** — ABC+DT papers, `content_version` 6; 1587 questions (843 GENERAL / 207 ABC / 537 DT). Repeat via `scripts/sync_official_exam.py`.
+- [x] **10.5 Official 2026-09-01 / PDFs 2026-10-02 content update** — ABC+DT papers, `content_version` 7 (6 = bank, 7 = « » quotes); 1587 questions (843 GENERAL / 207 ABC / 537 DT). Repeat via `scripts/sync_official_exam.py`.
 
 ---
 
@@ -332,3 +332,4 @@ A reference of official Armenian road signs, separate from the exam questions. P
 | 2026-09-24 | Phase 11 added — crossing order: rule engine (§28, §32, §96, §98, §99), five Armenian scenarios, animated paths; 11.6 release merge still open |
 | 2026-09-24 | Phase 12.1–12.4 — traffic sign catalog from the official rules, 271 signs; multi-panel examples kept as one image |
 | 2026-10-02 | Phase 10.5 — official exam bank from roadpolice.am ABC+DT PDFs; content_version 6 (1587 questions) |
+| 2026-10-03 | content_version 7 — Armenian « » quotes; re-verified against the PDFs (text, answers, grouping, 919 images) and upgrade from v1.1.0.14 on an emulator |
