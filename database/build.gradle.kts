@@ -19,6 +19,9 @@ kotlin {
         androidResources {
             enable = true
         }
+        withHostTest {
+            isIncludeAndroidResources = false
+        }
     }
 
     listOf(
@@ -38,6 +41,12 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.sqldelight.android.driver)
             implementation(libs.sqldelight.coroutines.extensions)
+            implementation(libs.sqldelight.test.driver)
+        }
+
+        getByName("androidHostTest").dependencies {
+            implementation(libs.kotlin.test)
+            implementation(libs.junit)
             implementation(libs.sqldelight.test.driver)
         }
 
