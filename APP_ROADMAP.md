@@ -270,6 +270,8 @@ The bundled DB (`database/src/commonMain/resources/license_test_questions.db`) w
 
 Run `scripts/release_check.sh` before every store release. It stops on the first failure and prints a PASS summary.
 
+The full process is the `/pre-release-qa` skill (`.claude/skills/pre-release-qa/SKILL.md`): it runs this script, then walks the manual checklist `docs/release-qa-checklist.md` on an emulator and writes `scripts/review/release-qa-<version>.md`. New features must add their checklist section.
+
 1. `verify_image_refs.py` and `verify_questions.py` (skip with `--skip-content`; the PDFs are cached in `/tmp/official-exam-2026` and the fetch can time out, so pre-download them with curl, see the script header)
 2. `ContentRefresh.CONTENT_VERSION` equals the `content_version` stamp in the bundled DB
 3. Host tests: `database` (upgrade from the v1.1.0.14 release DB fixture with progress and bookmarks, plus bundled DB stamp and empty user tables), `domain`, `ui`, `composeApp`, `androidApp` (iOS simulator tests only with `--ios`)

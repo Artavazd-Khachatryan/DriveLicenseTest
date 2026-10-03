@@ -116,7 +116,8 @@ home → question → results
 - Never batch multiple unrelated changes into a single commit
 - Commit after each meaningful unit of work (e.g., one new screen, one bug fix, one refactor)
 - This keeps the git history readable and makes code review easier
-- Before a release, run `scripts/release_check.sh` (see `APP_ROADMAP.md`, Pre-release regression)
+- Before a release, run `/pre-release-qa` (skill in `.claude/skills/pre-release-qa`; it runs `scripts/release_check.sh` and the on-device checklist)
+- Every new feature must add its section to `docs/release-qa-checklist.md` and, where feasible, a smoke test in `androidApp/src/androidTest`
 
 ### Adding New Components
 
