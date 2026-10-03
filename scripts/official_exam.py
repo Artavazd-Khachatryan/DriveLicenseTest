@@ -64,6 +64,9 @@ class OfficialRecord:
 def norm(s: str) -> str:
     s = unicodedata.normalize("NFC", s or "")
     s = s.replace("\u00a0", " ").replace("\u202f", " ")
+    # PDFs emit ASCII << >> where the book uses Armenian guillemets.
+    s = s.replace("<< ", "«").replace("<<", "«")
+    s = s.replace(" >>", "»").replace(">>", "»")
     s = re.sub(r"\s+", " ", s).strip()
     return s
 
