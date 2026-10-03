@@ -17,7 +17,7 @@ object ContentRefresh {
 
     /** Version of the question content bundled with this build. Must match the
      * `content_version` stamped into license_test_questions.db. */
-    const val CONTENT_VERSION = 5L
+    const val CONTENT_VERSION = 6L
 
     private const val VERSION_KEY = "content_version"
 

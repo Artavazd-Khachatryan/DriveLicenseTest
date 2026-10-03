@@ -21,7 +21,7 @@ Hard rules:
 - Question `id` is permanent identity (progress, bookmarks, image filenames key on it). Never renumber, never reuse a removed id. Inserts must pass an explicit id.
 - `Question.printed_number` = the number printed in the current book edition (unique per book, not globally). Equals `id` in the initial content; if a future edition renumbers, update `printed_number` only and leave `id` untouched.
 - User tables in the bundled DB (`UserQuestionProgress`, `TestSession`, `QuestionAttempt`, `UserStatistics`) must stay empty.
-- After any content change: run `scripts/verify_image_refs.py` and `scripts/verify_questions.py`, then `scripts/set_content_version.py <n+1>` and set `ContentRefresh.CONTENT_VERSION` to the same number, in the same commit.
+- After any content change: run `python3 scripts/sync_official_exam.py` (then `--apply`), `scripts/verify_image_refs.py` and `scripts/verify_questions.py`, then `scripts/set_content_version.py <n+1>` and set `ContentRefresh.CONTENT_VERSION` to the same number, in the same commit. Official PDFs: https://roadpolice.am/exam/{abc,dt}/hy/{1..10}.pdf
 - Question images are drawables named `question{id}_image.*` in `ui/src/commonMain/composeResources/drawable`; remove them when their question is removed.
 
 Full checklist: `APP_ROADMAP.md` Phase 10.

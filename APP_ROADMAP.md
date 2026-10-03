@@ -254,7 +254,7 @@ The bundled DB (`database/src/commonMain/resources/license_test_questions.db`) w
 
 1. Edit the bundled DB (add/remove/fix questions; keep ids = book numbers). Keep user tables empty.
 2. Add new `question{id}_image.*` drawables; delete drawables of removed questions.
-3. Run `python3 scripts/verify_questions.py` (content vs source PDFs) and `python3 scripts/verify_image_refs.py` (DB ↔ drawable consistency). Both must pass.
+3. Run `python3 scripts/sync_official_exam.py` (dry-run, then `--apply`) against https://roadpolice.am/exam/{abc,dt}/hy/{1..10}.pdf, then `python3 scripts/verify_questions.py` and `python3 scripts/verify_image_refs.py`. Both must pass.
 4. Run `python3 scripts/set_content_version.py <n+1>` and set `ContentRefresh.CONTENT_VERSION` to the same number.
 5. Commit DB + images + version bump together; release. Devices refresh on next launch.
 
@@ -262,7 +262,7 @@ The bundled DB (`database/src/commonMain/resources/license_test_questions.db`) w
 - [x] **10.2 Content version stamp** — `Metadata` table + `scripts/set_content_version.py` (baseline: 1)
 - [x] **10.3 Startup content refresh** — `ContentRefresh` swap + orphan cleanup, wired on Android and iOS
 - [x] **10.4 Image reference verification** — `scripts/verify_image_refs.py`
-- **10.5 First real content update** — apply the checklist when new official questions arrive
+- [x] **10.5 Official 2026-09-01 / PDFs 2026-10-02 content update** — ABC+DT papers, `content_version` 6; 1587 questions (843 GENERAL / 207 ABC / 537 DT). Repeat via `scripts/sync_official_exam.py`.
 
 ---
 
@@ -331,3 +331,4 @@ A reference of official Armenian road signs, separate from the exam questions. P
 | 2026-07-03 | Phase 10 added and 10.1–10.4 done — content-update migration: stable ids, `content_version` stamp, `ContentRefresh` startup swap keeping user progress, image reference verification; removed unsafe size-based DB overwrite |
 | 2026-09-24 | Phase 11 added — crossing order: rule engine (§28, §32, §96, §98, §99), five Armenian scenarios, animated paths; 11.6 release merge still open |
 | 2026-09-24 | Phase 12.1–12.4 — traffic sign catalog from the official rules, 271 signs; multi-panel examples kept as one image |
+| 2026-10-02 | Phase 10.5 — official exam bank from roadpolice.am ABC+DT PDFs; content_version 6 (1587 questions) |

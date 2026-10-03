@@ -51,3 +51,4 @@ scripts/review/webp-migration/quality_review.html
 
 # One-off question review dumps (not app source)
 scripts/review/ew-questions.html
+scripts/review/official-sync-report.json
