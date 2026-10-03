@@ -17,7 +17,8 @@ captures
 !*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
-.claude
+.claude/*
+!.claude/skills/
 
 # Per-developer Xcode signing (see iosApp/Configuration/Local.xcconfig.example)
 iosApp/Configuration/Local.xcconfig
@@ -52,3 +53,7 @@ scripts/review/webp-migration/quality_review.html
 # One-off question review dumps (not app source)
 scripts/review/ew-questions.html
 scripts/review/official-sync-report.json
+
+# Generated pre-release QA reports and screenshots
+scripts/review/release-qa-*.md
+scripts/review/release-qa-*-shots/
