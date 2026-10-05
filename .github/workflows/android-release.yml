@@ -82,6 +82,9 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v4
+        with:
+          # Google removed the legacy `tools` package; do not ask sdkmanager for it.
+          packages: platform-tools
 
       - name: Install NDK for native debug symbols
         run: sdkmanager "ndk;27.2.12479018"
