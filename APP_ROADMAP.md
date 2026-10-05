@@ -302,7 +302,7 @@ Two vehicles with the same beacon rank use the road rules between them. A situat
 
 - [x] **11.1 Stored answers** — each scenario keeps `crossingOrder`; `CrossingRules.kt` checks it against the table above. The screen shuffles the list on open
 - [x] **11.2 Stage** — Top-down junction; straight, left, and right paths; car kinds (car, ambulance, police, road works, emergency) and beacon color
-- [x] **11.3 Play-through** — Tap an order, then **Ցույց տալ անցումը** animates the legal order and explains it
+- [x] **11.3 Play-through** — Tap an order, then **Ստուգել** animates the order and explains it (the `crossing_show` string is unused)
 - [x] **11.4 Armenian UI** — Home card **Խաչմերուկի հերթ** and the screen strings
 - [x] **11.5 Tests** — `CrossingRulesTest` locks each scenario’s order, plus orange-beacon, two special vehicles, and main-road cases
 - **11.6 Release** — Merge `poc/crossing-order`; confirm Android and iOS, both themes; keep new scenarios on the same rule engine

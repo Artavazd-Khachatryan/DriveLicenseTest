@@ -168,7 +168,7 @@ Conventions: "Home" = bottom tab `Գլխավոր`, "Practice" = `Պարապմո�
   7. `Նախորդը` / `Հաջորդը` move between scenarios; picks reset per scenario.
   8. Open `Սովորել`: guide sections render; `Անցնել հարցերին` returns.
 - Expected: explanation text matches the rule of the scenario (right-hand rule, main road, lights, special signals); no overlap of cars with the road drawing in light or dark.
-- Note: the string `Ցույց տալ անցումը` [crossing_show] is imported in `CrossingDemoScreen.kt` but no button using it was found in the code; if the build shows such a button, test it as the replay control, otherwise treat the `Ստուգել` replay as the animation trigger.
+- Verified 2026-10-05 on the emulator: the screen has `Հետ`, `Սովորել`, `Նախորդը`/`Հաջորդը`, `Մաքրել` and `Ստուգել` only. There is no `Ցույց տալ անցումը` button (the string is imported but unused); `Ստուգել` triggers the animation.
 - Automated by: manual only (rules logic may be covered by host tests under `ui/src/commonTest`; names not verified).
 
 ## 13. Settings
