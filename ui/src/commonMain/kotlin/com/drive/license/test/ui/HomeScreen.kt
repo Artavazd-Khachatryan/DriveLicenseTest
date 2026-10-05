@@ -65,7 +65,6 @@ import drivelicensetest.ui.generated.resources.home_color_vision_button
 import drivelicensetest.ui.generated.resources.home_color_vision_subtitle
 import drivelicensetest.ui.generated.resources.home_color_vision_title
 import drivelicensetest.ui.generated.resources.home_crossing_button
-import drivelicensetest.ui.generated.resources.home_crossing_subtitle
 import drivelicensetest.ui.generated.resources.home_crossing_title
 import drivelicensetest.ui.generated.resources.signs_open
 import drivelicensetest.ui.generated.resources.signs_subtitle
@@ -203,7 +202,6 @@ fun HomeScreen(
                         modifier = Modifier.fillMaxWidth(),
                         icon = Icons.Filled.DirectionsCar,
                         title = stringResource(Res.string.home_crossing_title),
-                        description = stringResource(Res.string.home_crossing_subtitle),
                         actionText = stringResource(Res.string.home_crossing_button),
                         onAction = onOpenCrossingDemo,
                         accent = MaterialTheme.colorScheme.primary,

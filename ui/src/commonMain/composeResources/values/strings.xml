@@ -7170,8 +7170,7 @@
     <string name="signs_category_service">Սպասարկման</string>
     <string name="signs_category_plate">Ցուցանակներ</string>
 
-    <string name="home_crossing_title">Խաչմերուկի հերթ</string>
-    <string name="home_crossing_subtitle">Ընտրեք՝ ով է անցնում առաջինը, ապա դիտեք մեքենաների ընթացքը</string>
+    <string name="home_crossing_title">Խաչմերուկի վարժանք</string>
     <string name="home_crossing_button">Սկսել</string>
     <string name="crossing_title">Խաչմերուկի հերթ</string>
     <string name="crossing_back">Հետ</string>
