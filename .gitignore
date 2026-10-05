@@ -58,6 +58,10 @@ scripts/image_review.html
 scripts/build_visual_review.py
 scripts/review/store-screenshot-fixes/
 
+# Official sign scans and rules excerpt used only by the local extractor
+scripts/signs/sheets/
+scripts/signs/official_rules_excerpt.txt
+
 # Generated pre-release QA reports and screenshots
 scripts/review/release-qa-*.md
 scripts/review/release-qa-*-shots/
