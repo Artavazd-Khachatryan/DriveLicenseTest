@@ -38,6 +38,8 @@ scripts/__pycache__/
 scripts/audit_book_*.json
 scripts/audit_images_*.json
 scripts/audit_all.json
+scripts/AUDIT_SUMMARY.md
+scripts/IMAGE_AUDIT_SUMMARY.md
 
 # Generated verification / gallery outputs (regenerate with scripts/*.py)
 scripts/book_figures/
@@ -53,6 +55,7 @@ scripts/review/webp-migration/quality_review.html
 # One-off question review dumps (not app source)
 scripts/review/ew-questions.html
 scripts/review/official-sync-report.json
+scripts/review/exam-group-scan.json
 scripts/question_visual_review.html
 scripts/image_review.html
 scripts/build_visual_review.py
