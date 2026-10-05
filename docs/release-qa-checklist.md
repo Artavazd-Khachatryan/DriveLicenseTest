@@ -102,8 +102,8 @@ Conventions: "Home" = bottom tab `Գլխավոր`, "Practice" = `Պարապմո�
 - Steps:
   1. With no data: `Ավարտված թեստեր դեռ չկան։` and `Տվյալներ չկան — ...` for categories.
   2. After sessions: totals match what was answered; category bars show.
-  3. History rows list finished sessions with `%d/%d ճիշտ` and pass/fail badge.
-  4. Tap a row: `Թեստի վերանայում` with `Հարց N`, `Ձեր պատասխանը`, `Ճիշտ պատասխանը`.
+  3. History on Progress shows only the latest 5 finished sessions, with `%d/%d ճիշտ` and pass/fail badge. With 6 or more, `Ընդլայնել` opens the full list under the same title.
+  4. Tap a row on either list: `Թեստի վերանայում` with `Հարց N`, `Ձեր պատասխանը`, `Ճիշտ պատասխանը`.
   5. Tap a question: single question review opens; Back returns step by step.
 - Expected: history is paper-scoped (switching category in Settings shows that paper's data only).
 - Automated by: `SmokeTest.bottomNavOpensPracticeAndProgress` (opens tab, checks `Կատարողականություն`); rest manual only.

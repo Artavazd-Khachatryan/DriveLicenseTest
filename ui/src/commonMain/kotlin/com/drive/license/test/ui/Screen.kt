@@ -3,6 +3,7 @@ package com.drive.license.test.ui
 sealed class Screen {
     object Home : Screen()
     object Stats : Screen()
+    object TestHistory : Screen()
     object Practice : Screen()
     object CategoryPicker : Screen()
     object Question : Screen()

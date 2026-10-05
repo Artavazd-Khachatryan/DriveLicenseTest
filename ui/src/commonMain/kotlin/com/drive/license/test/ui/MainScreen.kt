@@ -374,7 +374,15 @@ fun MainScreen(
             onOpenSessionReview = { sessionId ->
                 navigate(Screen.TestSessionReview(sessionId))
             },
+            onOpenAllHistory = { navigate(Screen.TestHistory) },
             onBack = if (canGoBack) ({ navigateBack() }) else null,
+        )
+        Screen.TestHistory -> TestHistoryScreen(
+            userProgressRepository = userProgressRepository,
+            onOpenSessionReview = { sessionId ->
+                navigate(Screen.TestSessionReview(sessionId))
+            },
+            onBack = { navigateBack() },
         )
         is Screen.TestSessionReview -> TestSessionReviewScreen(
             sessionId = screen.sessionId,

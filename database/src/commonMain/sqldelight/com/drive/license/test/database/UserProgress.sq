@@ -229,8 +229,7 @@ getCompletedTestSessions:
 SELECT id, start_time, end_time, total_questions, correct_answers
 FROM TestSession
 WHERE is_completed = 1
-ORDER BY start_time DESC
-LIMIT 50;
+ORDER BY start_time DESC;
 
 -- Reset statistics: clears question progress, attempts, sessions and streak.
 deleteAllQuestionAttempts:

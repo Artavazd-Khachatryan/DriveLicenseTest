@@ -6988,6 +6988,7 @@
     <string name="stats_passed">Հաջողված</string>
     <string name="stats_failed">Ձախողված</string>
     <string name="stats_tap_to_review">Սեղմեք՝ պատասխանները դիտելու համար</string>
+    <string name="stats_history_extend">Ընդլայնել</string>
     <string name="test_review_title">Թեստի վերանայում</string>
     <string name="test_review_summary">%1$d/%2$d ճիշտ</string>
     <string name="test_review_question_label">Հարց %1$d</string>

@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -23,6 +24,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -58,6 +60,7 @@ import drivelicensetest.ui.generated.resources.stats_no_category_data
 import drivelicensetest.ui.generated.resources.stats_no_history
 import drivelicensetest.ui.generated.resources.stats_overall_performance
 import drivelicensetest.ui.generated.resources.stats_passed
+import drivelicensetest.ui.generated.resources.stats_history_extend
 import drivelicensetest.ui.generated.resources.stats_test_history
 import drivelicensetest.ui.generated.resources.stats_tap_to_review
 import drivelicensetest.ui.generated.resources.stats_title
@@ -69,10 +72,13 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.resources.stringResource
 
+private const val LatestTestCount = 5
+
 @Composable
 fun StatsScreen(
     userProgressRepository: UserProgressRepository,
     onOpenSessionReview: (String) -> Unit = {},
+    onOpenAllHistory: () -> Unit = {},
     onBack: (() -> Unit)? = null,
 ) {
     var stats by remember { mutableStateOf(UserStatistics()) }
@@ -120,8 +126,9 @@ fun StatsScreen(
                     OverallStatsCard(stats)
                     CategoryBreakdownCard(categoryStats)
                     TestHistoryCard(
-                        history = testHistory,
+                        history = testHistory.take(LatestTestCount),
                         onOpenSessionReview = onOpenSessionReview,
+                        onExtend = if (testHistory.size > LatestTestCount) onOpenAllHistory else null,
                     )
                 }
             }
@@ -220,6 +227,7 @@ private fun CategoryBreakdownCard(categories: List<CategoryStats>) {
 private fun TestHistoryCard(
     history: List<TestSessionSummary>,
     onOpenSessionReview: (String) -> Unit,
+    onExtend: (() -> Unit)? = null,
 ) {
     AppCard(modifier = Modifier.fillMaxWidth()) {
         Column(
@@ -256,13 +264,23 @@ private fun TestHistoryCard(
                         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                     }
                 }
+                if (onExtend != null) {
+                    TextButton(
+                        onClick = onExtend,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .heightIn(min = 48.dp),
+                    ) {
+                        Text(stringResource(Res.string.stats_history_extend))
+                    }
+                }
             }
         }
     }
 }
 
 @Composable
-private fun TestHistoryRow(
+internal fun TestHistoryRow(
     session: TestSessionSummary,
     onClick: () -> Unit,
 ) {
