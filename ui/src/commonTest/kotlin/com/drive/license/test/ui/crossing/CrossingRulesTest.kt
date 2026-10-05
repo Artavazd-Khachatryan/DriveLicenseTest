@@ -217,17 +217,22 @@ class CrossingRulesTest {
     }
 
     @Test
-    fun deckIncludesLightsAndEveryMainRoadBend() {
+    fun deckIncludesEqualRoadsAndEveryMainRoadBend() {
         assertTrue(CrossingScenarios.any { it.control is JunctionControl.Equal })
-        assertTrue(CrossingScenarios.any { it.control is JunctionControl.Lights && it.control.ignoredSign == null })
-        assertTrue(CrossingScenarios.any { it.control is JunctionControl.Lights && it.control.ignoredSign != null })
-        assertTrue(CrossingScenarios.any { it.control is JunctionControl.Lights && it.control.arrow != null })
-        assertTrue(CrossingScenarios.any { scenario ->
-            scenario.notes.any { it.cause == YieldCause.PermissiveArrow }
-        })
         for (bend in Bend.entries) {
             assertTrue(CrossingScenarios.any { it.control is JunctionControl.Sign && it.control.bend == bend })
         }
+    }
+
+    @Test
+    fun deckOmitsTrafficLightsAndTwoCarBothStraight() {
+        assertTrue(CrossingScenarios.none { it.control is JunctionControl.Lights })
+        assertTrue(
+            CrossingScenarios.none { scenario ->
+                scenario.vehicles.size == 2 &&
+                    scenario.vehicles.all { it.maneuver == Maneuver.Straight }
+            },
+        )
     }
 }
 

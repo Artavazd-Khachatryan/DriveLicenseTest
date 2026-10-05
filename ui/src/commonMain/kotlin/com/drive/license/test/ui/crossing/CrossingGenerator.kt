@@ -44,7 +44,7 @@ fun generateCrossingScenarios(): List<CrossingScenario> {
             }
         }
     }
-    addBendAndLightScenarios(scenarios, seen)
+    addBendScenarios(scenarios, seen)
     return scenarios
 }
 
@@ -72,6 +72,8 @@ private fun accept(
             beacon = beacons[index],
         )
     }
+    if (control is JunctionControl.Lights) return false
+    if (vehicles.size == 2 && vehicles.all { it.maneuver == Maneuver.Straight }) return false
     val draft = CrossingScenario(
         id = "draft",
         title = titleFor(vehicles, control),
@@ -93,13 +95,12 @@ private fun accept(
     return true
 }
 
-/** One sample for every bend, and for lights both with and without a sign behind them. */
-private fun addBendAndLightScenarios(
+/** One sample for every main-road bend. Traffic lights stay out of the deck. */
+private fun addBendScenarios(
     scenarios: MutableList<CrossingScenario>,
     seen: MutableSet<String>,
 ) {
     val none = listOf(Beacon.None, Beacon.None)
-    val straight = listOf(Maneuver.Straight, Maneuver.Straight)
     for (from in Approach.entries) {
         val side = Approach.entries.first { it != from && it != otherArm(from, Bend.Straight) }
         for (bend in Bend.entries) {
@@ -108,58 +109,16 @@ private fun addBendAndLightScenarios(
                 Bend.Straight -> Maneuver.Straight
                 Bend.Right -> Maneuver.TurnRight
             }
+            val sideMove = if (along == Maneuver.Straight) Maneuver.TurnLeft else Maneuver.Straight
             accept(
                 scenarios, seen,
                 listOf(from, side),
-                listOf(along, Maneuver.Straight),
+                listOf(along, sideMove),
                 none,
                 JunctionControl.Sign(from, bend),
             )
         }
     }
-    for (phase in SignalPhase.entries) {
-        val greenArm = if (phase == SignalPhase.NorthSouth) Approach.South else Approach.West
-        val redArm = if (phase == SignalPhase.NorthSouth) Approach.East else Approach.South
-        accept(
-            scenarios, seen,
-            listOf(greenArm, redArm),
-            straight,
-            none,
-            JunctionControl.Lights(phase),
-        )
-        val sign = JunctionControl.Sign(
-            if (phase == SignalPhase.NorthSouth) Approach.West else Approach.South,
-            Bend.Straight,
-        )
-        accept(
-            scenarios, seen,
-            listOf(greenArm, redArm),
-            listOf(Maneuver.Straight, Maneuver.TurnLeft),
-            none,
-            JunctionControl.Lights(phase, ignoredSign = sign),
-        )
-    }
-    // §91: red main light plus a green arrow. The turn yields to the green cross street.
-    accept(
-        scenarios, seen,
-        listOf(Approach.South, Approach.West),
-        listOf(Maneuver.TurnLeft, Maneuver.Straight),
-        none,
-        JunctionControl.Lights(
-            green = SignalPhase.EastWest,
-            arrow = ArrowSignal(Approach.South, Maneuver.TurnLeft),
-        ),
-    )
-    accept(
-        scenarios, seen,
-        listOf(Approach.East, Approach.South),
-        listOf(Maneuver.TurnRight, Maneuver.Straight),
-        none,
-        JunctionControl.Lights(
-            green = SignalPhase.NorthSouth,
-            arrow = ArrowSignal(Approach.East, Maneuver.TurnRight),
-        ),
-    )
 }
 
 private fun controlKey(control: JunctionControl): String = when (control) {
