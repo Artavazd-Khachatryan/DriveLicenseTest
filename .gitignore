@@ -54,6 +54,9 @@ scripts/review/webp-migration/quality_review.html
 scripts/review/ew-questions.html
 scripts/review/official-sync-report.json
 scripts/question_visual_review.html
+scripts/image_review.html
+scripts/build_visual_review.py
+scripts/review/store-screenshot-fixes/
 
 # Generated pre-release QA reports and screenshots
 scripts/review/release-qa-*.md
