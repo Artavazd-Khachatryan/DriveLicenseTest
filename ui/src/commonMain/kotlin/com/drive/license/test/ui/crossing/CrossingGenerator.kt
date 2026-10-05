@@ -73,6 +73,8 @@ private fun accept(
         )
     }
     if (control is JunctionControl.Lights) return false
+    // Two cars on equal roads: the straight and turning paths are hard to tell apart.
+    if (vehicles.size == 2 && control !is JunctionControl.Sign) return false
     if (vehicles.size == 2 && vehicles.all { it.maneuver == Maneuver.Straight }) return false
     val draft = CrossingScenario(
         id = "draft",

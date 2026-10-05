@@ -225,8 +225,13 @@ class CrossingRulesTest {
     }
 
     @Test
-    fun deckOmitsTrafficLightsAndTwoCarBothStraight() {
+    fun deckOmitsLightsAndUnsignedTwoCarJunctions() {
         assertTrue(CrossingScenarios.none { it.control is JunctionControl.Lights })
+        assertTrue(
+            CrossingScenarios.none { scenario ->
+                scenario.vehicles.size == 2 && scenario.control !is JunctionControl.Sign
+            },
+        )
         assertTrue(
             CrossingScenarios.none { scenario ->
                 scenario.vehicles.size == 2 &&
