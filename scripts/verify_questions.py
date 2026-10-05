@@ -21,6 +21,7 @@ import sqlite3
 import sys
 from pathlib import Path
 
+from grammar_corrections import correct_text
 from official_exam import (
     DEFAULT_CACHE,
     REPO,
@@ -106,23 +107,27 @@ def main() -> int:
                 }
             )
             continue
+        # Booklet typos are corrected in the DB. Compare against that text.
+        off_q = correct_text(rec.question)
+        off_answers = [correct_text(a) for a in rec.answers]
+        off_correct = correct_text(rec.correct_text)
         if content_key(row["question"], row["answers"]) != content_key(
-            rec.question, rec.answers
+            off_q, off_answers
         ):
             wrong_text.append(
                 {
                     "db_id": row["id"],
                     "slot": k,
                     "db_q": row["question"][:80],
-                    "off_q": rec.question[:80],
+                    "off_q": off_q[:80],
                 }
             )
-        if canon(row["true_answer"]) != canon(rec.correct_text):
+        if canon(row["true_answer"]) != canon(off_correct):
             wrong_answer.append(
                 {
                     "db_id": row["id"],
                     "db_correct": row["true_answer"],
-                    "book_correct": rec.correct_text,
+                    "book_correct": off_correct,
                     "question": rec.question[:80],
                 }
             )

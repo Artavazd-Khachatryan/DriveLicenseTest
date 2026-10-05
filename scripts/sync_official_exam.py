@@ -31,6 +31,7 @@ from pathlib import Path
 
 from PIL import Image
 
+from grammar_corrections import correct_text
 from official_exam import (
     DEFAULT_CACHE,
     REPO,
@@ -295,9 +296,9 @@ def apply(
                 "UPDATE Question SET question=?, answers=?, true_answer=?, "
                 "book_id=?, printed_number=?, exam_group=?, image=? WHERE id=?",
                 (
-                    rec.question,
-                    answers_json(rec.answers),
-                    rec.correct_text,
+                    correct_text(rec.question),
+                    answers_json([correct_text(a) for a in rec.answers]),
+                    correct_text(rec.correct_text),
                     rec.book,
                     rec.number,
                     exam_group_for(rec),
@@ -324,10 +325,10 @@ def apply(
                 "book_id, printed_number, exam_group) VALUES (?,?,?,?,?,?,?,?)",
                 (
                     qid,
-                    rec.question,
+                    correct_text(rec.question),
                     image_name,
-                    answers_json(rec.answers),
-                    rec.correct_text,
+                    answers_json([correct_text(a) for a in rec.answers]),
+                    correct_text(rec.correct_text),
                     rec.book,
                     rec.number,
                     exam_group_for(rec),
@@ -375,12 +376,15 @@ def summarize(pairs, db_gone, off_new) -> dict:
         if dbq["exam_group"] != ng:
             key = f"{dbq['exam_group']}→{ng}"
             group_changes[key] = group_changes.get(key, 0) + 1
-        if canon(dbq["true_answer"]) != canon(rec.correct_text):
+        off_correct = correct_text(rec.correct_text)
+        off_q = correct_text(rec.question)
+        off_answers = [correct_text(a) for a in rec.answers]
+        if canon(dbq["true_answer"]) != canon(off_correct):
             true_changes += 1
-        if canon(dbq["question"]) != canon(rec.question):
+        if canon(dbq["question"]) != canon(off_q):
             text_changes += 1
         if content_key(dbq["question"], dbq["answers"]) != content_key(
-            rec.question, rec.answers
+            off_q, off_answers
         ):
             ans_changes += 1
     how_counts: dict[str, int] = {}
